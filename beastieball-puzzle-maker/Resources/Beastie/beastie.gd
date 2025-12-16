@@ -1,3 +1,4 @@
+@tool
 class_name Beastie
 extends Resource
 
@@ -23,4 +24,17 @@ enum Sprite {IDLE, READY, SPIKE, GOOD, BAD}
 @export_range(0, 30) var spirit_invest_def : int = 0
 @export_range(0, 30) var mind_invest_def : int = 0
 @export var my_plays : Array[Plays] = []
-@export var my_trait : Trait = possible_traits.front()
+@export var my_trait : Trait = null
+
+
+func get_sprite(sprite_type : Sprite) -> Texture2D:
+
+	return sprites.get(sprite_type)
+
+static func get_empty_plays_array() -> Array[Plays]:
+	# Due to array typing, we need this convoluted function, bruh
+	return []
+
+static func get_empty_trait_array() -> Array[Trait]:
+	# Due to array typing, we need this convoluted function, bruh
+	return []
