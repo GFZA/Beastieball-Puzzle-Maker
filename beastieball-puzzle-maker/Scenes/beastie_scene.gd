@@ -4,58 +4,156 @@ extends Node2D
 
 const PLACEHOLDER_TEXTURE : Texture2D = preload("uid://chctbds4hrdsq")
 
-@onready var sprite_2d: Sprite2D = %Sprite2D
-@onready var name_label: Label = %NameLabel
-@onready var trait_label: Label = %TraitLabel
-@onready var play_label: Label = %PlayLabel
 
-var my_name : String = "Beastie" :
+@export var beastie : Beastie = null :
 	set(value):
-		my_name = value
-		name_label.text = my_name
+		if not is_node_ready():
+			await ready
+		if value == null:
+			current_sprite = PLACEHOLDER_TEXTURE
+			#all_my_plays = Beastie.get_empty_plays_array()
+			#all_my_trait = Beastie.get_empty_trait_array()
+			if beastie:
+				if beastie.my_name_updated.is_connected(_update_name):
+					beastie.my_name_updated.disconnect(_update_name)
+				if beastie.sport_number_updated.is_connected(_update_sport_number):
+					beastie.sport_number_updated.disconnect(_update_sport_number)
+				if beastie.stats_updated.is_connected(_update_stats):
+					beastie.stats_updated.disconnect(_update_stats)
+				if beastie.my_plays_updated.is_connected(_update_play_label):
+					beastie.my_plays_updated.disconnect(_update_play_label)
+				if beastie.my_trait_updated.is_connected(_update_trait_label):
+					beastie.my_trait_updated.disconnect(_update_trait_label)
+				_update_name("THE UNKNOWN")
+				_update_sport_number(666)
+				_update_stats(Beastie.get_empty_stats_dict())
+				_update_play_label(Beastie.get_empty_plays_array())
+				_update_trait_label(null)
+			beastie = value
+			return
+		beastie = value
+		current_sprite = beastie.get_sprite(Beastie.Sprite.IDLE)
+		#all_my_plays = beastie.possible_plays
+		#all_my_trait = beastie.possible_traits
+		if not beastie.my_name_updated.is_connected(_update_name):
+			beastie.my_name_updated.connect(_update_name)
+		if not beastie.sport_number_updated.is_connected(_update_sport_number):
+			beastie.sport_number_updated.connect(_update_sport_number)
+		if not beastie.stats_updated.is_connected(_update_stats):
+			beastie.stats_updated.connect(_update_stats)
+		if not beastie.my_plays_updated.is_connected(_update_play_label):
+			beastie.my_plays_updated.connect(_update_play_label)
+		if not beastie.my_trait_updated.is_connected(_update_trait_label):
+			beastie.my_trait_updated.connect(_update_trait_label)
+		_update_name(beastie.my_name)
+		_update_sport_number(beastie.sport_number)
+		_update_stats(beastie.get_stats_dict())
+		_update_play_label(beastie.my_plays)
+		_update_trait_label(beastie.my_trait)
+
+
+
+@export var sprite_pose : Beastie.Sprite = Beastie.Sprite.IDLE :
+	set(value):
+		if not beastie:
+			sprite_pose = Beastie.Sprite.IDLE
+			push_warning("...You can't change the sprite of something that doesn't exist...")
+			return
+		sprite_pose = value
+		current_sprite = beastie.get_sprite(sprite_pose)
 
 var current_sprite : Texture2D = null :
 	set(value):
 		current_sprite = value
 		sprite_2d.texture = current_sprite
 
-var all_my_plays : Array[Plays] = [] :
-	set(value):
-		all_my_plays = value
-		if all_my_plays.is_empty():
-			play_label.text = "MISSING PLAYS!"
-			return
-		var new_text = ""
-		for play : Plays in all_my_plays:
-			new_text += play.name
-			if all_my_plays.find(play) == all_my_plays.size() - 1:
-				new_text += "."
-			else:
-				new_text += ", "
-		play_label.text = new_text
+#var all_my_plays : Array[Plays] = [] :
+	#set(value):
+		#all_my_plays = value
+		#if all_my_plays.is_empty():
+			#play_label.text = "MISSING PLAYS!"
+			#return
+		#var new_text = ""
+		#for play : Plays in all_my_plays:
+			#new_text += play.name
+			#if all_my_plays.find(play) == all_my_plays.size() - 1:
+				#new_text += "."
+			#else:
+				#new_text += ", "
+		#play_label.text = new_text
 
-var all_my_trait: Array[Trait] = [] :
-	set(value):
-		all_my_trait = value
-		if all_my_trait.is_empty():
-			trait_label.text = "MISSING TRAITS!"
-			return
-		var new_text = ""
-		for my_trait : Trait in all_my_trait:
-			new_text += my_trait.name
-			if all_my_trait.find(my_trait) == all_my_trait.size() - 1:
-				new_text += "."
-			else:
-				new_text += ", "
-		trait_label.text = new_text
+#var all_my_trait: Array[Trait] = [] :
+	#set(value):
+		#all_my_trait = value
+		#if all_my_trait.is_empty():
+			#trait_label.text = "MISSING TRAITS!"
+			#return
+		#var new_text = ""
+		#for my_trait : Trait in all_my_trait:
+			#new_text += my_trait.name
+			#if all_my_trait.find(my_trait) == all_my_trait.size() - 1:
+				#new_text += "."
+			#else:
+				#new_text += ", "
+		#trait_label.text = new_text
 
 
-@export var beastie : Beastie = null :
-	set(value):
-		if not is_node_ready():
-			await ready
-		beastie = value
-		my_name = beastie.name if beastie else "THE UNKNOWN"
-		current_sprite = beastie.get_sprite(Beastie.Sprite.IDLE) if beastie else PLACEHOLDER_TEXTURE
-		all_my_plays = beastie.possible_plays if beastie else Beastie.get_empty_plays_array()
-		all_my_trait = beastie.possible_traits if beastie else Beastie.get_empty_trait_array()
+@onready var sprite_2d: Sprite2D = %Sprite2D
+@onready var number_label: Label = %NumberLabel
+@onready var name_label: Label = %NameLabel
+@onready var trait_label: Label = %TraitLabel
+@onready var play_label: Label = %PlayLabel
+@onready var stats_label: Label = %StatsLabel
+
+
+func _update_name(assigned_name : String) -> void:
+	var new_name : String = ""
+	if assigned_name == "" and beastie:
+		new_name = beastie.specie_name
+	else:
+		new_name = assigned_name
+	name_label.text = new_name
+
+
+func _update_sport_number(new_number : int) -> void:
+	number_label.text = "#%03d" % new_number
+
+
+func _update_stats(stats : Dictionary[String, Array]) -> void:
+	if stats.is_empty():
+		stats_label.text = "MISSING STATS"
+		return
+	var stats_text : String = ""
+	var stats_name : Array = stats.keys()
+	var stats_value : Array = stats.values()
+	for index in stats_name.size():
+		stats_text += "%s: %s + %s" % [stats_name[index], str(stats_value[index][0]), str(stats_value[index][1])]
+		if index < stats_name.size() - 1:
+			stats_text += "\n"
+	stats_label.text = stats_text
+
+
+func _update_play_label(updated_plays : Array[Plays]) -> void:
+	if updated_plays.is_empty():
+		play_label.text = "MISSING PLAYS!"
+		return
+	var new_text = ""
+	var loop : int = 1
+	for play : Plays in updated_plays:
+		new_text += play.name if play else "Play #%s" % str(loop)
+		if loop < updated_plays.size():
+			new_text += ", "
+			loop += 1
+	new_text += "."
+	play_label.text = new_text
+
+
+func _update_trait_label(updated_trait: Trait) -> void:
+	if updated_trait == null:
+		trait_label.text = "MISSING TRAITS!"
+		return
+	var new_text = ""
+	new_text += updated_trait.name
+	new_text += "\n"
+	new_text += updated_trait.description
+	trait_label.text = new_text

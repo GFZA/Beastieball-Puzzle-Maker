@@ -21,7 +21,7 @@
 
 [resource]
 script = ExtResource("2_kpbug")
-name = "Garood"
+specie_name = "Garood"
 body_base_pow = 88
 spirit_base_pow = 20
 mind_base_pow = 102
@@ -37,4 +37,5 @@ sprites = Dictionary[int, Texture2D]({
 3: ExtResource("6_os0cd"),
 4: ExtResource("7_km10g")
 })
+my_plays = Array[ExtResource("1_cyme1")]([null, null, null])
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"

@@ -16,19 +16,31 @@ texture = ExtResource("2_y6l0a")
 [node name="NameLabel" type="Label" parent="."]
 unique_name_in_owner = true
 offset_left = -251.0
-offset_top = -88.0
+offset_top = -204.0
 offset_right = 235.0
+offset_bottom = -116.0
 text = "THE UNKNOWN"
+label_settings = SubResource("LabelSettings_u05cj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NumberLabel" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = -251.0
+offset_top = -134.0
+offset_right = 235.0
+offset_bottom = -46.0
+text = "#666"
 label_settings = SubResource("LabelSettings_u05cj")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TraitLabel" type="Label" parent="."]
 unique_name_in_owner = true
-offset_left = -271.0
+offset_left = -950.0
 offset_top = 489.0
-offset_right = 292.0
-offset_bottom = 577.0
+offset_right = 981.0
+offset_bottom = 668.0
 text = "MISSING TRAITS!"
 label_settings = SubResource("LabelSettings_u05cj")
 horizontal_alignment = 1
@@ -37,10 +49,21 @@ vertical_alignment = 1
 [node name="PlayLabel" type="Label" parent="."]
 unique_name_in_owner = true
 offset_left = -1217.0
-offset_top = 609.0
+offset_top = 703.0
 offset_right = 1243.0
-offset_bottom = 697.0
+offset_bottom = 791.0
 text = "MISSING PLAYS!"
+label_settings = SubResource("LabelSettings_u05cj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StatsLabel" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = -969.0
+offset_top = -13.0
+offset_right = -315.0
+offset_bottom = 566.0
+text = "MISSING STATS"
 label_settings = SubResource("LabelSettings_u05cj")
 horizontal_alignment = 1
 vertical_alignment = 1
