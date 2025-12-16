@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://co8c0qvn7nkha"]
+
+[ext_resource type="Script" uid="uid://dfsngo7akxojy" path="res://test.gd" id="1_78k3p"]
+
+[node name="Test" type="Node2D"]
+script = ExtResource("1_78k3p")
+base_pow = 75
+base_attack_stat = 102
+attacker_invest = 30
+base_defense_stat = 120
