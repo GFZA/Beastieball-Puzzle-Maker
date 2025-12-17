@@ -38,7 +38,7 @@ sprites = Dictionary[int, Texture2D]({
 4: ExtResource("18_gcud6")
 })
 my_name = "Canio"
-sport_number = 21
+sport_number = 175
 mind_invest_pow = 30
 spirit_invest_def = 30
 my_plays = Array[ExtResource("1_7modk")]([ExtResource("2_08rqt"), ExtResource("3_fwkhh"), ExtResource("4_f2oeu")])

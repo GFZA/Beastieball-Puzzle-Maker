@@ -4,10 +4,12 @@ extends Resource
 
 enum Sprite {IDLE, READY, SPIKE, GOOD, BAD}
 
+const MAX_NAME_LENGTH : int = 12
+const MAX_NUNBER_LENGTH : int = 3
 #const INVEST_MAX : int = 60
 
 signal my_name_updated(my_name : String)
-signal sport_number_updated(number : int)
+signal sport_number_updated(sport_number : int)
 signal stats_updated(stats : Dictionary[String, Array])
 signal my_plays_updated(updated_plays : Array[Plays])
 signal my_trait_updated(updated_trait : Array[Trait])
@@ -47,11 +49,12 @@ signal my_trait_updated(updated_trait : Array[Trait])
 @export_group("My infos")
 @export var my_name : String = "" :
 	set(value):
+		value = value.substr(0, MAX_NAME_LENGTH)
 		my_name = value
-		my_name = my_name.substr(0, 12)
 		my_name_updated.emit(my_name)
-@export_range(0, 999) var sport_number : int = 1 :
+@export_range(0, 999) var sport_number : int = 0:
 	set(value):
+		clamp(value, 0, 999)
 		sport_number = value
 		sport_number_updated.emit(sport_number)
 @export_range(0, 30) var body_invest_pow : int = 0 :

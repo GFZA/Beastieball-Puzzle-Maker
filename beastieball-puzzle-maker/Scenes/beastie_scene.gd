@@ -116,7 +116,7 @@ func _update_name(assigned_name : String) -> void:
 
 
 func _update_sport_number(new_number : int) -> void:
-	number_label.text = "#%03d" % new_number
+	number_label.text = "#" + str(new_number)
 
 
 func _update_stats(stats : Dictionary[String, Array]) -> void:

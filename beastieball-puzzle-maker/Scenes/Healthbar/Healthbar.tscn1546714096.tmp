@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvd7pbsfc56o0"]
+
+[ext_resource type="Script" uid="uid://bxkg5ri8uqj7n" path="res://Scenes/Healthbar/healthbar.gd" id="1_vjpxm"]
+[ext_resource type="Texture2D" uid="uid://dvuvpafgaqe5i" path="res://Scenes/Healthbar/messageImage_1765900345812.jpg" id="2_xibvh"]
+
+[node name="Healthbar" type="Node2D"]
+script = ExtResource("1_vjpxm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1.9999924, 49)
+scale = Vector2(0.42821783, 0.42821783)
+texture = ExtResource("2_xibvh")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(285, 109)
+polygon = PackedVector2Array(-110, 10, 125, 10, 145, 90, -90, 90)
+uv = PackedVector2Array(264.48328, 245.66446, 206.60645, 264.95676, 236.6167, 168.49524, 324.50378, 333.5516, 320.21667, 166.35165, 116.57568, 114.9055)
