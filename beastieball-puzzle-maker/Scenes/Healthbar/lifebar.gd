@@ -7,14 +7,24 @@ extends MarginContainer
 		hp = value
 		_update_bar(value)
 
+@export_color_no_alpha var color : Color = Color.GREEN :
+	set(value):
+		color = value
+		_update_color(color)
+
+@export var my_side : Global.MySide = Global.MySide.LEFT :
+	set(value):
+		my_side = value
+		_update_side(my_side)
+
 var max_health_upper_x : float = 0.0
 var max_health_lower_x : float = 0.0
 var max_length : float = 0.0
 var background_pos : PackedVector2Array = []
 var margin : float = 2.0
 
-@onready var lifebar_backrground: Polygon2D = %LifebarBackrground
-@onready var lifebar_inner: Polygon2D = %LifebarInner
+@onready var lifebar_backrground: Parallelogram = %LifebarBackrground
+@onready var lifebar_inner: Parallelogram = %LifebarInner
 @onready var life_label: Label = %LifeLabel
 
 
@@ -53,3 +63,20 @@ func _update_bar(value : int) -> void:
 	])
 
 	lifebar_inner.polygon = new_polygon
+
+
+func _update_color(new_color : Color) -> void:
+	if not is_node_ready():
+		await ready
+	lifebar_inner.color = new_color
+	life_label.label_settings.font_color = new_color
+
+
+func _update_side(new_side : Global.MySide) -> void:
+	if not is_node_ready():
+		await ready
+
+	if (not lifebar_inner.is_pointing_right() and new_side == Global.MySide.LEFT) or\
+	   (lifebar_inner.is_pointing_right() and new_side == Global.MySide.RIGHT):
+		lifebar_inner.filp_h()
+		lifebar_backrground.filp_h()

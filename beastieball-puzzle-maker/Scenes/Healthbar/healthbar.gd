@@ -5,6 +5,11 @@ extends Control
 const MAX_LABEL_LENGTH : int = 175
 const DEFAULT_FONT_SIZE : int = 48
 
+@export var my_side : Global.MySide = Global.MySide.LEFT :
+	set(value):
+		my_side = value
+		_update_side(my_side)
+
 @export var beastie_name : String = "Sprecko" :
 	set(value):
 		value = value.substr(0, 12)
@@ -23,9 +28,17 @@ const DEFAULT_FONT_SIZE : int = 48
 		stamina = value
 		update_lifebar(stamina)
 
+@export_color_no_alpha var color : Color = Color.GREEN :
+	set(value):
+		color = value
+		update_color(color)
+
 @onready var name_label: Label = %NameLabel
 @onready var number_label: Label = %NumberLabel
 @onready var lifebar: LifeBar = %Lifebar
+@onready var level_label: Label = %LevelLabel
+@onready var background_para: Parallelogram = %BackgroundPara
+@onready var lower_spacer: Control = %LowerSpacer
 
 
 func update_name_label(new_text : String) -> void:
@@ -64,3 +77,28 @@ func update_lifebar(new_stamina: int) -> void:
 	if not is_node_ready():
 		await ready
 	lifebar.hp = new_stamina
+
+
+func update_color(new_color : Color) -> void:
+	if not is_node_ready():
+		await ready
+	lifebar.color = new_color
+	level_label.label_settings.font_color = new_color
+
+
+func _update_side(new_side : Global.MySide) -> void:
+	if not is_node_ready():
+		await ready
+
+	if (not background_para.is_pointing_right() and new_side == Global.MySide.LEFT) or\
+	   (background_para.is_pointing_right() and new_side == Global.MySide.RIGHT):
+		background_para.filp_h()
+		print("FLIP")
+
+	lifebar.my_side = new_side
+
+	# Absolute bandage fix. Screw this...
+	if my_side == Global.MySide.RIGHT:
+		lower_spacer.custom_minimum_size.x = 25.0
+	else:
+		lower_spacer.custom_minimum_size.x = 15.0

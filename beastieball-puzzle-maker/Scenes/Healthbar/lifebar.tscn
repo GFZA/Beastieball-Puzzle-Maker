@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfxq6perx4tge"]
+
+[ext_resource type="Script" uid="uid://bh4n4qdnv74fo" path="res://Scenes/Healthbar/lifebar.gd" id="1_iy6jb"]
+[ext_resource type="Script" uid="uid://bca8urfgsjynv" path="res://Scenes/Healthbar/parallelogram.gd" id="2_0yqi3"]
+[ext_resource type="FontFile" uid="uid://q2kbgu0jja56" path="res://Resources/Fonts/sportsjersey.ttf" id="2_wmisi"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_bu8sd"]
+font = ExtResource("2_wmisi")
+font_size = 32
+font_color = Color(0, 1, 0, 1)
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Lifebar" type="MarginContainer"]
+custom_minimum_size = Vector2(161, 20)
+script = ExtResource("1_iy6jb")
+
+[node name="LifebarBackrground" type="Polygon2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(6.5, 4)
+color = Color(0.41568628, 0.5058824, 0.5372549, 1)
+offset = Vector2(0, 3)
+polygon = PackedVector2Array(-11.5, 20, -6.5, 0, 155, 0, 150, 20)
+script = ExtResource("2_0yqi3")
+
+[node name="LifebarInner" type="Polygon2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(6.5, 4)
+color = Color(0, 1, 0, 1)
+offset = Vector2(0, 3)
+polygon = PackedVector2Array(-9, 18, -5, 2, 152, 2, 148, 18)
+script = ExtResource("2_0yqi3")
+
+[node name="LifeLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 6
+text = "100"
+label_settings = SubResource("LabelSettings_bu8sd")

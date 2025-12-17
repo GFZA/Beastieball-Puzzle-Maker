@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://bvd7pbsfc56o0"]
+[gd_scene load_steps=11 format=3 uid="uid://bvd7pbsfc56o0"]
 
 [ext_resource type="Script" uid="uid://bxkg5ri8uqj7n" path="res://Scenes/Healthbar/healthbar.gd" id="1_vjpxm"]
 [ext_resource type="Texture2D" uid="uid://dvuvpafgaqe5i" path="res://Scenes/Healthbar/messageImage_1765900345812.jpg" id="2_xibvh"]
+[ext_resource type="Script" uid="uid://bca8urfgsjynv" path="res://Scenes/Healthbar/parallelogram.gd" id="3_pgdjv"]
 [ext_resource type="FontFile" uid="uid://cvfib27cf5q88" path="res://Resources/Fonts/Go Banana.ttf" id="3_xibvh"]
-[ext_resource type="Script" uid="uid://bh4n4qdnv74fo" path="res://Scenes/Healthbar/lifebar.gd" id="4_1i8kh"]
+[ext_resource type="PackedScene" uid="uid://bfxq6perx4tge" path="res://Scenes/Healthbar/lifebar.tscn" id="4_bu8sd"]
 [ext_resource type="FontFile" uid="uid://q2kbgu0jja56" path="res://Resources/Fonts/sportsjersey.ttf" id="4_do8wd"]
+[ext_resource type="Texture2D" uid="uid://7a25w48hhlyf" path="res://Scenes/Healthbar/messageImage_1765972027928.jpg" id="6_pgdjv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_do8wd"]
 font = ExtResource("3_xibvh")
@@ -18,17 +20,10 @@ font_color = Color(0.41568628, 0.5058824, 0.5372549, 1)
 outline_size = 2
 outline_color = Color(0.41568628, 0.5058824, 0.5372549, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_bu8sd"]
-font = ExtResource("4_do8wd")
-font_size = 32
-font_color = Color(0, 1, 0.049999952, 1)
-outline_size = 12
-outline_color = Color(0, 0, 0, 1)
-
 [sub_resource type="LabelSettings" id="LabelSettings_1i8kh"]
 font = ExtResource("4_do8wd")
 font_size = 24
-font_color = Color(0, 1, 0.049999952, 1)
+font_color = Color(0, 1, 0, 1)
 outline_size = 8
 outline_color = Color(0, 0, 0, 1)
 
@@ -56,9 +51,11 @@ offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Background" type="Polygon2D" parent="MarginContainer"]
+[node name="BackgroundPara" type="Polygon2D" parent="MarginContainer"]
+unique_name_in_owner = true
 position = Vector2(117, 0)
-polygon = PackedVector2Array(-117, 0, 118, 0, 138, 80, -97, 80)
+polygon = PackedVector2Array(-117, 80, -97, 0, 138, 0, 118, 80)
+script = ExtResource("3_pgdjv")
 
 [node name="ControlsAnchor" type="MarginContainer" parent="MarginContainer"]
 custom_minimum_size = Vector2(255, 80)
@@ -109,38 +106,16 @@ size_flags_vertical = 3
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Spacer" type="Control" parent="MarginContainer/ControlsAnchor/MainContainer/LowerContaiener"]
-custom_minimum_size = Vector2(25, 0)
+[node name="LowerSpacer" type="Control" parent="MarginContainer/ControlsAnchor/MainContainer/LowerContaiener"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(15, 0)
 layout_mode = 2
 
-[node name="Lifebar" type="MarginContainer" parent="MarginContainer/ControlsAnchor/MainContainer/LowerContaiener"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(161, 20)
-layout_mode = 2
-script = ExtResource("4_1i8kh")
-
-[node name="LifebarBackrground" type="Polygon2D" parent="MarginContainer/ControlsAnchor/MainContainer/LowerContaiener/Lifebar"]
-unique_name_in_owner = true
-position = Vector2(6.5, 4)
-color = Color(0.41568628, 0.5058824, 0.5372549, 1)
-offset = Vector2(0, 3)
-polygon = PackedVector2Array(-6.5, 20, -11.5, 0, 150, 0, 155, 20)
-
-[node name="LifebarInner" type="Polygon2D" parent="MarginContainer/ControlsAnchor/MainContainer/LowerContaiener/Lifebar"]
-unique_name_in_owner = true
-position = Vector2(6.5, 4)
-color = Color(0, 1, 0.050980393, 1)
-offset = Vector2(0, 3)
-polygon = PackedVector2Array(-5, 18, -9, 2, 148, 2, 152, 18)
-
-[node name="LifeLabel" type="Label" parent="MarginContainer/ControlsAnchor/MainContainer/LowerContaiener/Lifebar"]
+[node name="Lifebar" parent="MarginContainer/ControlsAnchor/MainContainer/LowerContaiener" instance=ExtResource("4_bu8sd")]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 6
-text = "100"
-label_settings = SubResource("LabelSettings_bu8sd")
 
-[node name="Spacer2" type="Control" parent="MarginContainer/ControlsAnchor/MainContainer/LowerContaiener"]
+[node name="LowerSpacer2" type="Control" parent="MarginContainer/ControlsAnchor/MainContainer/LowerContaiener"]
 custom_minimum_size = Vector2(13, 0)
 layout_mode = 2
 
@@ -150,3 +125,7 @@ layout_mode = 2
 size_flags_horizontal = 2
 text = "Lv50"
 label_settings = SubResource("LabelSettings_1i8kh")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(0, 380)
+texture = ExtResource("6_pgdjv")
