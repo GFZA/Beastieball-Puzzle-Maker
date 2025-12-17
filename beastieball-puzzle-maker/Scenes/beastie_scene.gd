@@ -2,8 +2,11 @@
 class_name BeastieScene
 extends Node2D
 
-const PLACEHOLDER_TEXTURE : Texture2D = preload("uid://chctbds4hrdsq")
+signal stamina_updated(stamina : int)
+signal side_updated(my_side : Global.MySide)
 
+const PLACEHOLDER_TEXTURE : Texture2D = preload("uid://chctbds4hrdsq")
+const HEALTHBAR_SCENE = preload("uid://bvd7pbsfc56o0")
 
 @export var beastie : Beastie = null :
 	set(value):
@@ -14,44 +17,59 @@ const PLACEHOLDER_TEXTURE : Texture2D = preload("uid://chctbds4hrdsq")
 			#all_my_plays = Beastie.get_empty_plays_array()
 			#all_my_trait = Beastie.get_empty_trait_array()
 			if beastie:
-				if beastie.my_name_updated.is_connected(_update_name):
-					beastie.my_name_updated.disconnect(_update_name)
-				if beastie.sport_number_updated.is_connected(_update_sport_number):
-					beastie.sport_number_updated.disconnect(_update_sport_number)
+				if my_healthbar:
+					stamina_updated.disconnect(my_healthbar.update_lifebar)
+					my_healthbar.queue_free()
+
 				if beastie.stats_updated.is_connected(_update_stats):
 					beastie.stats_updated.disconnect(_update_stats)
 				if beastie.my_plays_updated.is_connected(_update_play_label):
 					beastie.my_plays_updated.disconnect(_update_play_label)
 				if beastie.my_trait_updated.is_connected(_update_trait_label):
 					beastie.my_trait_updated.disconnect(_update_trait_label)
-				_update_name("THE UNKNOWN")
-				_update_sport_number(666)
 				_update_stats(Beastie.get_empty_stats_dict())
 				_update_play_label(Beastie.get_empty_plays_array())
 				_update_trait_label(null)
+
 			beastie = value
 			return
-		beastie = value
+
+		beastie = value.duplicate()
 		current_sprite = beastie.get_sprite(Beastie.Sprite.IDLE)
 		#all_my_plays = beastie.possible_plays
 		#all_my_trait = beastie.possible_traits
-		if not beastie.my_name_updated.is_connected(_update_name):
-			beastie.my_name_updated.connect(_update_name)
-		if not beastie.sport_number_updated.is_connected(_update_sport_number):
-			beastie.sport_number_updated.connect(_update_sport_number)
+
+		if not my_healthbar:
+			var new_healthbar : Healthbar = HEALTHBAR_SCENE.instantiate()
+			new_healthbar = HEALTHBAR_SCENE.instantiate()
+			new_healthbar.beastie = beastie
+			stamina_updated.connect(new_healthbar.update_lifebar)
+			new_healthbar.stamina = stamina
+			side_updated.connect(new_healthbar.update_side)
+			new_healthbar.my_side = my_side
+			add_child(new_healthbar)
+			my_healthbar = new_healthbar
+
 		if not beastie.stats_updated.is_connected(_update_stats):
 			beastie.stats_updated.connect(_update_stats)
 		if not beastie.my_plays_updated.is_connected(_update_play_label):
 			beastie.my_plays_updated.connect(_update_play_label)
 		if not beastie.my_trait_updated.is_connected(_update_trait_label):
 			beastie.my_trait_updated.connect(_update_trait_label)
-		_update_name(beastie.my_name)
-		_update_sport_number(beastie.sport_number)
 		_update_stats(beastie.get_stats_dict())
 		_update_play_label(beastie.my_plays)
 		_update_trait_label(beastie.my_trait)
 
+@export_range(0, 100) var stamina : int = 100 :
+	set(value):
+		clamp(value, 0, 100)
+		stamina = value
+		stamina_updated.emit(stamina)
 
+@export var my_side : Global.MySide = Global.MySide.LEFT :
+	set(value):
+		my_side = value
+		side_updated.emit(my_side)
 
 @export var sprite_pose : Beastie.Sprite = Beastie.Sprite.IDLE :
 	set(value):
@@ -66,6 +84,8 @@ var current_sprite : Texture2D = null :
 	set(value):
 		current_sprite = value
 		sprite_2d.texture = current_sprite
+
+var my_healthbar : Healthbar = null
 
 #var all_my_plays : Array[Plays] = [] :
 	#set(value):
@@ -104,19 +124,6 @@ var current_sprite : Texture2D = null :
 @onready var trait_label: Label = %TraitLabel
 @onready var play_label: Label = %PlayLabel
 @onready var stats_label: Label = %StatsLabel
-
-
-func _update_name(assigned_name : String) -> void:
-	var new_name : String = ""
-	if assigned_name == "" and beastie:
-		new_name = beastie.specie_name
-	else:
-		new_name = assigned_name
-	name_label.text = new_name
-
-
-func _update_sport_number(new_number : int) -> void:
-	number_label.text = "#" + str(new_number)
 
 
 func _update_stats(stats : Dictionary[String, Array]) -> void:

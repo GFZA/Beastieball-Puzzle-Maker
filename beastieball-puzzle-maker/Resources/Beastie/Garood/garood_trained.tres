@@ -22,6 +22,7 @@
 [resource]
 script = ExtResource("13_wclsq")
 specie_name = "Garood"
+bar_color = Color(0.9529412, 0.9019608, 0.77254903, 1)
 body_base_pow = 88
 spirit_base_pow = 20
 mind_base_pow = 102

@@ -1,12 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://bvd7pbsfc56o0"]
+[gd_scene load_steps=9 format=3 uid="uid://bvd7pbsfc56o0"]
 
 [ext_resource type="Script" uid="uid://bxkg5ri8uqj7n" path="res://Scenes/Healthbar/healthbar.gd" id="1_vjpxm"]
-[ext_resource type="Texture2D" uid="uid://dvuvpafgaqe5i" path="res://Scenes/Healthbar/messageImage_1765900345812.jpg" id="2_xibvh"]
 [ext_resource type="Script" uid="uid://bca8urfgsjynv" path="res://Scenes/Healthbar/parallelogram.gd" id="3_pgdjv"]
 [ext_resource type="FontFile" uid="uid://cvfib27cf5q88" path="res://Resources/Fonts/Go Banana.ttf" id="3_xibvh"]
 [ext_resource type="PackedScene" uid="uid://bfxq6perx4tge" path="res://Scenes/Healthbar/lifebar.tscn" id="4_bu8sd"]
 [ext_resource type="FontFile" uid="uid://q2kbgu0jja56" path="res://Resources/Fonts/sportsjersey.ttf" id="4_do8wd"]
-[ext_resource type="Texture2D" uid="uid://7a25w48hhlyf" path="res://Scenes/Healthbar/messageImage_1765972027928.jpg" id="6_pgdjv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_do8wd"]
 font = ExtResource("3_xibvh")
@@ -28,16 +26,19 @@ outline_size = 8
 outline_color = Color(0, 0, 0, 1)
 
 [node name="Healthbar" type="Control"]
+custom_minimum_size = Vector2(255, 80)
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -127.5
+offset_right = 127.5
+offset_bottom = 80.0
+grow_horizontal = 2
 script = ExtResource("1_vjpxm")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(9.9999695, 113.00001)
-scale = Vector2(0.42821783, 0.42821783)
-texture = ExtResource("2_xibvh")
-
 [node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(255, 80)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -125,7 +126,3 @@ layout_mode = 2
 size_flags_horizontal = 2
 text = "Lv50"
 label_settings = SubResource("LabelSettings_1i8kh")
-
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(0, 380)
-texture = ExtResource("6_pgdjv")
