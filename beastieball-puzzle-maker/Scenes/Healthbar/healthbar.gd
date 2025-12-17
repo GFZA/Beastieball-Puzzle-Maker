@@ -1,6 +1,6 @@
 @tool
-class_name  Healthbar
-extends Node2D
+class_name Healthbar
+extends Control
 
 const MAX_LABEL_LENGTH : int = 175
 const DEFAULT_FONT_SIZE : int = 48
@@ -17,9 +17,15 @@ const DEFAULT_FONT_SIZE : int = 48
 		sport_number = value
 		update_number_label(sport_number)
 
+@export_range(0, 100) var stamina : int = 100 :
+	set(value):
+		clamp(value, 0, 100)
+		stamina = value
+		update_lifebar(stamina)
 
 @onready var name_label: Label = %NameLabel
 @onready var number_label: Label = %NumberLabel
+@onready var lifebar: LifeBar = %Lifebar
 
 
 func update_name_label(new_text : String) -> void:
@@ -52,3 +58,9 @@ func update_number_label(new_number: int) -> void:
 	if new_number == null:
 		new_number = 0
 	number_label.text = "#%s" % str(new_number)
+
+
+func update_lifebar(new_stamina: int) -> void:
+	if not is_node_ready():
+		await ready
+	lifebar.hp = new_stamina
