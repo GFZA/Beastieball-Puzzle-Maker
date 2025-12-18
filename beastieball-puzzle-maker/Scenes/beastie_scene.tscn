@@ -1,18 +1,61 @@
-[gd_scene load_steps=4 format=3 uid="uid://dptoj76e40ldo"]
+[gd_scene load_steps=23 format=3 uid="uid://dptoj76e40ldo"]
 
 [ext_resource type="Script" uid="uid://b6gsp5w62y6ff" path="res://Scenes/beastie_scene.gd" id="1_n0vvo"]
-[ext_resource type="Texture2D" uid="uid://chctbds4hrdsq" path="res://Resources/Beastie/placeholder_beastie.png" id="2_y6l0a"]
+[ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Resources/Plays/plays.gd" id="2_uayif"]
+[ext_resource type="Resource" uid="uid://c0w31jc1g46o" path="res://Resources/Plays/Attack/spitball.tres" id="3_ltp61"]
+[ext_resource type="Resource" uid="uid://4k1sc4gshpvh" path="res://Resources/Plays/Attack/nice_shot.tres" id="4_p4krr"]
+[ext_resource type="Resource" uid="uid://y3o0tssi0oeu" path="res://Resources/Plays/Volley/forward_pass.tres" id="5_8jb3y"]
+[ext_resource type="Resource" uid="uid://b6c5yrxonrq5h" path="res://Resources/Plays/Volley/juggle.tres" id="6_dv1bj"]
+[ext_resource type="Resource" uid="uid://dnfjfsf2a2vs5" path="res://Resources/Plays/Support/deep_breath.tres" id="7_a6b3u"]
+[ext_resource type="Resource" uid="uid://ckfu6pta3o1u2" path="res://Resources/Plays/Support/provoke.tres" id="8_5cnoe"]
+[ext_resource type="Resource" uid="uid://dytuvbvg3oamq" path="res://Resources/Plays/Defense/shield.tres" id="9_fjthl"]
+[ext_resource type="Resource" uid="uid://qn2srsf766xj" path="res://Resources/Plays/Attack/burnout.tres" id="10_8afnp"]
+[ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Resources/Trait/trait.gd" id="11_dsyfy"]
+[ext_resource type="Resource" uid="uid://bai86ceaem0cm" path="res://Resources/Trait/mischief.tres" id="12_c2dig"]
+[ext_resource type="Resource" uid="uid://xd56b7iu3mlb" path="res://Resources/Trait/crowing.tres" id="13_iak5h"]
+[ext_resource type="Script" uid="uid://ehabj4qsgxpl" path="res://Resources/Beastie/beastie.gd" id="14_kwoye"]
+[ext_resource type="Texture2D" uid="uid://be1y4ap381g54" path="res://Resources/Beastie/Garood/garood_idle.png" id="15_lm1dl"]
+[ext_resource type="Texture2D" uid="uid://bcpkec0m1o6q4" path="res://Resources/Beastie/Garood/garood_ready.png" id="16_8osni"]
+[ext_resource type="Texture2D" uid="uid://b1t7qo6rvvgd0" path="res://Resources/Beastie/Garood/garood_spike.png" id="17_o7wjl"]
+[ext_resource type="Texture2D" uid="uid://cpu04hocypxnm" path="res://Resources/Beastie/Garood/garood_volley.png" id="18_vcya8"]
+[ext_resource type="Texture2D" uid="uid://n7mcd4c0sop4" path="res://Resources/Beastie/Garood/garood_good.png" id="19_tigxm"]
+[ext_resource type="Texture2D" uid="uid://bhud3lxwp7ux6" path="res://Resources/Beastie/Garood/garood_bad.png" id="20_s56co"]
+
+[sub_resource type="Resource" id="Resource_uayif"]
+script = ExtResource("14_kwoye")
+specie_name = "Garood"
+bar_color = Color(0.9529412, 0.9019608, 0.77254903, 1)
+body_base_pow = 88
+spirit_base_pow = 20
+mind_base_pow = 102
+body_base_def = 80
+spirit_base_def = 40
+mind_base_def = 90
+possible_plays = Array[ExtResource("2_uayif")]([ExtResource("3_ltp61"), ExtResource("4_p4krr"), ExtResource("5_8jb3y"), ExtResource("6_dv1bj"), ExtResource("7_a6b3u"), ExtResource("8_5cnoe"), ExtResource("9_fjthl"), ExtResource("10_8afnp")])
+possible_traits = Array[ExtResource("11_dsyfy")]([ExtResource("12_c2dig"), ExtResource("13_iak5h")])
+sprites = Dictionary[int, Texture2D]({
+0: ExtResource("15_lm1dl"),
+1: ExtResource("16_8osni"),
+2: ExtResource("17_o7wjl"),
+3: ExtResource("18_vcya8"),
+4: ExtResource("19_tigxm"),
+5: ExtResource("20_s56co")
+})
+my_plays = Array[ExtResource("2_uayif")]([null, null, null])
+metadata/_custom_type_script = "uid://ehabj4qsgxpl"
 
 [sub_resource type="LabelSettings" id="LabelSettings_u05cj"]
 font_size = 64
 
 [node name="Beastie" type="Node2D"]
 script = ExtResource("1_n0vvo")
+beastie = SubResource("Resource_uayif")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(0, -489)
-texture = ExtResource("2_y6l0a")
+position = Vector2(0, -187)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("15_lm1dl")
 flip_h = true
 
 [node name="NameLabel" type="Label" parent="."]
@@ -41,6 +84,7 @@ vertical_alignment = 1
 
 [node name="TraitLabel" type="Label" parent="."]
 unique_name_in_owner = true
+visible = false
 offset_left = -950.0
 offset_top = 116.0
 offset_right = 981.0
@@ -52,22 +96,29 @@ vertical_alignment = 1
 
 [node name="PlayLabel" type="Label" parent="."]
 unique_name_in_owner = true
+visible = false
 offset_left = -1217.0
 offset_top = 330.0
 offset_right = 1243.0
 offset_bottom = 418.0
-text = "MISSING PLAYS!"
+text = "Play #1, Play #2, Play #3."
 label_settings = SubResource("LabelSettings_u05cj")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="StatsLabel" type="Label" parent="."]
 unique_name_in_owner = true
+visible = false
 offset_left = -969.0
 offset_top = -502.0
 offset_right = -315.0
 offset_bottom = 77.0
-text = "MISSING STATS"
+text = "B_POW: 88 + 0
+S_POW: 20 + 0
+M_POW: 102 + 0
+B_DEF: 80 + 0
+S_DEF: 40 + 0
+M_DEF: 90 + 0"
 label_settings = SubResource("LabelSettings_u05cj")
 horizontal_alignment = 1
 vertical_alignment = 1

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=19 format=3 uid="uid://cqn5u6qc87guw"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=20 format=3 uid="uid://cqn5u6qc87guw"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Resources/Plays/plays.gd" id="1_cyme1"]
 [ext_resource type="Script" uid="uid://ehabj4qsgxpl" path="res://Resources/Beastie/beastie.gd" id="2_kpbug"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Resources/Trait/trait.gd" id="10_klvd5"]
 [ext_resource type="Resource" uid="uid://bai86ceaem0cm" path="res://Resources/Trait/mischief.tres" id="11_4rwsp"]
 [ext_resource type="Resource" uid="uid://xd56b7iu3mlb" path="res://Resources/Trait/crowing.tres" id="12_621g8"]
+[ext_resource type="Texture2D" uid="uid://cpu04hocypxnm" path="res://Resources/Beastie/Garood/garood_volley.png" id="17_4rwsp"]
 
 [resource]
 script = ExtResource("2_kpbug")
@@ -35,8 +36,9 @@ sprites = Dictionary[int, Texture2D]({
 0: ExtResource("3_x8peq"),
 1: ExtResource("4_pu60j"),
 2: ExtResource("5_vj4kr"),
-3: ExtResource("6_os0cd"),
-4: ExtResource("7_km10g")
+3: ExtResource("17_4rwsp"),
+4: ExtResource("6_os0cd"),
+5: ExtResource("7_km10g")
 })
 my_plays = Array[ExtResource("1_cyme1")]([null, null, null])
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"

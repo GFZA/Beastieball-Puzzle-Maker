@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="Beastie" load_steps=10 format=3 uid="uid://bknbk6rm1tf57"]
+
+[ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Resources/Plays/plays.gd" id="1_q2b64"]
+[ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Resources/Trait/trait.gd" id="2_pjspl"]
+[ext_resource type="Script" uid="uid://ehabj4qsgxpl" path="res://Resources/Beastie/beastie.gd" id="3_t50rp"]
+[ext_resource type="Texture2D" uid="uid://1qpjthn4vkw6" path="res://Resources/Beastie/Platypulse/platy_idle.png" id="4_modxn"]
+[ext_resource type="Texture2D" uid="uid://c4yih02t6rn0m" path="res://Resources/Beastie/Platypulse/platy_ready.png" id="5_f806a"]
+[ext_resource type="Texture2D" uid="uid://bbrlq31jmj6lm" path="res://Resources/Beastie/Platypulse/platy_spike.png" id="6_6xcmw"]
+[ext_resource type="Texture2D" uid="uid://qedsc2o55250" path="res://Resources/Beastie/Platypulse/platy_volley.png" id="7_1c5py"]
+[ext_resource type="Texture2D" uid="uid://rtvfc88bxswd" path="res://Resources/Beastie/Platypulse/platy_good.png" id="8_r5oxa"]
+[ext_resource type="Texture2D" uid="uid://d2c7yf64fy1ud" path="res://Resources/Beastie/Platypulse/platy_bad.png" id="9_uk4eh"]
+
+[resource]
+script = ExtResource("3_t50rp")
+specie_name = "Platypulse"
+bar_color = Color(0.9882353, 0.85882354, 0.40392157, 1)
+body_base_pow = 26
+spirit_base_pow = 51
+mind_base_pow = 99
+body_base_def = 46
+spirit_base_def = 85
+mind_base_def = 120
+sprites = Dictionary[int, Texture2D]({
+0: ExtResource("4_modxn"),
+1: ExtResource("5_f806a"),
+2: ExtResource("6_6xcmw"),
+3: ExtResource("7_1c5py"),
+4: ExtResource("8_r5oxa"),
+5: ExtResource("9_uk4eh")
+})
+my_plays = Array[ExtResource("1_q2b64")]([null, null, null])
+metadata/_custom_type_script = "uid://ehabj4qsgxpl"

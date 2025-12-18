@@ -25,7 +25,7 @@ const DEFAULT_FONT_SIZE : int = 48
 			beastie = value
 			return
 
-		beastie = value.duplicate()
+		beastie = value # Must not duplicate so it's the same one from BeastieScene!
 		beastie.my_name_updated.connect(update_name_label)
 		beastie.sport_number_updated.connect(update_number_label)
 		beastie_name = beastie.my_name
@@ -61,6 +61,9 @@ var color : Color = Color.GREEN :
 		color = value
 		update_color(color)
 
+var my_name_setting : LabelSettings = null
+var my_level_setting : LabelSettings = null
+
 @onready var name_label: Label = %NameLabel
 @onready var number_label: Label = %NumberLabel
 @onready var lifebar: LifeBar = %Lifebar
@@ -68,12 +71,22 @@ var color : Color = Color.GREEN :
 @onready var background_para: Parallelogram = %BackgroundPara
 @onready var lower_spacer: Control = %LowerSpacer
 
+func _ready() -> void:
+	if not is_node_ready():
+		await ready
+
+	my_name_setting = name_label.label_settings.duplicate()
+	name_label.label_settings = my_name_setting
+
+	my_level_setting = level_label.label_settings.duplicate()
+	level_label.label_settings = my_level_setting
+
 
 func update_name_label(assigned_name : String) -> void:
 	if not is_node_ready():
 		await ready
 
-	name_label.label_settings.font_size = DEFAULT_FONT_SIZE # Reset
+	my_name_setting.font_size = DEFAULT_FONT_SIZE # Reset
 	assigned_name = assigned_name.substr(0, 12)
 	var new_name : String = ""
 	if assigned_name == "" and beastie:
@@ -82,7 +95,7 @@ func update_name_label(assigned_name : String) -> void:
 		new_name = assigned_name
 	name_label.text = new_name
 
-	var font : Font = name_label.label_settings.font
+	var font : Font = my_name_setting.font
 	var text_width := font.get_string_size(
 		name_label.text,
 		HORIZONTAL_ALIGNMENT_RIGHT,
@@ -92,9 +105,9 @@ func update_name_label(assigned_name : String) -> void:
 
 	if text_width > MAX_LABEL_LENGTH:
 		var font_scale : float = float(MAX_LABEL_LENGTH / text_width)
-		name_label.label_settings.font_size = int(DEFAULT_FONT_SIZE * font_scale)
+		my_name_setting.font_size = int(DEFAULT_FONT_SIZE * font_scale)
 	else:
-		name_label.label_settings.font_size = DEFAULT_FONT_SIZE
+		my_name_setting.font_size = DEFAULT_FONT_SIZE
 
 
 func update_number_label(new_number: int) -> void:
@@ -116,7 +129,7 @@ func update_color(new_color : Color) -> void:
 	if not is_node_ready():
 		await ready
 	lifebar.color = new_color
-	level_label.label_settings.font_color = new_color
+	my_level_setting.font_color = new_color
 
 
 func update_side(new_side : Global.MySide) -> void:

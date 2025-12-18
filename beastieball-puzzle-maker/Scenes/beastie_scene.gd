@@ -12,15 +12,17 @@ const HEALTHBAR_SCENE = preload("uid://bvd7pbsfc56o0")
 	set(value):
 		if not is_node_ready():
 			await ready
+
+		if my_healthbar:
+			stamina_updated.disconnect(my_healthbar.update_lifebar)
+			my_healthbar.queue_free()
+			my_healthbar = null
+
 		if value == null:
 			current_sprite = PLACEHOLDER_TEXTURE
 			#all_my_plays = Beastie.get_empty_plays_array()
 			#all_my_trait = Beastie.get_empty_trait_array()
 			if beastie:
-				if my_healthbar:
-					stamina_updated.disconnect(my_healthbar.update_lifebar)
-					my_healthbar.queue_free()
-
 				if beastie.stats_updated.is_connected(_update_stats):
 					beastie.stats_updated.disconnect(_update_stats)
 				if beastie.my_plays_updated.is_connected(_update_play_label):
@@ -34,7 +36,8 @@ const HEALTHBAR_SCENE = preload("uid://bvd7pbsfc56o0")
 			beastie = value
 			return
 
-		beastie = value.duplicate()
+		beastie = value.duplicate(true)
+
 		current_sprite = beastie.get_sprite(Beastie.Sprite.IDLE)
 		#all_my_plays = beastie.possible_plays
 		#all_my_trait = beastie.possible_traits
@@ -56,6 +59,8 @@ const HEALTHBAR_SCENE = preload("uid://bvd7pbsfc56o0")
 			beastie.my_plays_updated.connect(_update_play_label)
 		if not beastie.my_trait_updated.is_connected(_update_trait_label):
 			beastie.my_trait_updated.connect(_update_trait_label)
+
+		current_sprite = beastie.get_sprite(sprite_pose)
 		_update_stats(beastie.get_stats_dict())
 		_update_play_label(beastie.my_plays)
 		_update_trait_label(beastie.my_trait)

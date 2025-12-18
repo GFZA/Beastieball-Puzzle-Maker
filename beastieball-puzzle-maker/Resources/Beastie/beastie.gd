@@ -2,7 +2,7 @@
 class_name Beastie
 extends Resource
 
-enum Sprite {IDLE, READY, SPIKE, GOOD, BAD}
+enum Sprite {IDLE, READY, SPIKE, VOLLEY, GOOD, BAD}
 
 const MAX_NAME_LENGTH : int = 12
 const MAX_NUNBER_LENGTH : int = 3
@@ -45,7 +45,14 @@ signal my_trait_updated(updated_trait : Array[Trait])
 		stats_updated.emit(get_stats_dict())
 @export var possible_plays : Array[Plays] = []
 @export var possible_traits : Array[Trait] = []
-@export var sprites : Dictionary[Sprite, Texture2D] = {}
+@export var sprites : Dictionary[Sprite, Texture2D] = {
+	Sprite.IDLE : null,
+	Sprite.READY : null,
+	Sprite.SPIKE : null,
+	Sprite.VOLLEY : null,
+	Sprite.GOOD : null,
+	Sprite.BAD : null,
+}
 
 @export_group("My infos")
 @export var my_name : String = "" :

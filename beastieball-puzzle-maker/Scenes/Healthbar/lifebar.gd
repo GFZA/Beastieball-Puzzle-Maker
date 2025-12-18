@@ -23,6 +23,7 @@ extends MarginContainer
 		my_side = value
 		_update_side(my_side)
 
+var my_setting : LabelSettings = null
 var max_health_upper_x : float = 0.0
 var max_health_lower_x : float = 0.0
 var max_length : float = 0.0
@@ -37,6 +38,10 @@ var ref_pos : PackedVector2Array = []
 func _ready() -> void:
 	if not is_node_ready():
 		await ready
+
+	my_setting = life_label.label_settings.duplicate()
+	life_label.label_settings = my_setting
+
 	_update_inner_vars()
 
 
@@ -76,7 +81,7 @@ func _update_color(new_color : Color) -> void:
 	if not is_node_ready():
 		await ready
 	lifebar_inner.color = new_color
-	life_label.label_settings.font_color = new_color
+	my_setting.font_color = new_color
 
 
 func _update_side(new_side : Global.MySide) -> void:
