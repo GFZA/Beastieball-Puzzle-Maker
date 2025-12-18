@@ -23,5 +23,6 @@ sprites = Dictionary[int, Texture2D]({
 4: ExtResource("4_hdk44"),
 5: ExtResource("4_hdk44")
 })
+y_offset = -125
 my_plays = Array[ExtResource("1_ijef1")]([null, null, null])
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"

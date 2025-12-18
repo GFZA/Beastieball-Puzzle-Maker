@@ -3,6 +3,18 @@ extends Node2D
 
 enum Type {BODY, SPIRIT, MIND}
 
+@onready var camera_2d: Camera2D = $Camera2D
+
+func screenshot() -> void:
+	if Engine.is_editor_hint():
+		return
+	camera_2d.get_viewport().get_texture().get_image().save_png('user:///image.png')
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("screenshot"):
+		screenshot()
+
+
 @export_tool_button("Calculate")
 var calculate_action = print_damage
 

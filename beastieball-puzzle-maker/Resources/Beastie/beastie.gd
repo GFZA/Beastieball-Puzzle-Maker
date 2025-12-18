@@ -53,6 +53,7 @@ signal my_trait_updated(updated_trait : Array[Trait])
 	Sprite.GOOD : null,
 	Sprite.BAD : null,
 }
+@export var y_offset : int = 0
 
 @export_group("My infos")
 @export var my_name : String = "" :

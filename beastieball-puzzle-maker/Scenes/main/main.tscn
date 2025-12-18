@@ -1,6 +1,6 @@
 [gd_scene load_steps=32 format=3 uid="uid://co8c0qvn7nkha"]
 
-[ext_resource type="Script" uid="uid://dfsngo7akxojy" path="res://Scenes/main.gd" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://dfsngo7akxojy" path="res://Scenes/main/main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://dptoj76e40ldo" path="res://Scenes/beastie_scene.tscn" id="2_1w6v2"]
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Resources/Plays/plays.gd" id="3_ueoa1"]
 [ext_resource type="Resource" uid="uid://c0w31jc1g46o" path="res://Resources/Plays/Attack/spitball.tres" id="4_6vcvc"]
@@ -29,7 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://d2c7yf64fy1ud" path="res://Resources/Beastie/Platypulse/platy_bad.png" id="27_54nrm"]
 [ext_resource type="Texture2D" uid="uid://cyjba1viw1ydi" path="res://Resources/Beastie/Orgella/orgella_idle.png" id="28_ueoa1"]
 
-[sub_resource type="Resource" id="Resource_ueoa1"]
+[sub_resource type="Resource" id="Resource_t8r38"]
 script = ExtResource("15_aqgau")
 specie_name = "Garood"
 bar_color = Color(0.9529412, 0.9019608, 0.77254903, 1)
@@ -53,7 +53,7 @@ sport_number = 999
 my_plays = Array[ExtResource("3_ueoa1")]([null, null, null])
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"
 
-[sub_resource type="Resource" id="Resource_6vcvc"]
+[sub_resource type="Resource" id="Resource_o4ndm"]
 script = ExtResource("15_aqgau")
 specie_name = "Platypulse"
 bar_color = Color(0.9882353, 0.85882354, 0.40392157, 1)
@@ -71,12 +71,12 @@ sprites = Dictionary[int, Texture2D]({
 4: ExtResource("26_xdkp6"),
 5: ExtResource("27_54nrm")
 })
-my_name = "The Duke"
+my_name = "THE DUKE"
 sport_number = 420
 my_plays = Array[ExtResource("3_ueoa1")]([null, null, null])
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"
 
-[sub_resource type="Resource" id="Resource_7k868"]
+[sub_resource type="Resource" id="Resource_50lr6"]
 script = ExtResource("15_aqgau")
 specie_name = "Orgella"
 bar_color = Color(0.89411765, 0.17254902, 0.32156864, 1)
@@ -94,7 +94,7 @@ sprites = Dictionary[int, Texture2D]({
 4: ExtResource("28_ueoa1"),
 5: ExtResource("28_ueoa1")
 })
-my_name = "Spear Skarr"
+y_offset = -125
 my_plays = Array[ExtResource("3_ueoa1")]([null, null, null])
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"
 
@@ -105,21 +105,24 @@ base_attack_stat = 102
 attacker_invest = 30
 base_defense_stat = 120
 
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
 [node name="Beastie" parent="." instance=ExtResource("2_1w6v2")]
 position = Vector2(450, 547)
-beastie = SubResource("Resource_ueoa1")
+beastie = SubResource("Resource_t8r38")
 stamina = 81
 sprite_pose = 2
 
 [node name="Beastie2" parent="." instance=ExtResource("2_1w6v2")]
-position = Vector2(1436, 521)
-beastie = SubResource("Resource_6vcvc")
+position = Vector2(1200, 489)
+beastie = SubResource("Resource_o4ndm")
 stamina = 83
 my_side = 1
 sprite_pose = 4
 
 [node name="Beastie3" parent="." instance=ExtResource("2_1w6v2")]
-position = Vector2(937, 811)
-beastie = SubResource("Resource_7k868")
+position = Vector2(830, 552)
+beastie = SubResource("Resource_50lr6")
 stamina = 45
 sprite_pose = 4

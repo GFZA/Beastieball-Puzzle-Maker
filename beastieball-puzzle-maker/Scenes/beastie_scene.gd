@@ -13,6 +13,8 @@ const HEALTHBAR_SCENE = preload("uid://bvd7pbsfc56o0")
 		if not is_node_ready():
 			await ready
 
+		sprite_2d.offset.y = 0.0
+
 		if my_healthbar:
 			stamina_updated.disconnect(my_healthbar.update_lifebar)
 			my_healthbar.queue_free()
@@ -61,6 +63,7 @@ const HEALTHBAR_SCENE = preload("uid://bvd7pbsfc56o0")
 			beastie.my_trait_updated.connect(_update_trait_label)
 
 		current_sprite = beastie.get_sprite(sprite_pose)
+		sprite_2d.offset.y = beastie.y_offset
 		_update_stats(beastie.get_stats_dict())
 		_update_play_label(beastie.my_plays)
 		_update_trait_label(beastie.my_trait)
