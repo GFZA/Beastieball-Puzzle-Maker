@@ -31,6 +31,15 @@ offset = Vector2(0, 3)
 polygon = PackedVector2Array(-9, 18, -5, 2, 152, 2, 148, 18)
 script = ExtResource("2_0yqi3")
 
+[node name="LifebarInnerRef" type="Polygon2D" parent="."]
+unique_name_in_owner = true
+visible = false
+position = Vector2(6.5, 4)
+color = Color(1, 0, 0, 0.5254902)
+offset = Vector2(0, 3)
+polygon = PackedVector2Array(-9, 18, -5, 2, 152, 2, 148, 18)
+script = ExtResource("2_0yqi3")
+
 [node name="LifeLabel" type="Label" parent="."]
 unique_name_in_owner = true
 layout_mode = 2

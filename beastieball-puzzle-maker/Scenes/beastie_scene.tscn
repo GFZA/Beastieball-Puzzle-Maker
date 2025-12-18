@@ -13,6 +13,7 @@ script = ExtResource("1_n0vvo")
 unique_name_in_owner = true
 position = Vector2(0, -489)
 texture = ExtResource("2_y6l0a")
+flip_h = true
 
 [node name="NameLabel" type="Label" parent="."]
 unique_name_in_owner = true

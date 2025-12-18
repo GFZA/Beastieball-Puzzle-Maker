@@ -123,12 +123,9 @@ func update_side(new_side : Global.MySide) -> void:
 	if not is_node_ready():
 		await ready
 
-	if (not background_para.is_pointing_right() and new_side == Global.MySide.LEFT) or\
-	   (background_para.is_pointing_right() and new_side == Global.MySide.RIGHT):
-		background_para.filp_h()
-		print(new_side)
-
+	background_para.flip_h = (new_side == Global.MySide.LEFT)
 	lifebar.my_side = new_side
+
 
 	# Absolute bandage fix. Screw this...
 	if new_side == Global.MySide.RIGHT:

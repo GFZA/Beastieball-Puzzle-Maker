@@ -69,13 +69,14 @@ const HEALTHBAR_SCENE = preload("uid://bvd7pbsfc56o0")
 @export var my_side : Global.MySide = Global.MySide.LEFT :
 	set(value):
 		my_side = value
-		side_updated.emit(my_side)
+		_update_side(my_side)
 
 @export var sprite_pose : Beastie.Sprite = Beastie.Sprite.IDLE :
 	set(value):
+		if not is_node_ready():
+			await ready
 		if not beastie:
 			sprite_pose = Beastie.Sprite.IDLE
-			push_warning("...You can't change the sprite of something that doesn't exist...")
 			return
 		sprite_pose = value
 		current_sprite = beastie.get_sprite(sprite_pose)
@@ -124,6 +125,13 @@ var my_healthbar : Healthbar = null
 @onready var trait_label: Label = %TraitLabel
 @onready var play_label: Label = %PlayLabel
 @onready var stats_label: Label = %StatsLabel
+
+
+func _update_side(new_side : Global.MySide) -> void:
+	if not is_node_ready():
+		await ready
+	sprite_2d.flip_h = (new_side == Global.MySide.LEFT)
+	side_updated.emit(my_side)
 
 
 func _update_stats(stats : Dictionary[String, Array]) -> void:

@@ -1,6 +1,74 @@
-[gd_scene load_steps=2 format=3 uid="uid://co8c0qvn7nkha"]
+[gd_scene load_steps=23 format=3 uid="uid://co8c0qvn7nkha"]
 
 [ext_resource type="Script" uid="uid://dfsngo7akxojy" path="res://Scenes/main.gd" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://dptoj76e40ldo" path="res://Scenes/beastie_scene.tscn" id="2_hibaj"]
+[ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Resources/Plays/plays.gd" id="3_pdsj5"]
+[ext_resource type="Resource" uid="uid://c0w31jc1g46o" path="res://Resources/Plays/Attack/spitball.tres" id="4_ee4r6"]
+[ext_resource type="Resource" uid="uid://4k1sc4gshpvh" path="res://Resources/Plays/Attack/nice_shot.tres" id="5_gt3je"]
+[ext_resource type="Resource" uid="uid://y3o0tssi0oeu" path="res://Resources/Plays/Volley/forward_pass.tres" id="6_3pmx8"]
+[ext_resource type="Resource" uid="uid://b6c5yrxonrq5h" path="res://Resources/Plays/Volley/juggle.tres" id="7_u50mg"]
+[ext_resource type="Resource" uid="uid://dnfjfsf2a2vs5" path="res://Resources/Plays/Support/deep_breath.tres" id="8_cbgmd"]
+[ext_resource type="Resource" uid="uid://ckfu6pta3o1u2" path="res://Resources/Plays/Support/provoke.tres" id="9_1w6v2"]
+[ext_resource type="Resource" uid="uid://dytuvbvg3oamq" path="res://Resources/Plays/Defense/shield.tres" id="10_ueoa1"]
+[ext_resource type="Resource" uid="uid://qn2srsf766xj" path="res://Resources/Plays/Attack/burnout.tres" id="11_6vcvc"]
+[ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Resources/Trait/trait.gd" id="12_7k868"]
+[ext_resource type="Resource" uid="uid://bai86ceaem0cm" path="res://Resources/Trait/mischief.tres" id="13_hpc6h"]
+[ext_resource type="Resource" uid="uid://xd56b7iu3mlb" path="res://Resources/Trait/crowing.tres" id="14_kltya"]
+[ext_resource type="Script" uid="uid://ehabj4qsgxpl" path="res://Resources/Beastie/beastie.gd" id="15_e08e2"]
+[ext_resource type="Texture2D" uid="uid://be1y4ap381g54" path="res://Resources/Beastie/Garood/garood_idle.png" id="16_neg2b"]
+[ext_resource type="Texture2D" uid="uid://bcpkec0m1o6q4" path="res://Resources/Beastie/Garood/garood_ready.png" id="17_r33sp"]
+[ext_resource type="Texture2D" uid="uid://b1t7qo6rvvgd0" path="res://Resources/Beastie/Garood/garood_spike.png" id="18_hdf80"]
+[ext_resource type="Texture2D" uid="uid://n7mcd4c0sop4" path="res://Resources/Beastie/Garood/garood_good.png" id="19_jwpg7"]
+[ext_resource type="Texture2D" uid="uid://bhud3lxwp7ux6" path="res://Resources/Beastie/Garood/garood_bad.png" id="20_k2e45"]
+
+[sub_resource type="Resource" id="Resource_hibaj"]
+script = ExtResource("15_e08e2")
+specie_name = "Garood"
+bar_color = Color(0.9529412, 0.9019608, 0.77254903, 1)
+body_base_pow = 88
+spirit_base_pow = 20
+mind_base_pow = 102
+body_base_def = 80
+spirit_base_def = 40
+mind_base_def = 90
+possible_plays = Array[ExtResource("3_pdsj5")]([ExtResource("4_ee4r6"), ExtResource("5_gt3je"), ExtResource("6_3pmx8"), ExtResource("7_u50mg"), ExtResource("8_cbgmd"), ExtResource("9_1w6v2"), ExtResource("10_ueoa1"), ExtResource("11_6vcvc")])
+possible_traits = Array[ExtResource("12_7k868")]([ExtResource("13_hpc6h"), ExtResource("14_kltya")])
+sprites = Dictionary[int, Texture2D]({
+0: ExtResource("16_neg2b"),
+1: ExtResource("17_r33sp"),
+2: ExtResource("18_hdf80"),
+3: ExtResource("19_jwpg7"),
+4: ExtResource("20_k2e45")
+})
+my_plays = Array[ExtResource("3_pdsj5")]([null, null, null])
+metadata/_custom_type_script = "uid://ehabj4qsgxpl"
+
+[sub_resource type="Resource" id="Resource_pdsj5"]
+script = ExtResource("15_e08e2")
+specie_name = "Garood"
+bar_color = Color(0.9529412, 0.9019608, 0.77254903, 1)
+body_base_pow = 88
+spirit_base_pow = 20
+mind_base_pow = 102
+body_base_def = 80
+spirit_base_def = 40
+mind_base_def = 90
+possible_plays = Array[ExtResource("3_pdsj5")]([ExtResource("4_ee4r6"), ExtResource("5_gt3je"), ExtResource("6_3pmx8"), ExtResource("7_u50mg"), ExtResource("8_cbgmd"), ExtResource("9_1w6v2"), ExtResource("10_ueoa1"), ExtResource("11_6vcvc")])
+possible_traits = Array[ExtResource("12_7k868")]([ExtResource("13_hpc6h"), ExtResource("14_kltya")])
+sprites = Dictionary[int, Texture2D]({
+0: ExtResource("16_neg2b"),
+1: ExtResource("17_r33sp"),
+2: ExtResource("18_hdf80"),
+3: ExtResource("19_jwpg7"),
+4: ExtResource("20_k2e45")
+})
+my_name = "Canio"
+sport_number = 175
+mind_invest_pow = 30
+spirit_invest_def = 30
+my_plays = Array[ExtResource("3_pdsj5")]([ExtResource("4_ee4r6"), ExtResource("6_3pmx8"), ExtResource("10_ueoa1")])
+my_trait = ExtResource("13_hpc6h")
+metadata/_custom_type_script = "uid://ehabj4qsgxpl"
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_ig7tw")
@@ -8,3 +76,15 @@ base_pow = 75
 base_attack_stat = 102
 attacker_invest = 30
 base_defense_stat = 120
+
+[node name="Beastie" parent="." instance=ExtResource("2_hibaj")]
+position = Vector2(565, 559)
+beastie = SubResource("Resource_hibaj")
+stamina = 30
+
+[node name="Beastie2" parent="." instance=ExtResource("2_hibaj")]
+position = Vector2(1406, 556)
+beastie = SubResource("Resource_pdsj5")
+stamina = 45
+my_side = 1
+sprite_pose = 3
