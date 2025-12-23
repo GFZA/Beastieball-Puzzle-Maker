@@ -1,0 +1,76 @@
+[gd_scene load_steps=3 format=3 uid="uid://dksxc3rs20kkc"]
+
+[ext_resource type="Script" uid="uid://cq4wjdh73nd7s" path="res://Scenes/PlaysUI/plays_ui_container.gd" id="1_58jbj"]
+[ext_resource type="PackedScene" uid="uid://b4bws0qofhe6x" path="res://Scenes/PlaysUI/plays_ui.tscn" id="1_lkkpg"]
+
+[node name="PlaysUIContainer" type="Control"]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -178.0
+offset_top = 82.0
+offset_right = -178.0
+offset_bottom = 82.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("1_58jbj")
+
+[node name="MainContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+offset_right = 931.0
+offset_bottom = 445.0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/separation = 8
+
+[node name="PlayOneContainer" type="HBoxContainer" parent="MainContainer"]
+custom_minimum_size = Vector2(0, 143)
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="PlaysUIOne" parent="MainContainer/PlayOneContainer" instance=ExtResource("1_lkkpg")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="MainContainer/PlayOneContainer"]
+custom_minimum_size = Vector2(35, 0)
+layout_mode = 2
+
+[node name="Spacer2" type="Control" parent="MainContainer/PlayOneContainer"]
+custom_minimum_size = Vector2(35, 0)
+layout_mode = 2
+
+[node name="PlayTwoContainer" type="HBoxContainer" parent="MainContainer"]
+custom_minimum_size = Vector2(0, 143)
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Spacer" type="Control" parent="MainContainer/PlayTwoContainer"]
+custom_minimum_size = Vector2(35, 0)
+layout_mode = 2
+
+[node name="PlaysUITwo" parent="MainContainer/PlayTwoContainer" instance=ExtResource("1_lkkpg")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Spacer2" type="Control" parent="MainContainer/PlayTwoContainer"]
+custom_minimum_size = Vector2(35, 0)
+layout_mode = 2
+
+[node name="PlayThreeContainer" type="HBoxContainer" parent="MainContainer"]
+custom_minimum_size = Vector2(0, 143)
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Spacer" type="Control" parent="MainContainer/PlayThreeContainer"]
+custom_minimum_size = Vector2(35, 0)
+layout_mode = 2
+
+[node name="Spacer2" type="Control" parent="MainContainer/PlayThreeContainer"]
+custom_minimum_size = Vector2(35, 0)
+layout_mode = 2
+
+[node name="PlaysUIThree" parent="MainContainer/PlayThreeContainer" instance=ExtResource("1_lkkpg")]
+unique_name_in_owner = true
+layout_mode = 2

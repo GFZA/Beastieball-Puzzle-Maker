@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_patp0")
 name = "Spitball"
-attack_type = 2
 base_pow = 75
 descrition = "ATTACK. Target feels 1 ANGRY (only attacks)."
+type = 2
 metadata/_custom_type_script = "uid://bc63soeia1eb1"

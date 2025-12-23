@@ -6,5 +6,5 @@
 script = ExtResource("1_op2vs")
 name = "Shield"
 descrition = "Feel 2 TOUGH (¼ damage) & 2 ANGRY (only attacks)."
-type = 3
+type = 5
 metadata/_custom_type_script = "uid://oq75vqpgnqa3"

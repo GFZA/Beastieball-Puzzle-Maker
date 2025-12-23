@@ -1,6 +1,6 @@
 class_name Plays
 extends Resource
 
-enum Type {ATTACK, VOLLEY, SUPPORT, DEFENSE}
+enum Type {ATTACK_BODY, ATTACK_SPIRIT, ATTACK_MIND, VOLLEY, SUPPORT, DEFENSE}
 
-@export var type : Type = Type.ATTACK
+@export var type : Type = Type.SUPPORT

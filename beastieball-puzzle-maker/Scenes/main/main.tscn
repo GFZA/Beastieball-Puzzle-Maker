@@ -50,32 +50,10 @@ sprites = Dictionary[int, Texture2D]({
 5: ExtResource("21_nwwfm")
 })
 sport_number = 999
-my_plays = Array[ExtResource("3_ueoa1")]([null, null, null])
+my_plays = Array[ExtResource("3_ueoa1")]([ExtResource("5_7k868"), ExtResource("4_6vcvc"), ExtResource("8_e08e2")])
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"
 
 [sub_resource type="Resource" id="Resource_o4ndm"]
-script = ExtResource("15_aqgau")
-specie_name = "Platypulse"
-bar_color = Color(0.9882353, 0.85882354, 0.40392157, 1)
-body_base_pow = 26
-spirit_base_pow = 51
-mind_base_pow = 99
-body_base_def = 46
-spirit_base_def = 85
-mind_base_def = 120
-sprites = Dictionary[int, Texture2D]({
-0: ExtResource("22_s8vy0"),
-1: ExtResource("23_jut3y"),
-2: ExtResource("24_v2nl5"),
-3: ExtResource("25_dmskm"),
-4: ExtResource("26_xdkp6"),
-5: ExtResource("27_54nrm")
-})
-sport_number = 420
-my_plays = Array[ExtResource("3_ueoa1")]([null, null, null])
-metadata/_custom_type_script = "uid://ehabj4qsgxpl"
-
-[sub_resource type="Resource" id="Resource_50lr6"]
 script = ExtResource("15_aqgau")
 specie_name = "Orgella"
 bar_color = Color(0.89411765, 0.17254902, 0.32156864, 1)
@@ -94,7 +72,30 @@ sprites = Dictionary[int, Texture2D]({
 5: ExtResource("28_ueoa1")
 })
 y_offset = -125
-my_plays = Array[ExtResource("3_ueoa1")]([null, null, null])
+my_plays = Array[ExtResource("3_ueoa1")]([ExtResource("11_hdf80"), ExtResource("6_hpc6h"), ExtResource("10_r33sp")])
+metadata/_custom_type_script = "uid://ehabj4qsgxpl"
+
+[sub_resource type="Resource" id="Resource_50lr6"]
+script = ExtResource("15_aqgau")
+specie_name = "Platypulse"
+bar_color = Color(0.9882353, 0.85882354, 0.40392157, 1)
+body_base_pow = 26
+spirit_base_pow = 51
+mind_base_pow = 99
+body_base_def = 46
+spirit_base_def = 85
+mind_base_def = 120
+sprites = Dictionary[int, Texture2D]({
+0: ExtResource("22_s8vy0"),
+1: ExtResource("23_jut3y"),
+2: ExtResource("24_v2nl5"),
+3: ExtResource("25_dmskm"),
+4: ExtResource("26_xdkp6"),
+5: ExtResource("27_54nrm")
+})
+my_name = "THE DUKE"
+sport_number = 420
+my_plays = Array[ExtResource("3_ueoa1")]([ExtResource("4_6vcvc"), ExtResource("7_kltya"), ExtResource("10_r33sp")])
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"
 
 [node name="Main" type="Node2D"]
@@ -107,19 +108,21 @@ base_defense_stat = 120
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 
-[node name="Beastie" parent="." instance=ExtResource("2_1w6v2")]
+[node name="Garood" parent="." instance=ExtResource("2_1w6v2")]
 position = Vector2(450, 547)
 beastie = SubResource("Resource_t8r38")
 stamina = 81
 sprite_pose = 2
 
-[node name="Beastie2" parent="." instance=ExtResource("2_1w6v2")]
-position = Vector2(1200, 489)
+[node name="Orgella" parent="." instance=ExtResource("2_1w6v2")]
+position = Vector2(830, 552)
 beastie = SubResource("Resource_o4ndm")
+stamina = 45
+my_side = 1
+show_plays = false
+
+[node name="Platy" parent="." instance=ExtResource("2_1w6v2")]
+position = Vector2(1200, 489)
+beastie = SubResource("Resource_50lr6")
 stamina = 83
 sprite_pose = 4
-
-[node name="Beastie3" parent="." instance=ExtResource("2_1w6v2")]
-position = Vector2(830, 552)
-beastie = SubResource("Resource_50lr6")
-stamina = 45
