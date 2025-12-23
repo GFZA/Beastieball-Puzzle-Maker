@@ -71,7 +71,6 @@ sprites = Dictionary[int, Texture2D]({
 4: ExtResource("26_xdkp6"),
 5: ExtResource("27_54nrm")
 })
-my_name = "THE DUKE"
 sport_number = 420
 my_plays = Array[ExtResource("3_ueoa1")]([null, null, null])
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"
@@ -118,11 +117,9 @@ sprite_pose = 2
 position = Vector2(1200, 489)
 beastie = SubResource("Resource_o4ndm")
 stamina = 83
-my_side = 1
 sprite_pose = 4
 
 [node name="Beastie3" parent="." instance=ExtResource("2_1w6v2")]
 position = Vector2(830, 552)
 beastie = SubResource("Resource_50lr6")
 stamina = 45
-sprite_pose = 4

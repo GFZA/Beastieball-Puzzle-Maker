@@ -2,7 +2,7 @@
 class_name Healthbar
 extends Control
 
-const MAX_LABEL_LENGTH : int = 175
+const MAX_LABEL_LENGTH : int = 150
 const DEFAULT_FONT_SIZE : int = 48
 
 
