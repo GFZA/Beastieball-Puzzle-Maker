@@ -1,7 +1,8 @@
-[gd_scene load_steps=32 format=3 uid="uid://co8c0qvn7nkha"]
+[gd_scene load_steps=35 format=3 uid="uid://co8c0qvn7nkha"]
 
 [ext_resource type="Script" uid="uid://dfsngo7akxojy" path="res://Scenes/main/main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://dptoj76e40ldo" path="res://Scenes/beastie_scene.tscn" id="2_1w6v2"]
+[ext_resource type="Texture2D" uid="uid://dqtiasekc4j68" path="res://Scenes/main/puzzle_board_bg.png" id="2_o4ndm"]
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Resources/Plays/plays.gd" id="3_ueoa1"]
 [ext_resource type="Resource" uid="uid://c0w31jc1g46o" path="res://Resources/Plays/Attack/spitball.tres" id="4_6vcvc"]
 [ext_resource type="Resource" uid="uid://4k1sc4gshpvh" path="res://Resources/Plays/Attack/nice_shot.tres" id="5_7k868"]
@@ -23,13 +24,15 @@
 [ext_resource type="Texture2D" uid="uid://bhud3lxwp7ux6" path="res://Resources/Beastie/Garood/garood_bad.png" id="21_nwwfm"]
 [ext_resource type="Texture2D" uid="uid://1qpjthn4vkw6" path="res://Resources/Beastie/Platypulse/platy_idle.png" id="22_s8vy0"]
 [ext_resource type="Texture2D" uid="uid://c4yih02t6rn0m" path="res://Resources/Beastie/Platypulse/platy_ready.png" id="23_jut3y"]
+[ext_resource type="Texture2D" uid="uid://d4mweyta05xjj" path="res://Scenes/main/board_ref_ss.jpg" id="24_ll5jx"]
 [ext_resource type="Texture2D" uid="uid://bbrlq31jmj6lm" path="res://Resources/Beastie/Platypulse/platy_spike.png" id="24_v2nl5"]
+[ext_resource type="Texture2D" uid="uid://fhi0lm11ly52" path="res://Scenes/main/board_ref_2.jpg" id="25_bu6nd"]
 [ext_resource type="Texture2D" uid="uid://qedsc2o55250" path="res://Resources/Beastie/Platypulse/platy_volley.png" id="25_dmskm"]
 [ext_resource type="Texture2D" uid="uid://rtvfc88bxswd" path="res://Resources/Beastie/Platypulse/platy_good.png" id="26_xdkp6"]
 [ext_resource type="Texture2D" uid="uid://d2c7yf64fy1ud" path="res://Resources/Beastie/Platypulse/platy_bad.png" id="27_54nrm"]
 [ext_resource type="Texture2D" uid="uid://cyjba1viw1ydi" path="res://Resources/Beastie/Orgella/orgella_idle.png" id="28_ueoa1"]
 
-[sub_resource type="Resource" id="Resource_t8r38"]
+[sub_resource type="Resource" id="Resource_ll5jx"]
 script = ExtResource("15_aqgau")
 specie_name = "Garood"
 bar_color = Color(0.9529412, 0.9019608, 0.77254903, 1)
@@ -53,7 +56,7 @@ sport_number = 999
 my_plays = Array[ExtResource("3_ueoa1")]([ExtResource("5_7k868"), ExtResource("4_6vcvc"), ExtResource("8_e08e2")])
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"
 
-[sub_resource type="Resource" id="Resource_o4ndm"]
+[sub_resource type="Resource" id="Resource_bu6nd"]
 script = ExtResource("15_aqgau")
 specie_name = "Orgella"
 bar_color = Color(0.89411765, 0.17254902, 0.32156864, 1)
@@ -75,7 +78,7 @@ y_offset = -125
 my_plays = Array[ExtResource("3_ueoa1")]([ExtResource("11_hdf80"), ExtResource("6_hpc6h"), ExtResource("10_r33sp")])
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"
 
-[sub_resource type="Resource" id="Resource_50lr6"]
+[sub_resource type="Resource" id="Resource_5xfh6"]
 script = ExtResource("15_aqgau")
 specie_name = "Platypulse"
 bar_color = Color(0.9882353, 0.85882354, 0.40392157, 1)
@@ -100,29 +103,59 @@ metadata/_custom_type_script = "uid://ehabj4qsgxpl"
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_ig7tw")
-base_pow = 75
-base_attack_stat = 102
-attacker_invest = 30
-base_defense_stat = 120
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("2_o4ndm")
+centered = false
+metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
+metadata/_edit_lock_ = true
 
 [node name="Garood" parent="." instance=ExtResource("2_1w6v2")]
-position = Vector2(450, 547)
-beastie = SubResource("Resource_t8r38")
+visible = false
+position = Vector2(843, 468)
+beastie = SubResource("Resource_ll5jx")
 stamina = 81
 sprite_pose = 2
 
 [node name="Orgella" parent="." instance=ExtResource("2_1w6v2")]
-position = Vector2(830, 552)
-beastie = SubResource("Resource_o4ndm")
+visible = false
+position = Vector2(1327, 472)
+beastie = SubResource("Resource_bu6nd")
 stamina = 45
 my_side = 1
 show_plays = false
 
+[node name="BoardRef" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.3372549)
+texture = ExtResource("24_ll5jx")
+centered = false
+
+[node name="BoardRef2" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(1.3471501, 1.3471502)
+texture = ExtResource("25_bu6nd")
+centered = false
+
 [node name="Platy" parent="." instance=ExtResource("2_1w6v2")]
-position = Vector2(1200, 489)
-beastie = SubResource("Resource_50lr6")
+visible = false
+position = Vector2(1356, 632)
+beastie = SubResource("Resource_5xfh6")
 stamina = 83
-sprite_pose = 4
+my_side = 1
+
+[node name="LeftAnchors" type="Node2D" parent="."]
+
+[node name="LeftTopLeft" type="Marker2D" parent="LeftAnchors"]
+
+[node name="CalButton" type="Button" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_left = 680.0
+offset_top = 695.0
+offset_right = 1360.0
+offset_bottom = 1027.0
+text = "CAL!!!!!"

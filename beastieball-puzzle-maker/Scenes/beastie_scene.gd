@@ -29,14 +29,14 @@ const PLAYS_UI_CONTAINER_SCENE : PackedScene = preload("uid://dksxc3rs20kkc")
 			current_sprite = PLACEHOLDER_TEXTURE
 			#all_my_plays = Beastie.get_empty_plays_array()
 			#all_my_trait = Beastie.get_empty_trait_array()
-			if beastie:
-				if beastie.stats_updated.is_connected(_update_stats):
-					beastie.stats_updated.disconnect(_update_stats)
+			#if beastie:
+				#if beastie.stats_updated.is_connected(_update_stats):
+					#beastie.stats_updated.disconnect(_update_stats)
 				#if beastie.my_plays_updated.is_connected(_update_play_label):
 					#beastie.my_plays_updated.disconnect(_update_play_label)
 				#if beastie.my_trait_updated.is_connected(_update_trait_label):
 					#beastie.my_trait_updated.disconnect(_update_trait_label)
-				_update_stats(Beastie.get_empty_stats_dict())
+				#_update_stats(Beastie.get_empty_stats_dict())
 				#_update_play_label(Beastie.get_empty_plays_array())
 				#_update_trait_label(null)
 
@@ -65,8 +65,8 @@ const PLAYS_UI_CONTAINER_SCENE : PackedScene = preload("uid://dksxc3rs20kkc")
 			add_child(new_container)
 			my_plays_ui_container = new_container
 
-		if not beastie.stats_updated.is_connected(_update_stats):
-			beastie.stats_updated.connect(_update_stats)
+		#if not beastie.stats_updated.is_connected(_update_stats):
+			#beastie.stats_updated.connect(_update_stats)
 		if not beastie.my_plays_updated.is_connected(_update_play_label):
 			beastie.my_plays_updated.connect(_update_play_label)
 		if not beastie.my_trait_updated.is_connected(_update_trait_label):
@@ -74,7 +74,7 @@ const PLAYS_UI_CONTAINER_SCENE : PackedScene = preload("uid://dksxc3rs20kkc")
 
 		current_sprite = beastie.get_sprite(sprite_pose)
 		sprite_2d.offset.y = beastie.y_offset
-		_update_stats(beastie.get_stats_dict())
+		#_update_stats(beastie.get_stats_dict())
 		_update_play_label(beastie.my_plays)
 		_update_trait_label(beastie.my_trait)
 
@@ -161,18 +161,18 @@ func _update_side(new_side : Global.MySide) -> void:
 	side_updated.emit(my_side)
 
 
-func _update_stats(stats : Dictionary[String, Array]) -> void:
-	if stats.is_empty():
-		stats_label.text = "MISSING STATS"
-		return
-	var stats_text : String = ""
-	var stats_name : Array = stats.keys()
-	var stats_value : Array = stats.values()
-	for index in stats_name.size():
-		stats_text += "%s: %s + %s" % [stats_name[index], str(stats_value[index][0]), str(stats_value[index][1])]
-		if index < stats_name.size() - 1:
-			stats_text += "\n"
-	stats_label.text = stats_text
+#func _update_stats(stats : Dictionary[String, Array]) -> void:
+	#if stats.is_empty():
+		#stats_label.text = "MISSING STATS"
+		#return
+	#var stats_text : String = ""
+	#var stats_name : Array = stats.keys()
+	#var stats_value : Array = stats.values()
+	#for index in stats_name.size():
+		#stats_text += "%s: %s + %s" % [stats_name[index], str(stats_value[index][0]), str(stats_value[index][1])]
+		#if index < stats_name.size() - 1:
+			#stats_text += "\n"
+	#stats_label.text = stats_text
 
 
 func _update_play_label(updated_plays : Array[Plays]) -> void:

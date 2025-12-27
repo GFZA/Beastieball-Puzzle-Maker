@@ -3,6 +3,8 @@ class_name Beastie
 extends Resource
 
 enum Sprite {IDLE, READY, SPIKE, VOLLEY, GOOD, BAD}
+enum Feelings {NERVOUS, ANGRY, SHOOK, NOISY, TOUGH, WIPED, SWEATY, JAZZED, BLOCKED, TIRED, TENDER, STRESSED, WEEPY}
+enum Stats {B_POW, S_POW, M_POW, B_DEF, S_DEF, M_DEF}
 
 const MAX_NAME_LENGTH : int = 12
 const MAX_NUNBER_LENGTH : int = 3
@@ -15,6 +17,8 @@ signal my_plays_updated(updated_plays : Array[Plays])
 signal my_trait_updated(updated_trait : Array[Trait])
 
 #var invest_point_left : int = INVEST_MAX
+@export var is_at_net : bool = false # TEMPORARY EXPORTED
+@export var is_stacked : bool = false # TEMPORARY EXPORTED
 
 @export_group("Internal Infos")
 @export var specie_name : String = "Sprecko"
@@ -106,17 +110,46 @@ signal my_trait_updated(updated_trait : Array[Trait])
 	set(value):
 		my_trait = value
 		my_trait_updated.emit(my_trait)
+@export var current_boosts : Dictionary[Stats, int] = {
+	Stats.B_POW : 0,
+	Stats.S_POW : 0,
+	Stats.M_POW : 0,
+	Stats.B_DEF : 0,
+	Stats.S_DEF : 0,
+	Stats.M_DEF : 0,
+}
+@export var current_feelings : Dictionary[Feelings, int] = {
+		Feelings.WIPED : 0,
+		Feelings.TIRED : 0,
+		Feelings.SHOOK : 0,
+		Feelings.JAZZED : 0,
+		Feelings.BLOCKED : 0,
+		Feelings.WEEPY : 0,
+		Feelings.TOUGH : 0,
+		Feelings.TENDER : 0,
+		Feelings.SWEATY : 0,
+		Feelings.NOISY : 0,
+		Feelings.ANGRY : 0,
+		Feelings.NERVOUS : 0,
+		Feelings.STRESSED : 0,
+	}
 
 
-func get_stats_dict() -> Dictionary[String, Array]:
-	var stats : Dictionary[String, Array] = {}
-	stats.get_or_add("B_POW", [body_base_pow, body_invest_pow])
-	stats.get_or_add("S_POW", [spirit_base_pow, spirit_invest_pow])
-	stats.get_or_add("M_POW", [mind_base_pow, mind_invest_pow])
-	stats.get_or_add("B_DEF", [body_base_def, body_invest_def])
-	stats.get_or_add("S_DEF", [spirit_base_def, spirit_invest_def])
-	stats.get_or_add("M_DEF", [mind_base_def, mind_invest_def])
+func get_stats_dict() -> Dictionary[Stats, Array]:
+	var stats : Dictionary[Stats, Array] = {}
+	stats.get_or_add(Stats.B_POW, [body_base_pow, body_invest_pow])
+	stats.get_or_add(Stats.S_POW, [spirit_base_pow, spirit_invest_pow])
+	stats.get_or_add(Stats.M_POW, [mind_base_pow, mind_invest_pow])
+	stats.get_or_add(Stats.B_DEF, [body_base_def, body_invest_def])
+	stats.get_or_add(Stats.S_DEF, [spirit_base_def, spirit_invest_def])
+	stats.get_or_add(Stats.M_DEF, [mind_base_def, mind_invest_def])
 	return stats
+
+
+func get_total_stats_value(stats_type : Stats) -> int:
+	var stats : Dictionary[Stats, Array] = get_stats_dict()
+	return stats.get(stats_type)[0] + stats.get(stats_type)[1]
+
 
 func get_sprite(sprite_type : Sprite) -> Texture2D:
 	return sprites.get(sprite_type)

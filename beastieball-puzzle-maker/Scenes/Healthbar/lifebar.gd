@@ -1,6 +1,6 @@
 @tool
 class_name LifeBar
-extends MarginContainer
+extends Control
 
 #@export_tool_button("s") var fff : Callable = flipppp
 #

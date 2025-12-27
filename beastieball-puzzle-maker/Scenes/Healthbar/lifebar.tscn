@@ -261,6 +261,8 @@ outline_color = Color(0, 0, 0, 1)
 
 [node name="Lifebar" type="MarginContainer"]
 custom_minimum_size = Vector2(161, 20)
+offset_right = 161.0
+offset_bottom = 37.0
 script = ExtResource("1_iy6jb")
 
 [node name="LifebarBackrground" type="Polygon2D" parent="."]

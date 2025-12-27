@@ -364,6 +364,7 @@ layout_mode = 2
 [node name="Lifebar" parent="MarginContainer/ControlsAnchor/MainContainer/LowerContaiener" instance=ExtResource("4_bu8sd")]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="LowerSpacer2" type="Control" parent="MarginContainer/ControlsAnchor/MainContainer/LowerContaiener"]
 custom_minimum_size = Vector2(13, 0)
