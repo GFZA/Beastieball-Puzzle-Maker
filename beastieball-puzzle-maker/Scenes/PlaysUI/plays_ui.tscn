@@ -7,11 +7,11 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_ag766"]
 font = ExtResource("2_t0syg")
-font_size = 120
+font_size = 108
 font_color = Color(0, 0, 0, 1)
 
 [node name="PlaysUI" type="MarginContainer"]
-offset_right = 861.0
+offset_right = 712.0
 offset_bottom = 143.0
 script = ExtResource("1_clvah")
 

@@ -11,8 +11,8 @@ const UIBG : Dictionary[Plays.Type, Texture2D] = {
 	Plays.Type.DEFENSE : preload("uid://dgum3wc24lo16")
 }
 
-const MAX_LABEL_LENGTH : int = 615
-const DEFAULT_FONT_SIZE : int = 120
+const MAX_LABEL_LENGTH : int = 475
+const DEFAULT_FONT_SIZE : int = 108
 
 @export var my_play : Plays = null :
 	set(value):

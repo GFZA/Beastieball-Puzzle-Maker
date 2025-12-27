@@ -43,7 +43,7 @@ const PLAYS_UI_CONTAINER_SCENE : PackedScene = preload("uid://dksxc3rs20kkc")
 			beastie = value
 			return
 
-		beastie = value.duplicate(true)
+		beastie = value # Not duplicate so it's the same as TeamContoller's one
 
 		current_sprite = beastie.get_sprite(Beastie.Sprite.IDLE)
 		#all_my_plays = beastie.possible_plays
@@ -114,6 +114,8 @@ var current_sprite : Texture2D = null :
 
 var my_healthbar : Healthbar = null
 var my_plays_ui_container : PlaysUIContainer = null
+
+var my_field_id : int = 0
 
 #var all_my_plays : Array[Plays] = [] :
 	#set(value):
