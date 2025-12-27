@@ -1,0 +1,109 @@
+[gd_scene load_steps=14 format=3 uid="uid://dptoj76e40ldo"]
+
+[ext_resource type="Script" uid="uid://b6gsp5w62y6ff" path="res://Scenes/BeastieScene/beastie_scene.gd" id="1_n0vvo"]
+[ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Resources/Plays/plays.gd" id="2_x6rsm"]
+[ext_resource type="Resource" uid="uid://b8r5fp676ri1m" path="res://Resources/Plays/Attack/launch.tres" id="3_xg5bs"]
+[ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Resources/Trait/trait.gd" id="4_bof0k"]
+[ext_resource type="Script" uid="uid://ehabj4qsgxpl" path="res://Resources/Beastie/beastie.gd" id="5_yniu6"]
+[ext_resource type="Texture2D" uid="uid://b1b4ub6s60bxt" path="res://Resources/Beastie/Riplash/riplash_idle.png" id="6_kbkgw"]
+[ext_resource type="Texture2D" uid="uid://kp537i517l56" path="res://Resources/Beastie/Riplash/riplash_ready.png" id="7_k11ln"]
+[ext_resource type="Texture2D" uid="uid://bfb1wudoyctqd" path="res://Resources/Beastie/Riplash/riplash_spike.png" id="8_2sk48"]
+[ext_resource type="Texture2D" uid="uid://ceyrur5esf7lo" path="res://Resources/Beastie/Riplash/riplash_volley.png" id="9_kpqd8"]
+[ext_resource type="Texture2D" uid="uid://crmxowlxmvkhp" path="res://Resources/Beastie/Riplash/riplash_good.png" id="10_okf80"]
+[ext_resource type="Texture2D" uid="uid://cky03kadhhxkd" path="res://Resources/Beastie/Riplash/riplash_bad.png" id="11_uayif"]
+
+[sub_resource type="Resource" id="Resource_ltp61"]
+script = ExtResource("5_yniu6")
+specie_name = "Riplash"
+bar_color = Color(0.94509804, 0.7647059, 0.28627452, 1)
+body_base_pow = 105
+spirit_base_pow = 29
+mind_base_pow = 40
+body_base_def = 55
+spirit_base_def = 80
+mind_base_def = 105
+possible_plays = Array[ExtResource("2_x6rsm")]([ExtResource("3_xg5bs")])
+sprites = Dictionary[int, Texture2D]({
+0: ExtResource("6_kbkgw"),
+1: ExtResource("7_k11ln"),
+2: ExtResource("8_2sk48"),
+3: ExtResource("9_kpqd8"),
+4: ExtResource("10_okf80"),
+5: ExtResource("11_uayif")
+})
+my_plays = Array[ExtResource("2_x6rsm")]([null, null, null])
+metadata/_custom_type_script = "uid://ehabj4qsgxpl"
+
+[sub_resource type="LabelSettings" id="LabelSettings_u05cj"]
+font_size = 64
+
+[node name="Beastie" type="Node2D"]
+script = ExtResource("1_n0vvo")
+beastie = SubResource("Resource_ltp61")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -187)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("6_kbkgw")
+flip_h = true
+
+[node name="NameLabel" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_left = -251.0
+offset_top = -693.0
+offset_right = 235.0
+offset_bottom = -605.0
+text = "THE UNKNOWN"
+label_settings = SubResource("LabelSettings_u05cj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NumberLabel" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_left = -251.0
+offset_top = -623.0
+offset_right = 235.0
+offset_bottom = -535.0
+text = "#666"
+label_settings = SubResource("LabelSettings_u05cj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TraitLabel" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_left = -950.0
+offset_top = 116.0
+offset_right = 981.0
+offset_bottom = 295.0
+text = "MISSING TRAITS!"
+label_settings = SubResource("LabelSettings_u05cj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayLabel" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_left = -1217.0
+offset_top = 330.0
+offset_right = 1243.0
+offset_bottom = 418.0
+text = "Play #1, Play #2, Play #3."
+label_settings = SubResource("LabelSettings_u05cj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StatsLabel" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_left = -969.0
+offset_top = -502.0
+offset_right = -315.0
+offset_bottom = 77.0
+text = "MISSING STATS"
+label_settings = SubResource("LabelSettings_u05cj")
+horizontal_alignment = 1
+vertical_alignment = 1

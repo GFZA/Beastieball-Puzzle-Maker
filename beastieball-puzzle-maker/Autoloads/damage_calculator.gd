@@ -6,7 +6,6 @@ extends Node
 #@export var cheerleader : bool = false
 #@export var friendship : bool = false
 #@export var rally : bool = false
-#@export var weariness : int = 0
 
 
 func get_damage(attacker : Beastie, defender : Beastie, attack : Attack) -> int: # ADD BOARD STATE LATERRRR
@@ -42,7 +41,7 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack) -> int:
 
 	#endregion
 
-	#region Get boost counts
+	#region Get boost counts and damage mults
 	var total_attack_boost : int = 0
 	total_attack_boost += attack_boosts
 	if jazzed:
@@ -58,6 +57,19 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack) -> int:
 	#if tender:
 		# HOW THE FUCK DOES THIS SHIT WORK???
 	total_defense_boost += int(not defender_at_net) + int(defender_is_stacked)
+
+	if not attacker.my_trait:
+		push_error("Attacker %s doesn't have trait assigned!" % [attacker.specie_name])
+		return 0
+	if not defender.my_trait:
+		push_error("Defender %s doesn't have trait assigned!" % defender.specie_name)
+		return 0
+	var blocked_mult : float = 2.0 / (2.0 + attacker.current_feelings.get(Beastie.Feelings.BLOCKED))
+	var tough_mult : float = 1.0 / 4.0 if defender.current_feelings.get(Beastie.Feelings.TOUGH) > 0 else 1.0
+	#var friendship_mult : float = 3.0 / 4.0 if friendship else 1.0 # TODO TODO TODO or not lol
+	var friendship_mult : float = 1.0
+	var all_damage_mults : float = (attacker.my_trait.damage_dealt_mult / defender.my_trait.damage_taken_mult) \
+									* blocked_mult * tough_mult * friendship_mult
 	#endregion
 
 	#region Get final stats for calculation
@@ -78,12 +90,9 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack) -> int:
 
 	#region Calculate the damage + board states
 	#var friendship_mult : float = 3.0/4.0 if friendship else 1.0
-	var friendship_mult : float = 1.0
-	var final_damage : int = ceili(((floori(final_atk) * base_pow / final_def) * 0.4) * friendship_mult)
+	var final_damage : int = max(1, ceili(((floori(final_atk) * base_pow / final_def) * 0.4) * all_damage_mults))
 	#if cheerleader:
 		#final_damage += 10
-	#if weariness > 7:
-		#final_damage += 10 * (weariness - 7)
 	#endregion
 
 	return final_damage

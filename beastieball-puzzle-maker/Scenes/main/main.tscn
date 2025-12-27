@@ -1,18 +1,27 @@
-[gd_scene load_steps=35 format=3 uid="uid://co8c0qvn7nkha"]
+[gd_scene load_steps=48 format=3 uid="uid://co8c0qvn7nkha"]
 
 [ext_resource type="Script" uid="uid://dfsngo7akxojy" path="res://Scenes/main/main.gd" id="1_ig7tw"]
-[ext_resource type="PackedScene" uid="uid://dptoj76e40ldo" path="res://Scenes/beastie_scene.tscn" id="2_1w6v2"]
+[ext_resource type="PackedScene" uid="uid://dptoj76e40ldo" path="res://Scenes/BeastieScene/beastie_scene.tscn" id="2_1w6v2"]
 [ext_resource type="Texture2D" uid="uid://dqtiasekc4j68" path="res://Scenes/main/puzzle_board_bg.png" id="2_o4ndm"]
+[ext_resource type="Resource" uid="uid://bcut3fcha873b" path="res://Resources/Trait/launcher.tres" id="3_geyxs"]
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Resources/Plays/plays.gd" id="3_ueoa1"]
+[ext_resource type="Resource" uid="uid://b8r5fp676ri1m" path="res://Resources/Plays/Attack/launch.tres" id="3_whcvk"]
 [ext_resource type="Resource" uid="uid://c0w31jc1g46o" path="res://Resources/Plays/Attack/spitball.tres" id="4_6vcvc"]
 [ext_resource type="Resource" uid="uid://4k1sc4gshpvh" path="res://Resources/Plays/Attack/nice_shot.tres" id="5_7k868"]
+[ext_resource type="Texture2D" uid="uid://b1b4ub6s60bxt" path="res://Resources/Beastie/Riplash/riplash_idle.png" id="6_3jv3f"]
 [ext_resource type="Resource" uid="uid://y3o0tssi0oeu" path="res://Resources/Plays/Volley/forward_pass.tres" id="6_hpc6h"]
+[ext_resource type="Texture2D" uid="uid://kp537i517l56" path="res://Resources/Beastie/Riplash/riplash_ready.png" id="7_geyxs"]
 [ext_resource type="Resource" uid="uid://b6c5yrxonrq5h" path="res://Resources/Plays/Volley/juggle.tres" id="7_kltya"]
 [ext_resource type="Resource" uid="uid://dnfjfsf2a2vs5" path="res://Resources/Plays/Support/deep_breath.tres" id="8_e08e2"]
+[ext_resource type="Texture2D" uid="uid://bfb1wudoyctqd" path="res://Resources/Beastie/Riplash/riplash_spike.png" id="8_wtf4f"]
+[ext_resource type="Texture2D" uid="uid://ceyrur5esf7lo" path="res://Resources/Beastie/Riplash/riplash_volley.png" id="9_bc4s0"]
 [ext_resource type="Resource" uid="uid://ckfu6pta3o1u2" path="res://Resources/Plays/Support/provoke.tres" id="9_neg2b"]
+[ext_resource type="Texture2D" uid="uid://crmxowlxmvkhp" path="res://Resources/Beastie/Riplash/riplash_good.png" id="10_nkxxg"]
 [ext_resource type="Resource" uid="uid://dytuvbvg3oamq" path="res://Resources/Plays/Defense/shield.tres" id="10_r33sp"]
 [ext_resource type="Resource" uid="uid://qn2srsf766xj" path="res://Resources/Plays/Attack/burnout.tres" id="11_hdf80"]
+[ext_resource type="Texture2D" uid="uid://cky03kadhhxkd" path="res://Resources/Beastie/Riplash/riplash_bad.png" id="11_jmw3v"]
 [ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Resources/Trait/trait.gd" id="12_jwpg7"]
+[ext_resource type="Resource" uid="uid://cle27qn3pd41x" path="res://Resources/Trait/super_armored.tres" id="13_geyxs"]
 [ext_resource type="Resource" uid="uid://bai86ceaem0cm" path="res://Resources/Trait/mischief.tres" id="13_k2e45"]
 [ext_resource type="Resource" uid="uid://xd56b7iu3mlb" path="res://Resources/Trait/crowing.tres" id="14_536cc"]
 [ext_resource type="Script" uid="uid://ehabj4qsgxpl" path="res://Resources/Beastie/beastie.gd" id="15_aqgau"]
@@ -20,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://bcpkec0m1o6q4" path="res://Resources/Beastie/Garood/garood_ready.png" id="17_o1aky"]
 [ext_resource type="Texture2D" uid="uid://b1t7qo6rvvgd0" path="res://Resources/Beastie/Garood/garood_spike.png" id="18_kwxat"]
 [ext_resource type="Texture2D" uid="uid://cpu04hocypxnm" path="res://Resources/Beastie/Garood/garood_volley.png" id="19_aa8k8"]
+[ext_resource type="Script" uid="uid://bc63soeia1eb1" path="res://Resources/Plays/Attack/attack.gd" id="19_wtf4f"]
 [ext_resource type="Texture2D" uid="uid://n7mcd4c0sop4" path="res://Resources/Beastie/Garood/garood_good.png" id="20_kqrg6"]
 [ext_resource type="Texture2D" uid="uid://bhud3lxwp7ux6" path="res://Resources/Beastie/Garood/garood_bad.png" id="21_nwwfm"]
 [ext_resource type="Texture2D" uid="uid://1qpjthn4vkw6" path="res://Resources/Beastie/Platypulse/platy_idle.png" id="22_s8vy0"]
@@ -32,8 +42,63 @@
 [ext_resource type="Texture2D" uid="uid://d2c7yf64fy1ud" path="res://Resources/Beastie/Platypulse/platy_bad.png" id="27_54nrm"]
 [ext_resource type="Texture2D" uid="uid://cyjba1viw1ydi" path="res://Resources/Beastie/Orgella/orgella_idle.png" id="28_ueoa1"]
 
-[sub_resource type="Resource" id="Resource_ll5jx"]
+[sub_resource type="Resource" id="Resource_wtf4f"]
 script = ExtResource("15_aqgau")
+my_plays = Array[ExtResource("3_ueoa1")]([null, null, null])
+my_trait = ExtResource("3_geyxs")
+specie_name = "Riplash"
+bar_color = Color(0.94509804, 0.7647059, 0.28627452, 1)
+body_base_pow = 105
+spirit_base_pow = 29
+mind_base_pow = 40
+body_base_def = 55
+spirit_base_def = 80
+mind_base_def = 105
+possible_plays = Array[ExtResource("3_ueoa1")]([ExtResource("3_whcvk")])
+sprites = Dictionary[int, Texture2D]({
+0: ExtResource("6_3jv3f"),
+1: ExtResource("7_geyxs"),
+2: ExtResource("8_wtf4f"),
+3: ExtResource("9_bc4s0"),
+4: ExtResource("10_nkxxg"),
+5: ExtResource("11_jmw3v")
+})
+metadata/_custom_type_script = "uid://ehabj4qsgxpl"
+
+[sub_resource type="Resource" id="Resource_bc4s0"]
+script = ExtResource("15_aqgau")
+my_plays = Array[ExtResource("3_ueoa1")]([null, null, null])
+my_trait = ExtResource("13_geyxs")
+specie_name = "Platypulse"
+bar_color = Color(0.9882353, 0.85882354, 0.40392157, 1)
+body_base_pow = 26
+spirit_base_pow = 51
+mind_base_pow = 99
+body_base_def = 46
+spirit_base_def = 85
+mind_base_def = 120
+sprites = Dictionary[int, Texture2D]({
+0: ExtResource("22_s8vy0"),
+1: ExtResource("23_jut3y"),
+2: ExtResource("24_v2nl5"),
+3: ExtResource("25_dmskm"),
+4: ExtResource("26_xdkp6"),
+5: ExtResource("27_54nrm")
+})
+metadata/_custom_type_script = "uid://ehabj4qsgxpl"
+
+[sub_resource type="Resource" id="Resource_1b0l7"]
+script = ExtResource("19_wtf4f")
+name = "Launch"
+base_pow = 100
+descrition = "Only used from back row. SHIFTs self to front row."
+type = 0
+metadata/_custom_type_script = "uid://bc63soeia1eb1"
+
+[sub_resource type="Resource" id="Resource_nkxxg"]
+script = ExtResource("15_aqgau")
+sport_number = 999
+my_plays = Array[ExtResource("3_ueoa1")]([ExtResource("5_7k868"), ExtResource("4_6vcvc"), ExtResource("8_e08e2")])
 specie_name = "Garood"
 bar_color = Color(0.9529412, 0.9019608, 0.77254903, 1)
 body_base_pow = 88
@@ -52,12 +117,11 @@ sprites = Dictionary[int, Texture2D]({
 4: ExtResource("20_kqrg6"),
 5: ExtResource("21_nwwfm")
 })
-sport_number = 999
-my_plays = Array[ExtResource("3_ueoa1")]([ExtResource("5_7k868"), ExtResource("4_6vcvc"), ExtResource("8_e08e2")])
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"
 
-[sub_resource type="Resource" id="Resource_bu6nd"]
+[sub_resource type="Resource" id="Resource_jmw3v"]
 script = ExtResource("15_aqgau")
+my_plays = Array[ExtResource("3_ueoa1")]([ExtResource("11_hdf80"), ExtResource("6_hpc6h"), ExtResource("10_r33sp")])
 specie_name = "Orgella"
 bar_color = Color(0.89411765, 0.17254902, 0.32156864, 1)
 body_base_pow = 16
@@ -75,11 +139,13 @@ sprites = Dictionary[int, Texture2D]({
 5: ExtResource("28_ueoa1")
 })
 y_offset = -125
-my_plays = Array[ExtResource("3_ueoa1")]([ExtResource("11_hdf80"), ExtResource("6_hpc6h"), ExtResource("10_r33sp")])
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"
 
-[sub_resource type="Resource" id="Resource_5xfh6"]
+[sub_resource type="Resource" id="Resource_dl0ly"]
 script = ExtResource("15_aqgau")
+my_name = "THE DUKE"
+sport_number = 420
+my_plays = Array[ExtResource("3_ueoa1")]([ExtResource("4_6vcvc"), ExtResource("7_kltya"), ExtResource("10_r33sp")])
 specie_name = "Platypulse"
 bar_color = Color(0.9882353, 0.85882354, 0.40392157, 1)
 body_base_pow = 26
@@ -96,13 +162,13 @@ sprites = Dictionary[int, Texture2D]({
 4: ExtResource("26_xdkp6"),
 5: ExtResource("27_54nrm")
 })
-my_name = "THE DUKE"
-sport_number = 420
-my_plays = Array[ExtResource("3_ueoa1")]([ExtResource("4_6vcvc"), ExtResource("7_kltya"), ExtResource("10_r33sp")])
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_ig7tw")
+my_attacker = SubResource("Resource_wtf4f")
+my_defender = SubResource("Resource_bc4s0")
+my_attack = SubResource("Resource_1b0l7")
 
 [node name="Background" type="Sprite2D" parent="."]
 texture = ExtResource("2_o4ndm")
@@ -116,14 +182,14 @@ metadata/_edit_lock_ = true
 [node name="Garood" parent="." instance=ExtResource("2_1w6v2")]
 visible = false
 position = Vector2(843, 468)
-beastie = SubResource("Resource_ll5jx")
+beastie = SubResource("Resource_nkxxg")
 stamina = 81
 sprite_pose = 2
 
 [node name="Orgella" parent="." instance=ExtResource("2_1w6v2")]
 visible = false
 position = Vector2(1327, 472)
-beastie = SubResource("Resource_bu6nd")
+beastie = SubResource("Resource_jmw3v")
 stamina = 45
 my_side = 1
 show_plays = false
@@ -143,7 +209,7 @@ centered = false
 [node name="Platy" parent="." instance=ExtResource("2_1w6v2")]
 visible = false
 position = Vector2(1356, 632)
-beastie = SubResource("Resource_5xfh6")
+beastie = SubResource("Resource_dl0ly")
 stamina = 83
 my_side = 1
 
@@ -153,7 +219,6 @@ my_side = 1
 
 [node name="CalButton" type="Button" parent="."]
 unique_name_in_owner = true
-visible = false
 offset_left = 680.0
 offset_top = 695.0
 offset_right = 1360.0

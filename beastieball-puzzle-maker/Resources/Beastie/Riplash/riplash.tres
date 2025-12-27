@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="Beastie" load_steps=11 format=3 uid="uid://bcbimbxa1q008"]
+
+[ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Resources/Plays/plays.gd" id="1_md10g"]
+[ext_resource type="Resource" uid="uid://b8r5fp676ri1m" path="res://Resources/Plays/Attack/launch.tres" id="2_35pl8"]
+[ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Resources/Trait/trait.gd" id="2_mbf1s"]
+[ext_resource type="Script" uid="uid://ehabj4qsgxpl" path="res://Resources/Beastie/beastie.gd" id="3_35pl8"]
+[ext_resource type="Texture2D" uid="uid://b1b4ub6s60bxt" path="res://Resources/Beastie/Riplash/riplash_idle.png" id="5_dsc4k"]
+[ext_resource type="Texture2D" uid="uid://kp537i517l56" path="res://Resources/Beastie/Riplash/riplash_ready.png" id="6_mqybc"]
+[ext_resource type="Texture2D" uid="uid://bfb1wudoyctqd" path="res://Resources/Beastie/Riplash/riplash_spike.png" id="7_oeqpd"]
+[ext_resource type="Texture2D" uid="uid://ceyrur5esf7lo" path="res://Resources/Beastie/Riplash/riplash_volley.png" id="8_20yoy"]
+[ext_resource type="Texture2D" uid="uid://crmxowlxmvkhp" path="res://Resources/Beastie/Riplash/riplash_good.png" id="9_sjiu7"]
+[ext_resource type="Texture2D" uid="uid://cky03kadhhxkd" path="res://Resources/Beastie/Riplash/riplash_bad.png" id="10_rellg"]
+
+[resource]
+script = ExtResource("3_35pl8")
+specie_name = "Riplash"
+bar_color = Color(0.94509804, 0.7647059, 0.28627452, 1)
+body_base_pow = 105
+spirit_base_pow = 29
+mind_base_pow = 40
+body_base_def = 55
+spirit_base_def = 80
+mind_base_def = 105
+possible_plays = Array[ExtResource("1_md10g")]([ExtResource("2_35pl8")])
+sprites = Dictionary[int, Texture2D]({
+0: ExtResource("5_dsc4k"),
+1: ExtResource("6_mqybc"),
+2: ExtResource("7_oeqpd"),
+3: ExtResource("8_20yoy"),
+4: ExtResource("9_sjiu7"),
+5: ExtResource("10_rellg")
+})
+my_plays = Array[ExtResource("1_md10g")]([null, null, null])
+metadata/_custom_type_script = "uid://ehabj4qsgxpl"

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chctbds4hrdsq"
-path="res://.godot/imported/placeholder_beastie.png-e0c9e3aef7d7c16d35b13055b7709b5c.ctex"
+uid="uid://bfb1wudoyctqd"
+path="res://.godot/imported/riplash_spike.png-be0dcd7e6d404e61082ffe2cfdcd0ee3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Beastie/placeholder_beastie.png"
-dest_files=["res://.godot/imported/placeholder_beastie.png-e0c9e3aef7d7c16d35b13055b7709b5c.ctex"]
+source_file="res://Resources/Beastie/Riplash/riplash_spike.png"
+dest_files=["res://.godot/imported/riplash_spike.png-be0dcd7e6d404e61082ffe2cfdcd0ee3.ctex"]
 
 [params]
 

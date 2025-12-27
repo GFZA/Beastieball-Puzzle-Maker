@@ -37,11 +37,12 @@ func calculate_damage() -> void:
 
 @onready var camera_2d: Camera2D = $Camera2D
 
-#@onready var cal_button: Button = %CalButton
-#func _ready() -> void:
-	#if Engine.is_editor_hint():
-		#return
-	#cal_button.pressed.connect(calculate_damage)
+# TEMPORARY in-game cal button
+@onready var cal_button: Button = %CalButton
+func _ready() -> void:
+	if Engine.is_editor_hint():
+		return
+	cal_button.pressed.connect(calculate_damage)
 
 
 func screenshot() -> void:

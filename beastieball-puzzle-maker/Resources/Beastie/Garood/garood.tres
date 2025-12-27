@@ -22,6 +22,7 @@
 
 [resource]
 script = ExtResource("2_kpbug")
+my_plays = Array[ExtResource("1_cyme1")]([null, null, null])
 specie_name = "Garood"
 bar_color = Color(0.9529412, 0.9019608, 0.77254903, 1)
 body_base_pow = 88
@@ -40,5 +41,4 @@ sprites = Dictionary[int, Texture2D]({
 4: ExtResource("6_os0cd"),
 5: ExtResource("7_km10g")
 })
-my_plays = Array[ExtResource("1_cyme1")]([null, null, null])
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"
