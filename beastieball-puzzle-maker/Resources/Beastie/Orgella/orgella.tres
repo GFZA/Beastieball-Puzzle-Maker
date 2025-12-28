@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=5 format=3 uid="uid://b4presmunba81"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=6 format=3 uid="uid://b4presmunba81"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Resources/Plays/plays.gd" id="1_ijef1"]
 [ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Resources/Trait/trait.gd" id="2_hdk44"]
+[ext_resource type="Resource" uid="uid://c0w31jc1g46o" path="res://Resources/Plays/Attack/spitball.tres" id="2_wjx85"]
 [ext_resource type="Script" uid="uid://ehabj4qsgxpl" path="res://Resources/Beastie/beastie.gd" id="3_vq1k4"]
 [ext_resource type="Texture2D" uid="uid://cyjba1viw1ydi" path="res://Resources/Beastie/Orgella/orgella_idle.png" id="4_hdk44"]
 
 [resource]
 script = ExtResource("3_vq1k4")
+my_plays = Array[ExtResource("1_ijef1")]([ExtResource("2_wjx85"), null, null])
 specie_name = "Orgella"
 bar_color = Color(0.89411765, 0.17254902, 0.32156864, 1)
 body_base_pow = 16
@@ -24,5 +26,4 @@ sprites = Dictionary[int, Texture2D]({
 5: ExtResource("4_hdk44")
 })
 y_offset = -125
-my_plays = Array[ExtResource("1_ijef1")]([null, null, null])
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"

@@ -1,16 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://dksxc3rs20kkc"]
+[gd_scene load_steps=5 format=3 uid="uid://dksxc3rs20kkc"]
 
 [ext_resource type="Script" uid="uid://cq4wjdh73nd7s" path="res://Scenes/PlaysUI/plays_ui_container.gd" id="1_58jbj"]
 [ext_resource type="PackedScene" uid="uid://b4bws0qofhe6x" path="res://Scenes/PlaysUI/plays_ui.tscn" id="1_lkkpg"]
+[ext_resource type="FontFile" uid="uid://cvfib27cf5q88" path="res://Resources/Fonts/Go Banana.ttf" id="4_pxnfs"]
+[ext_resource type="Script" uid="uid://bca8urfgsjynv" path="res://Scenes/Healthbar/parallelogram.gd" id="4_tepdj"]
 
 [node name="PlaysUIContainer" type="Control"]
 layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -132.0
+offset_left = -245.0
 offset_top = 82.0
-offset_right = -132.0
+offset_right = -245.0
 offset_bottom = 82.0
 grow_horizontal = 2
 scale = Vector2(0.35, 0.35)
@@ -18,56 +20,135 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 script = ExtResource("1_58jbj")
 
-[node name="MainContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
-offset_right = 931.0
-offset_bottom = 445.0
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(1410, 700)
+layout_mode = 0
+offset_right = 1410.0
+offset_bottom = 700.0
 theme_override_constants/separation = 8
 
-[node name="PlayOneContainer" type="HBoxContainer" parent="MainContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="MainPlaysContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="PlayOneContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/MainPlaysContainer"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="PlaysUIOne" parent="MainContainer/PlayOneContainer" instance=ExtResource("1_lkkpg")]
+[node name="PlaysUIOne" parent="VBoxContainer/HBoxContainer/MainPlaysContainer/PlayOneContainer" instance=ExtResource("1_lkkpg")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Spacer" type="Control" parent="MainContainer/PlayOneContainer"]
+[node name="Spacer" type="Control" parent="VBoxContainer/HBoxContainer/MainPlaysContainer/PlayOneContainer"]
 custom_minimum_size = Vector2(35, 0)
 layout_mode = 2
 
-[node name="Spacer2" type="Control" parent="MainContainer/PlayOneContainer"]
+[node name="Spacer2" type="Control" parent="VBoxContainer/HBoxContainer/MainPlaysContainer/PlayOneContainer"]
 custom_minimum_size = Vector2(35, 0)
 layout_mode = 2
 
-[node name="PlayTwoContainer" type="HBoxContainer" parent="MainContainer"]
+[node name="PlayTwoContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/MainPlaysContainer"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Spacer" type="Control" parent="MainContainer/PlayTwoContainer"]
-custom_minimum_size = Vector2(35, 0)
+[node name="Spacer" type="Control" parent="VBoxContainer/HBoxContainer/MainPlaysContainer/PlayTwoContainer"]
+custom_minimum_size = Vector2(38, 0)
 layout_mode = 2
 
-[node name="PlaysUITwo" parent="MainContainer/PlayTwoContainer" instance=ExtResource("1_lkkpg")]
+[node name="PlaysUITwo" parent="VBoxContainer/HBoxContainer/MainPlaysContainer/PlayTwoContainer" instance=ExtResource("1_lkkpg")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Spacer2" type="Control" parent="MainContainer/PlayTwoContainer"]
-custom_minimum_size = Vector2(35, 0)
+[node name="Spacer2" type="Control" parent="VBoxContainer/HBoxContainer/MainPlaysContainer/PlayTwoContainer"]
+custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 
-[node name="PlayThreeContainer" type="HBoxContainer" parent="MainContainer"]
+[node name="PlayThreeContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/MainPlaysContainer"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Spacer" type="Control" parent="MainContainer/PlayThreeContainer"]
+[node name="Spacer" type="Control" parent="VBoxContainer/HBoxContainer/MainPlaysContainer/PlayThreeContainer"]
 custom_minimum_size = Vector2(35, 0)
 layout_mode = 2
 
-[node name="Spacer2" type="Control" parent="MainContainer/PlayThreeContainer"]
-custom_minimum_size = Vector2(35, 0)
+[node name="Spacer2" type="Control" parent="VBoxContainer/HBoxContainer/MainPlaysContainer/PlayThreeContainer"]
+custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 
-[node name="PlaysUIThree" parent="MainContainer/PlayThreeContainer" instance=ExtResource("1_lkkpg")]
+[node name="PlaysUIThree" parent="VBoxContainer/HBoxContainer/MainPlaysContainer/PlayThreeContainer" instance=ExtResource("1_lkkpg")]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="DamagePreviewContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="DamagePreview" type="Control" parent="VBoxContainer/HBoxContainer/DamagePreviewContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="BoostIndicator" type="Control" parent="VBoxContainer/HBoxContainer/DamagePreviewContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TraitContainer" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Spacer" type="Control" parent="VBoxContainer/TraitContainer"]
+custom_minimum_size = Vector2(109, 250)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/TraitContainer"]
+custom_minimum_size = Vector2(255, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BackgroundPara" type="Polygon2D" parent="VBoxContainer/TraitContainer/MarginContainer"]
+unique_name_in_owner = true
+position = Vector2(335.49652, 0)
+scale = Vector2(2.8662708, 3.1250005)
+color = Color(0.8352941, 0.87058824, 0.85882354, 1)
+polygon = PackedVector2Array(-98, 80, -117, 0, 318, 0, 337, 80)
+script = ExtResource("4_tepdj")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TraitContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Spacer" type="Control" parent="VBoxContainer/TraitContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(25, 250)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/TraitContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TraitLabel" type="RichTextLabel" parent="VBoxContainer/TraitContainer/MarginContainer/HBoxContainer/MarginContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_constants/line_separation = -12
+theme_override_constants/paragraph_separation = -12
+theme_override_constants/outline_size = 0
+theme_override_constants/underline_alpha = 255
+theme_override_fonts/normal_font = ExtResource("4_pxnfs")
+theme_override_font_sizes/normal_font_size = 78
+bbcode_enabled = true
+text = "Trait : Like to ball"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Spacer2" type="Control" parent="VBoxContainer/TraitContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(25, 250)
+layout_mode = 2
+size_flags_horizontal = 0

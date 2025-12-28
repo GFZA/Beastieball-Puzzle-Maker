@@ -14,7 +14,7 @@ signal my_name_updated(my_name : String)
 signal sport_number_updated(sport_number : int)
 signal stats_updated(stats : Dictionary[String, Array])
 signal my_plays_updated(updated_plays : Array[Plays])
-signal my_trait_updated(updated_trait : Array[Trait])
+signal my_trait_updated(updated_trait : Trait)
 
 #var invest_point_left : int = INVEST_MAX
 @export var is_at_net : bool = false # TEMPORARY EXPORTED

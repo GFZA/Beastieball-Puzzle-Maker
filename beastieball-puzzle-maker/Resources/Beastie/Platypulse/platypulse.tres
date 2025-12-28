@@ -12,6 +12,7 @@
 
 [resource]
 script = ExtResource("3_t50rp")
+my_plays = Array[ExtResource("1_q2b64")]([null, null, null])
 specie_name = "Platypulse"
 bar_color = Color(0.9882353, 0.85882354, 0.40392157, 1)
 body_base_pow = 26
@@ -28,5 +29,4 @@ sprites = Dictionary[int, Texture2D]({
 4: ExtResource("8_r5oxa"),
 5: ExtResource("9_uk4eh")
 })
-my_plays = Array[ExtResource("1_q2b64")]([null, null, null])
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"

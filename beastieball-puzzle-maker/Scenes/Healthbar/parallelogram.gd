@@ -2,7 +2,7 @@
 class_name Parallelogram
 extends Polygon2D
 
-var flip_h : bool = false :
+@export var flip_h : bool = false :
 	set(value):
 		if not is_node_ready():
 			await ready
