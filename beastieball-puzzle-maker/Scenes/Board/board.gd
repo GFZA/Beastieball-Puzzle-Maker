@@ -60,3 +60,9 @@ func _input(event: InputEvent) -> void:
 enum Turn {OFFENSE, DEFENSE, SERVE}
 
 @export var turn : Turn = Turn.OFFENSE
+
+@export var one : Beastie = null
+@export var twe : Beastie = null
+@export var arra : Attack = null
+@export_tool_button("SS") var cal := func():
+	print(DamageCalculator.get_damage(one, twe, arra))

@@ -29,16 +29,18 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack) -> int:
 	var total_attack_stat : int = attacker.get_total_stats_value(stats_type_attack) # Will get +5 from being lv.50 in calculation
 	var total_defense_stat : int = defender.get_total_stats_value(stats_type_defense)
 
-	var attacker_at_net : bool = attacker.is_at_net
-	var attack_boosts : int = attacker.current_boosts.get(stats_type_attack)
-	var jazzed : bool = (attacker.current_feelings.get(Beastie.Feelings.JAZZED) > 0)
+	var attacker_at_net : bool = attacker.check_if_net()
+	print(attacker.specie_name + " is at net : " + str(attacker_at_net))
+	var attack_boosts : int = attacker.get_boosts(stats_type_attack)
+	var jazzed : bool = (attacker.get_feeling_stack(Beastie.Feelings.JAZZED) > 0)
 
-	var defender_at_net : bool = defender.is_at_net
-	var defender_is_stacked : bool = defender.is_stacked
-	var defense_boosts : int = defender.current_boosts.get(stats_type_defense)
-	#var tender : bool = (defender.current_feelings.get(Beastie.Feelings.TENDER) > 0)
-	#var tough : bool = (defender.current_feelings.get(Beastie.Feelings.TOUGH) > 0)
-
+	var defender_at_net : bool = defender.check_if_net()
+	print(defender.specie_name + " is at net : " + str(defender_at_net))
+	var defender_is_stacked : bool = defender.check_if_stack()
+	print(defender.specie_name + " is stacked : " + str(defender_is_stacked))
+	var defense_boosts : int = defender.get_boosts(stats_type_defense)
+	var tough : bool = (defender.get_feeling_stack(Beastie.Feelings.TOUGH) > 0)
+	#var tender : bool = (defender.get_feeling_stack(Beastie.Feelings.TENDER) > 0)
 	#endregion
 
 	#region Get boost counts and damage mults
@@ -64,12 +66,14 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack) -> int:
 	if not defender.my_trait:
 		push_error("Defender %s doesn't have trait assigned!" % defender.specie_name)
 		return 0
-	var blocked_mult : float = 2.0 / (2.0 + attacker.current_feelings.get(Beastie.Feelings.BLOCKED))
-	var tough_mult : float = 1.0 / 4.0 if defender.current_feelings.get(Beastie.Feelings.TOUGH) > 0 else 1.0
+	var blocked_mult : float = 2.0 / (2.0 + attacker.get_feeling_stack(Beastie.Feelings.BLOCKED))
+	var tough_mult : float = 1.0 / 4.0 if tough else 1.0
+	#var tender_mult : float = 2.0 if tender else 1.0
+	var tender_mult : float = 1.0 # TODO TODO TODO or not lol
 	#var friendship_mult : float = 3.0 / 4.0 if friendship else 1.0 # TODO TODO TODO or not lol
 	var friendship_mult : float = 1.0
 	var all_damage_mults : float = (attacker.my_trait.damage_dealt_mult / defender.my_trait.damage_taken_mult) \
-									* blocked_mult * tough_mult * friendship_mult
+									* blocked_mult * tough_mult * tender_mult * friendship_mult
 	#endregion
 
 	#region Get final stats for calculation

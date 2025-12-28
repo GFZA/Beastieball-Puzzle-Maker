@@ -3,7 +3,6 @@ class_name TeamController
 extends Node2D
 
 const BEASTIE_SCENE := preload("uid://dptoj76e40ldo")
-enum Position {UPPER_BACK, UPPER_FRONT, LOWER_BACK, LOWER_FRONT, NOT_ASSIGNED}
 enum FieldID {ONE, TWO}
 enum BenchID {ONE, TWO, THREE}
 
@@ -15,7 +14,7 @@ enum BenchID {ONE, TWO, THREE}
 		field_array[0][0] = beastie_1
 		_update_field()
 
-@export var beastie_1_position : Position = Position.UPPER_BACK :
+@export var beastie_1_position : Beastie.Position = Beastie.Position.UPPER_BACK :
 	set(value):
 		beastie_1_position = value
 		field_array[0][1] = beastie_1_position
@@ -29,7 +28,7 @@ enum BenchID {ONE, TWO, THREE}
 		field_array[1][0] = beastie_2
 		_update_field()
 
-@export var beastie_2_position : Position = Position.LOWER_BACK :
+@export var beastie_2_position : Beastie.Position = Beastie.Position.LOWER_BACK :
 	set(value):
 		beastie_2_position = value
 		field_array[1][1] = beastie_2_position
@@ -47,8 +46,8 @@ var position_markers : Array[Node] = []
 #var bench_position_markers : Array[Node] = [] TODO TODO TODO
 
 var field_array : Array[Array] = [
-	[null, Position.UPPER_BACK],
-	[null, Position.LOWER_BACK]
+	[null, Beastie.Position.UPPER_BACK],
+	[null, Beastie.Position.LOWER_BACK]
 ]
 
 
@@ -65,9 +64,14 @@ func _update_field() -> void:
 			child.queue_free()
 
 	for data_array in field_array:
-		if data_array[0] != null:
+		if data_array[0]:
+			data_array[0].my_field_position = data_array[1] # Assign position into the resource
 			var new_scene : BeastieScene = BEASTIE_SCENE.instantiate()
 			new_scene.beastie = data_array[0]
 			new_scene.my_side = side
 			var index : int = int(data_array[1])
 			position_markers[index].add_child(new_scene)
+
+	if field_array[0][0] and field_array[1][0]: # Vomit-inducing code...
+		field_array[0][0].ally_field_position = field_array[1][1]
+		field_array[1][0].ally_field_position = field_array[0][1]

@@ -6,15 +6,12 @@
 [ext_resource type="Script" uid="uid://bca8urfgsjynv" path="res://Scenes/Healthbar/parallelogram.gd" id="4_tepdj"]
 
 [node name="PlaysUIContainer" type="Control"]
+custom_minimum_size = Vector2(1410, 700)
 layout_mode = 3
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -245.0
-offset_top = 82.0
-offset_right = -245.0
-offset_bottom = 82.0
-grow_horizontal = 2
+anchors_preset = 0
+offset_left = -246.75
+offset_right = 1163.2501
+offset_bottom = 700.0
 scale = Vector2(0.35, 0.35)
 size_flags_horizontal = 0
 size_flags_vertical = 0

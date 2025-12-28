@@ -36,8 +36,6 @@ const PLAYS_UI_CONTAINER_SCENE : PackedScene = preload("uid://dksxc3rs20kkc")
 		if not my_healthbar:
 			var new_healthbar : Healthbar = HEALTHBAR_SCENE.instantiate()
 			new_healthbar.beastie = beastie
-			stamina_updated.connect(new_healthbar.update_lifebar)
-			new_healthbar.stamina = stamina
 			side_updated.connect(new_healthbar.update_side)
 			new_healthbar.my_side = my_side
 			add_child(new_healthbar)
@@ -88,8 +86,6 @@ var current_sprite : Texture2D = null :
 
 var my_healthbar : Healthbar = null
 var my_plays_ui_container : PlaysUIContainer = null
-
-var my_field_id : TeamController.Position = TeamController.Position.NOT_ASSIGNED
 
 
 @onready var sprite_2d: Sprite2D = %Sprite2D

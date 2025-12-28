@@ -3,11 +3,8 @@ class_name PlaysUIContainer
 extends Control
 
 const TRAIT_PLACEHOLDER_DESC := "Trait : Like to ball"
-
-#@export_tool_button("test") var test := test_fuc
-#func test_fuc() -> void:
-	#print("WIPED,".trim_suffix(","))
-
+const UPPER_OFFSET := -440.0
+const LOWER_OFFSET := 105.0
 
 @export var beastie : Beastie = null :
 	set(value):
@@ -17,6 +14,7 @@ const TRAIT_PLACEHOLDER_DESC := "Trait : Like to ball"
 		if value == null:
 			update_plays_ui(Beastie.get_empty_slot_plays_array())
 			update_trait_label(null)
+			my_field_positon = Beastie.Position.NOT_ASSIGNED
 			if beastie:
 				if beastie.my_plays_updated.is_connected(update_plays_ui):
 					beastie.my_plays_updated.disconnect(update_plays_ui)
@@ -30,6 +28,21 @@ const TRAIT_PLACEHOLDER_DESC := "Trait : Like to ball"
 		beastie.my_trait_updated.connect(update_trait_label)
 		update_plays_ui(beastie.my_plays)
 		update_trait_label(beastie.my_trait)
+		my_field_positon = beastie.my_field_position
+
+var my_field_positon : Beastie.Position = Beastie.Position.NOT_ASSIGNED :
+	set(value):
+		my_field_positon = value
+		var offset : float = 0.0
+		match my_field_positon:
+			Beastie.Position.UPPER_BACK, Beastie.Position.UPPER_FRONT:
+				offset = UPPER_OFFSET
+			Beastie.Position.LOWER_BACK, Beastie.Position.LOWER_FRONT:
+				offset = LOWER_OFFSET
+			_:
+				offset = 0.0
+		position.y = offset
+
 
 @onready var plays_ui_one: PlaysUI = %PlaysUIOne
 @onready var plays_ui_two: PlaysUI = %PlaysUITwo

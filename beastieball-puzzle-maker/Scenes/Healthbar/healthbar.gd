@@ -15,12 +15,15 @@ const DEFAULT_FONT_SIZE : int = 48
 			beastie_name = "Sprecko"
 			sport_number = 123
 			color = Color.GREEN
+			update_lifebar(100)
 
 			if beastie:
 				if beastie.my_name_updated.is_connected(update_name_label):
 					beastie.my_name_updated.disconnect(update_name_label)
 				if beastie.sport_number_updated.is_connected(update_number_label):
 					beastie.sport_number_updated.disconnect(update_number_label)
+				if beastie.health_updated.is_connected(update_lifebar):
+					beastie.health_updated.disconnect(update_lifebar)
 
 			beastie = value
 			return
@@ -28,21 +31,16 @@ const DEFAULT_FONT_SIZE : int = 48
 		beastie = value # Must not duplicate so it's the same one from BeastieScene!
 		beastie.my_name_updated.connect(update_name_label)
 		beastie.sport_number_updated.connect(update_number_label)
+		beastie.health_updated.connect(update_lifebar)
+		update_lifebar(beastie.health)
 		beastie_name = beastie.my_name
 		sport_number = beastie.sport_number
 		color = beastie.bar_color
-
-@export_range(0, 100) var stamina : int = 100 :
-	set(value):
-		clamp(value, 0, 100)
-		stamina = value
-		update_lifebar(stamina)
 
 @export var my_side : Global.MySide = Global.MySide.LEFT :
 	set(value):
 		my_side = value
 		update_side(my_side)
-
 
 var beastie_name : String = "Sprecko" :
 	set(value):

@@ -2,11 +2,6 @@
 class_name LifeBar
 extends Control
 
-#@export_tool_button("s") var fff : Callable = flipppp
-#
-#func flipppp() -> void:
-	#lifebar_backrground.filp_h()
-
 
 @export_range(0, 100) var hp : int = 100 :
 	set(value):
