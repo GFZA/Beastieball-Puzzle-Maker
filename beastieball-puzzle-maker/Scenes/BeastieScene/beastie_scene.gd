@@ -27,27 +27,11 @@ const PLAYS_UI_CONTAINER_SCENE : PackedScene = preload("uid://dksxc3rs20kkc")
 
 		if value == null:
 			current_sprite = PLACEHOLDER_TEXTURE
-			#all_my_plays = Beastie.get_empty_plays_array()
-			#all_my_trait = Beastie.get_empty_trait_array()
-			#if beastie:
-				#if beastie.stats_updated.is_connected(_update_stats):
-					#beastie.stats_updated.disconnect(_update_stats)
-				#if beastie.my_plays_updated.is_connected(_update_play_label):
-					#beastie.my_plays_updated.disconnect(_update_play_label)
-				#if beastie.my_trait_updated.is_connected(_update_trait_label):
-					#beastie.my_trait_updated.disconnect(_update_trait_label)
-				#_update_stats(Beastie.get_empty_stats_dict())
-				#_update_play_label(Beastie.get_empty_plays_array())
-				#_update_trait_label(null)
-
 			beastie = value
 			return
 
 		beastie = value # Not duplicate so it's the same as TeamContoller's one
-
 		current_sprite = beastie.get_sprite(Beastie.Sprite.IDLE)
-		#all_my_plays = beastie.possible_plays
-		#all_my_trait = beastie.possible_traits
 
 		if not my_healthbar:
 			var new_healthbar : Healthbar = HEALTHBAR_SCENE.instantiate()
@@ -65,18 +49,8 @@ const PLAYS_UI_CONTAINER_SCENE : PackedScene = preload("uid://dksxc3rs20kkc")
 			add_child(new_container)
 			my_plays_ui_container = new_container
 
-		#if not beastie.stats_updated.is_connected(_update_stats):
-			#beastie.stats_updated.connect(_update_stats)
-		if not beastie.my_plays_updated.is_connected(_update_play_label):
-			beastie.my_plays_updated.connect(_update_play_label)
-		if not beastie.my_trait_updated.is_connected(_update_trait_label):
-			beastie.my_trait_updated.connect(_update_trait_label)
-
 		current_sprite = beastie.get_sprite(sprite_pose)
 		sprite_2d.offset.y = beastie.y_offset
-		#_update_stats(beastie.get_stats_dict())
-		_update_play_label(beastie.my_plays)
-		_update_trait_label(beastie.my_trait)
 
 @export_range(0, 100) var stamina : int = 100 :
 	set(value):
@@ -115,37 +89,7 @@ var current_sprite : Texture2D = null :
 var my_healthbar : Healthbar = null
 var my_plays_ui_container : PlaysUIContainer = null
 
-var my_field_id : int = 0
-
-#var all_my_plays : Array[Plays] = [] :
-	#set(value):
-		#all_my_plays = value
-		#if all_my_plays.is_empty():
-			#play_label.text = "MISSING PLAYS!"
-			#return
-		#var new_text = ""
-		#for play : Plays in all_my_plays:
-			#new_text += play.name
-			#if all_my_plays.find(play) == all_my_plays.size() - 1:
-				#new_text += "."
-			#else:
-				#new_text += ", "
-		#play_label.text = new_text
-
-#var all_my_trait: Array[Trait] = [] :
-	#set(value):
-		#all_my_trait = value
-		#if all_my_trait.is_empty():
-			#trait_label.text = "MISSING TRAITS!"
-			#return
-		#var new_text = ""
-		#for my_trait : Trait in all_my_trait:
-			#new_text += my_trait.name
-			#if all_my_trait.find(my_trait) == all_my_trait.size() - 1:
-				#new_text += "."
-			#else:
-				#new_text += ", "
-		#trait_label.text = new_text
+var my_field_id : TeamController.Position = TeamController.Position.NOT_ASSIGNED
 
 
 @onready var sprite_2d: Sprite2D = %Sprite2D
@@ -161,20 +105,6 @@ func _update_side(new_side : Global.MySide) -> void:
 		await ready
 	sprite_2d.flip_h = (new_side == Global.MySide.LEFT)
 	side_updated.emit(my_side)
-
-
-#func _update_stats(stats : Dictionary[String, Array]) -> void:
-	#if stats.is_empty():
-		#stats_label.text = "MISSING STATS"
-		#return
-	#var stats_text : String = ""
-	#var stats_name : Array = stats.keys()
-	#var stats_value : Array = stats.values()
-	#for index in stats_name.size():
-		#stats_text += "%s: %s + %s" % [stats_name[index], str(stats_value[index][0]), str(stats_value[index][1])]
-		#if index < stats_name.size() - 1:
-			#stats_text += "\n"
-	#stats_label.text = stats_text
 
 
 func _update_play_label(updated_plays : Array[Plays]) -> void:

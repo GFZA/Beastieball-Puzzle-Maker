@@ -3,7 +3,7 @@ class_name TeamController
 extends Node2D
 
 const BEASTIE_SCENE := preload("uid://dptoj76e40ldo")
-enum Position {UPPER_BACK, UPPER_FRONT, LOWER_BACK, LOWER_FRONT}
+enum Position {UPPER_BACK, UPPER_FRONT, LOWER_BACK, LOWER_FRONT, NOT_ASSIGNED}
 enum FieldID {ONE, TWO}
 enum BenchID {ONE, TWO, THREE}
 

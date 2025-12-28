@@ -1,7 +1,6 @@
 @tool
+class_name Board
 extends Node2D
-
-enum Type {BODY, SPIRIT, MIND}
 
 #region Test and screnshot stuffs
 
@@ -56,3 +55,8 @@ func _input(event: InputEvent) -> void:
 		screenshot()
 
 #endregion
+
+
+enum Turn {OFFENSE, DEFENSE, SERVE}
+
+@export var turn : Turn = Turn.OFFENSE
