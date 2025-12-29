@@ -30,6 +30,12 @@ const LOWER_OFFSET := 105.0
 		update_trait_label(beastie.my_trait)
 		my_field_positon = beastie.my_field_position
 
+@export var my_side : Global.MySide = Global.MySide.LEFT :
+	set(value):
+		my_side = value
+		_update_side()
+
+
 var my_field_positon : Beastie.Position = Beastie.Position.NOT_ASSIGNED :
 	set(value):
 		my_field_positon = value
@@ -43,6 +49,9 @@ var my_field_positon : Beastie.Position = Beastie.Position.NOT_ASSIGNED :
 				offset = 0.0
 		position.y = offset
 
+@onready var main_upper_container: HBoxContainer = %MainUpperContainer
+@onready var main_plays_container: VBoxContainer = %MainPlaysContainer
+@onready var damage_side_container: VBoxContainer = %DamageSideContainer
 
 @onready var plays_ui_one: PlaysUI = %PlaysUIOne
 @onready var plays_ui_two: PlaysUI = %PlaysUITwo
@@ -64,3 +73,11 @@ func update_trait_label(new_trait : Trait) -> void:
 	var desc : String = new_trait.name + " : " + Global.get_iconified_text(new_trait.description, false) \
 						if new_trait else TRAIT_PLACEHOLDER_DESC
 	trait_label.text = desc
+
+
+func _update_side() -> void:
+	if not is_node_ready():
+		await ready
+
+	var new_index : int = 0 if my_side == Global.MySide.LEFT else 1
+	main_upper_container.move_child(main_plays_container, new_index)

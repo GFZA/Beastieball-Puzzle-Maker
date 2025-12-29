@@ -9,9 +9,10 @@
 custom_minimum_size = Vector2(1250, 700)
 layout_mode = 3
 anchors_preset = 0
-offset_left = -246.75
-offset_right = 1003.25
+offset_left = -187.0
+offset_right = 1063.0
 offset_bottom = 700.0
+scale = Vector2(0.3, 0.3)
 size_flags_horizontal = 0
 size_flags_vertical = 0
 script = ExtResource("1_58jbj")
@@ -24,10 +25,12 @@ offset_bottom = 700.0
 theme_override_constants/separation = 8
 
 [node name="MainUpperContainer" type="HBoxContainer" parent="MainContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = -104
 
 [node name="MainPlaysContainer" type="VBoxContainer" parent="MainContainer/MainUpperContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 9
 
@@ -80,6 +83,7 @@ unique_name_in_owner = true
 layout_mode = 2
 
 [node name="DamageSideContainer" type="VBoxContainer" parent="MainContainer/MainUpperContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(510, 446)
 layout_mode = 2
 theme_override_constants/separation = 9
@@ -96,6 +100,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="DamageBG" type="Polygon2D" parent="MainContainer/MainUpperContainer/DamageSideContainer/DamagePreviewContainer/MarginContainer"]
+color = Color(0.7474357, 0.5630538, 0.3274546, 1)
 polygon = PackedVector2Array(74, 292, 0, 0, 395, 0, 470, 292)
 script = ExtResource("4_tepdj")
 metadata/_custom_type_script = "uid://bca8urfgsjynv"
@@ -115,6 +120,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="BoostBG" type="Polygon2D" parent="MainContainer/MainUpperContainer/DamageSideContainer/BoostIndicatorContainer/MarginContainer"]
+color = Color(0.22745098, 0.20392157, 0.29411766, 1)
 polygon = PackedVector2Array(37, 142, 0, 0, 398, 0, 435, 142)
 script = ExtResource("4_tepdj")
 metadata/_custom_type_script = "uid://bca8urfgsjynv"

@@ -44,6 +44,7 @@ const PLAYS_UI_CONTAINER_SCENE : PackedScene = preload("uid://dksxc3rs20kkc")
 		if not my_plays_ui_container:
 			var new_container : PlaysUIContainer = PLAYS_UI_CONTAINER_SCENE.instantiate()
 			new_container.beastie = beastie
+			new_container.my_side = my_side
 			add_child(new_container)
 			my_plays_ui_container = new_container
 
@@ -87,13 +88,7 @@ var current_sprite : Texture2D = null :
 var my_healthbar : Healthbar = null
 var my_plays_ui_container : PlaysUIContainer = null
 
-
 @onready var sprite_2d: Sprite2D = %Sprite2D
-@onready var number_label: Label = %NumberLabel
-@onready var name_label: Label = %NameLabel
-@onready var trait_label: Label = %TraitLabel
-@onready var play_label: Label = %PlayLabel
-@onready var stats_label: Label = %StatsLabel
 
 
 func _update_side(new_side : Global.MySide) -> void:
@@ -101,29 +96,3 @@ func _update_side(new_side : Global.MySide) -> void:
 		await ready
 	sprite_2d.flip_h = (new_side == Global.MySide.LEFT)
 	side_updated.emit(my_side)
-
-
-func _update_play_label(updated_plays : Array[Plays]) -> void:
-	if updated_plays.is_empty():
-		play_label.text = "MISSING PLAYS!"
-		return
-	var new_text = ""
-	var loop : int = 1
-	for play : Plays in updated_plays:
-		new_text += play.name if play else "Play #%s" % str(loop)
-		if loop < updated_plays.size():
-			new_text += ", "
-			loop += 1
-	new_text += "."
-	play_label.text = new_text
-
-
-func _update_trait_label(updated_trait: Trait) -> void:
-	if updated_trait == null:
-		trait_label.text = "MISSING TRAITS!"
-		return
-	var new_text = ""
-	new_text += updated_trait.name
-	new_text += "\n"
-	new_text += updated_trait.description
-	trait_label.text = new_text
