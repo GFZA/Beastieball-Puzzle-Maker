@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://uj4m1ntklqnf"
-path="res://.godot/imported/plays_ui_attack_body.png-9bd5e7e95d17e8d07bbdecff9e95ad8b.ctex"
+uid="uid://cyu38q3r5dpnk"
+path="res://.godot/imported/plays_ui_attack_mind.png-4552fcfdbcc077d396f46fd08d0ac812.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/PlaysUI/plays_ui_attack_body.png"
-dest_files=["res://.godot/imported/plays_ui_attack_body.png-9bd5e7e95d17e8d07bbdecff9e95ad8b.ctex"]
+source_file="res://Scenes/PlaysUIContainer/PlayUI/plays_ui_attack_mind.png"
+dest_files=["res://.godot/imported/plays_ui_attack_mind.png-4552fcfdbcc077d396f46fd08d0ac812.ctex"]
 
 [params]
 

@@ -60,6 +60,7 @@ var my_field_positon : Beastie.Position = Beastie.Position.NOT_ASSIGNED :
 @onready var plays_ui_three: PlaysUI = %PlaysUIThree
 @onready var trait_label: RichTextLabel = %TraitLabel
 
+@onready var damage_indicator: DamageIndicator = %DamageIndicator
 @onready var boost_ui: BoostUI = %BoostUI
 
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://brba6p5e5xokk"]
 
 [ext_resource type="Script" uid="uid://bca8urfgsjynv" path="res://Scenes/Healthbar/parallelogram.gd" id="1_230is"]
-[ext_resource type="Script" uid="uid://bse6rlji83vb7" path="res://Scenes/PlaysUI/boost_ui.gd" id="1_hw5lw"]
+[ext_resource type="Script" uid="uid://bse6rlji83vb7" path="res://Scenes/PlaysUIContainer/DamageIndicator/boost_ui.gd" id="1_hw5lw"]
 [ext_resource type="FontFile" uid="uid://q2kbgu0jja56" path="res://Resources/Fonts/sportsjersey.ttf" id="2_icept"]
 
 [node name="BoostUI" type="MarginContainer"]

@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cbc5i66rtpig1"]
+
+[node name="DamageSplash" type="MarginContainer"]
+custom_minimum_size = Vector2(145, 150)
+
+[node name="BGSplash" type="Polygon2D" parent="."]
+color = Color(0, 1, 0, 1)
+polygon = PackedVector2Array(14, 60, 46, 48, 48, 15, 71, 39, 111, 10, 110, 51, 138, 51, 121, 74, 136, 95, 110, 99, 100, 133, 73, 111, 48, 145, 44, 102, 1, 94, 30, 77)
+
+[node name="FGSplash" type="Polygon2D" parent="."]
+position = Vector2(95.73532, 33.72647)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-86.73532, 15.273529, -48.73532, 22.27353, -46.73532, -1.726471, -15.735321, 11.273529, 0.26467896, 1.273529, 4.264679, 19.27353, 45.26468, 24.27353, 19.264679, 43.27353, 50.26468, 65.27353, 5.264679, 66.27353, 8.264679, 89.27353, -17.735321, 72.27353, -45.73532, 85.27353, -50.73532, 63.27353, -76.73532, 66.27353, -58.73532, 39.27353)

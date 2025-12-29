@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dkhdnngx0bnyb"
-path="res://.godot/imported/plays_ui_disable_mask.png-c4afa8b1ba6b0860d0fde7d1b02f321a.ctex"
+path="res://.godot/imported/plays_ui_disable_mask.png-f746e9a637647846c1c8b94fe0144b8b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/PlaysUI/plays_ui_disable_mask.png"
-dest_files=["res://.godot/imported/plays_ui_disable_mask.png-c4afa8b1ba6b0860d0fde7d1b02f321a.ctex"]
+source_file="res://Scenes/PlaysUIContainer/PlayUI/plays_ui_disable_mask.png"
+dest_files=["res://.godot/imported/plays_ui_disable_mask.png-f746e9a637647846c1c8b94fe0144b8b.ctex"]
 
 [params]
 

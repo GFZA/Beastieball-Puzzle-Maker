@@ -1,0 +1,121 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3d6ph6ugh14g"]
+
+[ext_resource type="Script" uid="uid://bca8urfgsjynv" path="res://Scenes/Healthbar/parallelogram.gd" id="1_1q1yd"]
+[ext_resource type="Script" uid="uid://b0slabepmelyu" path="res://Scenes/PlaysUIContainer/DamageIndicator/damage_indicator.gd" id="1_o02kc"]
+[ext_resource type="PackedScene" uid="uid://cbc5i66rtpig1" path="res://Scenes/PlaysUIContainer/DamageIndicator/damage_splash.tscn" id="3_eqh3g"]
+
+[node name="DamageIndicator" type="MarginContainer"]
+custom_minimum_size = Vector2(470, 290)
+size_flags_horizontal = 2
+script = ExtResource("1_o02kc")
+
+[node name="DamageBGBlack" type="Polygon2D" parent="."]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(74, 292, 0, 0, 395, 0, 470, 292)
+script = ExtResource("1_1q1yd")
+metadata/_custom_type_script = "uid://bca8urfgsjynv"
+metadata/_edit_lock_ = true
+
+[node name="DamageBGOrange2" type="Polygon2D" parent="DamageBGBlack"]
+color = Color(0.9843137, 0.72156864, 0.40392157, 1)
+polygon = PackedVector2Array(51, 138, 20, 16, 190, 16, 227, 138)
+script = ExtResource("1_1q1yd")
+metadata/_custom_type_script = "uid://bca8urfgsjynv"
+metadata/_edit_lock_ = true
+
+[node name="DamageBGOrange3" type="Polygon2D" parent="DamageBGBlack"]
+position = Vector2(198, 0)
+color = Color(0.9843137, 0.72156864, 0.40392157, 1)
+polygon = PackedVector2Array(45, 138, 8, 16, 185, 16, 217, 138)
+script = ExtResource("1_1q1yd")
+metadata/_custom_type_script = "uid://bca8urfgsjynv"
+metadata/_edit_lock_ = true
+
+[node name="DamageBGOrange4" type="Polygon2D" parent="DamageBGBlack"]
+position = Vector2(35, 138)
+color = Color(0.9843137, 0.72156864, 0.40392157, 1)
+polygon = PackedVector2Array(51, 138, 20, 16, 197, 16, 234, 138)
+script = ExtResource("1_1q1yd")
+metadata/_custom_type_script = "uid://bca8urfgsjynv"
+metadata/_edit_lock_ = true
+
+[node name="DamageBGOrange5" type="Polygon2D" parent="DamageBGBlack"]
+position = Vector2(240, 138)
+color = Color(0.9843137, 0.72156864, 0.40392157, 1)
+polygon = PackedVector2Array(45, 138, 8, 16, 178, 16, 210, 138)
+script = ExtResource("1_1q1yd")
+metadata/_custom_type_script = "uid://bca8urfgsjynv"
+metadata/_edit_lock_ = true
+
+[node name="StraightUpper" type="Polygon2D" parent="."]
+color = Color(0, 1, 0, 0.5882353)
+polygon = PackedVector2Array(15, 59, 24.5, 97, 420, 97, 410.15, 59)
+
+[node name="StraightLower" type="Polygon2D" parent="."]
+position = Vector2(35, 135)
+color = Color(0, 1, 0, 0.5882353)
+polygon = PackedVector2Array(14, 59, 24, 97, 420, 97, 410.15, 59)
+
+[node name="SidewayLeft" type="Polygon2D" parent="."]
+position = Vector2(-79, 0)
+color = Color(0, 1, 0, 0.5882353)
+polygon = PackedVector2Array(284, 292, 244, 292, 155, 0, 195, 0)
+
+[node name="SidewayRight" type="Polygon2D" parent="."]
+position = Vector2(112, 0)
+color = Color(0, 1, 0, 0.5882353)
+polygon = PackedVector2Array(284, 292, 244, 292, 155, 0, 195, 0)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = -8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_constants/separation = 0
+
+[node name="Spacer" type="Control" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="DamageSplash" parent="VBoxContainer/HBoxContainer" instance=ExtResource("3_eqh3g")]
+layout_mode = 2
+
+[node name="Spacer2" type="Control" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(45, 0)
+layout_mode = 2
+
+[node name="DamageSplash2" parent="VBoxContainer/HBoxContainer" instance=ExtResource("3_eqh3g")]
+layout_mode = 2
+
+[node name="Spacer3" type="Control" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_constants/separation = 0
+
+[node name="Spacer3" type="Control" parent="VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DamageSplash3" parent="VBoxContainer/HBoxContainer2" instance=ExtResource("3_eqh3g")]
+layout_mode = 2
+
+[node name="Spacer2" type="Control" parent="VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(45, 0)
+layout_mode = 2
+
+[node name="DamageSplash4" parent="VBoxContainer/HBoxContainer2" instance=ExtResource("3_eqh3g")]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2

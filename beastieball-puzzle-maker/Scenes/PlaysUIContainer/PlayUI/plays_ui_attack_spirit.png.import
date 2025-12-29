@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyu38q3r5dpnk"
-path="res://.godot/imported/plays_ui_attack_mind.png-e05880b2fda38d89bc9e219e740dfd48.ctex"
+uid="uid://ctq1b1lo45elm"
+path="res://.godot/imported/plays_ui_attack_spirit.png-454a395a448321d1f8b87cdf5a10d569.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/PlaysUI/plays_ui_attack_mind.png"
-dest_files=["res://.godot/imported/plays_ui_attack_mind.png-e05880b2fda38d89bc9e219e740dfd48.ctex"]
+source_file="res://Scenes/PlaysUIContainer/PlayUI/plays_ui_attack_spirit.png"
+dest_files=["res://.godot/imported/plays_ui_attack_spirit.png-454a395a448321d1f8b87cdf5a10d569.ctex"]
 
 [params]
 
