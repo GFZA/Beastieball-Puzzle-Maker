@@ -8,7 +8,7 @@ enum Icon {
 	ERROR,
 	BODY, SPIRIT, MIND, ALL_TYPE,
 	VOLLEY, SUPPORT, DEFENSE,
-	UP, UP_2, UP_3, DOWN, DOWN_2, #DOWN_3 if it exists. Can't find it though...
+	UP_1, UP_2, UP_3, DOWN_1, DOWN_2, DOWN_3,
 	WIPED, TRIED, SHOOK, JAZZED, BLOCKED, WEEPY,
 	TOUGH, TENDER, SWEATY, NOISY, ANGRY, NERVOUS, STRESSED,
 }
@@ -20,12 +20,12 @@ const ICON_PATHS : Dictionary[Icon, String] = {
 	Icon.VOLLEY : "res://Autoloads/Icons/icon_volley.png",
 	Icon.SUPPORT : "res://Autoloads/Icons/icon_support.png",
 	Icon.DEFENSE : "res://Autoloads/Icons/icon_defense.png",
-	Icon.UP : "res://Autoloads/Icons/icon_up.png",
+	Icon.UP_1 : "res://Autoloads/Icons/icon_up.png",
 	Icon.UP_2 : "res://Autoloads/Icons/icon_up_2.png",
 	Icon.UP_3 : "res://Autoloads/Icons/icon_up_3.png",
-	Icon.DOWN : "res://Autoloads/Icons/icon_down.png",
+	Icon.DOWN_1 : "res://Autoloads/Icons/icon_down.png",
 	Icon.DOWN_2 : "res://Autoloads/Icons/icon_down_2.png",
-	#Icon.DOWN_3 : Add it to icon folder if exists,
+	Icon.DOWN_3 : "res://Autoloads/Icons/icon_down_3.png",
 	Icon.WIPED : "res://Autoloads/Icons/icon_wiped.png",
 	Icon.TRIED : "res://Autoloads/Icons/icon_tired.png",
 	Icon.SHOOK : "res://Autoloads/Icons/icon_shook.png",
@@ -49,12 +49,12 @@ const ICON_KEYWORDS : Dictionary[String, Icon] = {
 	"VOLLEY" : Icon.VOLLEY,
 	"SUPPORT" : Icon.SUPPORT,
 	"DEFENSE" : Icon.DEFENSE,
-	"UP" : Icon.UP,
+	"UP1" : Icon.UP_1,
 	"UP2" : Icon.UP_2,
 	"UP3" : Icon.UP_3,
-	"DOWN" : Icon.DOWN,
+	"DOWN1" : Icon.DOWN_1,
 	"DOWN2" : Icon.DOWN_2,
-	#"DOWN3" : Icon.DOWN_3,
+	"DOWN3" : Icon.DOWN_3,
 	"WIPED" : Icon.WIPED,
 	"TRIED" : Icon.TRIED,
 	"SHOOK" : Icon.SHOOK,
@@ -83,8 +83,8 @@ func get_iconified_text(text : String, have_full_stop : bool = true) -> String:
 		match icon:
 			Icon.ERROR:
 				new_text += word
-			Icon.UP, Icon.UP_2, Icon.UP_3, Icon.DOWN, Icon.DOWN_2, \
-			Icon.BODY, Icon.SPIRIT, Icon.MIND: # And Icon.DOWN_3
+			Icon.UP_1, Icon.UP_2, Icon.UP_3, Icon.DOWN_1, Icon.DOWN_2, Icon.DOWN_3, \
+			Icon.BODY, Icon.SPIRIT, Icon.MIND:
 				new_text += _add_img_bbcode(icon) # Replace keyword entirely
 			Icon.ALL_TYPE:
 				new_text += _add_img_bbcode(Icon.BODY) + _add_img_bbcode(Icon.SPIRIT) + _add_img_bbcode(Icon.MIND)

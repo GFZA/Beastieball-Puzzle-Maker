@@ -13,6 +13,8 @@ const MAX_NUNBER_LENGTH : int = 3
 signal my_name_updated(my_name : String)
 signal sport_number_updated(sport_number : int)
 signal stats_updated(stats : Dictionary[String, Array])
+signal current_boosts_updated(boost_dict : Dictionary[Stats, int])
+signal current_feelings_updated(feelings_dict : Dictionary[Feelings, int])
 signal my_plays_updated(updated_plays : Array[Plays])
 signal my_trait_updated(updated_trait : Trait)
 signal health_updated(health : int)
@@ -42,9 +44,17 @@ signal health_updated(health : int)
 		my_trait = value
 		my_trait_updated.emit(my_trait)
 
-@export var current_boosts : Dictionary[Stats, int] = {}
+@export var current_boosts : Dictionary[Stats, int] = {} :
+	set(value):
+		value.sort()
+		current_boosts = value
+		current_boosts_updated.emit(current_boosts)
 
-@export var current_feelings : Dictionary[Feelings, int] = {}
+@export var current_feelings : Dictionary[Feelings, int] = {} :
+	set(value):
+		value.sort()
+		current_feelings = value
+		current_feelings_updated.emit(current_feelings)
 
 @export_group("Less important")
 @export var my_name : String = "" :

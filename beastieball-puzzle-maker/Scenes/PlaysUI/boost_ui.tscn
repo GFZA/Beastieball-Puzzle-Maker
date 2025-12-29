@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://brba6p5e5xokk"]
+
+[ext_resource type="Script" uid="uid://bca8urfgsjynv" path="res://Scenes/Healthbar/parallelogram.gd" id="1_230is"]
+[ext_resource type="Script" uid="uid://bse6rlji83vb7" path="res://Scenes/PlaysUI/boost_ui.gd" id="1_hw5lw"]
+[ext_resource type="FontFile" uid="uid://q2kbgu0jja56" path="res://Resources/Fonts/sportsjersey.ttf" id="2_icept"]
+
+[node name="BoostUI" type="MarginContainer"]
+custom_minimum_size = Vector2(435, 142)
+size_flags_horizontal = 3
+script = ExtResource("1_hw5lw")
+
+[node name="BoostBG" type="Polygon2D" parent="."]
+color = Color(0.23529412, 0.20392157, 0.29803923, 1)
+polygon = PackedVector2Array(37, 142, 0, 0, 398, 0, 435, 142)
+script = ExtResource("1_230is")
+metadata/_custom_type_script = "uid://bca8urfgsjynv"
+metadata/_edit_lock_ = true
+
+[node name="NameContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="NameContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+
+[node name="BoostLabel" type="RichTextLabel" parent="NameContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/default_color = Color(0.89411765, 0.84313726, 0.78039217, 1)
+theme_override_constants/line_separation = -1
+theme_override_constants/paragraph_separation = -12
+theme_override_fonts/normal_font = ExtResource("2_icept")
+theme_override_font_sizes/normal_font_size = 72
+bbcode_enabled = true
+text = "No BOOSTs"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Spacer2" type="Control" parent="NameContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2

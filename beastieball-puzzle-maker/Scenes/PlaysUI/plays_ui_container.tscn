@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dksxc3rs20kkc"]
+[gd_scene load_steps=6 format=3 uid="uid://dksxc3rs20kkc"]
 
 [ext_resource type="Script" uid="uid://cq4wjdh73nd7s" path="res://Scenes/PlaysUI/plays_ui_container.gd" id="1_58jbj"]
 [ext_resource type="PackedScene" uid="uid://b4bws0qofhe6x" path="res://Scenes/PlaysUI/plays_ui.tscn" id="1_lkkpg"]
 [ext_resource type="FontFile" uid="uid://cvfib27cf5q88" path="res://Resources/Fonts/Go Banana.ttf" id="4_pxnfs"]
 [ext_resource type="Script" uid="uid://bca8urfgsjynv" path="res://Scenes/Healthbar/parallelogram.gd" id="4_tepdj"]
+[ext_resource type="PackedScene" uid="uid://brba6p5e5xokk" path="res://Scenes/PlaysUI/boost_ui.tscn" id="4_yny4v"]
 
 [node name="PlaysUIContainer" type="Control"]
 custom_minimum_size = Vector2(1250, 700)
@@ -111,19 +112,13 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 
-[node name="Control" type="Control" parent="MainContainer/MainUpperContainer/DamageSideContainer/BoostIndicatorContainer"]
+[node name="Spacer" type="Control" parent="MainContainer/MainUpperContainer/DamageSideContainer/BoostIndicatorContainer"]
 custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="MainContainer/MainUpperContainer/DamageSideContainer/BoostIndicatorContainer"]
+[node name="BoostUI" parent="MainContainer/MainUpperContainer/DamageSideContainer/BoostIndicatorContainer" instance=ExtResource("4_yny4v")]
+unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="BoostBG" type="Polygon2D" parent="MainContainer/MainUpperContainer/DamageSideContainer/BoostIndicatorContainer/MarginContainer"]
-color = Color(0.22745098, 0.20392157, 0.29411766, 1)
-polygon = PackedVector2Array(37, 142, 0, 0, 398, 0, 435, 142)
-script = ExtResource("4_tepdj")
-metadata/_custom_type_script = "uid://bca8urfgsjynv"
 
 [node name="TraitContainer" type="HBoxContainer" parent="MainContainer"]
 custom_minimum_size = Vector2(0, 80)

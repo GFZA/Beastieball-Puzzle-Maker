@@ -14,6 +14,7 @@ const LOWER_OFFSET := 105.0
 		if value == null:
 			update_plays_ui(Beastie.get_empty_slot_plays_array())
 			update_trait_label(null)
+			boost_ui.beastie = null
 			my_field_positon = Beastie.Position.NOT_ASSIGNED
 			if beastie:
 				if beastie.my_plays_updated.is_connected(update_plays_ui):
@@ -28,6 +29,7 @@ const LOWER_OFFSET := 105.0
 		beastie.my_trait_updated.connect(update_trait_label)
 		update_plays_ui(beastie.my_plays)
 		update_trait_label(beastie.my_trait)
+		boost_ui.beastie = beastie
 		my_field_positon = beastie.my_field_position
 
 @export var my_side : Global.MySide = Global.MySide.LEFT :
@@ -57,6 +59,8 @@ var my_field_positon : Beastie.Position = Beastie.Position.NOT_ASSIGNED :
 @onready var plays_ui_two: PlaysUI = %PlaysUITwo
 @onready var plays_ui_three: PlaysUI = %PlaysUIThree
 @onready var trait_label: RichTextLabel = %TraitLabel
+
+@onready var boost_ui: BoostUI = %BoostUI
 
 
 func update_plays_ui(new_list : Array[Plays]) -> void:
