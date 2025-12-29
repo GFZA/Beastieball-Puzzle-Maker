@@ -6,129 +6,155 @@
 [ext_resource type="Script" uid="uid://bca8urfgsjynv" path="res://Scenes/Healthbar/parallelogram.gd" id="4_tepdj"]
 
 [node name="PlaysUIContainer" type="Control"]
-custom_minimum_size = Vector2(1410, 700)
+custom_minimum_size = Vector2(1250, 700)
 layout_mode = 3
 anchors_preset = 0
 offset_left = -246.75
-offset_right = 1163.2501
+offset_right = 1003.25
 offset_bottom = 700.0
-scale = Vector2(0.35, 0.35)
 size_flags_horizontal = 0
 size_flags_vertical = 0
 script = ExtResource("1_58jbj")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-custom_minimum_size = Vector2(1410, 700)
+[node name="MainContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(1250, 700)
 layout_mode = 0
-offset_right = 1410.0
+offset_right = 1250.0
 offset_bottom = 700.0
 theme_override_constants/separation = 8
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="MainUpperContainer" type="HBoxContainer" parent="MainContainer"]
 layout_mode = 2
+theme_override_constants/separation = -104
 
-[node name="MainPlaysContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+[node name="MainPlaysContainer" type="VBoxContainer" parent="MainContainer/MainUpperContainer"]
 layout_mode = 2
-theme_override_constants/separation = 8
+theme_override_constants/separation = 9
 
-[node name="PlayOneContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/MainPlaysContainer"]
+[node name="PlayOneContainer" type="HBoxContainer" parent="MainContainer/MainUpperContainer/MainPlaysContainer"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="PlaysUIOne" parent="VBoxContainer/HBoxContainer/MainPlaysContainer/PlayOneContainer" instance=ExtResource("1_lkkpg")]
+[node name="PlaysUIOne" parent="MainContainer/MainUpperContainer/MainPlaysContainer/PlayOneContainer" instance=ExtResource("1_lkkpg")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Spacer" type="Control" parent="VBoxContainer/HBoxContainer/MainPlaysContainer/PlayOneContainer"]
+[node name="Spacer" type="Control" parent="MainContainer/MainUpperContainer/MainPlaysContainer/PlayOneContainer"]
 custom_minimum_size = Vector2(35, 0)
 layout_mode = 2
 
-[node name="Spacer2" type="Control" parent="VBoxContainer/HBoxContainer/MainPlaysContainer/PlayOneContainer"]
+[node name="Spacer2" type="Control" parent="MainContainer/MainUpperContainer/MainPlaysContainer/PlayOneContainer"]
 custom_minimum_size = Vector2(35, 0)
 layout_mode = 2
 
-[node name="PlayTwoContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/MainPlaysContainer"]
+[node name="PlayTwoContainer" type="HBoxContainer" parent="MainContainer/MainUpperContainer/MainPlaysContainer"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Spacer" type="Control" parent="VBoxContainer/HBoxContainer/MainPlaysContainer/PlayTwoContainer"]
+[node name="Spacer" type="Control" parent="MainContainer/MainUpperContainer/MainPlaysContainer/PlayTwoContainer"]
 custom_minimum_size = Vector2(38, 0)
 layout_mode = 2
 
-[node name="PlaysUITwo" parent="VBoxContainer/HBoxContainer/MainPlaysContainer/PlayTwoContainer" instance=ExtResource("1_lkkpg")]
+[node name="PlaysUITwo" parent="MainContainer/MainUpperContainer/MainPlaysContainer/PlayTwoContainer" instance=ExtResource("1_lkkpg")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Spacer2" type="Control" parent="VBoxContainer/HBoxContainer/MainPlaysContainer/PlayTwoContainer"]
+[node name="Spacer2" type="Control" parent="MainContainer/MainUpperContainer/MainPlaysContainer/PlayTwoContainer"]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 
-[node name="PlayThreeContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/MainPlaysContainer"]
+[node name="PlayThreeContainer" type="HBoxContainer" parent="MainContainer/MainUpperContainer/MainPlaysContainer"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Spacer" type="Control" parent="VBoxContainer/HBoxContainer/MainPlaysContainer/PlayThreeContainer"]
+[node name="Spacer" type="Control" parent="MainContainer/MainUpperContainer/MainPlaysContainer/PlayThreeContainer"]
 custom_minimum_size = Vector2(35, 0)
 layout_mode = 2
 
-[node name="Spacer2" type="Control" parent="VBoxContainer/HBoxContainer/MainPlaysContainer/PlayThreeContainer"]
+[node name="Spacer2" type="Control" parent="MainContainer/MainUpperContainer/MainPlaysContainer/PlayThreeContainer"]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 
-[node name="PlaysUIThree" parent="VBoxContainer/HBoxContainer/MainPlaysContainer/PlayThreeContainer" instance=ExtResource("1_lkkpg")]
+[node name="PlaysUIThree" parent="MainContainer/MainUpperContainer/MainPlaysContainer/PlayThreeContainer" instance=ExtResource("1_lkkpg")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="DamagePreviewContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+[node name="DamageSideContainer" type="VBoxContainer" parent="MainContainer/MainUpperContainer"]
+custom_minimum_size = Vector2(510, 446)
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 8
+theme_override_constants/separation = 9
 
-[node name="DamagePreview" type="Control" parent="VBoxContainer/HBoxContainer/DamagePreviewContainer"]
+[node name="DamagePreviewContainer" type="HBoxContainer" parent="MainContainer/MainUpperContainer/DamageSideContainer"]
+custom_minimum_size = Vector2(459, 292)
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
+theme_override_constants/separation = 0
 
-[node name="BoostIndicator" type="Control" parent="VBoxContainer/HBoxContainer/DamagePreviewContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MainContainer/MainUpperContainer/DamageSideContainer/DamagePreviewContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DamageBG" type="Polygon2D" parent="MainContainer/MainUpperContainer/DamageSideContainer/DamagePreviewContainer/MarginContainer"]
+polygon = PackedVector2Array(74, 292, 0, 0, 395, 0, 470, 292)
+script = ExtResource("4_tepdj")
+metadata/_custom_type_script = "uid://bca8urfgsjynv"
+
+[node name="BoostIndicatorContainer" type="HBoxContainer" parent="MainContainer/MainUpperContainer/DamageSideContainer"]
+custom_minimum_size = Vector2(459, 145)
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/separation = 0
 
-[node name="TraitContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Control" type="Control" parent="MainContainer/MainUpperContainer/DamageSideContainer/BoostIndicatorContainer"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MainContainer/MainUpperContainer/DamageSideContainer/BoostIndicatorContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BoostBG" type="Polygon2D" parent="MainContainer/MainUpperContainer/DamageSideContainer/BoostIndicatorContainer/MarginContainer"]
+polygon = PackedVector2Array(37, 142, 0, 0, 398, 0, 435, 142)
+script = ExtResource("4_tepdj")
+metadata/_custom_type_script = "uid://bca8urfgsjynv"
+
+[node name="TraitContainer" type="HBoxContainer" parent="MainContainer"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Spacer" type="Control" parent="VBoxContainer/TraitContainer"]
+[node name="Spacer" type="Control" parent="MainContainer/TraitContainer"]
 custom_minimum_size = Vector2(109, 250)
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/TraitContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MainContainer/TraitContainer"]
 custom_minimum_size = Vector2(255, 80)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="BackgroundPara" type="Polygon2D" parent="VBoxContainer/TraitContainer/MarginContainer"]
+[node name="BackgroundPara" type="Polygon2D" parent="MainContainer/TraitContainer/MarginContainer"]
 unique_name_in_owner = true
 position = Vector2(335.49652, 0)
 scale = Vector2(2.8662708, 3.1250005)
 color = Color(0.8352941, 0.87058824, 0.85882354, 1)
-polygon = PackedVector2Array(-98, 80, -117, 0, 318, 0, 337, 80)
+polygon = PackedVector2Array(-98, 80, -117, 0, 260.70578, 0, 280, 80)
 script = ExtResource("4_tepdj")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TraitContainer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MainContainer/TraitContainer/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="Spacer" type="Control" parent="VBoxContainer/TraitContainer/MarginContainer/HBoxContainer"]
+[node name="Spacer" type="Control" parent="MainContainer/TraitContainer/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(25, 250)
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/TraitContainer/MarginContainer/HBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="MainContainer/TraitContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TraitLabel" type="RichTextLabel" parent="VBoxContainer/TraitContainer/MarginContainer/HBoxContainer/MarginContainer2"]
+[node name="TraitLabel" type="RichTextLabel" parent="MainContainer/TraitContainer/MarginContainer/HBoxContainer/MarginContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
@@ -145,7 +171,7 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Spacer2" type="Control" parent="VBoxContainer/TraitContainer/MarginContainer/HBoxContainer"]
+[node name="Spacer2" type="Control" parent="MainContainer/TraitContainer/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(25, 250)
 layout_mode = 2
 size_flags_horizontal = 0
