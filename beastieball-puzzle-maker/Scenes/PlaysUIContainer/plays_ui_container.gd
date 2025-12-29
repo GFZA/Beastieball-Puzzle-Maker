@@ -67,9 +67,15 @@ var my_field_positon : Beastie.Position = Beastie.Position.NOT_ASSIGNED :
 func update_plays_ui(new_list : Array[Plays]) -> void:
 	if not is_node_ready():
 		await ready
+
 	plays_ui_one.my_play = new_list[0]
 	plays_ui_two.my_play = new_list[1]
 	plays_ui_three.my_play = new_list[2]
+
+	if new_list[0] and new_list[0].type in [Plays.Type.ATTACK_BODY, Plays.Type.ATTACK_SPIRIT, Plays.Type.ATTACK_MIND]:
+		damage_indicator.attack = new_list[0]
+	else:
+		damage_indicator.attack = null
 
 
 func update_trait_label(new_trait : Trait) -> void:
@@ -86,3 +92,5 @@ func _update_side() -> void:
 
 	var new_index : int = 0 if my_side == Global.MySide.LEFT else 1
 	main_upper_container.move_child(main_plays_container, new_index)
+
+	damage_indicator.my_side = my_side

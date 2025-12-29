@@ -13,6 +13,7 @@ const PLACEHOLDER_TEXT := "No BOOSTs"
 				beastie.current_boosts_updated.disconnect(_update_boost_label)
 			_update_boost_label({})
 			beastie = value
+			return
 
 		beastie = value
 		beastie.current_boosts_updated.connect(_update_boost_label)

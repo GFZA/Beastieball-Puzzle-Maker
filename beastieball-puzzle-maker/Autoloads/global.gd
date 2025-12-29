@@ -3,6 +3,19 @@ extends Node
 
 enum MySide {LEFT, RIGHT}
 
+#region Main Color Datas
+enum ColorType {BODY, SPIRIT, MIND}
+
+const COLOR_DICT : Dictionary[ColorType, Color] = {
+	ColorType.BODY : Color(0.984, 0.878, 0.353, 1.0),
+	ColorType.SPIRIT : Color(0.98, 0.525, 0.69, 1.0),
+	ColorType.MIND : Color(0.592, 0.851, 0.984, 1.0),
+}
+
+func get_main_color(color_type : ColorType) -> Color:
+	return COLOR_DICT.get(color_type) if COLOR_DICT.has(color_type) else Color.GREEN
+#endregion
+
 #region Icon Datas
 enum Icon {
 	ERROR,
