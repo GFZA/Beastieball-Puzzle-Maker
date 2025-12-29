@@ -131,7 +131,7 @@ signal health_updated(health : int)
 }
 @export var y_offset : int = 0
 
-
+var my_side : Global.MySide = Global.MySide.LEFT
 var my_field_position : Position = Position.NOT_ASSIGNED
 var ally_field_position : Position = Position.NOT_ASSIGNED
 

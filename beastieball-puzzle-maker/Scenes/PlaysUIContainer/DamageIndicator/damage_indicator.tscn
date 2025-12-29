@@ -9,7 +9,7 @@ size_flags_horizontal = 2
 script = ExtResource("1_o02kc")
 
 [node name="DamageBGBlack" type="Polygon2D" parent="."]
-color = Color(0, 0, 0, 1)
+color = Color(0.23529412, 0.20392157, 0.29803923, 1)
 polygon = PackedVector2Array(74, 292, 0, 0, 395, 0, 470, 292)
 script = ExtResource("1_1q1yd")
 metadata/_custom_type_script = "uid://bca8urfgsjynv"

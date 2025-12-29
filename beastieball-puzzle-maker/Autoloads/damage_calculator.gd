@@ -30,14 +30,11 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack) -> int:
 	var total_defense_stat : int = defender.get_total_stats_value(stats_type_defense)
 
 	var attacker_at_net : bool = attacker.check_if_net()
-	print(attacker.specie_name + " is at net : " + str(attacker_at_net))
 	var attack_boosts : int = attacker.get_boosts(stats_type_attack)
 	var jazzed : bool = (attacker.get_feeling_stack(Beastie.Feelings.JAZZED) > 0)
 
 	var defender_at_net : bool = defender.check_if_net()
-	print(defender.specie_name + " is at net : " + str(defender_at_net))
 	var defender_is_stacked : bool = defender.check_if_stack()
-	print(defender.specie_name + " is stacked : " + str(defender_is_stacked))
 	var defense_boosts : int = defender.get_boosts(stats_type_defense)
 	var tough : bool = (defender.get_feeling_stack(Beastie.Feelings.TOUGH) > 0)
 	#var tender : bool = (defender.get_feeling_stack(Beastie.Feelings.TENDER) > 0)

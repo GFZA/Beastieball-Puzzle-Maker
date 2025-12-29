@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=11 format=3 uid="uid://bcbimbxa1q008"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=12 format=3 uid="uid://bcbimbxa1q008"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Resources/Plays/plays.gd" id="1_md10g"]
 [ext_resource type="Resource" uid="uid://b8r5fp676ri1m" path="res://Resources/Plays/Attack/launch.tres" id="2_35pl8"]
 [ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Resources/Trait/trait.gd" id="2_mbf1s"]
+[ext_resource type="Resource" uid="uid://bkvjnb4ut5rjo" path="res://Resources/Trait/neural_net.tres" id="2_mqybc"]
 [ext_resource type="Script" uid="uid://ehabj4qsgxpl" path="res://Resources/Beastie/beastie.gd" id="3_35pl8"]
 [ext_resource type="Texture2D" uid="uid://b1b4ub6s60bxt" path="res://Resources/Beastie/Riplash/riplash_idle.png" id="5_dsc4k"]
 [ext_resource type="Texture2D" uid="uid://kp537i517l56" path="res://Resources/Beastie/Riplash/riplash_ready.png" id="6_mqybc"]
@@ -13,6 +14,8 @@
 
 [resource]
 script = ExtResource("3_35pl8")
+my_plays = Array[ExtResource("1_md10g")]([null, null, null])
+my_trait = ExtResource("2_mqybc")
 specie_name = "Riplash"
 bar_color = Color(0.94509804, 0.7647059, 0.28627452, 1)
 body_base_pow = 105
@@ -30,5 +33,4 @@ sprites = Dictionary[int, Texture2D]({
 4: ExtResource("9_sjiu7"),
 5: ExtResource("10_rellg")
 })
-my_plays = Array[ExtResource("1_md10g")]([null, null, null])
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"

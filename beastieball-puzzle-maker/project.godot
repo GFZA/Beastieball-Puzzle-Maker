@@ -26,6 +26,11 @@ window/size/viewport_height=1080
 window/size/resizable=false
 window/stretch/mode="canvas_items"
 
+[global_group]
+
+board_manager=""
+plays_ui_container=""
+
 [input]
 
 screenshot={

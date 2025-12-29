@@ -32,6 +32,8 @@ func _update_number_label() -> void:
 
 
 func _update_color() -> void:
+	if not is_node_ready():
+		await ready
 	var new_color : Color = Color.GREEN
 	if attack:
 		var index : int = int(attack.type)

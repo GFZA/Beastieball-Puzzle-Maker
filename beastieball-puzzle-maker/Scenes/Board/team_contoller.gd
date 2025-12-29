@@ -2,6 +2,8 @@
 class_name TeamController
 extends Node2D
 
+signal field_updated(pos_dict : Dictionary[Beastie.Position, Beastie])
+
 const BEASTIE_SCENE := preload("uid://dptoj76e40ldo")
 enum FieldID {ONE, TWO}
 enum BenchID {ONE, TWO, THREE}
@@ -10,6 +12,11 @@ enum BenchID {ONE, TWO, THREE}
 	set(value):
 		if value:
 			value = value.duplicate(true)
+			value.my_side = side
+			value.my_plays_updated.connect(_update_field.unbind(1))
+			value.my_trait_updated.connect(_update_field.unbind(1))
+			value.current_boosts_updated.connect(_update_field.unbind(1))
+			value.current_feelings_updated.connect(_update_field.unbind(1))
 		beastie_1 = value
 		field_array[0][0] = beastie_1
 		_update_field()
@@ -24,6 +31,11 @@ enum BenchID {ONE, TWO, THREE}
 	set(value):
 		if value:
 			value = value.duplicate(true)
+			value.my_side = side
+			value.my_plays_updated.connect(_update_field.unbind(1))
+			value.my_trait_updated.connect(_update_field.unbind(1))
+			value.current_boosts_updated.connect(_update_field.unbind(1))
+			value.current_feelings_updated.connect(_update_field.unbind(1))
 		beastie_2 = value
 		field_array[1][0] = beastie_2
 		_update_field()
@@ -63,7 +75,7 @@ func _update_field() -> void:
 		for child in marker.get_children():
 			child.queue_free()
 
-	for data_array in field_array:
+	for data_array in field_array: # Each data_array is [Beastie, Beastie.Position]
 		if data_array[0]:
 			data_array[0].my_field_position = data_array[1] # Assign position into the resource
 			var new_scene : BeastieScene = BEASTIE_SCENE.instantiate()
@@ -75,3 +87,18 @@ func _update_field() -> void:
 	if field_array[0][0] and field_array[1][0]: # Vomit-inducing code...
 		field_array[0][0].ally_field_position = field_array[1][1]
 		field_array[1][0].ally_field_position = field_array[0][1]
+
+	field_updated.emit(get_position_dict())
+
+
+func get_position_dict() -> Dictionary[Beastie.Position, Beastie]:
+	var result : Dictionary[Beastie.Position, Beastie] = {
+		Beastie.Position.UPPER_BACK : null,
+		Beastie.Position.UPPER_FRONT : null,
+		Beastie.Position.LOWER_BACK : null,
+		Beastie.Position.LOWER_FRONT : null,
+	}
+	for data_array in field_array: # Each data_array is [Beastie, Beastie.Position]
+		if data_array[0]:
+			result[data_array[1]] = data_array[0]
+	return result

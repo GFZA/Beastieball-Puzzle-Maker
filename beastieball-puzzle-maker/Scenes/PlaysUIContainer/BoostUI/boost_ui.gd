@@ -16,7 +16,8 @@ const PLACEHOLDER_TEXT := "No BOOSTs"
 			return
 
 		beastie = value
-		beastie.current_boosts_updated.connect(_update_boost_label)
+		if not beastie.current_boosts_updated.is_connected(_update_boost_label):
+			beastie.current_boosts_updated.connect(_update_boost_label)
 		_update_boost_label(beastie.current_boosts)
 
 @onready var boost_label: RichTextLabel = %BoostLabel

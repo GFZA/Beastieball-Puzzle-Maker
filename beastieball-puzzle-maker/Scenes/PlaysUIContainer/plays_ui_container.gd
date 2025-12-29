@@ -74,8 +74,11 @@ func update_plays_ui(new_list : Array[Plays]) -> void:
 
 	if new_list[0] and new_list[0].type in [Plays.Type.ATTACK_BODY, Plays.Type.ATTACK_SPIRIT, Plays.Type.ATTACK_MIND]:
 		damage_indicator.attack = new_list[0]
+		#if get_tree().get_first_node_in_group("board_manager"):
+			#Global.damage_dict_requested.emit(beastie, new_list[0], damage_indicator)
 	else:
 		damage_indicator.attack = null
+		damage_indicator.damage_dict = {}
 
 
 func update_trait_label(new_trait : Trait) -> void:
