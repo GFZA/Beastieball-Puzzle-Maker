@@ -55,7 +55,6 @@ func get_damage_dict(attacker : Beastie, attack : Attack) -> Dictionary[Beastie.
 					attacker_for_cal.my_field_position = Beastie.Position.UPPER_FRONT
 				elif attacker.my_field_position == Beastie.Position.LOWER_BACK:
 					attacker_for_cal.my_field_position = Beastie.Position.LOWER_FRONT
-				print("MOVED " + attacker.specie_name + " to " + str(attacker_for_cal.my_field_position))
 			Attack.UseCondition.BACK_ONLY: # If at front, move back for cal
 				if attacker.my_field_position == Beastie.Position.UPPER_FRONT:
 					attacker_for_cal.my_field_position = Beastie.Position.UPPER_BACK

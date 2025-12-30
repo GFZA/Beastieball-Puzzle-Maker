@@ -42,6 +42,13 @@ const DEFAULT_FONT_SIZE : int = 48
 		my_side = value
 		update_side(my_side)
 
+@export var h_allign : HorizontalAlignment = HORIZONTAL_ALIGNMENT_CENTER :
+	set(value):
+		h_allign = value
+		if not is_node_ready():
+			await ready
+		lifebar.h_allign = h_allign
+
 var beastie_name : String = "Sprecko" :
 	set(value):
 		value = value.substr(0, 12)

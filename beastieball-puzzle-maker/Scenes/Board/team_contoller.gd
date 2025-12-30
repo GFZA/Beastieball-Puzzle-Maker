@@ -27,12 +27,6 @@ enum BenchID {ONE, TWO, THREE}
 		field_array[0][1] = beastie_1_position
 		_update_field()
 
-@export var beastie_1_show_play : bool = true :
-	set(value):
-		beastie_1_show_play = value
-		if beastie_1 and find_beastie_scene(beastie_1) != null:
-			find_beastie_scene(beastie_1).show_plays = beastie_1_show_play
-
 @export var beastie_2 : Beastie = null :
 	set(value):
 		if value:
@@ -52,11 +46,26 @@ enum BenchID {ONE, TWO, THREE}
 		field_array[1][1] = beastie_2_position
 		_update_field()
 
+@export_group("Field Misc Vars")
+@export var beastie_1_show_play : bool = true :
+	set(value):
+		beastie_1_show_play = value
+		_update_show_play(beastie_1, beastie_1_show_play)
+
+@export var beastie_1_lifebar_h_allign : HorizontalAlignment = HORIZONTAL_ALIGNMENT_CENTER :
+	set(value):
+		beastie_1_lifebar_h_allign = value
+		_update_h_align(beastie_1, beastie_1_lifebar_h_allign)
+
 @export var beastie_2_show_play : bool = true :
 	set(value):
 		beastie_2_show_play = value
-		if beastie_2 and find_beastie_scene(beastie_2) != null:
-			find_beastie_scene(beastie_2).show_plays = beastie_2_show_play
+		_update_show_play(beastie_2, beastie_2_show_play)
+
+@export var beastie_2_lifebar_h_allign : HorizontalAlignment = HORIZONTAL_ALIGNMENT_CENTER :
+	set(value):
+		beastie_2_lifebar_h_allign = value
+		_update_h_align(beastie_2, beastie_2_lifebar_h_allign)
 
 @export_group("Bench")
 @export var bench_beastie_1 : Beastie = null
@@ -122,3 +131,19 @@ func find_beastie_scene(beastie : Beastie) -> BeastieScene:
 		if scene.beastie == beastie:
 			return scene
 	return null
+
+
+func _update_show_play(beastie : Beastie, show_play : bool) -> void:
+	if not is_node_ready():
+		await ready
+	await get_tree().process_frame # Need to do this for some reason...
+	if beastie and find_beastie_scene(beastie) != null:
+		find_beastie_scene(beastie).show_plays = show_play
+
+
+func _update_h_align(beastie : Beastie, h_align : HorizontalAlignment) -> void:
+	if not is_node_ready():
+		await ready
+	await get_tree().process_frame # Need to do this for some reason...
+	if beastie and find_beastie_scene(beastie) != null:
+		find_beastie_scene(beastie).h_allign = h_align

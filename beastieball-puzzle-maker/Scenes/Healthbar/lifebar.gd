@@ -18,6 +18,11 @@ extends Control
 		my_side = value
 		_update_side(my_side)
 
+@export var h_allign : HorizontalAlignment = HORIZONTAL_ALIGNMENT_CENTER :
+	set(value):
+		h_allign = value
+		_update_h_align()
+
 var my_setting : LabelSettings = null
 var max_health_upper_x : float = 0.0
 var max_health_lower_x : float = 0.0
@@ -86,3 +91,10 @@ func _update_side(new_side : Global.MySide) -> void:
 	lifebar_inner.flip_h = (new_side == Global.MySide.LEFT)
 	lifebar_backrground.flip_h = (new_side == Global.MySide.LEFT)
 	_update_inner_vars()
+
+
+func _update_h_align() -> void:
+	if not is_node_ready():
+		await ready
+	life_label.horizontal_alignment = h_allign
+	print(life_label.horizontal_alignment)

@@ -96,6 +96,7 @@ metadata/_custom_type_script = "uid://ehabj4qsgxpl"
 
 [sub_resource type="Resource" id="Resource_mx2bf"]
 script = ExtResource("17_tnjob")
+health = 40
 my_plays = Array[ExtResource("5_cv4jv")]([ExtResource("25_pmycs"), null, null])
 my_trait = ExtResource("35_oh3sv")
 specie_name = "Riplash"
@@ -166,6 +167,7 @@ unique_name_in_owner = true
 script = ExtResource("3_xc5ao")
 beastie_1 = SubResource("Resource_xc5ao")
 beastie_2 = SubResource("Resource_oh3sv")
+beastie_1_lifebar_h_allign = 0
 metadata/_edit_lock_ = true
 
 [node name="LeftUpperBackAnchor" type="Marker2D" parent="LeftTeamController"]
@@ -185,6 +187,7 @@ unique_name_in_owner = true
 script = ExtResource("3_xc5ao")
 beastie_1 = SubResource("Resource_mx2bf")
 beastie_2 = SubResource("Resource_10nv4")
+beastie_2_show_play = false
 side = 1
 metadata/_edit_lock_ = true
 

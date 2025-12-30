@@ -57,6 +57,14 @@ const PLAYS_UI_CONTAINER_SCENE : PackedScene = preload("uid://dksxc3rs20kkc")
 		stamina = value
 		stamina_updated.emit(stamina)
 
+@export var h_allign : HorizontalAlignment = HORIZONTAL_ALIGNMENT_CENTER :
+	set(value):
+		h_allign = value
+		if not is_node_ready():
+			await ready
+		if my_healthbar:
+			my_healthbar.h_allign = h_allign
+
 @export var my_side : Global.MySide = Global.MySide.LEFT :
 	set(value):
 		my_side = value
