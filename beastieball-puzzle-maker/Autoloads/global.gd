@@ -83,6 +83,27 @@ const ICON_KEYWORDS : Dictionary[String, Icon] = {
 	"STRESSED" : Icon.STRESSED
 }
 
+const FEELINGS_TO_ICON_DICT : Dictionary[Beastie.Feelings, Icon] = {
+	Beastie.Feelings.WIPED : Icon.WIPED,
+	Beastie.Feelings.TRIED : Icon.TRIED,
+	Beastie.Feelings.SHOOK : Icon.SHOOK,
+	Beastie.Feelings.JAZZED : Icon.JAZZED,
+	Beastie.Feelings.BLOCKED : Icon.BLOCKED,
+	Beastie.Feelings.WEEPY : Icon.WEEPY,
+	Beastie.Feelings.TOUGH : Icon.TOUGH,
+	Beastie.Feelings.TENDER : Icon.TENDER,
+	Beastie.Feelings.SWEATY : Icon.SWEATY,
+	Beastie.Feelings.NOISY : Icon.NOISY,
+	Beastie.Feelings.ANGRY : Icon.ANGRY,
+	Beastie.Feelings.NERVOUS : Icon.NERVOUS,
+	Beastie.Feelings.STRESSED : Icon.STRESSED
+}
+
+
+func get_icon_path_from_feelings(feelings : Beastie.Feelings) -> String:
+	var icon_enum : Icon = FEELINGS_TO_ICON_DICT.get(feelings)
+	return _get_icon_path(icon_enum)
+
 
 func get_iconified_text(text : String, have_full_stop : bool = true) -> String:
 	var new_text : String = ""
@@ -122,7 +143,7 @@ func _convert_word_to_icon_enum(word : String) -> Icon:
 
 func _get_icon_path(icon : Icon) -> String:
 	assert(icon != Icon.ERROR, "Tried to get path of non-existing icon!")
-	return ICON_PATHS.get(icon, )
+	return ICON_PATHS.get(icon)
 
 
 func _add_img_bbcode(icon : Icon) -> String:

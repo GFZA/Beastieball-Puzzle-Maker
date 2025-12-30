@@ -32,6 +32,10 @@ board_manager=""
 plays_ui_container=""
 beastie_scene=""
 
+[gui]
+
+theme/default_font_antialiasing=0
+
 [input]
 
 screenshot={

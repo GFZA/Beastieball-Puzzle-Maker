@@ -50,6 +50,12 @@
 script = ExtResource("17_tnjob")
 my_plays = Array[ExtResource("5_cv4jv")]([ExtResource("32_mx2bf"), null, null])
 my_trait = ExtResource("7_783r4")
+current_boosts = Dictionary[int, int]({
+0: 8
+})
+current_feelings = Dictionary[int, int]({
+2: 1
+})
 mind_invest_pow = 30
 specie_name = "Garood"
 bar_color = Color(0.9529412, 0.9019608, 0.77254903, 1)
@@ -76,6 +82,10 @@ script = ExtResource("17_tnjob")
 health = 30
 my_plays = Array[ExtResource("5_cv4jv")]([ExtResource("6_wvqeh"), null, null])
 my_trait = ExtResource("24_8je0h")
+current_feelings = Dictionary[int, int]({
+7: 1,
+8: 3
+})
 specie_name = "Platypulse"
 bar_color = Color(0.9882353, 0.85882354, 0.40392157, 1)
 body_base_pow = 26
@@ -99,6 +109,9 @@ script = ExtResource("17_tnjob")
 health = 40
 my_plays = Array[ExtResource("5_cv4jv")]([ExtResource("25_pmycs"), null, null])
 my_trait = ExtResource("35_oh3sv")
+current_feelings = Dictionary[int, int]({
+3: 1
+})
 specie_name = "Riplash"
 bar_color = Color(0.94509804, 0.7647059, 0.28627452, 1)
 body_base_pow = 105
@@ -121,8 +134,15 @@ metadata/_custom_type_script = "uid://ehabj4qsgxpl"
 
 [sub_resource type="Resource" id="Resource_10nv4"]
 script = ExtResource("17_tnjob")
-my_plays = Array[ExtResource("5_cv4jv")]([ExtResource("40_ea4ru"), null, null])
+my_plays = Array[ExtResource("5_cv4jv")]([ExtResource("40_ea4ru"), ExtResource("13_8je0h"), null])
 my_trait = ExtResource("41_xc5ao")
+current_boosts = Dictionary[int, int]({
+1: 2
+})
+current_feelings = Dictionary[int, int]({
+6: 1,
+10: 2
+})
 specie_name = "Orgella"
 bar_color = Color(0.89411765, 0.17254902, 0.32156864, 1)
 body_base_pow = 16
@@ -161,11 +181,21 @@ handle_input_locally = false
 size = Vector2i(2560, 1920)
 render_target_update_mode = 4
 
-[node name="Background" type="Sprite2D" parent="SubViewportContainer/SubViewport"]
+[node name="VoidBG" type="ColorRect" parent="SubViewportContainer/SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.05490196, 0.23921569, 0.40784314, 1)
+metadata/_edit_lock_ = true
+
+[node name="BoardBG" type="Sprite2D" parent="SubViewportContainer/SubViewport"]
 position = Vector2(39, 332)
 scale = Vector2(1.3, 1.3)
 texture = ExtResource("2_ea4ru")
 centered = false
+metadata/_edit_lock_ = true
 
 [node name="BoardManager" type="Node2D" parent="SubViewportContainer/SubViewport" node_paths=PackedStringArray("left_team_controller", "right_team_controller") groups=["board_manager"]]
 unique_name_in_owner = true
@@ -173,6 +203,7 @@ position = Vector2(39, 332)
 script = ExtResource("3_oh3sv")
 left_team_controller = NodePath("../LeftTeamController")
 right_team_controller = NodePath("../RightTeamController")
+metadata/_edit_lock_ = true
 
 [node name="LeftTeamController" type="Node2D" parent="SubViewportContainer/SubViewport"]
 unique_name_in_owner = true
@@ -180,19 +211,24 @@ position = Vector2(39, 332)
 script = ExtResource("3_xc5ao")
 beastie_1 = SubResource("Resource_xc5ao")
 beastie_2 = SubResource("Resource_oh3sv")
+beastie_1_lifebar_h_allign = 0
 metadata/_edit_lock_ = true
 
 [node name="LeftUpperBackAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/LeftTeamController"]
 position = Vector2(764, 589)
+gizmo_extents = 0.0
 
 [node name="LeftUpperFrontAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/LeftTeamController"]
 position = Vector2(1088, 589)
+gizmo_extents = 0.0
 
 [node name="LeftLowerBackAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/LeftTeamController"]
 position = Vector2(719, 860)
+gizmo_extents = 0.0
 
 [node name="LeftLowerFrontAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/LeftTeamController"]
 position = Vector2(1066, 861)
+gizmo_extents = 0.0
 
 [node name="RightTeamController" type="Node2D" parent="SubViewportContainer/SubViewport"]
 unique_name_in_owner = true
@@ -206,15 +242,19 @@ metadata/_edit_lock_ = true
 
 [node name="RightUpperBackAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/RightTeamController"]
 position = Vector2(1729, 589)
+gizmo_extents = 0.0
 
 [node name="RightUpperFrontAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/RightTeamController"]
 position = Vector2(1411, 589)
+gizmo_extents = 0.0
 
 [node name="RightLowerBackAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/RightTeamController"]
 position = Vector2(1772, 861)
+gizmo_extents = 0.0
 
 [node name="RightLowerFrontAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/RightTeamController"]
 position = Vector2(1427, 861)
+gizmo_extents = 0.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 unique_name_in_owner = true

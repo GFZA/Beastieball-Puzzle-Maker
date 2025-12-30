@@ -13,3 +13,13 @@ position = Vector2(0, -187)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_ga533")
 flip_h = true
+
+[node name="LeftFeelingsAnchor" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(40.76923, -225)
+gizmo_extents = 0.0
+
+[node name="RightFeelingsAnchor" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-219.23077, -225)
+gizmo_extents = 0.0

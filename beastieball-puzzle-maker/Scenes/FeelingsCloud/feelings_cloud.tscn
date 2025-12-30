@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://bx6reuiultnkv"]
+
+[ext_resource type="Texture2D" uid="uid://dvwr0nvoc4pko" path="res://Scenes/FeelingsCloud/feelings_cloud.png" id="1_cehun"]
+[ext_resource type="Script" uid="uid://btxc0ofgrgpgd" path="res://Scenes/FeelingsCloud/feelings_cloud.gd" id="1_tq0qq"]
+
+[node name="FeelingsCloud" type="Control"]
+custom_minimum_size = Vector2(194, 175)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 193.6
+offset_bottom = 175.0
+scale = Vector2(0.8, 0.8)
+script = ExtResource("1_tq0qq")
+
+[node name="CloudTextureRec" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_cehun")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 33
+
+[node name="FeelingsUIContainer" type="HBoxContainer" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 0

@@ -4,9 +4,6 @@ extends Node2D
 
 enum Turn {OFFENSE, DEFENSE, SERVE}
 
-@export var image_size : Vector2 = Vector2(2560, 1920)
-@export_range(1, 999, 1) var image_number : int = 1
-
 @export_tool_button("Get Image!") var subviewport_ss := func():
 	var original_size = sub_viewport.size
 
@@ -25,6 +22,9 @@ enum Turn {OFFENSE, DEFENSE, SERVE}
 
 	sub_viewport.size = original_size
 	sub_viewport_container.stretch = true
+
+@export var image_size : Vector2 = Vector2(2560, 1920)
+@export_range(1, 999, 1) var image_number : int = 1
 
 @onready var sub_viewport_container: SubViewportContainer = %SubViewportContainer
 @onready var sub_viewport: SubViewport = %SubViewport

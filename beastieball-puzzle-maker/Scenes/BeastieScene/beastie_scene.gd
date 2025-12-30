@@ -8,6 +8,7 @@ signal side_updated(my_side : Global.MySide)
 const PLACEHOLDER_TEXTURE : Texture2D = preload("uid://chctbds4hrdsq")
 const HEALTHBAR_SCENE : PackedScene = preload("uid://bvd7pbsfc56o0")
 const PLAYS_UI_CONTAINER_SCENE : PackedScene = preload("uid://dksxc3rs20kkc")
+const FEELINGS_CLOUD_SCENE = preload("uid://bx6reuiultnkv")
 
 @export var beastie : Beastie = null :
 	set(value):
@@ -17,13 +18,18 @@ const PLAYS_UI_CONTAINER_SCENE : PackedScene = preload("uid://dksxc3rs20kkc")
 		sprite_2d.offset.y = 0.0
 
 		if my_healthbar:
-			stamina_updated.disconnect(my_healthbar.update_lifebar)
+			if stamina_updated.is_connected(my_healthbar.update_lifebar):
+				stamina_updated.disconnect(my_healthbar.update_lifebar)
 			my_healthbar.queue_free()
 			my_healthbar = null
 
 		if my_plays_ui_container:
 			my_plays_ui_container.queue_free()
 			my_plays_ui_container = null
+
+		if my_feelings_cloud:
+			my_feelings_cloud.queue_free()
+			my_feelings_cloud = null
 
 		if value == null:
 			current_sprite = PLACEHOLDER_TEXTURE
@@ -47,6 +53,15 @@ const PLAYS_UI_CONTAINER_SCENE : PackedScene = preload("uid://dksxc3rs20kkc")
 			new_container.my_side = my_side
 			add_child(new_container)
 			my_plays_ui_container = new_container
+
+		if not my_feelings_cloud:
+			var new_cloud : FeelingsCloud = FEELINGS_CLOUD_SCENE.instantiate()
+			new_cloud.beastie = beastie
+			new_cloud.my_side = my_side
+			var anchor : Marker2D = right_feelings_anchor if my_side == Global.MySide.LEFT else left_feelings_anchor
+			anchor.add_child(new_cloud)
+			new_cloud.global_position = anchor.global_position
+			my_feelings_cloud = new_cloud
 
 		current_sprite = beastie.get_sprite(sprite_pose)
 		sprite_2d.offset.y = beastie.y_offset
@@ -95,8 +110,11 @@ var current_sprite : Texture2D = null :
 
 var my_healthbar : Healthbar = null
 var my_plays_ui_container : PlaysUIContainer = null
+var my_feelings_cloud : FeelingsCloud = null
 
 @onready var sprite_2d: Sprite2D = %Sprite2D
+@onready var left_feelings_anchor: Marker2D = %LeftFeelingsAnchor
+@onready var right_feelings_anchor: Marker2D = %RightFeelingsAnchor
 
 
 func _update_side(new_side : Global.MySide) -> void:
