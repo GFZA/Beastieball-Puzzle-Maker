@@ -45,7 +45,7 @@
 [ext_resource type="Texture2D" uid="uid://cyjba1viw1ydi" path="res://Resources/Beastie/Orgella/orgella_idle.png" id="42_oh3sv"]
 [ext_resource type="Texture2D" uid="uid://fhi0lm11ly52" path="res://Scenes/Board/board_ref_2.jpg" id="43_ul1ys"]
 
-[sub_resource type="Resource" id="Resource_8je0h"]
+[sub_resource type="Resource" id="Resource_ea4ru"]
 script = ExtResource("17_tnjob")
 my_plays = Array[ExtResource("5_cv4jv")]([ExtResource("6_wvqeh"), ExtResource("12_kxoq5"), ExtResource("13_8je0h")])
 my_trait = ExtResource("7_783r4")
@@ -70,7 +70,7 @@ sprites = Dictionary[int, Texture2D]({
 })
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"
 
-[sub_resource type="Resource" id="Resource_10nv4"]
+[sub_resource type="Resource" id="Resource_xc5ao"]
 script = ExtResource("17_tnjob")
 my_plays = Array[ExtResource("5_cv4jv")]([ExtResource("6_wvqeh"), null, null])
 my_trait = ExtResource("24_8je0h")
@@ -92,7 +92,7 @@ sprites = Dictionary[int, Texture2D]({
 })
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"
 
-[sub_resource type="Resource" id="Resource_pmycs"]
+[sub_resource type="Resource" id="Resource_oh3sv"]
 script = ExtResource("17_tnjob")
 my_plays = Array[ExtResource("5_cv4jv")]([ExtResource("25_pmycs"), ExtResource("9_so6i1"), ExtResource("31_oh3sv")])
 my_trait = ExtResource("32_mx2bf")
@@ -159,9 +159,9 @@ right_team_controller = NodePath("../RightTeamController")
 [node name="LeftTeamController" type="Node2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("3_xc5ao")
-beastie_1 = SubResource("Resource_8je0h")
+beastie_1 = SubResource("Resource_ea4ru")
 beastie_1_position = 1
-beastie_2 = SubResource("Resource_10nv4")
+beastie_2 = SubResource("Resource_xc5ao")
 metadata/_edit_lock_ = true
 
 [node name="LeftUpperBackAnchor" type="Marker2D" parent="LeftTeamController"]
@@ -179,7 +179,7 @@ position = Vector2(819, 661)
 [node name="RightTeamController" type="Node2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("3_xc5ao")
-beastie_1 = SubResource("Resource_pmycs")
+beastie_1 = SubResource("Resource_oh3sv")
 beastie_2 = SubResource("Resource_mx2bf")
 beastie_2_position = 3
 side = 1
