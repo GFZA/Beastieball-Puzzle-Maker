@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://chctbds4hrdsq" path="res://Scenes/BeastieScene/placeholder_beastie.png" id="2_ga533"]
 
 [node name="BeastieScene" type="Node2D" groups=["beastie_scene"]]
+scale = Vector2(1.3, 1.3)
 script = ExtResource("1_n0vvo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

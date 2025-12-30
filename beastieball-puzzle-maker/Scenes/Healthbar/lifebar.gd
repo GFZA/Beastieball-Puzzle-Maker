@@ -97,4 +97,3 @@ func _update_h_align() -> void:
 	if not is_node_ready():
 		await ready
 	life_label.horizontal_alignment = h_allign
-	print(life_label.horizontal_alignment)

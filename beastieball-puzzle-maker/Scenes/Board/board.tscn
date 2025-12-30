@@ -147,61 +147,84 @@ metadata/_custom_type_script = "uid://ehabj4qsgxpl"
 [node name="Board" type="Node2D"]
 script = ExtResource("1_mucxt")
 
-[node name="Background" type="Sprite2D" parent="."]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+unique_name_in_owner = true
+offset_right = 2560.0
+offset_bottom = 1920.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+unique_name_in_owner = true
+handle_input_locally = false
+size = Vector2i(2560, 1920)
+render_target_update_mode = 4
+
+[node name="Background" type="Sprite2D" parent="SubViewportContainer/SubViewport"]
+position = Vector2(39, 332)
+scale = Vector2(1.3, 1.3)
 texture = ExtResource("2_ea4ru")
 centered = false
-metadata/_edit_lock_ = true
 
-[node name="Camera2D" type="Camera2D" parent="."]
-anchor_mode = 0
-metadata/_edit_lock_ = true
-
-[node name="BoardManager" type="Node2D" parent="." node_paths=PackedStringArray("left_team_controller", "right_team_controller") groups=["board_manager"]]
+[node name="BoardManager" type="Node2D" parent="SubViewportContainer/SubViewport" node_paths=PackedStringArray("left_team_controller", "right_team_controller") groups=["board_manager"]]
 unique_name_in_owner = true
+position = Vector2(39, 332)
 script = ExtResource("3_oh3sv")
 left_team_controller = NodePath("../LeftTeamController")
 right_team_controller = NodePath("../RightTeamController")
 
-[node name="LeftTeamController" type="Node2D" parent="."]
+[node name="LeftTeamController" type="Node2D" parent="SubViewportContainer/SubViewport"]
 unique_name_in_owner = true
+position = Vector2(39, 332)
 script = ExtResource("3_xc5ao")
 beastie_1 = SubResource("Resource_xc5ao")
 beastie_2 = SubResource("Resource_oh3sv")
-beastie_1_lifebar_h_allign = 0
 metadata/_edit_lock_ = true
 
-[node name="LeftUpperBackAnchor" type="Marker2D" parent="LeftTeamController"]
-position = Vector2(587, 455)
+[node name="LeftUpperBackAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/LeftTeamController"]
+position = Vector2(764, 589)
 
-[node name="LeftUpperFrontAnchor" type="Marker2D" parent="LeftTeamController"]
-position = Vector2(834, 455)
+[node name="LeftUpperFrontAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/LeftTeamController"]
+position = Vector2(1088, 589)
 
-[node name="LeftLowerBackAnchor" type="Marker2D" parent="LeftTeamController"]
-position = Vector2(557, 661)
+[node name="LeftLowerBackAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/LeftTeamController"]
+position = Vector2(719, 860)
 
-[node name="LeftLowerFrontAnchor" type="Marker2D" parent="LeftTeamController"]
-position = Vector2(819, 661)
+[node name="LeftLowerFrontAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/LeftTeamController"]
+position = Vector2(1066, 861)
 
-[node name="RightTeamController" type="Node2D" parent="."]
+[node name="RightTeamController" type="Node2D" parent="SubViewportContainer/SubViewport"]
 unique_name_in_owner = true
+position = Vector2(39, 332)
 script = ExtResource("3_xc5ao")
 beastie_1 = SubResource("Resource_mx2bf")
 beastie_2 = SubResource("Resource_10nv4")
-beastie_2_show_play = false
+beastie_2_position = 3
 side = 1
 metadata/_edit_lock_ = true
 
-[node name="RightUpperBackAnchor" type="Marker2D" parent="RightTeamController"]
-position = Vector2(1332, 456)
+[node name="RightUpperBackAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/RightTeamController"]
+position = Vector2(1729, 589)
 
-[node name="RightUpperFrontAnchor" type="Marker2D" parent="RightTeamController"]
-position = Vector2(1088, 456)
+[node name="RightUpperFrontAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/RightTeamController"]
+position = Vector2(1411, 589)
 
-[node name="RightLowerBackAnchor" type="Marker2D" parent="RightTeamController"]
-position = Vector2(1363, 662)
+[node name="RightLowerBackAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/RightTeamController"]
+position = Vector2(1772, 861)
 
-[node name="RightLowerFrontAnchor" type="Marker2D" parent="RightTeamController"]
-position = Vector2(1101, 662)
+[node name="RightLowerFrontAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/RightTeamController"]
+position = Vector2(1427, 861)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+unique_name_in_owner = true
+visible = false
+anchor_mode = 0
+limit_enabled = false
+limit_left = 0
+limit_top = 0
+limit_right = 1920
+limit_bottom = 1080
 
 [node name="TestStuffs" type="Node" parent="."]
 
