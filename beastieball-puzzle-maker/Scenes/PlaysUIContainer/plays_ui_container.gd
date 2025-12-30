@@ -2,7 +2,7 @@
 class_name PlaysUIContainer
 extends Control
 
-const TRAIT_PLACEHOLDER_DESC := "Trait : Like to ball"
+const TRAIT_PLACEHOLDER_DESC := "Trait : Likes to ball"
 const UPPER_OFFSET := -440.0
 const LOWER_OFFSET := 105.0
 
@@ -54,6 +54,7 @@ var my_field_positon : Beastie.Position = Beastie.Position.NOT_ASSIGNED :
 @onready var main_upper_container: HBoxContainer = %MainUpperContainer
 @onready var main_plays_container: VBoxContainer = %MainPlaysContainer
 @onready var damage_side_container: VBoxContainer = %DamageSideContainer
+@onready var cheese_spacer: Control = %CheeseSpacer
 
 @onready var plays_ui_one: PlaysUI = %PlaysUIOne
 @onready var plays_ui_two: PlaysUI = %PlaysUITwo
@@ -73,10 +74,11 @@ func update_plays_ui(new_list : Array[Plays]) -> void:
 	plays_ui_three.my_play = new_list[2]
 
 	if new_list[0] and new_list[0].type in [Plays.Type.ATTACK_BODY, Plays.Type.ATTACK_SPIRIT, Plays.Type.ATTACK_MIND]:
+		_show_damage_indicator()
 		damage_indicator.attack = new_list[0]
-		#if get_tree().get_first_node_in_group("board_manager"):
-			#Global.damage_dict_requested.emit(beastie, new_list[0], damage_indicator)
+		# damage_dict will be updated by BoardManager in the Board scene
 	else:
+		_hide_damage_indicator()
 		damage_indicator.attack = null
 		damage_indicator.damage_dict = {}
 
@@ -97,3 +99,13 @@ func _update_side() -> void:
 	main_upper_container.move_child(main_plays_container, new_index)
 
 	damage_indicator.my_side = my_side
+
+
+func _show_damage_indicator() -> void:
+	damage_side_container.show()
+	cheese_spacer.show() # Need this to look goos
+
+
+func _hide_damage_indicator() -> void:
+	damage_side_container.hide()
+	cheese_spacer.hide() # Need this to look goos

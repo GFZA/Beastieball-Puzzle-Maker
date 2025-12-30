@@ -37,7 +37,7 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack) -> int:
 	var defender_is_stacked : bool = defender.check_if_stack()
 	var defense_boosts : int = defender.get_boosts(stats_type_defense)
 	var tough : bool = (defender.get_feeling_stack(Beastie.Feelings.TOUGH) > 0)
-	#var tender : bool = (defender.get_feeling_stack(Beastie.Feelings.TENDER) > 0)
+	var tender : bool = (defender.get_feeling_stack(Beastie.Feelings.TENDER) > 0)
 	#endregion
 
 	#region Get boost counts and damage mults
@@ -53,8 +53,6 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack) -> int:
 	total_defense_boost += defense_boosts
 	if jazzed:
 		total_defense_boost = mini(0, total_defense_boost)
-	#if tender:
-		# HOW THE FUCK DOES THIS SHIT WORK???
 	total_defense_boost += int(not defender_at_net) + int(defender_is_stacked)
 
 	if not attacker.my_trait:
@@ -65,8 +63,7 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack) -> int:
 		return 0
 	var blocked_mult : float = 2.0 / (2.0 + attacker.get_feeling_stack(Beastie.Feelings.BLOCKED))
 	var tough_mult : float = 1.0 / 4.0 if tough else 1.0
-	#var tender_mult : float = 2.0 if tender else 1.0
-	var tender_mult : float = 1.0 # TODO TODO TODO or not lol
+	var tender_mult : float = 2.0 if tender else 1.0
 	#var friendship_mult : float = 3.0 / 4.0 if friendship else 1.0 # TODO TODO TODO or not lol
 	var friendship_mult : float = 1.0
 	var all_damage_mults : float = (attacker.my_trait.damage_dealt_mult / defender.my_trait.damage_taken_mult) \

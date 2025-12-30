@@ -23,8 +23,7 @@
 [resource]
 script = ExtResource("2_kpbug")
 my_plays = Array[ExtResource("1_cyme1")]([null, null, null])
-my_trait = ExtResource("12_621g8")
-mind_invest_pow = 30
+my_trait = ExtResource("11_4rwsp")
 specie_name = "Garood"
 bar_color = Color(0.9529412, 0.9019608, 0.77254903, 1)
 body_base_pow = 88

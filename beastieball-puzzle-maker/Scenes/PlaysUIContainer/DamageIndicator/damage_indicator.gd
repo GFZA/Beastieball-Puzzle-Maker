@@ -24,6 +24,7 @@ const EMPTY_DAMAGE_DICT : Dictionary[Beastie.Position, int] = {
 @export var my_side : Global.MySide = Global.MySide.LEFT :
 	set(value):
 		my_side = value
+		_update_lane_labels()
 		_update_indicator()
 
 
@@ -37,6 +38,10 @@ const EMPTY_DAMAGE_DICT : Dictionary[Beastie.Position, int] = {
 @onready var lower_left_anchor: Control = %LowerLeftAnchor
 @onready var lower_right_anchor: Control = %LowerRightAnchor
 @onready var splash_anchors : Array[Control] = [upper_left_anchor, upper_right_anchor, lower_left_anchor, lower_right_anchor]
+
+@onready var lane_label_container: HBoxContainer = %LaneLabelContainer
+@onready var front_label: Label = %FrontLabel
+@onready var back_label: Label = %BackLabel
 
 
 func _update_indicator() -> void:
@@ -143,3 +148,11 @@ func _update_lines_color(new_color : Color) -> void:
 	straight_lower.color = new_color
 	sideway_left.color = new_color
 	sideway_right.color = new_color
+
+
+func _update_lane_labels() -> void:
+	if not is_node_ready():
+		await ready
+
+	var new_index : int = 0 if my_side == Global.MySide.LEFT else 1
+	lane_label_container.move_child(front_label, new_index)

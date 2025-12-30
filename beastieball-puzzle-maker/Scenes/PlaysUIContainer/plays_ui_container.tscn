@@ -26,99 +26,114 @@ offset_right = 1250.0
 offset_bottom = 700.0
 theme_override_constants/separation = 8
 
-[node name="MainUpperContainer" type="HBoxContainer" parent="MainContainer"]
+[node name="MainUpperContainerContainer" type="HBoxContainer" parent="MainContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="MainUpperContainer" type="HBoxContainer" parent="MainContainer/MainUpperContainerContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = -104
+alignment = 1
 
-[node name="MainPlaysContainer" type="VBoxContainer" parent="MainContainer/MainUpperContainer"]
+[node name="MainPlaysContainer" type="VBoxContainer" parent="MainContainer/MainUpperContainerContainer/MainUpperContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_constants/separation = 9
 
-[node name="PlayOneContainer" type="HBoxContainer" parent="MainContainer/MainUpperContainer/MainPlaysContainer"]
+[node name="PlayOneContainer" type="HBoxContainer" parent="MainContainer/MainUpperContainerContainer/MainUpperContainer/MainPlaysContainer"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="PlaysUIOne" parent="MainContainer/MainUpperContainer/MainPlaysContainer/PlayOneContainer" instance=ExtResource("1_lkkpg")]
+[node name="PlaysUIOne" parent="MainContainer/MainUpperContainerContainer/MainUpperContainer/MainPlaysContainer/PlayOneContainer" instance=ExtResource("1_lkkpg")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Spacer" type="Control" parent="MainContainer/MainUpperContainer/MainPlaysContainer/PlayOneContainer"]
+[node name="Spacer" type="Control" parent="MainContainer/MainUpperContainerContainer/MainUpperContainer/MainPlaysContainer/PlayOneContainer"]
 custom_minimum_size = Vector2(35, 0)
 layout_mode = 2
 
-[node name="Spacer2" type="Control" parent="MainContainer/MainUpperContainer/MainPlaysContainer/PlayOneContainer"]
+[node name="Spacer2" type="Control" parent="MainContainer/MainUpperContainerContainer/MainUpperContainer/MainPlaysContainer/PlayOneContainer"]
 custom_minimum_size = Vector2(35, 0)
 layout_mode = 2
 
-[node name="PlayTwoContainer" type="HBoxContainer" parent="MainContainer/MainUpperContainer/MainPlaysContainer"]
+[node name="PlayTwoContainer" type="HBoxContainer" parent="MainContainer/MainUpperContainerContainer/MainUpperContainer/MainPlaysContainer"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Spacer" type="Control" parent="MainContainer/MainUpperContainer/MainPlaysContainer/PlayTwoContainer"]
+[node name="Spacer" type="Control" parent="MainContainer/MainUpperContainerContainer/MainUpperContainer/MainPlaysContainer/PlayTwoContainer"]
 custom_minimum_size = Vector2(38, 0)
 layout_mode = 2
 
-[node name="PlaysUITwo" parent="MainContainer/MainUpperContainer/MainPlaysContainer/PlayTwoContainer" instance=ExtResource("1_lkkpg")]
+[node name="PlaysUITwo" parent="MainContainer/MainUpperContainerContainer/MainUpperContainer/MainPlaysContainer/PlayTwoContainer" instance=ExtResource("1_lkkpg")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Spacer2" type="Control" parent="MainContainer/MainUpperContainer/MainPlaysContainer/PlayTwoContainer"]
+[node name="Spacer2" type="Control" parent="MainContainer/MainUpperContainerContainer/MainUpperContainer/MainPlaysContainer/PlayTwoContainer"]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 
-[node name="PlayThreeContainer" type="HBoxContainer" parent="MainContainer/MainUpperContainer/MainPlaysContainer"]
+[node name="PlayThreeContainer" type="HBoxContainer" parent="MainContainer/MainUpperContainerContainer/MainUpperContainer/MainPlaysContainer"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Spacer" type="Control" parent="MainContainer/MainUpperContainer/MainPlaysContainer/PlayThreeContainer"]
+[node name="Spacer" type="Control" parent="MainContainer/MainUpperContainerContainer/MainUpperContainer/MainPlaysContainer/PlayThreeContainer"]
 custom_minimum_size = Vector2(35, 0)
 layout_mode = 2
 
-[node name="Spacer2" type="Control" parent="MainContainer/MainUpperContainer/MainPlaysContainer/PlayThreeContainer"]
+[node name="Spacer2" type="Control" parent="MainContainer/MainUpperContainerContainer/MainUpperContainer/MainPlaysContainer/PlayThreeContainer"]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 
-[node name="PlaysUIThree" parent="MainContainer/MainUpperContainer/MainPlaysContainer/PlayThreeContainer" instance=ExtResource("1_lkkpg")]
+[node name="PlaysUIThree" parent="MainContainer/MainUpperContainerContainer/MainUpperContainer/MainPlaysContainer/PlayThreeContainer" instance=ExtResource("1_lkkpg")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="DamageSideContainer" type="VBoxContainer" parent="MainContainer/MainUpperContainer"]
+[node name="DamageSideContainer" type="VBoxContainer" parent="MainContainer/MainUpperContainerContainer/MainUpperContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(510, 446)
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_constants/separation = 9
 
-[node name="DamagePreviewContainer" type="HBoxContainer" parent="MainContainer/MainUpperContainer/DamageSideContainer"]
+[node name="DamagePreviewContainer" type="HBoxContainer" parent="MainContainer/MainUpperContainerContainer/MainUpperContainer/DamageSideContainer"]
 custom_minimum_size = Vector2(459, 292)
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
 theme_override_constants/separation = 0
 
-[node name="DamageIndicator" parent="MainContainer/MainUpperContainer/DamageSideContainer/DamagePreviewContainer" instance=ExtResource("3_yny4v")]
+[node name="DamageIndicator" parent="MainContainer/MainUpperContainerContainer/MainUpperContainer/DamageSideContainer/DamagePreviewContainer" instance=ExtResource("3_yny4v")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Spacer" type="Control" parent="MainContainer/MainUpperContainer/DamageSideContainer/DamagePreviewContainer"]
+[node name="Spacer" type="Control" parent="MainContainer/MainUpperContainerContainer/MainUpperContainer/DamageSideContainer/DamagePreviewContainer"]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="BoostIndicatorContainer" type="HBoxContainer" parent="MainContainer/MainUpperContainer/DamageSideContainer"]
+[node name="BoostIndicatorContainer" type="HBoxContainer" parent="MainContainer/MainUpperContainerContainer/MainUpperContainer/DamageSideContainer"]
 custom_minimum_size = Vector2(459, 145)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 
-[node name="Spacer" type="Control" parent="MainContainer/MainUpperContainer/DamageSideContainer/BoostIndicatorContainer"]
+[node name="Spacer" type="Control" parent="MainContainer/MainUpperContainerContainer/MainUpperContainer/DamageSideContainer/BoostIndicatorContainer"]
 custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 
-[node name="BoostUI" parent="MainContainer/MainUpperContainer/DamageSideContainer/BoostIndicatorContainer" instance=ExtResource("4_yny4v")]
+[node name="BoostUI" parent="MainContainer/MainUpperContainerContainer/MainUpperContainer/DamageSideContainer/BoostIndicatorContainer" instance=ExtResource("4_yny4v")]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="CheeseSpacer" type="Control" parent="MainContainer/MainUpperContainerContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(56, 0)
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="TraitContainer" type="HBoxContainer" parent="MainContainer"]
 custom_minimum_size = Vector2(0, 80)

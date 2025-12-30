@@ -1,7 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://d3d6ph6ugh14g"]
+[gd_scene load_steps=6 format=3 uid="uid://d3d6ph6ugh14g"]
 
 [ext_resource type="Script" uid="uid://bca8urfgsjynv" path="res://Scenes/Healthbar/parallelogram.gd" id="1_1q1yd"]
 [ext_resource type="Script" uid="uid://b0slabepmelyu" path="res://Scenes/PlaysUIContainer/DamageIndicator/damage_indicator.gd" id="1_o02kc"]
+[ext_resource type="FontFile" uid="uid://q2kbgu0jja56" path="res://Resources/Fonts/sportsjersey.ttf" id="3_eqh3g"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5spmj"]
+font = ExtResource("3_eqh3g")
+font_size = 48
+font_color = Color(0.89411765, 0.84313726, 0.78039217, 1)
+outline_size = 16
+outline_color = Color(0.23529412, 0.20392157, 0.29803923, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_eqh3g"]
+font = ExtResource("3_eqh3g")
+font_size = 48
+font_color = Color(0.89411765, 0.84313726, 0.78039217, 1)
+outline_size = 16
+outline_color = Color(0.23529412, 0.20392157, 0.29803923, 1)
 
 [node name="DamageIndicator" type="MarginContainer"]
 custom_minimum_size = Vector2(470, 290)
@@ -68,7 +83,7 @@ unique_name_in_owner = true
 visible = false
 self_modulate = Color(1, 1, 1, 0.78431374)
 position = Vector2(-79, 0)
-color = Color(0, 1, 0, 0.78431374)
+color = Color(0, 1, 0, 1)
 polygon = PackedVector2Array(284, 292, 244, 292, 155, 0, 195, 0)
 
 [node name="SidewayRight" type="Polygon2D" parent="TargetLines"]
@@ -140,3 +155,35 @@ layout_mode = 2
 [node name="Spacer" type="Control" parent="MainContainer/LowerContainer"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="LaneIndicator" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="LaneLabelContainer" type="HBoxContainer" parent="LaneIndicator"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = -80
+
+[node name="BackLabel" type="Label" parent="LaneIndicator/LaneLabelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+text = "BACK"
+label_settings = SubResource("LabelSettings_5spmj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FrontLabel" type="Label" parent="LaneIndicator/LaneLabelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "FRONT"
+label_settings = SubResource("LabelSettings_eqh3g")
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b6gsp5w62y6ff" path="res://Scenes/BeastieScene/beastie_scene.gd" id="1_n0vvo"]
 [ext_resource type="Texture2D" uid="uid://chctbds4hrdsq" path="res://Scenes/BeastieScene/placeholder_beastie.png" id="2_ga533"]
 
-[node name="Beastie" type="Node2D"]
+[node name="BeastieScene" type="Node2D" groups=["beastie_scene"]]
 script = ExtResource("1_n0vvo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

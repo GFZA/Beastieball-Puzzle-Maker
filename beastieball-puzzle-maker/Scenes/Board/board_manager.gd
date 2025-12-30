@@ -35,8 +35,9 @@ func get_damage_dict(attacker : Beastie, attack : Attack) -> Dictionary[Beastie.
 		Beastie.Position.LOWER_FRONT : -1,
 	}
 
+	var attacker_scene : BeastieScene = find_beastie_scene(attacker) # Need to use scene to determine side because of spagetti code :(
 	var defense_side : Dictionary[Beastie.Position, Beastie] = right_team_position_dict \
-										if attacker.my_side == Global.MySide.LEFT else left_team_position_dict
+										if attacker_scene.my_side == Global.MySide.LEFT else left_team_position_dict
 	if defense_side.is_empty():
 		return result
 
@@ -46,8 +47,23 @@ func get_damage_dict(attacker : Beastie, attack : Attack) -> Dictionary[Beastie.
 			result[pos] = -1
 			continue
 
+		var attacker_for_cal : Beastie = attacker.duplicate(true)
+		attacker_for_cal.my_field_position = attacker.my_field_position
+		match attack.use_condition:
+			Attack.UseCondition.FRONT_ONLY: # If at back, move front for cal
+				if attacker.my_field_position == Beastie.Position.UPPER_BACK:
+					attacker_for_cal.my_field_position = Beastie.Position.UPPER_FRONT
+				elif attacker.my_field_position == Beastie.Position.LOWER_BACK:
+					attacker_for_cal.my_field_position = Beastie.Position.LOWER_FRONT
+				print("MOVED " + attacker.specie_name + " to " + str(attacker_for_cal.my_field_position))
+			Attack.UseCondition.BACK_ONLY: # If at front, move back for cal
+				if attacker.my_field_position == Beastie.Position.UPPER_FRONT:
+					attacker_for_cal.my_field_position = Beastie.Position.UPPER_BACK
+				elif attacker.my_field_position == Beastie.Position.LOWER_FRONT:
+					attacker_for_cal.my_field_position = Beastie.Position.LOWER_BACK
+
 		if defense_side[pos] != null:
-			result[pos] = DamageCalculator.get_damage(attacker, defense_side[pos], attack)
+			result[pos] = DamageCalculator.get_damage(attacker_for_cal, defense_side[pos], attack)
 			continue
 
 		# If defense_side[position] == null, we need to create new temporary beastie that will
@@ -58,26 +74,22 @@ func get_damage_dict(attacker : Beastie, attack : Attack) -> Dictionary[Beastie.
 		if pos == Beastie.Position.UPPER_BACK and defense_side[Beastie.Position.UPPER_FRONT] != null:
 			var beastie_move_back : Beastie = defense_side[Beastie.Position.UPPER_FRONT].duplicate(true)
 			beastie_move_back.my_field_position = Beastie.Position.UPPER_BACK
-			#print("MOVE " + beastie_move_back.specie_name + " from UPPER_FRONT (1) to " + str(beastie_move_back.my_field_position))
-			result[pos] = DamageCalculator.get_damage(attacker, beastie_move_back, attack)
+			result[pos] = DamageCalculator.get_damage(attacker_for_cal, beastie_move_back, attack)
 
 		if pos == Beastie.Position.UPPER_FRONT and defense_side[Beastie.Position.UPPER_BACK] != null:
 			var beastie_move_front : Beastie = defense_side[Beastie.Position.UPPER_BACK].duplicate(true)
 			beastie_move_front.my_field_position = Beastie.Position.UPPER_FRONT
-			#print("MOVE " + beastie_move_front.specie_name + " from UPPER_BACK (0) to " + str(beastie_move_front.my_field_position))
-			result[pos] = DamageCalculator.get_damage(attacker, beastie_move_front, attack)
+			result[pos] = DamageCalculator.get_damage(attacker_for_cal, beastie_move_front, attack)
 
 		if pos == Beastie.Position.LOWER_BACK and defense_side[Beastie.Position.LOWER_FRONT] != null:
 			var beastie_move_back : Beastie = defense_side[Beastie.Position.LOWER_FRONT].duplicate(true)
 			beastie_move_back.my_field_position = Beastie.Position.LOWER_BACK
-			#print("MOVE " + beastie_move_back.specie_name + " from LOWER_FRONT (3) to " + str(beastie_move_back.my_field_position))
-			result[pos] = DamageCalculator.get_damage(attacker, beastie_move_back, attack)
+			result[pos] = DamageCalculator.get_damage(attacker_for_cal, beastie_move_back, attack)
 
 		if pos == Beastie.Position.LOWER_FRONT and defense_side[Beastie.Position.LOWER_BACK] != null:
 			var beastie_move_front : Beastie = defense_side[Beastie.Position.LOWER_BACK].duplicate(true)
 			beastie_move_front.my_field_position = Beastie.Position.LOWER_FRONT
-			#print("MOVE " + beastie_move_front.specie_name + " from LOWER_BACK (2) to " + str(beastie_move_front.my_field_position))
-			result[pos] = DamageCalculator.get_damage(attacker, beastie_move_front, attack)
+			result[pos] = DamageCalculator.get_damage(attacker_for_cal, beastie_move_front, attack)
 
 	return result
 
@@ -92,3 +104,11 @@ func update_all_damage_indicator() -> void:
 		var first_slot : Plays = plays_ui.beastie.my_plays[0]
 		if first_slot and first_slot.type in [Plays.Type.ATTACK_BODY, Plays.Type.ATTACK_SPIRIT, Plays.Type.ATTACK_MIND]:
 			plays_ui.damage_indicator.damage_dict = get_damage_dict(plays_ui.beastie, first_slot)
+
+
+func find_beastie_scene(beastie : Beastie) -> BeastieScene:
+	var all_scene : Array[Node] = get_tree().get_nodes_in_group("beastie_scene")
+	for scene : BeastieScene in all_scene:
+		if scene.beastie == beastie:
+			return scene
+	return null

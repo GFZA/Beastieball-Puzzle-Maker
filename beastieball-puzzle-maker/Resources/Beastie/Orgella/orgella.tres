@@ -1,13 +1,16 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=5 format=3 uid="uid://b4presmunba81"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=7 format=3 uid="uid://b4presmunba81"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Resources/Plays/plays.gd" id="1_ijef1"]
 [ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Resources/Trait/trait.gd" id="2_hdk44"]
+[ext_resource type="Resource" uid="uid://del20bsclfn47" path="res://Resources/Trait/superorganism.tres" id="2_vq1k4"]
 [ext_resource type="Script" uid="uid://ehabj4qsgxpl" path="res://Resources/Beastie/beastie.gd" id="3_vq1k4"]
+[ext_resource type="Resource" uid="uid://bqwii245fpl4a" path="res://Resources/Plays/Attack/careful_shot.tres" id="3_wjx85"]
 [ext_resource type="Texture2D" uid="uid://cyjba1viw1ydi" path="res://Resources/Beastie/Orgella/orgella_idle.png" id="4_hdk44"]
 
 [resource]
 script = ExtResource("3_vq1k4")
 my_plays = Array[ExtResource("1_ijef1")]([null, null, null])
+my_trait = ExtResource("2_vq1k4")
 specie_name = "Orgella"
 bar_color = Color(0.89411765, 0.17254902, 0.32156864, 1)
 body_base_pow = 16
@@ -16,6 +19,8 @@ mind_base_pow = 49
 body_base_def = 90
 spirit_base_def = 101
 mind_base_def = 79
+possible_plays = Array[ExtResource("1_ijef1")]([ExtResource("3_wjx85")])
+possible_traits = Array[ExtResource("2_hdk44")]([ExtResource("2_vq1k4")])
 sprites = Dictionary[int, Texture2D]({
 0: ExtResource("4_hdk44"),
 1: ExtResource("4_hdk44"),

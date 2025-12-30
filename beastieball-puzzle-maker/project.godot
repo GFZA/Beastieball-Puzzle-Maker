@@ -30,6 +30,7 @@ window/stretch/mode="canvas_items"
 
 board_manager=""
 plays_ui_container=""
+beastie_scene=""
 
 [input]
 

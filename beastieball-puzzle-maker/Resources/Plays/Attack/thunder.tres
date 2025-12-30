@@ -6,6 +6,7 @@
 script = ExtResource("1_4ptk1")
 name = "Thunder"
 target = 3
+use_condition = 1
 base_pow = 110
 descrition = "Only used from net. Auto-targets back row."
 type = 0

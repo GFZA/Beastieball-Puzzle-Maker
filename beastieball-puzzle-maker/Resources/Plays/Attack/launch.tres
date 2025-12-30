@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_ou6fu")
 name = "Launch"
+use_condition = 2
 base_pow = 100
 descrition = "Only used from back row. SHIFTs self to front row."
 type = 0

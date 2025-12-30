@@ -27,6 +27,12 @@ enum BenchID {ONE, TWO, THREE}
 		field_array[0][1] = beastie_1_position
 		_update_field()
 
+@export var beastie_1_show_play : bool = true :
+	set(value):
+		beastie_1_show_play = value
+		if beastie_1 and find_beastie_scene(beastie_1) != null:
+			find_beastie_scene(beastie_1).show_plays = beastie_1_show_play
+
 @export var beastie_2 : Beastie = null :
 	set(value):
 		if value:
@@ -45,6 +51,12 @@ enum BenchID {ONE, TWO, THREE}
 		beastie_2_position = value
 		field_array[1][1] = beastie_2_position
 		_update_field()
+
+@export var beastie_2_show_play : bool = true :
+	set(value):
+		beastie_2_show_play = value
+		if beastie_2 and find_beastie_scene(beastie_2) != null:
+			find_beastie_scene(beastie_2).show_plays = beastie_2_show_play
 
 @export_group("Bench")
 @export var bench_beastie_1 : Beastie = null
@@ -102,3 +114,11 @@ func get_position_dict() -> Dictionary[Beastie.Position, Beastie]:
 		if data_array[0]:
 			result[data_array[1]] = data_array[0]
 	return result
+
+
+func find_beastie_scene(beastie : Beastie) -> BeastieScene:
+	var all_scene : Array[Node] = get_tree().get_nodes_in_group("beastie_scene")
+	for scene : BeastieScene in all_scene:
+		if scene.beastie == beastie:
+			return scene
+	return null
