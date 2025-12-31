@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="Beastie" load_steps=11 format=3 uid="uid://bgpl4atiaqssh"]
+
+[ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Resources/Plays/plays.gd" id="1_e3v75"]
+[ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Resources/Trait/trait.gd" id="2_ad7c4"]
+[ext_resource type="Resource" uid="uid://q5fhwy5qny81" path="res://Resources/Trait/intangible.tres" id="2_pro8y"]
+[ext_resource type="Script" uid="uid://ehabj4qsgxpl" path="res://Resources/Beastie/beastie.gd" id="3_6nk6x"]
+[ext_resource type="Texture2D" uid="uid://cgey1txfr4tfo" path="res://Resources/Beastie/Mistic/mistic_idle.png" id="5_c3xaf"]
+[ext_resource type="Texture2D" uid="uid://c542w2pbsb2qi" path="res://Resources/Beastie/Mistic/mistic_ready.png" id="6_oeuor"]
+[ext_resource type="Texture2D" uid="uid://i5d68yxo2884" path="res://Resources/Beastie/Mistic/mistic_spike.png" id="7_cpswo"]
+[ext_resource type="Texture2D" uid="uid://ywwxn52oqkx3" path="res://Resources/Beastie/Mistic/mistic_volley.png" id="8_721uo"]
+[ext_resource type="Texture2D" uid="uid://cmtkvjbjwiorl" path="res://Resources/Beastie/Mistic/mistic_good.png" id="9_ghbc2"]
+[ext_resource type="Texture2D" uid="uid://egp3jso6bq0n" path="res://Resources/Beastie/Mistic/mistic_bad.png" id="10_lrqlm"]
+
+[resource]
+script = ExtResource("3_6nk6x")
+my_plays = Array[ExtResource("1_e3v75")]([null, null, null])
+my_trait = ExtResource("2_pro8y")
+specie_name = "Mistic"
+bar_color = Color(0.5019608, 0.41568628, 0.52156866, 1)
+body_base_pow = 15
+spirit_base_pow = 50
+mind_base_pow = 85
+body_base_def = 105
+spirit_base_def = 50
+mind_base_def = 80
+sprites = Dictionary[int, Texture2D]({
+0: ExtResource("5_c3xaf"),
+1: ExtResource("6_oeuor"),
+2: ExtResource("7_cpswo"),
+3: ExtResource("8_721uo"),
+4: ExtResource("9_ghbc2"),
+5: ExtResource("10_lrqlm")
+})
+y_offset = -50
+ball_anchor_position = Vector2(53, -110)
+metadata/_custom_type_script = "uid://ehabj4qsgxpl"

@@ -2,7 +2,16 @@
 class_name BoardManager
 extends Node2D
 
+@export_tool_button("Save Board") var save_board_var := save_board_data
+@export var load_data : BoardData = null :
+	set(value):
+		load_board_data(value)
+		load_data = null # Read then done
 
+@export_group("Reset Board NO UNDO!")
+@export_tool_button("Reset Board") var reset_board_var := reset_board
+
+@export_group("Team Controllers")
 @export var left_team_controller : TeamController = null : # Assign permanently in inspector
 	set(value):
 		left_team_controller = value
@@ -115,3 +124,26 @@ func find_beastie_scene(beastie : Beastie) -> BeastieScene:
 		if scene.beastie == beastie:
 			return scene
 	return null
+
+
+# Behold the worse ssavd/load system ever
+
+func save_board_data() -> void:
+	var board_data := BoardData.new()
+	board_data.data = [
+		left_team_controller.get_data_to_save(),
+		right_team_controller.get_data_to_save()
+	]
+	var save_name : String = "board_%s" % (DirAccess.get_files_at("res://Resources/BoardData").size() - 1)
+	ResourceSaver.save(board_data, "res://Resources/BoardData/" + save_name + ".res")
+
+
+func load_board_data(board_data : BoardData) -> void:
+	reset_board()
+	left_team_controller.load_data_from_save(board_data.data[0])
+	right_team_controller.load_data_from_save(board_data.data[1])
+
+
+func reset_board() -> void:
+	left_team_controller.reset_team()
+	right_team_controller.reset_team()

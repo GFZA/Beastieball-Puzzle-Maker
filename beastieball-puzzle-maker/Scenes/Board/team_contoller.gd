@@ -104,9 +104,9 @@ const BEASTIE_SCENE := preload("uid://dptoj76e40ldo")
 @export var side : Global.MySide = Global.MySide.LEFT
 
 @export_group("Reset Buttons")
-@export_tool_button("Reset Position") var reset_pos_var : Callable = _reset_position
+@export_tool_button("Reset Position") var reset_pos_var : Callable = reset_position
 @export_subgroup("Reset Team NO UNDO!")
-@export_tool_button("Reset Team") var reset_team_var : Callable = _reset_team
+@export_tool_button("Reset Team") var reset_team_var : Callable = reset_team
 
 var position_markers : Array[Node] = []
 var bench_position_markers : Array[Node] = []
@@ -254,7 +254,7 @@ func _update_scene_h_align(beastie : Beastie, h_allign : HorizontalAlignment) ->
 		scene.h_allign = h_allign
 
 
-func _reset_team() -> void:
+func reset_team() -> void:
 	beastie_1_beastie = null
 	beastie_1_show_play = true
 	beastie_1_have_ball = false
@@ -267,7 +267,7 @@ func _reset_team() -> void:
 	beastie_2_ball_type = BeastieScene.BallType.EASY_RECEIVE
 	beastie_2_h_allign = HORIZONTAL_ALIGNMENT_CENTER
 
-	_reset_position()
+	reset_position()
 
 	bench_beastie_1_beastie = null
 	bench_beastie_1_show_play = true
@@ -278,7 +278,7 @@ func _reset_team() -> void:
 	bench_beastie_2_h_allign = HORIZONTAL_ALIGNMENT_CENTER
 
 
-func _reset_position() -> void:
+func reset_position() -> void:
 	beastie_1_position = Beastie.Position.UPPER_BACK
 	beastie_2_position = Beastie.Position.LOWER_BACK
 
@@ -288,3 +288,55 @@ func _check_bench_size() -> int:
 	if bench_beastie_1_beastie: count += 1
 	if bench_beastie_2_beastie: count += 1
 	return count
+
+
+# Behold the worse ssavd/load system ever
+# TODO make this better. Maybe using JSON?
+
+func get_data_to_save() -> Array:
+	return [
+		beastie_1_beastie,
+		beastie_1_position,
+		beastie_1_show_play,
+		beastie_1_have_ball,
+		beastie_1_ball_type,
+		beastie_1_h_allign,
+
+		beastie_2_beastie,
+		beastie_2_position,
+		beastie_2_show_play,
+		beastie_2_have_ball,
+		beastie_2_ball_type,
+		beastie_2_h_allign,
+
+		bench_beastie_1_beastie,
+		bench_beastie_1_show_play,
+		bench_beastie_1_h_allign,
+
+		bench_beastie_2_beastie,
+		bench_beastie_2_show_play,
+		bench_beastie_2_h_allign,
+	]
+
+func load_data_from_save(data_array : Array) -> void:
+	beastie_1_beastie = data_array[0]
+	beastie_1_position = data_array[1]
+	beastie_1_show_play = data_array[2]
+	beastie_1_have_ball = data_array[3]
+	beastie_1_ball_type = data_array[4]
+	beastie_1_h_allign = data_array[5]
+
+	beastie_2_beastie = data_array[6]
+	beastie_2_position = data_array[7]
+	beastie_2_show_play = data_array[8]
+	beastie_2_have_ball = data_array[9]
+	beastie_2_ball_type = data_array[10]
+	beastie_2_h_allign = data_array[11]
+
+	bench_beastie_1_beastie = data_array[12]
+	bench_beastie_1_show_play = data_array[13]
+	bench_beastie_1_h_allign = data_array[14]
+
+	bench_beastie_2_beastie = data_array[15]
+	bench_beastie_2_show_play = data_array[16]
+	bench_beastie_2_h_allign = data_array[17]
