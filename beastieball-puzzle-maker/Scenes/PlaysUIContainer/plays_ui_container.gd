@@ -3,7 +3,7 @@ class_name PlaysUIContainer
 extends Control
 
 const TRAIT_PLACEHOLDER_DESC := "Trait : Likes to ball"
-const UPPER_OFFSET := -440.0
+const UPPER_OFFSET := -450.0
 const LOWER_OFFSET := 105.0
 
 @export var beastie : Beastie = null :

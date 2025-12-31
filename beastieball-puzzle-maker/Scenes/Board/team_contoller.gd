@@ -5,9 +5,8 @@ extends Node2D
 signal field_updated(pos_dict : Dictionary[Beastie.Position, Beastie])
 
 const BEASTIE_SCENE := preload("uid://dptoj76e40ldo")
-enum FieldID {ONE, TWO}
-enum BenchID {ONE, TWO, THREE}
 
+@export_group("Serve Slot")
 @export var beastie_1 : Beastie = null :
 	set(value):
 		if value:
@@ -18,15 +17,34 @@ enum BenchID {ONE, TWO, THREE}
 			value.current_boosts_updated.connect(_update_field.unbind(1))
 			value.current_feelings_updated.connect(_update_field.unbind(1))
 		beastie_1 = value
-		field_array[0][0] = beastie_1
 		_update_field()
 
 @export var beastie_1_position : Beastie.Position = Beastie.Position.UPPER_BACK :
 	set(value):
 		beastie_1_position = value
-		field_array[0][1] = beastie_1_position
 		_update_field()
 
+@export var beastie_1_show_play : bool = true :
+	set(value):
+		beastie_1_show_play = value
+		_update_scene_show_plays(beastie_1, beastie_1_show_play)
+
+@export var beastie_1_have_ball : bool = false :
+	set(value):
+		beastie_1_have_ball = value
+		_update_scene_have_ball(beastie_1, beastie_1_have_ball)
+
+@export var beastie_1_ball_type : BeastieScene.BallType = BeastieScene.BallType.EASY_RECEIVE :
+	set(value):
+		beastie_1_ball_type = value
+		_update_scene_ball_type(beastie_1, beastie_1_ball_type)
+
+@export var beastie_1_lifebar_h_allign : HorizontalAlignment = HORIZONTAL_ALIGNMENT_CENTER :
+	set(value):
+		beastie_1_lifebar_h_allign = value
+		_update_scene_h_align(beastie_1, beastie_1_lifebar_h_allign)
+
+@export_group("Non-serve Slot")
 @export var beastie_2 : Beastie = null :
 	set(value):
 		if value:
@@ -37,35 +55,32 @@ enum BenchID {ONE, TWO, THREE}
 			value.current_boosts_updated.connect(_update_field.unbind(1))
 			value.current_feelings_updated.connect(_update_field.unbind(1))
 		beastie_2 = value
-		field_array[1][0] = beastie_2
 		_update_field()
 
 @export var beastie_2_position : Beastie.Position = Beastie.Position.LOWER_BACK :
 	set(value):
 		beastie_2_position = value
-		field_array[1][1] = beastie_2_position
 		_update_field()
-
-@export_group("Field Misc Vars")
-@export var beastie_1_show_play : bool = true :
-	set(value):
-		beastie_1_show_play = value
-		_update_show_play(beastie_1, beastie_1_show_play)
-
-@export var beastie_1_lifebar_h_allign : HorizontalAlignment = HORIZONTAL_ALIGNMENT_CENTER :
-	set(value):
-		beastie_1_lifebar_h_allign = value
-		_update_h_align(beastie_1, beastie_1_lifebar_h_allign)
 
 @export var beastie_2_show_play : bool = true :
 	set(value):
 		beastie_2_show_play = value
-		_update_show_play(beastie_2, beastie_2_show_play)
+		_update_scene_show_plays(beastie_2, beastie_2_show_play)
+
+@export var beastie_2_have_ball : bool = false :
+	set(value):
+		beastie_2_have_ball = value
+		_update_scene_have_ball(beastie_2, beastie_2_have_ball)
+
+@export var beastie_2_ball_type : BeastieScene.BallType = BeastieScene.BallType.EASY_RECEIVE :
+	set(value):
+		beastie_2_ball_type = value
+		_update_scene_ball_type(beastie_2, beastie_2_ball_type)
 
 @export var beastie_2_lifebar_h_allign : HorizontalAlignment = HORIZONTAL_ALIGNMENT_CENTER :
 	set(value):
 		beastie_2_lifebar_h_allign = value
-		_update_h_align(beastie_2, beastie_2_lifebar_h_allign)
+		_update_scene_h_align(beastie_2, beastie_2_lifebar_h_allign)
 
 @export_group("Bench")
 @export var bench_beastie_1 : Beastie = null
@@ -78,10 +93,10 @@ enum BenchID {ONE, TWO, THREE}
 var position_markers : Array[Node] = []
 #var bench_position_markers : Array[Node] = [] TODO TODO TODO
 
-var field_array : Array[Array] = [
-	[null, Beastie.Position.UPPER_BACK],
-	[null, Beastie.Position.LOWER_BACK]
-]
+var beastie_scene_dict : Dictionary[Beastie, BeastieScene] = {
+	beastie_1 : null,
+	beastie_2 : null
+}
 
 
 func _ready() -> void:
@@ -96,18 +111,25 @@ func _update_field() -> void:
 		for child in marker.get_children():
 			child.queue_free()
 
-	for data_array in field_array: # Each data_array is [Beastie, Beastie.Position]
-		if data_array[0]:
-			data_array[0].my_field_position = data_array[1] # Assign position into the resource
-			var new_scene : BeastieScene = BEASTIE_SCENE.instantiate()
-			new_scene.beastie = data_array[0]
-			new_scene.my_side = side
-			var index : int = int(data_array[1])
-			position_markers[index].add_child(new_scene)
+	beastie_scene_dict.clear()
 
-	if field_array[0][0] and field_array[1][0]: # Vomit-inducing code...
-		field_array[0][0].ally_field_position = field_array[1][1]
-		field_array[1][0].ally_field_position = field_array[0][1]
+	if beastie_1:
+		_add_new_beastie_scene(beastie_1, beastie_1_position)
+		_update_scene_show_plays(beastie_1, beastie_1_show_play)
+		_update_scene_have_ball(beastie_1, beastie_1_have_ball)
+		_update_scene_ball_type(beastie_1, beastie_1_ball_type)
+		_update_scene_h_align(beastie_1, beastie_1_lifebar_h_allign)
+
+	if beastie_2:
+		_add_new_beastie_scene(beastie_2, beastie_2_position)
+		_update_scene_show_plays(beastie_2, beastie_2_show_play)
+		_update_scene_have_ball(beastie_2, beastie_2_have_ball)
+		_update_scene_ball_type(beastie_2, beastie_2_ball_type)
+		_update_scene_h_align(beastie_2, beastie_2_lifebar_h_allign)
+
+	if beastie_1 and beastie_2: # Weird place to assign these?
+		beastie_1.ally_field_position = beastie_2_position
+		beastie_2.ally_field_position = beastie_1_position
 
 	field_updated.emit(get_position_dict())
 
@@ -119,31 +141,95 @@ func get_position_dict() -> Dictionary[Beastie.Position, Beastie]:
 		Beastie.Position.LOWER_BACK : null,
 		Beastie.Position.LOWER_FRONT : null,
 	}
-	for data_array in field_array: # Each data_array is [Beastie, Beastie.Position]
-		if data_array[0]:
-			result[data_array[1]] = data_array[0]
+	result[beastie_1_position] = beastie_1
+	result[beastie_2_position] = beastie_2
 	return result
 
 
-func find_beastie_scene(beastie : Beastie) -> BeastieScene:
-	var all_scene : Array[Node] = get_tree().get_nodes_in_group("beastie_scene")
-	for scene : BeastieScene in all_scene:
-		if scene.beastie == beastie:
-			return scene
-	return null
+func _add_new_beastie_scene(beastie : Beastie, new_position : Beastie.Position) -> void:
+	beastie.my_field_position = new_position # Assign position into the resource
+	var new_scene : BeastieScene = BEASTIE_SCENE.instantiate()
+	new_scene.beastie = beastie
+	new_scene.my_side = side
+	var index : int = int(new_position)
+	position_markers[index].add_child(new_scene)
+	beastie_scene_dict[beastie] = new_scene
 
 
-func _update_show_play(beastie : Beastie, show_play : bool) -> void:
+func _update_scene_show_plays(beastie : Beastie, show_plays : bool) -> void:
 	if not is_node_ready():
 		await ready
-	await get_tree().process_frame # Need to do this for some reason...
-	if beastie and find_beastie_scene(beastie) != null:
-		find_beastie_scene(beastie).show_plays = show_play
+	var scene : BeastieScene = beastie_scene_dict.get(beastie)
+	if scene:
+		scene.show_plays = show_plays
 
 
-func _update_h_align(beastie : Beastie, h_align : HorizontalAlignment) -> void:
+func _update_scene_have_ball(beastie : Beastie, have_ball : bool) -> void:
 	if not is_node_ready():
 		await ready
-	await get_tree().process_frame # Need to do this for some reason...
-	if beastie and find_beastie_scene(beastie) != null:
-		find_beastie_scene(beastie).h_allign = h_align
+	var scene : BeastieScene = beastie_scene_dict.get(beastie)
+	if scene:
+		scene.have_ball = have_ball
+
+
+func _update_scene_ball_type(beastie : Beastie, ball_type : BeastieScene.BallType) -> void:
+	if not is_node_ready():
+		await ready
+	var scene : BeastieScene = beastie_scene_dict.get(beastie)
+	if scene:
+		scene.ball_type = ball_type
+
+
+func _update_scene_h_align(beastie : Beastie, h_allign : HorizontalAlignment) -> void:
+	if not is_node_ready():
+		await ready
+	var scene : BeastieScene = beastie_scene_dict.get(beastie)
+	if scene:
+		scene.h_allign = h_allign
+
+
+
+
+
+
+
+#func find_beastie_scene(beastie : Beastie) -> BeastieScene:
+	#var all_scene : Array[Node] = get_tree().get_nodes_in_group("beastie_scene")
+	#for scene : BeastieScene in all_scene:
+		#if scene.beastie == beastie:
+			#return scene
+	#return null
+#
+## Functions below are dirty way to access the BeastieScene vars
+## Shoule be refactored later I guess...
+#
+#func _update_show_play(beastie : Beastie, show_play : bool) -> void:
+	#if not is_node_ready():
+		#await ready
+	#await get_tree().process_frame # Need to do this for some reason...
+	#if beastie and find_beastie_scene(beastie) != null:
+		#find_beastie_scene(beastie).show_plays = show_play
+#
+#
+#func _update_h_align(beastie : Beastie, h_align : HorizontalAlignment) -> void:
+	#if not is_node_ready():
+		#await ready
+	#await get_tree().process_frame # Need to do this for some reason...
+	#if beastie and find_beastie_scene(beastie) != null:
+		#find_beastie_scene(beastie).h_allign = h_align
+#
+#
+#func _update_have_ball(beastie : Beastie, have_ball : bool) -> void:
+	#if not is_node_ready():
+		#await ready
+	#await get_tree().process_frame # Need to do this for some reason...
+	#if beastie and find_beastie_scene(beastie) != null:
+		#find_beastie_scene(beastie).have_ball = have_ball
+#
+#
+#func _update_ball_type(beastie : Beastie, ball_type : BeastieScene.BallType) -> void:
+	#if not is_node_ready():
+		#await ready
+	#await get_tree().process_frame # Need to do this for some reason...
+	#if beastie and find_beastie_scene(beastie) != null:
+		#find_beastie_scene(beastie).have_ball = ball_type

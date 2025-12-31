@@ -11,10 +11,10 @@
 custom_minimum_size = Vector2(1250, 700)
 layout_mode = 3
 anchors_preset = 0
-offset_left = -187.0
-offset_right = 1063.0
+offset_left = -219.99998
+offset_right = 1030.0
 offset_bottom = 700.0
-scale = Vector2(0.3, 0.3)
+scale = Vector2(0.35, 0.35)
 size_flags_horizontal = 0
 size_flags_vertical = 0
 script = ExtResource("1_58jbj")
