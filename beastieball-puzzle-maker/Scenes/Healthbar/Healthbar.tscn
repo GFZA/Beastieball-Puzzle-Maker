@@ -301,7 +301,7 @@ offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BackgroundPara" type="Polygon2D" parent="MarginContainer" groups=["hide_when_benched"]]
+[node name="BackgroundPara" type="Polygon2D" parent="MarginContainer"]
 unique_name_in_owner = true
 position = Vector2(117, 0)
 polygon = PackedVector2Array(-117, 80, -97, 0, 138, 0, 118, 80)
@@ -321,11 +321,18 @@ theme_override_constants/margin_bottom = 0
 layout_mode = 2
 theme_override_constants/separation = -4
 
-[node name="Spacer2" type="Control" parent="MarginContainer/ControlsAnchor/MainContainer" groups=["hide_when_benched"]]
+[node name="UpperSpacer" type="Control" parent="MarginContainer/ControlsAnchor/MainContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="UpperContainer" type="HBoxContainer" parent="MarginContainer/ControlsAnchor/MainContainer" groups=["hide_when_benched"]]
+[node name="UpperBenchSpacer" type="Control" parent="MarginContainer/ControlsAnchor/MainContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+
+[node name="UpperContainer" type="HBoxContainer" parent="MarginContainer/ControlsAnchor/MainContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_stretch_ratio = 0.5
@@ -348,7 +355,8 @@ size_flags_horizontal = 3
 text = "#123"
 label_settings = SubResource("LabelSettings_1i8kh")
 
-[node name="Spacer" type="Control" parent="MarginContainer/ControlsAnchor/MainContainer" groups=["hide_when_benched"]]
+[node name="UpperSpacer2" type="Control" parent="MarginContainer/ControlsAnchor/MainContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -356,7 +364,7 @@ size_flags_vertical = 3
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="LowerSpacer" type="Control" parent="MarginContainer/ControlsAnchor/MainContainer/LowerContaiener" groups=["hide_when_benched"]]
+[node name="LowerSpacer" type="Control" parent="MarginContainer/ControlsAnchor/MainContainer/LowerContaiener"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(15, 0)
 layout_mode = 2
@@ -366,11 +374,12 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 6
 
-[node name="LowerSpacer2" type="Control" parent="MarginContainer/ControlsAnchor/MainContainer/LowerContaiener" groups=["hide_when_benched"]]
+[node name="LowerSpacer2" type="Control" parent="MarginContainer/ControlsAnchor/MainContainer/LowerContaiener"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(13, 0)
 layout_mode = 2
 
-[node name="LevelLabel" type="Label" parent="MarginContainer/ControlsAnchor/MainContainer/LowerContaiener" groups=["hide_when_benched"]]
+[node name="LevelLabel" type="Label" parent="MarginContainer/ControlsAnchor/MainContainer/LowerContaiener"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 2

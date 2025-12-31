@@ -74,12 +74,25 @@ var color : Color = Color.GREEN :
 var my_name_setting : LabelSettings = null
 var my_level_setting : LabelSettings = null
 
+@onready var background_para: Parallelogram = %BackgroundPara
+
+@onready var upper_spacer: Control = %UpperSpacer
+@onready var upper_bench_spacer: Control = %UpperBenchSpacer
 @onready var name_label: Label = %NameLabel
 @onready var number_label: Label = %NumberLabel
-@onready var lifebar: LifeBar = %Lifebar
-@onready var level_label: Label = %LevelLabel
-@onready var background_para: Parallelogram = %BackgroundPara
+@onready var upper_spacer_2: Control = %UpperSpacer2
+
 @onready var lower_spacer: Control = %LowerSpacer
+@onready var lifebar: LifeBar = %Lifebar
+@onready var lower_spacer_2: Control = %LowerSpacer2
+@onready var level_label: Label = %LevelLabel
+
+@onready var my_nodes_to_hide := [
+	background_para,
+	upper_spacer, name_label, number_label, upper_spacer_2,
+	lower_spacer, lower_spacer_2, level_label
+] # Can't use node group as it will add nodes from other BeastieScene
+
 
 func _ready() -> void:
 	if not is_node_ready():
@@ -160,9 +173,10 @@ func _update_benched() -> void:
 	if not is_node_ready():
 		await ready
 
-	var nodes_to_hide := get_tree().get_nodes_in_group("hide_when_benched")
-	for node in nodes_to_hide:
+	for node in my_nodes_to_hide:
 		if benched:
 			node.hide()
+			upper_bench_spacer.show()
 		else:
 			node.show()
+			upper_bench_spacer.hide()

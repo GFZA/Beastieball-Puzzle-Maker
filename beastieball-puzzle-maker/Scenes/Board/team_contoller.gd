@@ -6,10 +6,10 @@ signal field_updated(pos_dict : Dictionary[Beastie.Position, Beastie])
 
 const BEASTIE_SCENE := preload("uid://dptoj76e40ldo")
 
-@export_group("Serve Slot")
-@export var beastie_1 : Beastie = null :
+@export_group("Serve Slot", "beastie_1_")
+@export var beastie_1_beastie : Beastie = null :
 	set(value):
-		beastie_1 = _process_beastie_value(value)
+		beastie_1_beastie = _process_beastie_value(value)
 		_update_field()
 
 @export var beastie_1_position : Beastie.Position = Beastie.Position.UPPER_BACK :
@@ -20,34 +20,27 @@ const BEASTIE_SCENE := preload("uid://dptoj76e40ldo")
 @export var beastie_1_show_play : bool = true :
 	set(value):
 		beastie_1_show_play = value
-		_update_scene_show_plays(beastie_1, beastie_1_show_play)
+		_update_scene_show_plays(beastie_1_beastie, beastie_1_show_play)
 
 @export var beastie_1_have_ball : bool = false :
 	set(value):
 		beastie_1_have_ball = value
-		_update_scene_have_ball(beastie_1, beastie_1_have_ball)
+		_update_scene_have_ball(beastie_1_beastie, beastie_1_have_ball)
 
 @export var beastie_1_ball_type : BeastieScene.BallType = BeastieScene.BallType.EASY_RECEIVE :
 	set(value):
 		beastie_1_ball_type = value
-		_update_scene_ball_type(beastie_1, beastie_1_ball_type)
+		_update_scene_ball_type(beastie_1_beastie, beastie_1_ball_type)
 
-@export var beastie_1_lifebar_h_allign : HorizontalAlignment = HORIZONTAL_ALIGNMENT_CENTER :
+@export var beastie_1_h_allign : HorizontalAlignment = HORIZONTAL_ALIGNMENT_CENTER :
 	set(value):
-		beastie_1_lifebar_h_allign = value
-		_update_scene_h_align(beastie_1, beastie_1_lifebar_h_allign)
+		beastie_1_h_allign = value
+		_update_scene_h_align(beastie_1_beastie, beastie_1_h_allign)
 
-@export_group("Non-serve Slot")
-@export var beastie_2 : Beastie = null :
+@export_group("Non-serve Slot", "beastie_2_")
+@export var beastie_2_beastie : Beastie = null :
 	set(value):
-		if value:
-			value = value.duplicate(true)
-			value.my_side = side
-			value.my_plays_updated.connect(_update_field.unbind(1))
-			value.my_trait_updated.connect(_update_field.unbind(1))
-			value.current_boosts_updated.connect(_update_field.unbind(1))
-			value.current_feelings_updated.connect(_update_field.unbind(1))
-		beastie_2 = value
+		beastie_2_beastie = _process_beastie_value(value)
 		_update_field()
 
 @export var beastie_2_position : Beastie.Position = Beastie.Position.LOWER_BACK :
@@ -58,50 +51,83 @@ const BEASTIE_SCENE := preload("uid://dptoj76e40ldo")
 @export var beastie_2_show_play : bool = true :
 	set(value):
 		beastie_2_show_play = value
-		_update_scene_show_plays(beastie_2, beastie_2_show_play)
+		_update_scene_show_plays(beastie_2_beastie, beastie_2_show_play)
 
 @export var beastie_2_have_ball : bool = false :
 	set(value):
 		beastie_2_have_ball = value
-		_update_scene_have_ball(beastie_2, beastie_2_have_ball)
+		_update_scene_have_ball(beastie_2_beastie, beastie_2_have_ball)
 
 @export var beastie_2_ball_type : BeastieScene.BallType = BeastieScene.BallType.EASY_RECEIVE :
 	set(value):
 		beastie_2_ball_type = value
-		_update_scene_ball_type(beastie_2, beastie_2_ball_type)
+		_update_scene_ball_type(beastie_2_beastie, beastie_2_ball_type)
 
-@export var beastie_2_lifebar_h_allign : HorizontalAlignment = HORIZONTAL_ALIGNMENT_CENTER :
+@export var beastie_2_h_allign : HorizontalAlignment = HORIZONTAL_ALIGNMENT_CENTER :
 	set(value):
-		beastie_2_lifebar_h_allign = value
-		_update_scene_h_align(beastie_2, beastie_2_lifebar_h_allign)
+		beastie_2_h_allign = value
+		_update_scene_h_align(beastie_2_beastie, beastie_2_h_allign)
 
-@export_group("Bench")
-@export var bench_beastie_1 : Beastie = null :
+@export_group("Bench 1", "bench_beastie_1_")
+@export var bench_beastie_1_beastie : Beastie = null :
 	set(value):
-		bench_beastie_1 = _process_beastie_value(value)
+		bench_beastie_1_beastie = _process_beastie_value(value)
 		_update_field()
-@export var bench_beastie_2 : Beastie = null :
+
+@export var bench_beastie_1_show_play : bool = true :
 	set(value):
-		bench_beastie_2 = _process_beastie_value(value)
+		bench_beastie_1_show_play = value
+		_update_scene_show_plays(bench_beastie_1_beastie, bench_beastie_1_show_play)
+
+@export var bench_beastie_1_h_allign : HorizontalAlignment = HORIZONTAL_ALIGNMENT_CENTER :
+	set(value):
+		bench_beastie_1_h_allign = value
+		_update_scene_h_align(bench_beastie_1_beastie, bench_beastie_1_h_allign)
+
+@export_group("Bench 2", "bench_beastie_2_")
+@export var bench_beastie_2_beastie : Beastie = null :
+	set(value):
+		bench_beastie_2_beastie = _process_beastie_value(value)
 		_update_field()
+
+@export var bench_beastie_2_show_play : bool = true :
+	set(value):
+		bench_beastie_2_show_play = value
+		_update_scene_show_plays(bench_beastie_2_beastie, bench_beastie_2_show_play)
+
+@export var bench_beastie_2_h_allign : HorizontalAlignment = HORIZONTAL_ALIGNMENT_CENTER :
+	set(value):
+		bench_beastie_2_h_allign = value
+		_update_scene_h_align(bench_beastie_2_beastie, bench_beastie_2_h_allign)
 
 @export_group("Inner vars")
 @export var side : Global.MySide = Global.MySide.LEFT
 
-@export_group("Reset Team")
+@export_group("Reset Buttons")
+@export_tool_button("Reset Position") var reset_pos_var : Callable = _reset_position
+@export_subgroup("Reset Team NO UNDO!")
 @export_tool_button("Reset Team") var reset_team_var : Callable = _reset_team
 
 var position_markers : Array[Node] = []
-#var bench_position_markers : Array[Node] = [] TODO TODO TODO
+var bench_position_markers : Array[Node] = []
 
 var beastie_scene_dict : Dictionary[Beastie, BeastieScene] = {
-	beastie_1 : null,
-	beastie_2 : null
+	beastie_1_beastie : null,
+	beastie_2_beastie : null,
+	bench_beastie_1_beastie : null,
+	bench_beastie_2_beastie : null,
 }
 
 
 func _ready() -> void:
-	position_markers = get_children()
+	var all_children : Array[Node] = get_children()
+	var bench_node_2d : Node2D = null
+	for child in all_children:
+		if child is not Marker2D:
+			bench_node_2d = child
+			continue
+		position_markers.append(child)
+	bench_position_markers = bench_node_2d.get_children()
 
 
 func _process_beastie_value(value : Beastie) -> Beastie:
@@ -125,25 +151,39 @@ func _update_field() -> void:
 		for child in marker.get_children():
 			child.queue_free()
 
+	for marker : Marker2D in bench_position_markers:
+		for child in marker.get_children():
+			child.queue_free()
+
 	beastie_scene_dict.clear()
 
-	if beastie_1:
-		_add_new_beastie_scene(beastie_1, beastie_1_position)
-		_update_scene_show_plays(beastie_1, beastie_1_show_play)
-		_update_scene_have_ball(beastie_1, beastie_1_have_ball)
-		_update_scene_ball_type(beastie_1, beastie_1_ball_type)
-		_update_scene_h_align(beastie_1, beastie_1_lifebar_h_allign)
+	if beastie_1_beastie:
+		_add_new_beastie_scene(beastie_1_beastie, beastie_1_position)
+		_update_scene_show_plays(beastie_1_beastie, beastie_1_show_play)
+		_update_scene_have_ball(beastie_1_beastie, beastie_1_have_ball)
+		_update_scene_ball_type(beastie_1_beastie, beastie_1_ball_type)
+		_update_scene_h_align(beastie_1_beastie, beastie_1_h_allign)
 
-	if beastie_2:
-		_add_new_beastie_scene(beastie_2, beastie_2_position)
-		_update_scene_show_plays(beastie_2, beastie_2_show_play)
-		_update_scene_have_ball(beastie_2, beastie_2_have_ball)
-		_update_scene_ball_type(beastie_2, beastie_2_ball_type)
-		_update_scene_h_align(beastie_2, beastie_2_lifebar_h_allign)
+	if beastie_2_beastie:
+		_add_new_beastie_scene(beastie_2_beastie, beastie_2_position)
+		_update_scene_show_plays(beastie_2_beastie, beastie_2_show_play)
+		_update_scene_have_ball(beastie_2_beastie, beastie_2_have_ball)
+		_update_scene_ball_type(beastie_2_beastie, beastie_2_ball_type)
+		_update_scene_h_align(beastie_2_beastie, beastie_2_h_allign)
 
-	if beastie_1 and beastie_2: # Weird place to assign these?
-		beastie_1.ally_field_position = beastie_2_position
-		beastie_2.ally_field_position = beastie_1_position
+	if beastie_1_beastie and beastie_2_beastie: # Weird place to assign these?
+		beastie_1_beastie.ally_field_position = beastie_2_position
+		beastie_2_beastie.ally_field_position = beastie_1_position
+
+	if bench_beastie_1_beastie:
+		_add_new_beastie_scene(bench_beastie_1_beastie, Beastie.Position.BENCH_1)
+		_update_scene_show_plays(bench_beastie_1_beastie, bench_beastie_1_show_play)
+		_update_scene_h_align(bench_beastie_1_beastie, bench_beastie_1_h_allign)
+
+	if bench_beastie_2_beastie:
+		_add_new_beastie_scene(bench_beastie_2_beastie, Beastie.Position.BENCH_2)
+		_update_scene_show_plays(bench_beastie_2_beastie, bench_beastie_2_show_play)
+		_update_scene_h_align(bench_beastie_2_beastie, bench_beastie_2_h_allign)
 
 	field_updated.emit(get_position_dict())
 
@@ -155,8 +195,8 @@ func get_position_dict() -> Dictionary[Beastie.Position, Beastie]:
 		Beastie.Position.LOWER_BACK : null,
 		Beastie.Position.LOWER_FRONT : null,
 	}
-	result[beastie_1_position] = beastie_1
-	result[beastie_2_position] = beastie_2
+	result[beastie_1_position] = beastie_1_beastie
+	result[beastie_2_position] = beastie_2_beastie
 	return result
 
 
@@ -165,9 +205,20 @@ func _add_new_beastie_scene(beastie : Beastie, new_position : Beastie.Position) 
 	var new_scene : BeastieScene = BEASTIE_SCENE.instantiate()
 	new_scene.beastie = beastie
 	new_scene.my_side = side
-	new_scene.benched = false
-	var index : int = int(new_position)
-	position_markers[index].add_child(new_scene)
+
+	if new_position == Beastie.Position.BENCH_1 or new_position == Beastie.Position.BENCH_2:
+		new_scene.benched = true
+		if _check_bench_size() == 1: # Add to middle bench anchor
+			bench_position_markers[1].add_child(new_scene)
+		else:
+			if new_position == Beastie.Position.BENCH_1:
+				bench_position_markers[0].add_child(new_scene)
+			elif new_position == Beastie.Position.BENCH_2:
+				bench_position_markers[2].add_child(new_scene)
+	else:
+		var index : int = int(new_position)
+		position_markers[index].add_child(new_scene)
+
 	beastie_scene_dict[beastie] = new_scene
 
 
@@ -204,15 +255,36 @@ func _update_scene_h_align(beastie : Beastie, h_allign : HorizontalAlignment) ->
 
 
 func _reset_team() -> void:
-	beastie_1 = null
-	beastie_1_position = Beastie.Position.UPPER_BACK
+	beastie_1_beastie = null
 	beastie_1_show_play = true
 	beastie_1_have_ball = false
 	beastie_1_ball_type = BeastieScene.BallType.EASY_RECEIVE
-	beastie_1_lifebar_h_allign = HORIZONTAL_ALIGNMENT_CENTER
-	beastie_2 = null
-	beastie_2_position = Beastie.Position.LOWER_BACK
+	beastie_1_h_allign = HORIZONTAL_ALIGNMENT_CENTER
+
+	beastie_2_beastie = null
 	beastie_2_show_play = true
 	beastie_2_have_ball = false
 	beastie_2_ball_type = BeastieScene.BallType.EASY_RECEIVE
-	beastie_2_lifebar_h_allign = HORIZONTAL_ALIGNMENT_CENTER
+	beastie_2_h_allign = HORIZONTAL_ALIGNMENT_CENTER
+
+	_reset_position()
+
+	bench_beastie_1_beastie = null
+	bench_beastie_1_show_play = true
+	bench_beastie_1_h_allign = HORIZONTAL_ALIGNMENT_CENTER
+
+	bench_beastie_2_beastie = null
+	bench_beastie_2_show_play = true
+	bench_beastie_2_h_allign = HORIZONTAL_ALIGNMENT_CENTER
+
+
+func _reset_position() -> void:
+	beastie_1_position = Beastie.Position.UPPER_BACK
+	beastie_2_position = Beastie.Position.LOWER_BACK
+
+
+func _check_bench_size() -> int:
+	var count : int = 0
+	if bench_beastie_1_beastie: count += 1
+	if bench_beastie_2_beastie: count += 1
+	return count

@@ -23,9 +23,6 @@ extends Node2D
 			update_all_damage_indicator()
 		)
 
-
-
-
 var left_team_position_dict : Dictionary[Beastie.Position, Beastie] = {}
 var right_team_position_dict : Dictionary[Beastie.Position, Beastie] = {}
 
@@ -51,7 +48,11 @@ func get_damage_dict(attacker : Beastie, attack : Attack) -> Dictionary[Beastie.
 			continue
 
 		var attacker_for_cal : Beastie = attacker.duplicate(true)
-		attacker_for_cal.my_field_position = attacker.my_field_position
+		var original_pos : Beastie.Position = attacker.my_field_position
+		if original_pos in [Beastie.Position.BENCH_1, Beastie.Position.BENCH_2]:
+			original_pos = Beastie.Position.UPPER_BACK
+		attacker_for_cal.my_field_position = original_pos
+
 		match attack.use_condition:
 			Attack.UseCondition.FRONT_ONLY: # If at back, move front for cal
 				if attacker.my_field_position == Beastie.Position.UPPER_BACK:

@@ -3,8 +3,10 @@ class_name PlaysUIContainer
 extends Control
 
 const TRAIT_PLACEHOLDER_DESC := "Trait : Likes to ball"
-const UPPER_OFFSET := -480.0
-const LOWER_OFFSET := 105.0
+const UPPER_OFFSET := Vector2(-215.0, -480.0)
+const LOWER_OFFSET := Vector2(-215.0, 105.0)
+const LEFT_BENCH_EXTRA_OFFSET := Vector2(-140.0, 0.0)
+const RIGHT_BENCH_EXTRA_OFFSET := Vector2(135.0, 0.0)
 
 @export var beastie : Beastie = null :
 	set(value):
@@ -41,15 +43,18 @@ const LOWER_OFFSET := 105.0
 var my_field_positon : Beastie.Position = Beastie.Position.NOT_ASSIGNED :
 	set(value):
 		my_field_positon = value
-		var offset : float = 0.0
+		var offset : Vector2 = Vector2.ZERO
+		var extra_offset : Vector2 = LEFT_BENCH_EXTRA_OFFSET if my_side == Global.MySide.LEFT else RIGHT_BENCH_EXTRA_OFFSET
 		match my_field_positon:
 			Beastie.Position.UPPER_BACK, Beastie.Position.UPPER_FRONT:
 				offset = UPPER_OFFSET
+			Beastie.Position.BENCH_1:
+				offset = UPPER_OFFSET + extra_offset
 			Beastie.Position.LOWER_BACK, Beastie.Position.LOWER_FRONT:
 				offset = LOWER_OFFSET
-			_:
-				offset = 0.0
-		position.y = offset
+			Beastie.Position.BENCH_2:
+				offset = LOWER_OFFSET + extra_offset
+		position = offset
 
 @onready var main_upper_container: HBoxContainer = %MainUpperContainer
 @onready var main_plays_container: VBoxContainer = %MainPlaysContainer

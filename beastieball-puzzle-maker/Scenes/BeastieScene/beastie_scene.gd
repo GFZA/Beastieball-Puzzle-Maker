@@ -57,6 +57,7 @@ const BALL_SPRITE_RIGHT_OFFSET : Vector2 = Vector2(-119.0, -90.0)
 			new_healthbar.beastie = beastie
 			side_updated.connect(new_healthbar.update_side)
 			new_healthbar.my_side = my_side
+			new_healthbar.benched = benched
 			add_child(new_healthbar)
 			my_healthbar = new_healthbar
 
@@ -123,11 +124,7 @@ var current_sprite : Texture2D = null :
 		current_sprite = value
 		sprite_2d.texture = current_sprite
 
-var benched : bool = false :
-	set(value):
-		benched = value
-		if my_healthbar:
-			my_healthbar.benched = benched
+var benched : bool = false # Not use setter because only set it once and after having healthbar
 
 var my_healthbar : Healthbar = null
 var my_plays_ui_container : PlaysUIContainer = null
