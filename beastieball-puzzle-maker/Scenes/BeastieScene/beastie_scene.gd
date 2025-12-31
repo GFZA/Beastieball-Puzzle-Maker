@@ -200,7 +200,6 @@ func _update_ball() -> void:
 	if have_ball:
 		ball_sprite.texture = BALL_TEXTURES.get(ball_type)
 		ball_sprite.show()
-		print(ball_anchor.position)
 	_update_sprite_pose()
 
 

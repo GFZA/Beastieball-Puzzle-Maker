@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Beastie" load_steps=11 format=3 uid="uid://cs2unbve1mnk2"]
+
+[ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Resources/Plays/plays.gd" id="1_pva2w"]
+[ext_resource type="Resource" uid="uid://ba06fmjpjnl1k" path="res://Resources/Trait/stealthy.tres" id="2_7046n"]
+[ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Resources/Trait/trait.gd" id="2_wu5ja"]
+[ext_resource type="Script" uid="uid://ehabj4qsgxpl" path="res://Resources/Beastie/beastie.gd" id="3_fjol0"]
+[ext_resource type="Texture2D" uid="uid://bi4von2cr6kcu" path="res://Resources/Beastie/Skulkapi/skulkapi_idle.png" id="4_7046n"]
+[ext_resource type="Texture2D" uid="uid://c6fsm8w5be8gl" path="res://Resources/Beastie/Skulkapi/skulkapi_ready.png" id="5_e78tx"]
+[ext_resource type="Texture2D" uid="uid://cdnby5fe1436p" path="res://Resources/Beastie/Skulkapi/skulkapi_spike.png" id="6_fcdbx"]
+[ext_resource type="Texture2D" uid="uid://d1t7w5ma7yf00" path="res://Resources/Beastie/Skulkapi/skulkapi_volley.png" id="7_armbo"]
+[ext_resource type="Texture2D" uid="uid://b4xowlv7mgb6y" path="res://Resources/Beastie/Skulkapi/skulkapi_good.png" id="8_biqwx"]
+[ext_resource type="Texture2D" uid="uid://cmqgy1e633btf" path="res://Resources/Beastie/Skulkapi/skulkapi_bad.png" id="9_0gg0c"]
+
+[resource]
+script = ExtResource("3_fjol0")
+my_plays = Array[ExtResource("1_pva2w")]([null, null, null])
+my_trait = ExtResource("2_7046n")
+specie_name = "Skulkapi"
+bar_color = Color(0.8666667, 0.09019608, 0.8392157, 1)
+body_base_pow = 26
+spirit_base_pow = 78
+mind_base_pow = 86
+spirit_base_def = 89
+mind_base_def = 104
+possible_traits = Array[ExtResource("2_wu5ja")]([ExtResource("2_7046n")])
+sprites = Dictionary[int, Texture2D]({
+0: ExtResource("4_7046n"),
+1: ExtResource("5_e78tx"),
+2: ExtResource("6_fcdbx"),
+3: ExtResource("7_armbo"),
+4: ExtResource("8_biqwx"),
+5: ExtResource("9_0gg0c")
+})
+ball_anchor_position = Vector2(48, -166)
+metadata/_custom_type_script = "uid://ehabj4qsgxpl"

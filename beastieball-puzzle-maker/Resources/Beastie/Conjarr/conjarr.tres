@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="Beastie" load_steps=11 format=3 uid="uid://yoiwwo5rgm88"]
+
+[ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Resources/Plays/plays.gd" id="1_cj2tx"]
+[ext_resource type="Resource" uid="uid://d2npthnq1b582" path="res://Resources/Trait/cryptic.tres" id="2_2dtr3"]
+[ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Resources/Trait/trait.gd" id="2_a2f2f"]
+[ext_resource type="Script" uid="uid://ehabj4qsgxpl" path="res://Resources/Beastie/beastie.gd" id="3_g23rx"]
+[ext_resource type="Texture2D" uid="uid://cvu703bnb15py" path="res://Resources/Beastie/Conjarr/conjarr_idle.png" id="5_2uqym"]
+[ext_resource type="Texture2D" uid="uid://big8gnni1rep6" path="res://Resources/Beastie/Conjarr/conjarr_ready.png" id="6_xbf0j"]
+[ext_resource type="Texture2D" uid="uid://c8pedqgmc3hq0" path="res://Resources/Beastie/Conjarr/conjarr_spike.png" id="7_aiga7"]
+[ext_resource type="Texture2D" uid="uid://vsopl6v0y0j3" path="res://Resources/Beastie/Conjarr/conjarr_volley.png" id="8_omc1q"]
+[ext_resource type="Texture2D" uid="uid://der5on0t5qijk" path="res://Resources/Beastie/Conjarr/conjarr_good.png" id="9_r62mu"]
+[ext_resource type="Texture2D" uid="uid://dpv2vrl37orkf" path="res://Resources/Beastie/Conjarr/conjarr_bad.png" id="10_1ymmq"]
+
+[resource]
+script = ExtResource("3_g23rx")
+my_plays = Array[ExtResource("1_cj2tx")]([null, null, null])
+my_trait = ExtResource("2_2dtr3")
+specie_name = "Conjarr"
+bar_color = Color(0.66266364, 0.31024918, 0.46285915, 1)
+body_base_pow = 60
+spirit_base_pow = 80
+mind_base_pow = 36
+body_base_def = 110
+spirit_base_def = 85
+mind_base_def = 63
+possible_traits = Array[ExtResource("2_a2f2f")]([ExtResource("2_2dtr3")])
+sprites = Dictionary[int, Texture2D]({
+0: ExtResource("5_2uqym"),
+1: ExtResource("6_xbf0j"),
+2: ExtResource("7_aiga7"),
+3: ExtResource("8_omc1q"),
+4: ExtResource("9_r62mu"),
+5: ExtResource("10_1ymmq")
+})
+ball_anchor_position = Vector2(30, -87)
+metadata/_custom_type_script = "uid://ehabj4qsgxpl"

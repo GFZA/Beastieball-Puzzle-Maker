@@ -90,6 +90,9 @@ const BEASTIE_SCENE := preload("uid://dptoj76e40ldo")
 @export_group("Inner vars")
 @export var side : Global.MySide = Global.MySide.LEFT
 
+@export_group("Reset Team")
+@export_tool_button("Reset Team") var reset_team_var : Callable = _reset_team
+
 var position_markers : Array[Node] = []
 #var bench_position_markers : Array[Node] = [] TODO TODO TODO
 
@@ -188,48 +191,16 @@ func _update_scene_h_align(beastie : Beastie, h_allign : HorizontalAlignment) ->
 		scene.h_allign = h_allign
 
 
-
-
-
-
-
-#func find_beastie_scene(beastie : Beastie) -> BeastieScene:
-	#var all_scene : Array[Node] = get_tree().get_nodes_in_group("beastie_scene")
-	#for scene : BeastieScene in all_scene:
-		#if scene.beastie == beastie:
-			#return scene
-	#return null
-#
-## Functions below are dirty way to access the BeastieScene vars
-## Shoule be refactored later I guess...
-#
-#func _update_show_play(beastie : Beastie, show_play : bool) -> void:
-	#if not is_node_ready():
-		#await ready
-	#await get_tree().process_frame # Need to do this for some reason...
-	#if beastie and find_beastie_scene(beastie) != null:
-		#find_beastie_scene(beastie).show_plays = show_play
-#
-#
-#func _update_h_align(beastie : Beastie, h_align : HorizontalAlignment) -> void:
-	#if not is_node_ready():
-		#await ready
-	#await get_tree().process_frame # Need to do this for some reason...
-	#if beastie and find_beastie_scene(beastie) != null:
-		#find_beastie_scene(beastie).h_allign = h_align
-#
-#
-#func _update_have_ball(beastie : Beastie, have_ball : bool) -> void:
-	#if not is_node_ready():
-		#await ready
-	#await get_tree().process_frame # Need to do this for some reason...
-	#if beastie and find_beastie_scene(beastie) != null:
-		#find_beastie_scene(beastie).have_ball = have_ball
-#
-#
-#func _update_ball_type(beastie : Beastie, ball_type : BeastieScene.BallType) -> void:
-	#if not is_node_ready():
-		#await ready
-	#await get_tree().process_frame # Need to do this for some reason...
-	#if beastie and find_beastie_scene(beastie) != null:
-		#find_beastie_scene(beastie).have_ball = ball_type
+func _reset_team() -> void:
+	beastie_1 = null
+	beastie_1_position = Beastie.Position.UPPER_BACK
+	beastie_1_show_play = true
+	beastie_1_have_ball = false
+	beastie_1_ball_type = BeastieScene.BallType.EASY_RECEIVE
+	beastie_1_lifebar_h_allign = HORIZONTAL_ALIGNMENT_CENTER
+	beastie_2 = null
+	beastie_2_position = Beastie.Position.LOWER_BACK
+	beastie_2_show_play = true
+	beastie_2_have_ball = false
+	beastie_2_ball_type = BeastieScene.BallType.EASY_RECEIVE
+	beastie_2_lifebar_h_allign = HORIZONTAL_ALIGNMENT_CENTER

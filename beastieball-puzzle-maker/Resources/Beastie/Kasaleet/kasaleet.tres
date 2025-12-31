@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Beastie" load_steps=11 format=3 uid="uid://bfo2njmkfi8tr"]
+
+[ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Resources/Plays/plays.gd" id="1_qjkwr"]
+[ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Resources/Trait/trait.gd" id="2_m228b"]
+[ext_resource type="Resource" uid="uid://c1fxya1i5x851" path="res://Resources/Trait/overwork.tres" id="2_x6tql"]
+[ext_resource type="Script" uid="uid://ehabj4qsgxpl" path="res://Resources/Beastie/beastie.gd" id="3_lr7ij"]
+[ext_resource type="Texture2D" uid="uid://b2iskosk2qou8" path="res://Resources/Beastie/Kasaleet/kasaleet_idle.png" id="4_1lhkb"]
+[ext_resource type="Texture2D" uid="uid://du86hybblgny0" path="res://Resources/Beastie/Kasaleet/kasaleet_ready.png" id="5_x6tql"]
+[ext_resource type="Texture2D" uid="uid://bnwqq0bgp10ut" path="res://Resources/Beastie/Kasaleet/kasaleet_spike.png" id="6_f835q"]
+[ext_resource type="Texture2D" uid="uid://b3w3bbxmc6asx" path="res://Resources/Beastie/Kasaleet/kasaleet_volley.png" id="7_n5b6u"]
+[ext_resource type="Texture2D" uid="uid://7jwpsdvc16be" path="res://Resources/Beastie/Kasaleet/kasaleet_good.png" id="8_qqdga"]
+[ext_resource type="Texture2D" uid="uid://dvvcnrv2nm5ps" path="res://Resources/Beastie/Kasaleet/kasaleet_bad.png" id="9_4norj"]
+
+[resource]
+script = ExtResource("3_lr7ij")
+my_plays = Array[ExtResource("1_qjkwr")]([null, null, null])
+my_trait = ExtResource("2_x6tql")
+specie_name = "Kasaleet"
+bar_color = Color(0.36078432, 0.5686275, 0.7882353, 1)
+body_base_pow = 115
+spirit_base_pow = 60
+mind_base_pow = 35
+body_base_def = 105
+spirit_base_def = 45
+mind_base_def = 80
+sprites = Dictionary[int, Texture2D]({
+0: ExtResource("4_1lhkb"),
+1: ExtResource("5_x6tql"),
+2: ExtResource("6_f835q"),
+3: ExtResource("7_n5b6u"),
+4: ExtResource("8_qqdga"),
+5: ExtResource("9_4norj")
+})
+ball_anchor_position = Vector2(23, -200)
+metadata/_custom_type_script = "uid://ehabj4qsgxpl"
