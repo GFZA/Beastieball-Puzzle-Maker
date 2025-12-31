@@ -37,6 +37,11 @@ const DEFAULT_FONT_SIZE : int = 48
 		sport_number = beastie.sport_number
 		color = beastie.bar_color
 
+@export var benched : bool = false :
+	set(value):
+		benched = value
+		_update_benched()
+
 @export var my_side : Global.MySide = Global.MySide.LEFT :
 	set(value):
 		my_side = value
@@ -144,9 +149,20 @@ func update_side(new_side : Global.MySide) -> void:
 	background_para.flip_h = (new_side == Global.MySide.LEFT)
 	lifebar.my_side = new_side
 
-
 	# Absolute bandage fix. Screw this...
 	if new_side == Global.MySide.RIGHT:
 		lower_spacer.custom_minimum_size.x = 25.0
 	else:
 		lower_spacer.custom_minimum_size.x = 15.0
+
+
+func _update_benched() -> void:
+	if not is_node_ready():
+		await ready
+
+	var nodes_to_hide := get_tree().get_nodes_in_group("hide_when_benched")
+	for node in nodes_to_hide:
+		if benched:
+			node.hide()
+		else:
+			node.show()

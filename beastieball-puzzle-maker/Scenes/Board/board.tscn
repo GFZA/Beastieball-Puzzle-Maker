@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://co8c0qvn7nkha"]
+[gd_scene load_steps=51 format=3 uid="uid://co8c0qvn7nkha"]
 
 [ext_resource type="Script" uid="uid://dfsngo7akxojy" path="res://Scenes/Board/board.gd" id="1_mucxt"]
 [ext_resource type="Texture2D" uid="uid://dqtiasekc4j68" path="res://Scenes/Board/puzzle_board_bg.png" id="2_ea4ru"]
@@ -36,6 +36,7 @@
 [ext_resource type="Texture2D" uid="uid://b4xowlv7mgb6y" path="res://Resources/Beastie/Skulkapi/skulkapi_good.png" id="20_x5mnu"]
 [ext_resource type="Texture2D" uid="uid://cmqgy1e633btf" path="res://Resources/Beastie/Skulkapi/skulkapi_bad.png" id="21_3wkvc"]
 [ext_resource type="Resource" uid="uid://dytuvbvg3oamq" path="res://Resources/Plays/Defense/shield.tres" id="23_sq5le"]
+[ext_resource type="Resource" uid="uid://c0w31jc1g46o" path="res://Resources/Plays/Attack/spitball.tres" id="28_oh3sv"]
 [ext_resource type="Resource" uid="uid://bkvjnb4ut5rjo" path="res://Resources/Trait/neural_net.tres" id="28_qp2si"]
 [ext_resource type="Resource" uid="uid://buvtgtcjmm2y2" path="res://Resources/Plays/Attack/dump.tres" id="29_5eidi"]
 [ext_resource type="Resource" uid="uid://y3o0tssi0oeu" path="res://Resources/Plays/Volley/forward_pass.tres" id="30_sq5le"]
@@ -45,10 +46,8 @@
 [ext_resource type="Texture2D" uid="uid://qedsc2o55250" path="res://Resources/Beastie/Platypulse/platy_volley.png" id="34_00yaq"]
 [ext_resource type="Texture2D" uid="uid://rtvfc88bxswd" path="res://Resources/Beastie/Platypulse/platy_good.png" id="35_oj2xd"]
 [ext_resource type="Texture2D" uid="uid://d2c7yf64fy1ud" path="res://Resources/Beastie/Platypulse/platy_bad.png" id="36_i3ahc"]
-[ext_resource type="Texture2D" uid="uid://d4mweyta05xjj" path="res://Scenes/Board/board_ref_ss.jpg" id="42_akhof"]
-[ext_resource type="Texture2D" uid="uid://fhi0lm11ly52" path="res://Scenes/Board/board_ref_2.jpg" id="43_ul1ys"]
 
-[sub_resource type="Resource" id="Resource_qa3hq"]
+[sub_resource type="Resource" id="Resource_oh3sv"]
 script = ExtResource("10_ifp2b")
 health = 15
 my_plays = Array[ExtResource("5_8je0h")]([ExtResource("6_mx2bf"), ExtResource("7_10nv4"), ExtResource("23_sq5le")])
@@ -72,7 +71,7 @@ sprites = Dictionary[int, Texture2D]({
 ball_anchor_position = Vector2(23, -200)
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"
 
-[sub_resource type="Resource" id="Resource_mucxt"]
+[sub_resource type="Resource" id="Resource_mx2bf"]
 script = ExtResource("10_ifp2b")
 health = 20
 my_plays = Array[ExtResource("5_8je0h")]([ExtResource("6_x5mnu"), ExtResource("6_pmycs"), ExtResource("17_mucxt")])
@@ -98,10 +97,10 @@ sprites = Dictionary[int, Texture2D]({
 ball_anchor_position = Vector2(30, -87)
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"
 
-[sub_resource type="Resource" id="Resource_jy3gx"]
+[sub_resource type="Resource" id="Resource_10nv4"]
 script = ExtResource("10_ifp2b")
 health = 20
-my_plays = Array[ExtResource("5_8je0h")]([null, null, null])
+my_plays = Array[ExtResource("5_8je0h")]([ExtResource("28_oh3sv"), null, null])
 my_trait = ExtResource("28_qp2si")
 current_feelings = Dictionary[int, int]({
 1: 2
@@ -128,7 +127,7 @@ sprites = Dictionary[int, Texture2D]({
 ball_anchor_position = Vector2(67, -98)
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"
 
-[sub_resource type="Resource" id="Resource_ysycx"]
+[sub_resource type="Resource" id="Resource_qp2si"]
 script = ExtResource("10_ifp2b")
 health = 64
 my_plays = Array[ExtResource("5_8je0h")]([ExtResource("15_qg8b0"), ExtResource("16_wvqeh"), ExtResource("23_sq5le")])
@@ -155,9 +154,11 @@ metadata/_custom_type_script = "uid://ehabj4qsgxpl"
 
 [node name="Board" type="Node2D"]
 script = ExtResource("1_mucxt")
+image_size = Vector2(2700, 2025)
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(2700, 2025)
 offset_right = 2560.0
 offset_bottom = 1920.0
 size_flags_horizontal = 3
@@ -167,7 +168,7 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 unique_name_in_owner = true
 handle_input_locally = false
-size = Vector2i(2560, 1920)
+size = Vector2i(2700, 2025)
 render_target_update_mode = 4
 
 [node name="VoidBG" type="ColorRect" parent="SubViewportContainer/SubViewport"]
@@ -180,7 +181,7 @@ color = Color(0.05490196, 0.23921569, 0.40784314, 1)
 metadata/_edit_lock_ = true
 
 [node name="BoardBG" type="Sprite2D" parent="SubViewportContainer/SubViewport"]
-position = Vector2(39, 370)
+position = Vector2(101, 483)
 scale = Vector2(1.3, 1.3)
 texture = ExtResource("2_ea4ru")
 centered = false
@@ -188,7 +189,7 @@ metadata/_edit_lock_ = true
 
 [node name="BoardManager" type="Node2D" parent="SubViewportContainer/SubViewport" node_paths=PackedStringArray("left_team_controller", "right_team_controller") groups=["board_manager"]]
 unique_name_in_owner = true
-position = Vector2(39, 370)
+position = Vector2(101, 483)
 script = ExtResource("3_oh3sv")
 left_team_controller = NodePath("../LeftTeamController")
 right_team_controller = NodePath("../RightTeamController")
@@ -196,10 +197,10 @@ metadata/_edit_lock_ = true
 
 [node name="LeftTeamController" type="Node2D" parent="SubViewportContainer/SubViewport"]
 unique_name_in_owner = true
-position = Vector2(39, 370)
+position = Vector2(101, 483)
 script = ExtResource("3_xc5ao")
-beastie_1 = SubResource("Resource_qa3hq")
-beastie_2 = SubResource("Resource_mucxt")
+beastie_1 = SubResource("Resource_oh3sv")
+beastie_2 = SubResource("Resource_mx2bf")
 beastie_2_position = 3
 beastie_2_have_ball = true
 beastie_2_ball_type = 1
@@ -223,11 +224,11 @@ gizmo_extents = 0.0
 
 [node name="RightTeamController" type="Node2D" parent="SubViewportContainer/SubViewport"]
 unique_name_in_owner = true
-position = Vector2(39, 370)
+position = Vector2(101, 483)
 script = ExtResource("3_xc5ao")
-beastie_1 = SubResource("Resource_jy3gx")
+beastie_1 = SubResource("Resource_10nv4")
 beastie_1_show_play = false
-beastie_2 = SubResource("Resource_ysycx")
+beastie_2 = SubResource("Resource_qp2si")
 beastie_2_position = 1
 side = 1
 metadata/_edit_lock_ = true
@@ -248,34 +249,34 @@ gizmo_extents = 0.0
 position = Vector2(1427, 861)
 gizmo_extents = 0.0
 
-[node name="Camera2D" type="Camera2D" parent="."]
-unique_name_in_owner = true
-visible = false
-anchor_mode = 0
-limit_enabled = false
-limit_left = 0
-limit_top = 0
-limit_right = 1920
-limit_bottom = 1080
+[node name="LeftBenchMarker" type="Node2D" parent="SubViewportContainer/SubViewport"]
+position = Vector2(183, 113)
+metadata/_edit_lock_ = true
 
-[node name="TestStuffs" type="Node" parent="."]
+[node name="LeftUpperBenchAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/LeftBenchMarker"]
+position = Vector2(345, 959)
+gizmo_extents = 0.0
 
-[node name="BoardRef" type="Sprite2D" parent="TestStuffs"]
-visible = false
-texture = ExtResource("42_akhof")
-centered = false
+[node name="LeftMiddleBenchAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/LeftBenchMarker"]
+position = Vector2(323.5, 1095)
+gizmo_extents = 0.0
 
-[node name="BoardRef2" type="Sprite2D" parent="TestStuffs"]
-visible = false
-scale = Vector2(1.3471501, 1.3471502)
-texture = ExtResource("43_ul1ys")
-centered = false
+[node name="LeftLowerBenchAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/LeftBenchMarker"]
+position = Vector2(302, 1231)
+gizmo_extents = 0.0
 
-[node name="CalButton" type="Button" parent="TestStuffs"]
-unique_name_in_owner = true
-visible = false
-offset_left = 680.0
-offset_top = 695.0
-offset_right = 1360.0
-offset_bottom = 1027.0
-text = "CAL!!!!!"
+[node name="RightBenchMarker" type="Node2D" parent="SubViewportContainer/SubViewport"]
+position = Vector2(-186, 113)
+metadata/_edit_lock_ = true
+
+[node name="RightUpperBenchAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/RightBenchMarker"]
+position = Vector2(2359, 959)
+gizmo_extents = 0.0
+
+[node name="RightMiddleBenchAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/RightBenchMarker"]
+position = Vector2(2380, 1095)
+gizmo_extents = 0.0
+
+[node name="RightLowerBenchAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/RightBenchMarker"]
+position = Vector2(2401, 1231)
+gizmo_extents = 0.0

@@ -29,7 +29,7 @@ metadata/_edit_lock_ = true
 
 [node name="BallAnchor" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(23, -200)
+position = Vector2(67, -98)
 gizmo_extents = 0.0
 
 [node name="BallSprite" type="Sprite2D" parent="BallAnchor"]

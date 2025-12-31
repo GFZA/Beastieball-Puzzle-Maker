@@ -21,8 +21,8 @@ DamageCalculator="*res://Autoloads/damage_calculator.gd"
 
 [display]
 
-window/size/viewport_width=2560
-window/size/viewport_height=1920
+window/size/viewport_width=2700
+window/size/viewport_height=2025
 window/size/resizable=false
 window/stretch/mode="canvas_items"
 

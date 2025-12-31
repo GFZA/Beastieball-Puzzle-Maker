@@ -23,6 +23,9 @@ extends Node2D
 			update_all_damage_indicator()
 		)
 
+
+
+
 var left_team_position_dict : Dictionary[Beastie.Position, Beastie] = {}
 var right_team_position_dict : Dictionary[Beastie.Position, Beastie] = {}
 

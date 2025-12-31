@@ -9,14 +9,7 @@ const BEASTIE_SCENE := preload("uid://dptoj76e40ldo")
 @export_group("Serve Slot")
 @export var beastie_1 : Beastie = null :
 	set(value):
-		if value:
-			value = value.duplicate(true)
-			value.my_side = side
-			value.my_plays_updated.connect(_update_field.unbind(1))
-			value.my_trait_updated.connect(_update_field.unbind(1))
-			value.current_boosts_updated.connect(_update_field.unbind(1))
-			value.current_feelings_updated.connect(_update_field.unbind(1))
-		beastie_1 = value
+		beastie_1 = _process_beastie_value(value)
 		_update_field()
 
 @export var beastie_1_position : Beastie.Position = Beastie.Position.UPPER_BACK :
@@ -83,9 +76,14 @@ const BEASTIE_SCENE := preload("uid://dptoj76e40ldo")
 		_update_scene_h_align(beastie_2, beastie_2_lifebar_h_allign)
 
 @export_group("Bench")
-@export var bench_beastie_1 : Beastie = null
-@export var bench_beastie_2 : Beastie = null
-@export var bench_beastie_3 : Beastie = null
+@export var bench_beastie_1 : Beastie = null :
+	set(value):
+		bench_beastie_1 = _process_beastie_value(value)
+		_update_field()
+@export var bench_beastie_2 : Beastie = null :
+	set(value):
+		bench_beastie_2 = _process_beastie_value(value)
+		_update_field()
 
 @export_group("Inner vars")
 @export var side : Global.MySide = Global.MySide.LEFT
@@ -104,6 +102,19 @@ var beastie_scene_dict : Dictionary[Beastie, BeastieScene] = {
 
 func _ready() -> void:
 	position_markers = get_children()
+
+
+func _process_beastie_value(value : Beastie) -> Beastie:
+	if not value:
+		return null
+
+	var processed_value = value.duplicate(true)
+	processed_value.my_side = side
+	processed_value.my_plays_updated.connect(_update_field.unbind(1))
+	processed_value.my_trait_updated.connect(_update_field.unbind(1))
+	processed_value.current_boosts_updated.connect(_update_field.unbind(1))
+	processed_value.current_feelings_updated.connect(_update_field.unbind(1))
+	return processed_value
 
 
 func _update_field() -> void:
@@ -154,6 +165,7 @@ func _add_new_beastie_scene(beastie : Beastie, new_position : Beastie.Position) 
 	var new_scene : BeastieScene = BEASTIE_SCENE.instantiate()
 	new_scene.beastie = beastie
 	new_scene.my_side = side
+	new_scene.benched = false
 	var index : int = int(new_position)
 	position_markers[index].add_child(new_scene)
 	beastie_scene_dict[beastie] = new_scene

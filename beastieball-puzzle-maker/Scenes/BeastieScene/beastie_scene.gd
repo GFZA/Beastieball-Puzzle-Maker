@@ -123,6 +123,12 @@ var current_sprite : Texture2D = null :
 		current_sprite = value
 		sprite_2d.texture = current_sprite
 
+var benched : bool = false :
+	set(value):
+		benched = value
+		if my_healthbar:
+			my_healthbar.benched = benched
+
 var my_healthbar : Healthbar = null
 var my_plays_ui_container : PlaysUIContainer = null
 var my_feelings_cloud : FeelingsCloud = null
