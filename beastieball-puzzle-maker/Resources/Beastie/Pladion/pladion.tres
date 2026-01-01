@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="Beastie" load_steps=6 format=3 uid="uid://x6kmo6wlo0st"]
+
+[ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Resources/Plays/plays.gd" id="1_he5uj"]
+[ext_resource type="Resource" uid="uid://bviqgfc5c66a1" path="res://Resources/Trait/vicious.tres" id="2_7q6vv"]
+[ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Resources/Trait/trait.gd" id="2_sfq3o"]
+[ext_resource type="Script" uid="uid://ehabj4qsgxpl" path="res://Resources/Beastie/beastie.gd" id="3_7q6vv"]
+[ext_resource type="Texture2D" uid="uid://n7xmk21wrjvi" path="res://Resources/Beastie/Pladion/pladion_idle.png" id="4_sfq3o"]
+
+[resource]
+script = ExtResource("3_7q6vv")
+my_plays = Array[ExtResource("1_he5uj")]([null, null, null])
+my_trait = ExtResource("2_7q6vv")
+specie_name = "Pladion"
+bar_color = Color(0.5568628, 0.52156866, 0.8784314, 1)
+body_base_pow = 40
+spirit_base_pow = 50
+mind_base_pow = 78
+body_base_def = 81
+spirit_base_def = 70
+mind_base_def = 108
+sprites = Dictionary[int, Texture2D]({
+0: ExtResource("4_sfq3o"),
+1: ExtResource("4_sfq3o"),
+2: ExtResource("4_sfq3o"),
+3: ExtResource("4_sfq3o"),
+4: ExtResource("4_sfq3o"),
+5: ExtResource("4_sfq3o")
+})
+ball_anchor_position = Vector2(80, -160)
+metadata/_custom_type_script = "uid://ehabj4qsgxpl"

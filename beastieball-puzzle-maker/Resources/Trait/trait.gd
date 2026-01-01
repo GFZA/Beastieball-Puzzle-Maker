@@ -1,3 +1,4 @@
+@tool
 class_name Trait
 extends Resource
 
@@ -7,3 +8,7 @@ extends Resource
 @export_group("Damage multipliers")
 @export_range(0.75, 2.0, 0.05) var damage_dealt_mult : float = 1.0
 @export_range(1.0, 1.5, 0.1) var damage_taken_mult : float = 1.0
+
+
+func special_cal_formula(damage : int) -> int: # Overwrite this
+	return damage

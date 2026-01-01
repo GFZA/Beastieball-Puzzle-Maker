@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Beastie" load_steps=11 format=3 uid="uid://c15y267qqihl4"]
+
+[ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Resources/Plays/plays.gd" id="1_ml67k"]
+[ext_resource type="Resource" uid="uid://cnei2k6kdn2pk" path="res://Resources/Trait/mimicry.tres" id="2_6kp4b"]
+[ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Resources/Trait/trait.gd" id="2_lukmp"]
+[ext_resource type="Script" uid="uid://ehabj4qsgxpl" path="res://Resources/Beastie/beastie.gd" id="3_cevkm"]
+[ext_resource type="Texture2D" uid="uid://dd3m7jfl5qpft" path="res://Resources/Beastie/Squimage/squimage_idle.png" id="5_vm3i7"]
+[ext_resource type="Texture2D" uid="uid://dtnumpitbsguq" path="res://Resources/Beastie/Squimage/squimage_ready.png" id="6_6dh48"]
+[ext_resource type="Texture2D" uid="uid://b8svq1050egtw" path="res://Resources/Beastie/Squimage/squimage_spike.png" id="7_48odk"]
+[ext_resource type="Texture2D" uid="uid://bgho0c8stxi78" path="res://Resources/Beastie/Squimage/squimage_volley.png" id="8_oovvg"]
+[ext_resource type="Texture2D" uid="uid://spbvpd815l4e" path="res://Resources/Beastie/Squimage/squimage_good.png" id="9_enfwi"]
+[ext_resource type="Texture2D" uid="uid://pxtluaiwpfgm" path="res://Resources/Beastie/Squimage/squimage_bad.png" id="10_u3bx7"]
+
+[resource]
+script = ExtResource("3_cevkm")
+my_plays = Array[ExtResource("1_ml67k")]([null, null, null])
+my_trait = ExtResource("2_6kp4b")
+specie_name = "Squimage"
+bar_color = Color(0.37254903, 1, 0.62352943, 1)
+body_base_pow = 89
+spirit_base_pow = 91
+mind_base_pow = 90
+body_base_def = 65
+spirit_base_def = 46
+mind_base_def = 69
+sprites = Dictionary[int, Texture2D]({
+0: ExtResource("5_vm3i7"),
+1: ExtResource("6_6dh48"),
+2: ExtResource("7_48odk"),
+3: ExtResource("8_oovvg"),
+4: ExtResource("9_enfwi"),
+5: ExtResource("10_u3bx7")
+})
+ball_anchor_position = Vector2(61, -66)
+metadata/_custom_type_script = "uid://ehabj4qsgxpl"

@@ -91,6 +91,9 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack) -> int:
 	var final_damage : int = max(1, ceili(((floori(final_atk) * base_pow / final_def) * 0.4) * all_damage_mults))
 	#if cheerleader:
 		#final_damage += 10
+	final_damage = attacker.my_trait.special_cal_formula(final_damage)
 	#endregion
+
+
 
 	return final_damage

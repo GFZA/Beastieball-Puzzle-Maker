@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="Beastie" load_steps=11 format=3 uid="uid://wj6lwopdurrd"]
+
+[ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Resources/Plays/plays.gd" id="1_7c7nu"]
+[ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Resources/Trait/trait.gd" id="2_dvp0w"]
+[ext_resource type="Resource" uid="uid://bai86ceaem0cm" path="res://Resources/Trait/mischief.tres" id="2_ferrg"]
+[ext_resource type="Script" uid="uid://ehabj4qsgxpl" path="res://Resources/Beastie/beastie.gd" id="3_htvtc"]
+[ext_resource type="Texture2D" uid="uid://b7qwpf832ucp5" path="res://Resources/Beastie/Trat/trat_idle.png" id="4_v21p8"]
+[ext_resource type="Texture2D" uid="uid://b02shy3bxeptd" path="res://Resources/Beastie/Trat/trat_ready.png" id="5_ferrg"]
+[ext_resource type="Texture2D" uid="uid://brakip3rf2uyp" path="res://Resources/Beastie/Trat/trat_spike.png" id="6_ffsd2"]
+[ext_resource type="Texture2D" uid="uid://bokn1pusp7xil" path="res://Resources/Beastie/Trat/trat_volley.png" id="7_uvyli"]
+[ext_resource type="Texture2D" uid="uid://c3jwebqcolnfq" path="res://Resources/Beastie/Trat/trat_good.png" id="8_vbnbk"]
+[ext_resource type="Texture2D" uid="uid://cye348pgs8ej7" path="res://Resources/Beastie/Trat/trat_bad.png" id="9_cb2io"]
+
+[resource]
+script = ExtResource("3_htvtc")
+my_plays = Array[ExtResource("1_7c7nu")]([null, null, null])
+my_trait = ExtResource("2_ferrg")
+specie_name = "Trat"
+bar_color = Color(1, 0.7764706, 0.6666667, 1)
+body_base_pow = 81
+spirit_base_pow = 23
+mind_base_pow = 64
+body_base_def = 49
+spirit_base_def = 93
+mind_base_def = 84
+sprites = Dictionary[int, Texture2D]({
+0: ExtResource("4_v21p8"),
+1: ExtResource("5_ferrg"),
+2: ExtResource("6_ffsd2"),
+3: ExtResource("7_uvyli"),
+4: ExtResource("8_vbnbk"),
+5: ExtResource("9_cb2io")
+})
+y_offset = -20
+ball_anchor_position = Vector2(69, -53)
+metadata/_custom_type_script = "uid://ehabj4qsgxpl"
