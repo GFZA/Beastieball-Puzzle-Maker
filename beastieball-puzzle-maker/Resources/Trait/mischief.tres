@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_pkjrn")
 name = "Mischief"
-description = "Can use SUPPORT plays with the ball and during Defense"
+description = "Can use SUPPORT plays with the ball and during DEFENSE"
 metadata/_custom_type_script = "uid://bslfuaragw1g7"
