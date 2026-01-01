@@ -44,6 +44,9 @@ func get_damage_dict(attacker : Beastie, attack : Attack) -> Dictionary[Beastie.
 		Beastie.Position.LOWER_FRONT : -1,
 	}
 
+	if not attack.show_in_indicator:
+		return result
+
 	var attacker_scene : BeastieScene = find_beastie_scene(attacker) # Need to use scene to determine side because of spagetti code :(
 	var defense_side : Dictionary[Beastie.Position, Beastie] = right_team_position_dict \
 										if attacker_scene.my_side == Global.MySide.LEFT else left_team_position_dict
@@ -59,20 +62,14 @@ func get_damage_dict(attacker : Beastie, attack : Attack) -> Dictionary[Beastie.
 		var attacker_for_cal : Beastie = attacker.duplicate(true)
 		var original_pos : Beastie.Position = attacker.my_field_position
 		if original_pos in [Beastie.Position.BENCH_1, Beastie.Position.BENCH_2]:
-			original_pos = Beastie.Position.UPPER_BACK
+			original_pos = Beastie.Position.UPPER_BACK # Upper or Lower doesn't matter here
 		attacker_for_cal.my_field_position = original_pos
 
 		match attack.use_condition:
 			Attack.UseCondition.FRONT_ONLY: # If at back, move front for cal
-				if attacker.my_field_position == Beastie.Position.UPPER_BACK:
-					attacker_for_cal.my_field_position = Beastie.Position.UPPER_FRONT
-				elif attacker.my_field_position == Beastie.Position.LOWER_BACK:
-					attacker_for_cal.my_field_position = Beastie.Position.LOWER_FRONT
+				attacker_for_cal.my_field_position = Beastie.Position.UPPER_FRONT # Upper or Lower doesn't matter here
 			Attack.UseCondition.BACK_ONLY: # If at front, move back for cal
-				if attacker.my_field_position == Beastie.Position.UPPER_FRONT:
-					attacker_for_cal.my_field_position = Beastie.Position.UPPER_BACK
-				elif attacker.my_field_position == Beastie.Position.LOWER_FRONT:
-					attacker_for_cal.my_field_position = Beastie.Position.LOWER_BACK
+				attacker_for_cal.my_field_position = Beastie.Position.UPPER_BACK # Upper or Lower doesn't matter here
 
 		if defense_side[pos] != null:
 			result[pos] = DamageCalculator.get_damage(attacker_for_cal, defense_side[pos], attack)

@@ -7,7 +7,7 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_ync5o"]
 font = ExtResource("2_t0syg")
-font_size = 108
+font_size = 106
 font_color = Color(0, 0, 0, 1)
 
 [node name="PlaysUI" type="MarginContainer"]

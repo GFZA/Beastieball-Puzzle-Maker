@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Beastie" load_steps=11 format=3 uid="uid://nqulfcvaslcu"]
+
+[ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Resources/Plays/plays.gd" id="1_tlkox"]
+[ext_resource type="Resource" uid="uid://cj2u63y05fkk7" path="res://Resources/Trait/spiker.tres" id="2_1oycw"]
+[ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Resources/Trait/trait.gd" id="2_qus0c"]
+[ext_resource type="Script" uid="uid://ehabj4qsgxpl" path="res://Resources/Beastie/beastie.gd" id="3_eh5o0"]
+[ext_resource type="Texture2D" uid="uid://rbklb5uj2ffn" path="res://Resources/Beastie/Servace/servace_idle.png" id="4_ddvas"]
+[ext_resource type="Texture2D" uid="uid://bh1686cd3lx1i" path="res://Resources/Beastie/Servace/servace_ready.png" id="5_1oycw"]
+[ext_resource type="Texture2D" uid="uid://d4c4mrtd8ei3y" path="res://Resources/Beastie/Servace/servace_spike.png" id="6_nhcmv"]
+[ext_resource type="Texture2D" uid="uid://d2pc20uaw7xkw" path="res://Resources/Beastie/Servace/servace_volley.png" id="7_yld3q"]
+[ext_resource type="Texture2D" uid="uid://cjagvi2otcxsb" path="res://Resources/Beastie/Servace/servace_good.png" id="8_uywg4"]
+[ext_resource type="Texture2D" uid="uid://5uklk6t2ht7m" path="res://Resources/Beastie/Servace/servace_bad.png" id="9_exwgd"]
+
+[resource]
+script = ExtResource("3_eh5o0")
+my_plays = Array[ExtResource("1_tlkox")]([null, null, null])
+my_trait = ExtResource("2_1oycw")
+specie_name = "Servace"
+bar_color = Color(0.9843137, 0.52156866, 0.09411765, 1)
+body_base_pow = 100
+spirit_base_pow = 88
+mind_base_pow = 45
+body_base_def = 64
+spirit_base_def = 99
+mind_base_def = 30
+sprites = Dictionary[int, Texture2D]({
+0: ExtResource("4_ddvas"),
+1: ExtResource("5_1oycw"),
+2: ExtResource("6_nhcmv"),
+3: ExtResource("7_yld3q"),
+4: ExtResource("8_uywg4"),
+5: ExtResource("9_exwgd")
+})
+ball_anchor_position = Vector2(66, -176)
+metadata/_custom_type_script = "uid://ehabj4qsgxpl"
