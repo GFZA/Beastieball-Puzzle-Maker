@@ -1,0 +1,252 @@
+[gd_scene load_steps=14 format=3 uid="uid://s3ot8ysh03s6"]
+
+[ext_resource type="Script" uid="uid://b8da0ls7ka2na" path="res://Scenes/Board/BoardOverlay/board_overlay.gd" id="1_8b3w3"]
+[ext_resource type="FontFile" uid="uid://ds0qrrbdvqa6n" path="res://Resources/Fonts/SF Sports Night.ttf" id="1_yxvh7"]
+[ext_resource type="Texture2D" uid="uid://caafonrcdyiwp" path="res://Scenes/Board/BoardOverlay/turn_bar_offense.png" id="3_f1wdy"]
+[ext_resource type="Texture2D" uid="uid://dd07iat8y5gpe" path="res://Scenes/Board/BoardOverlay/turn_misc_overlay_offense_3_ball.png" id="4_6ugfv"]
+[ext_resource type="FontFile" uid="uid://3m3y4biedw3n" path="res://Resources/Fonts/Hauser.otf" id="5_2ewg5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8b3w3"]
+font = ExtResource("1_yxvh7")
+font_size = 120
+font_color = Color(0.9843137, 0.72156864, 0.40392157, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_uotn8"]
+font = ExtResource("1_yxvh7")
+font_size = 86
+font_color = Color(0.23529412, 0.20392157, 0.29803923, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_q7aye"]
+font = ExtResource("1_yxvh7")
+font_size = 56
+font_color = Color(0.9019608, 0.8352941, 0.80784315, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_gdymh"]
+font = ExtResource("1_yxvh7")
+font_size = 144
+font_color = Color(0.9019608, 0.8352941, 0.80784315, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_k5wq1"]
+font = ExtResource("1_yxvh7")
+font_size = 64
+font_color = Color(0.9019608, 0.8352941, 0.80784315, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ye0a1"]
+font = ExtResource("1_yxvh7")
+font_size = 86
+font_color = Color(0.23529412, 0.20392157, 0.29803923, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1fwbd"]
+font = ExtResource("5_2ewg5")
+font_size = 48
+font_color = Color(0.9843137, 0.72156864, 0.40392157, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2ewg5"]
+font = ExtResource("5_2ewg5")
+font_size = 76
+
+[node name="BoardOverlay" type="Control"]
+custom_minimum_size = Vector2(2700, 394)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8b3w3")
+
+[node name="MainContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 377.0
+grow_horizontal = 2
+theme_override_constants/separation = 4
+
+[node name="Title" type="Label" parent="MainContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 140)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+text = "Find the guaranteed win"
+label_settings = SubResource("LabelSettings_8b3w3")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="TurnBarBG" type="TextureRect" parent="MainContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(2700, 252)
+layout_mode = 2
+texture = ExtResource("3_f1wdy")
+stretch_mode = 5
+
+[node name="TurnBar" type="HBoxContainer" parent="MainContainer/TurnBarBG"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LeftLabelContainer" type="MarginContainer" parent="MainContainer/TurnBarBG/TurnBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 35
+
+[node name="TurnNameLabel" type="Label" parent="MainContainer/TurnBarBG/TurnBar/LeftLabelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+text = "Offense"
+label_settings = SubResource("LabelSettings_uotn8")
+vertical_alignment = 1
+
+[node name="ScoreLabelContainer" type="VBoxContainer" parent="MainContainer/TurnBarBG/TurnBar"]
+custom_minimum_size = Vector2(505, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_constants/separation = -10
+
+[node name="ScoreNameLabel" type="Label" parent="MainContainer/TurnBarBG/TurnBar/ScoreLabelContainer"]
+custom_minimum_size = Vector2(0, 72)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Score"
+label_settings = SubResource("LabelSettings_q7aye")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainContainer/TurnBarBG/TurnBar/ScoreLabelContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 108
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainContainer/TurnBarBG/TurnBar/ScoreLabelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_constants/separation = -18
+
+[node name="LeftScoreLabel" type="Label" parent="MainContainer/TurnBarBG/TurnBar/ScoreLabelContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 72)
+layout_mode = 2
+size_flags_vertical = 2
+text = "0"
+label_settings = SubResource("LabelSettings_gdymh")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="LeftMaxScoreLabel" type="Label" parent="MainContainer/TurnBarBG/TurnBar/ScoreLabelContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 72)
+layout_mode = 2
+size_flags_vertical = 8
+text = "3"
+label_settings = SubResource("LabelSettings_k5wq1")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MainContainer/TurnBarBG/TurnBar/ScoreLabelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_constants/separation = -18
+
+[node name="RightScoreLabel" type="Label" parent="MainContainer/TurnBarBG/TurnBar/ScoreLabelContainer/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 72)
+layout_mode = 2
+size_flags_vertical = 2
+text = "0"
+label_settings = SubResource("LabelSettings_gdymh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RightMaxScoreLabel" type="Label" parent="MainContainer/TurnBarBG/TurnBar/ScoreLabelContainer/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 72)
+layout_mode = 2
+text = "3"
+label_settings = SubResource("LabelSettings_k5wq1")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="RightLabelContainer" type="MarginContainer" parent="MainContainer/TurnBarBG/TurnBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_top = 35
+theme_override_constants/margin_right = 60
+
+[node name="MiscLabel" type="Label" parent="MainContainer/TurnBarBG/TurnBar/RightLabelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+label_settings = SubResource("LabelSettings_ye0a1")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="LogoContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(500, 200)
+layout_mode = 0
+offset_top = 1826.0
+offset_right = 500.0
+offset_bottom = 2026.0
+
+[node name="Polygon2D" type="Polygon2D" parent="LogoContainer"]
+color = Color(0.23529412, 0.20392157, 0.29803923, 1)
+polygon = PackedVector2Array(0, 0, 500, 200, 0, 200)
+
+[node name="LogoTextureRec" type="TextureRect" parent="LogoContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="BottomLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -338.0
+offset_top = -71.0
+offset_right = 338.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Puzzle solution: after Outro"
+label_settings = SubResource("LabelSettings_1fwbd")
+horizontal_alignment = 1
+
+[node name="MiscTurnOverlay" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -500.0
+offset_top = -200.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("4_6ugfv")
+
+[node name="YourTeamLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 732.0
+offset_top = 282.0
+offset_right = 1114.0
+offset_bottom = 389.0
+text = "Your Team"
+label_settings = SubResource("LabelSettings_2ewg5")
+
+[node name="DownArrow" type="Polygon2D" parent="YourTeamLabel"]
+position = Vector2(0, 6)
+polygon = PackedVector2Array(163, 77, 203, 77, 182, 98)

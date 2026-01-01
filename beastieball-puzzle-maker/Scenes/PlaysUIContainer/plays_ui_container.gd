@@ -108,9 +108,9 @@ func _update_side() -> void:
 
 func _show_damage_indicator() -> void:
 	damage_side_container.show()
-	cheese_spacer.show() # Need this to look goos
+	cheese_spacer.show() # Need this to look good
 
 
 func _hide_damage_indicator() -> void:
 	damage_side_container.hide()
-	cheese_spacer.hide() # Need this to look goos
+	cheese_spacer.hide() # Need this to look good

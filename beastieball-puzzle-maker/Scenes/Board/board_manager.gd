@@ -106,10 +106,6 @@ func get_damage_dict(attacker : Beastie, attack : Attack) -> Dictionary[Beastie.
 	return result
 
 
-func _get_damage_dict_for_signal(attacker : Beastie, attack : Attack, send_result_to : DamageIndicator) -> void:
-	send_result_to.damage_dict = get_damage_dict(attacker, attack)
-
-
 func update_all_damage_indicator() -> void:
 	var all_plays_ui : Array[Node] = get_tree().get_nodes_in_group("plays_ui_container")
 	for plays_ui : PlaysUIContainer in all_plays_ui:
