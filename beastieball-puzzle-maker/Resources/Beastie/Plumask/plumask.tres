@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Beastie" load_steps=11 format=3 uid="uid://cnr35tp2qn13p"]
+
+[ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Resources/Plays/plays.gd" id="1_fo56u"]
+[ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Resources/Trait/trait.gd" id="2_73rju"]
+[ext_resource type="Resource" uid="uid://truccwma1xyo" path="res://Resources/Trait/stirring.tres" id="2_437uw"]
+[ext_resource type="Script" uid="uid://ehabj4qsgxpl" path="res://Resources/Beastie/beastie.gd" id="3_jkegs"]
+[ext_resource type="Texture2D" uid="uid://cw1vvijg46der" path="res://Resources/Beastie/Plumask/plumask_idle.png" id="4_cy8my"]
+[ext_resource type="Texture2D" uid="uid://bdsaxxerinrmu" path="res://Resources/Beastie/Plumask/plumask_ready.png" id="5_437uw"]
+[ext_resource type="Texture2D" uid="uid://b3b75jbd05mpg" path="res://Resources/Beastie/Plumask/plumask_spike.png" id="6_fj4vk"]
+[ext_resource type="Texture2D" uid="uid://7jbcrwi8htf2" path="res://Resources/Beastie/Plumask/plumask_volley.png" id="7_4p7ej"]
+[ext_resource type="Texture2D" uid="uid://bvvmpkucg7w1i" path="res://Resources/Beastie/Plumask/plumask_good.png" id="8_axvim"]
+[ext_resource type="Texture2D" uid="uid://c303xte4x8txq" path="res://Resources/Beastie/Plumask/plumask_bad.png" id="9_4pmy0"]
+
+[resource]
+script = ExtResource("3_jkegs")
+my_plays = Array[ExtResource("1_fo56u")]([null, null, null])
+my_trait = ExtResource("2_437uw")
+specie_name = "Plumask"
+bar_color = Color(0.92156863, 0.64705884, 0.40392157, 1)
+body_base_pow = 20
+spirit_base_pow = 105
+mind_base_pow = 95
+body_base_def = 30
+spirit_base_def = 90
+mind_base_def = 75
+sprites = Dictionary[int, Texture2D]({
+0: ExtResource("4_cy8my"),
+1: ExtResource("5_437uw"),
+2: ExtResource("6_fj4vk"),
+3: ExtResource("7_4p7ej"),
+4: ExtResource("8_axvim"),
+5: ExtResource("9_4pmy0")
+})
+ball_anchor_position = Vector2(43, -127)
+metadata/_custom_type_script = "uid://ehabj4qsgxpl"

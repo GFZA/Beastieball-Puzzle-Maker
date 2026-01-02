@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="Beastie" load_steps=11 format=3 uid="uid://brqpylw32rqlp"]
+
+[ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Resources/Plays/plays.gd" id="1_ty0be"]
+[ext_resource type="Resource" uid="uid://b7gdw1agdp5jo" path="res://Resources/Trait/forager.tres" id="2_1rt6r"]
+[ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Resources/Trait/trait.gd" id="2_m6kb2"]
+[ext_resource type="Script" uid="uid://ehabj4qsgxpl" path="res://Resources/Beastie/beastie.gd" id="3_u4l1h"]
+[ext_resource type="Texture2D" uid="uid://deakjcwqo2slq" path="res://Resources/Beastie/Superilo/superilo_idle.png" id="4_u2xs6"]
+[ext_resource type="Texture2D" uid="uid://dsr6viwnm1uqq" path="res://Resources/Beastie/Superilo/superilo_ready.png" id="5_1rt6r"]
+[ext_resource type="Texture2D" uid="uid://cqb755w6pwcf4" path="res://Resources/Beastie/Superilo/superilo_spike.png" id="6_ke7xh"]
+[ext_resource type="Texture2D" uid="uid://q7u2qqnpq7ug" path="res://Resources/Beastie/Superilo/superilo_volley.png" id="7_chgmy"]
+[ext_resource type="Texture2D" uid="uid://wh47cnb2oh87" path="res://Resources/Beastie/Superilo/superilo_good.png" id="8_228n3"]
+[ext_resource type="Texture2D" uid="uid://dsnec7k6gc0k0" path="res://Resources/Beastie/Superilo/superilo_bad.png" id="9_15kca"]
+
+[resource]
+script = ExtResource("3_u4l1h")
+my_plays = Array[ExtResource("1_ty0be")]([null, null, null])
+my_trait = ExtResource("2_1rt6r")
+specie_name = "Superilo"
+bar_color = Color(0.8901961, 0.6392157, 0.20392157, 1)
+body_base_pow = 70
+spirit_base_pow = 50
+mind_base_pow = 40
+body_base_def = 120
+spirit_base_def = 60
+mind_base_def = 95
+sprites = Dictionary[int, Texture2D]({
+0: ExtResource("4_u2xs6"),
+1: ExtResource("5_1rt6r"),
+2: ExtResource("6_ke7xh"),
+3: ExtResource("7_chgmy"),
+4: ExtResource("8_228n3"),
+5: ExtResource("9_15kca")
+})
+metadata/_custom_type_script = "uid://ehabj4qsgxpl"

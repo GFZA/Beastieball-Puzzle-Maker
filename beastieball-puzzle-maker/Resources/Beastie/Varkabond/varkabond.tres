@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Beastie" load_steps=11 format=3 uid="uid://bp3tuc5b5rbly"]
+
+[ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Resources/Plays/plays.gd" id="1_006db"]
+[ext_resource type="Resource" uid="uid://f7rnuwppo7e4" path="res://Resources/Trait/unpredictable.tres" id="2_12o50"]
+[ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Resources/Trait/trait.gd" id="2_mdakt"]
+[ext_resource type="Script" uid="uid://ehabj4qsgxpl" path="res://Resources/Beastie/beastie.gd" id="3_wi8rf"]
+[ext_resource type="Texture2D" uid="uid://bhysi1m2d0jeb" path="res://Resources/Beastie/Varkabond/varkabond_idle.png" id="4_vj4f4"]
+[ext_resource type="Texture2D" uid="uid://cfw8rvu6iyvnx" path="res://Resources/Beastie/Varkabond/varkabond_ready.png" id="5_12o50"]
+[ext_resource type="Texture2D" uid="uid://cv85k37bp5ldp" path="res://Resources/Beastie/Varkabond/varkabond_spike.png" id="6_d141a"]
+[ext_resource type="Texture2D" uid="uid://srygdd7krwwe" path="res://Resources/Beastie/Varkabond/varkabond_volley.png" id="7_v6qub"]
+[ext_resource type="Texture2D" uid="uid://cl8vdihlwqa8c" path="res://Resources/Beastie/Varkabond/varkabond_good.png" id="8_6gjqd"]
+[ext_resource type="Texture2D" uid="uid://dshulacguo6oi" path="res://Resources/Beastie/Varkabond/varkabond_bad.png" id="9_mkie2"]
+
+[resource]
+script = ExtResource("3_wi8rf")
+my_plays = Array[ExtResource("1_006db")]([null, null, null])
+my_trait = ExtResource("2_12o50")
+specie_name = "Varkabond"
+bar_color = Color(0.8392157, 0.5176471, 0.3529412, 1)
+body_base_pow = 60
+spirit_base_pow = 30
+mind_base_pow = 98
+body_base_def = 60
+spirit_base_def = 80
+mind_base_def = 100
+sprites = Dictionary[int, Texture2D]({
+0: ExtResource("4_vj4f4"),
+1: ExtResource("5_12o50"),
+2: ExtResource("6_d141a"),
+3: ExtResource("7_v6qub"),
+4: ExtResource("8_6gjqd"),
+5: ExtResource("9_mkie2")
+})
+ball_anchor_position = Vector2(37, -107)
+metadata/_custom_type_script = "uid://ehabj4qsgxpl"
