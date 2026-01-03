@@ -136,6 +136,7 @@ func _process_beastie_value(value : Beastie) -> Beastie:
 
 	var processed_value = value.duplicate(true)
 	processed_value.my_side = side
+	processed_value.health_updated.connect(_update_field.unbind(1))
 	processed_value.my_plays_updated.connect(_update_field.unbind(1))
 	processed_value.my_trait_updated.connect(_update_field.unbind(1))
 	processed_value.current_boosts_updated.connect(_update_field.unbind(1))

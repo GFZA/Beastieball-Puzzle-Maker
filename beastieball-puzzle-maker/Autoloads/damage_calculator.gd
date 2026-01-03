@@ -11,7 +11,8 @@ extends Node
 func get_damage(attacker : Beastie, defender : Beastie, attack : Attack) -> int: # ADD BOARD STATE LATERRRR
 
 	#region Set up vars
-	var base_pow : int = attack.base_pow
+
+	var base_pow : int = attack.get_attack_pow(attacker, defender)
 	var type : Plays.Type = attack.type
 	assert(type == Plays.Type.ATTACK_BODY or type == Plays.Type.ATTACK_SPIRIT or type == Plays.Type.ATTACK_MIND,
 			"Attack's type not found! Check if the attack is assigned its type correctly!")
@@ -56,17 +57,20 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack) -> int:
 	total_defense_boost += int(not defender_at_net) + int(defender_is_stacked)
 
 	if not attacker.my_trait:
-		push_error("Attacker %s doesn't have trait assigned!" % [attacker.specie_name])
+		push_error("Attacker %s doesn't have trait assigned!" % attacker.specie_name)
 		return 0
 	if not defender.my_trait:
 		push_error("Defender %s doesn't have trait assigned!" % defender.specie_name)
 		return 0
+
+	var attacker_trait_mult : float = attacker.my_trait.get_attack_mult(attacker, defender, attack)
+	var defender_trait_mult : float = defender.my_trait.get_defense_mult(attacker, defender, attack)
 	var blocked_mult : float = 2.0 / (2.0 + attacker.get_feeling_stack(Beastie.Feelings.BLOCKED))
 	var tough_mult : float = 1.0 / 4.0 if tough else 1.0
 	var tender_mult : float = 2.0 if tender else 1.0
 	#var friendship_mult : float = 3.0 / 4.0 if friendship else 1.0 # TODO TODO TODO or not lol
 	var friendship_mult : float = 1.0
-	var all_damage_mults : float = (attacker.my_trait.damage_dealt_mult / defender.my_trait.damage_taken_mult) \
+	var all_damage_mults : float = (attacker_trait_mult / defender_trait_mult) \
 									* blocked_mult * tough_mult * tender_mult * friendship_mult
 	#endregion
 
@@ -91,9 +95,8 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack) -> int:
 	var final_damage : int = max(1, ceili(((floori(final_atk) * base_pow / final_def) * 0.4) * all_damage_mults))
 	#if cheerleader:
 		#final_damage += 10
-	final_damage = attacker.my_trait.special_cal_formula(final_damage)
+	final_damage = attacker.my_trait.special_cal_formula(final_damage, attacker, defender, attack)
+	final_damage = defender.my_trait.special_cal_formula(final_damage, attacker, defender, attack)
 	#endregion
-
-
 
 	return final_damage

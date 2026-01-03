@@ -15,3 +15,7 @@ enum UseCondition {NORMAL, FRONT_ONLY, BACK_ONLY}
 
 func _init() -> void:
 	self.type = Type.ATTACK_BODY
+
+
+func get_attack_pow(_attacker : Beastie, _defender : Beastie) -> int: # Overwrite this
+	return base_pow
