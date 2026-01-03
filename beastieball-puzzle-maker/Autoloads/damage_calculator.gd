@@ -49,6 +49,7 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack) -> int:
 			total_attack_boost = 0
 		total_attack_boost += 1
 	total_attack_boost += int(attacker_at_net)
+	total_attack_boost += attacker.my_trait.get_starter_trait_boost_stack(attacker, stats_type_attack)
 
 	var total_defense_boost : int = 0
 	total_defense_boost += defense_boosts

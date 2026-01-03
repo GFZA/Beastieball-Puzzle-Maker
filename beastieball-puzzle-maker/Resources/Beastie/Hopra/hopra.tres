@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="Beastie" load_steps=11 format=3 uid="uid://c5uuymtswvp65"]
+
+[ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Resources/Plays/plays.gd" id="1_5u6mg"]
+[ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Resources/Trait/trait.gd" id="2_crcu8"]
+[ext_resource type="Resource" uid="uid://bmt343nrue458" path="res://Resources/Trait/high_spirits.tres" id="2_pkep1"]
+[ext_resource type="Script" uid="uid://ehabj4qsgxpl" path="res://Resources/Beastie/beastie.gd" id="3_i8e3u"]
+[ext_resource type="Texture2D" uid="uid://bfnuhdlwup73k" path="res://Resources/Beastie/Hopra/hopra_idle.png" id="4_d563j"]
+[ext_resource type="Texture2D" uid="uid://byq2t2kqw3gct" path="res://Resources/Beastie/Hopra/hopra_ready.png" id="5_pkep1"]
+[ext_resource type="Texture2D" uid="uid://dyclb4lh6acgq" path="res://Resources/Beastie/Hopra/hopra_spike.png" id="6_o8hj7"]
+[ext_resource type="Texture2D" uid="uid://ca42pq40yucee" path="res://Resources/Beastie/Hopra/hopra_volley.png" id="7_r21o0"]
+[ext_resource type="Texture2D" uid="uid://byy6o5mkyhcnj" path="res://Resources/Beastie/Hopra/hopra_good.png" id="8_p26u1"]
+[ext_resource type="Texture2D" uid="uid://bpxra6l3fx3o7" path="res://Resources/Beastie/Hopra/hopra_bad.png" id="9_ol1so"]
+
+[resource]
+script = ExtResource("3_i8e3u")
+my_plays = Array[ExtResource("1_5u6mg")]([null, null, null])
+my_trait = ExtResource("2_pkep1")
+specie_name = "Hopra"
+bar_color = Color(0.90588236, 0.18039216, 0.33333334, 1)
+body_base_pow = 64
+spirit_base_pow = 100
+mind_base_pow = 26
+body_base_def = 85
+spirit_base_def = 110
+sprites = Dictionary[int, Texture2D]({
+0: ExtResource("4_d563j"),
+1: ExtResource("5_pkep1"),
+2: ExtResource("6_o8hj7"),
+3: ExtResource("7_r21o0"),
+4: ExtResource("8_p26u1"),
+5: ExtResource("9_ol1so")
+})
+metadata/_custom_type_script = "uid://ehabj4qsgxpl"

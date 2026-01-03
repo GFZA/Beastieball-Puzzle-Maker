@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Beastie" load_steps=11 format=3 uid="uid://dr6dti4ow55uy"]
+
+[ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Resources/Plays/plays.gd" id="1_mjbct"]
+[ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Resources/Trait/trait.gd" id="2_c0oaa"]
+[ext_resource type="Resource" uid="uid://depxh0unafvrd" path="res://Resources/Trait/full_focus.tres" id="2_x4xr0"]
+[ext_resource type="Script" uid="uid://ehabj4qsgxpl" path="res://Resources/Beastie/beastie.gd" id="3_xmliq"]
+[ext_resource type="Texture2D" uid="uid://dbhual56c4cnk" path="res://Resources/Beastie/Bandicraft/bandicraft_idle.png" id="4_74g53"]
+[ext_resource type="Texture2D" uid="uid://fqlub67fyf4c" path="res://Resources/Beastie/Bandicraft/bandicraft_ready.png" id="5_x4xr0"]
+[ext_resource type="Texture2D" uid="uid://34ga6srd7kv2" path="res://Resources/Beastie/Bandicraft/bandicraft_spike.png" id="6_kkor3"]
+[ext_resource type="Texture2D" uid="uid://dc8mywgbnjfc7" path="res://Resources/Beastie/Bandicraft/bandicraft_volley.png" id="7_sjukr"]
+[ext_resource type="Texture2D" uid="uid://dtqhkuhktohgu" path="res://Resources/Beastie/Bandicraft/bandicraft_good.png" id="8_k08c3"]
+[ext_resource type="Texture2D" uid="uid://kyjyfcv2clxo" path="res://Resources/Beastie/Bandicraft/bandicraft_bad.png" id="9_d2b2s"]
+
+[resource]
+script = ExtResource("3_xmliq")
+my_plays = Array[ExtResource("1_mjbct")]([null, null, null])
+my_trait = ExtResource("2_x4xr0")
+specie_name = "Bandicraft"
+bar_color = Color(0.1254902, 0.654902, 0.9882353, 1)
+body_base_pow = 57
+spirit_base_pow = 25
+mind_base_pow = 85
+body_base_def = 70
+spirit_base_def = 85
+mind_base_def = 118
+sprites = Dictionary[int, Texture2D]({
+0: ExtResource("4_74g53"),
+1: ExtResource("5_x4xr0"),
+2: ExtResource("6_kkor3"),
+3: ExtResource("7_sjukr"),
+4: ExtResource("8_k08c3"),
+5: ExtResource("9_d2b2s")
+})
+ball_anchor_position = Vector2(91, -142)
+metadata/_custom_type_script = "uid://ehabj4qsgxpl"
