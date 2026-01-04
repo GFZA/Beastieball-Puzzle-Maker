@@ -46,7 +46,7 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack) -> int:
 	#region Get boost counts and damage mults
 	var total_attack_boost : int = 0
 	var attack_boosts_to_add : int = attack_boosts
-	if attacker_weepy:
+	if attacker_weepy or defender.my_trait.name.to_lower() == "foggy":
 		attack_boosts_to_add = min(0, attack_boosts) # so it counts deboosts
 	total_attack_boost += attack_boosts_to_add
 
@@ -54,18 +54,24 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack) -> int:
 		if signi(total_attack_boost) == -1:
 			total_attack_boost = 0
 		total_attack_boost += 1
-	total_attack_boost += int(attacker_at_net)
+	if attacker.my_trait.name.to_lower() == "shy":
+		total_attack_boost += int(not attacker_at_net)
+	else:
+		total_attack_boost += int(attacker_at_net)
 	total_attack_boost += attacker.my_trait.get_starter_trait_boost_stack(attacker, stats_type_attack)
 
 	var total_defense_boost : int = 0
 	var def_boosts_to_add : int = defense_boosts
-	if defender_weepy:
+	if defender_weepy or attacker.my_trait.name.to_lower() == "foggy":
 		def_boosts_to_add = min(0, defense_boosts) # so it counts deboosts
 	total_defense_boost += def_boosts_to_add
 
 	if jazzed:
 		total_defense_boost = mini(0, total_defense_boost)
-	total_defense_boost += int(not defender_at_net) + int(defender_is_stacked)
+	if defender.my_trait.name.to_lower() == "shy":
+		total_defense_boost += int(defender_at_net)
+	else:
+		total_defense_boost += int(not defender_at_net) + int(defender_is_stacked)
 
 	if not attacker.my_trait:
 		push_error("Attacker %s doesn't have trait assigned!" % attacker.specie_name)

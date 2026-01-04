@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://co8c0qvn7nkha"]
+[gd_scene load_steps=31 format=3 uid="uid://co8c0qvn7nkha"]
 
 [ext_resource type="Script" uid="uid://dfsngo7akxojy" path="res://Scenes/Board/board.gd" id="1_mucxt"]
 [ext_resource type="PackedScene" uid="uid://s3ot8ysh03s6" path="res://Scenes/Board/BoardOverlay/board_overlay.tscn" id="2_e8qp6"]
@@ -6,28 +6,32 @@
 [ext_resource type="Script" uid="uid://f48ncbr7tvnf" path="res://Scenes/Board/board_manager.gd" id="3_oh3sv"]
 [ext_resource type="Script" uid="uid://bodsyqui6wlo0" path="res://Scenes/Board/team_contoller.gd" id="3_xc5ao"]
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Resources/Plays/plays.gd" id="6_s2gku"]
-[ext_resource type="Resource" uid="uid://7euxvv68bs8h" path="res://Resources/Plays/Attack/Mind/rainbow.tres" id="7_cv4jv"]
-[ext_resource type="Resource" uid="uid://b1p53xhl07na3" path="res://Resources/Trait/anticipation.tres" id="7_s2gku"]
+[ext_resource type="Resource" uid="uid://bijgrhbki1aqo" path="res://Resources/Plays/Attack/Mind/slice.tres" id="7_cv4jv"]
+[ext_resource type="Resource" uid="uid://dkcf8so36ophe" path="res://Resources/Plays/Attack/Mind/tool.tres" id="7_qg8b0"]
 [ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Resources/Trait/trait.gd" id="8_dqnt6"]
 [ext_resource type="Script" uid="uid://ehabj4qsgxpl" path="res://Resources/Beastie/beastie.gd" id="9_63xfs"]
+[ext_resource type="Resource" uid="uid://bqp3p64xidvq7" path="res://Resources/Trait/goofy.tres" id="9_wvqeh"]
 [ext_resource type="Texture2D" uid="uid://2skrtsx06qb5" path="res://Resources/Beastie/Psylusc/psylusc_idle.png" id="10_xqaal"]
 [ext_resource type="Texture2D" uid="uid://cj0pkqf8hhvi8" path="res://Resources/Beastie/Psylusc/psylusc_ready.png" id="11_dqnt6"]
 [ext_resource type="Texture2D" uid="uid://bfec2v5lsnepy" path="res://Resources/Beastie/Psylusc/psylusc_spike.png" id="12_63xfs"]
 [ext_resource type="Texture2D" uid="uid://djqkphafy18sj" path="res://Resources/Beastie/Psylusc/psylusc_volley.png" id="13_a1ark"]
 [ext_resource type="Texture2D" uid="uid://c1fc13ailf7pt" path="res://Resources/Beastie/Psylusc/psylusc_good.png" id="14_rt3kt"]
 [ext_resource type="Texture2D" uid="uid://cjxp81nts1eyx" path="res://Resources/Beastie/Psylusc/psylusc_bad.png" id="15_v248q"]
-[ext_resource type="Resource" uid="uid://nxdyq36jyolv" path="res://Resources/Trait/armored.tres" id="17_06gvc"]
+[ext_resource type="Resource" uid="uid://c6eqm7qkng1lr" path="res://Resources/Plays/Attack/Body/spike.tres" id="18_cv4jv"]
 [ext_resource type="Texture2D" uid="uid://rbklb5uj2ffn" path="res://Resources/Beastie/Servace/servace_idle.png" id="18_qg8b0"]
+[ext_resource type="Resource" uid="uid://crw7mdnqf8a36" path="res://Resources/Trait/shy.tres" id="19_783r4"]
 [ext_resource type="Texture2D" uid="uid://bh1686cd3lx1i" path="res://Resources/Beastie/Servace/servace_ready.png" id="19_cv4jv"]
 [ext_resource type="Texture2D" uid="uid://d4c4mrtd8ei3y" path="res://Resources/Beastie/Servace/servace_spike.png" id="20_wvqeh"]
 [ext_resource type="Texture2D" uid="uid://d2pc20uaw7xkw" path="res://Resources/Beastie/Servace/servace_volley.png" id="21_783r4"]
 [ext_resource type="Texture2D" uid="uid://cjagvi2otcxsb" path="res://Resources/Beastie/Servace/servace_good.png" id="22_ajukc"]
 [ext_resource type="Texture2D" uid="uid://5uklk6t2ht7m" path="res://Resources/Beastie/Servace/servace_bad.png" id="23_so6i1"]
+[ext_resource type="Resource" uid="uid://bviqgfc5c66a1" path="res://Resources/Trait/vicious.tres" id="26_ajukc"]
+[ext_resource type="Texture2D" uid="uid://n7xmk21wrjvi" path="res://Resources/Beastie/Pladion/pladion_idle.png" id="27_so6i1"]
 
-[sub_resource type="Resource" id="Resource_06gvc"]
+[sub_resource type="Resource" id="Resource_qg8b0"]
 script = ExtResource("9_63xfs")
-my_plays = Array[ExtResource("6_s2gku")]([ExtResource("7_cv4jv"), null, null])
-my_trait = ExtResource("7_s2gku")
+my_plays = Array[ExtResource("6_s2gku")]([ExtResource("7_cv4jv"), ExtResource("7_qg8b0"), null])
+my_trait = ExtResource("9_wvqeh")
 specie_name = "Psylusc"
 beastiepedia_id = 73
 bar_color = Color(0.64705884, 0.4392157, 1, 1)
@@ -47,10 +51,10 @@ sprites = Dictionary[int, Texture2D]({
 })
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"
 
-[sub_resource type="Resource" id="Resource_qg8b0"]
+[sub_resource type="Resource" id="Resource_cv4jv"]
 script = ExtResource("9_63xfs")
-my_plays = Array[ExtResource("6_s2gku")]([ExtResource("7_cv4jv"), null, null])
-my_trait = ExtResource("17_06gvc")
+my_plays = Array[ExtResource("6_s2gku")]([ExtResource("18_cv4jv"), null, null])
+my_trait = ExtResource("19_783r4")
 specie_name = "Servace"
 beastiepedia_id = 30
 bar_color = Color(0.9843137, 0.52156866, 0.09411765, 1)
@@ -69,6 +73,30 @@ sprites = Dictionary[int, Texture2D]({
 5: ExtResource("23_so6i1")
 })
 ball_anchor_position = Vector2(66, -176)
+metadata/_custom_type_script = "uid://ehabj4qsgxpl"
+
+[sub_resource type="Resource" id="Resource_1wp3c"]
+script = ExtResource("9_63xfs")
+my_plays = Array[ExtResource("6_s2gku")]([null, null, null])
+my_trait = ExtResource("26_ajukc")
+specie_name = "Pladion"
+beastiepedia_id = 101
+bar_color = Color(0.5568628, 0.52156866, 0.8784314, 1)
+body_base_pow = 40
+spirit_base_pow = 50
+mind_base_pow = 78
+body_base_def = 81
+spirit_base_def = 70
+mind_base_def = 108
+sprites = Dictionary[int, Texture2D]({
+0: ExtResource("27_so6i1"),
+1: ExtResource("27_so6i1"),
+2: ExtResource("27_so6i1"),
+3: ExtResource("27_so6i1"),
+4: ExtResource("27_so6i1"),
+5: ExtResource("27_so6i1")
+})
+ball_anchor_position = Vector2(80, -160)
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"
 
 [node name="Board" type="Node2D"]
@@ -125,7 +153,7 @@ metadata/_edit_lock_ = true
 unique_name_in_owner = true
 position = Vector2(101, 483)
 script = ExtResource("3_xc5ao")
-beastie_1_beastie = SubResource("Resource_06gvc")
+beastie_1_beastie = SubResource("Resource_qg8b0")
 metadata/_edit_lock_ = true
 
 [node name="LeftBenchMarker" type="Node2D" parent="SubViewportContainer/SubViewport/LeftTeamController"]
@@ -164,7 +192,8 @@ gizmo_extents = 0.0
 unique_name_in_owner = true
 position = Vector2(101, 483)
 script = ExtResource("3_xc5ao")
-beastie_1_beastie = SubResource("Resource_qg8b0")
+beastie_1_beastie = SubResource("Resource_cv4jv")
+beastie_2_beastie = SubResource("Resource_1wp3c")
 side = 1
 metadata/_edit_lock_ = true
 
