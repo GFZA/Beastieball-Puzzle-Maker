@@ -25,6 +25,7 @@ script = ExtResource("2_kpbug")
 my_plays = Array[ExtResource("1_cyme1")]([null, null, null])
 my_trait = ExtResource("11_4rwsp")
 specie_name = "Garood"
+beastiepedia_id = 25
 bar_color = Color(0.9529412, 0.9019608, 0.77254903, 1)
 body_base_pow = 88
 spirit_base_pow = 20

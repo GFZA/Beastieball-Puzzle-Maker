@@ -16,6 +16,7 @@ script = ExtResource("3_htvtc")
 my_plays = Array[ExtResource("1_7c7nu")]([null, null, null])
 my_trait = ExtResource("2_ferrg")
 specie_name = "Trat"
+beastiepedia_id = 80
 bar_color = Color(1, 0.7764706, 0.6666667, 1)
 body_base_pow = 81
 spirit_base_pow = 23

@@ -16,6 +16,7 @@ script = ExtResource("3_jkegs")
 my_plays = Array[ExtResource("1_fo56u")]([null, null, null])
 my_trait = ExtResource("2_437uw")
 specie_name = "Plumask"
+beastiepedia_id = 16
 bar_color = Color(0.92156863, 0.64705884, 0.40392157, 1)
 body_base_pow = 20
 spirit_base_pow = 105

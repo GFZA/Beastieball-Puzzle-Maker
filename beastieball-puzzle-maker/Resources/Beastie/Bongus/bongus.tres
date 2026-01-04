@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="Beastie" load_steps=10 format=3 uid="uid://dct3g7r10hqgm"]
+
+[ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Resources/Plays/plays.gd" id="1_gb7fw"]
+[ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Resources/Trait/trait.gd" id="2_ilj47"]
+[ext_resource type="Script" uid="uid://ehabj4qsgxpl" path="res://Resources/Beastie/beastie.gd" id="3_r8gm2"]
+[ext_resource type="Texture2D" uid="uid://bsc3444t8iyum" path="res://Resources/Beastie/Bongus/bongus_idle.png" id="4_r576l"]
+[ext_resource type="Texture2D" uid="uid://cy1241sgpcns7" path="res://Resources/Beastie/Bongus/bongus_ready.png" id="5_tdx5t"]
+[ext_resource type="Texture2D" uid="uid://bb115qhwpjvfb" path="res://Resources/Beastie/Bongus/bongus_spike.png" id="6_7aof5"]
+[ext_resource type="Texture2D" uid="uid://crrgwo1rae2xc" path="res://Resources/Beastie/Bongus/bongus_volley.png" id="7_0xy4c"]
+[ext_resource type="Texture2D" uid="uid://yn50mooqplel" path="res://Resources/Beastie/Bongus/bongus_good.png" id="8_04fdc"]
+[ext_resource type="Texture2D" uid="uid://b5dg10e4muotl" path="res://Resources/Beastie/Bongus/bongus_bad.png" id="9_26igx"]
+
+[resource]
+script = ExtResource("3_r8gm2")
+my_plays = Array[ExtResource("1_gb7fw")]([null, null, null])
+specie_name = "Bongus"
+beastiepedia_id = 2
+bar_color = Color(0.8901961, 0.6901961, 0.26666668, 1)
+body_base_pow = 75
+spirit_base_pow = 60
+mind_base_pow = 40
+body_base_def = 110
+spirit_base_def = 90
+mind_base_def = 65
+sprites = Dictionary[int, Texture2D]({
+0: ExtResource("4_r576l"),
+1: ExtResource("5_tdx5t"),
+2: ExtResource("6_7aof5"),
+3: ExtResource("7_0xy4c"),
+4: ExtResource("8_04fdc"),
+5: ExtResource("9_26igx")
+})
+metadata/_custom_type_script = "uid://ehabj4qsgxpl"

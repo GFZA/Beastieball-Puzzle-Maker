@@ -6,5 +6,5 @@
 script = ExtResource("1_irvqf")
 name = "Acrobat"
 description = "DEF x1.5 just after moving or tagging in"
-damage_taken_mult = 1.5
+def_mult = 1.5
 metadata/_custom_type_script = "uid://bslfuaragw1g7"

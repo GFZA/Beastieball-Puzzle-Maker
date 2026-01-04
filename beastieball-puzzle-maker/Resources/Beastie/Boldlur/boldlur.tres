@@ -16,6 +16,7 @@ script = ExtResource("3_mjom6")
 my_plays = Array[ExtResource("1_63de5")]([null, null, null])
 my_trait = ExtResource("2_oplwd")
 specie_name = "Boldlur"
+beastiepedia_id = 77
 bar_color = Color(0.54901963, 0.4117647, 0.41960785, 1)
 body_base_pow = 86
 spirit_base_pow = 22

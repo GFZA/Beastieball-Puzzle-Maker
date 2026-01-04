@@ -16,6 +16,7 @@ script = ExtResource("3_fsb33")
 my_plays = Array[ExtResource("1_nrti3")]([null, null, null])
 my_trait = ExtResource("2_14eik")
 specie_name = "Gremlur"
+beastiepedia_id = 89
 bar_color = Color(0.64705884, 0.44313726, 1, 1)
 body_base_pow = 55
 spirit_base_pow = 50

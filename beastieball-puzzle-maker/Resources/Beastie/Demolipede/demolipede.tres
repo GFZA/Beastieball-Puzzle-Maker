@@ -16,6 +16,7 @@ script = ExtResource("3_tr6kv")
 my_plays = Array[ExtResource("1_vjhpb")]([null, null, null])
 my_trait = ExtResource("2_mh4dv")
 specie_name = "Demolipede"
+beastiepedia_id = 79
 bar_color = Color(0.9372549, 0.58431375, 0, 1)
 body_base_pow = 88
 spirit_base_pow = 38

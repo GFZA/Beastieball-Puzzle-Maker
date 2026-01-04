@@ -12,6 +12,7 @@ script = ExtResource("3_vq1k4")
 my_plays = Array[ExtResource("1_ijef1")]([null, null, null])
 my_trait = ExtResource("2_vq1k4")
 specie_name = "Orgella"
+beastiepedia_id = 64
 bar_color = Color(0.89411765, 0.17254902, 0.32156864, 1)
 body_base_pow = 16
 spirit_base_pow = 81

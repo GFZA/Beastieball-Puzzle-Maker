@@ -16,6 +16,7 @@ script = ExtResource("3_yr6yw")
 my_plays = Array[ExtResource("1_ncnhv")]([null, null, null])
 my_trait = ExtResource("2_dv7o2")
 specie_name = "Grazada"
+beastiepedia_id = 52
 bar_color = Color(0.68235296, 0.7372549, 0.2627451, 1)
 body_base_pow = 55
 spirit_base_pow = 95

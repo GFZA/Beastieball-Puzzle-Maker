@@ -11,6 +11,7 @@ script = ExtResource("3_7q6vv")
 my_plays = Array[ExtResource("1_he5uj")]([null, null, null])
 my_trait = ExtResource("2_7q6vv")
 specie_name = "Pladion"
+beastiepedia_id = 101
 bar_color = Color(0.5568628, 0.52156866, 0.8784314, 1)
 body_base_pow = 40
 spirit_base_pow = 50

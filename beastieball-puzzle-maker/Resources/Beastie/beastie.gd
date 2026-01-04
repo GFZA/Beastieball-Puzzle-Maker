@@ -62,7 +62,7 @@ signal health_updated(health : int)
 		value = value.substr(0, MAX_NAME_LENGTH)
 		my_name = value
 		my_name_updated.emit(my_name)
-@export_range(0, 999) var sport_number : int = 1:
+@export_range(0, 999) var sport_number : int = 0:
 	set(value):
 		clamp(value, 0, 999)
 		sport_number = value
@@ -94,6 +94,7 @@ signal health_updated(health : int)
 
 @export_group("Internal Infos")
 @export var specie_name : String = "Sprecko"
+@export_range(1, 106) var beastiepedia_id : int = 999
 @export_color_no_alpha var bar_color : Color = Color.GREEN
 @export_range(1, 150) var body_base_pow : int = 45 :
 	set(value):

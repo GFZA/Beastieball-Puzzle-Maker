@@ -137,8 +137,8 @@ func update_number_label(new_number: int) -> void:
 	if not is_node_ready():
 		await ready
 
-	if new_number == null:
-		new_number = 0
+	if new_number == 0:
+		new_number = beastie.beastiepedia_id
 	number_label.text = "#%s" % str(new_number)
 
 

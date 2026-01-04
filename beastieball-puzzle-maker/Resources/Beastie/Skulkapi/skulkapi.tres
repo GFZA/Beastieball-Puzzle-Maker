@@ -16,6 +16,7 @@ script = ExtResource("3_fjol0")
 my_plays = Array[ExtResource("1_pva2w")]([null, null, null])
 my_trait = ExtResource("2_7046n")
 specie_name = "Skulkapi"
+beastiepedia_id = 50
 bar_color = Color(0.8666667, 0.09019608, 0.8392157, 1)
 body_base_pow = 26
 spirit_base_pow = 78

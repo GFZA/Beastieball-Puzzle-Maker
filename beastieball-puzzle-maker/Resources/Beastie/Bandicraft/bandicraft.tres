@@ -16,6 +16,7 @@ script = ExtResource("3_xmliq")
 my_plays = Array[ExtResource("1_mjbct")]([null, null, null])
 my_trait = ExtResource("2_x4xr0")
 specie_name = "Bandicraft"
+beastiepedia_id = 13
 bar_color = Color(0.1254902, 0.654902, 0.9882353, 1)
 body_base_pow = 57
 spirit_base_pow = 25

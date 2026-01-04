@@ -33,17 +33,23 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack) -> int:
 	var attacker_at_net : bool = attacker.check_if_net()
 	var attack_boosts : int = attacker.get_boosts(stats_type_attack)
 	var jazzed : bool = (attacker.get_feeling_stack(Beastie.Feelings.JAZZED) > 0)
+	var attacker_weepy : bool = (attacker.get_feeling_stack(Beastie.Feelings.WEEPY) > 0)
 
 	var defender_at_net : bool = defender.check_if_net()
 	var defender_is_stacked : bool = defender.check_if_stack()
 	var defense_boosts : int = defender.get_boosts(stats_type_defense)
 	var tough : bool = (defender.get_feeling_stack(Beastie.Feelings.TOUGH) > 0)
 	var tender : bool = (defender.get_feeling_stack(Beastie.Feelings.TENDER) > 0)
+	var defender_weepy : bool = (defender.get_feeling_stack(Beastie.Feelings.WEEPY) > 0)
 	#endregion
 
 	#region Get boost counts and damage mults
 	var total_attack_boost : int = 0
-	total_attack_boost += attack_boosts
+	var attack_boosts_to_add : int = attack_boosts
+	if attacker_weepy:
+		attack_boosts_to_add = min(0, attack_boosts) # so it counts deboosts
+	total_attack_boost += attack_boosts_to_add
+
 	if jazzed:
 		if signi(total_attack_boost) == -1:
 			total_attack_boost = 0
@@ -52,7 +58,11 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack) -> int:
 	total_attack_boost += attacker.my_trait.get_starter_trait_boost_stack(attacker, stats_type_attack)
 
 	var total_defense_boost : int = 0
-	total_defense_boost += defense_boosts
+	var def_boosts_to_add : int = defense_boosts
+	if defender_weepy:
+		def_boosts_to_add = min(0, defense_boosts) # so it counts deboosts
+	total_defense_boost += def_boosts_to_add
+
 	if jazzed:
 		total_defense_boost = mini(0, total_defense_boost)
 	total_defense_boost += int(not defender_at_net) + int(defender_is_stacked)
