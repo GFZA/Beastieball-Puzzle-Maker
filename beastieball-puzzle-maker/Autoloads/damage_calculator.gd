@@ -85,7 +85,7 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack) -> int:
 	var blocked_mult : float = 2.0 / (2.0 + attacker.get_feeling_stack(Beastie.Feelings.BLOCKED))
 	var tough_mult : float = 1.0 / 4.0 if tough else 1.0
 	var tender_mult : float = 2.0 if tender else 1.0
-	#var friendship_mult : float = 3.0 / 4.0 if friendship else 1.0 # TODO TODO TODO or not lol
+	#var friendship_mult : float = 3.0 / 4.0 if friendship else 1.0 # TODO
 	var friendship_mult : float = 1.0
 	var all_damage_mults : float = (attacker_trait_mult / defender_trait_mult) \
 									* blocked_mult * tough_mult * tender_mult * friendship_mult
@@ -111,7 +111,7 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack) -> int:
 	#var friendship_mult : float = 3.0/4.0 if friendship else 1.0
 	var final_damage : int = max(1, ceili(((floori(final_atk) * base_pow / final_def) * 0.4) * all_damage_mults))
 	#if cheerleader:
-		#final_damage += 10
+		#final_damage += 10 # TODO
 	final_damage = attacker.my_trait.special_cal_formula(final_damage, attacker, defender, attack)
 	final_damage = defender.my_trait.special_cal_formula(final_damage, attacker, defender, attack)
 	#endregion
