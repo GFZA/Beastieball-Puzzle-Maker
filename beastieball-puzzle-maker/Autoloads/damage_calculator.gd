@@ -10,8 +10,17 @@ extends Node
 
 func get_damage(attacker : Beastie, defender : Beastie, attack : Attack) -> int: # ADD BOARD STATE LATERRRR
 
-	if attack.name.to_lower() == "grinder":
+	var attack_name : String = attack.name.to_lower()
+
+	#region Special attacks (early returns)
+
+	if attack_name == "grinder":
 		return max(1, ceili(float(defender.health) / 2.0))
+
+	if attack_name == "precision strike":
+		return 30
+
+	#endregion
 
 	#region Set up vars
 
@@ -29,9 +38,9 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack) -> int:
 	# 3 == Beastie.Stats.B_DEF
 	# 4 == Beastie.Stats.S_DEF
 	# 5 == Beastie.Stats.M_DEF
-	if attack.name.to_lower() == "contest":
+	if attack_name == "contest":
 		stats_type_defense = defender.get_highest_def_type()
-	if attack.name.to_lower() == "snipe":
+	if attack_name == "snipe":
 		stats_type_defense = defender.get_lowest_def_type()
 
 	var total_attack_stat : int = attacker.get_total_stats_value(stats_type_attack) # Will get +5 from being lv.50 in calculation
@@ -39,7 +48,7 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack) -> int:
 
 	var attacker_at_net : bool = attacker.check_if_net()
 	var attack_boosts : int = attacker.get_boosts(stats_type_attack)
-	var jazzed : bool = (attacker.get_feeling_stack(Beastie.Feelings.JAZZED) > 0) or (attack.name.to_lower() == "thriller") # TODO cancel thriller effect when dread here
+	var jazzed : bool = (attacker.get_feeling_stack(Beastie.Feelings.JAZZED) > 0) or (attack_name == "thriller") # TODO cancel thriller effect when dread here
 	var attacker_weepy : bool = (attacker.get_feeling_stack(Beastie.Feelings.WEEPY) > 0)
 
 	var defender_at_net : bool = defender.check_if_net()
@@ -72,15 +81,15 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack) -> int:
 	# --- DEF boosts ---
 	var total_defense_boost : int = 0
 	var def_boosts_to_add : int = defense_boosts
-	if defender_weepy or attacker.my_trait.name.to_lower() == "foggy" or attack.name.to_lower() == "raw fury":
+	if defender_weepy or attacker.my_trait.name.to_lower() == "foggy" or attack_name == "raw fury":
 		def_boosts_to_add = min(0, defense_boosts) # so it counts deboosts
 	total_defense_boost += def_boosts_to_add
 
 	if jazzed:
 		total_defense_boost = mini(0, total_defense_boost)
 
-	var defender_is_shy : bool = (defender.my_trait.name.to_lower() == "shy") and (not attack.name.to_lower() == "true strike")
-	var is_rocket : bool = attack.name.to_lower() == "rocket"
+	var defender_is_shy : bool = (defender.my_trait.name.to_lower() == "shy") and (not attack_name == "true strike")
+	var is_rocket : bool = attack_name == "rocket"
 	if defender_is_shy != is_rocket: # Only swap row bonus when both are true or both are false (XOR condition)
 		total_defense_boost += int(defender_at_net)
 	else:
@@ -95,10 +104,14 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack) -> int:
 
 	var attacker_trait_mult : float = attacker.my_trait.get_attack_mult(attacker, defender, attack)
 	var defender_trait_mult : float = 1.0
-	if not attack.name.to_lower() == "true strike":
+	if not attack_name == "true strike":
 		defender_trait_mult = defender.my_trait.get_defense_mult(attacker, defender, attack)
-	var blocked_mult : float = 2.0 / (2.0 + attacker.get_feeling_stack(Beastie.Feelings.BLOCKED))
-	var tough_mult : float = 1.0 / 4.0 if tough and (not attack.name.to_lower() == "raw fury") else 1.0
+
+	var blocked_stack : float = 0.0
+	if not attack_name == "roll shot":
+		blocked_stack = attacker.get_feeling_stack(Beastie.Feelings.BLOCKED)
+	var blocked_mult : float = 2.0 / (2.0 + blocked_stack)
+	var tough_mult : float = 1.0 / 4.0 if tough and (not attack_name == "raw fury") else 1.0
 	var tender_mult : float = 2.0 if tender else 1.0
 	#var friendship_mult : float = 3.0 / 4.0 if friendship else 1.0 # TODO
 	var friendship_mult : float = 1.0
@@ -125,10 +138,10 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack) -> int:
 	#region Calculate the damage + board states
 	#var friendship_mult : float = 3.0/4.0 if friendship else 1.0
 	var final_damage : int = max(1, ceili(((floori(final_atk) * base_pow / final_def) * 0.4) * all_damage_mults))
-	#if cheerleader:
-		#final_damage += 10 # TODO
+	#if cheerleader: # TODO
+		#final_damage += 10
 	final_damage = attacker.my_trait.special_cal_formula(final_damage, attacker, defender, attack)
-	if not attack.name.to_lower() == "true strike":
+	if not attack_name == "true strike":
 		final_damage = defender.my_trait.special_cal_formula(final_damage, attacker, defender, attack)
 	#endregion
 

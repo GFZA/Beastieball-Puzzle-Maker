@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://co8c0qvn7nkha"]
+[gd_scene load_steps=46 format=3 uid="uid://co8c0qvn7nkha"]
 
 [ext_resource type="Script" uid="uid://dfsngo7akxojy" path="res://Scenes/Board/board.gd" id="1_mucxt"]
 [ext_resource type="PackedScene" uid="uid://s3ot8ysh03s6" path="res://Scenes/Board/BoardOverlay/board_overlay.tscn" id="2_e8qp6"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" uid="uid://bodsyqui6wlo0" path="res://Scenes/Board/team_contoller.gd" id="3_xc5ao"]
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Resources/Plays/plays.gd" id="6_s2gku"]
 [ext_resource type="Resource" uid="uid://truccwma1xyo" path="res://Resources/Trait/stirring.tres" id="7_ifp2b"]
+[ext_resource type="Resource" uid="uid://dodbnlxn2lj0d" path="res://Resources/Plays/Attack/Mind/roll_shot.tres" id="7_wgq7v"]
+[ext_resource type="Resource" uid="uid://c7blujvv2w3vu" path="res://Resources/Plays/Attack/Mind/nerve_strike.tres" id="7_xlusq"]
 [ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Resources/Trait/trait.gd" id="8_dqnt6"]
 [ext_resource type="Script" uid="uid://ehabj4qsgxpl" path="res://Resources/Beastie/beastie.gd" id="9_63xfs"]
 [ext_resource type="Texture2D" uid="uid://cw1vvijg46der" path="res://Resources/Beastie/Plumask/plumask_idle.png" id="10_xlusq"]
@@ -27,12 +29,12 @@
 [ext_resource type="Texture2D" uid="uid://brakip3rf2uyp" path="res://Resources/Beastie/Trat/trat_spike.png" id="22_xlusq"]
 [ext_resource type="Texture2D" uid="uid://bokn1pusp7xil" path="res://Resources/Beastie/Trat/trat_volley.png" id="23_kbwk5"]
 [ext_resource type="Texture2D" uid="uid://5uklk6t2ht7m" path="res://Resources/Beastie/Servace/servace_bad.png" id="23_so6i1"]
-[ext_resource type="Resource" uid="uid://bqpax11k5enii" path="res://Resources/Plays/Attack/Mind/snipe.tres" id="24_ifp2b"]
 [ext_resource type="Texture2D" uid="uid://c3jwebqcolnfq" path="res://Resources/Beastie/Trat/trat_good.png" id="24_wgq7v"]
 [ext_resource type="Texture2D" uid="uid://cye348pgs8ej7" path="res://Resources/Beastie/Trat/trat_bad.png" id="25_qa3hq"]
 [ext_resource type="Resource" uid="uid://c6bnkalnd6qdf" path="res://Resources/Plays/Attack/Spirit/turnabout.tres" id="25_xlusq"]
 [ext_resource type="Resource" uid="uid://cle27qn3pd41x" path="res://Resources/Trait/super_armor.tres" id="27_3wkvc"]
 [ext_resource type="Resource" uid="uid://q5fhwy5qny81" path="res://Resources/Trait/intangible.tres" id="34_kbwk5"]
+[ext_resource type="Resource" uid="uid://nwk5cfisjfoh" path="res://Resources/Plays/Attack/Mind/soulcursher.tres" id="34_wgq7v"]
 [ext_resource type="Texture2D" uid="uid://cgey1txfr4tfo" path="res://Resources/Beastie/Mistic/mistic_idle.png" id="35_wgq7v"]
 [ext_resource type="Texture2D" uid="uid://c542w2pbsb2qi" path="res://Resources/Beastie/Mistic/mistic_ready.png" id="36_qa3hq"]
 [ext_resource type="Texture2D" uid="uid://i5d68yxo2884" path="res://Resources/Beastie/Mistic/mistic_spike.png" id="37_mucxt"]
@@ -42,8 +44,11 @@
 
 [sub_resource type="Resource" id="Resource_wgq7v"]
 script = ExtResource("9_63xfs")
-my_plays = Array[ExtResource("6_s2gku")]([ExtResource("24_ifp2b"), null, null])
+my_plays = Array[ExtResource("6_s2gku")]([ExtResource("7_wgq7v"), ExtResource("7_xlusq"), null])
 my_trait = ExtResource("7_ifp2b")
+current_feelings = Dictionary[int, int]({
+4: 1
+})
 specie_name = "Plumask"
 beastiepedia_id = 16
 bar_color = Color(0.92156863, 0.64705884, 0.40392157, 1)
@@ -91,8 +96,12 @@ metadata/_custom_type_script = "uid://ehabj4qsgxpl"
 
 [sub_resource type="Resource" id="Resource_mucxt"]
 script = ExtResource("9_63xfs")
+health = 50
 my_plays = Array[ExtResource("6_s2gku")]([ExtResource("25_xlusq"), null, null])
 my_trait = ExtResource("27_3wkvc")
+current_feelings = Dictionary[int, int]({
+2: 1
+})
 specie_name = "Servace"
 beastiepedia_id = 30
 bar_color = Color(0.9843137, 0.52156866, 0.09411765, 1)
@@ -115,7 +124,7 @@ metadata/_custom_type_script = "uid://ehabj4qsgxpl"
 
 [sub_resource type="Resource" id="Resource_ea4ru"]
 script = ExtResource("9_63xfs")
-my_plays = Array[ExtResource("6_s2gku")]([null, null, null])
+my_plays = Array[ExtResource("6_s2gku")]([ExtResource("34_wgq7v"), null, null])
 my_trait = ExtResource("34_kbwk5")
 specie_name = "Mistic"
 beastiepedia_id = 46
