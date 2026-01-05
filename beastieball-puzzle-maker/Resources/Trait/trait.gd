@@ -8,9 +8,12 @@ extends Resource
 @export_group("Damage multipliers")
 @export_range(0.75, 2.0, 0.05) var damage_dealt_mult : float = 1.0
 @export_range(1.0, 1.5, 0.1) var def_mult : float = 1.0
-@export_group("Starter Traits Special")
+@export_group("Traits Special")
 @export var is_starter_trait : bool = false
 @export var starter_trait_type : Global.ColorType = Global.ColorType.BODY
+@export var manual_condition_name : String = ""
+
+var manually_activated : bool = false
 
 
 func get_starter_trait_boost_stack(attacker : Beastie, type : int) -> int:
@@ -24,11 +27,15 @@ func get_starter_trait_boost_stack(attacker : Beastie, type : int) -> int:
 
 
 func get_attack_mult(_attacker : Beastie, _defender : Beastie, _attack : Attack) -> float: # Overwrite this
-	return damage_dealt_mult
+	if manually_activated:
+		return damage_dealt_mult
+	return 1.0
 
 
 func get_defense_mult(_attacker : Beastie, _defender : Beastie, _attack : Attack) -> float: # Overwrite this
-	return def_mult
+	if manually_activated:
+		return def_mult
+	return 1.0
 
 
 func special_cal_formula(damage : int, _attacker : Beastie, _defender : Beastie, _attack : Attack) -> int: # Overwrite this

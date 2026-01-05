@@ -10,6 +10,9 @@ extends Node
 
 func get_damage(attacker : Beastie, defender : Beastie, attack : Attack) -> int: # ADD BOARD STATE LATERRRR
 
+	if attack.name.to_lower() == "grinder":
+		return max(1, ceili(float(defender.health) / 2.0))
+
 	#region Set up vars
 
 	var base_pow : int = attack.get_attack_pow(attacker, defender)
@@ -44,6 +47,7 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack) -> int:
 	#endregion
 
 	#region Get boost counts and damage mults
+	# --- POW boosts ---
 	var total_attack_boost : int = 0
 	var attack_boosts_to_add : int = attack_boosts
 	if attacker_weepy or defender.my_trait.name.to_lower() == "foggy":
@@ -54,12 +58,14 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack) -> int:
 		if signi(total_attack_boost) == -1:
 			total_attack_boost = 0
 		total_attack_boost += 1
+
 	if attacker.my_trait.name.to_lower() == "shy":
 		total_attack_boost += int(not attacker_at_net)
 	else:
 		total_attack_boost += int(attacker_at_net)
 	total_attack_boost += attacker.my_trait.get_starter_trait_boost_stack(attacker, stats_type_attack)
 
+	# --- DEF boosts ---
 	var total_defense_boost : int = 0
 	var def_boosts_to_add : int = defense_boosts
 	if defender_weepy or attacker.my_trait.name.to_lower() == "foggy":
@@ -68,7 +74,10 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack) -> int:
 
 	if jazzed:
 		total_defense_boost = mini(0, total_defense_boost)
-	if defender.my_trait.name.to_lower() == "shy":
+
+	var defender_is_shy : bool = (defender.my_trait.name.to_lower() == "shy") and (not attack.name.to_lower() == "true strike")
+	var is_rocket : bool = attack.name.to_lower() == "rocket"
+	if defender_is_shy != is_rocket: # Only swap row bonus when both are true or both are false (XOR condition)
 		total_defense_boost += int(defender_at_net)
 	else:
 		total_defense_boost += int(not defender_at_net) + int(defender_is_stacked)
@@ -81,7 +90,9 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack) -> int:
 		return 0
 
 	var attacker_trait_mult : float = attacker.my_trait.get_attack_mult(attacker, defender, attack)
-	var defender_trait_mult : float = defender.my_trait.get_defense_mult(attacker, defender, attack)
+	var defender_trait_mult : float = 1.0
+	if not attack.name.to_lower() == "true strike":
+		defender_trait_mult = defender.my_trait.get_defense_mult(attacker, defender, attack)
 	var blocked_mult : float = 2.0 / (2.0 + attacker.get_feeling_stack(Beastie.Feelings.BLOCKED))
 	var tough_mult : float = 1.0 / 4.0 if tough else 1.0
 	var tender_mult : float = 2.0 if tender else 1.0
@@ -113,7 +124,8 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack) -> int:
 	#if cheerleader:
 		#final_damage += 10 # TODO
 	final_damage = attacker.my_trait.special_cal_formula(final_damage, attacker, defender, attack)
-	final_damage = defender.my_trait.special_cal_formula(final_damage, attacker, defender, attack)
+	if not attack.name.to_lower() == "true strike":
+		final_damage = defender.my_trait.special_cal_formula(final_damage, attacker, defender, attack)
 	#endregion
 
 	return final_damage
