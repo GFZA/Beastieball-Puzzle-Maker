@@ -1,0 +1,12 @@
+@tool
+extends Attack
+
+
+func get_attack_pow(_attacker : Beastie, defender : Beastie) -> int: # Overwrite
+	var up_boost_count : int = 0
+	for boost in defender.current_boosts:
+		var boosts_to_add : int = defender.current_boosts[boost]
+		if boosts_to_add > 0:
+			up_boost_count += boosts_to_add
+	up_boost_count = min(10, up_boost_count)
+	return base_pow + (base_pow * up_boost_count)

@@ -29,13 +29,17 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack) -> int:
 	# 3 == Beastie.Stats.B_DEF
 	# 4 == Beastie.Stats.S_DEF
 	# 5 == Beastie.Stats.M_DEF
+	if attack.name.to_lower() == "contest":
+		stats_type_defense = defender.get_highest_def_type()
+	if attack.name.to_lower() == "snipe":
+		stats_type_defense = defender.get_lowest_def_type()
 
 	var total_attack_stat : int = attacker.get_total_stats_value(stats_type_attack) # Will get +5 from being lv.50 in calculation
 	var total_defense_stat : int = defender.get_total_stats_value(stats_type_defense)
 
 	var attacker_at_net : bool = attacker.check_if_net()
 	var attack_boosts : int = attacker.get_boosts(stats_type_attack)
-	var jazzed : bool = (attacker.get_feeling_stack(Beastie.Feelings.JAZZED) > 0)
+	var jazzed : bool = (attacker.get_feeling_stack(Beastie.Feelings.JAZZED) > 0) or (attack.name.to_lower() == "thriller") # TODO cancel thriller effect when dread here
 	var attacker_weepy : bool = (attacker.get_feeling_stack(Beastie.Feelings.WEEPY) > 0)
 
 	var defender_at_net : bool = defender.check_if_net()
@@ -68,7 +72,7 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack) -> int:
 	# --- DEF boosts ---
 	var total_defense_boost : int = 0
 	var def_boosts_to_add : int = defense_boosts
-	if defender_weepy or attacker.my_trait.name.to_lower() == "foggy":
+	if defender_weepy or attacker.my_trait.name.to_lower() == "foggy" or attack.name.to_lower() == "raw fury":
 		def_boosts_to_add = min(0, defense_boosts) # so it counts deboosts
 	total_defense_boost += def_boosts_to_add
 
@@ -94,7 +98,7 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack) -> int:
 	if not attack.name.to_lower() == "true strike":
 		defender_trait_mult = defender.my_trait.get_defense_mult(attacker, defender, attack)
 	var blocked_mult : float = 2.0 / (2.0 + attacker.get_feeling_stack(Beastie.Feelings.BLOCKED))
-	var tough_mult : float = 1.0 / 4.0 if tough else 1.0
+	var tough_mult : float = 1.0 / 4.0 if tough and (not attack.name.to_lower() == "raw fury") else 1.0
 	var tender_mult : float = 2.0 if tender else 1.0
 	#var friendship_mult : float = 3.0 / 4.0 if friendship else 1.0 # TODO
 	var friendship_mult : float = 1.0

@@ -158,6 +158,30 @@ func get_sprite(sprite_type : Sprite) -> Texture2D:
 	return sprites.get(sprite_type)
 
 
+func get_lowest_def_type() -> Stats:
+	var def_dict : Dictionary[Stats, int] = {
+		Beastie.Stats.B_DEF : get_total_stats_value(Beastie.Stats.B_DEF),
+		Beastie.Stats.S_DEF : get_total_stats_value(Beastie.Stats.S_DEF),
+		Beastie.Stats.M_DEF : get_total_stats_value(Beastie.Stats.M_DEF),
+	}
+	var values_array : Array[int] = def_dict.values()
+	values_array.sort()
+	var lowest_def : int = values_array.front()
+	return def_dict.find_key(lowest_def)
+
+
+func get_highest_def_type() -> Stats:
+	var def_dict : Dictionary[Stats, int] = {
+		Beastie.Stats.B_DEF : get_total_stats_value(Beastie.Stats.B_DEF),
+		Beastie.Stats.S_DEF : get_total_stats_value(Beastie.Stats.S_DEF),
+		Beastie.Stats.M_DEF : get_total_stats_value(Beastie.Stats.M_DEF),
+	}
+	var values_array : Array[int] = def_dict.values()
+	values_array.sort()
+	var highest_def : int = values_array.back()
+	return def_dict.find_key(highest_def)
+
+
 func check_if_net() -> bool:
 	if my_field_position == Beastie.Position.UPPER_FRONT or my_field_position == Beastie.Position.LOWER_FRONT:
 		return true

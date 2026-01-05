@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://co8c0qvn7nkha"]
+[gd_scene load_steps=44 format=3 uid="uid://co8c0qvn7nkha"]
 
 [ext_resource type="Script" uid="uid://dfsngo7akxojy" path="res://Scenes/Board/board.gd" id="1_mucxt"]
 [ext_resource type="PackedScene" uid="uid://s3ot8ysh03s6" path="res://Scenes/Board/BoardOverlay/board_overlay.tscn" id="2_e8qp6"]
@@ -6,18 +6,15 @@
 [ext_resource type="Script" uid="uid://f48ncbr7tvnf" path="res://Scenes/Board/board_manager.gd" id="3_oh3sv"]
 [ext_resource type="Script" uid="uid://bodsyqui6wlo0" path="res://Scenes/Board/team_contoller.gd" id="3_xc5ao"]
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Resources/Plays/plays.gd" id="6_s2gku"]
-[ext_resource type="Resource" uid="uid://co6kokb12dkt0" path="res://Resources/Plays/Attack/Body/true_strike.tres" id="7_3wkvc"]
+[ext_resource type="Resource" uid="uid://truccwma1xyo" path="res://Resources/Trait/stirring.tres" id="7_ifp2b"]
 [ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Resources/Trait/trait.gd" id="8_dqnt6"]
-[ext_resource type="Resource" uid="uid://c6eqm7qkng1lr" path="res://Resources/Plays/Attack/Body/spike.tres" id="8_x5mnu"]
 [ext_resource type="Script" uid="uid://ehabj4qsgxpl" path="res://Resources/Beastie/beastie.gd" id="9_63xfs"]
-[ext_resource type="Resource" uid="uid://bqp3p64xidvq7" path="res://Resources/Trait/goofy.tres" id="9_wvqeh"]
-[ext_resource type="Texture2D" uid="uid://2skrtsx06qb5" path="res://Resources/Beastie/Psylusc/psylusc_idle.png" id="10_xqaal"]
-[ext_resource type="Texture2D" uid="uid://cj0pkqf8hhvi8" path="res://Resources/Beastie/Psylusc/psylusc_ready.png" id="11_dqnt6"]
-[ext_resource type="Texture2D" uid="uid://bfec2v5lsnepy" path="res://Resources/Beastie/Psylusc/psylusc_spike.png" id="12_63xfs"]
-[ext_resource type="Texture2D" uid="uid://djqkphafy18sj" path="res://Resources/Beastie/Psylusc/psylusc_volley.png" id="13_a1ark"]
-[ext_resource type="Texture2D" uid="uid://c1fc13ailf7pt" path="res://Resources/Beastie/Psylusc/psylusc_good.png" id="14_rt3kt"]
-[ext_resource type="Texture2D" uid="uid://cjxp81nts1eyx" path="res://Resources/Beastie/Psylusc/psylusc_bad.png" id="15_v248q"]
-[ext_resource type="Resource" uid="uid://df7h4h5ahjpy3" path="res://Resources/Plays/Attack/Body/finisher.tres" id="18_783r4"]
+[ext_resource type="Texture2D" uid="uid://cw1vvijg46der" path="res://Resources/Beastie/Plumask/plumask_idle.png" id="10_xlusq"]
+[ext_resource type="Texture2D" uid="uid://bdsaxxerinrmu" path="res://Resources/Beastie/Plumask/plumask_ready.png" id="11_kbwk5"]
+[ext_resource type="Texture2D" uid="uid://b3b75jbd05mpg" path="res://Resources/Beastie/Plumask/plumask_spike.png" id="12_wgq7v"]
+[ext_resource type="Texture2D" uid="uid://7jbcrwi8htf2" path="res://Resources/Beastie/Plumask/plumask_volley.png" id="13_qa3hq"]
+[ext_resource type="Texture2D" uid="uid://bvvmpkucg7w1i" path="res://Resources/Beastie/Plumask/plumask_good.png" id="14_mucxt"]
+[ext_resource type="Texture2D" uid="uid://c303xte4x8txq" path="res://Resources/Beastie/Plumask/plumask_bad.png" id="15_ea4ru"]
 [ext_resource type="Texture2D" uid="uid://rbklb5uj2ffn" path="res://Resources/Beastie/Servace/servace_idle.png" id="18_qg8b0"]
 [ext_resource type="Resource" uid="uid://djx3ran55r2wo" path="res://Resources/Plays/Attack/Body/grinder.tres" id="18_x5mnu"]
 [ext_resource type="Resource" uid="uid://bai86ceaem0cm" path="res://Resources/Trait/mischief.tres" id="19_3wkvc"]
@@ -30,8 +27,10 @@
 [ext_resource type="Texture2D" uid="uid://brakip3rf2uyp" path="res://Resources/Beastie/Trat/trat_spike.png" id="22_xlusq"]
 [ext_resource type="Texture2D" uid="uid://bokn1pusp7xil" path="res://Resources/Beastie/Trat/trat_volley.png" id="23_kbwk5"]
 [ext_resource type="Texture2D" uid="uid://5uklk6t2ht7m" path="res://Resources/Beastie/Servace/servace_bad.png" id="23_so6i1"]
+[ext_resource type="Resource" uid="uid://bqpax11k5enii" path="res://Resources/Plays/Attack/Mind/snipe.tres" id="24_ifp2b"]
 [ext_resource type="Texture2D" uid="uid://c3jwebqcolnfq" path="res://Resources/Beastie/Trat/trat_good.png" id="24_wgq7v"]
 [ext_resource type="Texture2D" uid="uid://cye348pgs8ej7" path="res://Resources/Beastie/Trat/trat_bad.png" id="25_qa3hq"]
+[ext_resource type="Resource" uid="uid://c6bnkalnd6qdf" path="res://Resources/Plays/Attack/Spirit/turnabout.tres" id="25_xlusq"]
 [ext_resource type="Resource" uid="uid://cle27qn3pd41x" path="res://Resources/Trait/super_armor.tres" id="27_3wkvc"]
 [ext_resource type="Resource" uid="uid://q5fhwy5qny81" path="res://Resources/Trait/intangible.tres" id="34_kbwk5"]
 [ext_resource type="Texture2D" uid="uid://cgey1txfr4tfo" path="res://Resources/Beastie/Mistic/mistic_idle.png" id="35_wgq7v"]
@@ -41,30 +40,31 @@
 [ext_resource type="Texture2D" uid="uid://cmtkvjbjwiorl" path="res://Resources/Beastie/Mistic/mistic_good.png" id="39_xc5ao"]
 [ext_resource type="Texture2D" uid="uid://egp3jso6bq0n" path="res://Resources/Beastie/Mistic/mistic_bad.png" id="40_oh3sv"]
 
-[sub_resource type="Resource" id="Resource_kbwk5"]
+[sub_resource type="Resource" id="Resource_wgq7v"]
 script = ExtResource("9_63xfs")
-my_plays = Array[ExtResource("6_s2gku")]([ExtResource("8_x5mnu"), ExtResource("7_3wkvc"), null])
-my_trait = ExtResource("9_wvqeh")
-specie_name = "Psylusc"
-beastiepedia_id = 73
-bar_color = Color(0.64705884, 0.4392157, 1, 1)
-body_base_pow = 30
-spirit_base_pow = 50
-mind_base_pow = 120
+my_plays = Array[ExtResource("6_s2gku")]([ExtResource("24_ifp2b"), null, null])
+my_trait = ExtResource("7_ifp2b")
+specie_name = "Plumask"
+beastiepedia_id = 16
+bar_color = Color(0.92156863, 0.64705884, 0.40392157, 1)
+body_base_pow = 20
+spirit_base_pow = 105
+mind_base_pow = 95
 body_base_def = 30
-spirit_base_def = 70
-mind_base_def = 100
+spirit_base_def = 90
+mind_base_def = 75
 sprites = Dictionary[int, Texture2D]({
-0: ExtResource("10_xqaal"),
-1: ExtResource("11_dqnt6"),
-2: ExtResource("12_63xfs"),
-3: ExtResource("13_a1ark"),
-4: ExtResource("14_rt3kt"),
-5: ExtResource("15_v248q")
+0: ExtResource("10_xlusq"),
+1: ExtResource("11_kbwk5"),
+2: ExtResource("12_wgq7v"),
+3: ExtResource("13_qa3hq"),
+4: ExtResource("14_mucxt"),
+5: ExtResource("15_ea4ru")
 })
+ball_anchor_position = Vector2(43, -127)
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"
 
-[sub_resource type="Resource" id="Resource_wgq7v"]
+[sub_resource type="Resource" id="Resource_qa3hq"]
 script = ExtResource("9_63xfs")
 my_plays = Array[ExtResource("6_s2gku")]([ExtResource("18_x5mnu"), null, null])
 my_trait = ExtResource("19_3wkvc")
@@ -89,9 +89,9 @@ y_offset = -20
 ball_anchor_position = Vector2(69, -53)
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"
 
-[sub_resource type="Resource" id="Resource_qa3hq"]
+[sub_resource type="Resource" id="Resource_mucxt"]
 script = ExtResource("9_63xfs")
-my_plays = Array[ExtResource("6_s2gku")]([ExtResource("18_783r4"), null, null])
+my_plays = Array[ExtResource("6_s2gku")]([ExtResource("25_xlusq"), null, null])
 my_trait = ExtResource("27_3wkvc")
 specie_name = "Servace"
 beastiepedia_id = 30
@@ -113,7 +113,7 @@ sprites = Dictionary[int, Texture2D]({
 ball_anchor_position = Vector2(66, -176)
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"
 
-[sub_resource type="Resource" id="Resource_mucxt"]
+[sub_resource type="Resource" id="Resource_ea4ru"]
 script = ExtResource("9_63xfs")
 my_plays = Array[ExtResource("6_s2gku")]([null, null, null])
 my_trait = ExtResource("34_kbwk5")
@@ -192,8 +192,8 @@ metadata/_edit_lock_ = true
 unique_name_in_owner = true
 position = Vector2(101, 483)
 script = ExtResource("3_xc5ao")
-beastie_1_beastie = SubResource("Resource_kbwk5")
-beastie_2_beastie = SubResource("Resource_wgq7v")
+beastie_1_beastie = SubResource("Resource_wgq7v")
+beastie_2_beastie = SubResource("Resource_qa3hq")
 metadata/_edit_lock_ = true
 
 [node name="LeftBenchMarker" type="Node2D" parent="SubViewportContainer/SubViewport/LeftTeamController"]
@@ -232,8 +232,8 @@ gizmo_extents = 0.0
 unique_name_in_owner = true
 position = Vector2(101, 483)
 script = ExtResource("3_xc5ao")
-beastie_1_beastie = SubResource("Resource_qa3hq")
-beastie_2_beastie = SubResource("Resource_mucxt")
+beastie_1_beastie = SubResource("Resource_mucxt")
+beastie_2_beastie = SubResource("Resource_ea4ru")
 side = 1
 metadata/_edit_lock_ = true
 
