@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Beastieball Puzzle Maker"
-run/main_scene="res://Scenes/Board/board.tscn"
+run/main_scene="uid://kp4oiw1yt1al"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 
 [autoload]
@@ -21,7 +21,7 @@ DamageCalculator="*res://Autoloads/damage_calculator.gd"
 
 [display]
 
-window/size/viewport_width=2700
+window/size/viewport_width=3600
 window/size/viewport_height=2025
 window/size/resizable=false
 window/stretch/mode="canvas_items"

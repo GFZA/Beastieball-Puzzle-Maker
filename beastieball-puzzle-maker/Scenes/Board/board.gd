@@ -1,14 +1,27 @@
 @tool
 class_name Board
-extends Node2D
+extends Control
+
+signal image_saved
 
 enum Turn {OFFENSE, DEFENSE, SERVE}
 
-@export_tool_button("Get Image!") var subviewport_ss := func():
+@export_tool_button("Get Image!") var tool_button_var : Callable = save_image
+
+@export_range(1, 999, 1) var image_number : int = 1
+
+@onready var sub_viewport_container: SubViewportContainer = %SubViewportContainer
+@onready var sub_viewport: SubViewport = %SubViewport
+
+@onready var board_overlay: BoardOverlay = %BoardOverlay
+@onready var board_manager: BoardManager = %BoardManager
+
+
+func save_image() -> void:
 	var original_size = sub_viewport.size
 
 	sub_viewport_container.stretch = false
-	sub_viewport.size = image_size
+	sub_viewport.size = Vector2(2700, 2025)
 
 	# Delay for rendering
 	await get_tree().process_frame
@@ -23,10 +36,5 @@ enum Turn {OFFENSE, DEFENSE, SERVE}
 	sub_viewport.size = original_size
 	sub_viewport_container.stretch = true
 
-@export var image_size : Vector2 = Vector2(2560, 1920)
-@export_range(1, 999, 1) var image_number : int = 1
-
-@onready var sub_viewport_container: SubViewportContainer = %SubViewportContainer
-@onready var sub_viewport: SubViewport = %SubViewport
-
-@onready var board_manager: BoardManager = %BoardManager
+	image_saved.emit()
+	print("Image saved!")

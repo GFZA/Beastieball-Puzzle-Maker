@@ -1,10 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://s3ot8ysh03s6"]
+[gd_scene load_steps=17 format=3 uid="uid://s3ot8ysh03s6"]
 
 [ext_resource type="Script" uid="uid://b8da0ls7ka2na" path="res://Scenes/Board/BoardOverlay/board_overlay.gd" id="1_8b3w3"]
 [ext_resource type="FontFile" uid="uid://ds0qrrbdvqa6n" path="res://Resources/Fonts/SF Sports Night.ttf" id="1_yxvh7"]
+[ext_resource type="Theme" uid="uid://v25nab4h4vdp" path="res://Resources/Themes/highlight_overlay.tres" id="3_1fwbd"]
 [ext_resource type="Texture2D" uid="uid://caafonrcdyiwp" path="res://Scenes/Board/BoardOverlay/turn_bar_offense.png" id="3_f1wdy"]
 [ext_resource type="Texture2D" uid="uid://dd07iat8y5gpe" path="res://Scenes/Board/BoardOverlay/turn_misc_overlay_offense_3_ball.png" id="4_6ugfv"]
 [ext_resource type="FontFile" uid="uid://3m3y4biedw3n" path="res://Resources/Fonts/Hauser.otf" id="5_2ewg5"]
+[ext_resource type="FontFile" uid="uid://cvfib27cf5q88" path="res://Resources/Fonts/Go Banana.ttf" id="7_aun0h"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8b3w3"]
 font = ExtResource("1_yxvh7")
@@ -45,14 +47,20 @@ font_color = Color(0.9843137, 0.72156864, 0.40392157, 1)
 font = ExtResource("5_2ewg5")
 font_size = 76
 
+[sub_resource type="LabelSettings" id="LabelSettings_1sg4p"]
+font = ExtResource("7_aun0h")
+font_size = 128
+
 [node name="BoardOverlay" type="Control"]
-custom_minimum_size = Vector2(2700, 394)
+custom_minimum_size = Vector2(2700, 2025)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -900.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 0
 script = ExtResource("1_8b3w3")
 
 [node name="MainContainer" type="VBoxContainer" parent="."]
@@ -61,6 +69,7 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 377.0
 grow_horizontal = 2
+mouse_filter = 2
 theme_override_constants/separation = 4
 
 [node name="Title" type="Label" parent="MainContainer"]
@@ -78,6 +87,7 @@ vertical_alignment = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(2700, 252)
 layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("3_f1wdy")
 stretch_mode = 5
 
@@ -90,10 +100,12 @@ offset_top = -8.0
 offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="LeftLabelContainer" type="MarginContainer" parent="MainContainer/TurnBarBG/TurnBar"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 theme_override_constants/margin_left = 60
 theme_override_constants/margin_top = 35
 
@@ -110,6 +122,7 @@ custom_minimum_size = Vector2(505, 0)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
+mouse_filter = 2
 theme_override_constants/separation = -10
 
 [node name="ScoreNameLabel" type="Label" parent="MainContainer/TurnBarBG/TurnBar/ScoreLabelContainer"]
@@ -125,12 +138,14 @@ vertical_alignment = 1
 [node name="HBoxContainer" type="HBoxContainer" parent="MainContainer/TurnBarBG/TurnBar/ScoreLabelContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 theme_override_constants/separation = 108
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainContainer/TurnBarBG/TurnBar/ScoreLabelContainer/HBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 10
+mouse_filter = 2
 theme_override_constants/separation = -18
 
 [node name="LeftScoreLabel" type="Label" parent="MainContainer/TurnBarBG/TurnBar/ScoreLabelContainer/HBoxContainer/VBoxContainer"]
@@ -157,6 +172,7 @@ vertical_alignment = 2
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 2
+mouse_filter = 2
 theme_override_constants/separation = -18
 
 [node name="RightScoreLabel" type="Label" parent="MainContainer/TurnBarBG/TurnBar/ScoreLabelContainer/HBoxContainer/VBoxContainer2"]
@@ -181,6 +197,7 @@ vertical_alignment = 2
 [node name="RightLabelContainer" type="MarginContainer" parent="MainContainer/TurnBarBG/TurnBar"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 theme_override_constants/margin_top = 35
 theme_override_constants/margin_right = 60
 
@@ -198,6 +215,7 @@ layout_mode = 0
 offset_top = 1826.0
 offset_right = 500.0
 offset_bottom = 2026.0
+mouse_filter = 2
 
 [node name="Polygon2D" type="Polygon2D" parent="LogoContainer"]
 color = Color(0.23529412, 0.20392157, 0.29803923, 1)
@@ -236,6 +254,7 @@ offset_left = -500.0
 offset_top = -200.0
 grow_horizontal = 0
 grow_vertical = 0
+mouse_filter = 2
 texture = ExtResource("4_6ugfv")
 
 [node name="YourTeamLabel" type="Label" parent="."]
@@ -250,3 +269,43 @@ label_settings = SubResource("LabelSettings_2ewg5")
 [node name="DownArrow" type="Polygon2D" parent="YourTeamLabel"]
 position = Vector2(0, 6)
 polygon = PackedVector2Array(163, 77, 203, 77, 182, 98)
+
+[node name="OverlayEditButton" type="Button" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(2700, 396)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 75.0
+grow_horizontal = 2
+theme = ExtResource("3_1fwbd")
+
+[node name="EditOverlayLabel" type="Label" parent="OverlayEditButton"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Edit Overlay"
+label_settings = SubResource("LabelSettings_1sg4p")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OverlayEditButtonLower" type="Button" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(2700, 200)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -200.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("3_1fwbd")
+theme_override_colors/font_focus_color = Color(1, 1, 1, 0)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 0)
+theme_override_font_sizes/font_size = 128

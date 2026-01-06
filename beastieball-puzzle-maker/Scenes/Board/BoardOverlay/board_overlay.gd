@@ -2,6 +2,8 @@
 class_name BoardOverlay
 extends Control
 
+signal overlay_edit_requested
+
 const TURN_BARS : Dictionary[Board.Turn, Texture2D] = {
 	Board.Turn.OFFENSE : preload("uid://caafonrcdyiwp"),
 	Board.Turn.DEFENSE : preload("uid://0ldn2nscb15e"),
@@ -95,6 +97,23 @@ const DEFENSE_END_TURN_OVERLAY : Texture2D = preload("uid://cr65n1bm44s8v")
 @onready var logo_texture_rec: TextureRect = %LogoTextureRec
 @onready var bottom_label: Label = %BottomLabel
 @onready var misc_turn_overlay: TextureRect = %MiscTurnOverlay
+@onready var overlay_edit_button: Button = %OverlayEditButton
+@onready var overlay_edit_button_lower: Button = %OverlayEditButtonLower
+@onready var edit_overlay_label: Label = %EditOverlayLabel
+
+var hover_stylebox : StyleBox = preload("uid://dw1dvbm31ux8x")
+var stylebox_empty := StyleBoxEmpty.new()
+
+
+func _ready() -> void:
+	overlay_edit_button.pressed.connect(_on_overlay_button_mouse_pressed.bind(overlay_edit_button))
+	overlay_edit_button_lower.pressed.connect(_on_overlay_button_mouse_pressed.bind(overlay_edit_button_lower))
+
+	overlay_edit_button.mouse_entered.connect(_on_overlay_button_mouse_entered)
+	overlay_edit_button_lower.mouse_entered.connect(_on_overlay_button_mouse_entered)
+
+	overlay_edit_button.mouse_exited.connect(_on_overlay_button_mouse_exited)
+	overlay_edit_button_lower.mouse_exited.connect(_on_overlay_button_mouse_exited)
 
 
 func _update_turn() -> void:
@@ -123,3 +142,22 @@ func _update_offense_action_amount() -> void:
 	if not turn == Board.Turn.OFFENSE:
 		return
 	misc_turn_overlay.texture = OFFENSE_ACTION_TEXTURES.get(offense_action_amount)
+
+
+func _on_overlay_button_mouse_pressed(button : Button) -> void:
+	if button.has_focus():
+		button.release_focus()
+	edit_overlay_label.hide()
+	overlay_edit_requested.emit()
+
+
+func _on_overlay_button_mouse_entered() -> void:
+	overlay_edit_button.add_theme_stylebox_override("normal", hover_stylebox)
+	overlay_edit_button_lower.add_theme_stylebox_override("normal", hover_stylebox)
+	edit_overlay_label.show()
+
+
+func _on_overlay_button_mouse_exited() -> void:
+	overlay_edit_button.add_theme_stylebox_override("normal", stylebox_empty)
+	overlay_edit_button_lower.add_theme_stylebox_override("normal", stylebox_empty)
+	edit_overlay_label.hide()

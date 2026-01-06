@@ -6,16 +6,19 @@
 [ext_resource type="Script" uid="uid://f48ncbr7tvnf" path="res://Scenes/Board/board_manager.gd" id="3_oh3sv"]
 [ext_resource type="Script" uid="uid://bodsyqui6wlo0" path="res://Scenes/Board/team_contoller.gd" id="3_xc5ao"]
 
-[node name="Board" type="Node2D"]
+[node name="Board" type="Control"]
+custom_minimum_size = Vector2(2700, 2025)
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_mucxt")
-image_size = Vector2(2700, 2025)
-image_number = 3
+image_number = 999
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(2700, 2025)
-offset_right = 2560.0
-offset_bottom = 1920.0
+layout_mode = 1
+offset_right = 2700.0
+offset_bottom = 2025.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 stretch = true
@@ -43,10 +46,8 @@ centered = false
 metadata/_edit_lock_ = true
 
 [node name="BoardOverlay" parent="SubViewportContainer/SubViewport" instance=ExtResource("2_e8qp6")]
-turn = 1
-max_score = 2
-left_score = 1
-right_score = 1
+unique_name_in_owner = true
+offset_right = 0.0
 
 [node name="BoardManager" type="Node2D" parent="SubViewportContainer/SubViewport" node_paths=PackedStringArray("left_team_controller", "right_team_controller") groups=["board_manager"]]
 unique_name_in_owner = true

@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=3 uid="uid://kp4oiw1yt1al"]
+
+[ext_resource type="PackedScene" uid="uid://co8c0qvn7nkha" path="res://Scenes/Board/board.tscn" id="1_1r6ip"]
+[ext_resource type="PackedScene" uid="uid://crwqyvvvfl5o7" path="res://Scenes/Main/main_ui/main_ui.tscn" id="1_lixft"]
+[ext_resource type="Script" uid="uid://cqdgpe3l3e5ij" path="res://Scenes/Main/main.gd" id="1_qw60k"]
+[ext_resource type="Resource" uid="uid://d3yis3kiqtsp8" path="res://Resources/BoardData/puzzle_10_draft_1.res" id="2_p6jpk"]
+[ext_resource type="FontFile" uid="uid://cvfib27cf5q88" path="res://Resources/Fonts/Go Banana.ttf" id="4_5yls4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_p6jpk"]
+font = ExtResource("4_5yls4")
+font_size = 256
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qw60k")
+temp_data = ExtResource("2_p6jpk")
+
+[node name="MainContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="MainUI" parent="MainContainer" instance=ExtResource("1_lixft")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Board" parent="MainContainer" instance=ExtResource("1_1r6ip")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="SavingRect" type="ColorRect" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.6862745)
+
+[node name="SavingLabel" type="Label" parent="SavingRect"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 99.5
+offset_top = -150.0
+offset_right = 800.5
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Saving..."
+label_settings = SubResource("LabelSettings_p6jpk")

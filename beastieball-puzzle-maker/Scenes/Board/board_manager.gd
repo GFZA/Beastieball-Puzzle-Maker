@@ -2,6 +2,10 @@
 class_name BoardManager
 extends Node2D
 
+signal data_saved
+signal data_loaded
+signal board_resetted
+
 @export_tool_button("Save Board") var save_board_var := save_board_data
 @export var load_data : BoardData = null :
 	set(value):
@@ -129,14 +133,25 @@ func save_board_data() -> void:
 	]
 	var save_name : String = "board_%s" % (DirAccess.get_files_at("res://Resources/BoardData").size() - 1)
 	ResourceSaver.save(board_data, "res://Resources/BoardData/" + save_name + ".res")
+	await get_tree().process_frame
+	data_saved.emit()
 
 
 func load_board_data(board_data : BoardData) -> void:
 	reset_board()
+	if not board_data:
+		await get_tree().process_frame
+		data_loaded.emit()
+		return
+
 	left_team_controller.load_data_from_save(board_data.data[0])
 	right_team_controller.load_data_from_save(board_data.data[1])
+	await get_tree().process_frame
+	data_loaded.emit()
 
 
 func reset_board() -> void:
 	left_team_controller.reset_team()
 	right_team_controller.reset_team()
+	await get_tree().process_frame
+	board_resetted.emit()

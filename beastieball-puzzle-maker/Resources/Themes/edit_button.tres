@@ -1,0 +1,36 @@
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://bkrlwg21fhprn"]
+
+[ext_resource type="FontFile" uid="uid://cvfib27cf5q88" path="res://Resources/Fonts/Go Banana.ttf" id="1_52w1l"]
+[ext_resource type="Texture2D" uid="uid://x245tsph8p3j" path="res://Scenes/Main/main_ui/main_ui_bg_tile_3.png" id="1_ifob4"]
+[ext_resource type="Texture2D" uid="uid://oqfi3l4hxqan" path="res://Scenes/Main/main_ui/main_ui_bg_tile_2.png" id="2_7w8n7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7w8n7"]
+texture = ExtResource("2_7w8n7")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xp78q"]
+texture = ExtResource("2_7w8n7")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sr1l3"]
+texture = ExtResource("1_ifob4")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kp5kd"]
+texture = ExtResource("1_ifob4")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[resource]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_focus_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_color = Color(1, 1, 1, 1)
+Button/font_sizes/font_size = 64
+Button/fonts/font = ExtResource("1_52w1l")
+Button/styles/focus = SubResource("StyleBoxTexture_7w8n7")
+Button/styles/hover = SubResource("StyleBoxTexture_xp78q")
+Button/styles/normal = SubResource("StyleBoxTexture_sr1l3")
+Button/styles/pressed = SubResource("StyleBoxTexture_kp5kd")
