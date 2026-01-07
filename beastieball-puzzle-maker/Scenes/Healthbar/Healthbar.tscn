@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bxkg5ri8uqj7n" path="res://Scenes/Healthbar/healthbar.gd" id="1_vjpxm"]
 [ext_resource type="Script" uid="uid://bca8urfgsjynv" path="res://Scenes/Healthbar/parallelogram.gd" id="3_pgdjv"]
-[ext_resource type="FontFile" uid="uid://cvfib27cf5q88" path="res://Resources/Fonts/Go Banana.ttf" id="3_xibvh"]
-[ext_resource type="FontFile" uid="uid://3m3y4biedw3n" path="res://Resources/Fonts/Hauser.otf" id="4_1i8kh"]
+[ext_resource type="FontFile" uid="uid://cvfib27cf5q88" path="res://Autoloads/Resources/Fonts/Go Banana.ttf" id="3_xibvh"]
+[ext_resource type="FontFile" uid="uid://3m3y4biedw3n" path="res://Autoloads/Resources/Fonts/Hauser.otf" id="4_1i8kh"]
 [ext_resource type="PackedScene" uid="uid://bfxq6perx4tge" path="res://Scenes/Healthbar/lifebar.tscn" id="4_bu8sd"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_bu8sd"]

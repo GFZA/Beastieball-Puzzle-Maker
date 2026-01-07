@@ -62,7 +62,12 @@ const DEFENSE_END_TURN_OVERLAY : Texture2D = preload("uid://cr65n1bm44s8v")
 		logo = value
 		if not is_node_ready():
 			await ready
+
+		logo_texture_rec.hide()
+		if not logo:
+			return
 		logo_texture_rec.texture = logo
+		logo_texture_rec.show()
 
 @export_multiline var title_text : String = "Find the guaranteed win" :
 	set(value):
@@ -85,6 +90,11 @@ const DEFENSE_END_TURN_OVERLAY : Texture2D = preload("uid://cr65n1bm44s8v")
 			await ready
 		bottom_label.text = bottom_text
 
+var opponent_serve : bool = false :
+	set(value):
+		opponent_serve = value
+		_update_opponent_serve()
+
 
 @onready var title: Label = %Title
 @onready var turn_bar_bg: TextureRect = %TurnBarBG
@@ -97,6 +107,8 @@ const DEFENSE_END_TURN_OVERLAY : Texture2D = preload("uid://cr65n1bm44s8v")
 @onready var logo_texture_rec: TextureRect = %LogoTextureRec
 @onready var bottom_label: Label = %BottomLabel
 @onready var misc_turn_overlay: TextureRect = %MiscTurnOverlay
+
+@onready var opponent_serve_label: Label = %OpponentServeLabel
 @onready var overlay_edit_button: Button = %OverlayEditButton
 @onready var overlay_edit_button_lower: Button = %OverlayEditButtonLower
 @onready var edit_overlay_label: Label = %EditOverlayLabel
@@ -115,13 +127,18 @@ func _ready() -> void:
 	overlay_edit_button.mouse_exited.connect(_on_overlay_button_mouse_exited)
 	overlay_edit_button_lower.mouse_exited.connect(_on_overlay_button_mouse_exited)
 
+	edit_overlay_label.hide()
+	opponent_serve_label.hide()
+
 
 func _update_turn() -> void:
 	if not is_node_ready():
 		await ready
+	opponent_serve_label.hide()
 	turn_bar_bg.texture = TURN_BARS.get(turn)
 	turn_name_label.text = TURN_TEXT.get(turn)
 	_update_misc_overlay()
+	_update_opponent_serve()
 
 
 func _update_misc_overlay() -> void:
@@ -144,10 +161,15 @@ func _update_offense_action_amount() -> void:
 	misc_turn_overlay.texture = OFFENSE_ACTION_TEXTURES.get(offense_action_amount)
 
 
+func _update_opponent_serve() -> void:
+	opponent_serve_label.hide()
+	if turn == Board.Turn.DEFENSE and opponent_serve:
+		opponent_serve_label.show()
+
+
 func _on_overlay_button_mouse_pressed(button : Button) -> void:
 	if button.has_focus():
 		button.release_focus()
-	edit_overlay_label.hide()
 	overlay_edit_requested.emit()
 
 
@@ -161,3 +183,43 @@ func _on_overlay_button_mouse_exited() -> void:
 	overlay_edit_button.add_theme_stylebox_override("normal", stylebox_empty)
 	overlay_edit_button_lower.add_theme_stylebox_override("normal", stylebox_empty)
 	edit_overlay_label.hide()
+
+
+func on_max_point_changed(max_point : int) -> void:
+	max_score = max_point
+
+
+func on_your_point_changed(your_point : int) -> void:
+	left_score = your_point
+
+
+func on_opponent_point_change(opponent_point : int) -> void:
+	right_score = opponent_point
+
+
+func on_turn_changed(new_turn : Board.Turn) -> void:
+	turn = new_turn
+
+
+func on_offense_action_changed(action_lefts : int) -> void:
+	offense_action_amount = action_lefts
+
+
+func on_defense_against_serve_changed(defense_against_serve : bool) -> void:
+	opponent_serve = defense_against_serve
+
+
+func on_title_text_changed(new_text : String) -> void:
+	title_text = new_text
+
+
+func on_right_text_changed(new_text : String) -> void:
+	misc_text = new_text
+
+
+func on_bottom_text_changed(new_text : String) -> void:
+	bottom_text = new_text
+
+
+func on_logo_changed(new_logo : Texture2D) -> void:
+	logo = new_logo

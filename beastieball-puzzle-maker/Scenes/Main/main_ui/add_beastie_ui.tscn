@@ -1,0 +1,76 @@
+[gd_scene load_steps=7 format=3 uid="uid://boblaywavsmta"]
+
+[ext_resource type="Script" uid="uid://dt0j5ceowwxf7" path="res://Scenes/Main/main_ui/add_beastie_ui.gd" id="1_8khv7"]
+[ext_resource type="Theme" uid="uid://bkrlwg21fhprn" path="res://Autoloads/Resources/Themes/edit_button.tres" id="3_nt8gl"]
+[ext_resource type="Texture2D" uid="uid://bguiky7x105wd" path="res://Autoloads/Icons/icon_up_white.png" id="4_aayvu"]
+[ext_resource type="Texture2D" uid="uid://btwyq0u7qdvk" path="res://Autoloads/Icons/icon_jersey.png" id="4_egpa1"]
+[ext_resource type="Texture2D" uid="uid://hqu8087deqdr" path="res://Autoloads/Icons/icon_reset.png" id="5_aayvu"]
+[ext_resource type="Texture2D" uid="uid://ym4g7x27mim3" path="res://Autoloads/Icons/icon_down_white.png" id="5_x5upn"]
+
+[node name="AddBeastieUI" type="HBoxContainer"]
+custom_minimum_size = Vector2(805, 88)
+offset_right = 805.0
+offset_bottom = 88.0
+theme_override_constants/separation = 12
+script = ExtResource("1_8khv7")
+
+[node name="FrontLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+focus_behavior_recursive = 1
+theme = ExtResource("3_nt8gl")
+text = "Serve Slot"
+
+[node name="SwapButtonContainer" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = -8
+
+[node name="SwapUpButton" type="Button" parent="SwapButtonContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_behavior_recursive = 1
+theme = ExtResource("3_nt8gl")
+theme_override_constants/icon_max_width = 36
+icon = ExtResource("4_aayvu")
+vertical_icon_alignment = 0
+
+[node name="SwapDownButton" type="Button" parent="SwapButtonContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+focus_behavior_recursive = 1
+theme = ExtResource("3_nt8gl")
+theme_override_constants/icon_max_width = 36
+icon = ExtResource("5_x5upn")
+vertical_icon_alignment = 2
+
+[node name="BeastieButton" type="Button" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+focus_behavior_recursive = 1
+theme = ExtResource("3_nt8gl")
+text = "Diabloceras"
+
+[node name="AddButton" type="Button" parent="."]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_behavior_recursive = 1
+theme = ExtResource("3_nt8gl")
+theme_override_constants/icon_max_width = 48
+text = "Add"
+icon = ExtResource("4_egpa1")
+
+[node name="ResetButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+focus_behavior_recursive = 1
+theme = ExtResource("3_nt8gl")
+theme_override_constants/icon_max_width = 48
+icon = ExtResource("5_aayvu")

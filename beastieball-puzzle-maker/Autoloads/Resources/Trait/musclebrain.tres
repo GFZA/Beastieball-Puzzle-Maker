@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bjdlgptor1xj"]
+
+[ext_resource type="Script" uid="uid://bkm467y4rtay2" path="res://Autoloads/Resources/Trait/musclebrain.gd" id="1_78u2c"]
+
+[resource]
+script = ExtResource("1_78u2c")
+name = "Musclebrain"
+description = "Non-Body attacks become Body and are 1.2x stronger"
+damage_dealt_mult = 1.2
+metadata/_custom_type_script = "uid://bslfuaragw1g7"

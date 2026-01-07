@@ -1,0 +1,8 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://capa45njvrn5x"]
+
+[ext_resource type="Texture2D" uid="uid://oqfi3l4hxqan" path="res://Scenes/Main/main_ui/main_ui_bg_tile_2.png" id="1_akbbk"]
+
+[resource]
+texture = ExtResource("1_akbbk")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1

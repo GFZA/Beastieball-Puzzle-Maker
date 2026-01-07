@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://co8c0qvn7nkha" path="res://Scenes/Board/board.tscn" id="1_1r6ip"]
 [ext_resource type="PackedScene" uid="uid://crwqyvvvfl5o7" path="res://Scenes/Main/main_ui/main_ui.tscn" id="1_lixft"]
 [ext_resource type="Script" uid="uid://cqdgpe3l3e5ij" path="res://Scenes/Main/main.gd" id="1_qw60k"]
-[ext_resource type="Resource" uid="uid://d3yis3kiqtsp8" path="res://Resources/BoardData/puzzle_10_draft_1.res" id="2_p6jpk"]
-[ext_resource type="FontFile" uid="uid://cvfib27cf5q88" path="res://Resources/Fonts/Go Banana.ttf" id="4_5yls4"]
+[ext_resource type="Resource" uid="uid://d3yis3kiqtsp8" path="res://Autoloads/Resources/BoardData/puzzle_10_draft_1.res" id="2_p6jpk"]
+[ext_resource type="FontFile" uid="uid://cvfib27cf5q88" path="res://Autoloads/Resources/Fonts/Go Banana.ttf" id="4_5yls4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_p6jpk"]
 font = ExtResource("4_5yls4")

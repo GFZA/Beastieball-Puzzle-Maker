@@ -1,0 +1,37 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://bkrlwg21fhprn"]
+
+[ext_resource type="FontFile" uid="uid://cvfib27cf5q88" path="res://Autoloads/Resources/Fonts/Go Banana.ttf" id="1_52w1l"]
+[ext_resource type="StyleBox" uid="uid://capa45njvrn5x" path="res://Autoloads/Resources/Themes/edit_button_hover.tres" id="2_7w8n7"]
+[ext_resource type="StyleBox" uid="uid://cy6m62di7kc6y" path="res://Autoloads/Resources/Themes/edit_button_normal.tres" id="3_xp78q"]
+[ext_resource type="Texture2D" uid="uid://d1ptyyvm2x01k" path="res://Autoloads/Icons/icon_checkmark.png" id="4_avti1"]
+[ext_resource type="FontFile" uid="uid://q2kbgu0jja56" path="res://Autoloads/Resources/Fonts/sportsjersey.ttf" id="4_xp78q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xfipr"]
+
+[resource]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_focus_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_color = Color(1, 1, 1, 1)
+Button/font_sizes/font_size = 64
+Button/fonts/font = ExtResource("1_52w1l")
+Button/styles/focus = ExtResource("2_7w8n7")
+Button/styles/hover = ExtResource("2_7w8n7")
+Button/styles/hover_pressed = ExtResource("2_7w8n7")
+Button/styles/normal = ExtResource("3_xp78q")
+Button/styles/pressed = ExtResource("3_xp78q")
+CheckBox/icons/checked = ExtResource("4_avti1")
+CheckBox/icons/unchecked = SubResource("AtlasTexture_xfipr")
+CheckBox/styles/focus = ExtResource("2_7w8n7")
+CheckBox/styles/hover = ExtResource("2_7w8n7")
+CheckBox/styles/normal = ExtResource("3_xp78q")
+Label/colors/font_color = Color(0, 0, 0, 1)
+Label/font_sizes/font_size = 64
+Label/fonts/font = ExtResource("4_xp78q")
+LineEdit/colors/caret_color = Color(1, 1, 1, 1)
+LineEdit/colors/clear_button_color = Color(1, 1, 1, 1)
+LineEdit/colors/clear_button_color_pressed = Color(1, 1, 1, 1)
+LineEdit/colors/font_color = Color(1, 1, 1, 1)
+LineEdit/font_sizes/font_size = 64
+LineEdit/fonts/font = ExtResource("1_52w1l")
+LineEdit/styles/focus = ExtResource("2_7w8n7")
+LineEdit/styles/normal = ExtResource("3_xp78q")

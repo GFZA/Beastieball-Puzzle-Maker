@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cq4wjdh73nd7s" path="res://Scenes/PlaysUIContainer/plays_ui_container.gd" id="1_58jbj"]
 [ext_resource type="PackedScene" uid="uid://b4bws0qofhe6x" path="res://Scenes/PlaysUIContainer/PlayUI/plays_ui.tscn" id="1_lkkpg"]
 [ext_resource type="PackedScene" uid="uid://d3d6ph6ugh14g" path="res://Scenes/PlaysUIContainer/DamageIndicator/damage_indicator.tscn" id="3_yny4v"]
-[ext_resource type="FontFile" uid="uid://cvfib27cf5q88" path="res://Resources/Fonts/Go Banana.ttf" id="4_pxnfs"]
+[ext_resource type="FontFile" uid="uid://cvfib27cf5q88" path="res://Autoloads/Resources/Fonts/Go Banana.ttf" id="4_pxnfs"]
 [ext_resource type="Script" uid="uid://bca8urfgsjynv" path="res://Scenes/Healthbar/parallelogram.gd" id="4_tepdj"]
 [ext_resource type="PackedScene" uid="uid://brba6p5e5xokk" path="res://Scenes/PlaysUIContainer/BoostUI/boost_ui.tscn" id="4_yny4v"]
 

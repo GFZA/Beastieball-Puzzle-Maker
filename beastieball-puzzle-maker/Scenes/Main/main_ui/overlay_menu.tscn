@@ -1,0 +1,215 @@
+[gd_scene load_steps=7 format=3 uid="uid://b6dv16yi6788v"]
+
+[ext_resource type="FontFile" uid="uid://q2kbgu0jja56" path="res://Autoloads/Resources/Fonts/sportsjersey.ttf" id="1_awhxn"]
+[ext_resource type="Script" uid="uid://bihu2c3wmebr7" path="res://Scenes/Main/main_ui/overlay_menu.gd" id="1_bi854"]
+[ext_resource type="PackedScene" uid="uid://d1d26ob86bbom" path="res://Scenes/Main/main_ui/number_ui.tscn" id="2_bi854"]
+[ext_resource type="Theme" uid="uid://bkrlwg21fhprn" path="res://Autoloads/Resources/Themes/edit_button.tres" id="3_nobbd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xyyv6"]
+font = ExtResource("1_awhxn")
+font_size = 64
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_hpi7e"]
+
+[node name="OverlayMenu" type="ScrollContainer"]
+custom_minimum_size = Vector2(805, 1494)
+script = ExtResource("1_bi854")
+
+[node name="MainContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="MaxPoint" type="HBoxContainer" parent="MainContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MainContainer/MaxPoint"]
+layout_mode = 2
+text = "Points to Win"
+label_settings = SubResource("LabelSettings_xyyv6")
+
+[node name="MaxPointNumberUI" parent="MainContainer/MaxPoint" instance=ExtResource("2_bi854")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+num = 3
+default = 3
+value_min = 1
+value_max = 9
+
+[node name="YourPoints" type="HBoxContainer" parent="MainContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MainContainer/YourPoints"]
+layout_mode = 2
+text = "Your Points"
+label_settings = SubResource("LabelSettings_xyyv6")
+
+[node name="YourPointsNumberUI" parent="MainContainer/YourPoints" instance=ExtResource("2_bi854")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+value_max = 9
+
+[node name="OpponentPoints" type="HBoxContainer" parent="MainContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MainContainer/OpponentPoints"]
+layout_mode = 2
+text = "Opponent Points"
+label_settings = SubResource("LabelSettings_xyyv6")
+
+[node name="OpponentPointsNumberUI" parent="MainContainer/OpponentPoints" instance=ExtResource("2_bi854")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+value_max = 9
+
+[node name="CurrentTurn" type="HBoxContainer" parent="MainContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Label" type="Label" parent="MainContainer/CurrentTurn"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Turn"
+label_settings = SubResource("LabelSettings_xyyv6")
+
+[node name="OffenseButton" type="Button" parent="MainContainer/CurrentTurn"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(210, 0)
+layout_mode = 2
+theme = ExtResource("3_nobbd")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_hpi7e")
+text = "Offense"
+
+[node name="DefenseButton" type="Button" parent="MainContainer/CurrentTurn"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(210, 0)
+layout_mode = 2
+theme = ExtResource("3_nobbd")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_hpi7e")
+text = "Defense"
+
+[node name="ServeButton" type="Button" parent="MainContainer/CurrentTurn"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme = ExtResource("3_nobbd")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_hpi7e")
+text = "Serve"
+
+[node name="OffenseActionContainer" type="HBoxContainer" parent="MainContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Label" type="Label" parent="MainContainer/OffenseActionContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Actions Left"
+label_settings = SubResource("LabelSettings_xyyv6")
+
+[node name="ActionLeftsNumberUI" parent="MainContainer/OffenseActionContainer" instance=ExtResource("2_bi854")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+num = 3
+default = 3
+value_min = 1
+value_max = 3
+
+[node name="DefenseAgainstServeContainer" type="HBoxContainer" parent="MainContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Label" type="Label" parent="MainContainer/DefenseAgainstServeContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Opponent is Serving"
+label_settings = SubResource("LabelSettings_xyyv6")
+
+[node name="DefenseAgainstServeCheckBox" type="CheckBox" parent="MainContainer/DefenseAgainstServeContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+focus_behavior_recursive = 1
+theme = ExtResource("3_nobbd")
+
+[node name="TitleTextLabel" type="Label" parent="MainContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Title Text"
+label_settings = SubResource("LabelSettings_xyyv6")
+
+[node name="TitleTextLineEdit" type="LineEdit" parent="MainContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_behavior_recursive = 2
+theme = ExtResource("3_nobbd")
+text = "Find the guaranteed win"
+placeholder_text = "Write something..."
+alignment = 1
+max_length = 35
+
+[node name="RightTextLabel" type="Label" parent="MainContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Right Side Text"
+label_settings = SubResource("LabelSettings_xyyv6")
+
+[node name="RightTextLineEdit" type="LineEdit" parent="MainContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_behavior_recursive = 2
+theme = ExtResource("3_nobbd")
+placeholder_text = "Write something..."
+alignment = 1
+max_length = 12
+
+[node name="BottomTextLabel" type="Label" parent="MainContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Bottom Text"
+label_settings = SubResource("LabelSettings_xyyv6")
+
+[node name="BottomTextLineEdit" type="LineEdit" parent="MainContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_behavior_recursive = 2
+theme = ExtResource("3_nobbd")
+text = "Puzzle solution: after Outro"
+placeholder_text = "Write something..."
+alignment = 1
+max_length = 50
+
+[node name="Logo" type="HBoxContainer" parent="MainContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="LogoLabel" type="Label" parent="MainContainer/Logo"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Logo"
+label_settings = SubResource("LabelSettings_xyyv6")
+
+[node name="LoadLogoButton" type="Button" parent="MainContainer/Logo"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_behavior_recursive = 1
+theme = ExtResource("3_nobbd")
+text = " Load... "

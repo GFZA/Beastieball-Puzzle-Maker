@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cnt7xu4wjn3mx" path="res://Scenes/PlaysUIContainer/PlayUI/plays_ui.gd" id="1_clvah"]
 [ext_resource type="Texture2D" uid="uid://dgum3wc24lo16" path="res://Scenes/PlaysUIContainer/PlayUI/plays_ui_defense.png" id="2_clvah"]
-[ext_resource type="FontFile" uid="uid://q2kbgu0jja56" path="res://Resources/Fonts/sportsjersey.ttf" id="2_t0syg"]
+[ext_resource type="FontFile" uid="uid://q2kbgu0jja56" path="res://Autoloads/Resources/Fonts/sportsjersey.ttf" id="2_t0syg"]
 [ext_resource type="Texture2D" uid="uid://dkhdnngx0bnyb" path="res://Scenes/PlaysUIContainer/PlayUI/plays_ui_disable_mask.png" id="4_ag766"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ync5o"]

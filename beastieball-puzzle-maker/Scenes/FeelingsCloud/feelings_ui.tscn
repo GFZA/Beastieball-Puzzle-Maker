@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c62qmfx5hovbk" path="res://Scenes/FeelingsCloud/feelings_ui.gd" id="1_ac1gr"]
 [ext_resource type="Texture2D" uid="uid://dey8bdpdiw1p4" path="res://Autoloads/Icons/icon_wiped.png" id="1_hg08h"]
-[ext_resource type="FontFile" uid="uid://q2kbgu0jja56" path="res://Resources/Fonts/sportsjersey.ttf" id="2_5e5xv"]
+[ext_resource type="FontFile" uid="uid://q2kbgu0jja56" path="res://Autoloads/Resources/Fonts/sportsjersey.ttf" id="2_5e5xv"]
 
 [sub_resource type="Gradient" id="Gradient_l0ygr"]
 offsets = PackedFloat32Array(0, 0.61748636, 0.6229508, 1)

@@ -1,12 +1,12 @@
 [gd_scene load_steps=17 format=3 uid="uid://s3ot8ysh03s6"]
 
 [ext_resource type="Script" uid="uid://b8da0ls7ka2na" path="res://Scenes/Board/BoardOverlay/board_overlay.gd" id="1_8b3w3"]
-[ext_resource type="FontFile" uid="uid://ds0qrrbdvqa6n" path="res://Resources/Fonts/SF Sports Night.ttf" id="1_yxvh7"]
-[ext_resource type="Theme" uid="uid://v25nab4h4vdp" path="res://Resources/Themes/highlight_overlay.tres" id="3_1fwbd"]
+[ext_resource type="FontFile" uid="uid://ds0qrrbdvqa6n" path="res://Autoloads/Resources/Fonts/SF Sports Night.ttf" id="1_yxvh7"]
+[ext_resource type="Theme" uid="uid://v25nab4h4vdp" path="res://Autoloads/Resources/Themes/highlight_overlay.tres" id="3_1fwbd"]
 [ext_resource type="Texture2D" uid="uid://caafonrcdyiwp" path="res://Scenes/Board/BoardOverlay/turn_bar_offense.png" id="3_f1wdy"]
 [ext_resource type="Texture2D" uid="uid://dd07iat8y5gpe" path="res://Scenes/Board/BoardOverlay/turn_misc_overlay_offense_3_ball.png" id="4_6ugfv"]
-[ext_resource type="FontFile" uid="uid://3m3y4biedw3n" path="res://Resources/Fonts/Hauser.otf" id="5_2ewg5"]
-[ext_resource type="FontFile" uid="uid://cvfib27cf5q88" path="res://Resources/Fonts/Go Banana.ttf" id="7_aun0h"]
+[ext_resource type="FontFile" uid="uid://3m3y4biedw3n" path="res://Autoloads/Resources/Fonts/Hauser.otf" id="5_2ewg5"]
+[ext_resource type="FontFile" uid="uid://cvfib27cf5q88" path="res://Autoloads/Resources/Fonts/Go Banana.ttf" id="7_aun0h"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8b3w3"]
 font = ExtResource("1_yxvh7")
@@ -268,6 +268,21 @@ label_settings = SubResource("LabelSettings_2ewg5")
 
 [node name="DownArrow" type="Polygon2D" parent="YourTeamLabel"]
 position = Vector2(0, 6)
+polygon = PackedVector2Array(163, 77, 203, 77, 182, 98)
+
+[node name="OpponentServeLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1602.0
+offset_top = 282.0
+offset_right = 1877.0
+offset_bottom = 389.0
+text = "Opponent Serve"
+label_settings = SubResource("LabelSettings_2ewg5")
+horizontal_alignment = 1
+
+[node name="DownArrow" type="Polygon2D" parent="OpponentServeLabel"]
+position = Vector2(160, 6)
 polygon = PackedVector2Array(163, 77, 203, 77, 182, 98)
 
 [node name="OverlayEditButton" type="Button" parent="."]

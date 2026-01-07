@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cbc5i66rtpig1"]
 
 [ext_resource type="Script" uid="uid://7876n1ypq426" path="res://Scenes/PlaysUIContainer/DamageIndicator/damage_splash.gd" id="1_7xo7y"]
-[ext_resource type="FontFile" uid="uid://3m3y4biedw3n" path="res://Resources/Fonts/Hauser.otf" id="2_7xo7y"]
+[ext_resource type="FontFile" uid="uid://3m3y4biedw3n" path="res://Autoloads/Resources/Fonts/Hauser.otf" id="2_7xo7y"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7xo7y"]
 font = ExtResource("2_7xo7y")

@@ -11,8 +11,19 @@ extends Control
 
 
 func _ready() -> void:
-	# Board edits signals
+	# Overlay menu signals
 	board.board_overlay.overlay_edit_requested.connect(main_ui.show_overlay_menu)
+	main_ui.overlay_menu.max_point_changed.connect(board.board_overlay.on_max_point_changed)
+	main_ui.overlay_menu.your_point_changed.connect(board.board_overlay.on_your_point_changed)
+	main_ui.overlay_menu.opponent_point_change.connect(board.board_overlay.on_opponent_point_change)
+	main_ui.overlay_menu.turn_changed.connect(board.board_overlay.on_turn_changed)
+	main_ui.overlay_menu.offense_action_changed.connect(board.board_overlay.on_offense_action_changed)
+	main_ui.overlay_menu.defense_against_serve_changed.connect(board.board_overlay.on_defense_against_serve_changed)
+	main_ui.overlay_menu.title_text_changed.connect(board.board_overlay.on_title_text_changed)
+	main_ui.overlay_menu.right_text_changed.connect(board.board_overlay.on_right_text_changed)
+	main_ui.overlay_menu.bottom_text_changed.connect(board.board_overlay.on_bottom_text_changed)
+	main_ui.overlay_menu.logo_changed.connect(board.board_overlay.on_logo_changed)
+
 
 	# Lower buttons Signals
 	main_ui.save_image_requested.connect(_on_save_image_requested)
@@ -91,6 +102,8 @@ func _on_reset_board_requested() -> void:
 	await get_tree().process_frame
 	await get_tree().process_frame
 	await get_tree().process_frame
+	main_ui.reset()
+	main_ui.hide_all_menu()
 	board.board_manager.reset_board()
 	await board.board_manager.board_resetted
 
