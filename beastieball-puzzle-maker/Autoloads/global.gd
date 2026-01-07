@@ -2,6 +2,7 @@
 extends Node
 
 enum MySide {LEFT, RIGHT}
+enum SortBeastie {NAME, NUMBER}
 
 #region Main Color Datas
 enum ColorType {BODY, SPIRIT, MIND}
@@ -149,3 +150,31 @@ func _get_icon_path(icon : Icon) -> String:
 func _add_img_bbcode(icon : Icon) -> String:
 	return "[img]" + _get_icon_path(icon) + "[/img]"
 #endregion
+
+
+var all_beasties_data : Array[Beastie] = []
+
+
+func _ready() -> void:
+	_assign_all_beasties_data()
+
+
+func _assign_all_beasties_data() -> void:
+	var path : String = "res://Autoloads/Resources/Beastie/"
+	var dir := DirAccess.open(path)
+	if dir:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while file_name != "":
+			if dir.current_is_dir(): # Is Folder
+				var inner_dir := DirAccess.open(path + file_name + "/")
+				if inner_dir:
+					inner_dir.list_dir_begin()
+					var inner_file_name : String = inner_dir.get_next()
+					while inner_file_name != "":
+						if inner_file_name.ends_with(".tres"): # Is Beastie Resource
+							all_beasties_data.append(load(path + file_name + "/" + inner_file_name))
+						inner_file_name = inner_dir.get_next()
+			file_name = dir.get_next()
+	else:
+		print("An error occurred when trying to access the path.")

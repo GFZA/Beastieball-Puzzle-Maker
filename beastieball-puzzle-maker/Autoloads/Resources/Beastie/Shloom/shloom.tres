@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=62 format=3 uid="uid://d1gqgdxnu52us"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=63 format=3 uid="uid://d1gqgdxnu52us"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_o6b6w"]
 [ext_resource type="Resource" uid="uid://ce7radc7hq6r8" path="res://Autoloads/Resources/Trait/ancient.tres" id="2_1pmlg"]
@@ -61,12 +61,14 @@
 [ext_resource type="Resource" uid="uid://by0ross5cpbjo" path="res://Autoloads/Resources/Plays/Defense/menace.tres" id="51_ek8ki"]
 [ext_resource type="Resource" uid="uid://b5ox8jsftfp33" path="res://Autoloads/Resources/Plays/Defense/mighty_yell.tres" id="52_mcf2q"]
 [ext_resource type="Resource" uid="uid://c5n8g4bqp64q2" path="res://Autoloads/Resources/Plays/Defense/sting.tres" id="53_ru4h6"]
+[ext_resource type="Texture2D" uid="uid://dv0bptc31w8y" path="res://Autoloads/Resources/Beastie/Shloom/icon_shloom.png" id="62_wfger"]
 
 [resource]
 script = ExtResource("3_kgfmq")
 my_plays = Array[ExtResource("1_o6b6w")]([null, null, null])
 my_trait = ExtResource("2_1pmlg")
 specie_name = "Shloom"
+beastiepedia_id = 106
 bar_color = Color(0.6039216, 0.8117647, 0.4745098, 1)
 body_base_pow = 110
 spirit_base_pow = 110
@@ -82,6 +84,7 @@ sprites = Dictionary[int, Texture2D]({
 2: ExtResource("7_2iqgd"),
 3: ExtResource("8_labgr"),
 4: ExtResource("9_7d2fy"),
-5: ExtResource("10_lml57")
+5: ExtResource("10_lml57"),
+6: ExtResource("62_wfger")
 })
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"

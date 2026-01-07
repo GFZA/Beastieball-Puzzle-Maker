@@ -2,7 +2,7 @@
 class_name Beastie
 extends Resource
 
-enum Sprite {IDLE, READY, SPIKE, VOLLEY, GOOD, BAD}
+enum Sprite {IDLE, READY, SPIKE, VOLLEY, GOOD, BAD, ICON}
 enum Feelings {WIPED, TRIED, SHOOK, JAZZED, BLOCKED, WEEPY, TOUGH, TENDER, SWEATY, NOISY, ANGRY, NERVOUS, STRESSED}
 enum Stats {B_POW, S_POW, M_POW, B_DEF, S_DEF, M_DEF}
 enum Position {UPPER_BACK, UPPER_FRONT, LOWER_BACK, LOWER_FRONT, BENCH_1, BENCH_2, NOT_ASSIGNED}
@@ -94,7 +94,7 @@ signal health_updated(health : int)
 
 @export_group("Internal Infos")
 @export var specie_name : String = "Sprecko"
-@export_range(1, 106) var beastiepedia_id : int = 999
+@export_range(1, 106) var beastiepedia_id : int = 1
 @export_color_no_alpha var bar_color : Color = Color.GREEN
 @export_range(1, 150) var body_base_pow : int = 45 :
 	set(value):
@@ -129,6 +129,7 @@ signal health_updated(health : int)
 	Sprite.VOLLEY : null,
 	Sprite.GOOD : null,
 	Sprite.BAD : null,
+	Sprite.ICON : null,
 }
 @export var y_offset : int = 0
 @export var ball_anchor_position : Vector2 = Vector2.ZERO # When the beastie s facing LEFT

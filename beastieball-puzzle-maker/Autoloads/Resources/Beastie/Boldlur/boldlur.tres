@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=43 format=3 uid="uid://daogdgc33c0c3"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=44 format=3 uid="uid://daogdgc33c0c3"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_63de5"]
 [ext_resource type="Resource" uid="uid://o81g6nhv6tqv" path="res://Autoloads/Resources/Trait/decoy.tres" id="2_1mwk4"]
@@ -42,6 +42,7 @@
 [ext_resource type="Resource" uid="uid://dm6eb4ue4fypu" path="res://Autoloads/Resources/Plays/Defense/body_ready.tres" id="31_0u1q6"]
 [ext_resource type="Resource" uid="uid://by0ross5cpbjo" path="res://Autoloads/Resources/Plays/Defense/menace.tres" id="32_hfvx8"]
 [ext_resource type="Resource" uid="uid://dthwtmgr6183d" path="res://Autoloads/Resources/Plays/Defense/pump_up.tres" id="33_nr7fd"]
+[ext_resource type="Texture2D" uid="uid://dpljjakkd3ruc" path="res://Autoloads/Resources/Beastie/Boldlur/icon_boldlur.png" id="43_ot52c"]
 
 [resource]
 script = ExtResource("3_mjom6")
@@ -63,6 +64,7 @@ sprites = Dictionary[int, Texture2D]({
 2: ExtResource("6_1mwk4"),
 3: ExtResource("7_1xeqx"),
 4: ExtResource("8_sld63"),
-5: ExtResource("9_vfi0y")
+5: ExtResource("9_vfi0y"),
+6: ExtResource("43_ot52c")
 })
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"
