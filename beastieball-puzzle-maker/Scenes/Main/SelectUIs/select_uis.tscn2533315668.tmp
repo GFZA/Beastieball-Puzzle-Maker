@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c0rfhniciamxq"]
 
 [ext_resource type="Script" uid="uid://kx18iqsqtt7h" path="res://Scenes/Main/SelectUIs/select_uis.gd" id="1_aln1h"]
-[ext_resource type="Texture2D" uid="uid://i036kmeuy3sl" path="res://Scenes/Main/MainUI/main_ui_bg_tile.png" id="1_s6xmw"]
+[ext_resource type="Texture2D" uid="uid://i036kmeuy3sl" path="res://Scenes/Main/main_ui/main_ui_bg_tile.png" id="1_s6xmw"]
 [ext_resource type="PackedScene" uid="uid://1p0s1gi4loyi" path="res://Scenes/Main/SelectUIs/beastie_select_ui.tscn" id="3_ttyll"]
 
 [node name="SelectUIs" type="MarginContainer"]
@@ -14,7 +14,7 @@ script = ExtResource("1_aln1h")
 
 [node name="BlackBG" type="ColorRect" parent="."]
 layout_mode = 2
-color = Color(0, 0, 0, 0.6862745)
+color = Color(0, 0, 0, 0.49019608)
 
 [node name="AlmostMainContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -42,5 +42,4 @@ theme_override_constants/margin_right = 100
 theme_override_constants/margin_bottom = 50
 
 [node name="BeastieSelectUI" parent="AlmostMainContainer/BG/MarginContainer" instance=ExtResource("3_ttyll")]
-unique_name_in_owner = true
 layout_mode = 2

@@ -9,6 +9,8 @@ extends Control
 @onready var saving_rect: ColorRect = %SavingRect
 @onready var saving_label: Label = %SavingLabel
 
+@onready var select_ui: SelectUIs = %SelectUIs
+
 
 func _ready() -> void:
 	# Overlay menu signals
@@ -24,12 +26,16 @@ func _ready() -> void:
 	main_ui.overlay_menu.bottom_text_changed.connect(board.board_overlay.on_bottom_text_changed)
 	main_ui.overlay_menu.logo_changed.connect(board.board_overlay.on_logo_changed)
 
-
 	# Lower buttons Signals
 	main_ui.save_image_requested.connect(_on_save_image_requested)
 	main_ui.save_json_requested.connect(_on_save_json_requested)
 	main_ui.load_json_requested.connect(_on_load_json_requested)
 	main_ui.reset_board_requested.connect(_on_reset_board_requested)
+
+	# Select Ui Signal
+	var beastie_requester : Array[Node] = get_tree().get_nodes_in_group("beastie_select_ui_requester")
+	for requester in beastie_requester:
+		requester.beastie_select_ui_requested.connect(select_ui.show_beastie_select_ui)
 
 
 #region Lower buttons signal funcs
@@ -103,7 +109,6 @@ func _on_reset_board_requested() -> void:
 	await get_tree().process_frame
 	await get_tree().process_frame
 	main_ui.reset()
-	main_ui.hide_all_menu()
 	board.board_manager.reset_board()
 	await board.board_manager.board_resetted
 

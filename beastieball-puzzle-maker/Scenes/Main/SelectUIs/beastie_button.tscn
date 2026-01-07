@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dpfyarbgjk6l4"]
+[gd_scene load_steps=6 format=3 uid="uid://dpfyarbgjk6l4"]
 
 [ext_resource type="Script" uid="uid://b8n4h6hf4868g" path="res://Scenes/Main/SelectUIs/beastie_button.gd" id="1_5vphi"]
 [ext_resource type="Theme" uid="uid://bkrlwg21fhprn" path="res://Autoloads/Resources/Themes/edit_button.tres" id="2_hu215"]
+[ext_resource type="Texture2D" uid="uid://dey8bdpdiw1p4" path="res://Autoloads/Icons/icon_wiped.png" id="3_5vphi"]
 [ext_resource type="FontFile" uid="uid://cvfib27cf5q88" path="res://Autoloads/Resources/Fonts/Go Banana.ttf" id="5_7y7uk"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4ccyn"]
@@ -49,6 +50,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 focus_behavior_recursive = 1
 mouse_filter = 2
+texture = ExtResource("3_5vphi")
 expand_mode = 1
 stretch_mode = 5
 
@@ -64,6 +66,8 @@ theme_override_constants/separation = -8
 alignment = 1
 
 [node name="NumberContainer" type="HBoxContainer" parent="MainMarginContainer/HBoxContainer/NameInfoContainer"]
+unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 
@@ -80,7 +84,7 @@ focus_behavior_recursive = 1
 theme = ExtResource("2_hu215")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 115
-text = "999"
+text = "0"
 
 [node name="NameLabel" type="Label" parent="MainMarginContainer/HBoxContainer/NameInfoContainer"]
 unique_name_in_owner = true
@@ -89,6 +93,6 @@ focus_behavior_recursive = 1
 theme = ExtResource("2_hu215")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 115
-text = "UNKNOWN"
+text = "None"
 horizontal_alignment = 1
 vertical_alignment = 1

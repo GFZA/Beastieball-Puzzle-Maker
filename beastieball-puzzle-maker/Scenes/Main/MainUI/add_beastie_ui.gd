@@ -1,9 +1,9 @@
 @tool
 class_name AddBeastieUI
-extends HBoxContainer
+extends Control
 
 
-signal add_beastie_requested(requested_side : Global.MySide, requested_pos : Beastie.Position, request_reset : bool)
+signal beastie_select_ui_requested(select_then_call_this : Callable)
 signal beastie_menu_requested(requested_beastie : Beastie)
 
 
@@ -26,20 +26,21 @@ var side : Global.MySide = Global.MySide.LEFT
 @onready var reset_button: Button = %ResetButton
 
 
-var my_beastie : Beastie = preload("uid://dr6dti4ow55uy").duplicate(true)
+var my_beastie : Beastie = null
 
 
 func _ready() -> void:
-	swap_up_button.pressed.connect(func(): print("Swap up (%s) requested." % my_beastie.specie_name))
-	swap_up_button.pressed.connect(func(): print("Swap down (%s) requested." % my_beastie.specie_name))
+	swap_up_button.pressed.connect(_on_swap_up_pressed)
+	swap_down_button.pressed.connect(_on_swap_down_pressed)
 	reset_button.pressed.connect(_on_reset_button_pressed)
-	add_button.pressed.connect(_on_add_button_pressed)
+	add_button.pressed.connect(beastie_select_ui_requested.emit.bind(on_beastie_selected))
 	beastie_button.pressed.connect(beastie_menu_requested.emit.bind(my_beastie))
 
 	reset()
 
 
 func reset() -> void:
+	my_beastie = null
 	add_button.show()
 	beastie_button.text = ""
 	beastie_button.hide()
@@ -47,19 +48,36 @@ func reset() -> void:
 	swap_button_container.hide()
 
 
+func _on_swap_up_pressed() -> void:
+	if not my_beastie:
+		return
+	print("Swap up (%s) requested." % my_beastie.specie_name)
+
+
+func _on_swap_down_pressed() -> void:
+	if not my_beastie:
+		return
+	print("Swap down (%s) requested." % my_beastie.specie_name)
+
+
 func _on_add_button_pressed() -> void:
-	add_beastie_requested.emit.bind(side, pos, false)
-	on_beastie_added(my_beastie.duplicate(true))
+	beastie_select_ui_requested.emit(on_beastie_selected)
+
+
+func on_beastie_selected(beastie : Beastie) -> void:
+	if not beastie:
+		reset()
+		return
+
+	my_beastie = beastie.duplicate(true)
+	add_button.hide()
+	beastie_button.text = my_beastie.specie_name
+	beastie_button.show()
+	reset_button.show()
+	swap_button_container.show()
+
+	beastie_menu_requested.emit.bind(my_beastie) # Go to Beastie Menu right after selecting
 
 
 func _on_reset_button_pressed() -> void:
 	reset()
-	add_beastie_requested.emit.bind(side, pos, true)
-
-
-func on_beastie_added(beastie : Beastie) -> void:
-	add_button.hide()
-	beastie_button.text = beastie.specie_name
-	beastie_button.show()
-	reset_button.show()
-	swap_button_container.show()

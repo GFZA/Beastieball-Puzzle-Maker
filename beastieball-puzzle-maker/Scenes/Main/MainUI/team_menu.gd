@@ -18,5 +18,11 @@ extends ScrollContainer
 func _update_side() -> void:
 	if not is_node_ready():
 		await ready
-	for ui : AddBeastieUI in main_container.get_children():
-		ui.side = side
+	for node in main_container.get_children():
+		if node is AddBeastieUI:
+			node.side = side
+
+
+func reset() -> void:
+	for add_beastie_ui in main_container.get_children():
+		add_beastie_ui.reset()

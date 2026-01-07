@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://kp4oiw1yt1al"]
+[gd_scene load_steps=8 format=3 uid="uid://kp4oiw1yt1al"]
 
 [ext_resource type="PackedScene" uid="uid://co8c0qvn7nkha" path="res://Scenes/Board/board.tscn" id="1_1r6ip"]
-[ext_resource type="PackedScene" uid="uid://crwqyvvvfl5o7" path="res://Scenes/Main/main_ui/main_ui.tscn" id="1_lixft"]
+[ext_resource type="PackedScene" uid="uid://crwqyvvvfl5o7" path="res://Scenes/Main/MainUI/main_ui.tscn" id="1_lixft"]
 [ext_resource type="Script" uid="uid://cqdgpe3l3e5ij" path="res://Scenes/Main/main.gd" id="1_qw60k"]
 [ext_resource type="Resource" uid="uid://d3yis3kiqtsp8" path="res://Autoloads/Resources/BoardData/puzzle_10_draft_1.res" id="2_p6jpk"]
 [ext_resource type="FontFile" uid="uid://cvfib27cf5q88" path="res://Autoloads/Resources/Fonts/Go Banana.ttf" id="4_5yls4"]
+[ext_resource type="PackedScene" uid="uid://c0rfhniciamxq" path="res://Scenes/Main/SelectUIs/select_uis.tscn" id="5_2a143"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_p6jpk"]
 font = ExtResource("4_5yls4")
@@ -36,6 +37,13 @@ layout_mode = 2
 [node name="Board" parent="MainContainer" instance=ExtResource("1_1r6ip")]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="SelectUIs" parent="." instance=ExtResource("5_2a143")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="SavingRect" type="ColorRect" parent="."]
 unique_name_in_owner = true

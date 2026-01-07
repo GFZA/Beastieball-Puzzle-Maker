@@ -1,20 +1,20 @@
 [gd_scene load_steps=18 format=3 uid="uid://crwqyvvvfl5o7"]
 
-[ext_resource type="Texture2D" uid="uid://i036kmeuy3sl" path="res://Scenes/Main/main_ui/main_ui_bg_tile.png" id="1_25roi"]
-[ext_resource type="Script" uid="uid://deoy300w1khdw" path="res://Scenes/Main/main_ui/main_ui.gd" id="1_hvcgl"]
-[ext_resource type="Texture2D" uid="uid://oqfi3l4hxqan" path="res://Scenes/Main/main_ui/main_ui_bg_tile_2.png" id="1_pbqvl"]
+[ext_resource type="Texture2D" uid="uid://i036kmeuy3sl" path="res://Scenes/Main/MainUI/main_ui_bg_tile.png" id="1_25roi"]
+[ext_resource type="Script" uid="uid://deoy300w1khdw" path="res://Scenes/Main/MainUI/main_ui.gd" id="1_hvcgl"]
+[ext_resource type="Texture2D" uid="uid://oqfi3l4hxqan" path="res://Scenes/Main/MainUI/main_ui_bg_tile_2.png" id="1_pbqvl"]
 [ext_resource type="FontFile" uid="uid://ds0qrrbdvqa6n" path="res://Autoloads/Resources/Fonts/SF Sports Night.ttf" id="2_25mr1"]
-[ext_resource type="Texture2D" uid="uid://x245tsph8p3j" path="res://Scenes/Main/main_ui/main_ui_bg_tile_3.png" id="3_25mr1"]
+[ext_resource type="Texture2D" uid="uid://x245tsph8p3j" path="res://Scenes/Main/MainUI/main_ui_bg_tile_3.png" id="3_25mr1"]
 [ext_resource type="FontFile" uid="uid://q2kbgu0jja56" path="res://Autoloads/Resources/Fonts/sportsjersey.ttf" id="3_i4lxe"]
-[ext_resource type="Texture2D" uid="uid://d20w5s52s1xu" path="res://Scenes/Main/main_ui/main_ui_bg_tile_4.png" id="4_i4lxe"]
-[ext_resource type="PackedScene" uid="uid://b6dv16yi6788v" path="res://Scenes/Main/main_ui/overlay_menu.tscn" id="5_ajf2v"]
+[ext_resource type="Texture2D" uid="uid://d20w5s52s1xu" path="res://Scenes/Main/MainUI/main_ui_bg_tile_4.png" id="4_i4lxe"]
+[ext_resource type="PackedScene" uid="uid://b6dv16yi6788v" path="res://Scenes/Main/MainUI/overlay_menu.tscn" id="5_ajf2v"]
 [ext_resource type="Theme" uid="uid://bkrlwg21fhprn" path="res://Autoloads/Resources/Themes/edit_button.tres" id="5_mbwly"]
 [ext_resource type="Texture2D" uid="uid://bdn3a8f8fdq1r" path="res://Autoloads/Icons/icon_move_white_flipped.png" id="5_pxhfb"]
 [ext_resource type="Texture2D" uid="uid://b4x6w635hpwxm" path="res://Autoloads/Icons/icon_save.png" id="6_gu5vi"]
 [ext_resource type="Texture2D" uid="uid://b63cjwl8cphrc" path="res://Autoloads/Icons/icon_load.png" id="7_bgm7v"]
 [ext_resource type="Texture2D" uid="uid://hqu8087deqdr" path="res://Autoloads/Icons/icon_reset.png" id="8_bgm7v"]
-[ext_resource type="PackedScene" uid="uid://j77lq1vyxxe5" path="res://Scenes/Main/main_ui/default_menu.tscn" id="8_pxhfb"]
-[ext_resource type="PackedScene" uid="uid://djra87ar5vdie" path="res://Scenes/Main/main_ui/TeamMenu.tscn" id="9_us2df"]
+[ext_resource type="PackedScene" uid="uid://j77lq1vyxxe5" path="res://Scenes/Main/MainUI/default_menu.tscn" id="8_pxhfb"]
+[ext_resource type="PackedScene" uid="uid://djra87ar5vdie" path="res://Scenes/Main/MainUI/team_menu.tscn" id="9_us2df"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_i4lxe"]
 line_spacing = 0.0
@@ -191,14 +191,14 @@ size_flags_vertical = 8
 
 [node name="ResetButton" type="Button" parent="MainContainer/BG/RealMainContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(350, 0)
+custom_minimum_size = Vector2(750, 0)
 layout_mode = 2
 size_flags_horizontal = 6
 theme = ExtResource("5_mbwly")
 theme_override_constants/h_separation = 4
 theme_override_constants/icon_max_width = 65
 theme_override_constants/line_spacing = -8
-text = "Reset"
+text = "Reset Everything, NO UNDO!!"
 icon = ExtResource("8_bgm7v")
 expand_icon = true
 

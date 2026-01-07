@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://b6dv16yi6788v"]
 
 [ext_resource type="FontFile" uid="uid://q2kbgu0jja56" path="res://Autoloads/Resources/Fonts/sportsjersey.ttf" id="1_awhxn"]
-[ext_resource type="Script" uid="uid://bihu2c3wmebr7" path="res://Scenes/Main/main_ui/overlay_menu.gd" id="1_bi854"]
-[ext_resource type="PackedScene" uid="uid://d1d26ob86bbom" path="res://Scenes/Main/main_ui/number_ui.tscn" id="2_bi854"]
+[ext_resource type="Script" uid="uid://bihu2c3wmebr7" path="res://Scenes/Main/MainUI/overlay_menu.gd" id="1_bi854"]
+[ext_resource type="PackedScene" uid="uid://d1d26ob86bbom" path="res://Scenes/Main/MainUI/number_ui.tscn" id="2_bi854"]
 [ext_resource type="Theme" uid="uid://bkrlwg21fhprn" path="res://Autoloads/Resources/Themes/edit_button.tres" id="3_nobbd"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xyyv6"]

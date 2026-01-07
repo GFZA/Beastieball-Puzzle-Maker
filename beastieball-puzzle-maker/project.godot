@@ -32,6 +32,7 @@ window/stretch/mode="canvas_items"
 board_manager=""
 plays_ui_container=""
 beastie_scene=""
+beastie_select_ui_requester=""
 
 [gui]
 
