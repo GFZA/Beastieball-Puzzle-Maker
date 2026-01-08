@@ -1,4 +1,4 @@
-[gd_scene load_steps=105 format=3 uid="uid://co8c0qvn7nkha"]
+[gd_scene load_steps=106 format=3 uid="uid://co8c0qvn7nkha"]
 
 [ext_resource type="Script" uid="uid://dfsngo7akxojy" path="res://Scenes/Board/board.gd" id="1_mucxt"]
 [ext_resource type="PackedScene" uid="uid://s3ot8ysh03s6" path="res://Scenes/Board/BoardOverlay/board_overlay.tscn" id="2_e8qp6"]
@@ -127,27 +127,27 @@ metadata/_custom_type_script = "uid://ehabj4qsgxpl"
 [sub_resource type="Resource" id="Resource_xwrid"]
 script = ExtResource("61_k3wce")
 my_plays = Array[ExtResource("6_ryomi")]([ExtResource("7_d4qum"), null, null])
-my_trait = ExtResource("68_asnme")
-specie_name = "Plumask"
-beastiepedia_id = 16
-bar_color = Color(0.92156863, 0.64705884, 0.40392157, 1)
-body_base_pow = 20
-spirit_base_pow = 105
-mind_base_pow = 95
-body_base_def = 30
+my_trait = ExtResource("9_bip24")
+specie_name = "Shloom"
+beastiepedia_id = 106
+bar_color = Color(0.6039216, 0.8117647, 0.4745098, 1)
+body_base_pow = 110
+spirit_base_pow = 110
+mind_base_pow = 110
+body_base_def = 90
 spirit_base_def = 90
-mind_base_def = 75
-possible_plays = Array[ExtResource("6_ryomi")]([ExtResource("69_xwrid"), ExtResource("70_l74dj"), ExtResource("71_reu04"), ExtResource("50_krwmy"), ExtResource("72_mhwkv"), ExtResource("53_bkxgd"), ExtResource("73_y6bus"), ExtResource("52_jasmf"), ExtResource("74_qm24d"), ExtResource("75_btbku"), ExtResource("76_ib7kr"), ExtResource("48_1d2qp"), ExtResource("77_4i6pf"), ExtResource("78_841oo"), ExtResource("79_rxjpm"), ExtResource("80_vdyiv"), ExtResource("81_1d2qp"), ExtResource("82_rv5g4"), ExtResource("83_krwmy"), ExtResource("84_ihruo"), ExtResource("85_jasmf"), ExtResource("86_bkxgd"), ExtResource("47_vdyiv"), ExtResource("12_wicna"), ExtResource("54_ljjww"), ExtResource("87_ljjww"), ExtResource("88_rdftn"), ExtResource("89_nh1pn"), ExtResource("55_rdftn"), ExtResource("15_b6cn2"), ExtResource("90_ccn5k")])
-possible_traits = Array[ExtResource("60_xbn8f")]([ExtResource("68_asnme"), ExtResource("91_x8oa6")])
+mind_base_def = 90
+possible_plays = Array[ExtResource("6_ryomi")]([ExtResource("10_bsc56"), ExtResource("11_fvrd6"), ExtResource("12_wicna"), ExtResource("13_rvpvo"), ExtResource("14_ehjpq"), ExtResource("15_b6cn2"), ExtResource("16_187q2"), ExtResource("17_xe26u"), ExtResource("18_oi1m4"), ExtResource("19_lbhv7"), ExtResource("20_63o3o"), ExtResource("21_xuri5"), ExtResource("22_akhof"), ExtResource("7_d4qum"), ExtResource("23_ul1ys"), ExtResource("24_q1b6l"), ExtResource("25_vnh67"), ExtResource("26_miydl"), ExtResource("27_8mnc4"), ExtResource("28_yk1td"), ExtResource("29_o3sb0"), ExtResource("30_r5s4f"), ExtResource("31_2hkyv"), ExtResource("32_y6dlc"), ExtResource("33_ary8t"), ExtResource("34_j2trx"), ExtResource("35_asnme"), ExtResource("36_xwrid"), ExtResource("37_l74dj"), ExtResource("38_reu04"), ExtResource("39_mhwkv"), ExtResource("40_y6bus"), ExtResource("41_qm24d"), ExtResource("42_btbku"), ExtResource("43_ib7kr"), ExtResource("44_4i6pf"), ExtResource("45_841oo"), ExtResource("46_rxjpm"), ExtResource("47_vdyiv"), ExtResource("48_1d2qp"), ExtResource("49_rv5g4"), ExtResource("50_krwmy"), ExtResource("51_ihruo"), ExtResource("52_jasmf"), ExtResource("53_bkxgd"), ExtResource("54_ljjww"), ExtResource("55_rdftn"), ExtResource("56_nh1pn"), ExtResource("57_ccn5k"), ExtResource("58_x8oa6"), ExtResource("59_mjfc5")])
+possible_traits = Array[ExtResource("60_xbn8f")]([ExtResource("9_bip24")])
 sprites = Dictionary[int, Texture2D]({
-0: ExtResource("92_mjfc5"),
-1: ExtResource("93_xbn8f"),
-2: ExtResource("94_k3wce"),
-3: ExtResource("95_dylqb"),
-4: ExtResource("96_a3y2b"),
-5: ExtResource("97_odd11")
+0: ExtResource("62_dylqb"),
+1: ExtResource("63_a3y2b"),
+2: ExtResource("64_odd11"),
+3: ExtResource("65_kllo7"),
+4: ExtResource("66_flmld"),
+5: ExtResource("67_y6brx"),
+6: ExtResource("68_2ucg0")
 })
-ball_anchor_position = Vector2(43, -127)
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"
 
 [sub_resource type="Resource" id="Resource_l74dj"]
@@ -179,27 +179,27 @@ metadata/_custom_type_script = "uid://ehabj4qsgxpl"
 [sub_resource type="Resource" id="Resource_reu04"]
 script = ExtResource("61_k3wce")
 my_plays = Array[ExtResource("6_ryomi")]([ExtResource("7_d4qum"), null, null])
-my_trait = ExtResource("9_bip24")
-specie_name = "Shloom"
-beastiepedia_id = 106
-bar_color = Color(0.6039216, 0.8117647, 0.4745098, 1)
-body_base_pow = 110
-spirit_base_pow = 110
-mind_base_pow = 110
-body_base_def = 90
+my_trait = ExtResource("68_asnme")
+specie_name = "Plumask"
+beastiepedia_id = 16
+bar_color = Color(0.92156863, 0.64705884, 0.40392157, 1)
+body_base_pow = 20
+spirit_base_pow = 105
+mind_base_pow = 95
+body_base_def = 30
 spirit_base_def = 90
-mind_base_def = 90
-possible_plays = Array[ExtResource("6_ryomi")]([ExtResource("10_bsc56"), ExtResource("11_fvrd6"), ExtResource("12_wicna"), ExtResource("13_rvpvo"), ExtResource("14_ehjpq"), ExtResource("15_b6cn2"), ExtResource("16_187q2"), ExtResource("17_xe26u"), ExtResource("18_oi1m4"), ExtResource("19_lbhv7"), ExtResource("20_63o3o"), ExtResource("21_xuri5"), ExtResource("22_akhof"), ExtResource("7_d4qum"), ExtResource("23_ul1ys"), ExtResource("24_q1b6l"), ExtResource("25_vnh67"), ExtResource("26_miydl"), ExtResource("27_8mnc4"), ExtResource("28_yk1td"), ExtResource("29_o3sb0"), ExtResource("30_r5s4f"), ExtResource("31_2hkyv"), ExtResource("32_y6dlc"), ExtResource("33_ary8t"), ExtResource("34_j2trx"), ExtResource("35_asnme"), ExtResource("36_xwrid"), ExtResource("37_l74dj"), ExtResource("38_reu04"), ExtResource("39_mhwkv"), ExtResource("40_y6bus"), ExtResource("41_qm24d"), ExtResource("42_btbku"), ExtResource("43_ib7kr"), ExtResource("44_4i6pf"), ExtResource("45_841oo"), ExtResource("46_rxjpm"), ExtResource("47_vdyiv"), ExtResource("48_1d2qp"), ExtResource("49_rv5g4"), ExtResource("50_krwmy"), ExtResource("51_ihruo"), ExtResource("52_jasmf"), ExtResource("53_bkxgd"), ExtResource("54_ljjww"), ExtResource("55_rdftn"), ExtResource("56_nh1pn"), ExtResource("57_ccn5k"), ExtResource("58_x8oa6"), ExtResource("59_mjfc5")])
-possible_traits = Array[ExtResource("60_xbn8f")]([ExtResource("9_bip24")])
+mind_base_def = 75
+possible_plays = Array[ExtResource("6_ryomi")]([ExtResource("69_xwrid"), ExtResource("70_l74dj"), ExtResource("71_reu04"), ExtResource("50_krwmy"), ExtResource("72_mhwkv"), ExtResource("53_bkxgd"), ExtResource("73_y6bus"), ExtResource("52_jasmf"), ExtResource("74_qm24d"), ExtResource("75_btbku"), ExtResource("76_ib7kr"), ExtResource("48_1d2qp"), ExtResource("77_4i6pf"), ExtResource("78_841oo"), ExtResource("79_rxjpm"), ExtResource("80_vdyiv"), ExtResource("81_1d2qp"), ExtResource("82_rv5g4"), ExtResource("83_krwmy"), ExtResource("84_ihruo"), ExtResource("85_jasmf"), ExtResource("86_bkxgd"), ExtResource("47_vdyiv"), ExtResource("12_wicna"), ExtResource("54_ljjww"), ExtResource("87_ljjww"), ExtResource("88_rdftn"), ExtResource("89_nh1pn"), ExtResource("55_rdftn"), ExtResource("15_b6cn2"), ExtResource("90_ccn5k")])
+possible_traits = Array[ExtResource("60_xbn8f")]([ExtResource("68_asnme"), ExtResource("91_x8oa6")])
 sprites = Dictionary[int, Texture2D]({
-0: ExtResource("62_dylqb"),
-1: ExtResource("63_a3y2b"),
-2: ExtResource("64_odd11"),
-3: ExtResource("65_kllo7"),
-4: ExtResource("66_flmld"),
-5: ExtResource("67_y6brx"),
-6: ExtResource("68_2ucg0")
+0: ExtResource("92_mjfc5"),
+1: ExtResource("93_xbn8f"),
+2: ExtResource("94_k3wce"),
+3: ExtResource("95_dylqb"),
+4: ExtResource("96_a3y2b"),
+5: ExtResource("97_odd11")
 })
+ball_anchor_position = Vector2(43, -127)
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"
 
 [sub_resource type="Resource" id="Resource_mhwkv"]
@@ -255,6 +255,32 @@ sprites = Dictionary[int, Texture2D]({
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"
 
 [sub_resource type="Resource" id="Resource_qm24d"]
+script = ExtResource("61_k3wce")
+my_plays = Array[ExtResource("6_ryomi")]([ExtResource("7_d4qum"), null, null])
+my_trait = ExtResource("9_bip24")
+specie_name = "Shloom"
+beastiepedia_id = 106
+bar_color = Color(0.6039216, 0.8117647, 0.4745098, 1)
+body_base_pow = 110
+spirit_base_pow = 110
+mind_base_pow = 110
+body_base_def = 90
+spirit_base_def = 90
+mind_base_def = 90
+possible_plays = Array[ExtResource("6_ryomi")]([ExtResource("10_bsc56"), ExtResource("11_fvrd6"), ExtResource("12_wicna"), ExtResource("13_rvpvo"), ExtResource("14_ehjpq"), ExtResource("15_b6cn2"), ExtResource("16_187q2"), ExtResource("17_xe26u"), ExtResource("18_oi1m4"), ExtResource("19_lbhv7"), ExtResource("20_63o3o"), ExtResource("21_xuri5"), ExtResource("22_akhof"), ExtResource("7_d4qum"), ExtResource("23_ul1ys"), ExtResource("24_q1b6l"), ExtResource("25_vnh67"), ExtResource("26_miydl"), ExtResource("27_8mnc4"), ExtResource("28_yk1td"), ExtResource("29_o3sb0"), ExtResource("30_r5s4f"), ExtResource("31_2hkyv"), ExtResource("32_y6dlc"), ExtResource("33_ary8t"), ExtResource("34_j2trx"), ExtResource("35_asnme"), ExtResource("36_xwrid"), ExtResource("37_l74dj"), ExtResource("38_reu04"), ExtResource("39_mhwkv"), ExtResource("40_y6bus"), ExtResource("41_qm24d"), ExtResource("42_btbku"), ExtResource("43_ib7kr"), ExtResource("44_4i6pf"), ExtResource("45_841oo"), ExtResource("46_rxjpm"), ExtResource("47_vdyiv"), ExtResource("48_1d2qp"), ExtResource("49_rv5g4"), ExtResource("50_krwmy"), ExtResource("51_ihruo"), ExtResource("52_jasmf"), ExtResource("53_bkxgd"), ExtResource("54_ljjww"), ExtResource("55_rdftn"), ExtResource("56_nh1pn"), ExtResource("57_ccn5k"), ExtResource("58_x8oa6"), ExtResource("59_mjfc5")])
+possible_traits = Array[ExtResource("60_xbn8f")]([ExtResource("9_bip24")])
+sprites = Dictionary[int, Texture2D]({
+0: ExtResource("62_dylqb"),
+1: ExtResource("63_a3y2b"),
+2: ExtResource("64_odd11"),
+3: ExtResource("65_kllo7"),
+4: ExtResource("66_flmld"),
+5: ExtResource("67_y6brx"),
+6: ExtResource("68_2ucg0")
+})
+metadata/_custom_type_script = "uid://ehabj4qsgxpl"
+
+[sub_resource type="Resource" id="Resource_btbku"]
 script = ExtResource("61_k3wce")
 my_plays = Array[ExtResource("6_ryomi")]([ExtResource("7_d4qum"), null, null])
 my_trait = ExtResource("9_bip24")
@@ -337,8 +363,11 @@ position = Vector2(101, 483)
 script = ExtResource("3_xc5ao")
 beastie_1_beastie = SubResource("Resource_asnme")
 beastie_1_show_bench_damage = true
-bench_beastie_1_beastie = SubResource("Resource_xwrid")
-bench_beastie_2_beastie = SubResource("Resource_l74dj")
+beastie_2_beastie = SubResource("Resource_xwrid")
+beastie_2_position = 3
+beastie_2_show_bench_damage = true
+bench_beastie_1_beastie = SubResource("Resource_l74dj")
+bench_beastie_2_beastie = SubResource("Resource_reu04")
 metadata/_edit_lock_ = true
 
 [node name="LeftBenchMarker" type="Node2D" parent="SubViewportContainer/SubViewport/LeftTeamController"]
@@ -377,12 +406,12 @@ gizmo_extents = 0.0
 unique_name_in_owner = true
 position = Vector2(101, 483)
 script = ExtResource("3_xc5ao")
-beastie_1_beastie = SubResource("Resource_reu04")
-beastie_2_beastie = SubResource("Resource_mhwkv")
-beastie_2_position = 3
+beastie_1_beastie = SubResource("Resource_mhwkv")
+beastie_1_show_bench_damage = true
+beastie_2_beastie = SubResource("Resource_y6bus")
 beastie_2_show_bench_damage = true
-bench_beastie_1_beastie = SubResource("Resource_y6bus")
-bench_beastie_2_beastie = SubResource("Resource_qm24d")
+bench_beastie_1_beastie = SubResource("Resource_qm24d")
+bench_beastie_2_beastie = SubResource("Resource_btbku")
 side = 1
 metadata/_edit_lock_ = true
 

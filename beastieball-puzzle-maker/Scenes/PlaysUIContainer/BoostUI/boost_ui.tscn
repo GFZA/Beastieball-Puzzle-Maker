@@ -6,10 +6,13 @@
 
 [node name="BoostUI" type="MarginContainer"]
 custom_minimum_size = Vector2(435, 142)
+offset_right = 435.0
+offset_bottom = 142.0
 size_flags_horizontal = 3
 script = ExtResource("1_hw5lw")
 
 [node name="BoostBG" type="Polygon2D" parent="."]
+unique_name_in_owner = true
 color = Color(0.23529412, 0.20392157, 0.29803923, 1)
 polygon = PackedVector2Array(37, 142, 0, 0, 398, 0, 435, 142)
 script = ExtResource("1_230is")

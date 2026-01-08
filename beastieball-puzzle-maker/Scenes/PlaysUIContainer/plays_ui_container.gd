@@ -3,10 +3,23 @@ class_name PlaysUIContainer
 extends Control
 
 const TRAIT_PLACEHOLDER_DESC := "Trait : Likes to ball"
-const UPPER_OFFSET := Vector2(-215.0, -480.0)
-const LOWER_OFFSET := Vector2(-215.0, 105.0)
+const UPPER_OFFSET := Vector2(-215.0, -500.0)
+const LOWER_OFFSET := Vector2(-215.0, 95.0)
 const LEFT_BENCH_EXTRA_OFFSET := Vector2(-140.0, 0.0)
 const RIGHT_BENCH_EXTRA_OFFSET := Vector2(135.0, 0.0)
+const TRAIT_BG_NORMAL : PackedVector2Array = [
+	Vector2(-59.0, 250.0),
+	Vector2(-117.0, 0.0),
+	Vector2(965.0, 0.0),
+	Vector2(1023.0, 250.0)
+]
+const TRAIT_BG_EXTENDED : PackedVector2Array = [
+	Vector2(-59.0, 250.0),
+	Vector2(-117.0, 0.0),
+	Vector2(965.0 + 361.0, 0.0),
+	Vector2(1023.0 + 361.0, 250.0)
+]
+
 
 @export var beastie : Beastie = null :
 	set(value):
@@ -42,7 +55,7 @@ const RIGHT_BENCH_EXTRA_OFFSET := Vector2(135.0, 0.0)
 @export var show_bench_damage : bool = false :
 	set(value):
 		show_bench_damage = value
-		_update_bench_damage()
+		_update_show_bench_damage()
 
 
 var my_field_positon : Beastie.Position = Beastie.Position.NOT_ASSIGNED :
@@ -50,17 +63,20 @@ var my_field_positon : Beastie.Position = Beastie.Position.NOT_ASSIGNED :
 		my_field_positon = value
 		var offset : Vector2 = Vector2.ZERO
 		var extra_offset : Vector2 = LEFT_BENCH_EXTRA_OFFSET if my_side == Global.MySide.LEFT else RIGHT_BENCH_EXTRA_OFFSET
-		match my_field_positon:
-			Beastie.Position.UPPER_BACK, Beastie.Position.UPPER_FRONT:
-				offset = UPPER_OFFSET
-			Beastie.Position.BENCH_1:
-				offset = UPPER_OFFSET + extra_offset
-			Beastie.Position.LOWER_BACK, Beastie.Position.LOWER_FRONT:
-				offset = LOWER_OFFSET
-			Beastie.Position.BENCH_2:
-				offset = LOWER_OFFSET + extra_offset
-		position = offset
+		if not show_bench_damage:
+			match my_field_positon:
+				Beastie.Position.UPPER_BACK, Beastie.Position.UPPER_FRONT:
+					offset = UPPER_OFFSET
+				Beastie.Position.BENCH_1:
+					offset = UPPER_OFFSET + extra_offset
+				Beastie.Position.LOWER_BACK, Beastie.Position.LOWER_FRONT:
+					offset = LOWER_OFFSET
+				Beastie.Position.BENCH_2:
+					offset = LOWER_OFFSET + extra_offset
+			position = offset
 
+
+@onready var main_container: VBoxContainer = %MainContainer
 @onready var main_upper_container: HBoxContainer = %MainUpperContainer
 @onready var main_plays_container: VBoxContainer = %MainPlaysContainer
 @onready var damage_side_container: VBoxContainer = %DamageSideContainer
@@ -70,6 +86,7 @@ var my_field_positon : Beastie.Position = Beastie.Position.NOT_ASSIGNED :
 @onready var plays_ui_two: PlaysUI = %PlaysUITwo
 @onready var plays_ui_three: PlaysUI = %PlaysUIThree
 @onready var trait_label: RichTextLabel = %TraitLabel
+@onready var background_para: Parallelogram = %BackgroundPara
 
 @onready var damage_indicator: DamageIndicator = %DamageIndicator
 @onready var boost_ui: BoostUI = %BoostUI
@@ -111,12 +128,14 @@ func _update_side() -> void:
 	damage_indicator.my_side = my_side
 
 
-func _update_bench_damage() -> void:
+func _update_show_bench_damage() -> void:
 	if not is_node_ready():
 		await ready
 
 	damage_indicator.show_bench_damage = show_bench_damage
-	# TODO : Make BoostUI and TraitLabel stretch accordingly
+	background_para.polygon = TRAIT_BG_EXTENDED if show_bench_damage else TRAIT_BG_NORMAL
+	self.custom_minimum_size.x = 1615.0 if show_bench_damage else 1250.0
+	self.size = self.custom_minimum_size
 
 
 func _show_damage_indicator() -> void:

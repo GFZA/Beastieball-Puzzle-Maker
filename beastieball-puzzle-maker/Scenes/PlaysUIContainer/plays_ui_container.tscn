@@ -8,21 +8,22 @@
 [ext_resource type="PackedScene" uid="uid://brba6p5e5xokk" path="res://Scenes/PlaysUIContainer/BoostUI/boost_ui.tscn" id="4_yny4v"]
 
 [node name="PlaysUIContainer" type="Control" groups=["plays_ui_container"]]
-custom_minimum_size = Vector2(1250, 700)
+custom_minimum_size = Vector2(1250, 704)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1250.0
-offset_bottom = 700.0
+offset_bottom = 704.0
 scale = Vector2(0.35, 0.35)
 size_flags_horizontal = 0
 size_flags_vertical = 0
 script = ExtResource("1_58jbj")
 
 [node name="MainContainer" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(1250, 700)
 layout_mode = 0
 offset_right = 1250.0
-offset_bottom = 700.0
+offset_bottom = 704.0
 theme_override_constants/separation = 8
 
 [node name="MainUpperContainerContainer" type="HBoxContainer" parent="MainContainer"]
@@ -108,6 +109,7 @@ theme_override_constants/separation = 0
 [node name="DamageIndicator" parent="MainContainer/MainUpperContainerContainer/MainUpperContainer/DamageSideContainer/DamagePreviewContainer" instance=ExtResource("3_yny4v")]
 unique_name_in_owner = true
 layout_mode = 2
+show_bench_damage = false
 
 [node name="Spacer" type="Control" parent="MainContainer/MainUpperContainerContainer/MainUpperContainer/DamageSideContainer/DamagePreviewContainer"]
 custom_minimum_size = Vector2(40, 0)
@@ -127,7 +129,6 @@ layout_mode = 2
 [node name="BoostUI" parent="MainContainer/MainUpperContainerContainer/MainUpperContainer/DamageSideContainer/BoostIndicatorContainer" instance=ExtResource("4_yny4v")]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 1
 
 [node name="CheeseSpacer" type="Control" parent="MainContainer/MainUpperContainerContainer"]
 unique_name_in_owner = true
@@ -151,30 +152,32 @@ size_flags_horizontal = 3
 
 [node name="BackgroundPara" type="Polygon2D" parent="MainContainer/TraitContainer/MarginContainer"]
 unique_name_in_owner = true
-position = Vector2(335.49652, 0)
-scale = Vector2(2.8662708, 3.1250005)
+position = Vector2(117, 0)
 color = Color(0.8352941, 0.87058824, 0.85882354, 1)
-polygon = PackedVector2Array(-98, 80, -117, 0, 260.70578, 0, 280, 80)
+polygon = PackedVector2Array(-59, 250, -117, 0, 965, 0, 1023, 250)
 script = ExtResource("4_tepdj")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MainContainer/TraitContainer/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 0
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="Spacer" type="Control" parent="MainContainer/TraitContainer/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(25, 250)
 layout_mode = 2
 size_flags_horizontal = 0
+metadata/_edit_lock_ = true
 
 [node name="MarginContainer2" type="MarginContainer" parent="MainContainer/TraitContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+metadata/_edit_lock_ = true
 
 [node name="TraitLabel" type="RichTextLabel" parent="MainContainer/TraitContainer/MarginContainer/HBoxContainer/MarginContainer2"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(1079, 250)
 layout_mode = 2
-size_flags_horizontal = 0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_constants/line_separation = -12
 theme_override_constants/paragraph_separation = -12
@@ -193,3 +196,4 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(25, 250)
 layout_mode = 2
 size_flags_horizontal = 0
+metadata/_edit_lock_ = true

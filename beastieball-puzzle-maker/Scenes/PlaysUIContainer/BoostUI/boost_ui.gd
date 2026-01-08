@@ -21,6 +21,23 @@ const PLACEHOLDER_TEXT := "No BOOSTs"
 		_update_boost_label(beastie.current_boosts)
 
 @onready var boost_label: RichTextLabel = %BoostLabel
+@onready var boost_bg: Parallelogram = %BoostBG
+
+
+func _ready() -> void:
+	resized.connect(_on_resized)
+
+
+func _on_resized() -> void:
+	var old_polygon : PackedVector2Array = boost_bg.polygon
+	var para_offset : float = old_polygon[0].x - old_polygon[1].x
+	var new_polygon := PackedVector2Array([
+		Vector2(old_polygon[0]),
+		Vector2(old_polygon[1]),
+		Vector2(self.size.x - para_offset, old_polygon[2].y),
+		Vector2(self.size.x, old_polygon[3].y)
+	])
+	boost_bg.polygon = new_polygon
 
 
 func _update_boost_label(new_boost_dict : Dictionary[Beastie.Stats, int]) -> void:
