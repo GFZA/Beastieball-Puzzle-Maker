@@ -40,69 +40,93 @@ var left_team_position_dict : Dictionary[Beastie.Position, Beastie] = {}
 var right_team_position_dict : Dictionary[Beastie.Position, Beastie] = {}
 
 
-func get_damage_dict(attacker : Beastie, attack : Attack) -> Dictionary[Beastie.Position, int]:
-	var result : Dictionary[Beastie.Position, int] = {
+func get_damage_dict_array(attacker : Beastie, attack : Attack) -> Array[Dictionary]:
+	var empty_dict : Dictionary[Beastie.Position, int] = {
 		Beastie.Position.UPPER_BACK : -1,
 		Beastie.Position.UPPER_FRONT : -1,
 		Beastie.Position.LOWER_BACK : -1,
 		Beastie.Position.LOWER_FRONT : -1,
 	}
+	var result : Array[Dictionary] = [empty_dict.duplicate(), empty_dict.duplicate()]
 
 	if not attack.show_in_indicator:
 		return result
 
-	var attacker_scene : BeastieScene = find_beastie_scene(attacker) # Need to use scene to determine side because of spagetti code :(
-	var defense_side : Dictionary[Beastie.Position, Beastie] = right_team_position_dict \
-										if attacker_scene.my_side == Global.MySide.LEFT else left_team_position_dict
-	if defense_side.is_empty():
-		return result
+	# Update Field Dict then Bench Dict
+	for i in 2:
+		var result_dict : Dictionary[Beastie.Position, int] = empty_dict.duplicate()
+		var attacker_scene : BeastieScene = find_beastie_scene(attacker) # Need to use scene to determine side because of spagetti code :(
+		var defense_side : Dictionary[Beastie.Position, Beastie] = TeamController.get_empty_position_dict() # Assign below
+		var unfiltered_pos_dict : Dictionary[Beastie.Position, Beastie] = right_team_position_dict.duplicate() \
+								if attacker_scene.my_side == Global.MySide.LEFT else left_team_position_dict.duplicate()
 
-	for pos : Beastie.Position in result:
-		if (attack.target == Attack.Target.FRONT_ONLY and (pos in [Beastie.Position.UPPER_BACK, Beastie.Position.LOWER_BACK])) \
-		or (attack.target == Attack.Target.BACK_ONLY and (pos in [Beastie.Position.UPPER_FRONT, Beastie.Position.LOWER_FRONT])):
-			result[pos] = -1
+		# Assign defense_side (use for cal)
+		match i:
+			0: # First Loop, Use Beasties currently on the Field
+				unfiltered_pos_dict.erase(Beastie.Position.BENCH_1)
+				unfiltered_pos_dict.erase(Beastie.Position.BENCH_2)
+			1: # Second Loop, Use Beasties currently on the Bench and pretend they're on the field
+				var bench_1 : Beastie = unfiltered_pos_dict.get(Beastie.Position.BENCH_1)
+				var bench_2 : Beastie = unfiltered_pos_dict.get(Beastie.Position.BENCH_2)
+				unfiltered_pos_dict = TeamController.get_empty_position_dict()
+				unfiltered_pos_dict[Beastie.Position.UPPER_BACK] = bench_1
+				unfiltered_pos_dict[Beastie.Position.LOWER_BACK] = bench_2
+				unfiltered_pos_dict.erase(Beastie.Position.BENCH_1)
+				unfiltered_pos_dict.erase(Beastie.Position.BENCH_2)
+		defense_side = unfiltered_pos_dict
+
+		if defense_side.is_empty():
+			result[i] = result_dict
 			continue
 
-		var attacker_for_cal : Beastie = attacker.duplicate(true)
-		var original_pos : Beastie.Position = attacker.my_field_position
-		if original_pos in [Beastie.Position.BENCH_1, Beastie.Position.BENCH_2]:
-			original_pos = Beastie.Position.UPPER_BACK # Upper or Lower doesn't matter here
-		attacker_for_cal.my_field_position = original_pos
+		for pos : Beastie.Position in result_dict:
+			if (attack.target == Attack.Target.FRONT_ONLY and (pos in [Beastie.Position.UPPER_BACK, Beastie.Position.LOWER_BACK])) \
+			or (attack.target == Attack.Target.BACK_ONLY and (pos in [Beastie.Position.UPPER_FRONT, Beastie.Position.LOWER_FRONT])):
+				result_dict[pos] = -1
+				continue
 
-		match attack.use_condition:
-			Attack.UseCondition.FRONT_ONLY: # If at back, move front for cal
-				attacker_for_cal.my_field_position = Beastie.Position.UPPER_FRONT # Upper or Lower doesn't matter here
-			Attack.UseCondition.BACK_ONLY: # If at front, move back for cal
-				attacker_for_cal.my_field_position = Beastie.Position.UPPER_BACK # Upper or Lower doesn't matter here
+			var attacker_for_cal : Beastie = attacker.duplicate(true)
+			var original_pos : Beastie.Position = attacker.my_field_position
+			if original_pos in [Beastie.Position.BENCH_1, Beastie.Position.BENCH_2]:
+				original_pos = Beastie.Position.UPPER_BACK # Upper or Lower doesn't matter here
+			attacker_for_cal.my_field_position = original_pos
 
-		if defense_side[pos] != null:
-			result[pos] = DamageCalculator.get_damage(attacker_for_cal, defense_side[pos], attack)
-			continue
+			match attack.use_condition:
+				Attack.UseCondition.FRONT_ONLY: # If at back, move front for cal
+					attacker_for_cal.my_field_position = Beastie.Position.UPPER_FRONT # Upper or Lower doesn't matter here
+				Attack.UseCondition.BACK_ONLY: # If at front, move back for cal
+					attacker_for_cal.my_field_position = Beastie.Position.UPPER_BACK # Upper or Lower doesn't matter here
 
-		# If defense_side[position] == null, we need to create new temporary beastie that will
-		# move up / down to fill that space and cal the damage on that position.
-		# this will also ignore positions where the indicator doesn't show like in-game
-		# ex. not showing damage in the lane that oppose to beastie stacking
+			if defense_side[pos] != null:
+				result_dict[pos] = DamageCalculator.get_damage(attacker_for_cal, defense_side[pos], attack)
+				continue
 
-		if pos == Beastie.Position.UPPER_BACK and defense_side[Beastie.Position.UPPER_FRONT] != null:
-			var beastie_move_back : Beastie = defense_side[Beastie.Position.UPPER_FRONT].duplicate(true)
-			beastie_move_back.my_field_position = Beastie.Position.UPPER_BACK
-			result[pos] = DamageCalculator.get_damage(attacker_for_cal, beastie_move_back, attack)
+			# If defense_side[position] == null, we need to create new temporary beastie that will
+			# move up / down to fill that space and cal the damage on that position.
+			# this will also ignore positions where the indicator doesn't show like in-game
+			# ex. not showing damage in the lane that oppose to beastie stacking
 
-		if pos == Beastie.Position.UPPER_FRONT and defense_side[Beastie.Position.UPPER_BACK] != null:
-			var beastie_move_front : Beastie = defense_side[Beastie.Position.UPPER_BACK].duplicate(true)
-			beastie_move_front.my_field_position = Beastie.Position.UPPER_FRONT
-			result[pos] = DamageCalculator.get_damage(attacker_for_cal, beastie_move_front, attack)
+			if pos == Beastie.Position.UPPER_BACK and defense_side[Beastie.Position.UPPER_FRONT] != null:
+				var beastie_move_back : Beastie = defense_side[Beastie.Position.UPPER_FRONT].duplicate(true)
+				beastie_move_back.my_field_position = Beastie.Position.UPPER_BACK
+				result_dict[pos] = DamageCalculator.get_damage(attacker_for_cal, beastie_move_back, attack)
 
-		if pos == Beastie.Position.LOWER_BACK and defense_side[Beastie.Position.LOWER_FRONT] != null:
-			var beastie_move_back : Beastie = defense_side[Beastie.Position.LOWER_FRONT].duplicate(true)
-			beastie_move_back.my_field_position = Beastie.Position.LOWER_BACK
-			result[pos] = DamageCalculator.get_damage(attacker_for_cal, beastie_move_back, attack)
+			if pos == Beastie.Position.UPPER_FRONT and defense_side[Beastie.Position.UPPER_BACK] != null:
+				var beastie_move_front : Beastie = defense_side[Beastie.Position.UPPER_BACK].duplicate(true)
+				beastie_move_front.my_field_position = Beastie.Position.UPPER_FRONT
+				result_dict[pos] = DamageCalculator.get_damage(attacker_for_cal, beastie_move_front, attack)
 
-		if pos == Beastie.Position.LOWER_FRONT and defense_side[Beastie.Position.LOWER_BACK] != null:
-			var beastie_move_front : Beastie = defense_side[Beastie.Position.LOWER_BACK].duplicate(true)
-			beastie_move_front.my_field_position = Beastie.Position.LOWER_FRONT
-			result[pos] = DamageCalculator.get_damage(attacker_for_cal, beastie_move_front, attack)
+			if pos == Beastie.Position.LOWER_BACK and defense_side[Beastie.Position.LOWER_FRONT] != null:
+				var beastie_move_back : Beastie = defense_side[Beastie.Position.LOWER_FRONT].duplicate(true)
+				beastie_move_back.my_field_position = Beastie.Position.LOWER_BACK
+				result_dict[pos] = DamageCalculator.get_damage(attacker_for_cal, beastie_move_back, attack)
+
+			if pos == Beastie.Position.LOWER_FRONT and defense_side[Beastie.Position.LOWER_BACK] != null:
+				var beastie_move_front : Beastie = defense_side[Beastie.Position.LOWER_BACK].duplicate(true)
+				beastie_move_front.my_field_position = Beastie.Position.LOWER_FRONT
+				result_dict[pos] = DamageCalculator.get_damage(attacker_for_cal, beastie_move_front, attack)
+
+		result[i] = result_dict
 
 	return result
 
@@ -112,7 +136,7 @@ func update_all_damage_indicator() -> void:
 	for plays_ui : PlaysUIContainer in all_plays_ui:
 		var first_slot : Plays = plays_ui.beastie.my_plays[0]
 		if first_slot and first_slot.type in [Plays.Type.ATTACK_BODY, Plays.Type.ATTACK_SPIRIT, Plays.Type.ATTACK_MIND]:
-			plays_ui.damage_indicator.damage_dict = get_damage_dict(plays_ui.beastie, first_slot)
+			plays_ui.damage_indicator.damage_dict_array = get_damage_dict_array(plays_ui.beastie, first_slot)
 
 
 func find_beastie_scene(beastie : Beastie) -> BeastieScene:

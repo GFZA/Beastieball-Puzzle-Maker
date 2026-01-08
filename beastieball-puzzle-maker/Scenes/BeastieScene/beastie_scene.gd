@@ -104,6 +104,14 @@ const BALL_SPRITE_RIGHT_OFFSET : Vector2 = Vector2(-119.0, -90.0)
 		if my_plays_ui_container:
 			my_plays_ui_container.visible = show_plays
 
+@export var show_bench_damage : bool = false :
+	set(value):
+		if not is_node_ready():
+			await ready
+		show_bench_damage = value
+		if my_plays_ui_container:
+			my_plays_ui_container.show_bench_damage = show_bench_damage
+
 @export var have_ball : bool = false :
 	set(value):
 		have_ball = value

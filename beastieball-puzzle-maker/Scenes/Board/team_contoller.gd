@@ -22,6 +22,11 @@ const BEASTIE_SCENE := preload("uid://dptoj76e40ldo")
 		beastie_1_show_play = value
 		_update_scene_show_plays(beastie_1_beastie, beastie_1_show_play)
 
+@export var beastie_1_show_bench_damage : bool = false :
+	set(value):
+		beastie_1_show_bench_damage = value
+		_update_scene_show_bench_damage(beastie_1_beastie, beastie_1_show_bench_damage)
+
 @export var beastie_1_have_ball : bool = false :
 	set(value):
 		beastie_1_have_ball = value
@@ -52,6 +57,11 @@ const BEASTIE_SCENE := preload("uid://dptoj76e40ldo")
 	set(value):
 		beastie_2_show_play = value
 		_update_scene_show_plays(beastie_2_beastie, beastie_2_show_play)
+
+@export var beastie_2_show_bench_damage : bool = false :
+	set(value):
+		beastie_2_show_bench_damage = value
+		_update_scene_show_bench_damage(beastie_2_beastie, beastie_2_show_bench_damage)
 
 @export var beastie_2_have_ball : bool = false :
 	set(value):
@@ -161,6 +171,7 @@ func _update_field() -> void:
 	if beastie_1_beastie:
 		_add_new_beastie_scene(beastie_1_beastie, beastie_1_position)
 		_update_scene_show_plays(beastie_1_beastie, beastie_1_show_play)
+		_update_scene_show_bench_damage(beastie_1_beastie, beastie_1_show_bench_damage)
 		_update_scene_have_ball(beastie_1_beastie, beastie_1_have_ball)
 		_update_scene_ball_type(beastie_1_beastie, beastie_1_ball_type)
 		_update_scene_h_align(beastie_1_beastie, beastie_1_h_allign)
@@ -168,6 +179,7 @@ func _update_field() -> void:
 	if beastie_2_beastie:
 		_add_new_beastie_scene(beastie_2_beastie, beastie_2_position)
 		_update_scene_show_plays(beastie_2_beastie, beastie_2_show_play)
+		_update_scene_show_bench_damage(beastie_2_beastie, beastie_2_show_bench_damage)
 		_update_scene_have_ball(beastie_2_beastie, beastie_2_have_ball)
 		_update_scene_ball_type(beastie_2_beastie, beastie_2_ball_type)
 		_update_scene_h_align(beastie_2_beastie, beastie_2_h_allign)
@@ -190,15 +202,23 @@ func _update_field() -> void:
 
 
 func get_position_dict() -> Dictionary[Beastie.Position, Beastie]:
-	var result : Dictionary[Beastie.Position, Beastie] = {
+	var result : Dictionary[Beastie.Position, Beastie] = get_empty_position_dict()
+	result[beastie_1_position] = beastie_1_beastie
+	result[beastie_2_position] = beastie_2_beastie
+	result[Beastie.Position.BENCH_1] = bench_beastie_1_beastie
+	result[Beastie.Position.BENCH_2] = bench_beastie_2_beastie
+	return result
+
+
+static func get_empty_position_dict() -> Dictionary[Beastie.Position, Beastie]:
+	return {
 		Beastie.Position.UPPER_BACK : null,
 		Beastie.Position.UPPER_FRONT : null,
 		Beastie.Position.LOWER_BACK : null,
 		Beastie.Position.LOWER_FRONT : null,
+		Beastie.Position.BENCH_1 : null,
+		Beastie.Position.BENCH_2 : null
 	}
-	result[beastie_1_position] = beastie_1_beastie
-	result[beastie_2_position] = beastie_2_beastie
-	return result
 
 
 func _add_new_beastie_scene(beastie : Beastie, new_position : Beastie.Position) -> void:
@@ -229,6 +249,14 @@ func _update_scene_show_plays(beastie : Beastie, show_plays : bool) -> void:
 	var scene : BeastieScene = beastie_scene_dict.get(beastie)
 	if scene:
 		scene.show_plays = show_plays
+
+
+func _update_scene_show_bench_damage(beastie : Beastie, show_bench_damage : bool) -> void:
+	if not is_node_ready():
+		await ready
+	var scene : BeastieScene = beastie_scene_dict.get(beastie)
+	if scene:
+		scene.show_bench_damage = show_bench_damage
 
 
 func _update_scene_have_ball(beastie : Beastie, have_ball : bool) -> void:

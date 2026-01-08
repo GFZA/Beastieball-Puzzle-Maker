@@ -39,6 +39,11 @@ const RIGHT_BENCH_EXTRA_OFFSET := Vector2(135.0, 0.0)
 		my_side = value
 		_update_side()
 
+@export var show_bench_damage : bool = false :
+	set(value):
+		show_bench_damage = value
+		_update_bench_damage()
+
 
 var my_field_positon : Beastie.Position = Beastie.Position.NOT_ASSIGNED :
 	set(value):
@@ -85,7 +90,7 @@ func update_plays_ui(new_list : Array[Plays]) -> void:
 	else:
 		_hide_damage_indicator()
 		damage_indicator.attack = null
-		damage_indicator.damage_dict = {}
+		damage_indicator.damage_dict_array = []
 
 
 func update_trait_label(new_trait : Trait) -> void:
@@ -104,6 +109,14 @@ func _update_side() -> void:
 	main_upper_container.move_child(main_plays_container, new_index)
 
 	damage_indicator.my_side = my_side
+
+
+func _update_bench_damage() -> void:
+	if not is_node_ready():
+		await ready
+
+	damage_indicator.show_bench_damage = show_bench_damage
+	# TODO : Make BoostUI and TraitLabel stretch accordingly
 
 
 func _show_damage_indicator() -> void:
