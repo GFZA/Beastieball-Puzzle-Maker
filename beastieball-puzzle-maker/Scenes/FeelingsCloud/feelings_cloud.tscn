@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://btxc0ofgrgpgd" path="res://Scenes/FeelingsCloud/feelings_cloud.gd" id="1_tq0qq"]
 
 [node name="FeelingsCloud" type="Control"]
+z_index = 1
 custom_minimum_size = Vector2(194, 175)
 layout_mode = 3
 anchors_preset = 0

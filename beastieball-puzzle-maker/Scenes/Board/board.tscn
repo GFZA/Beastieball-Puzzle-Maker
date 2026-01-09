@@ -1,4 +1,4 @@
-[gd_scene load_steps=106 format=3 uid="uid://co8c0qvn7nkha"]
+[gd_scene load_steps=84 format=3 uid="uid://co8c0qvn7nkha"]
 
 [ext_resource type="Script" uid="uid://dfsngo7akxojy" path="res://Scenes/Board/board.gd" id="1_mucxt"]
 [ext_resource type="PackedScene" uid="uid://s3ot8ysh03s6" path="res://Scenes/Board/BoardOverlay/board_overlay.tscn" id="2_e8qp6"]
@@ -6,304 +6,293 @@
 [ext_resource type="Script" uid="uid://f48ncbr7tvnf" path="res://Scenes/Board/board_manager.gd" id="3_oh3sv"]
 [ext_resource type="Script" uid="uid://bodsyqui6wlo0" path="res://Scenes/Board/team_contoller.gd" id="3_xc5ao"]
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="6_ryomi"]
-[ext_resource type="Resource" uid="uid://ihjite14xg1t" path="res://Autoloads/Resources/Plays/Attack/Body/stomp.tres" id="7_d4qum"]
-[ext_resource type="Resource" uid="uid://ce7radc7hq6r8" path="res://Autoloads/Resources/Trait/ancient.tres" id="9_bip24"]
 [ext_resource type="Resource" uid="uid://bqwii245fpl4a" path="res://Autoloads/Resources/Plays/Attack/Spirit/careful_shot.tres" id="10_bsc56"]
-[ext_resource type="Resource" uid="uid://0dq577si4odv" path="res://Autoloads/Resources/Plays/Support/rumble.tres" id="11_fvrd6"]
-[ext_resource type="Resource" uid="uid://7nsxd3vbne52" path="res://Autoloads/Resources/Plays/Support/exhaust.tres" id="12_wicna"]
-[ext_resource type="Resource" uid="uid://dqgatu0qsofqj" path="res://Autoloads/Resources/Plays/Defense/distraction.tres" id="13_rvpvo"]
-[ext_resource type="Resource" uid="uid://cxogqm0367lrk" path="res://Autoloads/Resources/Plays/Attack/Body/high_slam.tres" id="14_ehjpq"]
-[ext_resource type="Resource" uid="uid://dytuvbvg3oamq" path="res://Autoloads/Resources/Plays/Defense/shield.tres" id="15_b6cn2"]
-[ext_resource type="Resource" uid="uid://71t7u1j5yqvb" path="res://Autoloads/Resources/Plays/Support/mark.tres" id="16_187q2"]
-[ext_resource type="Resource" uid="uid://djku0a8qnembc" path="res://Autoloads/Resources/Plays/Attack/Body/boom.tres" id="17_xe26u"]
-[ext_resource type="Resource" uid="uid://bcuhkrf7hdroh" path="res://Autoloads/Resources/Plays/Support/clear_field.tres" id="18_oi1m4"]
-[ext_resource type="Resource" uid="uid://8wi04v1m7juh" path="res://Autoloads/Resources/Plays/Attack/Mind/sneak_attack.tres" id="19_lbhv7"]
-[ext_resource type="Resource" uid="uid://y3o0tssi0oeu" path="res://Autoloads/Resources/Plays/Volley/forward_pass.tres" id="20_63o3o"]
-[ext_resource type="Resource" uid="uid://dyyf4roekh4n8" path="res://Autoloads/Resources/Plays/Defense/torch_pass.tres" id="21_xuri5"]
-[ext_resource type="Resource" uid="uid://pidj27lbe45q" path="res://Autoloads/Resources/Plays/Attack/Body/ultimate_attack.tres" id="22_akhof"]
-[ext_resource type="Resource" uid="uid://bvxjlydy1d38x" path="res://Autoloads/Resources/Plays/Attack/Body/demolish.tres" id="23_ul1ys"]
-[ext_resource type="Resource" uid="uid://jkcejjcke75d" path="res://Autoloads/Resources/Plays/Attack/Body/power_sap.tres" id="24_q1b6l"]
-[ext_resource type="Resource" uid="uid://dy23cpjw8vy57" path="res://Autoloads/Resources/Plays/Attack/Body/bounce.tres" id="25_vnh67"]
-[ext_resource type="Resource" uid="uid://ciplmlyeefqm" path="res://Autoloads/Resources/Plays/Attack/Body/breaker.tres" id="26_miydl"]
-[ext_resource type="Resource" uid="uid://cgp0jnuk0thpe" path="res://Autoloads/Resources/Plays/Attack/Body/relaxed_hit.tres" id="27_8mnc4"]
-[ext_resource type="Resource" uid="uid://cgtd1m3ceieid" path="res://Autoloads/Resources/Plays/Attack/Body/vigor_beam.tres" id="28_yk1td"]
-[ext_resource type="Resource" uid="uid://dn2k7ct6koxy2" path="res://Autoloads/Resources/Plays/Attack/Spirit/contest.tres" id="29_o3sb0"]
-[ext_resource type="Resource" uid="uid://d8rp5pq7qf2i" path="res://Autoloads/Resources/Plays/Attack/Spirit/bring_the_heat.tres" id="30_r5s4f"]
-[ext_resource type="Resource" uid="uid://bdmbgwhgtp2vl" path="res://Autoloads/Resources/Plays/Attack/Spirit/cut_shot.tres" id="31_2hkyv"]
-[ext_resource type="Resource" uid="uid://dhmx805jhg4ir" path="res://Autoloads/Resources/Plays/Attack/Spirit/jammer.tres" id="32_y6dlc"]
+[ext_resource type="Resource" uid="uid://cagttvqn25cci" path="res://Autoloads/Resources/Trait/acrobat.tres" id="10_rvpvo"]
+[ext_resource type="Texture2D" uid="uid://djnvhixn8l88m" path="res://Autoloads/Resources/Beastie/Daredillo/daredillo_idle.png" id="13_ehjpq"]
+[ext_resource type="Texture2D" uid="uid://quyspu2ukeos" path="res://Autoloads/Resources/Beastie/Daredillo/daredillo_ready.png" id="14_b6cn2"]
+[ext_resource type="Texture2D" uid="uid://bm2y2dma0whd6" path="res://Autoloads/Resources/Beastie/Daredillo/daredillo_spike.png" id="15_187q2"]
+[ext_resource type="Texture2D" uid="uid://bbo88utvuyf0q" path="res://Autoloads/Resources/Beastie/Daredillo/daredillo_volley.png" id="16_xe26u"]
+[ext_resource type="Texture2D" uid="uid://c003wd3xuq7g4" path="res://Autoloads/Resources/Beastie/Daredillo/daredillo_good.png" id="17_oi1m4"]
+[ext_resource type="Texture2D" uid="uid://uncugno5eq63" path="res://Autoloads/Resources/Beastie/Daredillo/daredillo_bad.png" id="18_lbhv7"]
+[ext_resource type="Resource" uid="uid://b2j560i1uxo6y" path="res://Autoloads/Resources/Plays/Attack/Body/reach_shot.tres" id="19_63o3o"]
+[ext_resource type="Resource" uid="uid://b3u7ewdra230k" path="res://Autoloads/Resources/Plays/Support/trait_dance.tres" id="20_xuri5"]
+[ext_resource type="Resource" uid="uid://bai86ceaem0cm" path="res://Autoloads/Resources/Trait/mischief.tres" id="22_akhof"]
+[ext_resource type="Texture2D" uid="uid://b7qwpf832ucp5" path="res://Autoloads/Resources/Beastie/Trat/trat_idle.png" id="23_ul1ys"]
+[ext_resource type="Texture2D" uid="uid://b02shy3bxeptd" path="res://Autoloads/Resources/Beastie/Trat/trat_ready.png" id="24_q1b6l"]
+[ext_resource type="Texture2D" uid="uid://brakip3rf2uyp" path="res://Autoloads/Resources/Beastie/Trat/trat_spike.png" id="25_vnh67"]
+[ext_resource type="Texture2D" uid="uid://bokn1pusp7xil" path="res://Autoloads/Resources/Beastie/Trat/trat_volley.png" id="26_miydl"]
+[ext_resource type="Texture2D" uid="uid://c3jwebqcolnfq" path="res://Autoloads/Resources/Beastie/Trat/trat_good.png" id="27_8mnc4"]
+[ext_resource type="Texture2D" uid="uid://cye348pgs8ej7" path="res://Autoloads/Resources/Beastie/Trat/trat_bad.png" id="28_yk1td"]
+[ext_resource type="Resource" uid="uid://dkcf8so36ophe" path="res://Autoloads/Resources/Plays/Attack/Mind/tool.tres" id="29_o3sb0"]
+[ext_resource type="Resource" uid="uid://6n8gisa23e7k" path="res://Autoloads/Resources/Plays/Support/nettle.tres" id="30_r5s4f"]
+[ext_resource type="Resource" uid="uid://n4w6lchkbmaq" path="res://Autoloads/Resources/Trait/adaptation.tres" id="32_2hkyv"]
 [ext_resource type="Resource" uid="uid://bsekeiw2v13qd" path="res://Autoloads/Resources/Plays/Attack/Spirit/relentless.tres" id="33_ary8t"]
-[ext_resource type="Resource" uid="uid://dtkos0xt4rmf" path="res://Autoloads/Resources/Plays/Attack/Spirit/toppler.tres" id="34_j2trx"]
-[ext_resource type="Resource" uid="uid://bqpax11k5enii" path="res://Autoloads/Resources/Plays/Attack/Mind/snipe.tres" id="35_asnme"]
-[ext_resource type="Resource" uid="uid://bj7gp00f8xtup" path="res://Autoloads/Resources/Plays/Attack/Mind/stinger.tres" id="36_xwrid"]
-[ext_resource type="Resource" uid="uid://buvtgtcjmm2y2" path="res://Autoloads/Resources/Plays/Attack/Mind/dump.tres" id="37_l74dj"]
-[ext_resource type="Resource" uid="uid://bijgrhbki1aqo" path="res://Autoloads/Resources/Plays/Attack/Mind/slice.tres" id="38_reu04"]
-[ext_resource type="Resource" uid="uid://dgu38u1ul5b81" path="res://Autoloads/Resources/Plays/Attack/Mind/lure_shot.tres" id="39_mhwkv"]
-[ext_resource type="Resource" uid="uid://bp6cwp5r600rj" path="res://Autoloads/Resources/Plays/Attack/Mind/tracker.tres" id="40_y6bus"]
-[ext_resource type="Resource" uid="uid://cea0bb2qhn278" path="res://Autoloads/Resources/Plays/Attack/Mind/trickspin.tres" id="41_qm24d"]
+[ext_resource type="Texture2D" uid="uid://c7vhi0s5y284j" path="res://Autoloads/Resources/Beastie/Gremlur/gremlur_idle.png" id="33_y6dlc"]
+[ext_resource type="Texture2D" uid="uid://bfuhp0tye6mb0" path="res://Autoloads/Resources/Beastie/Gremlur/gremlur_ready.png" id="34_ary8t"]
+[ext_resource type="Texture2D" uid="uid://csaku4mgnk5rs" path="res://Autoloads/Resources/Beastie/Gremlur/gremlur_spike.png" id="35_j2trx"]
+[ext_resource type="Texture2D" uid="uid://cldph0hpolew0" path="res://Autoloads/Resources/Beastie/Gremlur/gremlur_volley.png" id="36_asnme"]
+[ext_resource type="Texture2D" uid="uid://byjkuob6ncv5c" path="res://Autoloads/Resources/Beastie/Gremlur/gremlur_good.png" id="37_xwrid"]
+[ext_resource type="Texture2D" uid="uid://c2a7ag6awowom" path="res://Autoloads/Resources/Beastie/Gremlur/gremlur_bad.png" id="38_l74dj"]
+[ext_resource type="Resource" uid="uid://f056ck8wnien" path="res://Autoloads/Resources/Plays/Attack/Body/mimic.tres" id="39_reu04"]
+[ext_resource type="Resource" uid="uid://b6c5yrxonrq5h" path="res://Autoloads/Resources/Plays/Volley/juggle.tres" id="40_mhwkv"]
+[ext_resource type="Resource" uid="uid://cnei2k6kdn2pk" path="res://Autoloads/Resources/Trait/mimicry.tres" id="41_y6bus"]
 [ext_resource type="Resource" uid="uid://dgsnxhjtejofp" path="res://Autoloads/Resources/Plays/Volley/dig.tres" id="42_btbku"]
-[ext_resource type="Resource" uid="uid://debwcca8lqqb2" path="res://Autoloads/Resources/Plays/Volley/pipe.tres" id="43_ib7kr"]
-[ext_resource type="Resource" uid="uid://c624jkvl1417h" path="res://Autoloads/Resources/Plays/Volley/refresh.tres" id="44_4i6pf"]
-[ext_resource type="Resource" uid="uid://b7c1t1fux071m" path="res://Autoloads/Resources/Plays/Support/call_out.tres" id="45_841oo"]
-[ext_resource type="Resource" uid="uid://cy671htu1m5fu" path="res://Autoloads/Resources/Plays/Support/calming_aura.tres" id="46_rxjpm"]
-[ext_resource type="Resource" uid="uid://b670mi6ha0r4h" path="res://Autoloads/Resources/Plays/Support/chill_out.tres" id="47_vdyiv"]
+[ext_resource type="Texture2D" uid="uid://dd3m7jfl5qpft" path="res://Autoloads/Resources/Beastie/Squimage/squimage_idle.png" id="42_qm24d"]
+[ext_resource type="Texture2D" uid="uid://dtnumpitbsguq" path="res://Autoloads/Resources/Beastie/Squimage/squimage_ready.png" id="43_btbku"]
+[ext_resource type="Texture2D" uid="uid://b8svq1050egtw" path="res://Autoloads/Resources/Beastie/Squimage/squimage_spike.png" id="44_ib7kr"]
+[ext_resource type="Texture2D" uid="uid://bgho0c8stxi78" path="res://Autoloads/Resources/Beastie/Squimage/squimage_volley.png" id="45_4i6pf"]
+[ext_resource type="Texture2D" uid="uid://spbvpd815l4e" path="res://Autoloads/Resources/Beastie/Squimage/squimage_good.png" id="46_841oo"]
+[ext_resource type="Texture2D" uid="uid://pxtluaiwpfgm" path="res://Autoloads/Resources/Beastie/Squimage/squimage_bad.png" id="47_rxjpm"]
 [ext_resource type="Resource" uid="uid://pwfmxe4epkih" path="res://Autoloads/Resources/Plays/Support/dreadful_mist.tres" id="48_1d2qp"]
-[ext_resource type="Resource" uid="uid://ck2v1w5w6an2w" path="res://Autoloads/Resources/Plays/Support/drum.tres" id="49_rv5g4"]
-[ext_resource type="Resource" uid="uid://bgwy15q42o6k7" path="res://Autoloads/Resources/Plays/Support/hunker.tres" id="50_krwmy"]
+[ext_resource type="Resource" uid="uid://7uoncfn55rjb" path="res://Autoloads/Resources/Plays/Attack/Mind/cornershot.tres" id="48_vdyiv"]
+[ext_resource type="Resource" uid="uid://bviqgfc5c66a1" path="res://Autoloads/Resources/Trait/vicious.tres" id="50_1d2qp"]
 [ext_resource type="Resource" uid="uid://cj4h5a26hgmdy" path="res://Autoloads/Resources/Plays/Support/lay_trap.tres" id="51_ihruo"]
+[ext_resource type="Texture2D" uid="uid://n7xmk21wrjvi" path="res://Autoloads/Resources/Beastie/Pladion/pladion_idle.png" id="51_rv5g4"]
 [ext_resource type="Resource" uid="uid://ckfu6pta3o1u2" path="res://Autoloads/Resources/Plays/Support/provoke.tres" id="52_jasmf"]
-[ext_resource type="Resource" uid="uid://b0ri66efuwqq" path="res://Autoloads/Resources/Plays/Support/rally.tres" id="53_bkxgd"]
-[ext_resource type="Resource" uid="uid://tc6ag84sawpl" path="res://Autoloads/Resources/Plays/Support/tough_front.tres" id="54_ljjww"]
+[ext_resource type="Resource" uid="uid://del20bsclfn47" path="res://Autoloads/Resources/Trait/superorganism.tres" id="54_krwmy"]
 [ext_resource type="Resource" uid="uid://l57ggke2vhn0" path="res://Autoloads/Resources/Plays/Defense/heat_up.tres" id="55_rdftn"]
-[ext_resource type="Resource" uid="uid://dj6kdtlk5w6rq" path="res://Autoloads/Resources/Plays/Defense/high_five.tres" id="56_nh1pn"]
-[ext_resource type="Resource" uid="uid://by0ross5cpbjo" path="res://Autoloads/Resources/Plays/Defense/menace.tres" id="57_ccn5k"]
-[ext_resource type="Resource" uid="uid://b5ox8jsftfp33" path="res://Autoloads/Resources/Plays/Defense/mighty_yell.tres" id="58_x8oa6"]
+[ext_resource type="Texture2D" uid="uid://cyjba1viw1ydi" path="res://Autoloads/Resources/Beastie/Orgella/orgella_idle.png" id="56_ihruo"]
+[ext_resource type="Resource" uid="uid://bdd70o1kybaux" path="res://Autoloads/Resources/Plays/Attack/Body/hyperspike.tres" id="57_jasmf"]
+[ext_resource type="Resource" uid="uid://dcn80u35wkpjp" path="res://Autoloads/Resources/Plays/Volley/net_rush.tres" id="58_bkxgd"]
+[ext_resource type="Resource" uid="uid://xpx483vp77ry" path="res://Autoloads/Resources/Plays/Support/feint.tres" id="59_ljjww"]
 [ext_resource type="Resource" uid="uid://c5n8g4bqp64q2" path="res://Autoloads/Resources/Plays/Defense/sting.tres" id="59_mjfc5"]
+[ext_resource type="Resource" uid="uid://cj2u63y05fkk7" path="res://Autoloads/Resources/Trait/spiker.tres" id="60_rdftn"]
 [ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Autoloads/Resources/Trait/trait.gd" id="60_xbn8f"]
 [ext_resource type="Script" uid="uid://ehabj4qsgxpl" path="res://Autoloads/Resources/Beastie/beastie.gd" id="61_k3wce"]
-[ext_resource type="Texture2D" uid="uid://bnsgavyxikp1p" path="res://Autoloads/Resources/Beastie/Shloom/shloom_idle.png" id="62_dylqb"]
-[ext_resource type="Texture2D" uid="uid://d07waa4aly04i" path="res://Autoloads/Resources/Beastie/Shloom/shloom_ready.png" id="63_a3y2b"]
-[ext_resource type="Texture2D" uid="uid://c1huseiix2eug" path="res://Autoloads/Resources/Beastie/Shloom/shloom_spike.png" id="64_odd11"]
-[ext_resource type="Texture2D" uid="uid://de1rkjn84iq7i" path="res://Autoloads/Resources/Beastie/Shloom/shloom_volley.png" id="65_kllo7"]
-[ext_resource type="Texture2D" uid="uid://dec0riircwshx" path="res://Autoloads/Resources/Beastie/Shloom/shloom_good.png" id="66_flmld"]
-[ext_resource type="Texture2D" uid="uid://csq0tpjmewa57" path="res://Autoloads/Resources/Beastie/Shloom/shloom_bad.png" id="67_y6brx"]
-[ext_resource type="Texture2D" uid="uid://dv0bptc31w8y" path="res://Autoloads/Resources/Beastie/Shloom/icon_shloom.png" id="68_2ucg0"]
-[ext_resource type="Resource" uid="uid://truccwma1xyo" path="res://Autoloads/Resources/Trait/stirring.tres" id="68_asnme"]
-[ext_resource type="Resource" uid="uid://chm7cp4ewi5bp" path="res://Autoloads/Resources/Plays/Attack/Mind/practice_shot.tres" id="69_xwrid"]
-[ext_resource type="Resource" uid="uid://cv6tk1l5vkxo4" path="res://Autoloads/Resources/Plays/Defense/heart_harden.tres" id="70_l74dj"]
-[ext_resource type="Resource" uid="uid://dfmppss3snt2l" path="res://Autoloads/Resources/Plays/Attack/Mind/echo_strike.tres" id="71_reu04"]
-[ext_resource type="Resource" uid="uid://fysaq1o88o1v" path="res://Autoloads/Resources/Plays/Attack/Spirit/grit.tres" id="72_mhwkv"]
-[ext_resource type="Resource" uid="uid://k5mh301i4gme" path="res://Autoloads/Resources/Plays/Attack/Mind/ego_blast.tres" id="73_y6bus"]
-[ext_resource type="Resource" uid="uid://dlhm03et5x05t" path="res://Autoloads/Resources/Plays/Support/overthink.tres" id="74_qm24d"]
-[ext_resource type="Resource" uid="uid://bkck3t5a2wv3f" path="res://Autoloads/Resources/Plays/Attack/Spirit/scream.tres" id="75_btbku"]
-[ext_resource type="Resource" uid="uid://c43v5gcf3gyur" path="res://Autoloads/Resources/Plays/Attack/Mind/perfect_shot.tres" id="76_ib7kr"]
-[ext_resource type="Resource" uid="uid://qn2srsf766xj" path="res://Autoloads/Resources/Plays/Attack/Spirit/burnout.tres" id="77_4i6pf"]
-[ext_resource type="Resource" uid="uid://bcr7xnr07v278" path="res://Autoloads/Resources/Plays/Attack/Spirit/raw_fury.tres" id="78_841oo"]
-[ext_resource type="Resource" uid="uid://bd6b2mst43mrw" path="res://Autoloads/Resources/Plays/Attack/Spirit/comeback.tres" id="79_rxjpm"]
-[ext_resource type="Resource" uid="uid://bd8vdc5mlh62j" path="res://Autoloads/Resources/Plays/Attack/Mind/splinter.tres" id="80_vdyiv"]
-[ext_resource type="Resource" uid="uid://dgml7fdyxpvr7" path="res://Autoloads/Resources/Plays/Attack/Mind/cold_calculation.tres" id="81_1d2qp"]
-[ext_resource type="Resource" uid="uid://c7blujvv2w3vu" path="res://Autoloads/Resources/Plays/Attack/Mind/nerve_strike.tres" id="82_rv5g4"]
-[ext_resource type="Resource" uid="uid://du0svi4gto818" path="res://Autoloads/Resources/Plays/Attack/Mind/rattle.tres" id="83_krwmy"]
-[ext_resource type="Resource" uid="uid://c4u3rhcdxfjxf" path="res://Autoloads/Resources/Plays/Volley/faith.tres" id="84_ihruo"]
+[ext_resource type="Texture2D" uid="uid://rbklb5uj2ffn" path="res://Autoloads/Resources/Beastie/Servace/servace_idle.png" id="61_nh1pn"]
+[ext_resource type="Texture2D" uid="uid://bh1686cd3lx1i" path="res://Autoloads/Resources/Beastie/Servace/servace_ready.png" id="62_ccn5k"]
+[ext_resource type="Texture2D" uid="uid://d4c4mrtd8ei3y" path="res://Autoloads/Resources/Beastie/Servace/servace_spike.png" id="63_x8oa6"]
+[ext_resource type="Texture2D" uid="uid://d2pc20uaw7xkw" path="res://Autoloads/Resources/Beastie/Servace/servace_volley.png" id="64_mjfc5"]
+[ext_resource type="Texture2D" uid="uid://cjagvi2otcxsb" path="res://Autoloads/Resources/Beastie/Servace/servace_good.png" id="65_xbn8f"]
+[ext_resource type="Texture2D" uid="uid://5uklk6t2ht7m" path="res://Autoloads/Resources/Beastie/Servace/servace_bad.png" id="66_k3wce"]
+[ext_resource type="Resource" uid="uid://btvidyptxel6c" path="res://Autoloads/Resources/Plays/Attack/Spirit/eruption.tres" id="67_dylqb"]
+[ext_resource type="Resource" uid="uid://d2npthnq1b582" path="res://Autoloads/Resources/Trait/cryptic.tres" id="69_a3y2b"]
+[ext_resource type="Texture2D" uid="uid://cvu703bnb15py" path="res://Autoloads/Resources/Beastie/Conjarr/conjarr_idle.png" id="70_odd11"]
+[ext_resource type="Texture2D" uid="uid://big8gnni1rep6" path="res://Autoloads/Resources/Beastie/Conjarr/conjarr_ready.png" id="71_kllo7"]
+[ext_resource type="Texture2D" uid="uid://c8pedqgmc3hq0" path="res://Autoloads/Resources/Beastie/Conjarr/conjarr_spike.png" id="72_flmld"]
+[ext_resource type="Texture2D" uid="uid://vsopl6v0y0j3" path="res://Autoloads/Resources/Beastie/Conjarr/conjarr_volley.png" id="73_y6brx"]
+[ext_resource type="Texture2D" uid="uid://der5on0t5qijk" path="res://Autoloads/Resources/Beastie/Conjarr/conjarr_good.png" id="74_2ucg0"]
+[ext_resource type="Texture2D" uid="uid://dpv2vrl37orkf" path="res://Autoloads/Resources/Beastie/Conjarr/conjarr_bad.png" id="75_oxx13"]
 [ext_resource type="Resource" uid="uid://dkf6vgofkev6m" path="res://Autoloads/Resources/Plays/Support/blaze.tres" id="85_jasmf"]
-[ext_resource type="Resource" uid="uid://i1od0b45fl8n" path="res://Autoloads/Resources/Plays/Support/chant.tres" id="86_bkxgd"]
-[ext_resource type="Resource" uid="uid://cpuds8hsc5dr1" path="res://Autoloads/Resources/Plays/Defense/dramatic_exit.tres" id="87_ljjww"]
 [ext_resource type="Resource" uid="uid://ckdulp53r6xbu" path="res://Autoloads/Resources/Plays/Defense/frazzle.tres" id="88_rdftn"]
-[ext_resource type="Resource" uid="uid://d3avpv87snvri" path="res://Autoloads/Resources/Plays/Defense/gloom.tres" id="89_nh1pn"]
-[ext_resource type="Resource" uid="uid://du8ix5gwk4act" path="res://Autoloads/Resources/Plays/Defense/soliloquy.tres" id="90_ccn5k"]
-[ext_resource type="Resource" uid="uid://dbhjpwqbhow82" path="res://Autoloads/Resources/Trait/stagecraft.tres" id="91_x8oa6"]
-[ext_resource type="Texture2D" uid="uid://cw1vvijg46der" path="res://Autoloads/Resources/Beastie/Plumask/plumask_idle.png" id="92_mjfc5"]
-[ext_resource type="Texture2D" uid="uid://bdsaxxerinrmu" path="res://Autoloads/Resources/Beastie/Plumask/plumask_ready.png" id="93_xbn8f"]
-[ext_resource type="Texture2D" uid="uid://b3b75jbd05mpg" path="res://Autoloads/Resources/Beastie/Plumask/plumask_spike.png" id="94_k3wce"]
-[ext_resource type="Texture2D" uid="uid://7jbcrwi8htf2" path="res://Autoloads/Resources/Beastie/Plumask/plumask_volley.png" id="95_dylqb"]
-[ext_resource type="Texture2D" uid="uid://bvvmpkucg7w1i" path="res://Autoloads/Resources/Beastie/Plumask/plumask_good.png" id="96_a3y2b"]
-[ext_resource type="Texture2D" uid="uid://c303xte4x8txq" path="res://Autoloads/Resources/Beastie/Plumask/plumask_bad.png" id="97_odd11"]
 
-[sub_resource type="Resource" id="Resource_asnme"]
+[sub_resource type="Resource" id="Resource_rvpvo"]
 script = ExtResource("61_k3wce")
-my_plays = Array[ExtResource("6_ryomi")]([ExtResource("7_d4qum"), null, null])
-my_trait = ExtResource("9_bip24")
-specie_name = "Shloom"
-beastiepedia_id = 106
-bar_color = Color(0.6039216, 0.8117647, 0.4745098, 1)
-body_base_pow = 110
-spirit_base_pow = 110
-mind_base_pow = 110
-body_base_def = 90
-spirit_base_def = 90
-mind_base_def = 90
-possible_plays = Array[ExtResource("6_ryomi")]([ExtResource("10_bsc56"), ExtResource("11_fvrd6"), ExtResource("12_wicna"), ExtResource("13_rvpvo"), ExtResource("14_ehjpq"), ExtResource("15_b6cn2"), ExtResource("16_187q2"), ExtResource("17_xe26u"), ExtResource("18_oi1m4"), ExtResource("19_lbhv7"), ExtResource("20_63o3o"), ExtResource("21_xuri5"), ExtResource("22_akhof"), ExtResource("7_d4qum"), ExtResource("23_ul1ys"), ExtResource("24_q1b6l"), ExtResource("25_vnh67"), ExtResource("26_miydl"), ExtResource("27_8mnc4"), ExtResource("28_yk1td"), ExtResource("29_o3sb0"), ExtResource("30_r5s4f"), ExtResource("31_2hkyv"), ExtResource("32_y6dlc"), ExtResource("33_ary8t"), ExtResource("34_j2trx"), ExtResource("35_asnme"), ExtResource("36_xwrid"), ExtResource("37_l74dj"), ExtResource("38_reu04"), ExtResource("39_mhwkv"), ExtResource("40_y6bus"), ExtResource("41_qm24d"), ExtResource("42_btbku"), ExtResource("43_ib7kr"), ExtResource("44_4i6pf"), ExtResource("45_841oo"), ExtResource("46_rxjpm"), ExtResource("47_vdyiv"), ExtResource("48_1d2qp"), ExtResource("49_rv5g4"), ExtResource("50_krwmy"), ExtResource("51_ihruo"), ExtResource("52_jasmf"), ExtResource("53_bkxgd"), ExtResource("54_ljjww"), ExtResource("55_rdftn"), ExtResource("56_nh1pn"), ExtResource("57_ccn5k"), ExtResource("58_x8oa6"), ExtResource("59_mjfc5")])
-possible_traits = Array[ExtResource("60_xbn8f")]([ExtResource("9_bip24")])
-sprites = Dictionary[int, Texture2D]({
-0: ExtResource("62_dylqb"),
-1: ExtResource("63_a3y2b"),
-2: ExtResource("64_odd11"),
-3: ExtResource("65_kllo7"),
-4: ExtResource("66_flmld"),
-5: ExtResource("67_y6brx"),
-6: ExtResource("68_2ucg0")
+health = 0
+my_plays = Array[ExtResource("6_ryomi")]([ExtResource("33_ary8t"), ExtResource("42_btbku"), ExtResource("52_jasmf")])
+my_trait = ExtResource("10_rvpvo")
+current_feelings = Dictionary[int, int]({
+0: 8
 })
-metadata/_custom_type_script = "uid://ehabj4qsgxpl"
-
-[sub_resource type="Resource" id="Resource_xwrid"]
-script = ExtResource("61_k3wce")
-my_plays = Array[ExtResource("6_ryomi")]([ExtResource("7_d4qum"), null, null])
-my_trait = ExtResource("9_bip24")
-specie_name = "Shloom"
-beastiepedia_id = 106
-bar_color = Color(0.6039216, 0.8117647, 0.4745098, 1)
-body_base_pow = 110
-spirit_base_pow = 110
-mind_base_pow = 110
-body_base_def = 90
-spirit_base_def = 90
-mind_base_def = 90
-possible_plays = Array[ExtResource("6_ryomi")]([ExtResource("10_bsc56"), ExtResource("11_fvrd6"), ExtResource("12_wicna"), ExtResource("13_rvpvo"), ExtResource("14_ehjpq"), ExtResource("15_b6cn2"), ExtResource("16_187q2"), ExtResource("17_xe26u"), ExtResource("18_oi1m4"), ExtResource("19_lbhv7"), ExtResource("20_63o3o"), ExtResource("21_xuri5"), ExtResource("22_akhof"), ExtResource("7_d4qum"), ExtResource("23_ul1ys"), ExtResource("24_q1b6l"), ExtResource("25_vnh67"), ExtResource("26_miydl"), ExtResource("27_8mnc4"), ExtResource("28_yk1td"), ExtResource("29_o3sb0"), ExtResource("30_r5s4f"), ExtResource("31_2hkyv"), ExtResource("32_y6dlc"), ExtResource("33_ary8t"), ExtResource("34_j2trx"), ExtResource("35_asnme"), ExtResource("36_xwrid"), ExtResource("37_l74dj"), ExtResource("38_reu04"), ExtResource("39_mhwkv"), ExtResource("40_y6bus"), ExtResource("41_qm24d"), ExtResource("42_btbku"), ExtResource("43_ib7kr"), ExtResource("44_4i6pf"), ExtResource("45_841oo"), ExtResource("46_rxjpm"), ExtResource("47_vdyiv"), ExtResource("48_1d2qp"), ExtResource("49_rv5g4"), ExtResource("50_krwmy"), ExtResource("51_ihruo"), ExtResource("52_jasmf"), ExtResource("53_bkxgd"), ExtResource("54_ljjww"), ExtResource("55_rdftn"), ExtResource("56_nh1pn"), ExtResource("57_ccn5k"), ExtResource("58_x8oa6"), ExtResource("59_mjfc5")])
-possible_traits = Array[ExtResource("60_xbn8f")]([ExtResource("9_bip24")])
-sprites = Dictionary[int, Texture2D]({
-0: ExtResource("62_dylqb"),
-1: ExtResource("63_a3y2b"),
-2: ExtResource("64_odd11"),
-3: ExtResource("65_kllo7"),
-4: ExtResource("66_flmld"),
-5: ExtResource("67_y6brx"),
-6: ExtResource("68_2ucg0")
-})
-metadata/_custom_type_script = "uid://ehabj4qsgxpl"
-
-[sub_resource type="Resource" id="Resource_l74dj"]
-script = ExtResource("61_k3wce")
-my_plays = Array[ExtResource("6_ryomi")]([ExtResource("7_d4qum"), null, null])
-my_trait = ExtResource("68_asnme")
-specie_name = "Plumask"
-beastiepedia_id = 16
-bar_color = Color(0.92156863, 0.64705884, 0.40392157, 1)
-body_base_pow = 20
+specie_name = "Daredillo"
+bar_color = Color(0.99215686, 0, 0, 1)
+body_base_pow = 95
 spirit_base_pow = 105
-mind_base_pow = 95
-body_base_def = 30
-spirit_base_def = 90
-mind_base_def = 75
-possible_plays = Array[ExtResource("6_ryomi")]([ExtResource("69_xwrid"), ExtResource("70_l74dj"), ExtResource("71_reu04"), ExtResource("50_krwmy"), ExtResource("72_mhwkv"), ExtResource("53_bkxgd"), ExtResource("73_y6bus"), ExtResource("52_jasmf"), ExtResource("74_qm24d"), ExtResource("75_btbku"), ExtResource("76_ib7kr"), ExtResource("48_1d2qp"), ExtResource("77_4i6pf"), ExtResource("78_841oo"), ExtResource("79_rxjpm"), ExtResource("80_vdyiv"), ExtResource("81_1d2qp"), ExtResource("82_rv5g4"), ExtResource("83_krwmy"), ExtResource("84_ihruo"), ExtResource("85_jasmf"), ExtResource("86_bkxgd"), ExtResource("47_vdyiv"), ExtResource("12_wicna"), ExtResource("54_ljjww"), ExtResource("87_ljjww"), ExtResource("88_rdftn"), ExtResource("89_nh1pn"), ExtResource("55_rdftn"), ExtResource("15_b6cn2"), ExtResource("90_ccn5k")])
-possible_traits = Array[ExtResource("60_xbn8f")]([ExtResource("68_asnme"), ExtResource("91_x8oa6")])
+mind_base_pow = 25
+body_base_def = 95
+spirit_base_def = 30
+mind_base_def = 65
 sprites = Dictionary[int, Texture2D]({
-0: ExtResource("92_mjfc5"),
-1: ExtResource("93_xbn8f"),
-2: ExtResource("94_k3wce"),
-3: ExtResource("95_dylqb"),
-4: ExtResource("96_a3y2b"),
-5: ExtResource("97_odd11")
+0: ExtResource("13_ehjpq"),
+1: ExtResource("14_b6cn2"),
+2: ExtResource("15_187q2"),
+3: ExtResource("16_xe26u"),
+4: ExtResource("17_oi1m4"),
+5: ExtResource("18_lbhv7")
 })
-ball_anchor_position = Vector2(43, -127)
+ball_anchor_position = Vector2(62, -127)
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"
 
-[sub_resource type="Resource" id="Resource_reu04"]
+[sub_resource type="Resource" id="Resource_ehjpq"]
 script = ExtResource("61_k3wce")
-my_plays = Array[ExtResource("6_ryomi")]([ExtResource("7_d4qum"), null, null])
-my_trait = ExtResource("68_asnme")
-specie_name = "Plumask"
-beastiepedia_id = 16
-bar_color = Color(0.92156863, 0.64705884, 0.40392157, 1)
-body_base_pow = 20
-spirit_base_pow = 105
-mind_base_pow = 95
-body_base_def = 30
-spirit_base_def = 90
-mind_base_def = 75
-possible_plays = Array[ExtResource("6_ryomi")]([ExtResource("69_xwrid"), ExtResource("70_l74dj"), ExtResource("71_reu04"), ExtResource("50_krwmy"), ExtResource("72_mhwkv"), ExtResource("53_bkxgd"), ExtResource("73_y6bus"), ExtResource("52_jasmf"), ExtResource("74_qm24d"), ExtResource("75_btbku"), ExtResource("76_ib7kr"), ExtResource("48_1d2qp"), ExtResource("77_4i6pf"), ExtResource("78_841oo"), ExtResource("79_rxjpm"), ExtResource("80_vdyiv"), ExtResource("81_1d2qp"), ExtResource("82_rv5g4"), ExtResource("83_krwmy"), ExtResource("84_ihruo"), ExtResource("85_jasmf"), ExtResource("86_bkxgd"), ExtResource("47_vdyiv"), ExtResource("12_wicna"), ExtResource("54_ljjww"), ExtResource("87_ljjww"), ExtResource("88_rdftn"), ExtResource("89_nh1pn"), ExtResource("55_rdftn"), ExtResource("15_b6cn2"), ExtResource("90_ccn5k")])
-possible_traits = Array[ExtResource("60_xbn8f")]([ExtResource("68_asnme"), ExtResource("91_x8oa6")])
-sprites = Dictionary[int, Texture2D]({
-0: ExtResource("92_mjfc5"),
-1: ExtResource("93_xbn8f"),
-2: ExtResource("94_k3wce"),
-3: ExtResource("95_dylqb"),
-4: ExtResource("96_a3y2b"),
-5: ExtResource("97_odd11")
+health = 0
+my_plays = Array[ExtResource("6_ryomi")]([ExtResource("19_63o3o"), ExtResource("20_xuri5"), ExtResource("88_rdftn")])
+my_trait = ExtResource("22_akhof")
+current_feelings = Dictionary[int, int]({
+0: 8
 })
-ball_anchor_position = Vector2(43, -127)
+specie_name = "Trat"
+bar_color = Color(1, 0.7764706, 0.6666667, 1)
+body_base_pow = 81
+spirit_base_pow = 23
+mind_base_pow = 64
+body_base_def = 49
+spirit_base_def = 93
+mind_base_def = 84
+sprites = Dictionary[int, Texture2D]({
+0: ExtResource("23_ul1ys"),
+1: ExtResource("24_q1b6l"),
+2: ExtResource("25_vnh67"),
+3: ExtResource("26_miydl"),
+4: ExtResource("27_8mnc4"),
+5: ExtResource("28_yk1td")
+})
+y_offset = -20
+ball_anchor_position = Vector2(69, -53)
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"
 
-[sub_resource type="Resource" id="Resource_mhwkv"]
+[sub_resource type="Resource" id="Resource_b6cn2"]
 script = ExtResource("61_k3wce")
-my_plays = Array[ExtResource("6_ryomi")]([ExtResource("7_d4qum"), null, null])
-my_trait = ExtResource("9_bip24")
-specie_name = "Shloom"
-beastiepedia_id = 106
-bar_color = Color(0.6039216, 0.8117647, 0.4745098, 1)
-body_base_pow = 110
-spirit_base_pow = 110
-mind_base_pow = 110
+health = 0
+my_plays = Array[ExtResource("6_ryomi")]([ExtResource("29_o3sb0"), ExtResource("30_r5s4f"), ExtResource("51_ihruo")])
+my_trait = ExtResource("32_2hkyv")
+current_feelings = Dictionary[int, int]({
+0: 7
+})
+specie_name = "Gremlur"
+bar_color = Color(0.64705884, 0.44313726, 1, 1)
+body_base_pow = 55
+spirit_base_pow = 50
+mind_base_pow = 90
+body_base_def = 70
+spirit_base_def = 80
+mind_base_def = 45
+sprites = Dictionary[int, Texture2D]({
+0: ExtResource("33_y6dlc"),
+1: ExtResource("34_ary8t"),
+2: ExtResource("35_j2trx"),
+3: ExtResource("36_asnme"),
+4: ExtResource("37_xwrid"),
+5: ExtResource("38_l74dj")
+})
+y_offset = -15
+ball_anchor_position = Vector2(20, -70)
+metadata/_custom_type_script = "uid://ehabj4qsgxpl"
+
+[sub_resource type="Resource" id="Resource_187q2"]
+script = ExtResource("61_k3wce")
+health = 0
+my_plays = Array[ExtResource("6_ryomi")]([ExtResource("39_reu04"), ExtResource("40_mhwkv"), ExtResource("20_xuri5")])
+my_trait = ExtResource("41_y6bus")
+current_feelings = Dictionary[int, int]({
+0: 5
+})
+specie_name = "Squimage"
+bar_color = Color(0.37254903, 1, 0.62352943, 1)
+body_base_pow = 89
+spirit_base_pow = 91
+mind_base_pow = 90
+body_base_def = 65
+spirit_base_def = 46
+mind_base_def = 69
+sprites = Dictionary[int, Texture2D]({
+0: ExtResource("42_qm24d"),
+1: ExtResource("43_btbku"),
+2: ExtResource("44_ib7kr"),
+3: ExtResource("45_4i6pf"),
+4: ExtResource("46_841oo"),
+5: ExtResource("47_rxjpm")
+})
+ball_anchor_position = Vector2(61, -66)
+metadata/_custom_type_script = "uid://ehabj4qsgxpl"
+
+[sub_resource type="Resource" id="Resource_xe26u"]
+script = ExtResource("61_k3wce")
+health = 21
+my_plays = Array[ExtResource("6_ryomi")]([ExtResource("48_vdyiv"), ExtResource("51_ihruo"), ExtResource("55_rdftn")])
+my_trait = ExtResource("50_1d2qp")
+current_feelings = Dictionary[int, int]({
+8: 2
+})
+specie_name = "Pladion"
+bar_color = Color(0.5568628, 0.52156866, 0.8784314, 1)
+body_base_pow = 40
+spirit_base_pow = 50
+mind_base_pow = 78
+body_base_def = 81
+spirit_base_def = 70
+mind_base_def = 108
+sprites = Dictionary[int, Texture2D]({
+0: ExtResource("51_rv5g4"),
+1: ExtResource("51_rv5g4"),
+2: ExtResource("51_rv5g4"),
+3: ExtResource("51_rv5g4"),
+4: ExtResource("51_rv5g4"),
+5: ExtResource("51_rv5g4")
+})
+ball_anchor_position = Vector2(80, -160)
+metadata/_custom_type_script = "uid://ehabj4qsgxpl"
+
+[sub_resource type="Resource" id="Resource_oi1m4"]
+script = ExtResource("61_k3wce")
+health = 41
+my_plays = Array[ExtResource("6_ryomi")]([ExtResource("33_ary8t"), ExtResource("85_jasmf"), ExtResource("59_mjfc5")])
+my_trait = ExtResource("54_krwmy")
+current_feelings = Dictionary[int, int]({
+8: 4
+})
+specie_name = "Orgella"
+bar_color = Color(0.89411765, 0.17254902, 0.32156864, 1)
+body_base_pow = 16
+spirit_base_pow = 81
+mind_base_pow = 49
 body_base_def = 90
-spirit_base_def = 90
-mind_base_def = 90
-possible_plays = Array[ExtResource("6_ryomi")]([ExtResource("10_bsc56"), ExtResource("11_fvrd6"), ExtResource("12_wicna"), ExtResource("13_rvpvo"), ExtResource("14_ehjpq"), ExtResource("15_b6cn2"), ExtResource("16_187q2"), ExtResource("17_xe26u"), ExtResource("18_oi1m4"), ExtResource("19_lbhv7"), ExtResource("20_63o3o"), ExtResource("21_xuri5"), ExtResource("22_akhof"), ExtResource("7_d4qum"), ExtResource("23_ul1ys"), ExtResource("24_q1b6l"), ExtResource("25_vnh67"), ExtResource("26_miydl"), ExtResource("27_8mnc4"), ExtResource("28_yk1td"), ExtResource("29_o3sb0"), ExtResource("30_r5s4f"), ExtResource("31_2hkyv"), ExtResource("32_y6dlc"), ExtResource("33_ary8t"), ExtResource("34_j2trx"), ExtResource("35_asnme"), ExtResource("36_xwrid"), ExtResource("37_l74dj"), ExtResource("38_reu04"), ExtResource("39_mhwkv"), ExtResource("40_y6bus"), ExtResource("41_qm24d"), ExtResource("42_btbku"), ExtResource("43_ib7kr"), ExtResource("44_4i6pf"), ExtResource("45_841oo"), ExtResource("46_rxjpm"), ExtResource("47_vdyiv"), ExtResource("48_1d2qp"), ExtResource("49_rv5g4"), ExtResource("50_krwmy"), ExtResource("51_ihruo"), ExtResource("52_jasmf"), ExtResource("53_bkxgd"), ExtResource("54_ljjww"), ExtResource("55_rdftn"), ExtResource("56_nh1pn"), ExtResource("57_ccn5k"), ExtResource("58_x8oa6"), ExtResource("59_mjfc5")])
-possible_traits = Array[ExtResource("60_xbn8f")]([ExtResource("9_bip24")])
+spirit_base_def = 101
+mind_base_def = 79
+possible_plays = Array[ExtResource("6_ryomi")]([ExtResource("10_bsc56")])
+possible_traits = Array[ExtResource("60_xbn8f")]([ExtResource("54_krwmy")])
 sprites = Dictionary[int, Texture2D]({
-0: ExtResource("62_dylqb"),
-1: ExtResource("63_a3y2b"),
-2: ExtResource("64_odd11"),
-3: ExtResource("65_kllo7"),
-4: ExtResource("66_flmld"),
-5: ExtResource("67_y6brx"),
-6: ExtResource("68_2ucg0")
+0: ExtResource("56_ihruo"),
+1: ExtResource("56_ihruo"),
+2: ExtResource("56_ihruo"),
+3: ExtResource("56_ihruo"),
+4: ExtResource("56_ihruo"),
+5: ExtResource("56_ihruo")
 })
+y_offset = -125
+ball_anchor_position = Vector2(30, -165)
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"
 
-[sub_resource type="Resource" id="Resource_y6bus"]
+[sub_resource type="Resource" id="Resource_lbhv7"]
 script = ExtResource("61_k3wce")
-my_plays = Array[ExtResource("6_ryomi")]([ExtResource("7_d4qum"), null, null])
-my_trait = ExtResource("9_bip24")
-specie_name = "Shloom"
-beastiepedia_id = 106
-bar_color = Color(0.6039216, 0.8117647, 0.4745098, 1)
-body_base_pow = 110
-spirit_base_pow = 110
-mind_base_pow = 110
-body_base_def = 90
-spirit_base_def = 90
-mind_base_def = 90
-possible_plays = Array[ExtResource("6_ryomi")]([ExtResource("10_bsc56"), ExtResource("11_fvrd6"), ExtResource("12_wicna"), ExtResource("13_rvpvo"), ExtResource("14_ehjpq"), ExtResource("15_b6cn2"), ExtResource("16_187q2"), ExtResource("17_xe26u"), ExtResource("18_oi1m4"), ExtResource("19_lbhv7"), ExtResource("20_63o3o"), ExtResource("21_xuri5"), ExtResource("22_akhof"), ExtResource("7_d4qum"), ExtResource("23_ul1ys"), ExtResource("24_q1b6l"), ExtResource("25_vnh67"), ExtResource("26_miydl"), ExtResource("27_8mnc4"), ExtResource("28_yk1td"), ExtResource("29_o3sb0"), ExtResource("30_r5s4f"), ExtResource("31_2hkyv"), ExtResource("32_y6dlc"), ExtResource("33_ary8t"), ExtResource("34_j2trx"), ExtResource("35_asnme"), ExtResource("36_xwrid"), ExtResource("37_l74dj"), ExtResource("38_reu04"), ExtResource("39_mhwkv"), ExtResource("40_y6bus"), ExtResource("41_qm24d"), ExtResource("42_btbku"), ExtResource("43_ib7kr"), ExtResource("44_4i6pf"), ExtResource("45_841oo"), ExtResource("46_rxjpm"), ExtResource("47_vdyiv"), ExtResource("48_1d2qp"), ExtResource("49_rv5g4"), ExtResource("50_krwmy"), ExtResource("51_ihruo"), ExtResource("52_jasmf"), ExtResource("53_bkxgd"), ExtResource("54_ljjww"), ExtResource("55_rdftn"), ExtResource("56_nh1pn"), ExtResource("57_ccn5k"), ExtResource("58_x8oa6"), ExtResource("59_mjfc5")])
-possible_traits = Array[ExtResource("60_xbn8f")]([ExtResource("9_bip24")])
+health = 24
+my_plays = Array[ExtResource("6_ryomi")]([ExtResource("57_jasmf"), ExtResource("58_bkxgd"), ExtResource("59_ljjww")])
+my_trait = ExtResource("60_rdftn")
+specie_name = "Servace"
+bar_color = Color(0.9843137, 0.52156866, 0.09411765, 1)
+body_base_pow = 100
+spirit_base_pow = 88
+mind_base_pow = 45
+body_base_def = 64
+spirit_base_def = 99
+mind_base_def = 30
 sprites = Dictionary[int, Texture2D]({
-0: ExtResource("62_dylqb"),
-1: ExtResource("63_a3y2b"),
-2: ExtResource("64_odd11"),
-3: ExtResource("65_kllo7"),
-4: ExtResource("66_flmld"),
-5: ExtResource("67_y6brx"),
-6: ExtResource("68_2ucg0")
+0: ExtResource("61_nh1pn"),
+1: ExtResource("62_ccn5k"),
+2: ExtResource("63_x8oa6"),
+3: ExtResource("64_mjfc5"),
+4: ExtResource("65_xbn8f"),
+5: ExtResource("66_k3wce")
 })
+ball_anchor_position = Vector2(66, -176)
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"
 
-[sub_resource type="Resource" id="Resource_qm24d"]
+[sub_resource type="Resource" id="Resource_63o3o"]
 script = ExtResource("61_k3wce")
-my_plays = Array[ExtResource("6_ryomi")]([ExtResource("7_d4qum"), null, null])
-my_trait = ExtResource("9_bip24")
-specie_name = "Shloom"
-beastiepedia_id = 106
-bar_color = Color(0.6039216, 0.8117647, 0.4745098, 1)
-body_base_pow = 110
-spirit_base_pow = 110
-mind_base_pow = 110
-body_base_def = 90
-spirit_base_def = 90
-mind_base_def = 90
-possible_plays = Array[ExtResource("6_ryomi")]([ExtResource("10_bsc56"), ExtResource("11_fvrd6"), ExtResource("12_wicna"), ExtResource("13_rvpvo"), ExtResource("14_ehjpq"), ExtResource("15_b6cn2"), ExtResource("16_187q2"), ExtResource("17_xe26u"), ExtResource("18_oi1m4"), ExtResource("19_lbhv7"), ExtResource("20_63o3o"), ExtResource("21_xuri5"), ExtResource("22_akhof"), ExtResource("7_d4qum"), ExtResource("23_ul1ys"), ExtResource("24_q1b6l"), ExtResource("25_vnh67"), ExtResource("26_miydl"), ExtResource("27_8mnc4"), ExtResource("28_yk1td"), ExtResource("29_o3sb0"), ExtResource("30_r5s4f"), ExtResource("31_2hkyv"), ExtResource("32_y6dlc"), ExtResource("33_ary8t"), ExtResource("34_j2trx"), ExtResource("35_asnme"), ExtResource("36_xwrid"), ExtResource("37_l74dj"), ExtResource("38_reu04"), ExtResource("39_mhwkv"), ExtResource("40_y6bus"), ExtResource("41_qm24d"), ExtResource("42_btbku"), ExtResource("43_ib7kr"), ExtResource("44_4i6pf"), ExtResource("45_841oo"), ExtResource("46_rxjpm"), ExtResource("47_vdyiv"), ExtResource("48_1d2qp"), ExtResource("49_rv5g4"), ExtResource("50_krwmy"), ExtResource("51_ihruo"), ExtResource("52_jasmf"), ExtResource("53_bkxgd"), ExtResource("54_ljjww"), ExtResource("55_rdftn"), ExtResource("56_nh1pn"), ExtResource("57_ccn5k"), ExtResource("58_x8oa6"), ExtResource("59_mjfc5")])
-possible_traits = Array[ExtResource("60_xbn8f")]([ExtResource("9_bip24")])
-sprites = Dictionary[int, Texture2D]({
-0: ExtResource("62_dylqb"),
-1: ExtResource("63_a3y2b"),
-2: ExtResource("64_odd11"),
-3: ExtResource("65_kllo7"),
-4: ExtResource("66_flmld"),
-5: ExtResource("67_y6brx"),
-6: ExtResource("68_2ucg0")
+health = 0
+my_plays = Array[ExtResource("6_ryomi")]([ExtResource("67_dylqb"), ExtResource("48_1d2qp"), ExtResource("52_jasmf")])
+my_trait = ExtResource("69_a3y2b")
+current_feelings = Dictionary[int, int]({
+0: 2
 })
-metadata/_custom_type_script = "uid://ehabj4qsgxpl"
-
-[sub_resource type="Resource" id="Resource_btbku"]
-script = ExtResource("61_k3wce")
-my_plays = Array[ExtResource("6_ryomi")]([ExtResource("7_d4qum"), null, null])
-my_trait = ExtResource("9_bip24")
-specie_name = "Shloom"
-beastiepedia_id = 106
-bar_color = Color(0.6039216, 0.8117647, 0.4745098, 1)
-body_base_pow = 110
-spirit_base_pow = 110
-mind_base_pow = 110
-body_base_def = 90
-spirit_base_def = 90
-mind_base_def = 90
-possible_plays = Array[ExtResource("6_ryomi")]([ExtResource("10_bsc56"), ExtResource("11_fvrd6"), ExtResource("12_wicna"), ExtResource("13_rvpvo"), ExtResource("14_ehjpq"), ExtResource("15_b6cn2"), ExtResource("16_187q2"), ExtResource("17_xe26u"), ExtResource("18_oi1m4"), ExtResource("19_lbhv7"), ExtResource("20_63o3o"), ExtResource("21_xuri5"), ExtResource("22_akhof"), ExtResource("7_d4qum"), ExtResource("23_ul1ys"), ExtResource("24_q1b6l"), ExtResource("25_vnh67"), ExtResource("26_miydl"), ExtResource("27_8mnc4"), ExtResource("28_yk1td"), ExtResource("29_o3sb0"), ExtResource("30_r5s4f"), ExtResource("31_2hkyv"), ExtResource("32_y6dlc"), ExtResource("33_ary8t"), ExtResource("34_j2trx"), ExtResource("35_asnme"), ExtResource("36_xwrid"), ExtResource("37_l74dj"), ExtResource("38_reu04"), ExtResource("39_mhwkv"), ExtResource("40_y6bus"), ExtResource("41_qm24d"), ExtResource("42_btbku"), ExtResource("43_ib7kr"), ExtResource("44_4i6pf"), ExtResource("45_841oo"), ExtResource("46_rxjpm"), ExtResource("47_vdyiv"), ExtResource("48_1d2qp"), ExtResource("49_rv5g4"), ExtResource("50_krwmy"), ExtResource("51_ihruo"), ExtResource("52_jasmf"), ExtResource("53_bkxgd"), ExtResource("54_ljjww"), ExtResource("55_rdftn"), ExtResource("56_nh1pn"), ExtResource("57_ccn5k"), ExtResource("58_x8oa6"), ExtResource("59_mjfc5")])
-possible_traits = Array[ExtResource("60_xbn8f")]([ExtResource("9_bip24")])
+specie_name = "Conjarr"
+bar_color = Color(0.66266364, 0.31024918, 0.46285915, 1)
+body_base_pow = 60
+spirit_base_pow = 80
+mind_base_pow = 36
+body_base_def = 110
+spirit_base_def = 85
+mind_base_def = 63
+possible_traits = Array[ExtResource("60_xbn8f")]([ExtResource("69_a3y2b")])
 sprites = Dictionary[int, Texture2D]({
-0: ExtResource("62_dylqb"),
-1: ExtResource("63_a3y2b"),
-2: ExtResource("64_odd11"),
-3: ExtResource("65_kllo7"),
-4: ExtResource("66_flmld"),
-5: ExtResource("67_y6brx"),
-6: ExtResource("68_2ucg0")
+0: ExtResource("70_odd11"),
+1: ExtResource("71_kllo7"),
+2: ExtResource("72_flmld"),
+3: ExtResource("73_y6brx"),
+4: ExtResource("74_2ucg0"),
+5: ExtResource("75_oxx13")
 })
+ball_anchor_position = Vector2(30, -87)
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"
 
 [node name="Board" type="Control"]
@@ -312,6 +301,7 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_mucxt")
 image_number = 999
+metadata/_edit_vertical_guides_ = [-76.0]
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 unique_name_in_owner = true
@@ -347,7 +337,14 @@ metadata/_edit_lock_ = true
 
 [node name="BoardOverlay" parent="SubViewportContainer/SubViewport" instance=ExtResource("2_e8qp6")]
 unique_name_in_owner = true
-offset_right = 0.0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 2700.0
+offset_bottom = 2025.0
+grow_horizontal = 1
+grow_vertical = 1
+metadata/_edit_lock_ = true
 
 [node name="BoardManager" type="Node2D" parent="SubViewportContainer/SubViewport" node_paths=PackedStringArray("left_team_controller", "right_team_controller") groups=["board_manager"]]
 unique_name_in_owner = true
@@ -361,88 +358,195 @@ metadata/_edit_lock_ = true
 unique_name_in_owner = true
 position = Vector2(101, 483)
 script = ExtResource("3_xc5ao")
-beastie_1_beastie = SubResource("Resource_asnme")
-beastie_1_show_bench_damage = true
-beastie_2_beastie = SubResource("Resource_xwrid")
-beastie_2_position = 3
-beastie_2_show_bench_damage = true
-bench_beastie_1_beastie = SubResource("Resource_l74dj")
-bench_beastie_2_beastie = SubResource("Resource_reu04")
+beastie_1_beastie = SubResource("Resource_rvpvo")
+beastie_2_beastie = SubResource("Resource_ehjpq")
+bench_beastie_1_beastie = SubResource("Resource_b6cn2")
+bench_beastie_2_beastie = SubResource("Resource_187q2")
 metadata/_edit_lock_ = true
 
-[node name="LeftBenchMarker" type="Node2D" parent="SubViewportContainer/SubViewport/LeftTeamController"]
+[node name="LeftBeastieSceneAnchors" type="Node2D" parent="SubViewportContainer/SubViewport/LeftTeamController"]
+metadata/_edit_lock_ = true
+
+[node name="LeftUpperBackAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/LeftTeamController/LeftBeastieSceneAnchors"]
+position = Vector2(764, 589)
+gizmo_extents = 0.0
+metadata/_edit_lock_ = true
+
+[node name="LeftUpperFrontAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/LeftTeamController/LeftBeastieSceneAnchors"]
+position = Vector2(1088, 589)
+gizmo_extents = 0.0
+metadata/_edit_lock_ = true
+
+[node name="LeftLowerBackAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/LeftTeamController/LeftBeastieSceneAnchors"]
+position = Vector2(719, 860)
+gizmo_extents = 0.0
+metadata/_edit_lock_ = true
+
+[node name="LeftLowerFrontAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/LeftTeamController/LeftBeastieSceneAnchors"]
+position = Vector2(1066, 861)
+gizmo_extents = 0.0
+metadata/_edit_lock_ = true
+
+[node name="LeftBenchAnchors" type="Node2D" parent="SubViewportContainer/SubViewport/LeftTeamController"]
 position = Vector2(82, -370)
 metadata/_edit_lock_ = true
 
-[node name="LeftUpperBenchAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/LeftTeamController/LeftBenchMarker"]
+[node name="LeftUpperBenchAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/LeftTeamController/LeftBenchAnchors"]
 position = Vector2(345, 959)
 gizmo_extents = 0.0
+metadata/_edit_lock_ = true
 
-[node name="LeftMiddleBenchAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/LeftTeamController/LeftBenchMarker"]
+[node name="LeftMiddleBenchAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/LeftTeamController/LeftBenchAnchors"]
 position = Vector2(323.5, 1095)
 gizmo_extents = 0.0
+metadata/_edit_lock_ = true
 
-[node name="LeftLowerBenchAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/LeftTeamController/LeftBenchMarker"]
+[node name="LeftLowerBenchAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/LeftTeamController/LeftBenchAnchors"]
 position = Vector2(302, 1231)
 gizmo_extents = 0.0
+metadata/_edit_lock_ = true
 
-[node name="LeftUpperBackAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/LeftTeamController"]
-position = Vector2(764, 589)
-gizmo_extents = 0.0
+[node name="LeftPlaysUIContainerAnchors" type="Node2D" parent="SubViewportContainer/SubViewport/LeftTeamController"]
+metadata/_edit_lock_ = true
 
-[node name="LeftUpperFrontAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/LeftTeamController"]
-position = Vector2(1088, 589)
+[node name="LeftUpperBackPlaysAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/LeftTeamController/LeftPlaysUIContainerAnchors"]
+position = Vector2(498, -70)
 gizmo_extents = 0.0
+metadata/_edit_lock_ = true
 
-[node name="LeftLowerBackAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/LeftTeamController"]
-position = Vector2(719, 860)
+[node name="LeftUpperFrontPlaysAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/LeftTeamController/LeftPlaysUIContainerAnchors"]
+position = Vector2(723, -70)
 gizmo_extents = 0.0
+metadata/_edit_lock_ = true
 
-[node name="LeftLowerFrontAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/LeftTeamController"]
-position = Vector2(1066, 861)
+[node name="LeftLowerBackPlaysAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/LeftTeamController/LeftPlaysUIContainerAnchors"]
+position = Vector2(498, 988)
 gizmo_extents = 0.0
+metadata/_edit_lock_ = true
+
+[node name="LeftLowerFrontPlaysAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/LeftTeamController/LeftPlaysUIContainerAnchors"]
+position = Vector2(723, 988)
+gizmo_extents = 0.0
+metadata/_edit_lock_ = true
+
+[node name="LeftUpperMiddlePlaysAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/LeftTeamController/LeftPlaysUIContainerAnchors"]
+position = Vector2(531, -70)
+gizmo_extents = 0.0
+metadata/_edit_lock_ = true
+
+[node name="LeftLowerMiddlePlaysAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/LeftTeamController/LeftPlaysUIContainerAnchors"]
+position = Vector2(531, 988)
+gizmo_extents = 0.0
+metadata/_edit_lock_ = true
+
+[node name="LeftBenchPlaysUIContainerAnchors" type="Node2D" parent="SubViewportContainer/SubViewport/LeftTeamController"]
+metadata/_edit_lock_ = true
+
+[node name="LeftUpperBenchPlaysAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/LeftTeamController/LeftBenchPlaysUIContainerAnchors"]
+position = Vector2(-27, -70)
+gizmo_extents = 0.0
+metadata/_edit_lock_ = true
+
+[node name="LeftLowerBenchPlaysAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/LeftTeamController/LeftBenchPlaysUIContainerAnchors"]
+position = Vector2(-27, 988)
+gizmo_extents = 0.0
+metadata/_edit_lock_ = true
 
 [node name="RightTeamController" type="Node2D" parent="SubViewportContainer/SubViewport"]
 unique_name_in_owner = true
 position = Vector2(101, 483)
 script = ExtResource("3_xc5ao")
-beastie_1_beastie = SubResource("Resource_mhwkv")
-beastie_1_show_bench_damage = true
-beastie_2_beastie = SubResource("Resource_y6bus")
-beastie_2_show_bench_damage = true
-bench_beastie_1_beastie = SubResource("Resource_qm24d")
-bench_beastie_2_beastie = SubResource("Resource_btbku")
+beastie_1_beastie = SubResource("Resource_xe26u")
+beastie_2_beastie = SubResource("Resource_oi1m4")
+bench_beastie_1_beastie = SubResource("Resource_lbhv7")
+bench_beastie_2_beastie = SubResource("Resource_63o3o")
 side = 1
 metadata/_edit_lock_ = true
 
-[node name="RightBenchMarker" type="Node2D" parent="SubViewportContainer/SubViewport/RightTeamController"]
+[node name="RightBeastieSceneAnchors" type="Node2D" parent="SubViewportContainer/SubViewport/RightTeamController"]
+metadata/_edit_lock_ = true
+
+[node name="RightUpperBackAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/RightTeamController/RightBeastieSceneAnchors"]
+position = Vector2(1729, 589)
+gizmo_extents = 0.0
+metadata/_edit_lock_ = true
+
+[node name="RightUpperFrontAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/RightTeamController/RightBeastieSceneAnchors"]
+position = Vector2(1411, 589)
+gizmo_extents = 0.0
+metadata/_edit_lock_ = true
+
+[node name="RightLowerBackAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/RightTeamController/RightBeastieSceneAnchors"]
+position = Vector2(1772, 861)
+gizmo_extents = 0.0
+metadata/_edit_lock_ = true
+
+[node name="RightLowerFrontAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/RightTeamController/RightBeastieSceneAnchors"]
+position = Vector2(1427, 861)
+gizmo_extents = 0.0
+metadata/_edit_lock_ = true
+
+[node name="RightBenchAnchors" type="Node2D" parent="SubViewportContainer/SubViewport/RightTeamController"]
 position = Vector2(-287, -370)
 metadata/_edit_lock_ = true
 
-[node name="RightUpperBenchAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/RightTeamController/RightBenchMarker"]
+[node name="RightUpperBenchAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/RightTeamController/RightBenchAnchors"]
 position = Vector2(2359, 959)
 gizmo_extents = 0.0
+metadata/_edit_lock_ = true
 
-[node name="RightMiddleBenchAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/RightTeamController/RightBenchMarker"]
+[node name="RightMiddleBenchAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/RightTeamController/RightBenchAnchors"]
 position = Vector2(2380, 1095)
 gizmo_extents = 0.0
+metadata/_edit_lock_ = true
 
-[node name="RightLowerBenchAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/RightTeamController/RightBenchMarker"]
+[node name="RightLowerBenchAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/RightTeamController/RightBenchAnchors"]
 position = Vector2(2401, 1231)
 gizmo_extents = 0.0
+metadata/_edit_lock_ = true
 
-[node name="RightUpperBackAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/RightTeamController"]
-position = Vector2(1729, 589)
-gizmo_extents = 0.0
+[node name="RightPlaysUIContainerAnchors" type="Node2D" parent="SubViewportContainer/SubViewport/RightTeamController"]
+metadata/_edit_lock_ = true
 
-[node name="RightUpperFrontAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/RightTeamController"]
-position = Vector2(1411, 589)
+[node name="RightUpperBackPlaysAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/RightTeamController/RightPlaysUIContainerAnchors"]
+position = Vector2(1438, -70)
 gizmo_extents = 0.0
+metadata/_edit_lock_ = true
 
-[node name="RightLowerBackAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/RightTeamController"]
-position = Vector2(1772, 861)
+[node name="RightUpperFrontPlaysAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/RightTeamController/RightPlaysUIContainerAnchors"]
+position = Vector2(1227, -70)
 gizmo_extents = 0.0
+metadata/_edit_lock_ = true
 
-[node name="RightLowerFrontAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/RightTeamController"]
-position = Vector2(1427, 861)
+[node name="RightLowerBackPlaysAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/RightTeamController/RightPlaysUIContainerAnchors"]
+position = Vector2(1438, 988)
 gizmo_extents = 0.0
+metadata/_edit_lock_ = true
+
+[node name="RightLowerFrontPlaysAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/RightTeamController/RightPlaysUIContainerAnchors"]
+position = Vector2(1227, 988)
+gizmo_extents = 0.0
+metadata/_edit_lock_ = true
+
+[node name="RightUpperMiddlePlaysAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/RightTeamController/RightPlaysUIContainerAnchors"]
+position = Vector2(1259, -70)
+gizmo_extents = 0.0
+metadata/_edit_lock_ = true
+
+[node name="RightLowerMiddlePlaysAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/RightTeamController/RightPlaysUIContainerAnchors"]
+position = Vector2(1259, 988)
+gizmo_extents = 0.0
+metadata/_edit_lock_ = true
+
+[node name="RightBenchPlaysUIContainerAnchors" type="Node2D" parent="SubViewportContainer/SubViewport/RightTeamController"]
+metadata/_edit_lock_ = true
+
+[node name="RightUpperBenchPlaysAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/RightTeamController/RightBenchPlaysUIContainerAnchors"]
+position = Vector2(1963, -70)
+gizmo_extents = 0.0
+metadata/_edit_lock_ = true
+
+[node name="RightLowerBenchPlaysAnchor" type="Marker2D" parent="SubViewportContainer/SubViewport/RightTeamController/RightBenchPlaysUIContainerAnchors"]
+position = Vector2(1963, 988)
+gizmo_extents = 0.0
+metadata/_edit_lock_ = true

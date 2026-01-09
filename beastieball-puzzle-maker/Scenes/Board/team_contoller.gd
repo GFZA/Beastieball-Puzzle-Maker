@@ -5,6 +5,7 @@ extends Node2D
 signal field_updated(pos_dict : Dictionary[Beastie.Position, Beastie])
 
 const BEASTIE_SCENE := preload("uid://dptoj76e40ldo")
+const PLAYS_UI_CONTAINER_SCENE : PackedScene = preload("uid://dksxc3rs20kkc")
 
 @export_group("Serve Slot", "beastie_1_")
 @export var beastie_1_beastie : Beastie = null :
@@ -118,26 +119,25 @@ const BEASTIE_SCENE := preload("uid://dptoj76e40ldo")
 @export_subgroup("Reset Team NO UNDO!")
 @export_tool_button("Reset Team") var reset_team_var : Callable = reset_team
 
-var position_markers : Array[Node] = []
-var bench_position_markers : Array[Node] = []
+var position_anchors : Array[Node] = []
+var bench_position_anchors : Array[Node] = []
+var plays_ui_container_anchors : Array[Node] = []
+var bench_plays_ui_container_anchors : Array[Node] = []
 
-var beastie_scene_dict : Dictionary[Beastie, BeastieScene] = {
-	beastie_1_beastie : null,
-	beastie_2_beastie : null,
-	bench_beastie_1_beastie : null,
-	bench_beastie_2_beastie : null,
-}
+var beastie_scene_dict : Dictionary[Beastie, BeastieScene] = {}
+var plays_ui_container_dict : Dictionary[Beastie, PlaysUIContainer] = {}
 
 
 func _ready() -> void:
 	var all_children : Array[Node] = get_children()
-	var bench_node_2d : Node2D = null
-	for child in all_children:
-		if child is not Marker2D:
-			bench_node_2d = child
-			continue
-		position_markers.append(child)
-	bench_position_markers = bench_node_2d.get_children()
+	# Bad practice as this whole thing need exact position of node to work...
+	# Sorry future me or whoever decided to view this abomination...
+	position_anchors = all_children[0].get_children()
+	bench_position_anchors = all_children[1].get_children()
+	plays_ui_container_anchors = all_children[2].get_children()
+	bench_plays_ui_container_anchors = all_children[3].get_children()
+
+	_update_field()
 
 
 func _process_beastie_value(value : Beastie) -> Beastie:
@@ -158,18 +158,27 @@ func _update_field() -> void:
 	if not is_node_ready():
 		await ready
 
-	for marker : Marker2D in position_markers:
+	for marker : Marker2D in position_anchors:
 		for child in marker.get_children():
 			child.queue_free()
 
-	for marker : Marker2D in bench_position_markers:
+	for marker : Marker2D in bench_position_anchors:
+		for child in marker.get_children():
+			child.queue_free()
+
+	for marker : Marker2D in plays_ui_container_anchors:
+		for child in marker.get_children():
+			child.queue_free()
+
+	for marker : Marker2D in bench_plays_ui_container_anchors:
 		for child in marker.get_children():
 			child.queue_free()
 
 	beastie_scene_dict.clear()
+	plays_ui_container_dict.clear()
 
 	if beastie_1_beastie:
-		_add_new_beastie_scene(beastie_1_beastie, beastie_1_position)
+		_add_new_beastie_scene(beastie_1_beastie, beastie_1_position, beastie_1_show_play, beastie_1_show_bench_damage)
 		_update_scene_show_plays(beastie_1_beastie, beastie_1_show_play)
 		_update_scene_show_bench_damage(beastie_1_beastie, beastie_1_show_bench_damage)
 		_update_scene_have_ball(beastie_1_beastie, beastie_1_have_ball)
@@ -177,7 +186,7 @@ func _update_field() -> void:
 		_update_scene_h_align(beastie_1_beastie, beastie_1_h_allign)
 
 	if beastie_2_beastie:
-		_add_new_beastie_scene(beastie_2_beastie, beastie_2_position)
+		_add_new_beastie_scene(beastie_2_beastie, beastie_2_position, beastie_2_show_play, beastie_2_show_bench_damage)
 		_update_scene_show_plays(beastie_2_beastie, beastie_2_show_play)
 		_update_scene_show_bench_damage(beastie_2_beastie, beastie_2_show_bench_damage)
 		_update_scene_have_ball(beastie_2_beastie, beastie_2_have_ball)
@@ -189,12 +198,12 @@ func _update_field() -> void:
 		beastie_2_beastie.ally_field_position = beastie_1_position
 
 	if bench_beastie_1_beastie:
-		_add_new_beastie_scene(bench_beastie_1_beastie, Beastie.Position.BENCH_1)
+		_add_new_beastie_scene(bench_beastie_1_beastie, Beastie.Position.BENCH_1, bench_beastie_1_show_play, false)
 		_update_scene_show_plays(bench_beastie_1_beastie, bench_beastie_1_show_play)
 		_update_scene_h_align(bench_beastie_1_beastie, bench_beastie_1_h_allign)
 
 	if bench_beastie_2_beastie:
-		_add_new_beastie_scene(bench_beastie_2_beastie, Beastie.Position.BENCH_2)
+		_add_new_beastie_scene(bench_beastie_2_beastie, Beastie.Position.BENCH_2, bench_beastie_2_show_play, false)
 		_update_scene_show_plays(bench_beastie_2_beastie, bench_beastie_2_show_play)
 		_update_scene_h_align(bench_beastie_2_beastie, bench_beastie_2_h_allign)
 
@@ -221,42 +230,86 @@ static func get_empty_position_dict() -> Dictionary[Beastie.Position, Beastie]:
 	}
 
 
-func _add_new_beastie_scene(beastie : Beastie, new_position : Beastie.Position) -> void:
+func _add_new_beastie_scene(beastie : Beastie, new_position : Beastie.Position, show_play : bool, show_bench_damage : bool) -> void:
 	beastie.my_field_position = new_position # Assign position into the resource
 	var new_scene : BeastieScene = BEASTIE_SCENE.instantiate()
 	new_scene.beastie = beastie
 	new_scene.my_side = side
 
-	if new_position == Beastie.Position.BENCH_1 or new_position == Beastie.Position.BENCH_2:
-		new_scene.benched = true
-		if _check_bench_size() == 1: # Add to middle bench anchor
-			bench_position_markers[1].add_child(new_scene)
-		else:
-			if new_position == Beastie.Position.BENCH_1:
-				bench_position_markers[0].add_child(new_scene)
-			elif new_position == Beastie.Position.BENCH_2:
-				bench_position_markers[2].add_child(new_scene)
-	else:
-		var index : int = int(new_position)
-		position_markers[index].add_child(new_scene)
+	match new_position:
+		Beastie.Position.BENCH_1, Beastie.Position.BENCH_2:
+			if _check_bench_size() == 1:
+				bench_position_anchors[1].add_child(new_scene) # Add to middle anchor to look nice
+			else:
+				if new_position == Beastie.Position.BENCH_1:
+					bench_position_anchors[0].add_child(new_scene)
+				if new_position == Beastie.Position.BENCH_2:
+					bench_position_anchors[2].add_child(new_scene)
+		_: # Field
+			var index : int = int(new_position)
+			position_anchors[index].add_child(new_scene)
 
 	beastie_scene_dict[beastie] = new_scene
+	_add_new_plays_ui_container(new_scene, show_play, show_bench_damage)
+
+
+func _add_new_plays_ui_container(beastie_scene : BeastieScene, show_play : bool, show_bench_damage : bool) -> void:
+	var beastie : Beastie = beastie_scene.beastie
+	var pos : Beastie.Position = beastie.my_field_position
+	var new_scene : PlaysUIContainer = PLAYS_UI_CONTAINER_SCENE.instantiate()
+	new_scene.beastie = beastie
+	new_scene.show_bench_damage = show_bench_damage
+
+	match pos:
+		Beastie.Position.BENCH_1, Beastie.Position.BENCH_2:
+			#if _check_bench_size() == 1:
+				#bench_position_anchors[1].add_child(new_scene) # Add to middle anchor to look nice (it's more upper but slightly offsetted down)
+			#else:
+			if pos == Beastie.Position.BENCH_1:
+				bench_plays_ui_container_anchors[0].add_child(new_scene)
+			if pos == Beastie.Position.BENCH_2:
+				bench_plays_ui_container_anchors[1].add_child(new_scene) # TEMP
+		_: # Field
+			if not show_bench_damage:
+				var index : int = int(pos)
+				plays_ui_container_anchors[index].add_child(new_scene)
+			else:
+				if pos in [Beastie.Position.UPPER_BACK, Beastie.Position.UPPER_FRONT]:
+					plays_ui_container_anchors[4].add_child(new_scene) # Upper Middle PlaysUI Anchor
+				if pos in [Beastie.Position.LOWER_BACK, Beastie.Position.LOWER_FRONT]:
+					plays_ui_container_anchors[5].add_child(new_scene) # Lower Middle PlaysUI Anchor
+
+	if not show_play:
+		new_scene.hide()
+
+	plays_ui_container_dict[beastie] = new_scene
 
 
 func _update_scene_show_plays(beastie : Beastie, show_plays : bool) -> void:
 	if not is_node_ready():
 		await ready
-	var scene : BeastieScene = beastie_scene_dict.get(beastie)
+	var scene : PlaysUIContainer = plays_ui_container_dict.get(beastie)
 	if scene:
-		scene.show_plays = show_plays
+		scene.visible = show_plays
 
 
 func _update_scene_show_bench_damage(beastie : Beastie, show_bench_damage : bool) -> void:
 	if not is_node_ready():
 		await ready
-	var scene : BeastieScene = beastie_scene_dict.get(beastie)
+	var scene : PlaysUIContainer = plays_ui_container_dict.get(beastie)
 	if scene:
 		scene.show_bench_damage = show_bench_damage
+
+		if not show_bench_damage:
+			var index : int = int(beastie.my_field_position)
+			scene.reparent(plays_ui_container_anchors[index], false)
+			print("reparented not show")
+		else:
+			if beastie.my_field_position in [Beastie.Position.UPPER_BACK, Beastie.Position.UPPER_FRONT]:
+				scene.reparent(plays_ui_container_anchors[4], false) # Upper Middle PlaysUI Anchor
+			if beastie.my_field_position in [Beastie.Position.LOWER_BACK, Beastie.Position.LOWER_FRONT]:
+				scene.reparent(plays_ui_container_anchors[5], false) # Lower Middle PlaysUI Anchor
+			print("reparented show")
 
 
 func _update_scene_have_ball(beastie : Beastie, have_ball : bool) -> void:

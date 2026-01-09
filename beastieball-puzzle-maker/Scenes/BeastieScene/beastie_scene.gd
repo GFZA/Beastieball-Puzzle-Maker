@@ -15,7 +15,7 @@ const BALL_TEXTURES : Dictionary[BallType, Texture2D] = {
 }
 
 const HEALTHBAR_SCENE : PackedScene = preload("uid://bvd7pbsfc56o0")
-const PLAYS_UI_CONTAINER_SCENE : PackedScene = preload("uid://dksxc3rs20kkc")
+#const PLAYS_UI_CONTAINER_SCENE : PackedScene = preload("uid://dksxc3rs20kkc")
 const FEELINGS_CLOUD_SCENE = preload("uid://bx6reuiultnkv")
 
 const BALL_SPRITE_LEFT_OFFSET : Vector2 = Vector2(-10.0, -90.0)
@@ -33,9 +33,9 @@ const BALL_SPRITE_RIGHT_OFFSET : Vector2 = Vector2(-119.0, -90.0)
 			my_healthbar.queue_free()
 			my_healthbar = null
 
-		if my_plays_ui_container:
-			my_plays_ui_container.queue_free()
-			my_plays_ui_container = null
+		#if my_plays_ui_container:
+			#my_plays_ui_container.queue_free()
+			#my_plays_ui_container = null
 
 		if my_feelings_cloud:
 			my_feelings_cloud.queue_free()
@@ -61,14 +61,14 @@ const BALL_SPRITE_RIGHT_OFFSET : Vector2 = Vector2(-119.0, -90.0)
 			add_child(new_healthbar)
 			my_healthbar = new_healthbar
 
-		if not my_plays_ui_container:
-			var new_container : PlaysUIContainer = PLAYS_UI_CONTAINER_SCENE.instantiate()
-			new_container.beastie = beastie
-			new_container.my_side = my_side
-			add_child(new_container)
-			my_plays_ui_container = new_container
-			if not show_plays:
-				my_plays_ui_container.hide()
+		#if not my_plays_ui_container:
+			#var new_container : PlaysUIContainer = PLAYS_UI_CONTAINER_SCENE.instantiate()
+			#new_container.beastie = beastie
+			#new_container.my_side = my_side
+			#add_child(new_container)
+			#my_plays_ui_container = new_container
+			#if not show_plays:
+				#my_plays_ui_container.hide()
 
 		if not my_feelings_cloud:
 			var new_cloud : FeelingsCloud = FEELINGS_CLOUD_SCENE.instantiate()
@@ -96,21 +96,21 @@ const BALL_SPRITE_RIGHT_OFFSET : Vector2 = Vector2(-119.0, -90.0)
 		my_side = value
 		_update_side(my_side)
 
-@export var show_plays : bool = true :
-	set(value):
-		if not is_node_ready():
-			await ready
-		show_plays = value
-		if my_plays_ui_container:
-			my_plays_ui_container.visible = show_plays
-
-@export var show_bench_damage : bool = false :
-	set(value):
-		if not is_node_ready():
-			await ready
-		show_bench_damage = value
-		if my_plays_ui_container:
-			my_plays_ui_container.show_bench_damage = show_bench_damage
+#@export var show_plays : bool = true :
+	#set(value):
+		#if not is_node_ready():
+			#await ready
+		#show_plays = value
+		#if my_plays_ui_container:
+			#my_plays_ui_container.visible = show_plays
+#
+#@export var show_bench_damage : bool = false :
+	#set(value):
+		#if not is_node_ready():
+			#await ready
+		#show_bench_damage = value
+		#if my_plays_ui_container:
+			#my_plays_ui_container.show_bench_damage = show_bench_damage
 
 @export var have_ball : bool = false :
 	set(value):
@@ -135,7 +135,7 @@ var current_sprite : Texture2D = null :
 var benched : bool = false # Not use setter because only set it once and after having healthbar
 
 var my_healthbar : Healthbar = null
-var my_plays_ui_container : PlaysUIContainer = null
+#var my_plays_ui_container : PlaysUIContainer = null
 var my_feelings_cloud : FeelingsCloud = null
 
 @onready var sprite_2d: Sprite2D = %Sprite2D
