@@ -3,10 +3,6 @@ class_name PlaysUIContainer
 extends Control
 
 const TRAIT_PLACEHOLDER_DESC := "Trait : Likes to ball"
-#const UPPER_OFFSET := Vector2(-215.0, -500.0)
-#const LOWER_OFFSET := Vector2(-215.0, 95.0)
-#const LEFT_BENCH_EXTRA_OFFSET := Vector2(-140.0, 0.0)
-#const RIGHT_BENCH_EXTRA_OFFSET := Vector2(135.0, 0.0)
 const TRAIT_BG_NORMAL : PackedVector2Array = [
 	Vector2(-59.0, 250.0),
 	Vector2(-117.0, 0.0),
@@ -30,7 +26,6 @@ const TRAIT_BG_EXTENDED : PackedVector2Array = [
 			update_plays_ui(Beastie.get_empty_slot_plays_array())
 			update_trait_label(null)
 			boost_ui.beastie = null
-			my_field_positon = Beastie.Position.NOT_ASSIGNED
 			if beastie:
 				if beastie.my_plays_updated.is_connected(update_plays_ui):
 					beastie.my_plays_updated.disconnect(update_plays_ui)
@@ -45,7 +40,6 @@ const TRAIT_BG_EXTENDED : PackedVector2Array = [
 		update_plays_ui(beastie.my_plays)
 		update_trait_label(beastie.my_trait)
 		boost_ui.beastie = beastie
-		my_field_positon = beastie.my_field_position
 
 @export var my_side : Global.MySide = Global.MySide.LEFT :
 	set(value):
@@ -56,24 +50,6 @@ const TRAIT_BG_EXTENDED : PackedVector2Array = [
 	set(value):
 		show_bench_damage = value
 		_update_show_bench_damage()
-
-
-var my_field_positon : Beastie.Position = Beastie.Position.NOT_ASSIGNED :
-	set(value):
-		my_field_positon = value
-		#var offset : Vector2 = Vector2.ZERO
-		#var extra_offset : Vector2 = LEFT_BENCH_EXTRA_OFFSET if my_side == Global.MySide.LEFT else RIGHT_BENCH_EXTRA_OFFSET
-		#if not show_bench_damage:
-			#match my_field_positon:
-				#Beastie.Position.UPPER_BACK, Beastie.Position.UPPER_FRONT:
-					#offset = UPPER_OFFSET
-				#Beastie.Position.BENCH_1:
-					#offset = UPPER_OFFSET + extra_offset
-				#Beastie.Position.LOWER_BACK, Beastie.Position.LOWER_FRONT:
-					#offset = LOWER_OFFSET
-				#Beastie.Position.BENCH_2:
-					#offset = LOWER_OFFSET + extra_offset
-			#position = offset
 
 
 @onready var main_container: VBoxContainer = %MainContainer

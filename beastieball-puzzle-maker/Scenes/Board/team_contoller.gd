@@ -262,13 +262,15 @@ func _add_new_plays_ui_container(beastie_scene : BeastieScene, show_play : bool,
 
 	match pos:
 		Beastie.Position.BENCH_1, Beastie.Position.BENCH_2:
-			#if _check_bench_size() == 1:
-				#bench_position_anchors[1].add_child(new_scene) # Add to middle anchor to look nice (it's more upper but slightly offsetted down)
-			#else:
-			if pos == Beastie.Position.BENCH_1:
+			if _check_bench_size() == 1:
+				# Offset it a little bit down to look nice
 				bench_plays_ui_container_anchors[0].add_child(new_scene)
-			if pos == Beastie.Position.BENCH_2:
-				bench_plays_ui_container_anchors[1].add_child(new_scene) # TEMP
+				new_scene.position.y += 100.0
+			else:
+				if pos == Beastie.Position.BENCH_1:
+					bench_plays_ui_container_anchors[0].add_child(new_scene)
+				if pos == Beastie.Position.BENCH_2:
+					bench_plays_ui_container_anchors[1].add_child(new_scene)
 		_: # Field
 			if not show_bench_damage:
 				var index : int = int(pos)
@@ -303,13 +305,11 @@ func _update_scene_show_bench_damage(beastie : Beastie, show_bench_damage : bool
 		if not show_bench_damage:
 			var index : int = int(beastie.my_field_position)
 			scene.reparent(plays_ui_container_anchors[index], false)
-			print("reparented not show")
 		else:
 			if beastie.my_field_position in [Beastie.Position.UPPER_BACK, Beastie.Position.UPPER_FRONT]:
 				scene.reparent(plays_ui_container_anchors[4], false) # Upper Middle PlaysUI Anchor
 			if beastie.my_field_position in [Beastie.Position.LOWER_BACK, Beastie.Position.LOWER_FRONT]:
 				scene.reparent(plays_ui_container_anchors[5], false) # Lower Middle PlaysUI Anchor
-			print("reparented show")
 
 
 func _update_scene_have_ball(beastie : Beastie, have_ball : bool) -> void:

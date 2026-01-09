@@ -177,4 +177,4 @@ func _assign_all_beasties_data() -> void:
 						inner_file_name = inner_dir.get_next()
 			file_name = dir.get_next()
 	else:
-		print("An error occurred when trying to access the path.")
+		push_error("An error occurred when trying to access the path.")
