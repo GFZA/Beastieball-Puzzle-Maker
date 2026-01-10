@@ -3,5 +3,5 @@ extends Trait
 
 
 func get_attack_mult(_attacker : Beastie, _defender : Beastie, _attack : Attack) -> float:
-	# TODO Trait condition : Trasher
+	# TODO Trait condition : Thrasher
 	return 1.0

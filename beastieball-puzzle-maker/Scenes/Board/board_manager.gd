@@ -68,6 +68,12 @@ func get_damage_dict_array(attacker : Beastie, attack : Attack) -> Array[Diction
 			1: # Second Loop, Use Beasties currently on the Bench and pretend they're on the field
 				var bench_1 : Beastie = unfiltered_pos_dict.get(Beastie.Position.BENCH_1)
 				var bench_2 : Beastie = unfiltered_pos_dict.get(Beastie.Position.BENCH_2)
+				if bench_1:
+					bench_1.my_field_position = Beastie.Position.UPPER_BACK
+					bench_1.is_really_at_bench = true
+				if bench_2:
+					bench_2.my_field_position = Beastie.Position.LOWER_BACK
+					bench_2.is_really_at_bench = true
 				unfiltered_pos_dict = TeamController.get_empty_position_dict()
 				unfiltered_pos_dict[Beastie.Position.UPPER_BACK] = bench_1
 				unfiltered_pos_dict[Beastie.Position.LOWER_BACK] = bench_2
@@ -106,24 +112,33 @@ func get_damage_dict_array(attacker : Beastie, attack : Attack) -> Array[Diction
 			# this will also ignore positions where the indicator doesn't show like in-game
 			# ex. not showing damage in the lane that oppose to beastie stacking
 
+				# For some reason, is_really_at_bench will get disable after even .duplicate(true)
+				# so we reassgin this stupid var again.
+				# the code is super messy now and I can't be bothered anymore
+				# I spent almost an hour fixing this, fuck this shit...
+
 			if pos == Beastie.Position.UPPER_BACK and defense_side[Beastie.Position.UPPER_FRONT] != null:
 				var beastie_move_back : Beastie = defense_side[Beastie.Position.UPPER_FRONT].duplicate(true)
 				beastie_move_back.my_field_position = Beastie.Position.UPPER_BACK
+				beastie_move_back.is_really_at_bench = defense_side[Beastie.Position.UPPER_FRONT].is_really_at_bench
 				result_dict[pos] = DamageCalculator.get_damage(attacker_for_cal, beastie_move_back, attack)
 
 			if pos == Beastie.Position.UPPER_FRONT and defense_side[Beastie.Position.UPPER_BACK] != null:
 				var beastie_move_front : Beastie = defense_side[Beastie.Position.UPPER_BACK].duplicate(true)
 				beastie_move_front.my_field_position = Beastie.Position.UPPER_FRONT
+				beastie_move_front.is_really_at_bench = defense_side[Beastie.Position.UPPER_BACK].is_really_at_bench
 				result_dict[pos] = DamageCalculator.get_damage(attacker_for_cal, beastie_move_front, attack)
 
 			if pos == Beastie.Position.LOWER_BACK and defense_side[Beastie.Position.LOWER_FRONT] != null:
 				var beastie_move_back : Beastie = defense_side[Beastie.Position.LOWER_FRONT].duplicate(true)
 				beastie_move_back.my_field_position = Beastie.Position.LOWER_BACK
+				beastie_move_back.is_really_at_bench = defense_side[Beastie.Position.LOWER_FRONT].is_really_at_bench
 				result_dict[pos] = DamageCalculator.get_damage(attacker_for_cal, beastie_move_back, attack)
 
 			if pos == Beastie.Position.LOWER_FRONT and defense_side[Beastie.Position.LOWER_BACK] != null:
 				var beastie_move_front : Beastie = defense_side[Beastie.Position.LOWER_BACK].duplicate(true)
 				beastie_move_front.my_field_position = Beastie.Position.LOWER_FRONT
+				beastie_move_front.is_really_at_bench = defense_side[Beastie.Position.LOWER_BACK].is_really_at_bench
 				result_dict[pos] = DamageCalculator.get_damage(attacker_for_cal, beastie_move_front, attack)
 
 		result[i] = result_dict

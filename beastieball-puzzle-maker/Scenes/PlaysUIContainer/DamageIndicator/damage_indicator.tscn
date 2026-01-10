@@ -219,6 +219,34 @@ label_settings = SubResource("LabelSettings_5spmj")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="AttackerPosContainer" type="HBoxContainer" parent="MainContainer/BoardSideMainNode"]
+custom_minimum_size = Vector2(470, 0)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -55.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/separation = -80
+
+[node name="Spacer" type="Control" parent="MainContainer/BoardSideMainNode/AttackerPosContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="AttackerPosLabel" type="Label" parent="MainContainer/BoardSideMainNode/AttackerPosContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "WHEN AT NET"
+label_settings = SubResource("LabelSettings_eqh3g")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="BenchSideMainNode" type="Control" parent="MainContainer"]
 unique_name_in_owner = true
 visible = false

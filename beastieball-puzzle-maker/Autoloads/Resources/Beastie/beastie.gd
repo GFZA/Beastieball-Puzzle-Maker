@@ -138,6 +138,12 @@ var my_side : Global.MySide = Global.MySide.LEFT
 var my_field_position : Position = Position.NOT_ASSIGNED
 var ally_field_position : Position = Position.NOT_ASSIGNED
 
+# For Hunter/Pressure to work, we need to check if defender is at bench
+# But because of how BoardManager change benched beastie's my_field_position to back row
+# so it's easiter to show in DamageIndicator, using my_field_position for that doesn't work
+# So this var is the ugly workaround...
+var is_really_at_bench : bool = false
+
 
 func get_stats_dict() -> Dictionary[Stats, Array]:
 	var stats : Dictionary[Stats, Array] = {}

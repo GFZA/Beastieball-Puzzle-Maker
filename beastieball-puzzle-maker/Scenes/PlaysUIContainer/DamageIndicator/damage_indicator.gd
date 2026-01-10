@@ -54,10 +54,11 @@ const EMPTY_DAMAGE_DICT : Dictionary[Beastie.Position, int] = {
 @onready var bench_lower_right_anchor: Control = %BenchLowerRightAnchor
 @onready var bench_splash_anchors : Array[Control] = [bench_upper_left_anchor, bench_upper_right_anchor, bench_lower_left_anchor, bench_lower_right_anchor]
 
-
 @onready var lane_label_container: HBoxContainer = %LaneLabelContainer
 @onready var front_label: Label = %FrontLabel
 @onready var back_label: Label = %BackLabel
+
+@onready var attacker_pos_label: Label = %AttackerPosLabel
 
 
 func _update_indicator() -> void:
@@ -72,6 +73,7 @@ func _update_indicator() -> void:
 
 	_update_target_line(attack.target)
 	_update_splashes()
+	_update_attacker_pos_labels()
 
 
 func _update_splashes() -> void:
@@ -180,6 +182,22 @@ func _update_lane_labels() -> void:
 
 	var new_index : int = 0 if my_side == Global.MySide.LEFT else 1
 	lane_label_container.move_child(front_label, new_index)
+
+
+func _update_attacker_pos_labels() -> void:
+	if not is_node_ready():
+		await ready
+
+	attacker_pos_label.hide()
+	if not attack:
+		return
+	if attack.use_condition == Attack.UseCondition.NORMAL:
+		return
+
+	var new_text : String = "WHEN AT NET" if attack.use_condition == Attack.UseCondition.FRONT_ONLY \
+										else "WHEN AT BACK"
+	attacker_pos_label.text = new_text
+	attacker_pos_label.show()
 
 
 func _update_side() -> void:

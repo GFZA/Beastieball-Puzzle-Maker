@@ -82,7 +82,7 @@ const PLAYS_UI_CONTAINER_SCENE : PackedScene = preload("uid://dksxc3rs20kkc")
 @export_group("Bench 1", "bench_beastie_1_")
 @export var bench_beastie_1_beastie : Beastie = null :
 	set(value):
-		bench_beastie_1_beastie = _process_beastie_value(value)
+		bench_beastie_1_beastie = _process_beastie_value(value, true)
 		_update_field()
 
 @export var bench_beastie_1_show_play : bool = true :
@@ -98,7 +98,7 @@ const PLAYS_UI_CONTAINER_SCENE : PackedScene = preload("uid://dksxc3rs20kkc")
 @export_group("Bench 2", "bench_beastie_2_")
 @export var bench_beastie_2_beastie : Beastie = null :
 	set(value):
-		bench_beastie_2_beastie = _process_beastie_value(value)
+		bench_beastie_2_beastie = _process_beastie_value(value, true)
 		_update_field()
 
 @export var bench_beastie_2_show_play : bool = true :
@@ -140,7 +140,7 @@ func _ready() -> void:
 	_update_field()
 
 
-func _process_beastie_value(value : Beastie) -> Beastie:
+func _process_beastie_value(value : Beastie, benched : bool = false) -> Beastie:
 	if not value:
 		return null
 
@@ -151,6 +151,7 @@ func _process_beastie_value(value : Beastie) -> Beastie:
 	processed_value.my_trait_updated.connect(_update_field.unbind(1))
 	processed_value.current_boosts_updated.connect(_update_field.unbind(1))
 	processed_value.current_feelings_updated.connect(_update_field.unbind(1))
+	processed_value.is_really_at_bench = benched
 	return processed_value
 
 
@@ -287,6 +288,13 @@ func _add_new_plays_ui_container(beastie_scene : BeastieScene, show_play : bool,
 	plays_ui_container_dict[beastie] = new_scene
 
 
+func _check_if_have_wiped() -> bool:
+	for beastie : Beastie in beastie_scene_dict.keys():
+		if beastie.get_feeling_stack(Beastie.Feelings.WIPED) > 0:
+			return true
+	return false
+
+
 func _update_scene_show_plays(beastie : Beastie, show_plays : bool) -> void:
 	if not is_node_ready():
 		await ready
@@ -336,6 +344,13 @@ func _update_scene_h_align(beastie : Beastie, h_allign : HorizontalAlignment) ->
 		scene.h_allign = h_allign
 
 
+func _check_bench_size() -> int:
+	var count : int = 0
+	if bench_beastie_1_beastie: count += 1
+	if bench_beastie_2_beastie: count += 1
+	return count
+
+
 func reset_team() -> void:
 	beastie_1_beastie = null
 	beastie_1_show_play = true
@@ -363,13 +378,6 @@ func reset_team() -> void:
 func reset_position() -> void:
 	beastie_1_position = Beastie.Position.UPPER_BACK
 	beastie_2_position = Beastie.Position.LOWER_BACK
-
-
-func _check_bench_size() -> int:
-	var count : int = 0
-	if bench_beastie_1_beastie: count += 1
-	if bench_beastie_2_beastie: count += 1
-	return count
 
 
 # Behold the worse ssavd/load system ever
