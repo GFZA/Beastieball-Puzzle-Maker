@@ -88,13 +88,11 @@ func update_plays_ui(new_list : Array[Plays]) -> void:
 
 		# Mimicked attack overwriting
 		if new_list[0].name.to_lower() == "mimic":
-			print("MIMIC DETECT")
 			if not team_controller:
 				damage_indicator.attack = new_list[0]
 			else:
 				var mimicked_attack : Attack = team_controller.get_mimicked_attack_from_ally(beastie)
 				if mimicked_attack:
-					print("GOT mimicked attack!")
 					damage_indicator.attack = mimicked_attack
 
 		# Musclebrain body transfromation overwrite everything

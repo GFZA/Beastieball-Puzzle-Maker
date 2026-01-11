@@ -1,125 +1,30 @@
-[gd_scene load_steps=71 format=3 uid="uid://co8c0qvn7nkha"]
+[gd_scene load_steps=26 format=3 uid="uid://co8c0qvn7nkha"]
 
 [ext_resource type="Script" uid="uid://dfsngo7akxojy" path="res://Scenes/Board/board.gd" id="1_mucxt"]
 [ext_resource type="PackedScene" uid="uid://s3ot8ysh03s6" path="res://Scenes/Board/BoardOverlay/board_overlay.tscn" id="2_e8qp6"]
 [ext_resource type="Texture2D" uid="uid://dqtiasekc4j68" path="res://Scenes/Board/puzzle_board_bg.png" id="2_ea4ru"]
 [ext_resource type="Script" uid="uid://f48ncbr7tvnf" path="res://Scenes/Board/board_manager.gd" id="3_oh3sv"]
 [ext_resource type="Script" uid="uid://bodsyqui6wlo0" path="res://Scenes/Board/team_contoller.gd" id="3_xc5ao"]
-[ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="6_ryomi"]
-[ext_resource type="Resource" uid="uid://bjh3q3eclur2i" path="res://Autoloads/Resources/Plays/Attack/Spirit/thriller.tres" id="7_d4qum"]
-[ext_resource type="Resource" uid="uid://ce7radc7hq6r8" path="res://Autoloads/Resources/Trait/ancient.tres" id="8_0nnwl"]
-[ext_resource type="Resource" uid="uid://bqwii245fpl4a" path="res://Autoloads/Resources/Plays/Attack/Spirit/careful_shot.tres" id="9_bip24"]
-[ext_resource type="Resource" uid="uid://0dq577si4odv" path="res://Autoloads/Resources/Plays/Support/rumble.tres" id="10_bsc56"]
-[ext_resource type="Resource" uid="uid://7nsxd3vbne52" path="res://Autoloads/Resources/Plays/Support/exhaust.tres" id="11_fvrd6"]
-[ext_resource type="Resource" uid="uid://dqgatu0qsofqj" path="res://Autoloads/Resources/Plays/Defense/distraction.tres" id="12_wicna"]
-[ext_resource type="Resource" uid="uid://cxogqm0367lrk" path="res://Autoloads/Resources/Plays/Attack/Body/high_slam.tres" id="13_rvpvo"]
-[ext_resource type="Resource" uid="uid://dytuvbvg3oamq" path="res://Autoloads/Resources/Plays/Defense/shield.tres" id="14_ehjpq"]
-[ext_resource type="Resource" uid="uid://71t7u1j5yqvb" path="res://Autoloads/Resources/Plays/Support/mark.tres" id="15_b6cn2"]
-[ext_resource type="Resource" uid="uid://djku0a8qnembc" path="res://Autoloads/Resources/Plays/Attack/Body/boom.tres" id="16_187q2"]
-[ext_resource type="Resource" uid="uid://bcuhkrf7hdroh" path="res://Autoloads/Resources/Plays/Support/clear_field.tres" id="17_xe26u"]
-[ext_resource type="Resource" uid="uid://8wi04v1m7juh" path="res://Autoloads/Resources/Plays/Attack/Mind/sneak_attack.tres" id="18_oi1m4"]
-[ext_resource type="Resource" uid="uid://y3o0tssi0oeu" path="res://Autoloads/Resources/Plays/Volley/forward_pass.tres" id="19_lbhv7"]
-[ext_resource type="Resource" uid="uid://dyyf4roekh4n8" path="res://Autoloads/Resources/Plays/Defense/torch_pass.tres" id="20_63o3o"]
-[ext_resource type="Resource" uid="uid://pidj27lbe45q" path="res://Autoloads/Resources/Plays/Attack/Body/ultimate_attack.tres" id="21_xuri5"]
-[ext_resource type="Resource" uid="uid://ihjite14xg1t" path="res://Autoloads/Resources/Plays/Attack/Body/stomp.tres" id="22_akhof"]
-[ext_resource type="Resource" uid="uid://bvxjlydy1d38x" path="res://Autoloads/Resources/Plays/Attack/Body/demolish.tres" id="23_ul1ys"]
-[ext_resource type="Resource" uid="uid://jkcejjcke75d" path="res://Autoloads/Resources/Plays/Attack/Body/power_sap.tres" id="24_q1b6l"]
-[ext_resource type="Resource" uid="uid://dy23cpjw8vy57" path="res://Autoloads/Resources/Plays/Attack/Body/bounce.tres" id="25_vnh67"]
-[ext_resource type="Resource" uid="uid://ciplmlyeefqm" path="res://Autoloads/Resources/Plays/Attack/Body/breaker.tres" id="26_miydl"]
-[ext_resource type="Resource" uid="uid://cgp0jnuk0thpe" path="res://Autoloads/Resources/Plays/Attack/Body/relaxed_hit.tres" id="27_8mnc4"]
-[ext_resource type="Resource" uid="uid://cgtd1m3ceieid" path="res://Autoloads/Resources/Plays/Attack/Body/vigor_beam.tres" id="28_yk1td"]
-[ext_resource type="Resource" uid="uid://dn2k7ct6koxy2" path="res://Autoloads/Resources/Plays/Attack/Spirit/contest.tres" id="29_o3sb0"]
-[ext_resource type="Resource" uid="uid://d8rp5pq7qf2i" path="res://Autoloads/Resources/Plays/Attack/Spirit/bring_the_heat.tres" id="30_r5s4f"]
-[ext_resource type="Resource" uid="uid://bdmbgwhgtp2vl" path="res://Autoloads/Resources/Plays/Attack/Spirit/cut_shot.tres" id="31_2hkyv"]
-[ext_resource type="Resource" uid="uid://dhmx805jhg4ir" path="res://Autoloads/Resources/Plays/Attack/Spirit/jammer.tres" id="32_y6dlc"]
-[ext_resource type="Resource" uid="uid://bsekeiw2v13qd" path="res://Autoloads/Resources/Plays/Attack/Spirit/relentless.tres" id="33_ary8t"]
-[ext_resource type="Resource" uid="uid://dtkos0xt4rmf" path="res://Autoloads/Resources/Plays/Attack/Spirit/toppler.tres" id="34_j2trx"]
-[ext_resource type="Resource" uid="uid://bqpax11k5enii" path="res://Autoloads/Resources/Plays/Attack/Mind/snipe.tres" id="35_asnme"]
-[ext_resource type="Resource" uid="uid://bj7gp00f8xtup" path="res://Autoloads/Resources/Plays/Attack/Mind/stinger.tres" id="36_xwrid"]
-[ext_resource type="Resource" uid="uid://buvtgtcjmm2y2" path="res://Autoloads/Resources/Plays/Attack/Mind/dump.tres" id="37_l74dj"]
-[ext_resource type="Resource" uid="uid://bijgrhbki1aqo" path="res://Autoloads/Resources/Plays/Attack/Mind/slice.tres" id="38_reu04"]
-[ext_resource type="Resource" uid="uid://dgu38u1ul5b81" path="res://Autoloads/Resources/Plays/Attack/Mind/lure_shot.tres" id="39_mhwkv"]
-[ext_resource type="Resource" uid="uid://bp6cwp5r600rj" path="res://Autoloads/Resources/Plays/Attack/Mind/tracker.tres" id="40_y6bus"]
-[ext_resource type="Resource" uid="uid://cea0bb2qhn278" path="res://Autoloads/Resources/Plays/Attack/Mind/trickspin.tres" id="41_qm24d"]
-[ext_resource type="Resource" uid="uid://dgsnxhjtejofp" path="res://Autoloads/Resources/Plays/Volley/dig.tres" id="42_btbku"]
-[ext_resource type="Resource" uid="uid://debwcca8lqqb2" path="res://Autoloads/Resources/Plays/Volley/pipe.tres" id="43_ib7kr"]
-[ext_resource type="Resource" uid="uid://c624jkvl1417h" path="res://Autoloads/Resources/Plays/Volley/refresh.tres" id="44_4i6pf"]
-[ext_resource type="Resource" uid="uid://b7c1t1fux071m" path="res://Autoloads/Resources/Plays/Support/call_out.tres" id="45_841oo"]
-[ext_resource type="Resource" uid="uid://cy671htu1m5fu" path="res://Autoloads/Resources/Plays/Support/calming_aura.tres" id="46_rxjpm"]
-[ext_resource type="Resource" uid="uid://b670mi6ha0r4h" path="res://Autoloads/Resources/Plays/Support/chill_out.tres" id="47_vdyiv"]
-[ext_resource type="Resource" uid="uid://pwfmxe4epkih" path="res://Autoloads/Resources/Plays/Support/dreadful_mist.tres" id="48_1d2qp"]
-[ext_resource type="Resource" uid="uid://ck2v1w5w6an2w" path="res://Autoloads/Resources/Plays/Support/drum.tres" id="49_rv5g4"]
-[ext_resource type="Resource" uid="uid://bgwy15q42o6k7" path="res://Autoloads/Resources/Plays/Support/hunker.tres" id="50_krwmy"]
-[ext_resource type="Resource" uid="uid://cj4h5a26hgmdy" path="res://Autoloads/Resources/Plays/Support/lay_trap.tres" id="51_ihruo"]
-[ext_resource type="Resource" uid="uid://ckfu6pta3o1u2" path="res://Autoloads/Resources/Plays/Support/provoke.tres" id="52_jasmf"]
-[ext_resource type="Resource" uid="uid://b0ri66efuwqq" path="res://Autoloads/Resources/Plays/Support/rally.tres" id="53_bkxgd"]
-[ext_resource type="Resource" uid="uid://tc6ag84sawpl" path="res://Autoloads/Resources/Plays/Support/tough_front.tres" id="54_ljjww"]
-[ext_resource type="Resource" uid="uid://l57ggke2vhn0" path="res://Autoloads/Resources/Plays/Defense/heat_up.tres" id="55_rdftn"]
-[ext_resource type="Resource" uid="uid://dj6kdtlk5w6rq" path="res://Autoloads/Resources/Plays/Defense/high_five.tres" id="56_nh1pn"]
-[ext_resource type="Resource" uid="uid://by0ross5cpbjo" path="res://Autoloads/Resources/Plays/Defense/menace.tres" id="57_ccn5k"]
-[ext_resource type="Resource" uid="uid://b5ox8jsftfp33" path="res://Autoloads/Resources/Plays/Defense/mighty_yell.tres" id="58_x8oa6"]
-[ext_resource type="Resource" uid="uid://c5n8g4bqp64q2" path="res://Autoloads/Resources/Plays/Defense/sting.tres" id="59_mjfc5"]
-[ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Autoloads/Resources/Trait/trait.gd" id="60_xbn8f"]
-[ext_resource type="Script" uid="uid://ehabj4qsgxpl" path="res://Autoloads/Resources/Beastie/beastie.gd" id="61_k3wce"]
-[ext_resource type="Texture2D" uid="uid://bnsgavyxikp1p" path="res://Autoloads/Resources/Beastie/Shloom/shloom_idle.png" id="62_dylqb"]
-[ext_resource type="Texture2D" uid="uid://d07waa4aly04i" path="res://Autoloads/Resources/Beastie/Shloom/shloom_ready.png" id="63_a3y2b"]
-[ext_resource type="Texture2D" uid="uid://c1huseiix2eug" path="res://Autoloads/Resources/Beastie/Shloom/shloom_spike.png" id="64_odd11"]
-[ext_resource type="Texture2D" uid="uid://de1rkjn84iq7i" path="res://Autoloads/Resources/Beastie/Shloom/shloom_volley.png" id="65_kllo7"]
-[ext_resource type="Texture2D" uid="uid://dec0riircwshx" path="res://Autoloads/Resources/Beastie/Shloom/shloom_good.png" id="66_flmld"]
-[ext_resource type="Texture2D" uid="uid://csq0tpjmewa57" path="res://Autoloads/Resources/Beastie/Shloom/shloom_bad.png" id="67_y6brx"]
-[ext_resource type="Texture2D" uid="uid://dv0bptc31w8y" path="res://Autoloads/Resources/Beastie/Shloom/icon_shloom.png" id="68_2ucg0"]
-
-[sub_resource type="Resource" id="Resource_oxx13"]
-script = ExtResource("61_k3wce")
-my_plays = Array[ExtResource("6_ryomi")]([ExtResource("7_d4qum"), null, null])
-my_trait = ExtResource("8_0nnwl")
-specie_name = "Shloom"
-beastiepedia_id = 106
-bar_color = Color(0.6039216, 0.8117647, 0.4745098, 1)
-body_base_pow = 110
-spirit_base_pow = 110
-mind_base_pow = 110
-body_base_def = 90
-spirit_base_def = 90
-mind_base_def = 90
-possible_plays = Array[ExtResource("6_ryomi")]([ExtResource("9_bip24"), ExtResource("10_bsc56"), ExtResource("11_fvrd6"), ExtResource("12_wicna"), ExtResource("13_rvpvo"), ExtResource("14_ehjpq"), ExtResource("15_b6cn2"), ExtResource("16_187q2"), ExtResource("17_xe26u"), ExtResource("18_oi1m4"), ExtResource("19_lbhv7"), ExtResource("20_63o3o"), ExtResource("21_xuri5"), ExtResource("22_akhof"), ExtResource("23_ul1ys"), ExtResource("24_q1b6l"), ExtResource("25_vnh67"), ExtResource("26_miydl"), ExtResource("27_8mnc4"), ExtResource("28_yk1td"), ExtResource("29_o3sb0"), ExtResource("30_r5s4f"), ExtResource("31_2hkyv"), ExtResource("32_y6dlc"), ExtResource("33_ary8t"), ExtResource("34_j2trx"), ExtResource("35_asnme"), ExtResource("36_xwrid"), ExtResource("37_l74dj"), ExtResource("38_reu04"), ExtResource("39_mhwkv"), ExtResource("40_y6bus"), ExtResource("41_qm24d"), ExtResource("42_btbku"), ExtResource("43_ib7kr"), ExtResource("44_4i6pf"), ExtResource("45_841oo"), ExtResource("46_rxjpm"), ExtResource("47_vdyiv"), ExtResource("48_1d2qp"), ExtResource("49_rv5g4"), ExtResource("50_krwmy"), ExtResource("51_ihruo"), ExtResource("52_jasmf"), ExtResource("53_bkxgd"), ExtResource("54_ljjww"), ExtResource("55_rdftn"), ExtResource("56_nh1pn"), ExtResource("57_ccn5k"), ExtResource("58_x8oa6"), ExtResource("59_mjfc5")])
-possible_traits = Array[ExtResource("60_xbn8f")]([ExtResource("8_0nnwl")])
-sprites = Dictionary[int, Texture2D]({
-0: ExtResource("62_dylqb"),
-1: ExtResource("63_a3y2b"),
-2: ExtResource("64_odd11"),
-3: ExtResource("65_kllo7"),
-4: ExtResource("66_flmld"),
-5: ExtResource("67_y6brx"),
-6: ExtResource("68_2ucg0")
-})
-metadata/_custom_type_script = "uid://ehabj4qsgxpl"
-
-[sub_resource type="Resource" id="Resource_myfsi"]
-script = ExtResource("61_k3wce")
-my_plays = Array[ExtResource("6_ryomi")]([null, null, null])
-my_trait = ExtResource("8_0nnwl")
-specie_name = "Shloom"
-beastiepedia_id = 106
-bar_color = Color(0.6039216, 0.8117647, 0.4745098, 1)
-body_base_pow = 110
-spirit_base_pow = 110
-mind_base_pow = 110
-body_base_def = 90
-spirit_base_def = 90
-mind_base_def = 90
-possible_plays = Array[ExtResource("6_ryomi")]([ExtResource("9_bip24"), ExtResource("10_bsc56"), ExtResource("11_fvrd6"), ExtResource("12_wicna"), ExtResource("13_rvpvo"), ExtResource("14_ehjpq"), ExtResource("15_b6cn2"), ExtResource("16_187q2"), ExtResource("17_xe26u"), ExtResource("18_oi1m4"), ExtResource("19_lbhv7"), ExtResource("20_63o3o"), ExtResource("21_xuri5"), ExtResource("22_akhof"), ExtResource("23_ul1ys"), ExtResource("24_q1b6l"), ExtResource("25_vnh67"), ExtResource("26_miydl"), ExtResource("27_8mnc4"), ExtResource("28_yk1td"), ExtResource("29_o3sb0"), ExtResource("30_r5s4f"), ExtResource("31_2hkyv"), ExtResource("32_y6dlc"), ExtResource("33_ary8t"), ExtResource("34_j2trx"), ExtResource("35_asnme"), ExtResource("36_xwrid"), ExtResource("37_l74dj"), ExtResource("38_reu04"), ExtResource("39_mhwkv"), ExtResource("40_y6bus"), ExtResource("41_qm24d"), ExtResource("42_btbku"), ExtResource("43_ib7kr"), ExtResource("44_4i6pf"), ExtResource("45_841oo"), ExtResource("46_rxjpm"), ExtResource("47_vdyiv"), ExtResource("48_1d2qp"), ExtResource("49_rv5g4"), ExtResource("50_krwmy"), ExtResource("51_ihruo"), ExtResource("52_jasmf"), ExtResource("53_bkxgd"), ExtResource("54_ljjww"), ExtResource("55_rdftn"), ExtResource("56_nh1pn"), ExtResource("57_ccn5k"), ExtResource("58_x8oa6"), ExtResource("59_mjfc5")])
-possible_traits = Array[ExtResource("60_xbn8f")]([ExtResource("8_0nnwl")])
-sprites = Dictionary[int, Texture2D]({
-0: ExtResource("62_dylqb"),
-1: ExtResource("63_a3y2b"),
-2: ExtResource("64_odd11"),
-3: ExtResource("65_kllo7"),
-4: ExtResource("66_flmld"),
-5: ExtResource("67_y6brx"),
-6: ExtResource("68_2ucg0")
-})
-metadata/_custom_type_script = "uid://ehabj4qsgxpl"
+[ext_resource type="Texture2D" uid="uid://uk43cpsgm1sw" path="res://FieldVisuals/field_quake_rock_1.png" id="5_dkxek"]
+[ext_resource type="Texture2D" uid="uid://cu1uhaxldmlay" path="res://FieldVisuals/field_quake_rock_2.png" id="6_brcfe"]
+[ext_resource type="Texture2D" uid="uid://uiybtam00k0q" path="res://FieldVisuals/field_quake_rock_5.png" id="7_csi2d"]
+[ext_resource type="Texture2D" uid="uid://bn5j06velhb5u" path="res://FieldVisuals/field_quake_rock_3.png" id="8_s2gku"]
+[ext_resource type="Texture2D" uid="uid://mugscsvj1dij" path="res://FieldVisuals/field_quake_dust_3.png" id="9_xqaal"]
+[ext_resource type="Texture2D" uid="uid://b84xem12nbfc5" path="res://FieldVisuals/field_dread_fog_4.png" id="10_63xfs"]
+[ext_resource type="Texture2D" uid="uid://3se221ry0vut" path="res://FieldVisuals/field_quake_dust_1.png" id="10_dqnt6"]
+[ext_resource type="Texture2D" uid="uid://g2gngic1fjr0" path="res://FieldVisuals/field_quake_dust_2.png" id="11_63xfs"]
+[ext_resource type="Texture2D" uid="uid://dh3x76vld3rqq" path="res://FieldVisuals/field_dread_fog_2.png" id="11_a1ark"]
+[ext_resource type="Texture2D" uid="uid://d2528qpww4bsy" path="res://FieldVisuals/field_dread_fog_3.png" id="12_rt3kt"]
+[ext_resource type="Texture2D" uid="uid://djiohq725uf05" path="res://FieldVisuals/field_dread_fog_5.png" id="13_v248q"]
+[ext_resource type="Texture2D" uid="uid://dcceed52lcw36" path="res://FieldVisuals/field_dread_fog_1.png" id="14_xlcy2"]
+[ext_resource type="Texture2D" uid="uid://mkimptc3jynx" path="res://FieldVisuals/field_rhythm_note_1.png" id="15_v248q"]
+[ext_resource type="Texture2D" uid="uid://ba0lubocsxtju" path="res://FieldVisuals/field_barrier_upper.png" id="15_xlcy2"]
+[ext_resource type="Texture2D" uid="uid://c11deqt8ar18t" path="res://FieldVisuals/field_barrier_lower.png" id="16_06gvc"]
+[ext_resource type="Texture2D" uid="uid://b4wo6q8xhn4km" path="res://FieldVisuals/field_rhythm_note_4.png" id="16_xlcy2"]
+[ext_resource type="Texture2D" uid="uid://dfrqeltnatbx5" path="res://FieldVisuals/field_rhythm_note_2.png" id="17_06gvc"]
+[ext_resource type="Texture2D" uid="uid://bvywpvocaqq32" path="res://FieldVisuals/field_trap_1_right.png" id="18_cv4jv"]
+[ext_resource type="Texture2D" uid="uid://c5qpkbyaoclc5" path="res://FieldVisuals/field_rhythm_note_5.png" id="18_qg8b0"]
+[ext_resource type="Texture2D" uid="uid://b12tfn7n1l8qs" path="res://FieldVisuals/field_trap_4_left.png" id="21_cv4jv"]
 
 [node name="Board" type="Control"]
 custom_minimum_size = Vector2(2700, 2025)
@@ -163,8 +68,281 @@ texture = ExtResource("2_ea4ru")
 centered = false
 metadata/_edit_lock_ = true
 
+[node name="QuakeVisuals" type="Node2D" parent="SubViewportContainer/SubViewport/BoardBG"]
+scale = Vector2(0.76923084, 0.76923084)
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="LeftQuakeVisuals" type="Node2D" parent="SubViewportContainer/SubViewport/BoardBG/QuakeVisuals"]
+unique_name_in_owner = true
+
+[node name="Sprite2D" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/QuakeVisuals/LeftQuakeVisuals"]
+position = Vector2(1137, 547)
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("5_dkxek")
+
+[node name="Sprite2D3" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/QuakeVisuals/LeftQuakeVisuals"]
+position = Vector2(1013, 890)
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("7_csi2d")
+
+[node name="Sprite2D5" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/QuakeVisuals/LeftQuakeVisuals"]
+position = Vector2(764.00006, 655)
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("8_s2gku")
+
+[node name="Sprite2D11" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/QuakeVisuals/LeftQuakeVisuals"]
+position = Vector2(742.00006, 478)
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("9_xqaal")
+
+[node name="Sprite2D8" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/QuakeVisuals/LeftQuakeVisuals"]
+position = Vector2(663, 889)
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("10_dqnt6")
+
+[node name="Sprite2D9" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/QuakeVisuals/LeftQuakeVisuals"]
+position = Vector2(971, 622)
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("11_63xfs")
+
+[node name="RightQuakeVisuals" type="Node2D" parent="SubViewportContainer/SubViewport/BoardBG/QuakeVisuals"]
+unique_name_in_owner = true
+visible = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/QuakeVisuals/RightQuakeVisuals"]
+position = Vector2(1541.3, 850.1)
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("6_brcfe")
+
+[node name="Sprite2D4" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/QuakeVisuals/RightQuakeVisuals"]
+position = Vector2(1609.9999, 558)
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("8_s2gku")
+
+[node name="Sprite2D6" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/QuakeVisuals/RightQuakeVisuals"]
+position = Vector2(1373, 456)
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("9_xqaal")
+
+[node name="Sprite2D7" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/QuakeVisuals/RightQuakeVisuals"]
+position = Vector2(1823.9999, 725)
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("10_dqnt6")
+
+[node name="Sprite2D10" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/QuakeVisuals/RightQuakeVisuals"]
+position = Vector2(1302, 744)
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("11_63xfs")
+
+[node name="DreadVisuals" type="Node2D" parent="SubViewportContainer/SubViewport/BoardBG"]
+unique_name_in_owner = true
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/DreadVisuals"]
+position = Vector2(695.38464, 602.3077)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("10_63xfs")
+
+[node name="Sprite2D2" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/DreadVisuals"]
+position = Vector2(1375.3848, 367.69226)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("10_63xfs")
+
+[node name="Sprite2D3" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/DreadVisuals"]
+position = Vector2(1078.4615, 669.23083)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("11_a1ark")
+
+[node name="Sprite2D4" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/DreadVisuals"]
+position = Vector2(874.61536, 430.00006)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("11_a1ark")
+
+[node name="Sprite2D5" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/DreadVisuals"]
+position = Vector2(1375.3846, 586.9231)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("12_rt3kt")
+
+[node name="Sprite2D6" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/DreadVisuals"]
+position = Vector2(587.6922, 430.00003)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("12_rt3kt")
+
+[node name="Sprite2D7" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/DreadVisuals"]
+position = Vector2(1193.8462, 504.61542)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("13_v248q")
+
+[node name="Sprite2D8" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/DreadVisuals"]
+position = Vector2(1085.3846, 405.38464)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("13_v248q")
+
+[node name="Sprite2D9" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/DreadVisuals"]
+position = Vector2(848.46155, 683.84625)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("13_v248q")
+
+[node name="Sprite2D10" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/DreadVisuals"]
+position = Vector2(1329.9999, 720)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("14_xlcy2")
+
+[node name="Sprite2D11" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/DreadVisuals"]
+position = Vector2(749.2309, 333.84613)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("14_xlcy2")
+
+[node name="Sprite2D12" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/DreadVisuals"]
+position = Vector2(461.53848, 725.3847)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("12_rt3kt")
+
+[node name="Sprite2D13" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/DreadVisuals"]
+position = Vector2(447.6923, 557.6924)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("13_v248q")
+
+[node name="Sprite2D14" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/DreadVisuals"]
+position = Vector2(1490, 480.76932)
+texture = ExtResource("11_a1ark")
+
+[node name="BarrierVisuals" type="Node2D" parent="SubViewportContainer/SubViewport/BoardBG"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="LeftBarrierUpper" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/BarrierVisuals"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(841.5385, 405.38464)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("15_xlcy2")
+
+[node name="RightBarrierUpper" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/BarrierVisuals"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(1089.2308, 405.38464)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("15_xlcy2")
+
+[node name="LeftBarrierLower" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/BarrierVisuals"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(825.3846, 601.3539)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("16_06gvc")
+
+[node name="RightBarrierLower" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/BarrierVisuals"]
+unique_name_in_owner = true
+position = Vector2(1094.6155, 601.3539)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("16_06gvc")
+
+[node name="TrapVisuals" type="Node2D" parent="SubViewportContainer/SubViewport/BoardBG"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="LeftTrapVisuals" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/TrapVisuals"]
+unique_name_in_owner = true
+position = Vector2(452.30774, 513.8462)
+texture = ExtResource("21_cv4jv")
+
+[node name="RightTrapVisuals" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/TrapVisuals"]
+unique_name_in_owner = true
+position = Vector2(1462.3077, 513.8462)
+texture = ExtResource("18_cv4jv")
+
+[node name="RhythmVisuals" type="Node2D" parent="SubViewportContainer/SubViewport/BoardBG"]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="LeftRhythmVisuals" type="Node2D" parent="SubViewportContainer/SubViewport/BoardBG/RhythmVisuals"]
+unique_name_in_owner = true
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/RhythmVisuals/LeftRhythmVisuals"]
+position = Vector2(546.92303, 350.76923)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("15_v248q")
+
+[node name="Sprite2D2" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/RhythmVisuals/LeftRhythmVisuals"]
+position = Vector2(766.1539, 661.53845)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("15_v248q")
+
+[node name="Sprite2D5" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/RhythmVisuals/LeftRhythmVisuals"]
+position = Vector2(918.4616, 466.92303)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("15_v248q")
+
+[node name="Sprite2D7" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/RhythmVisuals/LeftRhythmVisuals"]
+position = Vector2(441.53845, 566.1539)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("16_xlcy2")
+
+[node name="Sprite2D8" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/RhythmVisuals/LeftRhythmVisuals"]
+position = Vector2(600, 745.3847)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("16_xlcy2")
+
+[node name="Sprite2D12" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/RhythmVisuals/LeftRhythmVisuals"]
+position = Vector2(659.2308, 506.9231)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("17_06gvc")
+
+[node name="Sprite2D15" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/RhythmVisuals/LeftRhythmVisuals"]
+position = Vector2(732.30774, 392.30774)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("18_qg8b0")
+
+[node name="Sprite2D16" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/RhythmVisuals/LeftRhythmVisuals"]
+position = Vector2(571.53845, 602.30774)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("18_qg8b0")
+
+[node name="RightRhythmVisuals" type="Node2D" parent="SubViewportContainer/SubViewport/BoardBG/RhythmVisuals"]
+unique_name_in_owner = true
+
+[node name="Sprite2D4" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/RhythmVisuals/RightRhythmVisuals"]
+position = Vector2(1375.3846, 405.38458)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("15_v248q")
+
+[node name="Sprite2D6" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/RhythmVisuals/RightRhythmVisuals"]
+position = Vector2(1154.6155, 725.38464)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("15_v248q")
+
+[node name="Sprite2D10" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/RhythmVisuals/RightRhythmVisuals"]
+position = Vector2(1188.4617, 350.7693)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("16_xlcy2")
+
+[node name="Sprite2D11" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/RhythmVisuals/RightRhythmVisuals"]
+position = Vector2(1433.8462, 662.30774)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("16_xlcy2")
+
+[node name="Sprite2D13" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/RhythmVisuals/RightRhythmVisuals"]
+position = Vector2(1253.8461, 527.6923)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("17_06gvc")
+
+[node name="Sprite2D17" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/RhythmVisuals/RightRhythmVisuals"]
+position = Vector2(1470.7693, 506.92313)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("18_qg8b0")
+
+[node name="Sprite2D18" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/RhythmVisuals/RightRhythmVisuals"]
+position = Vector2(1016.15393, 527.6924)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("18_qg8b0")
+
 [node name="BoardOverlay" parent="SubViewportContainer/SubViewport" instance=ExtResource("2_e8qp6")]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -179,6 +357,7 @@ metadata/_edit_lock_ = true
 
 [node name="BoardManager" type="Node2D" parent="SubViewportContainer/SubViewport" node_paths=PackedStringArray("left_team_controller", "right_team_controller") groups=["board_manager"]]
 unique_name_in_owner = true
+visible = false
 position = Vector2(101, 483)
 script = ExtResource("3_oh3sv")
 left_team_controller = NodePath("../LeftTeamController")
@@ -189,7 +368,6 @@ metadata/_edit_lock_ = true
 unique_name_in_owner = true
 position = Vector2(101, 483)
 script = ExtResource("3_xc5ao")
-beastie_1_beastie = SubResource("Resource_oxx13")
 beastie_1_show_bench_damage = true
 metadata/_edit_lock_ = true
 
@@ -289,7 +467,6 @@ my_field_effects = Dictionary[int, int]({
 0: 1,
 2: 1
 })
-beastie_1_beastie = SubResource("Resource_myfsi")
 side = 1
 metadata/_edit_lock_ = true
 
