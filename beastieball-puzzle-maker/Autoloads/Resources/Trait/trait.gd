@@ -26,13 +26,17 @@ func get_starter_trait_boost_stack(attacker : Beastie, type : int) -> int:
 	return 0
 
 
-func get_attack_mult(_attacker : Beastie, _defender : Beastie, _attack : Attack) -> float: # Overwrite this
+func get_attack_mult(_attacker : Beastie, _defender : Beastie, _attack : Attack, \
+					 _attacker_team_controller : TeamController = null,\
+					 _defender_team_controller : TeamController = null) -> float: # Overwrite this
 	if manually_activated:
 		return damage_dealt_mult
 	return 1.0
 
 
-func get_defense_mult(_attacker : Beastie, _defender : Beastie, _attack : Attack) -> float: # Overwrite this
+func get_defense_mult(_attacker : Beastie, _defender : Beastie, _attack : Attack, \
+					 _attacker_team_controller : TeamController = null,\
+					 _defender_team_controller : TeamController = null) -> float: # Overwrite this
 	if manually_activated:
 		return def_mult
 	return 1.0

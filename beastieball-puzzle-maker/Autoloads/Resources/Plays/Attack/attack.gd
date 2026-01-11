@@ -20,5 +20,7 @@ func _init() -> void:
 	self.type = Type.ATTACK_BODY
 
 
-func get_attack_pow(_attacker : Beastie, _defender : Beastie) -> int: # Overwrite this
+func get_attack_pow(_attacker : Beastie, _defender : Beastie, \
+					 _attacker_team_controller : TeamController = null,\
+					 _defender_team_controller : TeamController = null) -> int: # Overwrite this
 	return base_pow

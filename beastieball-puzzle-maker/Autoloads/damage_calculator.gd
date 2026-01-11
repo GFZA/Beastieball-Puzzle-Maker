@@ -8,7 +8,9 @@ extends Node
 #@export var rally : bool = false
 
 
-func get_damage(attacker : Beastie, defender : Beastie, attack : Attack) -> int: # ADD BOARD STATE LATERRRR
+func get_damage(attacker : Beastie, defender : Beastie, attack : Attack, \
+				attacker_team_controller : TeamController = null, \
+				defender_team_controller : TeamController = null) -> int:
 
 	var attack_name : String = attack.name.to_lower()
 
@@ -24,7 +26,7 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack) -> int:
 
 	#region Set up vars
 
-	var base_pow : int = attack.get_attack_pow(attacker, defender)
+	var base_pow : int = attack.get_attack_pow(attacker, defender, attacker_team_controller, defender_team_controller)
 	var type : Plays.Type = attack.type
 	assert(type == Plays.Type.ATTACK_BODY or type == Plays.Type.ATTACK_SPIRIT or type == Plays.Type.ATTACK_MIND,
 			"Attack's type not found! Check if the attack is assigned its type correctly!")
@@ -102,10 +104,10 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack) -> int:
 		push_error("Defender %s doesn't have trait assigned!" % defender.specie_name)
 		return 0
 
-	var attacker_trait_mult : float = attacker.my_trait.get_attack_mult(attacker, defender, attack)
+	var attacker_trait_mult : float = attacker.my_trait.get_attack_mult(attacker, defender, attack, attacker_team_controller, defender_team_controller)
 	var defender_trait_mult : float = 1.0
 	if not attack_name == "true strike":
-		defender_trait_mult = defender.my_trait.get_defense_mult(attacker, defender, attack)
+		defender_trait_mult = defender.my_trait.get_defense_mult(attacker, defender, attack, attacker_team_controller, defender_team_controller)
 
 	var blocked_stack : float = 0.0
 	if not attack_name == "roll shot":

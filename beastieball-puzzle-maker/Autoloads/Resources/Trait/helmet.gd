@@ -2,7 +2,9 @@
 extends Trait
 
 
-func get_defense_mult(attacker : Beastie, defender : Beastie, _attack : Attack) -> float:
+func get_defense_mult(attacker : Beastie, defender : Beastie, _attack : Attack, \
+					 _attacker_team_controller : TeamController = null,\
+					 _defender_team_controller : TeamController = null) -> float: # Overwrite
 	var defender_trait : Trait = defender.my_trait
 	var is_helmet : bool = (defender_trait.name.to_lower() == "helmet")
 	if not is_helmet:

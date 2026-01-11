@@ -56,9 +56,13 @@ func get_damage_dict_array(attacker : Beastie, attack : Attack) -> Array[Diction
 	for i in 2:
 		var result_dict : Dictionary[Beastie.Position, int] = empty_dict.duplicate()
 		var attacker_scene : BeastieScene = find_beastie_scene(attacker) # Need to use scene to determine side because of spagetti code :(
+		var attacker_is_left : bool = attacker_scene.my_side == Global.MySide.LEFT
+		var attacker_team_controller : TeamController = left_team_controller if attacker_is_left else right_team_controller
+		var defender_team_controller : TeamController = right_team_controller if attacker_is_left else left_team_controller
+
 		var defense_side : Dictionary[Beastie.Position, Beastie] = TeamController.get_empty_position_dict() # Assign below
 		var unfiltered_pos_dict : Dictionary[Beastie.Position, Beastie] = right_team_position_dict.duplicate() \
-								if attacker_scene.my_side == Global.MySide.LEFT else left_team_position_dict.duplicate()
+														if attacker_is_left else left_team_position_dict.duplicate()
 
 		# Assign defense_side (use for cal)
 		match i:
@@ -104,7 +108,7 @@ func get_damage_dict_array(attacker : Beastie, attack : Attack) -> Array[Diction
 					attacker_for_cal.my_field_position = Beastie.Position.UPPER_BACK # Upper or Lower doesn't matter here
 
 			if defense_side[pos] != null:
-				result_dict[pos] = DamageCalculator.get_damage(attacker_for_cal, defense_side[pos], attack)
+				result_dict[pos] = DamageCalculator.get_damage(attacker_for_cal, defense_side[pos], attack, attacker_team_controller, defender_team_controller)
 				continue
 
 			# If defense_side[position] == null, we need to create new temporary beastie that will
@@ -121,25 +125,25 @@ func get_damage_dict_array(attacker : Beastie, attack : Attack) -> Array[Diction
 				var beastie_move_back : Beastie = defense_side[Beastie.Position.UPPER_FRONT].duplicate(true)
 				beastie_move_back.my_field_position = Beastie.Position.UPPER_BACK
 				beastie_move_back.is_really_at_bench = defense_side[Beastie.Position.UPPER_FRONT].is_really_at_bench
-				result_dict[pos] = DamageCalculator.get_damage(attacker_for_cal, beastie_move_back, attack)
+				result_dict[pos] = DamageCalculator.get_damage(attacker_for_cal, beastie_move_back, attack, attacker_team_controller, defender_team_controller)
 
 			if pos == Beastie.Position.UPPER_FRONT and defense_side[Beastie.Position.UPPER_BACK] != null:
 				var beastie_move_front : Beastie = defense_side[Beastie.Position.UPPER_BACK].duplicate(true)
 				beastie_move_front.my_field_position = Beastie.Position.UPPER_FRONT
 				beastie_move_front.is_really_at_bench = defense_side[Beastie.Position.UPPER_BACK].is_really_at_bench
-				result_dict[pos] = DamageCalculator.get_damage(attacker_for_cal, beastie_move_front, attack)
+				result_dict[pos] = DamageCalculator.get_damage(attacker_for_cal, beastie_move_front, attack, attacker_team_controller, defender_team_controller)
 
 			if pos == Beastie.Position.LOWER_BACK and defense_side[Beastie.Position.LOWER_FRONT] != null:
 				var beastie_move_back : Beastie = defense_side[Beastie.Position.LOWER_FRONT].duplicate(true)
 				beastie_move_back.my_field_position = Beastie.Position.LOWER_BACK
 				beastie_move_back.is_really_at_bench = defense_side[Beastie.Position.LOWER_FRONT].is_really_at_bench
-				result_dict[pos] = DamageCalculator.get_damage(attacker_for_cal, beastie_move_back, attack)
+				result_dict[pos] = DamageCalculator.get_damage(attacker_for_cal, beastie_move_back, attack, attacker_team_controller, defender_team_controller)
 
 			if pos == Beastie.Position.LOWER_FRONT and defense_side[Beastie.Position.LOWER_BACK] != null:
 				var beastie_move_front : Beastie = defense_side[Beastie.Position.LOWER_BACK].duplicate(true)
 				beastie_move_front.my_field_position = Beastie.Position.LOWER_FRONT
 				beastie_move_front.is_really_at_bench = defense_side[Beastie.Position.LOWER_BACK].is_really_at_bench
-				result_dict[pos] = DamageCalculator.get_damage(attacker_for_cal, beastie_move_front, attack)
+				result_dict[pos] = DamageCalculator.get_damage(attacker_for_cal, beastie_move_front, attack, attacker_team_controller, defender_team_controller)
 
 		result[i] = result_dict
 

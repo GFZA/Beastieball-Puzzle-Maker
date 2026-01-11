@@ -7,6 +7,11 @@ signal field_updated(pos_dict : Dictionary[Beastie.Position, Beastie])
 const BEASTIE_SCENE := preload("uid://dptoj76e40ldo")
 const PLAYS_UI_CONTAINER_SCENE : PackedScene = preload("uid://dksxc3rs20kkc")
 
+@export var is_serving_team : bool = false:
+	set(value):
+		is_serving_team = value
+		_update_field()
+
 @export_group("Serve Slot", "beastie_1_")
 @export var beastie_1_beastie : Beastie = null :
 	set(value):
@@ -288,13 +293,6 @@ func _add_new_plays_ui_container(beastie_scene : BeastieScene, show_play : bool,
 	plays_ui_container_dict[beastie] = new_scene
 
 
-func _check_if_have_wiped() -> bool:
-	for beastie : Beastie in beastie_scene_dict.keys():
-		if beastie.get_feeling_stack(Beastie.Feelings.WIPED) > 0:
-			return true
-	return false
-
-
 func _update_scene_show_plays(beastie : Beastie, show_plays : bool) -> void:
 	if not is_node_ready():
 		await ready
@@ -380,6 +378,23 @@ func reset_position() -> void:
 	beastie_2_position = Beastie.Position.LOWER_BACK
 
 
+#region Fuctions for Condition Checking
+
+func check_if_serving() -> bool:
+	return is_serving_team
+
+
+func check_if_have_wiped() -> bool:
+	for beastie : Beastie in beastie_scene_dict.keys():
+		if beastie.get_feeling_stack(Beastie.Feelings.WIPED) > 0:
+			return true
+	return false
+
+
+#endregion
+
+#region Save System
+
 # Behold the worse ssavd/load system ever
 # TODO make this better. Maybe using JSON?
 
@@ -430,3 +445,5 @@ func load_data_from_save(data_array : Array) -> void:
 	bench_beastie_2_beastie = data_array[15]
 	bench_beastie_2_show_play = data_array[16]
 	bench_beastie_2_h_allign = data_array[17]
+
+#endregion

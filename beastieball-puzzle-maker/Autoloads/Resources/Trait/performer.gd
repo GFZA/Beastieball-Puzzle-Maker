@@ -2,6 +2,8 @@
 extends Trait
 
 
-func get_defense_mult(_attacker : Beastie, _defender : Beastie, _attack : Attack) -> float: # Overwrite
+func get_defense_mult(_attacker : Beastie, _defender : Beastie, _attack : Attack, \
+					 _attacker_team_controller : TeamController = null,\
+					 _defender_team_controller : TeamController = null) -> float: # Overwrite
 	# TODO Trait condition : Performer
 	return 1.0

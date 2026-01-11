@@ -110,8 +110,12 @@ func _update_show_bench_damage() -> void:
 
 	damage_indicator.show_bench_damage = show_bench_damage
 	background_para.polygon = TRAIT_BG_EXTENDED if show_bench_damage else TRAIT_BG_NORMAL
+
 	self.custom_minimum_size.x = 1615.0 if show_bench_damage else 1250.0
 	self.size = self.custom_minimum_size
+
+	main_container.custom_minimum_size.x = 1615.0 if show_bench_damage else 1250.0
+	main_container.size = main_container.custom_minimum_size
 
 
 func _show_damage_indicator() -> void:
