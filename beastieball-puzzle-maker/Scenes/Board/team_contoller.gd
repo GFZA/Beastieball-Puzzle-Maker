@@ -11,6 +11,10 @@ const PLAYS_UI_CONTAINER_SCENE : PackedScene = preload("uid://dksxc3rs20kkc")
 	set(value):
 		is_serving_team = value
 		_update_field()
+@export_range(0, 9) var current_score : int = 0:
+	set(value):
+		current_score = value
+		_update_field()
 
 @export_group("Serve Slot", "beastie_1_")
 @export var beastie_1_beastie : Beastie = null :
@@ -390,6 +394,45 @@ func check_if_have_wiped() -> bool:
 			return true
 	return false
 
+
+func check_for_cheerleader_buff(beastie_to_check : Beastie) -> bool:
+	var cheerleader_count : int = 0
+	for beastie : Beastie in beastie_scene_dict.keys():
+		if beastie.is_really_at_bench:
+			continue
+		if beastie.my_trait.name.to_lower() == "cheerleader":
+			cheerleader_count += 1
+	match cheerleader_count:
+		0:
+			return false
+		1:
+			# Cheerleader beastie can't buff itself
+			if beastie_to_check.my_trait.name.to_lower() == "cheerleader":
+				return false
+			return true
+		_: # Since two cheerleader basically buff everyone, we can just cheese it like this lol
+			return true
+
+
+func check_for_friendship_buff(beastie_to_check : Beastie) -> bool:
+	var friendship_count : int = 0
+	for beastie : Beastie in beastie_scene_dict.keys():
+		if beastie.my_trait.name.to_lower() == "friendship" \
+			and beastie.my_field_position not in [Beastie.Position.BENCH_1, Beastie.Position.BENCH_2]:
+			friendship_count += 1
+
+	match friendship_count:
+		0:
+			return false
+		1:
+			# Cheerleader beastie can't buff itself
+			if beastie_to_check.my_trait.name.to_lower() == "friendship":
+				return false
+			return true
+		_: # Since two friendship basically buff everyone, we can just cheese it like this lol
+			# TECHINALLY ingame twi friendship will x3/4 twice for bench beasties even though it's impossible
+			# as you have to tag out friendship for that, so screw that lmao
+			return true
 
 #endregion
 

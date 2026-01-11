@@ -115,8 +115,8 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack, \
 	var blocked_mult : float = 2.0 / (2.0 + blocked_stack)
 	var tough_mult : float = 1.0 / 4.0 if tough and (not attack_name == "raw fury") else 1.0
 	var tender_mult : float = 2.0 if tender else 1.0
-	#var friendship_mult : float = 3.0 / 4.0 if friendship else 1.0 # TODO
-	var friendship_mult : float = 1.0
+	var friendship_mult : float = 3.0 / 4.0 if defender_team_controller and \
+									defender_team_controller.check_for_friendship_buff(defender) else 1.0
 	var all_damage_mults : float = (attacker_trait_mult / defender_trait_mult) \
 									* blocked_mult * tough_mult * tender_mult * friendship_mult
 	#endregion
@@ -138,10 +138,9 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack, \
 	#endregion
 
 	#region Calculate the damage + board states
-	#var friendship_mult : float = 3.0/4.0 if friendship else 1.0
 	var final_damage : int = max(1, ceili(((floori(final_atk) * base_pow / final_def) * 0.4) * all_damage_mults))
-	#if cheerleader: # TODO
-		#final_damage += 10
+	if attacker_team_controller and attacker_team_controller.check_for_cheerleader_buff(attacker):
+		final_damage += 10
 	final_damage = attacker.my_trait.special_cal_formula(final_damage, attacker, defender, attack)
 	if not attack_name == "true strike":
 		final_damage = defender.my_trait.special_cal_formula(final_damage, attacker, defender, attack)
