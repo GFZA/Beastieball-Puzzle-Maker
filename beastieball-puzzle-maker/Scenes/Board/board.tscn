@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://co8c0qvn7nkha"]
+[gd_scene load_steps=75 format=3 uid="uid://co8c0qvn7nkha"]
 
 [ext_resource type="Script" uid="uid://dfsngo7akxojy" path="res://Scenes/Board/board.gd" id="1_mucxt"]
 [ext_resource type="PackedScene" uid="uid://s3ot8ysh03s6" path="res://Scenes/Board/BoardOverlay/board_overlay.tscn" id="2_e8qp6"]
@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://f48ncbr7tvnf" path="res://Scenes/Board/board_manager.gd" id="3_oh3sv"]
 [ext_resource type="Script" uid="uid://bodsyqui6wlo0" path="res://Scenes/Board/team_contoller.gd" id="3_xc5ao"]
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="6_ryomi"]
-[ext_resource type="Resource" uid="uid://f7rnuwppo7e4" path="res://Autoloads/Resources/Trait/unpredictable.tres" id="8_d4qum"]
+[ext_resource type="Resource" uid="uid://bqmwc0aqx6lbm" path="res://Autoloads/Resources/Trait/performer.tres" id="8_d4qum"]
 [ext_resource type="Resource" uid="uid://7nsxd3vbne52" path="res://Autoloads/Resources/Plays/Support/exhaust.tres" id="12_wicna"]
 [ext_resource type="Resource" uid="uid://8wi04v1m7juh" path="res://Autoloads/Resources/Plays/Attack/Mind/sneak_attack.tres" id="18_ccn5k"]
 [ext_resource type="Resource" uid="uid://y3o0tssi0oeu" path="res://Autoloads/Resources/Plays/Volley/forward_pass.tres" id="20_63o3o"]
@@ -23,8 +23,8 @@
 [ext_resource type="Script" uid="uid://ehabj4qsgxpl" path="res://Autoloads/Resources/Beastie/beastie.gd" id="61_k3wce"]
 [ext_resource type="Resource" uid="uid://cgtd1m3ceieid" path="res://Autoloads/Resources/Plays/Attack/Body/vigor_beam.tres" id="65_j2trx"]
 [ext_resource type="Resource" uid="uid://dn2k7ct6koxy2" path="res://Autoloads/Resources/Plays/Attack/Spirit/contest.tres" id="66_asnme"]
-[ext_resource type="Resource" uid="uid://dssnvskme6jw6" path="res://Autoloads/Resources/Trait/cheerleader.tres" id="68_ryomi"]
-[ext_resource type="Resource" uid="uid://dwcnfgmunhjqn" path="res://Autoloads/Resources/Trait/friendship.tres" id="70_0nnwl"]
+[ext_resource type="Resource" uid="uid://dbhjpwqbhow82" path="res://Autoloads/Resources/Trait/stagecraft.tres" id="68_ryomi"]
+[ext_resource type="Resource" uid="uid://csbgkg5b3sqsv" path="res://Autoloads/Resources/Trait/groove.tres" id="70_0nnwl"]
 [ext_resource type="Resource" uid="uid://dqgatu0qsofqj" path="res://Autoloads/Resources/Plays/Defense/distraction.tres" id="72_qm24d"]
 [ext_resource type="Resource" uid="uid://dj6kdtlk5w6rq" path="res://Autoloads/Resources/Plays/Defense/high_five.tres" id="75_4i6pf"]
 [ext_resource type="Resource" uid="uid://dytuvbvg3oamq" path="res://Autoloads/Resources/Plays/Defense/shield.tres" id="77_rxjpm"]
@@ -71,9 +71,35 @@
 [ext_resource type="Texture2D" uid="uid://csq0tpjmewa57" path="res://Autoloads/Resources/Beastie/Shloom/shloom_bad.png" id="122_scoah"]
 [ext_resource type="Texture2D" uid="uid://dv0bptc31w8y" path="res://Autoloads/Resources/Beastie/Shloom/icon_shloom.png" id="123_lyw1w"]
 
-[sub_resource type="Resource" id="Resource_bip24"]
+[sub_resource type="Resource" id="Resource_ryomi"]
 script = ExtResource("61_k3wce")
-my_plays = Array[ExtResource("6_ryomi")]([ExtResource("90_oxx13"), null, null])
+my_plays = Array[ExtResource("6_ryomi")]([ExtResource("66_asnme"), null, null])
+my_trait = ExtResource("8_d4qum")
+specie_name = "Shloom"
+beastiepedia_id = 106
+bar_color = Color(0.6039216, 0.8117647, 0.4745098, 1)
+body_base_pow = 110
+spirit_base_pow = 110
+mind_base_pow = 110
+body_base_def = 90
+spirit_base_def = 90
+mind_base_def = 90
+possible_plays = Array[ExtResource("6_ryomi")]([ExtResource("83_dylqb"), ExtResource("84_a3y2b"), ExtResource("12_wicna"), ExtResource("72_qm24d"), ExtResource("85_odd11"), ExtResource("77_rxjpm"), ExtResource("58_8mnc4"), ExtResource("86_kllo7"), ExtResource("87_flmld"), ExtResource("18_ccn5k"), ExtResource("20_63o3o"), ExtResource("88_y6brx"), ExtResource("89_2ucg0"), ExtResource("90_oxx13"), ExtResource("91_myfsi"), ExtResource("92_58dbt"), ExtResource("93_jnvux"), ExtResource("94_ahm4t"), ExtResource("95_0xqax"), ExtResource("65_j2trx"), ExtResource("66_asnme"), ExtResource("96_c61tc"), ExtResource("55_vnh67"), ExtResource("97_kmux5"), ExtResource("98_6h30g"), ExtResource("99_f0mee"), ExtResource("100_87efh"), ExtResource("36_xwrid"), ExtResource("101_l0lkl"), ExtResource("102_jhiro"), ExtResource("38_jnvux"), ExtResource("103_fvuwn"), ExtResource("104_yoj1b"), ExtResource("105_708pj"), ExtResource("106_w4jxi"), ExtResource("107_sxyyk"), ExtResource("108_lnk60"), ExtResource("109_gmwog"), ExtResource("46_87efh"), ExtResource("110_av3dy"), ExtResource("111_k0irc"), ExtResource("49_fvuwn"), ExtResource("50_yoj1b"), ExtResource("52_jasmf"), ExtResource("112_hsfwg"), ExtResource("56_miydl"), ExtResource("113_15n30"), ExtResource("75_4i6pf"), ExtResource("114_ct0vk"), ExtResource("115_dxixo"), ExtResource("116_i26js")])
+possible_traits = Array[ExtResource("60_xbn8f")]([ExtResource("82_k3wce")])
+sprites = Dictionary[int, Texture2D]({
+0: ExtResource("117_vvcpk"),
+1: ExtResource("118_b4uhi"),
+2: ExtResource("119_6kou3"),
+3: ExtResource("120_nt6ko"),
+4: ExtResource("121_q05rk"),
+5: ExtResource("122_scoah"),
+6: ExtResource("123_lyw1w")
+})
+metadata/_custom_type_script = "uid://ehabj4qsgxpl"
+
+[sub_resource type="Resource" id="Resource_d4qum"]
+script = ExtResource("61_k3wce")
+my_plays = Array[ExtResource("6_ryomi")]([ExtResource("18_ccn5k"), null, null])
 my_trait = ExtResource("68_ryomi")
 specie_name = "Shloom"
 beastiepedia_id = 106
@@ -97,111 +123,7 @@ sprites = Dictionary[int, Texture2D]({
 })
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"
 
-[sub_resource type="Resource" id="Resource_bsc56"]
-script = ExtResource("61_k3wce")
-my_plays = Array[ExtResource("6_ryomi")]([ExtResource("90_oxx13"), null, null])
-my_trait = ExtResource("8_d4qum")
-specie_name = "Shloom"
-beastiepedia_id = 106
-bar_color = Color(0.6039216, 0.8117647, 0.4745098, 1)
-body_base_pow = 110
-spirit_base_pow = 110
-mind_base_pow = 110
-body_base_def = 90
-spirit_base_def = 90
-mind_base_def = 90
-possible_plays = Array[ExtResource("6_ryomi")]([ExtResource("83_dylqb"), ExtResource("84_a3y2b"), ExtResource("12_wicna"), ExtResource("72_qm24d"), ExtResource("85_odd11"), ExtResource("77_rxjpm"), ExtResource("58_8mnc4"), ExtResource("86_kllo7"), ExtResource("87_flmld"), ExtResource("18_ccn5k"), ExtResource("20_63o3o"), ExtResource("88_y6brx"), ExtResource("89_2ucg0"), ExtResource("90_oxx13"), ExtResource("91_myfsi"), ExtResource("92_58dbt"), ExtResource("93_jnvux"), ExtResource("94_ahm4t"), ExtResource("95_0xqax"), ExtResource("65_j2trx"), ExtResource("66_asnme"), ExtResource("96_c61tc"), ExtResource("55_vnh67"), ExtResource("97_kmux5"), ExtResource("98_6h30g"), ExtResource("99_f0mee"), ExtResource("100_87efh"), ExtResource("36_xwrid"), ExtResource("101_l0lkl"), ExtResource("102_jhiro"), ExtResource("38_jnvux"), ExtResource("103_fvuwn"), ExtResource("104_yoj1b"), ExtResource("105_708pj"), ExtResource("106_w4jxi"), ExtResource("107_sxyyk"), ExtResource("108_lnk60"), ExtResource("109_gmwog"), ExtResource("46_87efh"), ExtResource("110_av3dy"), ExtResource("111_k0irc"), ExtResource("49_fvuwn"), ExtResource("50_yoj1b"), ExtResource("52_jasmf"), ExtResource("112_hsfwg"), ExtResource("56_miydl"), ExtResource("113_15n30"), ExtResource("75_4i6pf"), ExtResource("114_ct0vk"), ExtResource("115_dxixo"), ExtResource("116_i26js")])
-possible_traits = Array[ExtResource("60_xbn8f")]([ExtResource("82_k3wce")])
-sprites = Dictionary[int, Texture2D]({
-0: ExtResource("117_vvcpk"),
-1: ExtResource("118_b4uhi"),
-2: ExtResource("119_6kou3"),
-3: ExtResource("120_nt6ko"),
-4: ExtResource("121_q05rk"),
-5: ExtResource("122_scoah"),
-6: ExtResource("123_lyw1w")
-})
-metadata/_custom_type_script = "uid://ehabj4qsgxpl"
-
-[sub_resource type="Resource" id="Resource_fvrd6"]
-script = ExtResource("61_k3wce")
-my_plays = Array[ExtResource("6_ryomi")]([ExtResource("90_oxx13"), null, null])
-my_trait = ExtResource("82_k3wce")
-specie_name = "Shloom"
-beastiepedia_id = 106
-bar_color = Color(0.6039216, 0.8117647, 0.4745098, 1)
-body_base_pow = 110
-spirit_base_pow = 110
-mind_base_pow = 110
-body_base_def = 90
-spirit_base_def = 90
-mind_base_def = 90
-possible_plays = Array[ExtResource("6_ryomi")]([ExtResource("83_dylqb"), ExtResource("84_a3y2b"), ExtResource("12_wicna"), ExtResource("72_qm24d"), ExtResource("85_odd11"), ExtResource("77_rxjpm"), ExtResource("58_8mnc4"), ExtResource("86_kllo7"), ExtResource("87_flmld"), ExtResource("18_ccn5k"), ExtResource("20_63o3o"), ExtResource("88_y6brx"), ExtResource("89_2ucg0"), ExtResource("90_oxx13"), ExtResource("91_myfsi"), ExtResource("92_58dbt"), ExtResource("93_jnvux"), ExtResource("94_ahm4t"), ExtResource("95_0xqax"), ExtResource("65_j2trx"), ExtResource("66_asnme"), ExtResource("96_c61tc"), ExtResource("55_vnh67"), ExtResource("97_kmux5"), ExtResource("98_6h30g"), ExtResource("99_f0mee"), ExtResource("100_87efh"), ExtResource("36_xwrid"), ExtResource("101_l0lkl"), ExtResource("102_jhiro"), ExtResource("38_jnvux"), ExtResource("103_fvuwn"), ExtResource("104_yoj1b"), ExtResource("105_708pj"), ExtResource("106_w4jxi"), ExtResource("107_sxyyk"), ExtResource("108_lnk60"), ExtResource("109_gmwog"), ExtResource("46_87efh"), ExtResource("110_av3dy"), ExtResource("111_k0irc"), ExtResource("49_fvuwn"), ExtResource("50_yoj1b"), ExtResource("52_jasmf"), ExtResource("112_hsfwg"), ExtResource("56_miydl"), ExtResource("113_15n30"), ExtResource("75_4i6pf"), ExtResource("114_ct0vk"), ExtResource("115_dxixo"), ExtResource("116_i26js")])
-possible_traits = Array[ExtResource("60_xbn8f")]([ExtResource("82_k3wce")])
-sprites = Dictionary[int, Texture2D]({
-0: ExtResource("117_vvcpk"),
-1: ExtResource("118_b4uhi"),
-2: ExtResource("119_6kou3"),
-3: ExtResource("120_nt6ko"),
-4: ExtResource("121_q05rk"),
-5: ExtResource("122_scoah"),
-6: ExtResource("123_lyw1w")
-})
-metadata/_custom_type_script = "uid://ehabj4qsgxpl"
-
-[sub_resource type="Resource" id="Resource_wicna"]
-script = ExtResource("61_k3wce")
-my_plays = Array[ExtResource("6_ryomi")]([ExtResource("90_oxx13"), null, null])
-my_trait = ExtResource("82_k3wce")
-specie_name = "Shloom"
-beastiepedia_id = 106
-bar_color = Color(0.6039216, 0.8117647, 0.4745098, 1)
-body_base_pow = 110
-spirit_base_pow = 110
-mind_base_pow = 110
-body_base_def = 90
-spirit_base_def = 90
-mind_base_def = 90
-possible_plays = Array[ExtResource("6_ryomi")]([ExtResource("83_dylqb"), ExtResource("84_a3y2b"), ExtResource("12_wicna"), ExtResource("72_qm24d"), ExtResource("85_odd11"), ExtResource("77_rxjpm"), ExtResource("58_8mnc4"), ExtResource("86_kllo7"), ExtResource("87_flmld"), ExtResource("18_ccn5k"), ExtResource("20_63o3o"), ExtResource("88_y6brx"), ExtResource("89_2ucg0"), ExtResource("90_oxx13"), ExtResource("91_myfsi"), ExtResource("92_58dbt"), ExtResource("93_jnvux"), ExtResource("94_ahm4t"), ExtResource("95_0xqax"), ExtResource("65_j2trx"), ExtResource("66_asnme"), ExtResource("96_c61tc"), ExtResource("55_vnh67"), ExtResource("97_kmux5"), ExtResource("98_6h30g"), ExtResource("99_f0mee"), ExtResource("100_87efh"), ExtResource("36_xwrid"), ExtResource("101_l0lkl"), ExtResource("102_jhiro"), ExtResource("38_jnvux"), ExtResource("103_fvuwn"), ExtResource("104_yoj1b"), ExtResource("105_708pj"), ExtResource("106_w4jxi"), ExtResource("107_sxyyk"), ExtResource("108_lnk60"), ExtResource("109_gmwog"), ExtResource("46_87efh"), ExtResource("110_av3dy"), ExtResource("111_k0irc"), ExtResource("49_fvuwn"), ExtResource("50_yoj1b"), ExtResource("52_jasmf"), ExtResource("112_hsfwg"), ExtResource("56_miydl"), ExtResource("113_15n30"), ExtResource("75_4i6pf"), ExtResource("114_ct0vk"), ExtResource("115_dxixo"), ExtResource("116_i26js")])
-possible_traits = Array[ExtResource("60_xbn8f")]([ExtResource("82_k3wce")])
-sprites = Dictionary[int, Texture2D]({
-0: ExtResource("117_vvcpk"),
-1: ExtResource("118_b4uhi"),
-2: ExtResource("119_6kou3"),
-3: ExtResource("120_nt6ko"),
-4: ExtResource("121_q05rk"),
-5: ExtResource("122_scoah"),
-6: ExtResource("123_lyw1w")
-})
-metadata/_custom_type_script = "uid://ehabj4qsgxpl"
-
-[sub_resource type="Resource" id="Resource_rvpvo"]
-script = ExtResource("61_k3wce")
-my_plays = Array[ExtResource("6_ryomi")]([ExtResource("90_oxx13"), null, null])
-my_trait = ExtResource("8_d4qum")
-specie_name = "Shloom"
-beastiepedia_id = 106
-bar_color = Color(0.6039216, 0.8117647, 0.4745098, 1)
-body_base_pow = 110
-spirit_base_pow = 110
-mind_base_pow = 110
-body_base_def = 90
-spirit_base_def = 90
-mind_base_def = 90
-possible_plays = Array[ExtResource("6_ryomi")]([ExtResource("83_dylqb"), ExtResource("84_a3y2b"), ExtResource("12_wicna"), ExtResource("72_qm24d"), ExtResource("85_odd11"), ExtResource("77_rxjpm"), ExtResource("58_8mnc4"), ExtResource("86_kllo7"), ExtResource("87_flmld"), ExtResource("18_ccn5k"), ExtResource("20_63o3o"), ExtResource("88_y6brx"), ExtResource("89_2ucg0"), ExtResource("90_oxx13"), ExtResource("91_myfsi"), ExtResource("92_58dbt"), ExtResource("93_jnvux"), ExtResource("94_ahm4t"), ExtResource("95_0xqax"), ExtResource("65_j2trx"), ExtResource("66_asnme"), ExtResource("96_c61tc"), ExtResource("55_vnh67"), ExtResource("97_kmux5"), ExtResource("98_6h30g"), ExtResource("99_f0mee"), ExtResource("100_87efh"), ExtResource("36_xwrid"), ExtResource("101_l0lkl"), ExtResource("102_jhiro"), ExtResource("38_jnvux"), ExtResource("103_fvuwn"), ExtResource("104_yoj1b"), ExtResource("105_708pj"), ExtResource("106_w4jxi"), ExtResource("107_sxyyk"), ExtResource("108_lnk60"), ExtResource("109_gmwog"), ExtResource("46_87efh"), ExtResource("110_av3dy"), ExtResource("111_k0irc"), ExtResource("49_fvuwn"), ExtResource("50_yoj1b"), ExtResource("52_jasmf"), ExtResource("112_hsfwg"), ExtResource("56_miydl"), ExtResource("113_15n30"), ExtResource("75_4i6pf"), ExtResource("114_ct0vk"), ExtResource("115_dxixo"), ExtResource("116_i26js")])
-possible_traits = Array[ExtResource("60_xbn8f")]([ExtResource("82_k3wce")])
-sprites = Dictionary[int, Texture2D]({
-0: ExtResource("117_vvcpk"),
-1: ExtResource("118_b4uhi"),
-2: ExtResource("119_6kou3"),
-3: ExtResource("120_nt6ko"),
-4: ExtResource("121_q05rk"),
-5: ExtResource("122_scoah"),
-6: ExtResource("123_lyw1w")
-})
-metadata/_custom_type_script = "uid://ehabj4qsgxpl"
-
-[sub_resource type="Resource" id="Resource_ehjpq"]
+[sub_resource type="Resource" id="Resource_0nnwl"]
 script = ExtResource("61_k3wce")
 my_plays = Array[ExtResource("6_ryomi")]([ExtResource("90_oxx13"), null, null])
 my_trait = ExtResource("70_0nnwl")
@@ -227,35 +149,9 @@ sprites = Dictionary[int, Texture2D]({
 })
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"
 
-[sub_resource type="Resource" id="Resource_b6cn2"]
+[sub_resource type="Resource" id="Resource_bip24"]
 script = ExtResource("61_k3wce")
-my_plays = Array[ExtResource("6_ryomi")]([ExtResource("90_oxx13"), null, null])
-my_trait = ExtResource("82_k3wce")
-specie_name = "Shloom"
-beastiepedia_id = 106
-bar_color = Color(0.6039216, 0.8117647, 0.4745098, 1)
-body_base_pow = 110
-spirit_base_pow = 110
-mind_base_pow = 110
-body_base_def = 90
-spirit_base_def = 90
-mind_base_def = 90
-possible_plays = Array[ExtResource("6_ryomi")]([ExtResource("83_dylqb"), ExtResource("84_a3y2b"), ExtResource("12_wicna"), ExtResource("72_qm24d"), ExtResource("85_odd11"), ExtResource("77_rxjpm"), ExtResource("58_8mnc4"), ExtResource("86_kllo7"), ExtResource("87_flmld"), ExtResource("18_ccn5k"), ExtResource("20_63o3o"), ExtResource("88_y6brx"), ExtResource("89_2ucg0"), ExtResource("90_oxx13"), ExtResource("91_myfsi"), ExtResource("92_58dbt"), ExtResource("93_jnvux"), ExtResource("94_ahm4t"), ExtResource("95_0xqax"), ExtResource("65_j2trx"), ExtResource("66_asnme"), ExtResource("96_c61tc"), ExtResource("55_vnh67"), ExtResource("97_kmux5"), ExtResource("98_6h30g"), ExtResource("99_f0mee"), ExtResource("100_87efh"), ExtResource("36_xwrid"), ExtResource("101_l0lkl"), ExtResource("102_jhiro"), ExtResource("38_jnvux"), ExtResource("103_fvuwn"), ExtResource("104_yoj1b"), ExtResource("105_708pj"), ExtResource("106_w4jxi"), ExtResource("107_sxyyk"), ExtResource("108_lnk60"), ExtResource("109_gmwog"), ExtResource("46_87efh"), ExtResource("110_av3dy"), ExtResource("111_k0irc"), ExtResource("49_fvuwn"), ExtResource("50_yoj1b"), ExtResource("52_jasmf"), ExtResource("112_hsfwg"), ExtResource("56_miydl"), ExtResource("113_15n30"), ExtResource("75_4i6pf"), ExtResource("114_ct0vk"), ExtResource("115_dxixo"), ExtResource("116_i26js")])
-possible_traits = Array[ExtResource("60_xbn8f")]([ExtResource("82_k3wce")])
-sprites = Dictionary[int, Texture2D]({
-0: ExtResource("117_vvcpk"),
-1: ExtResource("118_b4uhi"),
-2: ExtResource("119_6kou3"),
-3: ExtResource("120_nt6ko"),
-4: ExtResource("121_q05rk"),
-5: ExtResource("122_scoah"),
-6: ExtResource("123_lyw1w")
-})
-metadata/_custom_type_script = "uid://ehabj4qsgxpl"
-
-[sub_resource type="Resource" id="Resource_187q2"]
-script = ExtResource("61_k3wce")
-my_plays = Array[ExtResource("6_ryomi")]([ExtResource("90_oxx13"), null, null])
+my_plays = Array[ExtResource("6_ryomi")]([null, null, null])
 my_trait = ExtResource("82_k3wce")
 specie_name = "Shloom"
 beastiepedia_id = 106
@@ -347,12 +243,11 @@ metadata/_edit_lock_ = true
 unique_name_in_owner = true
 position = Vector2(101, 483)
 script = ExtResource("3_xc5ao")
-beastie_1_beastie = SubResource("Resource_bip24")
-beastie_1_show_bench_damage = true
-beastie_2_beastie = SubResource("Resource_bsc56")
-beastie_2_show_bench_damage = true
-bench_beastie_1_beastie = SubResource("Resource_fvrd6")
-bench_beastie_2_beastie = SubResource("Resource_wicna")
+my_field_effects = Dictionary[int, int]({
+0: 1
+})
+beastie_1_beastie = SubResource("Resource_ryomi")
+beastie_2_beastie = SubResource("Resource_d4qum")
 metadata/_edit_lock_ = true
 
 [node name="LeftBeastieSceneAnchors" type="Node2D" parent="SubViewportContainer/SubViewport/LeftTeamController"]
@@ -447,12 +342,11 @@ metadata/_edit_lock_ = true
 unique_name_in_owner = true
 position = Vector2(101, 483)
 script = ExtResource("3_xc5ao")
-beastie_1_beastie = SubResource("Resource_rvpvo")
-beastie_1_show_bench_damage = true
-beastie_2_beastie = SubResource("Resource_ehjpq")
-beastie_2_show_bench_damage = true
-bench_beastie_1_beastie = SubResource("Resource_b6cn2")
-bench_beastie_2_beastie = SubResource("Resource_187q2")
+my_field_effects = Dictionary[int, int]({
+2: 1
+})
+beastie_1_beastie = SubResource("Resource_0nnwl")
+beastie_2_beastie = SubResource("Resource_bip24")
 side = 1
 metadata/_edit_lock_ = true
 

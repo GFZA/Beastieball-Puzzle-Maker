@@ -11,9 +11,16 @@ const PLAYS_UI_CONTAINER_SCENE : PackedScene = preload("uid://dksxc3rs20kkc")
 	set(value):
 		is_serving_team = value
 		_update_field()
+
 @export_range(0, 9) var current_score : int = 0:
 	set(value):
 		current_score = value
+		_update_field()
+
+@export var my_field_effects : Dictionary[FieldEffect.Type, int] = {} :
+	set(value):
+		value.sort()
+		my_field_effects = value
 		_update_field()
 
 @export_group("Serve Slot", "beastie_1_")
@@ -433,6 +440,13 @@ func check_for_friendship_buff(beastie_to_check : Beastie) -> bool:
 			# TECHINALLY ingame twi friendship will x3/4 twice for bench beasties even though it's impossible
 			# as you have to tag out friendship for that, so screw that lmao
 			return true
+
+
+func get_field_effect_stack(field_effect : FieldEffect.Type) -> int:
+	if not my_field_effects.has(field_effect):
+		return 0
+	return my_field_effects.get(field_effect)
+
 
 #endregion
 

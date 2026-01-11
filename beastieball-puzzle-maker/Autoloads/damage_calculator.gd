@@ -2,12 +2,6 @@
 extends Node
 
 
-#@export_group("Board States")  ADD THIS LATERRRRRRRRRRR
-#@export var cheerleader : bool = false
-#@export var friendship : bool = false
-#@export var rally : bool = false
-
-
 func get_damage(attacker : Beastie, defender : Beastie, attack : Attack, \
 				attacker_team_controller : TeamController = null, \
 				defender_team_controller : TeamController = null) -> int:
@@ -15,17 +9,26 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack, \
 	var attack_name : String = attack.name.to_lower()
 
 	#region Special attacks (early returns)
-
 	if attack_name == "grinder":
 		return max(1, ceili(float(defender.health) / 2.0))
 
 	if attack_name == "precision strike":
 		return 30
 
+	if defender_team_controller:
+		if (defender_team_controller.get_field_effect_stack(FieldEffect.Type.BARRIER_UPPER) > 0):
+			if defender.my_field_position == Beastie.Position.UPPER_BACK:
+				return 0
+			if defender.my_field_position == Beastie.Position.UPPER_FRONT:
+				return Global.BREAK_TEXT_DAMAGE # BREAK
+		if (defender_team_controller.get_field_effect_stack(FieldEffect.Type.BARRIER_LOWER) > 0):
+			if defender.my_field_position == Beastie.Position.LOWER_BACK:
+				return 0
+			if defender.my_field_position == Beastie.Position.LOWER_FRONT:
+				return Global.BREAK_TEXT_DAMAGE # BREAK
 	#endregion
 
 	#region Set up vars
-
 	var base_pow : int = attack.get_attack_pow(attacker, defender, attacker_team_controller, defender_team_controller)
 	var type : Plays.Type = attack.type
 	assert(type == Plays.Type.ATTACK_BODY or type == Plays.Type.ATTACK_SPIRIT or type == Plays.Type.ATTACK_MIND,
@@ -115,10 +118,14 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack, \
 	var blocked_mult : float = 2.0 / (2.0 + blocked_stack)
 	var tough_mult : float = 1.0 / 4.0 if tough and (not attack_name == "raw fury") else 1.0
 	var tender_mult : float = 2.0 if tender else 1.0
+
+	var rally_mind_mult : float = 3.0 / 4.0 if stats_type_attack == int(Plays.Type.ATTACK_MIND) and attacker_team_controller and \
+							(attacker_team_controller.get_field_effect_stack(FieldEffect.Type.RALLY) > 0) else 1.0
 	var friendship_mult : float = 3.0 / 4.0 if defender_team_controller and \
-									defender_team_controller.check_for_friendship_buff(defender) else 1.0
-	var all_damage_mults : float = (attacker_trait_mult / defender_trait_mult) \
-									* blocked_mult * tough_mult * tender_mult * friendship_mult
+							defender_team_controller.check_for_friendship_buff(defender) else 1.0
+
+	var all_damage_mults : float = (attacker_trait_mult / defender_trait_mult) * blocked_mult \
+									* tough_mult * tender_mult * rally_mind_mult * friendship_mult
 	#endregion
 
 	#region Get final stats for calculation
@@ -139,11 +146,19 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack, \
 
 	#region Calculate the damage + board states
 	var final_damage : int = max(1, ceili(((floori(final_atk) * base_pow / final_def) * 0.4) * all_damage_mults))
-	if attacker_team_controller and attacker_team_controller.check_for_cheerleader_buff(attacker):
-		final_damage += 10
-	final_damage = attacker.my_trait.special_cal_formula(final_damage, attacker, defender, attack)
+
+	if attacker_team_controller:
+		if attacker_team_controller.check_for_cheerleader_buff(attacker):
+			final_damage += 10
+		if stats_type_attack == int(Plays.Type.ATTACK_SPIRIT) and \
+			(attacker_team_controller.get_field_effect_stack(FieldEffect.Type.RALLY) > 0):
+			final_damage += 15
+
+	final_damage = attacker.my_trait.special_cal_formula(final_damage, attacker, defender, attack, attacker_team_controller, defender_team_controller)
+
 	if not attack_name == "true strike":
-		final_damage = defender.my_trait.special_cal_formula(final_damage, attacker, defender, attack)
+		final_damage = defender.my_trait.special_cal_formula(final_damage, attacker, defender, attack, attacker_team_controller, defender_team_controller)
+
 	#endregion
 
 	return final_damage

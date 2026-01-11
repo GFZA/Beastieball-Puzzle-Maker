@@ -2,10 +2,13 @@
 class_name DamageSplash
 extends MarginContainer
 
+const DEFAULT_FONT_SIZE : int = 72
+const BREAK_TEXT_FONT_SIZE : int = 60
 
 @export_exp_easing() var amount : int = 0 :
 	set(value):
-		value = clamp(value, 0, INF)
+		if value != Global.BREAK_TEXT_DAMAGE:
+			value = clamp(value, 0, INF)
 		amount = value
 		_update_number_label()
 
@@ -28,7 +31,14 @@ func _ready() -> void:
 func _update_number_label() -> void:
 	if not is_node_ready():
 		await ready
+
+	if amount == Global.BREAK_TEXT_DAMAGE:
+		number_label.text = "Break!"
+		my_label_setting.font_size = BREAK_TEXT_FONT_SIZE
+		return
+
 	number_label.text = str(amount)
+	my_label_setting.font_size = DEFAULT_FONT_SIZE
 
 
 func _update_color() -> void:

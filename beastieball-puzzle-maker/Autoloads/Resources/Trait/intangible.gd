@@ -2,7 +2,9 @@
 extends Trait
 
 
-func special_cal_formula(damage : int, attacker : Beastie, defender : Beastie, _attack : Attack) -> int: # Overwrite
+func special_cal_formula(damage : int, attacker : Beastie, defender : Beastie, _attack : Attack, \
+					 _attacker_team_controller : TeamController = null, \
+					 _defender_team_controller : TeamController = null) -> int: # Overwrite
 	# Can't use attack var as it could be from trait danced intangible beastie who have body attack
 	var defender_trait : Trait = defender.my_trait
 	var is_intangible : bool = (defender_trait.name.to_lower() == "intangible")
