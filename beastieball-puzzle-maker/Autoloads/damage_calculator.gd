@@ -6,7 +6,15 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack, \
 				attacker_team_controller : TeamController = null, \
 				defender_team_controller : TeamController = null) -> int:
 
+	#region Set up things to cal
 	var attack_name : String = attack.name.to_lower()
+
+	if attacker.my_trait.name.to_lower() == "musclebrain":
+		var new_attack : Attack = attack.duplicate()
+		new_attack.type = Plays.Type.ATTACK_BODY
+		new_attack.base_pow = ceili(attack.base_pow * 1.2)
+		attack = new_attack
+	#endregion
 
 	#region Special attacks (early returns)
 	if attack_name == "grinder":
@@ -28,7 +36,7 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack, \
 				return Global.BREAK_TEXT_DAMAGE # BREAK
 	#endregion
 
-	#region Set up vars
+	#region Set up vars for calculation
 	var base_pow : int = attack.get_attack_pow(attacker, defender, attacker_team_controller, defender_team_controller)
 	var type : Plays.Type = attack.type
 	assert(type == Plays.Type.ATTACK_BODY or type == Plays.Type.ATTACK_SPIRIT or type == Plays.Type.ATTACK_MIND,
@@ -53,7 +61,8 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack, \
 
 	var attacker_at_net : bool = attacker.check_if_net()
 	var attack_boosts : int = attacker.get_boosts(stats_type_attack)
-	var jazzed : bool = (attacker.get_feeling_stack(Beastie.Feelings.JAZZED) > 0) or (attack_name == "thriller") # TODO cancel thriller effect when dread here
+	var jazzed : bool = (attacker.get_feeling_stack(Beastie.Feelings.JAZZED) > 0) or \
+				((attack_name == "thriller") != (attacker_team_controller.get_field_effect_stack(FieldEffect.Type.DREAD) > 0))
 	var attacker_weepy : bool = (attacker.get_feeling_stack(Beastie.Feelings.WEEPY) > 0)
 
 	var defender_at_net : bool = defender.check_if_net()

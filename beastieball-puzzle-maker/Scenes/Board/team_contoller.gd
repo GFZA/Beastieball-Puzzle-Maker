@@ -276,6 +276,7 @@ func _add_new_plays_ui_container(beastie_scene : BeastieScene, show_play : bool,
 	var new_scene : PlaysUIContainer = PLAYS_UI_CONTAINER_SCENE.instantiate()
 	new_scene.beastie = beastie
 	new_scene.show_bench_damage = show_bench_damage
+	new_scene.team_controller = self
 
 	match pos:
 		Beastie.Position.BENCH_1, Beastie.Position.BENCH_2:
@@ -440,6 +441,29 @@ func check_for_friendship_buff(beastie_to_check : Beastie) -> bool:
 			# TECHINALLY ingame twi friendship will x3/4 twice for bench beasties even though it's impossible
 			# as you have to tag out friendship for that, so screw that lmao
 			return true
+
+
+func get_fielded_ally(beastie_to_check : Beastie) -> Beastie:
+	for beastie : Beastie in beastie_scene_dict.keys():
+		if beastie.is_really_at_bench or beastie == beastie_to_check:
+			continue
+		return beastie
+	return null
+
+
+func get_mimicked_attack_from_ally(mimic_user : Beastie) -> Attack:
+	var ally : Beastie = get_fielded_ally(mimic_user)
+	if not ally:
+		return null
+	var ally_first_slot : Plays = ally.my_plays[0]
+	if ally_first_slot and ally_first_slot.type in [Plays.Type.ATTACK_BODY, Plays.Type.ATTACK_SPIRIT, Plays.Type.ATTACK_MIND]:
+		var new_attack : Attack = ally_first_slot.duplicate(true)
+		new_attack.base_pow = ceili(ally_first_slot.base_pow * 1.2)
+		new_attack.type = ally_first_slot.type
+		new_attack.use_condition = ally_first_slot.use_condition
+		new_attack.target = ally_first_slot.target
+		return new_attack
+	return null
 
 
 func get_field_effect_stack(field_effect : FieldEffect.Type) -> int:

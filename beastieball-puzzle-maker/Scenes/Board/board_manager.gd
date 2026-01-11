@@ -89,6 +89,11 @@ func get_damage_dict_array(attacker : Beastie, attack : Attack) -> Array[Diction
 			result[i] = result_dict
 			continue
 
+		if attack.name.to_lower() == "mimic":
+			var mimicked_attack : Attack = attacker_team_controller.get_mimicked_attack_from_ally(attacker)
+			if mimicked_attack:
+				attack = mimicked_attack
+
 		for pos : Beastie.Position in result_dict:
 			if (attack.target == Attack.Target.FRONT_ONLY and (pos in [Beastie.Position.UPPER_BACK, Beastie.Position.LOWER_BACK])) \
 			or (attack.target == Attack.Target.BACK_ONLY and (pos in [Beastie.Position.UPPER_FRONT, Beastie.Position.LOWER_FRONT])):

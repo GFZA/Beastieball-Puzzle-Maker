@@ -51,6 +51,7 @@ const TRAIT_BG_EXTENDED : PackedVector2Array = [
 		show_bench_damage = value
 		_update_show_bench_damage()
 
+var team_controller : TeamController = null
 
 @onready var main_container: VBoxContainer = %MainContainer
 @onready var main_upper_container: HBoxContainer = %MainUpperContainer
@@ -79,6 +80,29 @@ func update_plays_ui(new_list : Array[Plays]) -> void:
 	if new_list[0] and new_list[0].type in [Plays.Type.ATTACK_BODY, Plays.Type.ATTACK_SPIRIT, Plays.Type.ATTACK_MIND]:
 		_show_damage_indicator()
 		damage_indicator.attack = new_list[0]
+
+		if beastie.my_trait.name.to_lower() == "musclebrain": # Make it shows liek body attack
+			var new_attack = new_list[0].duplicate()
+			new_attack.type = Attack.Type.ATTACK_BODY
+			damage_indicator.attack = new_attack
+
+		# Mimicked attack overwriting
+		if new_list[0].name.to_lower() == "mimic":
+			print("MIMIC DETECT")
+			if not team_controller:
+				damage_indicator.attack = new_list[0]
+			else:
+				var mimicked_attack : Attack = team_controller.get_mimicked_attack_from_ally(beastie)
+				if mimicked_attack:
+					print("GOT mimicked attack!")
+					damage_indicator.attack = mimicked_attack
+
+		# Musclebrain body transfromation overwrite everything
+		if beastie.my_trait.name.to_lower() == "musclebrain": # Make it shows liek body attack
+			var new_attack = new_list[0].duplicate()
+			new_attack.type = Attack.Type.ATTACK_BODY
+			damage_indicator.attack = new_attack
+
 		# damage_dict will be updated by BoardManager in the Board scene
 	else:
 		_hide_damage_indicator()
