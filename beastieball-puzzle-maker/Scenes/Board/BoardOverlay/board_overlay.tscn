@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://s3ot8ysh03s6"]
+[gd_scene load_steps=16 format=3 uid="uid://s3ot8ysh03s6"]
 
 [ext_resource type="Script" uid="uid://b8da0ls7ka2na" path="res://Scenes/Board/BoardOverlay/board_overlay.gd" id="1_8b3w3"]
 [ext_resource type="FontFile" uid="uid://ds0qrrbdvqa6n" path="res://Autoloads/Resources/Fonts/SF Sports Night.ttf" id="1_yxvh7"]
@@ -37,11 +37,6 @@ font_color = Color(0.9019608, 0.8352941, 0.80784315, 1)
 font = ExtResource("1_yxvh7")
 font_size = 86
 font_color = Color(0.23529412, 0.20392157, 0.29803923, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_1fwbd"]
-font = ExtResource("5_2ewg5")
-font_size = 48
-font_color = Color(0.9843137, 0.72156864, 0.40392157, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_2ewg5"]
 font = ExtResource("5_2ewg5")
@@ -225,23 +220,6 @@ polygon = PackedVector2Array(0, 0, 500, 200, 0, 200)
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="BottomLabel" type="Label" parent="."]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -338.0
-offset_top = -71.0
-offset_right = 338.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "Puzzle solution: after Outro"
-label_settings = SubResource("LabelSettings_1fwbd")
-horizontal_alignment = 1
-
 [node name="MiscTurnOverlay" type="TextureRect" parent="."]
 unique_name_in_owner = true
 layout_mode = 1
@@ -272,6 +250,7 @@ polygon = PackedVector2Array(163, 77, 203, 77, 182, 98)
 
 [node name="OpponentServeLabel" type="Label" parent="."]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 offset_left = 1602.0
 offset_top = 282.0
@@ -308,19 +287,3 @@ text = "Edit Overlay"
 label_settings = SubResource("LabelSettings_1sg4p")
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="OverlayEditButtonLower" type="Button" parent="."]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(2700, 200)
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -200.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("3_1fwbd")
-theme_override_colors/font_focus_color = Color(1, 1, 1, 0)
-theme_override_colors/font_pressed_color = Color(1, 1, 1, 0)
-theme_override_font_sizes/font_size = 128

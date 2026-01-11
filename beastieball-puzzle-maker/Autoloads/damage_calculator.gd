@@ -23,14 +23,19 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack, \
 	if attack_name == "precision strike":
 		return 30
 
-	if defender_team_controller:
+	# Dealing with Barrier
+	if defender_team_controller and not defender.is_really_at_bench:
 		if (defender_team_controller.get_field_effect_stack(FieldEffect.Type.BARRIER_UPPER) > 0):
-			if defender.my_field_position == Beastie.Position.UPPER_BACK:
+			if defender.my_field_position == Beastie.Position.UPPER_BACK and attack.target == Attack.Target.STRAIGHT:
+				return 0
+			if defender.my_field_position == Beastie.Position.LOWER_FRONT and attack.target in [Attack.Target.SIDEWAYS, Attack.Target.FRONT_ONLY]:
 				return 0
 			if defender.my_field_position == Beastie.Position.UPPER_FRONT:
 				return Global.BREAK_TEXT_DAMAGE # BREAK
 		if (defender_team_controller.get_field_effect_stack(FieldEffect.Type.BARRIER_LOWER) > 0):
-			if defender.my_field_position == Beastie.Position.LOWER_BACK:
+			if defender.my_field_position == Beastie.Position.LOWER_BACK and attack.target == Attack.Target.STRAIGHT:
+				return 0
+			if defender.my_field_position == Beastie.Position.UPPER_FRONT and attack.target in [Attack.Target.SIDEWAYS, Attack.Target.FRONT_ONLY]:
 				return 0
 			if defender.my_field_position == Beastie.Position.LOWER_FRONT:
 				return Global.BREAK_TEXT_DAMAGE # BREAK

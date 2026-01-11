@@ -23,7 +23,6 @@ func _ready() -> void:
 	main_ui.overlay_menu.defense_against_serve_changed.connect(board.board_overlay.on_defense_against_serve_changed)
 	main_ui.overlay_menu.title_text_changed.connect(board.board_overlay.on_title_text_changed)
 	main_ui.overlay_menu.right_text_changed.connect(board.board_overlay.on_right_text_changed)
-	main_ui.overlay_menu.bottom_text_changed.connect(board.board_overlay.on_bottom_text_changed)
 	main_ui.overlay_menu.logo_changed.connect(board.board_overlay.on_logo_changed)
 
 	# Lower buttons Signals

@@ -83,13 +83,6 @@ const DEFENSE_END_TURN_OVERLAY : Texture2D = preload("uid://cr65n1bm44s8v")
 			await ready
 		misc_label.text = misc_text
 
-@export_multiline var bottom_text : String = "Puzzle solution: after Outro" :
-	set(value):
-		bottom_text = value
-		if not is_node_ready():
-			await ready
-		bottom_label.text = bottom_text
-
 var opponent_serve : bool = false :
 	set(value):
 		opponent_serve = value
@@ -105,12 +98,10 @@ var opponent_serve : bool = false :
 @onready var right_max_score_label: Label = %RightMaxScoreLabel
 @onready var misc_label: Label = %MiscLabel
 @onready var logo_texture_rec: TextureRect = %LogoTextureRec
-@onready var bottom_label: Label = %BottomLabel
 @onready var misc_turn_overlay: TextureRect = %MiscTurnOverlay
 
 @onready var opponent_serve_label: Label = %OpponentServeLabel
 @onready var overlay_edit_button: Button = %OverlayEditButton
-@onready var overlay_edit_button_lower: Button = %OverlayEditButtonLower
 @onready var edit_overlay_label: Label = %EditOverlayLabel
 
 var hover_stylebox : StyleBox = preload("uid://dw1dvbm31ux8x")
@@ -119,13 +110,8 @@ var stylebox_empty := StyleBoxEmpty.new()
 
 func _ready() -> void:
 	overlay_edit_button.pressed.connect(_on_overlay_button_mouse_pressed.bind(overlay_edit_button))
-	overlay_edit_button_lower.pressed.connect(_on_overlay_button_mouse_pressed.bind(overlay_edit_button_lower))
-
 	overlay_edit_button.mouse_entered.connect(_on_overlay_button_mouse_entered)
-	overlay_edit_button_lower.mouse_entered.connect(_on_overlay_button_mouse_entered)
-
 	overlay_edit_button.mouse_exited.connect(_on_overlay_button_mouse_exited)
-	overlay_edit_button_lower.mouse_exited.connect(_on_overlay_button_mouse_exited)
 
 	edit_overlay_label.hide()
 	opponent_serve_label.hide()
@@ -175,13 +161,11 @@ func _on_overlay_button_mouse_pressed(button : Button) -> void:
 
 func _on_overlay_button_mouse_entered() -> void:
 	overlay_edit_button.add_theme_stylebox_override("normal", hover_stylebox)
-	overlay_edit_button_lower.add_theme_stylebox_override("normal", hover_stylebox)
 	edit_overlay_label.show()
 
 
 func _on_overlay_button_mouse_exited() -> void:
 	overlay_edit_button.add_theme_stylebox_override("normal", stylebox_empty)
-	overlay_edit_button_lower.add_theme_stylebox_override("normal", stylebox_empty)
 	edit_overlay_label.hide()
 
 
@@ -215,10 +199,6 @@ func on_title_text_changed(new_text : String) -> void:
 
 func on_right_text_changed(new_text : String) -> void:
 	misc_text = new_text
-
-
-func on_bottom_text_changed(new_text : String) -> void:
-	bottom_text = new_text
 
 
 func on_logo_changed(new_logo : Texture2D) -> void:

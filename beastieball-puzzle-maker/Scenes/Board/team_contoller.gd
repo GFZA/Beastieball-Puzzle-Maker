@@ -3,6 +3,7 @@ class_name TeamController
 extends Node2D
 
 signal field_updated(pos_dict : Dictionary[Beastie.Position, Beastie])
+signal field_effects_updated(field_dict : Dictionary[FieldEffect.Type, int])
 
 const BEASTIE_SCENE := preload("uid://dptoj76e40ldo")
 const PLAYS_UI_CONTAINER_SCENE : PackedScene = preload("uid://dksxc3rs20kkc")
@@ -21,6 +22,7 @@ const PLAYS_UI_CONTAINER_SCENE : PackedScene = preload("uid://dksxc3rs20kkc")
 	set(value):
 		value.sort()
 		my_field_effects = value
+		field_effects_updated.emit(my_field_effects)
 		_update_field()
 
 @export_group("Serve Slot", "beastie_1_")
