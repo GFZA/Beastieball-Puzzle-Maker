@@ -3,7 +3,6 @@ extends Control
 
 @export var temp_data : BoardData = null
 
-
 @onready var main_ui: MainUI = %MainUI
 @onready var board: Board = %Board
 @onready var saving_rect: ColorRect = %SavingRect
@@ -13,7 +12,7 @@ extends Control
 
 
 func _ready() -> void:
-	# Overlay menu signals
+	# Overlay Menu Signals
 	board.board_overlay.overlay_edit_requested.connect(main_ui.show_overlay_menu)
 	main_ui.overlay_menu.max_point_changed.connect(board.board_overlay.on_max_point_changed)
 	main_ui.overlay_menu.your_point_changed.connect(board.board_overlay.on_your_point_changed)
@@ -24,6 +23,21 @@ func _ready() -> void:
 	main_ui.overlay_menu.title_text_changed.connect(board.board_overlay.on_title_text_changed)
 	main_ui.overlay_menu.right_text_changed.connect(board.board_overlay.on_right_text_changed)
 	main_ui.overlay_menu.logo_changed.connect(board.board_overlay.on_logo_changed)
+
+	# Field Effects Menu Signals
+	board.field_effects_edit_requested.connect(main_ui.show_field_effect_menu)
+	main_ui.field_effects_menu.rally_stack_changed.connect(board.board_manager.left_team_controller.on_rally_stacked_changed)
+	main_ui.field_effects_menu.dread_stack_changed.connect(board.board_manager.left_team_controller.on_dread_stacked_changed)
+	main_ui.field_effects_menu.left_rhythm_stack_changed.connect(board.board_manager.left_team_controller.on_rhythm_stacked_changed)
+	main_ui.field_effects_menu.left_trap_stack_changed.connect(board.board_manager.left_team_controller.on_trap_stacked_changed)
+	main_ui.field_effects_menu.left_quake_stack_changed.connect(board.board_manager.left_team_controller.on_quake_stacked_changed)
+	main_ui.field_effects_menu.left_barrier_upper_stack_changed.connect(board.board_manager.left_team_controller.on_barrier_upper_stacked_changed)
+	main_ui.field_effects_menu.left_barrier_lower_stack_changed.connect(board.board_manager.left_team_controller.on_barrier_lower_stacked_changed)
+	main_ui.field_effects_menu.right_rhythm_stack_changed.connect(board.board_manager.right_team_controller.on_rhythm_stacked_changed)
+	main_ui.field_effects_menu.right_trap_stack_changed.connect(board.board_manager.right_team_controller.on_trap_stacked_changed)
+	main_ui.field_effects_menu.right_quake_stack_changed.connect(board.board_manager.right_team_controller.on_quake_stacked_changed)
+	main_ui.field_effects_menu.right_barrier_upper_stack_changed.connect(board.board_manager.right_team_controller.on_barrier_upper_stacked_changed)
+	main_ui.field_effects_menu.right_barrier_lower_stack_changed.connect(board.board_manager.right_team_controller.on_barrier_lower_stacked_changed)
 
 	# Lower buttons Signals
 	main_ui.save_image_requested.connect(_on_save_image_requested)

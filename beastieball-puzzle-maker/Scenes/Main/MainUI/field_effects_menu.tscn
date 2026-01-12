@@ -1,0 +1,273 @@
+[gd_scene load_steps=8 format=3 uid="uid://bywv2d1wh532n"]
+
+[ext_resource type="Script" uid="uid://cit73tulestkn" path="res://Scenes/Main/MainUI/field_effects_menu.gd" id="1_8j6ah"]
+[ext_resource type="FontFile" uid="uid://q2kbgu0jja56" path="res://Autoloads/Resources/Fonts/sportsjersey.ttf" id="1_sblgr"]
+[ext_resource type="PackedScene" uid="uid://d1d26ob86bbom" path="res://Scenes/Main/MainUI/number_ui.tscn" id="2_8j6ah"]
+[ext_resource type="Theme" uid="uid://bkrlwg21fhprn" path="res://Autoloads/Resources/Themes/edit_button.tres" id="3_tw2ux"]
+[ext_resource type="Texture2D" uid="uid://dnjn5ky0d157b" path="res://Autoloads/Icons/icon_whistle.png" id="5_tw2ux"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_oaix8"]
+font = ExtResource("1_sblgr")
+font_size = 64
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_oaix8"]
+
+[node name="FieldEffectsMenu" type="ScrollContainer"]
+custom_minimum_size = Vector2(805, 1494)
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_8j6ah")
+
+[node name="MainContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="BothSideLabel" type="Label" parent="MainContainer"]
+layout_mode = 2
+text = "Both Side"
+label_settings = SubResource("LabelSettings_oaix8")
+horizontal_alignment = 1
+
+[node name="RallyLabel" type="HBoxContainer" parent="MainContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MainContainer/RallyLabel"]
+layout_mode = 2
+text = "RALLY"
+label_settings = SubResource("LabelSettings_oaix8")
+
+[node name="RallyNumberUI" parent="MainContainer/RallyLabel" instance=ExtResource("2_8j6ah")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+value_max = 6
+
+[node name="DreadLabel" type="HBoxContainer" parent="MainContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MainContainer/DreadLabel"]
+layout_mode = 2
+text = "DREAD"
+label_settings = SubResource("LabelSettings_oaix8")
+
+[node name="DreadNumberUI" parent="MainContainer/DreadLabel" instance=ExtResource("2_8j6ah")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+value_max = 6
+
+[node name="BothSideClearButton" type="Button" parent="MainContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme = ExtResource("3_tw2ux")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_oaix8")
+text = "Clear Field"
+icon = ExtResource("5_tw2ux")
+expand_icon = true
+
+[node name="HSeparator" type="HSeparator" parent="MainContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("3_tw2ux")
+
+[node name="YourTeamLabel" type="Label" parent="MainContainer"]
+layout_mode = 2
+text = "Your Team"
+label_settings = SubResource("LabelSettings_oaix8")
+horizontal_alignment = 1
+
+[node name="LeftRhythmLabel" type="HBoxContainer" parent="MainContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MainContainer/LeftRhythmLabel"]
+layout_mode = 2
+text = "RHYTHM"
+label_settings = SubResource("LabelSettings_oaix8")
+
+[node name="LeftRhythmNumberUI" parent="MainContainer/LeftRhythmLabel" instance=ExtResource("2_8j6ah")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+value_max = 6
+
+[node name="LeftTrapLabel" type="HBoxContainer" parent="MainContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MainContainer/LeftTrapLabel"]
+layout_mode = 2
+text = "TRAP"
+label_settings = SubResource("LabelSettings_oaix8")
+
+[node name="LeftTrapNumberUI" parent="MainContainer/LeftTrapLabel" instance=ExtResource("2_8j6ah")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+value_max = 4
+
+[node name="LeftQuakeLabel" type="HBoxContainer" parent="MainContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MainContainer/LeftQuakeLabel"]
+layout_mode = 2
+text = "QUAKE"
+label_settings = SubResource("LabelSettings_oaix8")
+
+[node name="LeftQuakeNumberUI" parent="MainContainer/LeftQuakeLabel" instance=ExtResource("2_8j6ah")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+value_max = 3
+
+[node name="LeftBarrierUpperLabel" type="HBoxContainer" parent="MainContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MainContainer/LeftBarrierUpperLabel"]
+layout_mode = 2
+text = "UPPER BARRIER"
+label_settings = SubResource("LabelSettings_oaix8")
+
+[node name="LeftBarrierUpperNumberUI" parent="MainContainer/LeftBarrierUpperLabel" instance=ExtResource("2_8j6ah")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+value_max = 1
+
+[node name="LeftBarrierLowerLabel" type="HBoxContainer" parent="MainContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MainContainer/LeftBarrierLowerLabel"]
+layout_mode = 2
+text = "LOWER BARRIER"
+label_settings = SubResource("LabelSettings_oaix8")
+
+[node name="LeftBarrierLowerNumberUI" parent="MainContainer/LeftBarrierLowerLabel" instance=ExtResource("2_8j6ah")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+value_max = 1
+
+[node name="LeftTeamClearButton" type="Button" parent="MainContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme = ExtResource("3_tw2ux")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_oaix8")
+text = "Clear Field"
+icon = ExtResource("5_tw2ux")
+expand_icon = true
+
+[node name="HSeparator2" type="HSeparator" parent="MainContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme = ExtResource("3_tw2ux")
+
+[node name="OpponentTeamLabel" type="Label" parent="MainContainer"]
+layout_mode = 2
+text = "Opponent Team"
+label_settings = SubResource("LabelSettings_oaix8")
+horizontal_alignment = 1
+
+[node name="RightRhythmLabel" type="HBoxContainer" parent="MainContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MainContainer/RightRhythmLabel"]
+layout_mode = 2
+text = "RHYTHM"
+label_settings = SubResource("LabelSettings_oaix8")
+
+[node name="RightRhythmNumberUI" parent="MainContainer/RightRhythmLabel" instance=ExtResource("2_8j6ah")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+value_max = 6
+
+[node name="RightTrapLabel" type="HBoxContainer" parent="MainContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MainContainer/RightTrapLabel"]
+layout_mode = 2
+text = "TRAP"
+label_settings = SubResource("LabelSettings_oaix8")
+
+[node name="RightTrapNumberUI" parent="MainContainer/RightTrapLabel" instance=ExtResource("2_8j6ah")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+value_max = 4
+
+[node name="RightQuakeLabel" type="HBoxContainer" parent="MainContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MainContainer/RightQuakeLabel"]
+layout_mode = 2
+text = "QUAKE"
+label_settings = SubResource("LabelSettings_oaix8")
+
+[node name="RightQuakeNumberUI" parent="MainContainer/RightQuakeLabel" instance=ExtResource("2_8j6ah")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+value_max = 3
+
+[node name="RightBarrierUpperLabel" type="HBoxContainer" parent="MainContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MainContainer/RightBarrierUpperLabel"]
+layout_mode = 2
+text = "UPPER BARRIER"
+label_settings = SubResource("LabelSettings_oaix8")
+
+[node name="RightBarrierUpperNumberUI" parent="MainContainer/RightBarrierUpperLabel" instance=ExtResource("2_8j6ah")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+value_max = 1
+
+[node name="RightBarrierLowerLabel" type="HBoxContainer" parent="MainContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MainContainer/RightBarrierLowerLabel"]
+layout_mode = 2
+text = "LOWER BARRIER"
+label_settings = SubResource("LabelSettings_oaix8")
+
+[node name="RightBarrierLowerNumberUI" parent="MainContainer/RightBarrierLowerLabel" instance=ExtResource("2_8j6ah")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+value_max = 1
+
+[node name="RightTeamClearButton" type="Button" parent="MainContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme = ExtResource("3_tw2ux")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_oaix8")
+text = "Clear Field"
+icon = ExtResource("5_tw2ux")
+expand_icon = true

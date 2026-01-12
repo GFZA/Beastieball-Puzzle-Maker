@@ -484,12 +484,56 @@ func get_mimicked_attack_from_ally(mimic_user : Beastie) -> Attack:
 		return new_attack
 	return null
 
+#endregion
+
+#region Field Effects Stuffs
 
 func get_field_effect_stack(field_effect : FieldEffect.Type) -> int:
 	if not my_field_effects.has(field_effect):
 		return 0
 	return my_field_effects.get(field_effect)
 
+
+func on_rally_stacked_changed(new_stack : int) -> void:
+	my_field_effects[FieldEffect.Type.RALLY] = new_stack
+	field_effects_updated.emit(my_field_effects)
+	_update_field()
+
+
+func on_dread_stacked_changed(new_stack : int) -> void:
+	my_field_effects[FieldEffect.Type.DREAD] = new_stack
+	field_effects_updated.emit(my_field_effects)
+	_update_field()
+
+
+func on_rhythm_stacked_changed(new_stack : int) -> void:
+	my_field_effects[FieldEffect.Type.RHYTHM] = new_stack
+	field_effects_updated.emit(my_field_effects)
+	_update_field()
+
+
+func on_trap_stacked_changed(new_stack : int) -> void:
+	my_field_effects[FieldEffect.Type.TRAP] = new_stack
+	field_effects_updated.emit(my_field_effects)
+	_update_field()
+
+
+func on_quake_stacked_changed(new_stack : int) -> void:
+	my_field_effects[FieldEffect.Type.QUAKE] = new_stack
+	field_effects_updated.emit(my_field_effects)
+	_update_field()
+
+
+func on_barrier_upper_stacked_changed(new_stack : int) -> void:
+	my_field_effects[FieldEffect.Type.BARRIER_UPPER] = new_stack
+	field_effects_updated.emit(my_field_effects)
+	_update_field()
+
+
+func on_barrier_lower_stacked_changed(new_stack : int) -> void:
+	my_field_effects[FieldEffect.Type.BARRIER_LOWER] = new_stack
+	field_effects_updated.emit(my_field_effects)
+	_update_field()
 
 #endregion
 

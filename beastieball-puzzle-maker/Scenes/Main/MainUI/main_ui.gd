@@ -11,9 +11,10 @@ signal reset_board_requested
 
 @onready var menu_container: MarginContainer = %MenuContainer
 @onready var default_menu: DefaultMenu = %DefaultMenu
-@onready var overlay_menu: OverlayMenu = %OverlayMenu
 @onready var your_team_menu: TeamMenu = %YourTeamMenu
 @onready var opponent_team_menu: TeamMenu = %OpponentTeamMenu
+@onready var overlay_menu: OverlayMenu = %OverlayMenu
+@onready var field_effects_menu: ScrollContainer = %FieldEffectsMenu
 
 @onready var save_image_button: Button = %SaveImageButton
 @onready var save_json_button: Button = %SaveJSONButton
@@ -106,4 +107,4 @@ func show_field_effect_menu() -> void:
 	hide_all_menu()
 	upper_label.text = "Editing Field Effects"
 	back_button_container.show()
-	#field_effect_menu.show()
+	field_effects_menu.show()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://crwqyvvvfl5o7"]
+[gd_scene load_steps=19 format=3 uid="uid://crwqyvvvfl5o7"]
 
 [ext_resource type="Texture2D" uid="uid://i036kmeuy3sl" path="res://Scenes/Main/MainUI/main_ui_bg_tile.png" id="1_25roi"]
 [ext_resource type="Script" uid="uid://deoy300w1khdw" path="res://Scenes/Main/MainUI/main_ui.gd" id="1_hvcgl"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://hqu8087deqdr" path="res://Autoloads/Icons/icon_reset.png" id="8_bgm7v"]
 [ext_resource type="PackedScene" uid="uid://j77lq1vyxxe5" path="res://Scenes/Main/MainUI/default_menu.tscn" id="8_pxhfb"]
 [ext_resource type="PackedScene" uid="uid://djra87ar5vdie" path="res://Scenes/Main/MainUI/team_menu.tscn" id="9_us2df"]
+[ext_resource type="PackedScene" uid="uid://bywv2d1wh532n" path="res://Scenes/Main/MainUI/field_effects_menu.tscn" id="10_daosl"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_i4lxe"]
 line_spacing = 0.0
@@ -117,11 +118,6 @@ theme_override_constants/margin_right = 25
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="OverlayMenu" parent="MainContainer/BG/RealMainContainer/MenuContainer" instance=ExtResource("5_ajf2v")]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-
 [node name="YourTeamMenu" parent="MainContainer/BG/RealMainContainer/MenuContainer" instance=ExtResource("9_us2df")]
 unique_name_in_owner = true
 visible = false
@@ -132,6 +128,16 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 2
 side = 1
+
+[node name="OverlayMenu" parent="MainContainer/BG/RealMainContainer/MenuContainer" instance=ExtResource("5_ajf2v")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="FieldEffectsMenu" parent="MainContainer/BG/RealMainContainer/MenuContainer" instance=ExtResource("10_daosl")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
 
 [node name="Spacer2" type="Control" parent="MainContainer/BG/RealMainContainer"]
 custom_minimum_size = Vector2(0, 16)

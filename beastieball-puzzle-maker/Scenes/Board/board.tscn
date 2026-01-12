@@ -1,4 +1,4 @@
-[gd_scene load_steps=110 format=3 uid="uid://co8c0qvn7nkha"]
+[gd_scene load_steps=111 format=3 uid="uid://co8c0qvn7nkha"]
 
 [ext_resource type="Script" uid="uid://dfsngo7akxojy" path="res://Scenes/Board/board.gd" id="1_mucxt"]
 [ext_resource type="PackedScene" uid="uid://s3ot8ysh03s6" path="res://Scenes/Board/BoardOverlay/board_overlay.tscn" id="2_e8qp6"]
@@ -28,7 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://dfrqeltnatbx5" path="res://FieldVisuals/field_rhythm_note_2.png" id="17_06gvc"]
 [ext_resource type="Texture2D" uid="uid://c5qpkbyaoclc5" path="res://FieldVisuals/field_rhythm_note_5.png" id="18_qg8b0"]
 [ext_resource type="Texture2D" uid="uid://b12tfn7n1l8qs" path="res://FieldVisuals/field_trap_4_left.png" id="21_reu04"]
-[ext_resource type="Texture2D" uid="uid://sxxdcxrcur20" path="res://FieldVisuals/field_trap_4_right.png" id="22_reu04"]
+[ext_resource type="Texture2D" uid="uid://bvywpvocaqq32" path="res://FieldVisuals/field_trap_1_right.png" id="22_mhwkv"]
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="26_ary8t"]
 [ext_resource type="Resource" uid="uid://bsekeiw2v13qd" path="res://Autoloads/Resources/Plays/Attack/Spirit/relentless.tres" id="27_j2trx"]
 [ext_resource type="Resource" uid="uid://dgsnxhjtejofp" path="res://Autoloads/Resources/Plays/Volley/dig.tres" id="28_asnme"]
@@ -99,9 +99,10 @@
 [ext_resource type="Texture2D" uid="uid://vsopl6v0y0j3" path="res://Autoloads/Resources/Beastie/Conjarr/conjarr_volley.png" id="93_q05rk"]
 [ext_resource type="Texture2D" uid="uid://der5on0t5qijk" path="res://Autoloads/Resources/Beastie/Conjarr/conjarr_good.png" id="94_scoah"]
 [ext_resource type="Texture2D" uid="uid://dpv2vrl37orkf" path="res://Autoloads/Resources/Beastie/Conjarr/conjarr_bad.png" id="95_lyw1w"]
-[ext_resource type="FontFile" uid="uid://3m3y4biedw3n" path="res://Autoloads/Resources/Fonts/Hauser.otf" id="100_reu04"]
+[ext_resource type="Theme" uid="uid://v25nab4h4vdp" path="res://Autoloads/Resources/Themes/highlight_overlay.tres" id="100_mhwkv"]
+[ext_resource type="FontFile" uid="uid://cvfib27cf5q88" path="res://Autoloads/Resources/Fonts/Go Banana.ttf" id="100_reu04"]
 
-[sub_resource type="Resource" id="Resource_reu04"]
+[sub_resource type="Resource" id="Resource_mhwkv"]
 script = ExtResource("32_mhwkv")
 health = 0
 my_plays = Array[ExtResource("26_ary8t")]([ExtResource("27_j2trx"), ExtResource("28_asnme"), ExtResource("29_xwrid")])
@@ -128,7 +129,7 @@ sprites = Dictionary[int, Texture2D]({
 ball_anchor_position = Vector2(62, -127)
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"
 
-[sub_resource type="Resource" id="Resource_mhwkv"]
+[sub_resource type="Resource" id="Resource_y6bus"]
 script = ExtResource("32_mhwkv")
 health = 0
 my_plays = Array[ExtResource("26_ary8t")]([ExtResource("39_rxjpm"), ExtResource("40_vdyiv"), ExtResource("41_1d2qp")])
@@ -156,7 +157,7 @@ y_offset = -20
 ball_anchor_position = Vector2(69, -53)
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"
 
-[sub_resource type="Resource" id="Resource_y6bus"]
+[sub_resource type="Resource" id="Resource_qm24d"]
 script = ExtResource("32_mhwkv")
 health = 0
 my_plays = Array[ExtResource("26_ary8t")]([ExtResource("49_nh1pn"), ExtResource("50_ccn5k"), ExtResource("51_x8oa6")])
@@ -184,7 +185,7 @@ y_offset = -15
 ball_anchor_position = Vector2(20, -70)
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"
 
-[sub_resource type="Resource" id="Resource_qm24d"]
+[sub_resource type="Resource" id="Resource_btbku"]
 script = ExtResource("32_mhwkv")
 health = 0
 my_plays = Array[ExtResource("26_ary8t")]([ExtResource("59_flmld"), ExtResource("60_y6brx"), ExtResource("40_vdyiv")])
@@ -211,7 +212,7 @@ sprites = Dictionary[int, Texture2D]({
 ball_anchor_position = Vector2(61, -66)
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"
 
-[sub_resource type="Resource" id="Resource_btbku"]
+[sub_resource type="Resource" id="Resource_ib7kr"]
 script = ExtResource("32_mhwkv")
 health = 21
 my_plays = Array[ExtResource("26_ary8t")]([ExtResource("68_c61tc"), ExtResource("51_x8oa6"), ExtResource("69_kmux5")])
@@ -238,7 +239,7 @@ sprites = Dictionary[int, Texture2D]({
 ball_anchor_position = Vector2(80, -160)
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"
 
-[sub_resource type="Resource" id="Resource_ib7kr"]
+[sub_resource type="Resource" id="Resource_4i6pf"]
 script = ExtResource("32_mhwkv")
 health = 41
 my_plays = Array[ExtResource("26_ary8t")]([ExtResource("27_j2trx"), ExtResource("72_87efh"), ExtResource("73_l0lkl")])
@@ -268,7 +269,7 @@ y_offset = -125
 ball_anchor_position = Vector2(30, -165)
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"
 
-[sub_resource type="Resource" id="Resource_4i6pf"]
+[sub_resource type="Resource" id="Resource_841oo"]
 script = ExtResource("32_mhwkv")
 health = 24
 my_plays = Array[ExtResource("26_ary8t")]([ExtResource("77_708pj"), ExtResource("78_w4jxi"), ExtResource("79_sxyyk")])
@@ -292,7 +293,7 @@ sprites = Dictionary[int, Texture2D]({
 ball_anchor_position = Vector2(66, -176)
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"
 
-[sub_resource type="Resource" id="Resource_841oo"]
+[sub_resource type="Resource" id="Resource_rxjpm"]
 script = ExtResource("32_mhwkv")
 health = 0
 my_plays = Array[ExtResource("26_ary8t")]([ExtResource("87_dxixo"), ExtResource("88_i26js"), ExtResource("29_xwrid")])
@@ -323,14 +324,15 @@ metadata/_custom_type_script = "uid://ehabj4qsgxpl"
 [sub_resource type="LabelSettings" id="LabelSettings_asnme"]
 paragraph_spacing = -8.0
 font = ExtResource("100_reu04")
-font_size = 52
-outline_size = 16
+font_size = 48
+font_color = Color(0, 0, 0, 1)
 outline_color = Color(0, 0, 0, 1)
 
 [node name="Board" type="Control"]
 custom_minimum_size = Vector2(2700, 2025)
 layout_mode = 3
 anchors_preset = 0
+mouse_filter = 1
 script = ExtResource("1_mucxt")
 image_number = 999
 metadata/_edit_vertical_guides_ = [-76.0]
@@ -371,6 +373,7 @@ metadata/_edit_lock_ = true
 
 [node name="RalllyVisuals" type="Node2D" parent="SubViewportContainer/SubViewport/BoardBG"]
 unique_name_in_owner = true
+visible = false
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
@@ -402,6 +405,7 @@ metadata/_edit_group_ = true
 
 [node name="LeftQuakeVisuals" type="Node2D" parent="SubViewportContainer/SubViewport/BoardBG/QuakeVisuals"]
 unique_name_in_owner = true
+visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/QuakeVisuals/LeftQuakeVisuals"]
 position = Vector2(1137, 547)
@@ -435,6 +439,7 @@ texture = ExtResource("11_63xfs")
 
 [node name="RightQuakeVisuals" type="Node2D" parent="SubViewportContainer/SubViewport/BoardBG/QuakeVisuals"]
 unique_name_in_owner = true
+visible = false
 
 [node name="Sprite2D2" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/QuakeVisuals/RightQuakeVisuals"]
 position = Vector2(1541.3, 850.1)
@@ -582,7 +587,7 @@ texture = ExtResource("21_reu04")
 unique_name_in_owner = true
 visible = false
 position = Vector2(1462.3077, 513.8462)
-texture = ExtResource("22_reu04")
+texture = ExtResource("22_mhwkv")
 
 [node name="RhythmVisuals" type="Node2D" parent="SubViewportContainer/SubViewport/BoardBG"]
 metadata/_edit_group_ = true
@@ -634,6 +639,7 @@ texture = ExtResource("18_qg8b0")
 
 [node name="RightRhythmVisuals" type="Node2D" parent="SubViewportContainer/SubViewport/BoardBG/RhythmVisuals"]
 unique_name_in_owner = true
+visible = false
 
 [node name="Sprite2D4" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/RhythmVisuals/RightRhythmVisuals"]
 position = Vector2(1375.3846, 405.38458)
@@ -696,15 +702,11 @@ metadata/_edit_lock_ = true
 unique_name_in_owner = true
 position = Vector2(101, 483)
 script = ExtResource("3_xc5ao")
-my_field_effects = Dictionary[int, int]({
-0: 1,
-4: 2
-})
-beastie_1_beastie = SubResource("Resource_reu04")
+beastie_1_beastie = SubResource("Resource_mhwkv")
 beastie_1_show_bench_damage = true
-beastie_2_beastie = SubResource("Resource_mhwkv")
-bench_beastie_1_beastie = SubResource("Resource_y6bus")
-bench_beastie_2_beastie = SubResource("Resource_qm24d")
+beastie_2_beastie = SubResource("Resource_y6bus")
+bench_beastie_1_beastie = SubResource("Resource_qm24d")
+bench_beastie_2_beastie = SubResource("Resource_btbku")
 metadata/_edit_lock_ = true
 
 [node name="LeftBeastieSceneAnchors" type="Node2D" parent="SubViewportContainer/SubViewport/LeftTeamController"]
@@ -799,16 +801,11 @@ metadata/_edit_lock_ = true
 unique_name_in_owner = true
 position = Vector2(101, 483)
 script = ExtResource("3_xc5ao")
-my_field_effects = Dictionary[int, int]({
-0: 1,
-2: 2,
-4: 2
-})
-beastie_1_beastie = SubResource("Resource_btbku")
+beastie_1_beastie = SubResource("Resource_ib7kr")
 beastie_1_have_ball = true
-beastie_2_beastie = SubResource("Resource_ib7kr")
-bench_beastie_1_beastie = SubResource("Resource_4i6pf")
-bench_beastie_2_beastie = SubResource("Resource_841oo")
+beastie_2_beastie = SubResource("Resource_4i6pf")
+bench_beastie_1_beastie = SubResource("Resource_841oo")
+bench_beastie_2_beastie = SubResource("Resource_rxjpm")
 side = 1
 metadata/_edit_lock_ = true
 
@@ -900,39 +897,81 @@ position = Vector2(1963, 988)
 gizmo_extents = 0.0
 metadata/_edit_lock_ = true
 
+[node name="EditFieldEffectsButton" type="Button" parent="SubViewportContainer/SubViewport"]
+unique_name_in_owner = true
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -663.0
+offset_top = -201.0
+offset_right = 663.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 0
+theme = ExtResource("100_mhwkv")
+theme_override_font_sizes/font_size = 96
+text = "Edit Field Effects"
+
 [node name="LeftFieldEffecstLabel" type="Label" parent="SubViewportContainer/SubViewport"]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(250, 0)
 offset_left = 717.0
 offset_top = 1820.0
 offset_right = 967.0
 offset_bottom = 2002.0
-text = "2 QUAKE"
+text = "4/4 TRAP"
 label_settings = SubResource("LabelSettings_asnme")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Polygon2D3" type="Polygon2D" parent="SubViewportContainer/SubViewport/LeftFieldEffecstLabel"]
+show_behind_parent = true
+position = Vector2(49, 177)
+scale = Vector2(0.9, 0.9)
+color = Color(0.8352941, 0.87058824, 0.85882354, 1)
+polygon = PackedVector2Array(-43, 0, -87, -192, 219, -192, 265, 0)
+
 [node name="MiddleFieldEffecstLabel" type="Label" parent="SubViewportContainer/SubViewport"]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(250, 0)
 offset_left = 1229.0
 offset_top = 1849.0
 offset_right = 1479.0
 offset_bottom = 1972.0
-text = "1/6 RALLY"
+text = "1 DREAD"
 label_settings = SubResource("LabelSettings_asnme")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Polygon2D2" type="Polygon2D" parent="SubViewportContainer/SubViewport/MiddleFieldEffecstLabel"]
+show_behind_parent = true
+position = Vector2(41, 128)
+scale = Vector2(0.9, 0.9)
+color = Color(0.8352941, 0.87058824, 0.85882354, 1)
+polygon = PackedVector2Array(-43, 0, -77, -147, 230, -147, 265, 0)
+
 [node name="RightFieldEffecstLabel" type="Label" parent="SubViewportContainer/SubViewport"]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(250, 0)
 offset_left = 1726.0
 offset_top = 1820.0
 offset_right = 1976.0
 offset_bottom = 2002.0
-text = "2 RHYTHM
-2 QUAKE"
+text = "1 RHYTHM
+1/4 TRAP
+1 QUAKE"
 label_settings = SubResource("LabelSettings_asnme")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Polygon2D4" type="Polygon2D" parent="SubViewportContainer/SubViewport/RightFieldEffecstLabel"]
+show_behind_parent = true
+position = Vector2(49, 177)
+scale = Vector2(0.9, 0.9)
+color = Color(0.8352941, 0.87058824, 0.85882354, 1)
+polygon = PackedVector2Array(-43, 0, -87, -192, 219, -192, 265, 0)

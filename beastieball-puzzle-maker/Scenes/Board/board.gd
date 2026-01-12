@@ -3,6 +3,7 @@ class_name Board
 extends Control
 
 signal image_saved
+signal field_effects_edit_requested
 
 enum Turn {OFFENSE, DEFENSE, SERVE}
 enum TrapStack {ZERO = 0, ONE = 1, TWO = 2, THREE = 3, FOUR = 4}
@@ -56,6 +57,8 @@ var right_field_effects_dict : Dictionary[FieldEffect.Type, int] = {} :
 @onready var board_overlay: BoardOverlay = %BoardOverlay
 @onready var board_manager: BoardManager = %BoardManager
 
+@onready var edit_field_effects_button: Button = %EditFieldEffectsButton
+
 @onready var left_field_effecst_label: Label = %LeftFieldEffecstLabel
 @onready var middle_field_effecst_label: Label = %MiddleFieldEffecstLabel
 @onready var right_field_effecst_label: Label = %RightFieldEffecstLabel
@@ -70,6 +73,10 @@ func _ready() -> void:
 		right_field_effects_dict = field_dict
 		_update_field_effect_visuals()
 	)
+	edit_field_effects_button.pressed.connect(field_effects_edit_requested.emit)
+
+	_update_field_effect_visuals()
+
 
 func _update_field_effect_visuals() -> void:
 	hide_all_field_effects()
@@ -111,6 +118,11 @@ func _update_field_effects_labels() -> void:
 	var middle_text : String = ""
 	var right_text : String = ""
 
+	left_field_effecst_label.hide()
+	middle_field_effecst_label.hide()
+	right_field_effecst_label.hide()
+	# YES it's a typo. No I'm not fixing it...
+
 	for i in 3:
 		# First loop -> Left side field effects
 		# Second loop -> Middle field effect USING LEFT DICT!!!
@@ -148,10 +160,15 @@ func _update_field_effects_labels() -> void:
 						#FieldEffect.Type.BARRIER_UPPER, FieldEffect.Type.BARRIER_LOWER:
 							# No text
 
-	left_field_effecst_label.text = left_text.strip_edges()
-	middle_field_effecst_label.text = middle_text.strip_edges()
-	right_field_effecst_label.text = right_text.strip_edges()
-	# YES it's a typo. No I'm not fixing it...
+	if not left_text == "":
+		left_field_effecst_label.text = left_text.strip_edges()
+		left_field_effecst_label.show()
+	if not middle_text == "":
+		middle_field_effecst_label.text = middle_text.strip_edges()
+		middle_field_effecst_label.show()
+	if not right_text == "":
+		right_field_effecst_label.text = right_text.strip_edges()
+		right_field_effecst_label.show()
 
 
 func hide_all_field_effects() -> void:
