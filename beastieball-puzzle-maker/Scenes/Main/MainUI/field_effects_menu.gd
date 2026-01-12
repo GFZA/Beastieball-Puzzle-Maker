@@ -58,6 +58,7 @@ func reset()	-> void:
 	clear_both_side()
 	clear_left_side()
 	clear_right_side()
+	scroll_vertical = 0
 
 
 func clear_both_side() -> void:

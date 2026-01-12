@@ -26,5 +26,6 @@ func _update_side() -> void:
 func reset() -> void:
 	for add_beastie_ui in main_container.get_children():
 		if add_beastie_ui is not AddBeastieUI:
-			return
+			continue
 		add_beastie_ui.reset()
+	scroll_vertical = 0

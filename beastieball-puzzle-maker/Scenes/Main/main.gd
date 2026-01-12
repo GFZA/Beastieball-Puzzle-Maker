@@ -15,11 +15,10 @@ func _ready() -> void:
 	# Overlay Menu Signals
 	board.board_overlay.overlay_edit_requested.connect(main_ui.show_overlay_menu)
 	main_ui.overlay_menu.max_point_changed.connect(board.board_overlay.on_max_point_changed)
-	main_ui.overlay_menu.your_point_changed.connect(board.board_overlay.on_your_point_changed)
-	main_ui.overlay_menu.opponent_point_change.connect(board.board_overlay.on_opponent_point_change)
-	main_ui.overlay_menu.turn_changed.connect(board.board_overlay.on_turn_changed)
+	main_ui.overlay_menu.your_point_changed.connect(_on_your_point_changed)
+	main_ui.overlay_menu.opponent_point_changed.connect(_on_opponent_point_changed)
+	main_ui.overlay_menu.turn_changed.connect(board.on_turn_changed)
 	main_ui.overlay_menu.offense_action_changed.connect(board.board_overlay.on_offense_action_changed)
-	main_ui.overlay_menu.defense_against_serve_changed.connect(board.board_overlay.on_defense_against_serve_changed)
 	main_ui.overlay_menu.title_text_changed.connect(board.board_overlay.on_title_text_changed)
 	main_ui.overlay_menu.right_text_changed.connect(board.board_overlay.on_right_text_changed)
 	main_ui.overlay_menu.logo_changed.connect(board.board_overlay.on_logo_changed)
@@ -49,6 +48,16 @@ func _ready() -> void:
 	var beastie_requester : Array[Node] = get_tree().get_nodes_in_group("beastie_select_ui_requester")
 	for requester in beastie_requester:
 		requester.beastie_select_ui_requested.connect(select_ui.show_beastie_select_ui)
+
+
+func _on_your_point_changed(new_point : int) -> void:
+	board.board_overlay.on_your_point_changed(new_point)
+	board.board_manager.left_team_controller.current_score = new_point
+
+
+func _on_opponent_point_changed(new_point : int) -> void:
+	board.board_overlay.on_opponent_point_change(new_point)
+	board.board_manager.right_team_controller.current_score = new_point
 
 
 #region Lower buttons signal funcs
@@ -111,6 +120,8 @@ func _on_load_json_requested() -> void:
 
 
 func _on_reset_board_requested() -> void:
+	Global.resetting = true
+
 	saving_rect.mouse_filter = Control.MOUSE_FILTER_STOP
 	saving_label.text = "Resetting..."
 	saving_rect.show()
@@ -128,5 +139,7 @@ func _on_reset_board_requested() -> void:
 	saving_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	saving_label.text = ""
 	saving_rect.hide()
+
+	Global.resetting = false
 
 #endregion

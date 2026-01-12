@@ -7,12 +7,14 @@ signal overlay_edit_requested
 const TURN_BARS : Dictionary[Board.Turn, Texture2D] = {
 	Board.Turn.OFFENSE : preload("uid://caafonrcdyiwp"),
 	Board.Turn.DEFENSE : preload("uid://0ldn2nscb15e"),
+	Board.Turn.CSERVE : preload("uid://0ldn2nscb15e"), # same as defense
 	Board.Turn.SERVE : preload("uid://dslneqx6ype82"),
 }
 
 const TURN_TEXT : Dictionary[Board.Turn, String] = {
 	Board.Turn.OFFENSE : "Offense",
 	Board.Turn.DEFENSE : "Defense",
+	Board.Turn.CSERVE : "Counter Serve",
 	Board.Turn.SERVE : "Serve",
 }
 
@@ -83,11 +85,6 @@ const DEFENSE_END_TURN_OVERLAY : Texture2D = preload("uid://cr65n1bm44s8v")
 			await ready
 		misc_label.text = misc_text
 
-var opponent_serve : bool = false :
-	set(value):
-		opponent_serve = value
-		_update_opponent_serve()
-
 
 @onready var title: Label = %Title
 @onready var turn_bar_bg: TextureRect = %TurnBarBG
@@ -124,7 +121,7 @@ func _update_turn() -> void:
 	turn_bar_bg.texture = TURN_BARS.get(turn)
 	turn_name_label.text = TURN_TEXT.get(turn)
 	_update_misc_overlay()
-	_update_opponent_serve()
+	_update_opponent_serve_label()
 
 
 func _update_misc_overlay() -> void:
@@ -133,7 +130,7 @@ func _update_misc_overlay() -> void:
 		Board.Turn.OFFENSE:
 			_update_offense_action_amount()
 			misc_turn_overlay.show()
-		Board.Turn.DEFENSE:
+		Board.Turn.DEFENSE, Board.Turn.CSERVE:
 			misc_turn_overlay.texture = DEFENSE_END_TURN_OVERLAY
 			misc_turn_overlay.show()
 		# SERVE don't have this overlay so stay hidden
@@ -147,9 +144,9 @@ func _update_offense_action_amount() -> void:
 	misc_turn_overlay.texture = OFFENSE_ACTION_TEXTURES.get(offense_action_amount)
 
 
-func _update_opponent_serve() -> void:
+func _update_opponent_serve_label() -> void:
 	opponent_serve_label.hide()
-	if turn == Board.Turn.DEFENSE and opponent_serve:
+	if turn == Board.Turn.CSERVE:
 		opponent_serve_label.show()
 
 
@@ -187,10 +184,6 @@ func on_turn_changed(new_turn : Board.Turn) -> void:
 
 func on_offense_action_changed(action_lefts : int) -> void:
 	offense_action_amount = action_lefts
-
-
-func on_defense_against_serve_changed(defense_against_serve : bool) -> void:
-	opponent_serve = defense_against_serve
 
 
 func on_title_text_changed(new_text : String) -> void:

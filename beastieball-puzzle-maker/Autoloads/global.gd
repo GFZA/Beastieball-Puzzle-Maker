@@ -7,6 +7,8 @@ const BREAK_TEXT_DAMAGE := -99999
 enum MySide {LEFT, RIGHT}
 enum SortBeastie {NAME, NUMBER}
 
+var resetting : bool = false
+
 #region Main Color Datas
 enum ColorType {BODY, SPIRIT, MIND}
 

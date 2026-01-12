@@ -177,6 +177,7 @@ func _update_field() -> void:
 	if not is_node_ready():
 		await ready
 
+
 	for marker : Marker2D in position_anchors:
 		for child in marker.get_children():
 			child.queue_free()
@@ -195,6 +196,9 @@ func _update_field() -> void:
 
 	beastie_scene_dict.clear()
 	plays_ui_container_dict.clear()
+
+	if Global.resetting: # this simple line greatly decrease reset speed! wow!
+		return
 
 	if beastie_1_beastie:
 		_add_new_beastie_scene(beastie_1_beastie, beastie_1_position, beastie_1_show_play, beastie_1_show_bench_damage)
@@ -276,6 +280,7 @@ func _add_new_plays_ui_container(beastie_scene : BeastieScene, show_play : bool,
 	var beastie : Beastie = beastie_scene.beastie
 	var pos : Beastie.Position = beastie.my_field_position
 	var new_scene : PlaysUIContainer = PLAYS_UI_CONTAINER_SCENE.instantiate()
+	new_scene.my_side = side
 	new_scene.beastie = beastie
 	new_scene.show_bench_damage = show_bench_damage
 	new_scene.team_controller = self
@@ -366,12 +371,14 @@ func _check_bench_size() -> int:
 func reset_team() -> void:
 	beastie_1_beastie = null
 	beastie_1_show_play = true
+	beastie_1_show_bench_damage = false
 	beastie_1_have_ball = false
 	beastie_1_ball_type = BeastieScene.BallType.EASY_RECEIVE
 	beastie_1_h_allign = HORIZONTAL_ALIGNMENT_CENTER
 
 	beastie_2_beastie = null
 	beastie_2_show_play = true
+	beastie_2_show_bench_damage = false
 	beastie_2_have_ball = false
 	beastie_2_ball_type = BeastieScene.BallType.EASY_RECEIVE
 	beastie_2_h_allign = HORIZONTAL_ALIGNMENT_CENTER

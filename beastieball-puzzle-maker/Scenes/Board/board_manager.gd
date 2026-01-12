@@ -45,6 +45,11 @@ func _ready() -> void:
 	right_team_controller.field_effects_updated.connect(left_team_controller.copy_middle_field_effects_from_another_controller)
 
 
+func on_turn_changed(new_turn : Board.Turn) -> void:
+	left_team_controller.is_serving_team = (new_turn == Board.Turn.SERVE)
+	right_team_controller.is_serving_team = (new_turn == Board.Turn.CSERVE)
+
+
 func get_damage_dict_array(attacker : Beastie, attack : Attack) -> Array[Dictionary]:
 	var empty_dict : Dictionary[Beastie.Position, int] = {
 		Beastie.Position.UPPER_BACK : -1,

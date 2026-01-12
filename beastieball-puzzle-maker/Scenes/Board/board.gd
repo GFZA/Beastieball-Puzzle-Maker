@@ -5,7 +5,7 @@ extends Control
 signal image_saved
 signal field_effects_edit_requested
 
-enum Turn {OFFENSE, DEFENSE, SERVE}
+enum Turn {OFFENSE, DEFENSE, CSERVE, SERVE}
 enum TrapStack {ZERO = 0, ONE = 1, TWO = 2, THREE = 3, FOUR = 4}
 
 const TRAP_VISUALS_DICT : Dictionary[TrapStack, Array] = {
@@ -236,6 +236,11 @@ func show_rhythm(side : Global.MySide) -> void:
 			left_rhythm_visuals.show()
 		Global.MySide.RIGHT:
 			right_rhythm_visuals.show()
+
+
+func on_turn_changed(new_turn : Turn) -> void:
+	board_overlay.on_turn_changed(new_turn)
+	board_manager.on_turn_changed(new_turn)
 
 
 func save_image() -> void:
