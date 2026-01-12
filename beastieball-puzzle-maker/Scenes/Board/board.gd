@@ -19,6 +19,19 @@ const TRAP_VISUALS_DICT : Dictionary[TrapStack, Array] = {
 
 @export_range(1, 999, 1) var image_number : int = 1
 
+## IMPORTANT NOTE
+# RALLY and DREAD visuals will be determinated by left dict only
+# there should be codes to set both dict to have the same value of these anyway
+var left_field_effects_dict : Dictionary[FieldEffect.Type, int] = {} :
+	set(value):
+		left_field_effects_dict = value
+		_update_field_effect_visuals()
+var right_field_effects_dict : Dictionary[FieldEffect.Type, int] = {} :
+	set(value):
+		right_field_effects_dict = value
+		_update_field_effect_visuals()
+
+
 @onready var sub_viewport_container: SubViewportContainer = %SubViewportContainer
 @onready var sub_viewport: SubViewport = %SubViewport
 
@@ -49,98 +62,119 @@ const TRAP_VISUALS_DICT : Dictionary[TrapStack, Array] = {
 
 
 func _ready() -> void:
-	board_manager.left_team_controller.field_effects_updated.connect(show_field_effects_visuals_from_dict.bind(Global.MySide.LEFT))
-	board_manager.right_team_controller.field_effects_updated.connect(show_field_effects_visuals_from_dict.bind(Global.MySide.RIGHT))
+	board_manager.left_team_controller.field_effects_updated.connect(func(field_dict : Dictionary[FieldEffect.Type, int]):
+		left_field_effects_dict = field_dict
+		_update_field_effect_visuals()
+	)
+	board_manager.right_team_controller.field_effects_updated.connect(func(field_dict : Dictionary[FieldEffect.Type, int]):
+		right_field_effects_dict = field_dict
+		_update_field_effect_visuals()
+	)
+
+func _update_field_effect_visuals() -> void:
+	hide_all_field_effects()
+
+	for i in 3:
+		# First loop -> Left side field effects
+		# Second loop -> Middle field effect USING LEFT DICT!!!
+		# Third loop -> Right side field effects
+		var field_dict : Dictionary[FieldEffect.Type, int] = left_field_effects_dict if i < 2 else right_field_effects_dict
+		for field_effect : FieldEffect.Type in field_dict:
+			var stack : int = field_dict[field_effect]
+			if stack <= 0:
+				continue
+			if i == 1: # Middle Loop
+				match field_effect:
+					FieldEffect.Type.RALLY:
+						show_rally()
+					FieldEffect.Type.DREAD:
+						show_dread()
+			else:
+				var side : Global.MySide = Global.MySide.LEFT if i == 0 else Global.MySide.RIGHT # when i == 2
+				match field_effect:
+					FieldEffect.Type.QUAKE:
+						show_quake(side)
+					FieldEffect.Type.BARRIER_UPPER:
+						show_barrier(side, Beastie.Position.UPPER_FRONT)
+					FieldEffect.Type.BARRIER_LOWER:
+						show_barrier(side, Beastie.Position.LOWER_FRONT)
+					FieldEffect.Type.TRAP:
+						show_trap(side, stack)
+					FieldEffect.Type.RHYTHM:
+						show_rhythm(side)
+
+	_update_field_effects_labels()
 
 
-func show_field_effects_visuals_from_dict(field_dict : Dictionary[FieldEffect.Type, int], side : Global.MySide) -> void:
-	hide_field_visuals_for_side(side)
-	if not field_dict:
-		return
+func _update_field_effects_labels() -> void:
+	var left_text : String = ""
+	var middle_text : String = ""
+	var right_text : String = ""
 
-	for field_effect : FieldEffect.Type in field_dict:
-		var stack : int = field_dict[field_effect]
-		if stack <= 0:
-			continue
-		match field_effect:
-			FieldEffect.Type.RALLY:
-				show_rally()
-			FieldEffect.Type.QUAKE:
-				show_quake(side)
-			FieldEffect.Type.DREAD:
-				show_dread()
-			FieldEffect.Type.BARRIER_UPPER:
-				show_barrier(side, Beastie.Position.UPPER_FRONT)
-			FieldEffect.Type.BARRIER_LOWER:
-				show_barrier(side, Beastie.Position.LOWER_FRONT)
-			FieldEffect.Type.TRAP:
-				show_trap(side, field_dict[field_effect])
-			FieldEffect.Type.RHYTHM:
-				show_rhythm(side)
+	for i in 3:
+		# First loop -> Left side field effects
+		# Second loop -> Middle field effect USING LEFT DICT!!!
+		# Third loop -> Right side field effects
+		var field_dict : Dictionary[FieldEffect.Type, int] = left_field_effects_dict if i < 2 else right_field_effects_dict
+		for field_effect : FieldEffect.Type in field_dict:
+			var stack : int = field_dict[field_effect]
+			if stack <= 0:
+				continue
+			match i:
+				0: # Left side
+					match field_effect:
+						FieldEffect.Type.QUAKE:
+							left_text += "%s QUAKE" % str(stack) + "\n"
+						FieldEffect.Type.TRAP:
+							left_text += "%s/4 TRAP" % str(stack) + "\n"
+						FieldEffect.Type.RHYTHM:
+							left_text += "%s RHYTHM" % str(stack) + "\n"
+						#FieldEffect.Type.BARRIER_UPPER, FieldEffect.Type.BARRIER_LOWER:
+							# No text
+				1: # Middle
+					match field_effect:
+						FieldEffect.Type.RALLY:
+							middle_text += "%s/6 RALLY" % str(stack) + "\n"
+						FieldEffect.Type.DREAD:
+							middle_text += "%s DREAD" % str(stack) + "\n"
+				2: # Right side
+					match field_effect:
+						FieldEffect.Type.QUAKE:
+							right_text += "%s QUAKE" % str(stack) + "\n"
+						FieldEffect.Type.TRAP:
+							right_text += "%s/4 TRAP" % str(stack) + "\n"
+						FieldEffect.Type.RHYTHM:
+							right_text += "%s RHYTHM" % str(stack) + "\n"
+						#FieldEffect.Type.BARRIER_UPPER, FieldEffect.Type.BARRIER_LOWER:
+							# No text
 
-	_update_field_effects_labels(field_dict, side)
-
-
-func _update_field_effects_labels(field_dict : Dictionary[FieldEffect.Type, int], side : Global.MySide) -> void:
-
-	# This is such a mess
-	# Fix tomorrow...
-
-	if not is_node_ready():
-		await ready
-
-	if not field_dict or field_dict.is_empty():
-		if side == Global.MySide.LEFT:
-			left_field_effecst_label.text = ""
-		else:
-			right_field_effecst_label.text = ""
-		return
-
-	var side_text : String = ""
-	#var middle_text : String = ""
-	for field_effect : FieldEffect.Type in field_dict:
-		var stack : int = field_dict[field_effect]
-		if stack <= 0:
-			continue
-		match field_effect:
-			#FieldEffect.Type.RALLY:
-				#middle_text += "%s/6 RALLY" % str(stack) + "\n"
-			#FieldEffect.Type.DREAD:
-				#middle_text += "%s DREAD" % str(stack) + "\n"
-			FieldEffect.Type.QUAKE:
-				side_text += "%s QUAKE" % str(stack) + "\n"
-			FieldEffect.Type.TRAP:
-				side_text += "%s/4 TRAP" % str(stack) + "\n"
-			FieldEffect.Type.RHYTHM:
-				side_text += "%s RHYTHM" % str(stack) + "\n"
-			#FieldEffect.Type.BARRIER_UPPER, FieldEffect.Type.BARRIER_LOWER:
-				# No text
-
-	if side == Global.MySide.LEFT:
-		left_field_effecst_label.text = side_text.strip_edges()
-	else:
-		right_field_effecst_label.text = side_text.strip_edges()
-
-	#middle_field_effecst_label.text = middle_text.strip_edges()
+	left_field_effecst_label.text = left_text.strip_edges()
+	middle_field_effecst_label.text = middle_text.strip_edges()
+	right_field_effecst_label.text = right_text.strip_edges()
+	# YES it's a typo. No I'm not fixing it...
 
 
-func hide_field_visuals_for_side(side : Global.MySide) -> void:
-	if side == Global.MySide.LEFT:
-		left_quake_visuals.hide()
-		left_barrier_upper.hide()
-		left_barrier_lower.hide()
-		left_trap_visuals.hide()
-		left_rhythm_visuals.hide()
-	else:
-		right_quake_visuals.hide()
-		right_barrier_upper.hide()
-		right_barrier_lower.hide()
-		right_trap_visuals.hide()
-		right_rhythm_visuals.hide()
+func hide_all_field_effects() -> void:
+	rallly_visuals.hide()
+	dread_visuals.hide()
+	left_quake_visuals.hide()
+	left_barrier_upper.hide()
+	left_barrier_lower.hide()
+	left_trap_visuals.hide()
+	left_rhythm_visuals.hide()
+	right_quake_visuals.hide()
+	right_barrier_upper.hide()
+	right_barrier_lower.hide()
+	right_trap_visuals.hide()
+	right_rhythm_visuals.hide()
 
 
 func show_rally() -> void:
 	rallly_visuals.show()
+
+
+func show_dread() -> void:
+	dread_visuals.show()
 
 
 func show_quake(side : Global.MySide) -> void:
@@ -149,10 +183,6 @@ func show_quake(side : Global.MySide) -> void:
 			left_quake_visuals.show()
 		Global.MySide.RIGHT:
 			right_quake_visuals.show()
-
-
-func show_dread() -> void:
-	dread_visuals.show()
 
 
 func show_barrier(side : Global.MySide, pos : Beastie.Position) -> void:

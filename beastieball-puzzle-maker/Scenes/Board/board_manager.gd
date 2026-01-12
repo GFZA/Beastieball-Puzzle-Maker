@@ -40,6 +40,11 @@ var left_team_position_dict : Dictionary[Beastie.Position, Beastie] = {}
 var right_team_position_dict : Dictionary[Beastie.Position, Beastie] = {}
 
 
+func _ready() -> void:
+	left_team_controller.field_effects_updated.connect(right_team_controller.copy_middle_field_effects_from_another_controller)
+	right_team_controller.field_effects_updated.connect(left_team_controller.copy_middle_field_effects_from_another_controller)
+
+
 func get_damage_dict_array(attacker : Beastie, attack : Attack) -> Array[Dictionary]:
 	var empty_dict : Dictionary[Beastie.Position, int] = {
 		Beastie.Position.UPPER_BACK : -1,

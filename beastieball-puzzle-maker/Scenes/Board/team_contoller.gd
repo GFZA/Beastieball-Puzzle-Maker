@@ -392,6 +392,23 @@ func reset_position() -> void:
 	beastie_2_position = Beastie.Position.LOWER_BACK
 
 
+# Exclusive to Right TeamController
+# Use to copy RALLY and DREAD from right's my_field_effects
+# as these will always be the samw between the two
+func copy_middle_field_effects_from_another_controller(another_team_dict : Dictionary[FieldEffect.Type, int]) -> void:
+	if another_team_dict.has(FieldEffect.Type.RALLY):
+		var rally_stack : int = another_team_dict.get(FieldEffect.Type.RALLY)
+		my_field_effects[FieldEffect.Type.RALLY] = rally_stack
+	elif my_field_effects.has(FieldEffect.Type.RALLY):
+		my_field_effects.erase(FieldEffect.Type.RALLY)
+
+	if another_team_dict.has(FieldEffect.Type.DREAD):
+		var dread_stack : int = another_team_dict.get(FieldEffect.Type.DREAD)
+		my_field_effects[FieldEffect.Type.DREAD] = dread_stack
+	elif my_field_effects.has(FieldEffect.Type.DREAD):
+		my_field_effects.erase(FieldEffect.Type.DREAD)
+
+
 #region Fuctions for Condition Checking
 
 func check_if_serving() -> bool:
