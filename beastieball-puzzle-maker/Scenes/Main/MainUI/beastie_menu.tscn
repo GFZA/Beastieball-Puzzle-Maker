@@ -1,0 +1,211 @@
+[gd_scene load_steps=7 format=3 uid="uid://ck45vbd1ldi5t"]
+
+[ext_resource type="Script" uid="uid://6rv1irob5c57" path="res://Scenes/Main/MainUI/beastie_menu.gd" id="1_4hm00"]
+[ext_resource type="FontFile" uid="uid://q2kbgu0jja56" path="res://Autoloads/Resources/Fonts/sportsjersey.ttf" id="2_s680g"]
+[ext_resource type="Theme" uid="uid://bkrlwg21fhprn" path="res://Autoloads/Resources/Themes/edit_button.tres" id="4_w5fki"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xqtvo"]
+font = ExtResource("2_s680g")
+font_size = 64
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_40myu"]
+font = ExtResource("2_s680g")
+font_size = 64
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s680g"]
+bg_color = Color(0, 1, 0, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.41568628, 0.5058824, 0.5372549, 1)
+
+[node name="BeastieMenu" type="ScrollContainer"]
+custom_minimum_size = Vector2(805, 1494)
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_4hm00")
+
+[node name="MainContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_behavior_recursive = 1
+theme_override_constants/separation = 12
+
+[node name="NameLabel" type="Label" parent="MainContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 6
+text = "UNKNOWN"
+label_settings = SubResource("LabelSettings_xqtvo")
+
+[node name="BeastiePicContainer" type="HBoxContainer" parent="MainContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="SpriteTextureRec" type="TextureRect" parent="MainContainer/BeastiePicContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 2
+size_flags_horizontal = 0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="NameNumContainer" type="VBoxContainer" parent="MainContainer/BeastiePicContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="CustomNameLabel" type="Label" parent="MainContainer/BeastiePicContainer/NameNumContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "Custom Name"
+label_settings = SubResource("LabelSettings_xqtvo")
+
+[node name="CustomNameLineEdit" type="LineEdit" parent="MainContainer/BeastiePicContainer/NameNumContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_behavior_recursive = 2
+theme = ExtResource("4_w5fki")
+placeholder_text = "Name"
+alignment = 1
+max_length = 12
+
+[node name="Spacer" type="Control" parent="MainContainer/BeastiePicContainer/NameNumContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="CustomNumberLabel" type="Label" parent="MainContainer/BeastiePicContainer/NameNumContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "Custom Number"
+label_settings = SubResource("LabelSettings_xqtvo")
+
+[node name="CustomNumberLineEdit" type="LineEdit" parent="MainContainer/BeastiePicContainer/NameNumContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+focus_behavior_recursive = 2
+theme = ExtResource("4_w5fki")
+placeholder_text = "999"
+alignment = 1
+max_length = 3
+
+[node name="StaminaContainer" type="HBoxContainer" parent="MainContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="MainContainer/StaminaContainer"]
+layout_mode = 2
+text = "Stamina"
+label_settings = SubResource("LabelSettings_40myu")
+
+[node name="Control" type="Control" parent="MainContainer/StaminaContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="StaminaSlider" type="HSlider" parent="MainContainer/StaminaContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_behavior_recursive = 1
+theme = ExtResource("4_w5fki")
+value = 100.0
+
+[node name="StaminaProgressBar" type="ProgressBar" parent="MainContainer/StaminaContainer/StaminaSlider"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_behavior_recursive = 1
+mouse_filter = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_s680g")
+step = 1.0
+value = 100.0
+show_percentage = false
+
+[node name="StaminaLabel" type="Label" parent="MainContainer/StaminaContainer/StaminaSlider"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -89.5
+offset_top = -36.5
+offset_right = 89.5
+offset_bottom = 36.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "100"
+label_settings = SubResource("LabelSettings_40myu")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TabContainer" type="TabContainer" parent="MainContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+focus_behavior_recursive = 1
+theme = ExtResource("4_w5fki")
+tab_alignment = 1
+current_tab = 0
+
+[node name="_Position_" type="TabBar" parent="MainContainer/TabContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainContainer/TabContainer/_Position_"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NameLabel2" type="Label" parent="MainContainer/TabContainer/_Position_/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "Shloom"
+label_settings = SubResource("LabelSettings_xqtvo")
+
+[node name="NameLabel3" type="Label" parent="MainContainer/TabContainer/_Position_/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "Shloom"
+label_settings = SubResource("LabelSettings_xqtvo")
+
+[node name="NameLabel4" type="Label" parent="MainContainer/TabContainer/_Position_/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "Shloom"
+label_settings = SubResource("LabelSettings_xqtvo")
+
+[node name="_Plays_" type="TabBar" parent="MainContainer/TabContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="_Feelings_" type="TabBar" parent="MainContainer/TabContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="_Invests_" type="TabBar" parent="MainContainer/TabContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3

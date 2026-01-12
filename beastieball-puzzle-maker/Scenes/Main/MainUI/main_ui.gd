@@ -13,6 +13,7 @@ signal reset_board_requested
 @onready var default_menu: DefaultMenu = %DefaultMenu
 @onready var your_team_menu: TeamMenu = %YourTeamMenu
 @onready var opponent_team_menu: TeamMenu = %OpponentTeamMenu
+@onready var beastie_menu: BeastieMenu = %BeastieMenu
 @onready var overlay_menu: OverlayMenu = %OverlayMenu
 @onready var field_effects_menu: ScrollContainer = %FieldEffectsMenu
 
@@ -40,8 +41,15 @@ func _ready() -> void:
 
 
 func _on_back_button_pressed() -> void:
-	back_button_container.hide()
-	show_default_menu()
+	if beastie_menu.visible:
+		match beastie_menu.side:
+			Global.MySide.LEFT:
+				show_your_team_menu()
+			Global.MySide.RIGHT:
+				show_opponent_team_menu()
+	else:
+		back_button_container.hide()
+		show_default_menu()
 
 
 func _on_save_image_button_pressed() -> void:
@@ -68,6 +76,8 @@ func _on_reset_board_pressed() -> void:
 func hide_all_menu() -> void:
 	for menu in menu_container.get_children():
 		menu.hide()
+		if menu is BeastieMenu:
+			menu.beastie = null
 
 
 func reset() -> void:
@@ -94,6 +104,16 @@ func show_opponent_team_menu() -> void:
 	upper_label.text = "Editing Opponent Team"
 	back_button_container.show()
 	opponent_team_menu.show()
+
+
+func show_beastie_menu(beastie : Beastie, side : Global.MySide = Global.MySide.LEFT) -> void:
+	hide_all_menu()
+	var side_text : String = "Your Team" if side == Global.MySide.LEFT else "Opponent Team"
+	upper_label.text = "Editing " + side_text
+	back_button_container.show()
+	beastie_menu.beastie = beastie
+	beastie_menu.side = side
+	beastie_menu.show()
 
 
 func show_overlay_menu() -> void:

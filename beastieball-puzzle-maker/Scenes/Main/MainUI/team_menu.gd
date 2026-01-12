@@ -9,8 +9,8 @@ extends ScrollContainer
 		_update_side()
 
 @onready var main_container: VBoxContainer = %MainContainer
-@onready var serve_slot_ui: AddBeastieUI = %ServeSlotUI
-@onready var non_serve_slot_ui: AddBeastieUI = %NonServeSlotUI
+@onready var member_one_slot_ui: AddBeastieUI = %MemberOneSlotUI
+@onready var member_two_slot_ui: AddBeastieUI = %MemberTwoSlotUI
 @onready var bench_one_ui: AddBeastieUI = %BenchOneUI
 @onready var bench_two_ui: AddBeastieUI = %BenchTwoUI
 
