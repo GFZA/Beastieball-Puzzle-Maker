@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://17ji3etffeot" path="res://Autoloads/Icons/icon_max.png" id="6_3fyvr"]
 
 [node name="NumberUI" type="HBoxContainer"]
-offset_right = 210.0
+offset_right = 162.0
 offset_bottom = 88.0
 focus_behavior_recursive = 1
 theme_override_constants/separation = 0
@@ -32,11 +32,12 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="UpDownButtonContainer" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = -8
 
-[node name="UpButton" type="Button" parent="VBoxContainer"]
+[node name="UpButton" type="Button" parent="UpDownButtonContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("1_t3gyi")
@@ -44,7 +45,7 @@ theme_override_constants/icon_max_width = 36
 icon = ExtResource("4_jqq0t")
 vertical_icon_alignment = 0
 
-[node name="DownButton" type="Button" parent="VBoxContainer"]
+[node name="DownButton" type="Button" parent="UpDownButtonContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
@@ -53,7 +54,8 @@ theme_override_constants/icon_max_width = 36
 icon = ExtResource("5_pyc1p")
 vertical_icon_alignment = 2
 
-[node name="Spacer2" type="Control" parent="."]
+[node name="Spacer" type="Control" parent="."]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(8, 0)
 layout_mode = 2
 

@@ -53,6 +53,7 @@ label_settings = SubResource("LabelSettings_xyyv6")
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
+value_min = 0
 value_max = 9
 
 [node name="OpponentPoints" type="HBoxContainer" parent="MainContainer"]
@@ -68,6 +69,7 @@ label_settings = SubResource("LabelSettings_xyyv6")
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
+value_min = 0
 value_max = 9
 
 [node name="TurnLabel" type="Label" parent="MainContainer"]

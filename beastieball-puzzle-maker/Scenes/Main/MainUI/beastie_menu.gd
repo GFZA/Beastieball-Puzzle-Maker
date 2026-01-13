@@ -9,7 +9,10 @@ const STAMINA_FILL_STYLEBOX := preload("uid://ci28vvsldarw1")
 		beastie = value
 		_update_beastie()
 
-var side : Global.MySide = Global.MySide.LEFT
+@export var side : Global.MySide = Global.MySide.LEFT :
+	set(value):
+		side = value
+		_update_side()
 
 @onready var name_label: Label = %NameLabel
 @onready var sprite_texture_rec: TextureRect = %SpriteTextureRec
@@ -22,9 +25,26 @@ var side : Global.MySide = Global.MySide.LEFT
 @onready var stamina_label: Label = %StaminaLabel
 
 @onready var tab_container: TabContainer = %TabContainer
-@onready var position_tab: TabBar = %_Position_
-@onready var plays_tab: TabBar = %_Plays_
+
+@onready var on_field_tab: TabBar = %"_On Field_"
+@onready var pos_tab_upper_button_container: HBoxContainer = %UpperButtonContainer
+@onready var pos_tab_upper_back_button: Button = %UpperBackButton
+@onready var pos_tab_upper_front_button: Button = %UpperFrontButton
+@onready var pos_tab_lower_button_container: HBoxContainer = %LowerButtonContainer
+@onready var pos_tab_lower_back_button: Button = %LowerBackButton
+@onready var pos_tab_lower_front_button: Button = %LowerFrontButton
+@onready var bpow_number_ui: NumberUI = %BPOWNumberUI
+@onready var bdef_number_ui: NumberUI = %BDEFNumberUI
+@onready var spow_number_ui: NumberUI = %SPOWNumberUI
+@onready var sdef_number_ui: NumberUI = %SDEFNumberUI
+@onready var mpow_number_ui: NumberUI = %MPOWNumberUI
+@onready var mdef_number_ui: NumberUI = %MDEFNumberUI
+@onready var clear_boost_button: Button = %ClearBoostButton
+
+@onready var sets_tab: TabBar = %_Sets_
+
 @onready var feelings_tab: TabBar = %_Feelings_
+
 @onready var invests_tab: TabBar = %_Invests_
 
 
@@ -32,6 +52,9 @@ func _ready() -> void:
 	stamina_slider.value_changed.connect(_on_stamina_slider_value_changed)
 	custom_name_line_edit.text_submitted.connect(custom_name_line_edit.release_focus.unbind(1))
 	custom_number_line_edit.text_submitted.connect(custom_number_line_edit.release_focus.unbind(1))
+
+	# Hide on field tab when bench
+	#tab_container.set_tab_hidden(0, true)
 
 
 func reset() -> void:
@@ -55,6 +78,15 @@ func _update_beastie() -> void:
 	custom_name_line_edit.placeholder_text = beastie.specie_name
 	custom_number_line_edit.placeholder_text = str(beastie.beastiepedia_id)
 	_update_stamina_progress_bar_stylebox()
+
+
+func _update_side() -> void:
+	if not is_node_ready():
+		await ready
+
+	var new_index : int = 0 if side == Global.MySide.LEFT else 1
+	pos_tab_upper_button_container.move_child(pos_tab_upper_back_button, new_index)
+	pos_tab_lower_button_container.move_child(pos_tab_lower_back_button, new_index)
 
 
 func _on_stamina_slider_value_changed(new_value : int) -> void:
