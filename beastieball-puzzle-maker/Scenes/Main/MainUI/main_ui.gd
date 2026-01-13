@@ -37,6 +37,8 @@ func _ready() -> void:
 	default_menu.overlay_edit_requested.connect(show_overlay_menu)
 	default_menu.field_effect_edit_requested.connect(show_field_effect_menu)
 
+	your_team_menu.beastie_menu_requested.connect(show_beastie_menu)
+
 	_on_back_button_pressed()
 
 
@@ -47,6 +49,7 @@ func _on_back_button_pressed() -> void:
 				show_your_team_menu()
 			Global.MySide.RIGHT:
 				show_opponent_team_menu()
+		beastie_menu.reset()
 	else:
 		back_button_container.hide()
 		show_default_menu()
@@ -106,13 +109,14 @@ func show_opponent_team_menu() -> void:
 	opponent_team_menu.show()
 
 
-func show_beastie_menu(beastie : Beastie, side : Global.MySide = Global.MySide.LEFT) -> void:
+func show_beastie_menu(beastie : Beastie, side : Global.MySide, team_pos : TeamController.TeamPosition) -> void:
 	hide_all_menu()
 	var side_text : String = "Your Team" if side == Global.MySide.LEFT else "Opponent Team"
 	upper_label.text = "Editing " + side_text
 	back_button_container.show()
-	beastie_menu.beastie = beastie
+	beastie_menu.team_pos = team_pos # Order matter here because beastie_menu beastie setter use this
 	beastie_menu.side = side
+	beastie_menu.beastie = beastie
 	beastie_menu.show()
 
 

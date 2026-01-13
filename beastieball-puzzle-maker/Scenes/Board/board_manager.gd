@@ -181,6 +181,19 @@ func find_beastie_scene(beastie : Beastie) -> BeastieScene:
 	return null
 
 
+func add_beastie_to_scene(requested_beastie : Beastie, side : Global.MySide, team_pos : TeamController.TeamPosition) -> void:
+	var controller : TeamController = left_team_controller if side == Global.MySide.LEFT else right_team_controller
+	match team_pos:
+		TeamController.TeamPosition.FIELD_1:
+			controller.beastie_1_beastie = requested_beastie
+		TeamController.TeamPosition.FIELD_2:
+			controller.beastie_2_beastie = requested_beastie
+		TeamController.TeamPosition.BENCH_1:
+			controller.bench_beastie_1_beastie = requested_beastie
+		TeamController.TeamPosition.BENCH_2:
+			controller.bench_beastie_2_beastie = requested_beastie
+
+
 # Behold the worse ssavd/load system ever
 
 func save_board_data() -> void:

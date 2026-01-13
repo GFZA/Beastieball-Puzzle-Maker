@@ -41,6 +41,7 @@ theme_override_constants/separation = 12
 
 [node name="SwapButtonContainer" type="VBoxContainer" parent="VBoxContainer/MainContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 0
 
@@ -67,6 +68,7 @@ vertical_icon_alignment = 2
 
 [node name="BeastieButton" type="Button" parent="VBoxContainer/MainContainer"]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 focus_behavior_recursive = 1
@@ -88,6 +90,7 @@ expand_icon = true
 
 [node name="ResetButton" type="Button" parent="VBoxContainer/MainContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 focus_behavior_recursive = 1

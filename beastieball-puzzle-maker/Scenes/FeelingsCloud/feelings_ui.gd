@@ -24,9 +24,14 @@ func _update_feelings_texture() -> void:
 		await ready
 	var icon : Texture2D = load(Global.get_icon_path_from_feelings(feelings))
 	texture_rect.texture = icon
+	_update_number_label()
 
 
 func _update_number_label() -> void:
 	if not is_node_ready():
 		await ready
-	label.text = str(stack)
+	var stack_text : String = ""
+	stack_text += str(stack)
+	if feelings == Beastie.Feelings.WEEPY:
+		stack_text += "/4"
+	label.text = stack_text

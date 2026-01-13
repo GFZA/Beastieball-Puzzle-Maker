@@ -199,4 +199,4 @@ unique_name_in_owner = true
 layout_mode = 2
 focus_behavior_recursive = 1
 theme = ExtResource("3_nobbd")
-text = " Load... "
+text = " Load"

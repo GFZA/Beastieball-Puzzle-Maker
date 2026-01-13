@@ -25,7 +25,7 @@ text = "Member One"
 unique_name_in_owner = true
 layout_mode = 2
 text = "Member Two"
-pos = 2
+team_pos = 1
 
 [node name="HSeparator" type="HSeparator" parent="MainContainer"]
 custom_minimum_size = Vector2(0, 25)
@@ -36,10 +36,10 @@ theme = ExtResource("3_68ssv")
 unique_name_in_owner = true
 layout_mode = 2
 text = "Bench One"
-pos = 4
+team_pos = 2
 
 [node name="BenchTwoUI" parent="MainContainer" instance=ExtResource("2_pr7q6")]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Bench Two"
-pos = 5
+team_pos = 3

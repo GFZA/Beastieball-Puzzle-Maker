@@ -5,6 +5,8 @@ extends Node2D
 signal field_updated(pos_dict : Dictionary[Beastie.Position, Beastie])
 signal field_effects_updated(field_dict : Dictionary[FieldEffect.Type, int])
 
+enum TeamPosition {FIELD_1, FIELD_2, BENCH_1, BENCH_2}
+
 const BEASTIE_SCENE := preload("uid://dptoj76e40ldo")
 const PLAYS_UI_CONTAINER_SCENE : PackedScene = preload("uid://dksxc3rs20kkc")
 
@@ -162,7 +164,7 @@ func _process_beastie_value(value : Beastie, benched : bool = false) -> Beastie:
 	if not value:
 		return null
 
-	var processed_value = value.duplicate(true)
+	var processed_value = value # Don't duplicate so it's the same with AddBeastieUI's beastie
 	processed_value.my_side = side
 	processed_value.health_updated.connect(_update_field.unbind(1))
 	processed_value.my_plays_updated.connect(_update_field.unbind(1))

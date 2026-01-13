@@ -48,6 +48,7 @@ func _ready() -> void:
 	var beastie_requester : Array[Node] = get_tree().get_nodes_in_group("beastie_select_ui_requester")
 	for requester in beastie_requester:
 		requester.beastie_select_ui_requested.connect(select_ui.show_beastie_select_ui)
+		requester.add_beastie_to_board_requested.connect(board.board_manager.add_beastie_to_scene)
 
 
 func _on_your_point_changed(new_point : int) -> void:

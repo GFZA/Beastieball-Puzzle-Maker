@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://ck45vbd1ldi5t"]
+[gd_scene load_steps=14 format=3 uid="uid://ck45vbd1ldi5t"]
 
 [ext_resource type="Script" uid="uid://6rv1irob5c57" path="res://Scenes/Main/MainUI/beastie_menu.gd" id="1_4hm00"]
+[ext_resource type="FontFile" uid="uid://ckifc6cea5vs" path="res://Autoloads/Resources/Fonts/SportsJerseyEdited.ttf" id="2_4k1vm"]
 [ext_resource type="FontFile" uid="uid://q2kbgu0jja56" path="res://Autoloads/Resources/Fonts/sportsjersey.ttf" id="2_s680g"]
 [ext_resource type="ButtonGroup" uid="uid://br3kusi3thyqq" path="res://Autoloads/Resources/on_field_tab_button_group.tres" id="4_renfa"]
 [ext_resource type="Theme" uid="uid://bkrlwg21fhprn" path="res://Autoloads/Resources/Themes/edit_button.tres" id="4_w5fki"]
@@ -11,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dnjn5ky0d157b" path="res://Autoloads/Icons/icon_whistle.png" id="8_rv6kt"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xqtvo"]
-font = ExtResource("2_s680g")
+font = ExtResource("2_4k1vm")
 font_size = 64
 font_color = Color(0, 0, 0, 1)
 
