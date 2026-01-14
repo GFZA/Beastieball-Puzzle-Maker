@@ -6,7 +6,6 @@ const LENGTH_WHEN_NAME := 651.0
 const LENGTH_WHEN_NO_NAME := 232.0
 const NONE_ICON := preload("uid://dey8bdpdiw1p4")
 
-
 signal beastie_selected(selected_beastie : Beastie)
 
 @export var beastie : Beastie = null :

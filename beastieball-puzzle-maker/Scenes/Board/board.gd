@@ -62,16 +62,19 @@ var right_field_effects_dict : Dictionary[FieldEffect.Type, int] = {} :
 @onready var right_field_effecst_label: Label = %RightFieldEffecstLabel
 
 @onready var edit_field_effects_button: Button = %EditFieldEffectsButton
-@onready var left_upper_add_beastie_button: Button = %LeftUpperAddBeastieButton
-@onready var left_lower_add_beastie_button: Button = %LeftLowerAddBeastieButton
-@onready var right_upper_add_beastie_button: Button = %RightUpperAddBeastieButton
-@onready var right_lower_add_beastie_button: Button = %RightLowerAddBeastieButton
+
+@onready var board_add_beastie_button_anchor: Control = %BoardAddBeastieButtonAnchor
+@onready var left_upper_bench_add_beastie_button: BoardAddBeastieButton = %LeftUpperBenchAddBeastieButton
+@onready var left_lower_bench_add_beastie_button: BoardAddBeastieButton = %LeftLowerBenchAddBeastieButton
+@onready var left_upper_add_beastie_button: BoardAddBeastieButton = %LeftUpperAddBeastieButton
+@onready var left_lower_add_beastie_button: BoardAddBeastieButton = %LeftLowerAddBeastieButton
+@onready var right_upper_add_beastie_button: BoardAddBeastieButton = %RightUpperAddBeastieButton
+@onready var right_lower_add_beastie_button: BoardAddBeastieButton = %RightLowerAddBeastieButton
+@onready var right_upper_bench_add_beastie_button: BoardAddBeastieButton = %RightUpperBenchAddBeastieButton
+@onready var right_lower_bench_add_beastie_button: BoardAddBeastieButton = %RightLowerBenchAddBeastieButton
 
 
 func _ready() -> void:
-	board_manager.left_team_controller.field_updated.connect(update_add_beastie_buttons.unbind(1))
-	board_manager.right_team_controller.field_updated.connect(update_add_beastie_buttons.unbind(1))
-
 	board_manager.left_team_controller.field_effects_updated.connect(func(field_dict : Dictionary[FieldEffect.Type, int]):
 		left_field_effects_dict = field_dict
 		_update_field_effect_visuals()
@@ -251,34 +254,8 @@ func on_turn_changed(new_turn : Turn) -> void:
 
 
 func reset() -> void:
-	update_add_beastie_buttons()
-
-
-func update_add_beastie_buttons() -> void:
-	left_upper_add_beastie_button.show()
-	left_lower_add_beastie_button.show()
-	right_upper_add_beastie_button.show()
-	right_lower_add_beastie_button.show()
-
-	if board_manager.left_team_controller.check_if_field_is_full():
-		left_upper_add_beastie_button.hide()
-		left_lower_add_beastie_button.hide()
-	else:
-		var left_dict : Dictionary[Beastie.Position, Beastie] = board_manager.left_team_controller.get_position_dict()
-		if (left_dict.get(Beastie.Position.UPPER_BACK) != null) or (left_dict.get(Beastie.Position.UPPER_FRONT) != null):
-			left_upper_add_beastie_button.hide()
-		if (left_dict.get(Beastie.Position.LOWER_BACK) != null) or (left_dict.get(Beastie.Position.LOWER_FRONT) != null):
-			left_lower_add_beastie_button.hide()
-
-	if board_manager.right_team_controller.check_if_field_is_full():
-		right_upper_add_beastie_button.hide()
-		right_lower_add_beastie_button.hide()
-	else:
-		var right_dict : Dictionary[Beastie.Position, Beastie] = board_manager.right_team_controller.get_position_dict()
-		if (right_dict.get(Beastie.Position.UPPER_BACK) != null) or (right_dict.get(Beastie.Position.UPPER_FRONT) != null):
-			right_upper_add_beastie_button.hide()
-		if (right_dict.get(Beastie.Position.LOWER_BACK) != null) or (right_dict.get(Beastie.Position.LOWER_FRONT) != null):
-			right_lower_add_beastie_button.hide()
+	for button in board_add_beastie_button_anchor.get_children():
+		button.show()
 
 
 func save_image() -> void:

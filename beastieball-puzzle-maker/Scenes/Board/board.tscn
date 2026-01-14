@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://co8c0qvn7nkha"]
+[gd_scene load_steps=34 format=3 uid="uid://co8c0qvn7nkha"]
 
 [ext_resource type="Script" uid="uid://dfsngo7akxojy" path="res://Scenes/Board/board.gd" id="1_mucxt"]
 [ext_resource type="PackedScene" uid="uid://s3ot8ysh03s6" path="res://Scenes/Board/BoardOverlay/board_overlay.tscn" id="2_e8qp6"]
@@ -29,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://c5qpkbyaoclc5" path="res://FieldVisuals/field_rhythm_note_5.png" id="18_qg8b0"]
 [ext_resource type="Texture2D" uid="uid://b12tfn7n1l8qs" path="res://FieldVisuals/field_trap_4_left.png" id="21_reu04"]
 [ext_resource type="Texture2D" uid="uid://bvywpvocaqq32" path="res://FieldVisuals/field_trap_1_right.png" id="22_mhwkv"]
+[ext_resource type="Script" uid="uid://88q2r1kw6akq" path="res://Scenes/Board/board_add_beastie_button.gd" id="32_kxoq5"]
 [ext_resource type="Theme" uid="uid://v25nab4h4vdp" path="res://Autoloads/Resources/Themes/highlight_overlay.tres" id="100_mhwkv"]
 [ext_resource type="FontFile" uid="uid://cvfib27cf5q88" path="res://Autoloads/Resources/Fonts/Go Banana.ttf" id="100_reu04"]
 
@@ -677,74 +678,146 @@ theme = ExtResource("100_mhwkv")
 theme_override_font_sizes/font_size = 96
 text = "Edit Field Effects"
 
-[node name="LeftUpperAddBeastieButton" type="Button" parent="SubViewportContainer/SubViewport"]
+[node name="BoardAddBeastieButtonAnchor" type="Control" parent="SubViewportContainer/SubViewport"]
 unique_name_in_owner = true
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -662.0
-offset_top = -77.5
-offset_right = -1.0
-offset_bottom = 156.5
-grow_horizontal = 2
-grow_vertical = 2
-focus_mode = 0
-theme = ExtResource("100_mhwkv")
-theme_override_font_sizes/font_size = 96
-text = "Add Beastie"
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1726.0
+offset_top = 1820.0
+offset_right = 1766.0
+offset_bottom = 1860.0
 
-[node name="LeftLowerAddBeastieButton" type="Button" parent="SubViewportContainer/SubViewport"]
+[node name="LeftUpperBenchAddBeastieButton" type="Button" parent="SubViewportContainer/SubViewport/BoardAddBeastieButtonAnchor" groups=["beastie_select_ui_requester"]]
 unique_name_in_owner = true
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -712.0
-offset_top = 156.5
-offset_right = -1.0
-offset_bottom = 429.5
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 0
+offset_left = -1726.0
+offset_top = -925.0
+offset_right = -1088.0
+offset_bottom = -652.0
+size_flags_horizontal = 8
 focus_mode = 0
 theme = ExtResource("100_mhwkv")
 theme_override_font_sizes/font_size = 96
-text = "Add Beastie"
+text = "Add Bench"
+script = ExtResource("32_kxoq5")
+team_pos = 2
 
-[node name="RightUpperAddBeastieButton" type="Button" parent="SubViewportContainer/SubViewport"]
+[node name="LeftLowerBenchAddBeastieButton" type="Button" parent="SubViewportContainer/SubViewport/BoardAddBeastieButtonAnchor" groups=["beastie_select_ui_requester"]]
 unique_name_in_owner = true
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -1.0
-offset_top = -77.5
-offset_right = 651.0
-offset_bottom = 156.5
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 0
+offset_left = -1726.0
+offset_top = -651.0
+offset_right = -1088.0
+offset_bottom = -378.0
+size_flags_horizontal = 8
 focus_mode = 0
 theme = ExtResource("100_mhwkv")
 theme_override_font_sizes/font_size = 96
-text = "Add Beastie"
+text = "Add Bench"
+script = ExtResource("32_kxoq5")
+team_pos = 3
 
-[node name="RightLowerAddBeastieButton" type="Button" parent="SubViewportContainer/SubViewport"]
+[node name="LeftUpperAddBeastieButton" type="Button" parent="SubViewportContainer/SubViewport/BoardAddBeastieButtonAnchor" groups=["beastie_select_ui_requester"]]
 unique_name_in_owner = true
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -1.0
-offset_top = 156.5
-offset_right = 705.0
-offset_bottom = 429.5
-grow_horizontal = 2
-grow_vertical = 2
+custom_minimum_size = Vector2(611, 234)
+layout_mode = 0
+offset_left = -1088.0
+offset_top = -925.0
+offset_right = -377.0
+offset_bottom = -652.0
+size_flags_horizontal = 8
 focus_mode = 0
 theme = ExtResource("100_mhwkv")
 theme_override_font_sizes/font_size = 96
 text = "Add Beastie"
+script = ExtResource("32_kxoq5")
+
+[node name="LeftLowerAddBeastieButton" type="Button" parent="SubViewportContainer/SubViewport/BoardAddBeastieButtonAnchor" groups=["beastie_select_ui_requester"]]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(711, 273)
+layout_mode = 0
+offset_left = -1088.0
+offset_top = -651.0
+offset_right = -377.0
+offset_bottom = -378.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 8
+focus_mode = 0
+theme = ExtResource("100_mhwkv")
+theme_override_font_sizes/font_size = 96
+text = "Add Beastie"
+script = ExtResource("32_kxoq5")
+team_pos = 1
+
+[node name="RightUpperAddBeastieButton" type="Button" parent="SubViewportContainer/SubViewport/BoardAddBeastieButtonAnchor" groups=["beastie_select_ui_requester"]]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(611, 234)
+layout_mode = 0
+offset_left = -377.0
+offset_top = -924.0
+offset_right = 334.0
+offset_bottom = -651.0
+size_flags_horizontal = 0
+focus_mode = 0
+theme = ExtResource("100_mhwkv")
+theme_override_font_sizes/font_size = 96
+text = "Add Beastie"
+script = ExtResource("32_kxoq5")
+side = 1
+
+[node name="RightLowerAddBeastieButton" type="Button" parent="SubViewportContainer/SubViewport/BoardAddBeastieButtonAnchor" groups=["beastie_select_ui_requester"]]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(711, 273)
+layout_mode = 0
+offset_left = -377.0
+offset_top = -651.0
+offset_right = 334.0
+offset_bottom = -378.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+focus_mode = 0
+theme = ExtResource("100_mhwkv")
+theme_override_font_sizes/font_size = 96
+text = "Add Beastie"
+script = ExtResource("32_kxoq5")
+side = 1
+team_pos = 1
+
+[node name="RightUpperBenchAddBeastieButton" type="Button" parent="SubViewportContainer/SubViewport/BoardAddBeastieButtonAnchor" groups=["beastie_select_ui_requester"]]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 334.0
+offset_top = -925.0
+offset_right = 972.0
+offset_bottom = -652.0
+size_flags_horizontal = 8
+focus_mode = 0
+theme = ExtResource("100_mhwkv")
+theme_override_font_sizes/font_size = 96
+text = "Add Bench"
+script = ExtResource("32_kxoq5")
+side = 1
+team_pos = 2
+
+[node name="RightLowerBenchAddBeastieButton" type="Button" parent="SubViewportContainer/SubViewport/BoardAddBeastieButtonAnchor" groups=["beastie_select_ui_requester"]]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 334.0
+offset_top = -651.0
+offset_right = 972.0
+offset_bottom = -378.0
+size_flags_horizontal = 8
+focus_mode = 0
+theme = ExtResource("100_mhwkv")
+theme_override_font_sizes/font_size = 96
+text = "Add Bench"
+script = ExtResource("32_kxoq5")
+side = 1
+team_pos = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

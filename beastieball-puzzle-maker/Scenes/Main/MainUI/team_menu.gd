@@ -3,6 +3,7 @@ class_name TeamMenu
 extends ScrollContainer
 
 signal beastie_menu_requested(requested_beastie : Beastie, side : Global.MySide, team_pos : TeamController.TeamPosition)
+signal controller_reset_slot_requested(side : Global.MySide, team_pos : TeamController.TeamPosition)
 signal swap_slot_requested(team_pos_1 : TeamController.TeamPosition, team_pos_2 : TeamController.TeamPosition)
 
 @export var side : Global.MySide = Global.MySide.LEFT:
@@ -18,6 +19,12 @@ signal swap_slot_requested(team_pos_1 : TeamController.TeamPosition, team_pos_2 
 
 
 func _ready() -> void:
+	member_one_slot_ui.controller_reset_slot_requested.connect(controller_reset_slot_requested.emit)
+	member_two_slot_ui.controller_reset_slot_requested.connect(controller_reset_slot_requested.emit)
+	bench_one_ui.controller_reset_slot_requested.connect(controller_reset_slot_requested.emit)
+	bench_two_ui.controller_reset_slot_requested.connect(controller_reset_slot_requested.emit)
+
+
 	member_one_slot_ui.swap_up_requested.connect(_on_swap_up_requested)
 	member_two_slot_ui.swap_up_requested.connect(_on_swap_up_requested)
 	bench_one_ui.swap_up_requested.connect(_on_swap_up_requested)

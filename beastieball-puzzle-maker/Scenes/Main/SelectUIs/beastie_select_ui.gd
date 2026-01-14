@@ -2,9 +2,9 @@
 class_name BeastieSelectUI
 extends Control
 
-signal beastie_selected(beastie : Beastie)
+signal beastie_selected(beastie : Beastie, side : Global.MySide, team_pos : TeamController.TeamPosition)
 
-const BEASTIE_BUTTON = preload("uid://dpfyarbgjk6l4")
+const BEASTIE_BUTTON : PackedScene = preload("uid://dpfyarbgjk6l4")
 
 @export var show_name : bool = true :
 	set(value):
@@ -17,6 +17,9 @@ var current_search_string : String = "" :
 	set(value):
 		current_search_string = value
 		_update_grid()
+
+var side : Global.MySide = Global.MySide.LEFT
+var team_pos : TeamController.TeamPosition = TeamController.TeamPosition.FIELD_1
 
 @onready var beastie_button_container: GridContainer = %BeastieButtonContainer
 @onready var search_bar: LineEdit = %SearchBar
@@ -71,11 +74,17 @@ func _update_grid() -> void:
 		var new_button : BeastieButton = BEASTIE_BUTTON.instantiate()
 		new_button.beastie = beastie
 		new_button.show_name = show_name
-		new_button.beastie_selected.connect(self.beastie_selected.emit)
+		new_button.beastie_selected.connect(_on_beastie_button_beastie_selected)
 		beastie_button_container.add_child(new_button)
 
 
+func _on_beastie_button_beastie_selected(beastie : Beastie) -> void:
+	beastie_selected.emit(beastie, side, team_pos)
+
+
 func reset() -> void:
+	side = Global.MySide.LEFT
+	team_pos = TeamController.TeamPosition.FIELD_1
 	current_search_string = ""
 	search_bar.text = ""
 	_update_grid()

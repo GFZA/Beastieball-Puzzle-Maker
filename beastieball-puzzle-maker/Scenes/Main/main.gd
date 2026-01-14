@@ -12,6 +12,9 @@ extends Control
 
 
 func _ready() -> void:
+	# Some Vars
+	select_ui.board = board
+
 	# Overlay Menu Signals
 	board.board_overlay.overlay_edit_requested.connect(main_ui.show_overlay_menu)
 	main_ui.overlay_menu.max_point_changed.connect(board.board_overlay.on_max_point_changed)
@@ -39,8 +42,12 @@ func _ready() -> void:
 	main_ui.field_effects_menu.right_barrier_lower_stack_changed.connect(board.board_manager.right_team_controller.on_barrier_lower_stacked_changed)
 
 	# Team Menu Signals
+	main_ui.your_team_menu.controller_reset_slot_requested.connect(_on_controller_reset_slot_requested)
+	main_ui.opponent_team_menu.controller_reset_slot_requested.connect(_on_controller_reset_slot_requested)
 	main_ui.your_team_menu.swap_slot_requested.connect(board.board_manager.on_swap_slot_requested.bind(Global.MySide.LEFT))
 	main_ui.opponent_team_menu.swap_slot_requested.connect(board.board_manager.on_swap_slot_requested.bind(Global.MySide.RIGHT))
+	#select_ui.beastie_selected.connect(main_ui.your_team_menu.on_beastie_select_ui_selected)
+	#select_ui.beastie_selected.connect(main_ui.opponent_team_menu.on_beastie_select_ui_selected)
 
 	# Beastie Menu Signals
 	main_ui.beastie_menu.beastie_position_change_requested.connect(board.board_manager.on_beastie_position_change_requested)
@@ -55,8 +62,7 @@ func _ready() -> void:
 	var beastie_requester : Array[Node] = get_tree().get_nodes_in_group("beastie_select_ui_requester")
 	for requester in beastie_requester:
 		requester.beastie_select_ui_requested.connect(select_ui.show_beastie_select_ui)
-		requester.add_beastie_to_board_requested.connect(board.board_manager.add_beastie_to_scene)
-		requester.controller_reset_slot_requested.connect(board.board_manager.on_controller_reset_slot_requested)
+		select_ui.beastie_selected.connect(requester.on_beastie_selected)
 
 
 func _on_your_point_changed(new_point : int) -> void:
@@ -67,6 +73,11 @@ func _on_your_point_changed(new_point : int) -> void:
 func _on_opponent_point_changed(new_point : int) -> void:
 	board.board_overlay.on_opponent_point_change(new_point)
 	board.board_manager.right_team_controller.current_score = new_point
+
+
+func _on_controller_reset_slot_requested(side : Global.MySide, team_pos : TeamController.TeamPosition) -> void:
+	board.board_manager.add_beastie_to_scene(null, side, team_pos)
+	select_ui.beastie_selected.emit(null, side, team_pos)
 
 
 #region Lower buttons signal funcs
