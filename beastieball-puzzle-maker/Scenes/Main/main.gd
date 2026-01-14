@@ -38,6 +38,13 @@ func _ready() -> void:
 	main_ui.field_effects_menu.right_barrier_upper_stack_changed.connect(board.board_manager.right_team_controller.on_barrier_upper_stacked_changed)
 	main_ui.field_effects_menu.right_barrier_lower_stack_changed.connect(board.board_manager.right_team_controller.on_barrier_lower_stacked_changed)
 
+	# Team Menu Signals
+	main_ui.your_team_menu.swap_slot_requested.connect(board.board_manager.on_swap_slot_requested.bind(Global.MySide.LEFT))
+	main_ui.opponent_team_menu.swap_slot_requested.connect(board.board_manager.on_swap_slot_requested.bind(Global.MySide.RIGHT))
+
+	# Beastie Menu Signals
+	main_ui.beastie_menu.beastie_position_change_requested.connect(board.board_manager.on_beastie_position_change_requested)
+
 	# Lower buttons Signals
 	main_ui.save_image_requested.connect(_on_save_image_requested)
 	main_ui.save_json_requested.connect(_on_save_json_requested)
@@ -49,6 +56,7 @@ func _ready() -> void:
 	for requester in beastie_requester:
 		requester.beastie_select_ui_requested.connect(select_ui.show_beastie_select_ui)
 		requester.add_beastie_to_board_requested.connect(board.board_manager.add_beastie_to_scene)
+		requester.controller_reset_slot_requested.connect(board.board_manager.on_controller_reset_slot_requested)
 
 
 func _on_your_point_changed(new_point : int) -> void:

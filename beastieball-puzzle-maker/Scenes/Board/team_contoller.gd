@@ -134,8 +134,6 @@ const PLAYS_UI_CONTAINER_SCENE : PackedScene = preload("uid://dksxc3rs20kkc")
 @export_group("Inner vars")
 @export var side : Global.MySide = Global.MySide.LEFT
 
-@export_group("Reset Buttons")
-@export_tool_button("Reset Position") var reset_pos_var : Callable = reset_position
 @export_subgroup("Reset Team NO UNDO!")
 @export_tool_button("Reset Team") var reset_team_var : Callable = reset_team
 
@@ -166,11 +164,16 @@ func _process_beastie_value(value : Beastie, benched : bool = false) -> Beastie:
 
 	var processed_value = value # Don't duplicate so it's the same with AddBeastieUI's beastie
 	processed_value.my_side = side
-	processed_value.health_updated.connect(_update_field.unbind(1))
-	processed_value.my_plays_updated.connect(_update_field.unbind(1))
-	processed_value.my_trait_updated.connect(_update_field.unbind(1))
-	processed_value.current_boosts_updated.connect(_update_field.unbind(1))
-	processed_value.current_feelings_updated.connect(_update_field.unbind(1))
+	if processed_value.health_updated.is_connected(_update_field):
+		processed_value.health_updated.connect(_update_field.unbind(1))
+	if processed_value.my_plays_updated.is_connected(_update_field):
+		processed_value.my_plays_updated.connect(_update_field.unbind(1))
+	if processed_value.my_trait_updated.is_connected(_update_field):
+		processed_value.my_trait_updated.connect(_update_field.unbind(1))
+	if processed_value.current_boosts_updated.is_connected(_update_field):
+		processed_value.current_boosts_updated.connect(_update_field.unbind(1))
+	if processed_value.current_feelings_updated.is_connected(_update_field):
+		processed_value.current_feelings_updated.connect(_update_field.unbind(1))
 	processed_value.is_really_at_bench = benched
 	return processed_value
 
@@ -370,35 +373,80 @@ func _check_bench_size() -> int:
 	return count
 
 
+func swap_slot(team_pos_1 : TeamPosition, team_pos_2 : TeamPosition) -> void:
+	var slot_1_beastie : Beastie = _get_beastie_from_team_pos(team_pos_1)
+	var slot_2_beastie : Beastie = _get_beastie_from_team_pos(team_pos_2)
+
+	var	count : int = 0
+	for team_pos in [team_pos_1, team_pos_2]:
+		var beastie : Beastie = slot_2_beastie if count == 0 else slot_1_beastie
+		match team_pos:
+			TeamController.TeamPosition.FIELD_1:
+				beastie_1_beastie = beastie
+			TeamController.TeamPosition.FIELD_2:
+				beastie_2_beastie = beastie
+			TeamController.TeamPosition.BENCH_1:
+				bench_beastie_1_beastie = beastie
+				if bench_beastie_1_beastie:
+					bench_beastie_1_beastie.current_boosts.clear() # Clear boosts when benched, just like in-game!
+			TeamController.TeamPosition.BENCH_2:
+				bench_beastie_2_beastie = beastie
+				if bench_beastie_2_beastie:
+					bench_beastie_2_beastie.current_boosts.clear() # Clear boosts when benched, just like in-game!
+		count += 1
+
+
+func _get_beastie_from_team_pos(team_pos : TeamPosition) -> Beastie:
+	match team_pos:
+		TeamController.TeamPosition.FIELD_1:
+			return beastie_1_beastie
+		TeamController.TeamPosition.FIELD_2:
+			return beastie_2_beastie
+		TeamController.TeamPosition.BENCH_1:
+			return bench_beastie_1_beastie
+		TeamController.TeamPosition.BENCH_2:
+			return bench_beastie_2_beastie
+	return null # Shouldn't happen
+
+
 func reset_team() -> void:
+	reset_beastie_1()
+	reset_beastie_2()
+	reset_bench_beastie_1()
+	reset_bench_beastie_2()
+
+
+func reset_beastie_1() -> void:
 	beastie_1_beastie = null
+	beastie_1_position = Beastie.Position.UPPER_BACK
 	beastie_1_show_play = true
 	beastie_1_show_bench_damage = false
 	beastie_1_have_ball = false
 	beastie_1_ball_type = BeastieScene.BallType.EASY_RECEIVE
 	beastie_1_h_allign = HORIZONTAL_ALIGNMENT_CENTER
 
+
+func reset_beastie_2() -> void:
 	beastie_2_beastie = null
+	beastie_2_position = Beastie.Position.LOWER_BACK
 	beastie_2_show_play = true
 	beastie_2_show_bench_damage = false
 	beastie_2_have_ball = false
 	beastie_2_ball_type = BeastieScene.BallType.EASY_RECEIVE
 	beastie_2_h_allign = HORIZONTAL_ALIGNMENT_CENTER
 
-	reset_position()
 
+func reset_bench_beastie_1() -> void:
 	bench_beastie_1_beastie = null
 	bench_beastie_1_show_play = true
 	bench_beastie_1_h_allign = HORIZONTAL_ALIGNMENT_CENTER
 
+
+func reset_bench_beastie_2() -> void:
 	bench_beastie_2_beastie = null
 	bench_beastie_2_show_play = true
 	bench_beastie_2_h_allign = HORIZONTAL_ALIGNMENT_CENTER
 
-
-func reset_position() -> void:
-	beastie_1_position = Beastie.Position.UPPER_BACK
-	beastie_2_position = Beastie.Position.LOWER_BACK
 
 
 # Exclusive to Right TeamController

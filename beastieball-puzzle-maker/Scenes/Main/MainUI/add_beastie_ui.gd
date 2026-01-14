@@ -2,11 +2,12 @@
 class_name AddBeastieUI
 extends Control
 
-
+signal swap_up_requested(requester : AddBeastieUI)
+signal swap_down_requested(requester : AddBeastieUI)
 signal beastie_select_ui_requested(select_then_call_this : Callable)
 signal add_beastie_to_board_requested(requested_beastie : Beastie, side : Global.MySide, team_pos : TeamController.TeamPosition)
+signal controller_reset_slot_requested(side : Global.MySide, team_pos : TeamController.TeamPosition)
 signal beastie_menu_requested(requested_beastie : Beastie, side : Global.MySide, team_pos : TeamController.TeamPosition)
-
 
 @export var text : String = "Serve Slot" :
 	set(value):
@@ -42,7 +43,6 @@ func _ready() -> void:
 
 func reset() -> void:
 	my_beastie = null
-	add_beastie_to_board_requested.emit(null, side, team_pos)
 	add_button.show()
 	beastie_button.text = ""
 	beastie_button.hide()
@@ -53,13 +53,13 @@ func reset() -> void:
 func _on_swap_up_pressed() -> void:
 	if not my_beastie:
 		return
-	print("Swap up (%s) requested." % my_beastie.specie_name)
+	swap_up_requested.emit(self)
 
 
 func _on_swap_down_pressed() -> void:
 	if not my_beastie:
 		return
-	print("Swap down (%s) requested." % my_beastie.specie_name)
+	swap_down_requested.emit(self)
 
 
 func _on_add_button_pressed() -> void:
@@ -71,18 +71,25 @@ func on_beastie_selected(beastie : Beastie) -> void:
 		reset()
 		return
 	my_beastie = beastie.duplicate(true)
+	update_visual_when_beastie()
+
+	add_beastie_to_board_requested.emit(my_beastie, side, team_pos)
+	beastie_menu_requested.emit(my_beastie, side, team_pos) # Go to Beastie Menu right after selecting
+
+
+func update_visual_when_beastie() -> void:
+	if not my_beastie:
+		return
 	add_button.hide()
 	beastie_button.text = my_beastie.specie_name
 	beastie_button.show()
 	reset_button.show()
 	swap_button_container.show()
 
-	add_beastie_to_board_requested.emit(my_beastie, side, team_pos)
-	beastie_menu_requested.emit(my_beastie, side, team_pos) # Go to Beastie Menu right after selecting
-
 
 func _on_reset_button_pressed() -> void:
 	reset()
+	controller_reset_slot_requested.emit(side, team_pos)
 
 
 func _on_beastie_button_pressed() -> void:

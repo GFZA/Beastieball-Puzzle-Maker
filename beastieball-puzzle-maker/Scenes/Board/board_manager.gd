@@ -194,6 +194,35 @@ func add_beastie_to_scene(requested_beastie : Beastie, side : Global.MySide, tea
 			controller.bench_beastie_2_beastie = requested_beastie
 
 
+func on_beastie_position_change_requested(side : Global.MySide, team_pos : TeamController.TeamPosition, new_pos : Beastie.Position) -> void:
+	var controller : TeamController = left_team_controller if side == Global.MySide.LEFT else right_team_controller
+	match team_pos:
+		TeamController.TeamPosition.FIELD_1:
+			controller.beastie_1_position = new_pos
+		TeamController.TeamPosition.FIELD_2:
+			controller.beastie_2_position = new_pos
+		TeamController.TeamPosition.BENCH_1, TeamController.TeamPosition.BENCH_2:
+			push_error("Bench Beasties somehow requested to be reposition!")
+
+
+func on_controller_reset_slot_requested(side : Global.MySide, team_pos : TeamController.TeamPosition) -> void:
+	var controller : TeamController = left_team_controller if side == Global.MySide.LEFT else right_team_controller
+	match team_pos:
+		TeamController.TeamPosition.FIELD_1:
+			controller.reset_beastie_1()
+		TeamController.TeamPosition.FIELD_2:
+			controller.reset_beastie_2()
+		TeamController.TeamPosition.BENCH_1:
+			controller.reset_bench_beastie_1()
+		TeamController.TeamPosition.BENCH_2:
+			controller.reset_bench_beastie_2()
+
+
+func on_swap_slot_requested(team_pos_1 : TeamController.TeamPosition, team_pos_2 : TeamController.TeamPosition, side : Global.MySide) -> void:
+	var controller : TeamController = left_team_controller if side == Global.MySide.LEFT else right_team_controller
+	controller.swap_slot(team_pos_1, team_pos_2)
+
+
 # Behold the worse ssavd/load system ever
 
 func save_board_data() -> void:

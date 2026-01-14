@@ -58,8 +58,6 @@ func _update_show_name() -> void:
 
 func _on_pressed() -> void:
 	if not beastie:
-		print("Select None")
 		beastie_selected.emit(null)
 		return
-	print("Selected %s" % beastie.specie_name)
 	beastie_selected.emit(beastie)

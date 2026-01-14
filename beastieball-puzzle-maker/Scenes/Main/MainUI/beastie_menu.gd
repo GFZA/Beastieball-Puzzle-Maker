@@ -2,6 +2,8 @@
 class_name BeastieMenu
 extends ScrollContainer
 
+signal beastie_position_change_requested(side : Global.MySide, team_pos : TeamController.TeamPosition, new_pos : Beastie.Position)
+
 const STAMINA_FILL_STYLEBOX := preload("uid://ci28vvsldarw1")
 
 @export var beastie : Beastie = null :
@@ -70,17 +72,19 @@ func _ready() -> void:
 	sdef_boost_number_ui.value_updated.connect(_on_boost_changed.bind(Beastie.Stats.S_DEF))
 	mpow_boost_number_ui.value_updated.connect(_on_boost_changed.bind(Beastie.Stats.M_POW))
 	mdef_boost_number_ui.value_updated.connect(_on_boost_changed.bind(Beastie.Stats.M_DEF))
-	clear_boost_button.pressed.connect(_reset_on_field_tab)
+	clear_boost_button.pressed.connect(_reset_on_field_tab) # Pos button doesn't need resetting so we can just use this
 
 
 func _load_from_beastie() -> void:
 	if not is_node_ready():
 		await ready
+	if not visible:
+		return
 	if not beastie:
 		return
 
 	custom_name_line_edit.text = beastie.my_name
-	custom_number_line_edit.text = str(beastie.sport_number)
+	custom_number_line_edit.text = str(beastie.sport_number) if beastie.sport_number != 0 else ""
 	_on_stamina_slider_value_changed(beastie.health)
 
 	_load_on_field_tab()
@@ -174,8 +178,7 @@ func _on_custom_number_line_edit_text_changed(new_text : String) -> void:
 
 
 func _on_pos_button_pressed(new_pos : Beastie.Position) -> void:
-	# signal up to teamcontroller
-	return
+	beastie_position_change_requested.emit(side, team_pos, new_pos)
 
 
 func _on_boost_changed(value : int, boost_type : Beastie.Stats) -> void:
