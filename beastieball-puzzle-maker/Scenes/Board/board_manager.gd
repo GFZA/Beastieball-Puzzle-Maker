@@ -196,13 +196,7 @@ func add_beastie_to_scene(requested_beastie : Beastie, side : Global.MySide, tea
 
 func on_beastie_position_change_requested(side : Global.MySide, team_pos : TeamController.TeamPosition, new_pos : Beastie.Position) -> void:
 	var controller : TeamController = left_team_controller if side == Global.MySide.LEFT else right_team_controller
-	match team_pos:
-		TeamController.TeamPosition.FIELD_1:
-			controller.beastie_1_position = new_pos
-		TeamController.TeamPosition.FIELD_2:
-			controller.beastie_2_position = new_pos
-		TeamController.TeamPosition.BENCH_1, TeamController.TeamPosition.BENCH_2:
-			push_error("Bench Beasties somehow requested to be reposition!")
+	controller.on_beastie_position_change_requested(team_pos, new_pos)
 
 
 func on_controller_reset_slot_requested(side : Global.MySide, team_pos : TeamController.TeamPosition) -> void:

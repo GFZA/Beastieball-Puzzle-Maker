@@ -676,3 +676,75 @@ focus_mode = 0
 theme = ExtResource("100_mhwkv")
 theme_override_font_sizes/font_size = 96
 text = "Edit Field Effects"
+
+[node name="LeftUpperAddBeastieButton" type="Button" parent="SubViewportContainer/SubViewport"]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -662.0
+offset_top = -77.5
+offset_right = -1.0
+offset_bottom = 156.5
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme = ExtResource("100_mhwkv")
+theme_override_font_sizes/font_size = 96
+text = "Add Beastie"
+
+[node name="LeftLowerAddBeastieButton" type="Button" parent="SubViewportContainer/SubViewport"]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -712.0
+offset_top = 156.5
+offset_right = -1.0
+offset_bottom = 429.5
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme = ExtResource("100_mhwkv")
+theme_override_font_sizes/font_size = 96
+text = "Add Beastie"
+
+[node name="RightUpperAddBeastieButton" type="Button" parent="SubViewportContainer/SubViewport"]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -77.5
+offset_right = 651.0
+offset_bottom = 156.5
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme = ExtResource("100_mhwkv")
+theme_override_font_sizes/font_size = 96
+text = "Add Beastie"
+
+[node name="RightLowerAddBeastieButton" type="Button" parent="SubViewportContainer/SubViewport"]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = 156.5
+offset_right = 705.0
+offset_bottom = 429.5
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme = ExtResource("100_mhwkv")
+theme_override_font_sizes/font_size = 96
+text = "Add Beastie"

@@ -38,6 +38,7 @@ func _ready() -> void:
 	default_menu.field_effect_edit_requested.connect(show_field_effect_menu)
 
 	your_team_menu.beastie_menu_requested.connect(show_beastie_menu)
+	opponent_team_menu.beastie_menu_requested.connect(show_beastie_menu)
 
 	_on_back_button_pressed()
 

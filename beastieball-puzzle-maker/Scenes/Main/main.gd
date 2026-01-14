@@ -143,6 +143,7 @@ func _on_reset_board_requested() -> void:
 	await get_tree().process_frame
 	main_ui.reset()
 	board.board_manager.reset_board()
+	board.reset()
 	await board.board_manager.board_resetted
 
 	saving_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE

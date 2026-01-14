@@ -164,15 +164,15 @@ func _process_beastie_value(value : Beastie, benched : bool = false) -> Beastie:
 
 	var processed_value = value # Don't duplicate so it's the same with AddBeastieUI's beastie
 	processed_value.my_side = side
-	if processed_value.health_updated.is_connected(_update_field):
+	if not processed_value.health_updated.is_connected(_update_field):
 		processed_value.health_updated.connect(_update_field.unbind(1))
-	if processed_value.my_plays_updated.is_connected(_update_field):
+	if not processed_value.my_plays_updated.is_connected(_update_field):
 		processed_value.my_plays_updated.connect(_update_field.unbind(1))
-	if processed_value.my_trait_updated.is_connected(_update_field):
+	if not processed_value.my_trait_updated.is_connected(_update_field):
 		processed_value.my_trait_updated.connect(_update_field.unbind(1))
-	if processed_value.current_boosts_updated.is_connected(_update_field):
+	if not processed_value.current_boosts_updated.is_connected(_update_field):
 		processed_value.current_boosts_updated.connect(_update_field.unbind(1))
-	if processed_value.current_feelings_updated.is_connected(_update_field):
+	if not processed_value.current_feelings_updated.is_connected(_update_field):
 		processed_value.current_feelings_updated.connect(_update_field.unbind(1))
 	processed_value.is_really_at_bench = benched
 	return processed_value
@@ -181,7 +181,6 @@ func _process_beastie_value(value : Beastie, benched : bool = false) -> Beastie:
 func _update_field() -> void:
 	if not is_node_ready():
 		await ready
-
 
 	for marker : Marker2D in position_anchors:
 		for child in marker.get_children():
@@ -373,6 +372,12 @@ func _check_bench_size() -> int:
 	return count
 
 
+func check_if_field_is_full() -> bool:
+	if (beastie_1_beastie != null) and (beastie_2_beastie != null):
+		return true
+	return false
+
+
 func swap_slot(team_pos_1 : TeamPosition, team_pos_2 : TeamPosition) -> void:
 	var slot_1_beastie : Beastie = _get_beastie_from_team_pos(team_pos_1)
 	var slot_2_beastie : Beastie = _get_beastie_from_team_pos(team_pos_2)
@@ -386,14 +391,34 @@ func swap_slot(team_pos_1 : TeamPosition, team_pos_2 : TeamPosition) -> void:
 			TeamController.TeamPosition.FIELD_2:
 				beastie_2_beastie = beastie
 			TeamController.TeamPosition.BENCH_1:
+				if beastie:
+					beastie.current_boosts.clear() # Clear boosts when benched, just like in-game!
 				bench_beastie_1_beastie = beastie
-				if bench_beastie_1_beastie:
-					bench_beastie_1_beastie.current_boosts.clear() # Clear boosts when benched, just like in-game!
 			TeamController.TeamPosition.BENCH_2:
+				if beastie:
+					beastie.current_boosts.clear() # Clear boosts when benched, just like in-game!
 				bench_beastie_2_beastie = beastie
-				if bench_beastie_2_beastie:
-					bench_beastie_2_beastie.current_boosts.clear() # Clear boosts when benched, just like in-game!
 		count += 1
+
+
+func on_beastie_position_change_requested(team_pos : TeamController.TeamPosition, new_pos : Beastie.Position) -> void:
+	if new_pos == Beastie.Position.UPPER_FRONT and get_field_effect_stack(FieldEffect.Type.BARRIER_UPPER) > 0:
+		return
+	if new_pos == Beastie.Position.LOWER_FRONT and get_field_effect_stack(FieldEffect.Type.BARRIER_LOWER) > 0:
+		return
+	match team_pos:
+		TeamController.TeamPosition.FIELD_1:
+			var old_pos : Beastie.Position = beastie_1_position
+			beastie_1_position = new_pos
+			if beastie_2_position == beastie_1_position:
+				beastie_2_position = old_pos
+		TeamController.TeamPosition.FIELD_2:
+			var old_pos : Beastie.Position = beastie_2_position
+			beastie_2_position = new_pos
+			if beastie_1_position == beastie_2_position:
+				beastie_1_position = old_pos
+		TeamController.TeamPosition.BENCH_1, TeamController.TeamPosition.BENCH_2:
+			push_error("Bench Beasties somehow requested to be reposition!")
 
 
 func _get_beastie_from_team_pos(team_pos : TeamPosition) -> Beastie:
