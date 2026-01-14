@@ -46,10 +46,10 @@ func _ready() -> void:
 	main_ui.opponent_team_menu.controller_reset_slot_requested.connect(_on_controller_reset_slot_requested)
 	main_ui.your_team_menu.swap_slot_requested.connect(board.board_manager.on_swap_slot_requested.bind(Global.MySide.LEFT))
 	main_ui.opponent_team_menu.swap_slot_requested.connect(board.board_manager.on_swap_slot_requested.bind(Global.MySide.RIGHT))
-	#select_ui.beastie_selected.connect(main_ui.your_team_menu.on_beastie_select_ui_selected)
-	#select_ui.beastie_selected.connect(main_ui.opponent_team_menu.on_beastie_select_ui_selected)
 
 	# Beastie Menu Signals
+	board.board_manager.left_team_controller.beastie_menu_requested.connect(main_ui.show_beastie_menu)
+	board.board_manager.right_team_controller.beastie_menu_requested.connect(main_ui.show_beastie_menu)
 	main_ui.beastie_menu.beastie_position_change_requested.connect(board.board_manager.on_beastie_position_change_requested)
 
 	# Lower buttons Signals

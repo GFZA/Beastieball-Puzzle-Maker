@@ -3,6 +3,7 @@ class_name BeastieScene
 extends Node2D
 
 signal side_updated(my_side : Global.MySide)
+signal beastie_menu_requested(beastie : Beastie, side : Global.MySide)
 
 enum BallType {BODY, SPIRIT, MIND, EASY_RECEIVE}
 
@@ -41,10 +42,12 @@ const BALL_SPRITE_RIGHT_OFFSET : Vector2 = Vector2(-119.0, -90.0)
 			if beastie.current_feelings_updated.is_connected(_update_sprite_pose):
 				beastie.current_feelings_updated.disconnect(_update_sprite_pose)
 			beastie = value
+			edit_beastie_button.text = "Edit\nName"
 			return
 
 		beastie = value # Not duplicate so it's the same as TeamContoller's one
-		beastie.current_feelings_updated.connect(_update_sprite_pose.unbind(1))
+		if not beastie.current_feelings_updated.is_connected(_update_sprite_pose):
+			beastie.current_feelings_updated.connect(_update_sprite_pose.unbind(1))
 		_set_ball_anchor_position(beastie.ball_anchor_position)
 
 		if not my_healthbar:
@@ -68,6 +71,7 @@ const BALL_SPRITE_RIGHT_OFFSET : Vector2 = Vector2(-119.0, -90.0)
 		_update_ball()
 		_update_sprite_pose()
 		sprite_2d.offset.y = beastie.y_offset
+		edit_beastie_button.text = "Edit\n%s" % beastie.specie_name
 
 @export var h_allign : HorizontalAlignment = HORIZONTAL_ALIGNMENT_CENTER :
 	set(value):
@@ -105,7 +109,6 @@ var current_sprite : Texture2D = null :
 var benched : bool = false # Not use setter because only set it once and after having healthbar
 
 var my_healthbar : Healthbar = null
-#var my_plays_ui_container : PlaysUIContainer = null
 var my_feelings_cloud : FeelingsCloud = null
 
 @onready var sprite_2d: Sprite2D = %Sprite2D
@@ -113,6 +116,15 @@ var my_feelings_cloud : FeelingsCloud = null
 @onready var right_feelings_anchor: Marker2D = %RightFeelingsAnchor
 @onready var ball_anchor: Marker2D = %BallAnchor
 @onready var ball_sprite: Sprite2D = %BallSprite
+@onready var edit_beastie_button: Button = %EditBeastieButton
+
+
+func _ready() -> void:
+	edit_beastie_button.pressed.connect(_on_edit_beastie_button_pressed)
+
+
+func _on_edit_beastie_button_pressed() -> void:
+	beastie_menu_requested.emit(beastie, my_side)
 
 
 func _update_sprite_pose() -> void:

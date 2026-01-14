@@ -1,18 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://dptoj76e40ldo"]
+[gd_scene load_steps=6 format=3 uid="uid://dptoj76e40ldo"]
 
 [ext_resource type="Script" uid="uid://b6gsp5w62y6ff" path="res://Scenes/BeastieScene/beastie_scene.gd" id="1_n0vvo"]
-[ext_resource type="Texture2D" uid="uid://chctbds4hrdsq" path="res://Scenes/BeastieScene/placeholder_beastie.png" id="2_tfee2"]
+[ext_resource type="Resource" uid="uid://d1gqgdxnu52us" path="res://Autoloads/Resources/Beastie/Shloom/shloom.tres" id="2_rja2e"]
+[ext_resource type="Texture2D" uid="uid://bnsgavyxikp1p" path="res://Autoloads/Resources/Beastie/Shloom/shloom_idle.png" id="3_2pqn7"]
 [ext_resource type="Texture2D" uid="uid://78plds302l5" path="res://Scenes/BeastieScene/ball_no_effect.png" id="4_2pqn7"]
+[ext_resource type="Theme" uid="uid://v25nab4h4vdp" path="res://Autoloads/Resources/Themes/highlight_overlay.tres" id="5_h8epu"]
 
 [node name="BeastieScene" type="Node2D" groups=["beastie_scene"]]
 scale = Vector2(1.3, 1.3)
 script = ExtResource("1_n0vvo")
+beastie = ExtResource("2_rja2e")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(0, -187)
 scale = Vector2(0.4, 0.4)
-texture = ExtResource("2_tfee2")
+texture = ExtResource("3_2pqn7")
 flip_h = true
 
 [node name="RightFeelingsAnchor" type="Marker2D" parent="."]
@@ -29,7 +32,6 @@ metadata/_edit_lock_ = true
 
 [node name="BallAnchor" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(91, -142)
 gizmo_extents = 0.0
 
 [node name="BallSprite" type="Sprite2D" parent="BallAnchor"]
@@ -39,3 +41,22 @@ texture = ExtResource("4_2pqn7")
 centered = false
 offset = Vector2(-10, -90)
 flip_h = true
+
+[node name="EditBeastieButton" type="Button" parent="."]
+unique_name_in_owner = true
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -127.69232
+offset_top = -210.0
+offset_right = 127.69232
+offset_bottom = 45.384644
+grow_horizontal = 2
+grow_vertical = 2
+focus_behavior_recursive = 1
+theme = ExtResource("5_h8epu")
+text = "Edit
+Beastie"
