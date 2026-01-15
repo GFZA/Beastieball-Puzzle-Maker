@@ -3,6 +3,8 @@ class_name BeastieMenu
 extends ScrollContainer
 
 signal beastie_position_change_requested(side : Global.MySide, team_pos : TeamController.TeamPosition, new_pos : Beastie.Position)
+signal beastie_ball_change_requested(side : Global.MySide, team_pos : TeamController.TeamPosition, \
+									have_ball : bool, ball_type : BeastieScene.BallType)
 
 const STAMINA_FILL_STYLEBOX := preload("uid://ci28vvsldarw1")
 
@@ -24,9 +26,11 @@ var team_pos : TeamController.TeamPosition = TeamController.TeamPosition.FIELD_1
 @onready var custom_name_line_edit: LineEdit = %CustomNameLineEdit
 @onready var custom_number_line_edit: LineEdit = %CustomNumberLineEdit
 
+@onready var stamina_line_edit: LineEdit = %StaminaLineEdit
+@onready var stamina_up_button: Button = %StaminaUpButton
+@onready var stamina_down_button: Button = %StaminaDownButton
 @onready var stamina_slider: HSlider = %StaminaSlider
 @onready var stamina_progress_bar: ProgressBar = %StaminaProgressBar
-@onready var stamina_label: Label = %StaminaLabel
 
 @onready var tab_container: TabContainer = %TabContainer
 
@@ -37,6 +41,11 @@ var team_pos : TeamController.TeamPosition = TeamController.TeamPosition.FIELD_1
 @onready var pos_tab_lower_button_container: HBoxContainer = %LowerButtonContainer
 @onready var pos_tab_lower_back_button: Button = %LowerBackButton
 @onready var pos_tab_lower_front_button: Button = %LowerFrontButton
+@onready var no_ball_button: Button = %NoBallButton
+@onready var body_ball_button: Button = %BodyBallButton
+@onready var spirit_ball_button: Button = %SpiritBallButton
+@onready var mind_ball_button: Button = %MindBallButton
+@onready var ready_ball_button: Button = %ReadyBallButton
 @onready var bpow_boost_number_ui: NumberUI = %BPOWNumberUI
 @onready var bdef_boost_number_ui: NumberUI = %BDEFNumberUI
 @onready var spow_boost_number_ui: NumberUI = %SPOWNumberUI
@@ -53,6 +62,10 @@ var team_pos : TeamController.TeamPosition = TeamController.TeamPosition.FIELD_1
 
 
 func _ready() -> void:
+	stamina_line_edit.text_submitted.connect(_on_stamina_line_edit_text_summited)
+	stamina_up_button.pressed.connect(_on_stamina_up_button_pressed)
+	stamina_down_button.pressed.connect(_on_stamina_down_button_pressed)
+
 	visibility_changed.connect(_load_from_beastie)
 
 	stamina_slider.value_changed.connect(_on_stamina_slider_value_changed)
@@ -66,12 +79,20 @@ func _ready() -> void:
 	pos_tab_upper_front_button.pressed.connect(_on_pos_button_pressed.bind(Beastie.Position.UPPER_FRONT))
 	pos_tab_lower_back_button.pressed.connect(_on_pos_button_pressed.bind(Beastie.Position.LOWER_BACK))
 	pos_tab_lower_front_button.pressed.connect(_on_pos_button_pressed.bind(Beastie.Position.LOWER_FRONT))
+
+	no_ball_button.pressed.connect(_on_ball_button_pressed.bind(false, BeastieScene.BallType.EASY_RECEIVE))
+	body_ball_button.pressed.connect(_on_ball_button_pressed.bind(true, BeastieScene.BallType.BODY))
+	spirit_ball_button.pressed.connect(_on_ball_button_pressed.bind(true, BeastieScene.BallType.SPIRIT))
+	mind_ball_button.pressed.connect(_on_ball_button_pressed.bind(true, BeastieScene.BallType.MIND))
+	ready_ball_button.pressed.connect(_on_ball_button_pressed.bind(true, BeastieScene.BallType.EASY_RECEIVE))
+
 	bpow_boost_number_ui.value_updated.connect(_on_boost_changed.bind(Beastie.Stats.B_POW))
 	bdef_boost_number_ui.value_updated.connect(_on_boost_changed.bind(Beastie.Stats.B_DEF))
 	spow_boost_number_ui.value_updated.connect(_on_boost_changed.bind(Beastie.Stats.S_POW))
 	sdef_boost_number_ui.value_updated.connect(_on_boost_changed.bind(Beastie.Stats.S_DEF))
 	mpow_boost_number_ui.value_updated.connect(_on_boost_changed.bind(Beastie.Stats.M_POW))
 	mdef_boost_number_ui.value_updated.connect(_on_boost_changed.bind(Beastie.Stats.M_DEF))
+
 	clear_boost_button.pressed.connect(_reset_on_field_tab) # Pos button doesn't need resetting so we can just use this
 
 
@@ -153,15 +174,36 @@ func _update_side() -> void:
 	pos_tab_lower_button_container.move_child(pos_tab_lower_back_button, new_index)
 
 
+func _on_stamina_line_edit_text_summited(new_text : String) -> void:
+	var new_stamina : int = new_text.to_int() if new_text.length() != 0 else 100
+	_update_stamina(new_stamina)
+	stamina_line_edit.release_focus()
+
+
+func _on_stamina_up_button_pressed() -> void:
+	var new_stamina : int = min(100, beastie.health + 1)
+	_update_stamina(new_stamina)
+
+
+func _on_stamina_down_button_pressed() -> void:
+	var new_stamina : int = max(0, beastie.health - 1)
+	_update_stamina(new_stamina)
+
+
 func _on_stamina_slider_value_changed(new_value : int) -> void:
-	stamina_progress_bar.value = new_value
-	stamina_label.text = str(new_value)
-	beastie.health = new_value
+	_update_stamina(new_value)
+
+
+func _update_stamina(new_stamina : int) -> void:
+	stamina_line_edit.text = str(new_stamina)
+	stamina_progress_bar.value = new_stamina
+	beastie.health = new_stamina
 
 
 func _update_stamina_progress_bar_stylebox() -> void:
 	var new_stylebox : StyleBoxFlat = STAMINA_FILL_STYLEBOX.duplicate()
-	new_stylebox.bg_color = Color.GREEN if not beastie else beastie.bar_color
+	var new_color : Color = Color.GREEN if not beastie else beastie.bar_color
+	new_stylebox.bg_color = new_color
 	stamina_progress_bar.add_theme_stylebox_override("fill", new_stylebox)
 
 
@@ -177,8 +219,14 @@ func _on_custom_number_line_edit_text_changed(new_text : String) -> void:
 	beastie.sport_number = new_text.to_int()
 
 
+#region On Field Tab Funcs
 func _on_pos_button_pressed(new_pos : Beastie.Position) -> void:
 	beastie_position_change_requested.emit(side, team_pos, new_pos)
+
+
+func _on_ball_button_pressed(have_ball : bool, ball_type : BeastieScene.BallType) -> void:
+	beastie_ball_change_requested.emit(side, team_pos, have_ball, ball_type)
+
 
 
 func _on_boost_changed(value : int, boost_type : Beastie.Stats) -> void:
@@ -189,3 +237,4 @@ func _on_boost_changed(value : int, boost_type : Beastie.Stats) -> void:
 	else:
 		beastie.current_boosts[boost_type] = value
 	beastie.current_boosts_updated.emit(beastie.current_boosts) # Need to maunally emit it for some reason
+#endregion

@@ -437,6 +437,18 @@ func on_beastie_position_change_requested(team_pos : TeamController.TeamPosition
 			push_error("Bench Beasties somehow requested to be reposition!")
 
 
+func on_beastie_ball_change_requested(team_pos : TeamController.TeamPosition, have_ball : bool, ball_type : BeastieScene.BallType) -> void:
+	match team_pos:
+		TeamController.TeamPosition.FIELD_1:
+			beastie_1_have_ball = have_ball
+			beastie_1_ball_type = ball_type
+		TeamController.TeamPosition.FIELD_2:
+			beastie_2_have_ball = have_ball
+			beastie_2_ball_type = ball_type
+		TeamController.TeamPosition.BENCH_1, TeamController.TeamPosition.BENCH_2:
+			push_error("Bench Beasties somehow requested to have ball!")
+
+
 func _get_beastie_from_team_pos(team_pos : TeamPosition) -> Beastie:
 	match team_pos:
 		TeamController.TeamPosition.FIELD_1:

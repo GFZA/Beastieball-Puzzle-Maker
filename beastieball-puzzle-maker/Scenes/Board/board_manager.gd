@@ -199,6 +199,11 @@ func on_beastie_position_change_requested(side : Global.MySide, team_pos : TeamC
 	controller.on_beastie_position_change_requested(team_pos, new_pos)
 
 
+func on_beastie_ball_change_requested(side : Global.MySide, team_pos : TeamController.TeamPosition, have_ball : bool, ball_type : BeastieScene.BallType) -> void:
+	var controller : TeamController = left_team_controller if side == Global.MySide.LEFT else right_team_controller
+	controller.on_beastie_ball_change_requested(team_pos, have_ball, ball_type)
+
+
 func on_controller_reset_slot_requested(side : Global.MySide, team_pos : TeamController.TeamPosition) -> void:
 	var controller : TeamController = left_team_controller if side == Global.MySide.LEFT else right_team_controller
 	match team_pos:

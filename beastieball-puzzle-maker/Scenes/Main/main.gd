@@ -51,6 +51,7 @@ func _ready() -> void:
 	board.board_manager.left_team_controller.beastie_menu_requested.connect(main_ui.show_beastie_menu)
 	board.board_manager.right_team_controller.beastie_menu_requested.connect(main_ui.show_beastie_menu)
 	main_ui.beastie_menu.beastie_position_change_requested.connect(board.board_manager.on_beastie_position_change_requested)
+	main_ui.beastie_menu.beastie_ball_change_requested.connect(board.board_manager.on_beastie_ball_change_requested)
 
 	# Lower buttons Signals
 	main_ui.save_image_requested.connect(_on_save_image_requested)

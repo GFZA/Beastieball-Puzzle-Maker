@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://d1d26ob86bbom"]
+[gd_scene load_steps=8 format=3 uid="uid://d1d26ob86bbom"]
 
 [ext_resource type="Script" uid="uid://dou8wbqqeyhf0" path="res://Scenes/Main/MainUI/number_ui.gd" id="1_jqq0t"]
 [ext_resource type="Theme" uid="uid://bkrlwg21fhprn" path="res://Autoloads/Resources/Themes/edit_button.tres" id="1_t3gyi"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bguiky7x105wd" path="res://Autoloads/Icons/icon_up_white.png" id="4_jqq0t"]
 [ext_resource type="Texture2D" uid="uid://ym4g7x27mim3" path="res://Autoloads/Icons/icon_down_white.png" id="5_pyc1p"]
 [ext_resource type="Texture2D" uid="uid://17ji3etffeot" path="res://Autoloads/Icons/icon_max.png" id="6_3fyvr"]
+[ext_resource type="Texture2D" uid="uid://de1q1forhr6nv" path="res://Autoloads/Icons/icon_min.png" id="7_ja2jk"]
 
 [node name="NumberUI" type="HBoxContainer"]
 offset_right = 162.0
@@ -65,3 +66,17 @@ layout_mode = 2
 theme = ExtResource("1_t3gyi")
 theme_override_constants/icon_max_width = 48
 icon = ExtResource("6_3fyvr")
+
+[node name="MinButtonSpacer" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+
+[node name="MinButton" type="Button" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme = ExtResource("1_t3gyi")
+theme_override_constants/icon_max_width = 48
+icon = ExtResource("7_ja2jk")

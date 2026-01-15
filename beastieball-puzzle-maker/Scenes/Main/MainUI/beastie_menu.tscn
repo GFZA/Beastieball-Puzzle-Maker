@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ck45vbd1ldi5t"]
+[gd_scene load_steps=16 format=3 uid="uid://ck45vbd1ldi5t"]
 
 [ext_resource type="Script" uid="uid://6rv1irob5c57" path="res://Scenes/Main/MainUI/beastie_menu.gd" id="1_4hm00"]
 [ext_resource type="FontFile" uid="uid://ckifc6cea5vs" path="res://Autoloads/Resources/Fonts/SportsJerseyEdited.ttf" id="2_4k1vm"]
@@ -6,8 +6,10 @@
 [ext_resource type="ButtonGroup" uid="uid://br3kusi3thyqq" path="res://Autoloads/Resources/on_field_tab_button_group.tres" id="4_renfa"]
 [ext_resource type="Theme" uid="uid://bkrlwg21fhprn" path="res://Autoloads/Resources/Themes/edit_button.tres" id="4_w5fki"]
 [ext_resource type="PackedScene" uid="uid://d1d26ob86bbom" path="res://Scenes/Main/MainUI/number_ui.tscn" id="4_xqtvo"]
+[ext_resource type="Texture2D" uid="uid://bguiky7x105wd" path="res://Autoloads/Icons/icon_up_white.png" id="5_tf14f"]
 [ext_resource type="Texture2D" uid="uid://dvh5rocl8fvmb" path="res://Autoloads/Icons/icon_body.png" id="5_xqtvo"]
 [ext_resource type="Texture2D" uid="uid://cm5x35lnaq78y" path="res://Autoloads/Icons/icon_spirit.png" id="6_40myu"]
+[ext_resource type="Texture2D" uid="uid://ym4g7x27mim3" path="res://Autoloads/Icons/icon_down_white.png" id="6_suyyc"]
 [ext_resource type="Texture2D" uid="uid://cy0k4ndbr1eta" path="res://Autoloads/Icons/icon_mind.png" id="7_cwasf"]
 [ext_resource type="Texture2D" uid="uid://dnjn5ky0d157b" path="res://Autoloads/Icons/icon_whistle.png" id="8_rv6kt"]
 
@@ -21,7 +23,7 @@ font = ExtResource("2_s680g")
 font_size = 64
 font_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_renfa"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tf14f"]
 bg_color = Color(0, 1, 0, 1)
 border_width_left = 8
 border_width_top = 8
@@ -55,7 +57,7 @@ theme_override_constants/separation = 16
 
 [node name="SpriteTextureRec" type="TextureRect" parent="MainContainer/BeastiePicContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(400, 400)
+custom_minimum_size = Vector2(400, 300)
 layout_mode = 2
 size_flags_horizontal = 0
 expand_mode = 1
@@ -81,10 +83,6 @@ placeholder_text = "Name"
 alignment = 1
 max_length = 12
 
-[node name="Spacer" type="Control" parent="MainContainer/BeastiePicContainer/NameNumContainer"]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 2
-
 [node name="CustomNumberLabel" type="Label" parent="MainContainer/BeastiePicContainer/NameNumContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
@@ -100,6 +98,7 @@ theme = ExtResource("4_w5fki")
 placeholder_text = "999"
 alignment = 1
 max_length = 3
+virtual_keyboard_type = 2
 
 [node name="StaminaContainer" type="HBoxContainer" parent="MainContainer"]
 custom_minimum_size = Vector2(0, 90)
@@ -111,8 +110,50 @@ layout_mode = 2
 text = "Stamina"
 label_settings = SubResource("LabelSettings_40myu")
 
-[node name="Control" type="Control" parent="MainContainer/StaminaContainer"]
+[node name="Spacer" type="Control" parent="MainContainer/StaminaContainer"]
 custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="StaminaLineEdit" type="LineEdit" parent="MainContainer/StaminaContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_behavior_recursive = 2
+theme = ExtResource("4_w5fki")
+placeholder_text = "100"
+alignment = 1
+max_length = 3
+virtual_keyboard_type = 2
+
+[node name="Spacer2" type="Control" parent="MainContainer/StaminaContainer"]
+custom_minimum_size = Vector2(12, 0)
+layout_mode = 2
+
+[node name="UpDownButtonContainer" type="VBoxContainer" parent="MainContainer/StaminaContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = -8
+
+[node name="StaminaUpButton" type="Button" parent="MainContainer/StaminaContainer/UpDownButtonContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("4_w5fki")
+theme_override_constants/icon_max_width = 36
+icon = ExtResource("5_tf14f")
+vertical_icon_alignment = 0
+
+[node name="StaminaDownButton" type="Button" parent="MainContainer/StaminaContainer/UpDownButtonContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("4_w5fki")
+theme_override_constants/icon_max_width = 36
+icon = ExtResource("6_suyyc")
+vertical_icon_alignment = 2
+
+[node name="Spacer3" type="Control" parent="MainContainer/StaminaContainer"]
+custom_minimum_size = Vector2(12, 0)
 layout_mode = 2
 
 [node name="StaminaSlider" type="HSlider" parent="MainContainer/StaminaContainer"]
@@ -135,29 +176,10 @@ grow_horizontal = 2
 grow_vertical = 2
 focus_behavior_recursive = 1
 mouse_filter = 2
-theme_override_styles/fill = SubResource("StyleBoxFlat_renfa")
+theme_override_styles/fill = SubResource("StyleBoxFlat_tf14f")
 step = 1.0
 value = 100.0
 show_percentage = false
-
-[node name="StaminaLabel" type="Label" parent="MainContainer/StaminaContainer/StaminaSlider"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -89.5
-offset_top = -36.5
-offset_right = 89.5
-offset_bottom = 36.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "100"
-label_settings = SubResource("LabelSettings_40myu")
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="TabContainer" type="TabContainer" parent="MainContainer"]
 unique_name_in_owner = true
@@ -243,10 +265,74 @@ toggle_mode = true
 button_group = ExtResource("4_renfa")
 text = "Lower Front"
 
-[node name="HSeparator" type="HSeparator" parent="MainContainer/TabContainer/_On Field_/MainPositionTabContainer"]
-custom_minimum_size = Vector2(0, 50)
+[node name="HoldingBallLabel" type="Label" parent="MainContainer/TabContainer/_On Field_/MainPositionTabContainer"]
 layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 1
+text = "Holding Ball"
+label_settings = SubResource("LabelSettings_xqtvo")
+
+[node name="BallButtonContainer" type="HBoxContainer" parent="MainContainer/TabContainer/_On Field_/MainPositionTabContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="NoBallButton" type="Button" parent="MainContainer/TabContainer/_On Field_/MainPositionTabContainer/BallButtonContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_behavior_recursive = 1
 theme = ExtResource("4_w5fki")
+toggle_mode = true
+button_group = ExtResource("4_renfa")
+text = " None "
+icon_alignment = 1
+
+[node name="BodyBallButton" type="Button" parent="MainContainer/TabContainer/_On Field_/MainPositionTabContainer/BallButtonContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+focus_behavior_recursive = 1
+theme = ExtResource("4_w5fki")
+toggle_mode = true
+button_group = ExtResource("4_renfa")
+icon = ExtResource("5_xqtvo")
+icon_alignment = 1
+
+[node name="SpiritBallButton" type="Button" parent="MainContainer/TabContainer/_On Field_/MainPositionTabContainer/BallButtonContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+focus_behavior_recursive = 1
+theme = ExtResource("4_w5fki")
+toggle_mode = true
+button_group = ExtResource("4_renfa")
+icon = ExtResource("6_40myu")
+icon_alignment = 1
+
+[node name="MindBallButton" type="Button" parent="MainContainer/TabContainer/_On Field_/MainPositionTabContainer/BallButtonContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+focus_behavior_recursive = 1
+theme = ExtResource("4_w5fki")
+toggle_mode = true
+button_group = ExtResource("4_renfa")
+icon = ExtResource("7_cwasf")
+icon_alignment = 1
+
+[node name="ReadyBallButton" type="Button" parent="MainContainer/TabContainer/_On Field_/MainPositionTabContainer/BallButtonContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_behavior_recursive = 1
+theme = ExtResource("4_w5fki")
+toggle_mode = true
+button_group = ExtResource("4_renfa")
+text = "Ready"
+icon_alignment = 1
 
 [node name="BoostsLabel" type="Label" parent="MainContainer/TabContainer/_On Field_/MainPositionTabContainer"]
 layout_mode = 2
@@ -260,7 +346,6 @@ theme_override_constants/separation = 12
 
 [node name="BodyContainer" type="HBoxContainer" parent="MainContainer/TabContainer/_On Field_/MainPositionTabContainer/BoostsUIContainer"]
 layout_mode = 2
-theme_override_constants/separation = 12
 
 [node name="Spacer" type="Control" parent="MainContainer/TabContainer/_On Field_/MainPositionTabContainer/BoostsUIContainer/BodyContainer"]
 layout_mode = 2
@@ -272,6 +357,7 @@ size_flags_horizontal = 2
 value_min = -8
 value_max = 8
 side = 0
+show_min_button = true
 
 [node name="BPowLabel" type="Label" parent="MainContainer/TabContainer/_On Field_/MainPositionTabContainer/BoostsUIContainer/BodyContainer"]
 layout_mode = 2
@@ -297,13 +383,13 @@ layout_mode = 2
 size_flags_horizontal = 10
 value_min = -8
 value_max = 8
+show_min_button = true
 
 [node name="Spacer2" type="Control" parent="MainContainer/TabContainer/_On Field_/MainPositionTabContainer/BoostsUIContainer/BodyContainer"]
 layout_mode = 2
 
 [node name="SpiritContainer" type="HBoxContainer" parent="MainContainer/TabContainer/_On Field_/MainPositionTabContainer/BoostsUIContainer"]
 layout_mode = 2
-theme_override_constants/separation = 12
 
 [node name="Spacer" type="Control" parent="MainContainer/TabContainer/_On Field_/MainPositionTabContainer/BoostsUIContainer/SpiritContainer"]
 layout_mode = 2
@@ -315,6 +401,7 @@ size_flags_horizontal = 2
 value_min = -8
 value_max = 8
 side = 0
+show_min_button = true
 
 [node name="SPowLabel" type="Label" parent="MainContainer/TabContainer/_On Field_/MainPositionTabContainer/BoostsUIContainer/SpiritContainer"]
 layout_mode = 2
@@ -340,13 +427,13 @@ layout_mode = 2
 size_flags_horizontal = 10
 value_min = -8
 value_max = 8
+show_min_button = true
 
 [node name="Spacer2" type="Control" parent="MainContainer/TabContainer/_On Field_/MainPositionTabContainer/BoostsUIContainer/SpiritContainer"]
 layout_mode = 2
 
 [node name="MindContainer" type="HBoxContainer" parent="MainContainer/TabContainer/_On Field_/MainPositionTabContainer/BoostsUIContainer"]
 layout_mode = 2
-theme_override_constants/separation = 12
 
 [node name="Spacer" type="Control" parent="MainContainer/TabContainer/_On Field_/MainPositionTabContainer/BoostsUIContainer/MindContainer"]
 layout_mode = 2
@@ -358,6 +445,7 @@ size_flags_horizontal = 2
 value_min = -8
 value_max = 8
 side = 0
+show_min_button = true
 
 [node name="MPowLabel" type="Label" parent="MainContainer/TabContainer/_On Field_/MainPositionTabContainer/BoostsUIContainer/MindContainer"]
 layout_mode = 2
@@ -383,6 +471,7 @@ layout_mode = 2
 size_flags_horizontal = 10
 value_min = -8
 value_max = 8
+show_min_button = true
 
 [node name="Spacer2" type="Control" parent="MainContainer/TabContainer/_On Field_/MainPositionTabContainer/BoostsUIContainer/MindContainer"]
 layout_mode = 2
