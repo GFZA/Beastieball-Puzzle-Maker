@@ -62,6 +62,7 @@ layout_mode = 2
 size_flags_horizontal = 0
 expand_mode = 1
 stretch_mode = 5
+flip_h = true
 
 [node name="NameNumContainer" type="VBoxContainer" parent="MainContainer/BeastiePicContainer"]
 layout_mode = 2
@@ -188,10 +189,11 @@ size_flags_vertical = 3
 focus_behavior_recursive = 1
 theme = ExtResource("4_w5fki")
 tab_alignment = 1
-current_tab = 0
+current_tab = 3
 
 [node name="_On Field_" type="TabBar" parent="MainContainer/TabContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -502,6 +504,175 @@ metadata/_tab_index = 2
 
 [node name="_Invests_" type="TabBar" parent="MainContainer/TabContainer"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 metadata/_tab_index = 3
+
+[node name="MainInvestsTabContainer" type="VBoxContainer" parent="MainContainer/TabContainer/_Invests_"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Spacer" type="Control" parent="MainContainer/TabContainer/_Invests_/MainInvestsTabContainer"]
+layout_mode = 2
+
+[node name="InvestsLabel" type="Label" parent="MainContainer/TabContainer/_Invests_/MainInvestsTabContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "Training Investment"
+label_settings = SubResource("LabelSettings_xqtvo")
+
+[node name="InvestsUIContainer" type="VBoxContainer" parent="MainContainer/TabContainer/_Invests_/MainInvestsTabContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="BodyContainer" type="HBoxContainer" parent="MainContainer/TabContainer/_Invests_/MainInvestsTabContainer/InvestsUIContainer"]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="MainContainer/TabContainer/_Invests_/MainInvestsTabContainer/InvestsUIContainer/BodyContainer"]
+layout_mode = 2
+
+[node name="BPOWInvestsNumberUI" parent="MainContainer/TabContainer/_Invests_/MainInvestsTabContainer/InvestsUIContainer/BodyContainer" instance=ExtResource("4_xqtvo")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 2
+value_max = 30
+side = 0
+
+[node name="BPowLabel" type="Label" parent="MainContainer/TabContainer/_Invests_/MainInvestsTabContainer/InvestsUIContainer/BodyContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "POW"
+label_settings = SubResource("LabelSettings_xqtvo")
+
+[node name="BodyIcon" type="TextureRect" parent="MainContainer/TabContainer/_Invests_/MainInvestsTabContainer/InvestsUIContainer/BodyContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("5_xqtvo")
+stretch_mode = 5
+
+[node name="BDefLabel" type="Label" parent="MainContainer/TabContainer/_Invests_/MainInvestsTabContainer/InvestsUIContainer/BodyContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "DEF"
+label_settings = SubResource("LabelSettings_xqtvo")
+
+[node name="BDEFInvestsNumberUI" parent="MainContainer/TabContainer/_Invests_/MainInvestsTabContainer/InvestsUIContainer/BodyContainer" instance=ExtResource("4_xqtvo")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+value_min = 0
+value_max = 30
+
+[node name="Spacer2" type="Control" parent="MainContainer/TabContainer/_Invests_/MainInvestsTabContainer/InvestsUIContainer/BodyContainer"]
+layout_mode = 2
+
+[node name="SpiritContainer" type="HBoxContainer" parent="MainContainer/TabContainer/_Invests_/MainInvestsTabContainer/InvestsUIContainer"]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="MainContainer/TabContainer/_Invests_/MainInvestsTabContainer/InvestsUIContainer/SpiritContainer"]
+layout_mode = 2
+
+[node name="SPOWInvestsNumberUI" parent="MainContainer/TabContainer/_Invests_/MainInvestsTabContainer/InvestsUIContainer/SpiritContainer" instance=ExtResource("4_xqtvo")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 2
+value_min = 0
+value_max = 30
+side = 0
+
+[node name="SPowLabel" type="Label" parent="MainContainer/TabContainer/_Invests_/MainInvestsTabContainer/InvestsUIContainer/SpiritContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "POW"
+label_settings = SubResource("LabelSettings_xqtvo")
+
+[node name="SpiritIcon" type="TextureRect" parent="MainContainer/TabContainer/_Invests_/MainInvestsTabContainer/InvestsUIContainer/SpiritContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("6_40myu")
+stretch_mode = 5
+
+[node name="SDefLabel" type="Label" parent="MainContainer/TabContainer/_Invests_/MainInvestsTabContainer/InvestsUIContainer/SpiritContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "DEF"
+label_settings = SubResource("LabelSettings_xqtvo")
+
+[node name="SDEFInvestsNumberUI" parent="MainContainer/TabContainer/_Invests_/MainInvestsTabContainer/InvestsUIContainer/SpiritContainer" instance=ExtResource("4_xqtvo")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+value_min = 0
+value_max = 30
+
+[node name="Spacer2" type="Control" parent="MainContainer/TabContainer/_Invests_/MainInvestsTabContainer/InvestsUIContainer/SpiritContainer"]
+layout_mode = 2
+
+[node name="MindContainer" type="HBoxContainer" parent="MainContainer/TabContainer/_Invests_/MainInvestsTabContainer/InvestsUIContainer"]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="MainContainer/TabContainer/_Invests_/MainInvestsTabContainer/InvestsUIContainer/MindContainer"]
+layout_mode = 2
+
+[node name="MPOWInvestsNumberUI" parent="MainContainer/TabContainer/_Invests_/MainInvestsTabContainer/InvestsUIContainer/MindContainer" instance=ExtResource("4_xqtvo")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 2
+value_min = 0
+value_max = 30
+side = 0
+
+[node name="MPowLabel" type="Label" parent="MainContainer/TabContainer/_Invests_/MainInvestsTabContainer/InvestsUIContainer/MindContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "POW"
+label_settings = SubResource("LabelSettings_xqtvo")
+
+[node name="MindIcon" type="TextureRect" parent="MainContainer/TabContainer/_Invests_/MainInvestsTabContainer/InvestsUIContainer/MindContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("7_cwasf")
+stretch_mode = 5
+
+[node name="MDefLabel" type="Label" parent="MainContainer/TabContainer/_Invests_/MainInvestsTabContainer/InvestsUIContainer/MindContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "DEF"
+label_settings = SubResource("LabelSettings_xqtvo")
+
+[node name="MDEFInvestsNumberUI" parent="MainContainer/TabContainer/_Invests_/MainInvestsTabContainer/InvestsUIContainer/MindContainer" instance=ExtResource("4_xqtvo")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+value_min = 0
+value_max = 30
+
+[node name="Spacer2" type="Control" parent="MainContainer/TabContainer/_Invests_/MainInvestsTabContainer/InvestsUIContainer/MindContainer"]
+layout_mode = 2
+
+[node name="ClearInvestsButton" type="Button" parent="MainContainer/TabContainer/_Invests_/MainInvestsTabContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme = ExtResource("4_w5fki")
+toggle_mode = true
+text = "Clear Invests"
+icon = ExtResource("8_rv6kt")
+expand_icon = true
+
+[node name="InvestsPointsLeftLabel" type="Label" parent="MainContainer/TabContainer/_Invests_/MainInvestsTabContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 6
+text = "
+Points Left : 60
+
+TODO or not TODO
+If i'm not lazy I guess"
+horizontal_alignment = 1
+vertical_alignment = 1

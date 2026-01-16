@@ -61,205 +61,190 @@ layout_mode = 2
 size_flags_horizontal = 10
 value_max = 6
 
-[node name="BothSideClearButton" type="Button" parent="MainContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(350, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-focus_mode = 0
-theme = ExtResource("3_tw2ux")
-toggle_mode = true
-button_group = SubResource("ButtonGroup_oaix8")
-text = "Clear Field"
-icon = ExtResource("5_tw2ux")
-expand_icon = true
-
 [node name="HSeparator" type="HSeparator" parent="MainContainer"]
-custom_minimum_size = Vector2(0, 25)
+custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
 theme = ExtResource("3_tw2ux")
 
-[node name="YourTeamLabel" type="Label" parent="MainContainer"]
+[node name="TeamLabel" type="HBoxContainer" parent="MainContainer"]
+custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
+
+[node name="YourTeamLabel" type="Label" parent="MainContainer/TeamLabel"]
+layout_mode = 2
+size_flags_horizontal = 2
 text = "Your Team"
 label_settings = SubResource("LabelSettings_oaix8")
 horizontal_alignment = 1
 
-[node name="LeftRhythmLabel" type="HBoxContainer" parent="MainContainer"]
-custom_minimum_size = Vector2(0, 90)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MainContainer/LeftRhythmLabel"]
-layout_mode = 2
-text = "RHYTHM"
-label_settings = SubResource("LabelSettings_oaix8")
-
-[node name="LeftRhythmNumberUI" parent="MainContainer/LeftRhythmLabel" instance=ExtResource("2_8j6ah")]
-unique_name_in_owner = true
+[node name="OpponentTeamLabel" type="Label" parent="MainContainer/TeamLabel"]
 layout_mode = 2
 size_flags_horizontal = 10
-value_max = 6
-
-[node name="LeftTrapLabel" type="HBoxContainer" parent="MainContainer"]
-custom_minimum_size = Vector2(0, 90)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MainContainer/LeftTrapLabel"]
-layout_mode = 2
-text = "TRAP"
-label_settings = SubResource("LabelSettings_oaix8")
-
-[node name="LeftTrapNumberUI" parent="MainContainer/LeftTrapLabel" instance=ExtResource("2_8j6ah")]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 10
-value_max = 4
-
-[node name="LeftQuakeLabel" type="HBoxContainer" parent="MainContainer"]
-custom_minimum_size = Vector2(0, 90)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MainContainer/LeftQuakeLabel"]
-layout_mode = 2
-text = "QUAKE"
-label_settings = SubResource("LabelSettings_oaix8")
-
-[node name="LeftQuakeNumberUI" parent="MainContainer/LeftQuakeLabel" instance=ExtResource("2_8j6ah")]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 10
-value_max = 3
-
-[node name="LeftBarrierUpperLabel" type="HBoxContainer" parent="MainContainer"]
-custom_minimum_size = Vector2(0, 90)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MainContainer/LeftBarrierUpperLabel"]
-layout_mode = 2
-text = "UPPER BARRIER"
-label_settings = SubResource("LabelSettings_oaix8")
-
-[node name="LeftBarrierUpperNumberUI" parent="MainContainer/LeftBarrierUpperLabel" instance=ExtResource("2_8j6ah")]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 10
-value_max = 1
-
-[node name="LeftBarrierLowerLabel" type="HBoxContainer" parent="MainContainer"]
-custom_minimum_size = Vector2(0, 90)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MainContainer/LeftBarrierLowerLabel"]
-layout_mode = 2
-text = "LOWER BARRIER"
-label_settings = SubResource("LabelSettings_oaix8")
-
-[node name="LeftBarrierLowerNumberUI" parent="MainContainer/LeftBarrierLowerLabel" instance=ExtResource("2_8j6ah")]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 10
-value_max = 1
-
-[node name="LeftTeamClearButton" type="Button" parent="MainContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(350, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-focus_mode = 0
-theme = ExtResource("3_tw2ux")
-toggle_mode = true
-button_group = SubResource("ButtonGroup_oaix8")
-text = "Clear Field"
-icon = ExtResource("5_tw2ux")
-expand_icon = true
-
-[node name="HSeparator2" type="HSeparator" parent="MainContainer"]
-custom_minimum_size = Vector2(0, 25)
-layout_mode = 2
-theme = ExtResource("3_tw2ux")
-
-[node name="OpponentTeamLabel" type="Label" parent="MainContainer"]
-layout_mode = 2
-text = "Opponent Team"
+text = "Opponent"
 label_settings = SubResource("LabelSettings_oaix8")
 horizontal_alignment = 1
 
-[node name="RightRhythmLabel" type="HBoxContainer" parent="MainContainer"]
+[node name="RhythmLabel" type="HBoxContainer" parent="MainContainer"]
 custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MainContainer/RightRhythmLabel"]
+[node name="LeftRhythmNumberUI" parent="MainContainer/RhythmLabel" instance=ExtResource("2_8j6ah")]
+unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 2
+value_max = 6
+side = 0
+
+[node name="Label" type="Label" parent="MainContainer/RhythmLabel"]
+layout_mode = 2
+size_flags_horizontal = 6
 text = "RHYTHM"
 label_settings = SubResource("LabelSettings_oaix8")
 
-[node name="RightRhythmNumberUI" parent="MainContainer/RightRhythmLabel" instance=ExtResource("2_8j6ah")]
+[node name="RightRhythmNumberUI" parent="MainContainer/RhythmLabel" instance=ExtResource("2_8j6ah")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
 value_max = 6
 
-[node name="RightTrapLabel" type="HBoxContainer" parent="MainContainer"]
+[node name="TrapLabel" type="HBoxContainer" parent="MainContainer"]
 custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MainContainer/RightTrapLabel"]
+[node name="LeftTrapNumberUI" parent="MainContainer/TrapLabel" instance=ExtResource("2_8j6ah")]
+unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 2
+value_max = 4
+side = 0
+
+[node name="Label" type="Label" parent="MainContainer/TrapLabel"]
+layout_mode = 2
+size_flags_horizontal = 6
 text = "TRAP"
 label_settings = SubResource("LabelSettings_oaix8")
 
-[node name="RightTrapNumberUI" parent="MainContainer/RightTrapLabel" instance=ExtResource("2_8j6ah")]
+[node name="RightTrapNumberUI" parent="MainContainer/TrapLabel" instance=ExtResource("2_8j6ah")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
 value_max = 4
 
-[node name="RightQuakeLabel" type="HBoxContainer" parent="MainContainer"]
+[node name="QuakeLabel" type="HBoxContainer" parent="MainContainer"]
 custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MainContainer/RightQuakeLabel"]
+[node name="LeftQuakeNumberUI" parent="MainContainer/QuakeLabel" instance=ExtResource("2_8j6ah")]
+unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 2
+value_max = 3
+side = 0
+
+[node name="Label" type="Label" parent="MainContainer/QuakeLabel"]
+layout_mode = 2
+size_flags_horizontal = 6
 text = "QUAKE"
 label_settings = SubResource("LabelSettings_oaix8")
 
-[node name="RightQuakeNumberUI" parent="MainContainer/RightQuakeLabel" instance=ExtResource("2_8j6ah")]
+[node name="RightQuakeNumberUI" parent="MainContainer/QuakeLabel" instance=ExtResource("2_8j6ah")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
 value_max = 3
 
-[node name="RightBarrierUpperLabel" type="HBoxContainer" parent="MainContainer"]
+[node name="BarrierUpperLabel" type="HBoxContainer" parent="MainContainer"]
 custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MainContainer/RightBarrierUpperLabel"]
+[node name="LeftBarrierUpperCheckBox" type="CheckBox" parent="MainContainer/BarrierUpperLabel"]
+unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_behavior_recursive = 1
+theme = ExtResource("3_tw2ux")
+icon_alignment = 1
+expand_icon = true
+
+[node name="LeftBarrierUpperNumberUI" parent="MainContainer/BarrierUpperLabel" instance=ExtResource("2_8j6ah")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 2
+value_max = 1
+side = 0
+
+[node name="Label" type="Label" parent="MainContainer/BarrierUpperLabel"]
+layout_mode = 2
+size_flags_horizontal = 6
 text = "UPPER BARRIER"
 label_settings = SubResource("LabelSettings_oaix8")
 
-[node name="RightBarrierUpperNumberUI" parent="MainContainer/RightBarrierUpperLabel" instance=ExtResource("2_8j6ah")]
+[node name="RightBarrierUpperNumberUI" parent="MainContainer/BarrierUpperLabel" instance=ExtResource("2_8j6ah")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_horizontal = 10
 value_max = 1
 
-[node name="RightBarrierLowerLabel" type="HBoxContainer" parent="MainContainer"]
+[node name="RightBarrierUpperCheckBox" type="CheckBox" parent="MainContainer/BarrierUpperLabel"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+focus_behavior_recursive = 1
+theme = ExtResource("3_tw2ux")
+icon_alignment = 1
+expand_icon = true
+
+[node name="BarrierLowerLabel" type="HBoxContainer" parent="MainContainer"]
 custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MainContainer/RightBarrierLowerLabel"]
+[node name="LeftBarrierLowerCheckBox" type="CheckBox" parent="MainContainer/BarrierLowerLabel"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_behavior_recursive = 1
+theme = ExtResource("3_tw2ux")
+icon_alignment = 1
+expand_icon = true
+
+[node name="LeftBarrierLowerNumberUI" parent="MainContainer/BarrierLowerLabel" instance=ExtResource("2_8j6ah")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 2
+value_max = 1
+side = 0
+
+[node name="Label" type="Label" parent="MainContainer/BarrierLowerLabel"]
+layout_mode = 2
+size_flags_horizontal = 6
 text = "LOWER BARRIER"
 label_settings = SubResource("LabelSettings_oaix8")
 
-[node name="RightBarrierLowerNumberUI" parent="MainContainer/RightBarrierLowerLabel" instance=ExtResource("2_8j6ah")]
+[node name="RightBarrierLowerNumberUI" parent="MainContainer/BarrierLowerLabel" instance=ExtResource("2_8j6ah")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_horizontal = 10
 value_max = 1
 
-[node name="RightTeamClearButton" type="Button" parent="MainContainer"]
+[node name="RightBarrierLowerCheckBox" type="CheckBox" parent="MainContainer/BarrierLowerLabel"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+focus_behavior_recursive = 1
+theme = ExtResource("3_tw2ux")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Spacer" type="Control" parent="MainContainer"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+
+[node name="BothSideClearButton" type="Button" parent="MainContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(350, 0)
 layout_mode = 2

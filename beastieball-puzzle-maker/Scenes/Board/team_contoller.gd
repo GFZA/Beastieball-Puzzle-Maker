@@ -6,7 +6,6 @@ signal field_updated(pos_dict : Dictionary[Beastie.Position, Beastie])
 signal field_effects_updated(field_dict : Dictionary[FieldEffect.Type, int])
 signal beastie_menu_requested(requested_beastie : Beastie, side : Global.MySide, team_pos : TeamController.TeamPosition)
 
-
 enum TeamPosition {FIELD_1, FIELD_2, BENCH_1, BENCH_2}
 
 const BEASTIE_SCENE := preload("uid://dptoj76e40ldo")
@@ -168,6 +167,8 @@ func _process_beastie_value(value : Beastie, benched : bool = false) -> Beastie:
 	processed_value.my_side = side
 	if not processed_value.health_updated.is_connected(_update_field):
 		processed_value.health_updated.connect(_update_field.unbind(1))
+	if not processed_value.invests_updated.is_connected(_update_field):
+		processed_value.invests_updated.connect(_update_field.unbind(1))
 	if not processed_value.my_plays_updated.is_connected(_update_field):
 		processed_value.my_plays_updated.connect(_update_field.unbind(1))
 	if not processed_value.my_trait_updated.is_connected(_update_field):

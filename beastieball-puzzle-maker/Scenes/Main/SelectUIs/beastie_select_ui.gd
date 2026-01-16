@@ -79,7 +79,10 @@ func _update_grid() -> void:
 
 
 func _on_beastie_button_beastie_selected(beastie : Beastie) -> void:
-	beastie_selected.emit(beastie.duplicate(true), side, team_pos)
+	if not beastie:
+		beastie_selected.emit(null, side, team_pos)
+	else:
+		beastie_selected.emit(beastie.duplicate(true), side, team_pos)
 
 
 func reset() -> void:

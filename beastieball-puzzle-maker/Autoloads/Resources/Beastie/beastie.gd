@@ -12,7 +12,7 @@ const MAX_NUNBER_LENGTH : int = 3
 
 signal my_name_updated(my_name : String)
 signal sport_number_updated(sport_number : int)
-signal stats_updated(stats : Dictionary[String, Array])
+signal invests_updated(invests_dict : Dictionary[Stats, int])
 signal current_boosts_updated(boost_dict : Dictionary[Stats, int])
 signal current_feelings_updated(feelings_dict : Dictionary[Feelings, int])
 signal my_plays_updated(updated_plays : Array[Plays])
@@ -67,59 +67,29 @@ signal health_updated(health : int)
 		clamp(value, 0, 999)
 		sport_number = value
 		sport_number_updated.emit(sport_number)
-@export_range(0, 30) var body_invest_pow : int = 0 :
+@export var invests : Dictionary[Stats, int] = {
+	Beastie.Stats.B_POW : 0,
+	Beastie.Stats.S_POW : 0,
+	Beastie.Stats.M_POW : 0,
+	Beastie.Stats.B_DEF : 0,
+	Beastie.Stats.S_DEF : 0,
+	Beastie.Stats.M_DEF : 0,
+} :
 	set(value):
-		body_invest_pow = value
-		stats_updated.emit(get_stats_dict())
-@export_range(0, 30) var spirit_invest_pow : int = 0 :
-	set(value):
-		spirit_invest_pow = value
-		stats_updated.emit(get_stats_dict())
-@export_range(0, 30) var mind_invest_pow : int = 0 :
-	set(value):
-		mind_invest_pow = value
-		stats_updated.emit(get_stats_dict())
-@export_range(0, 30) var body_invest_def : int = 0 :
-	set(value):
-		body_invest_def = value
-		stats_updated.emit(get_stats_dict())
-@export_range(0, 30) var spirit_invest_def : int = 0 :
-	set(value):
-		spirit_invest_def = value
-		stats_updated.emit(get_stats_dict())
-@export_range(0, 30) var mind_invest_def : int = 0 :
-	set(value):
-		mind_invest_def = value
-		stats_updated.emit(get_stats_dict())
+		value.sort()
+		invests = value
+		invests_updated.emit(invests)
 
 @export_group("Internal Infos")
 @export var specie_name : String = "Sprecko"
 @export_range(1, 106) var beastiepedia_id : int = 1
 @export_color_no_alpha var bar_color : Color = Color.GREEN
-@export_range(1, 150) var body_base_pow : int = 45 :
-	set(value):
-		body_base_pow = value
-		stats_updated.emit(get_stats_dict())
-@export_range(1, 150) var spirit_base_pow : int = 43 :
-	set(value):
-		spirit_base_pow = value
-		stats_updated.emit(get_stats_dict())
-@export_range(1, 150) var mind_base_pow : int = 42 :
-	set(value):
-		mind_base_pow = value
-		stats_updated.emit(get_stats_dict())
-@export_range(1, 150) var body_base_def : int = 50 :
-	set(value):
-		body_base_def = value
-		stats_updated.emit(get_stats_dict())
-@export_range(1, 150) var spirit_base_def : int = 67 :
-	set(value):
-		spirit_base_def = value
-		stats_updated.emit(get_stats_dict())
-@export_range(1, 150) var mind_base_def : int = 55 :
-	set(value):
-		mind_base_def = value
-		stats_updated.emit(get_stats_dict())
+@export_range(1, 150) var body_base_pow : int = 45
+@export_range(1, 150) var spirit_base_pow : int = 43
+@export_range(1, 150) var mind_base_pow : int = 42
+@export_range(1, 150) var body_base_def : int = 50
+@export_range(1, 150) var spirit_base_def : int = 67
+@export_range(1, 150) var mind_base_def : int = 55
 @export var possible_plays : Array[Plays] = []
 @export var possible_traits : Array[Trait] = []
 @export var sprites : Dictionary[Sprite, Texture2D] = {
@@ -145,20 +115,23 @@ var ally_field_position : Position = Position.NOT_ASSIGNED
 var is_really_at_bench : bool = false
 
 
-func get_stats_dict() -> Dictionary[Stats, Array]:
-	var stats : Dictionary[Stats, Array] = {}
-	stats.get_or_add(Stats.B_POW, [body_base_pow, body_invest_pow])
-	stats.get_or_add(Stats.S_POW, [spirit_base_pow, spirit_invest_pow])
-	stats.get_or_add(Stats.M_POW, [mind_base_pow, mind_invest_pow])
-	stats.get_or_add(Stats.B_DEF, [body_base_def, body_invest_def])
-	stats.get_or_add(Stats.S_DEF, [spirit_base_def, spirit_invest_def])
-	stats.get_or_add(Stats.M_DEF, [mind_base_def, mind_invest_def])
-	return stats
-
-
 func get_total_stats_value(stats_type : Stats) -> int:
-	var stats : Dictionary[Stats, Array] = get_stats_dict()
-	return stats.get(stats_type)[0] + stats.get(stats_type)[1]
+	var base_stats : int = 0
+	match stats_type: # Should have use Dictionary like invests instead, too lazy to refactor now...
+		Beastie.Stats.B_POW:
+			base_stats = body_base_pow
+		Beastie.Stats.S_POW:
+			base_stats = spirit_base_pow
+		Beastie.Stats.M_POW:
+			base_stats = mind_base_pow
+		Beastie.Stats.B_DEF:
+			base_stats = body_base_def
+		Beastie.Stats.S_DEF:
+			base_stats = spirit_base_def
+		Beastie.Stats.M_DEF:
+			base_stats = mind_base_def
+	var invest_point : int = invests.get(stats_type)
+	return base_stats + invest_point
 
 
 func get_sprite(sprite_type : Sprite) -> Texture2D:
@@ -212,6 +185,13 @@ func get_feeling_stack(feeling : Beastie.Feelings) -> int:
 	if not current_feelings.has(feeling):
 		return 0
 	return current_feelings.get(feeling)
+
+
+func get_total_invests_points() -> int:
+	var result : int = 0
+	for point in invests.values():
+		result += point
+	return result
 
 
 static func get_empty_stats_dict() -> Dictionary[String, Array]:

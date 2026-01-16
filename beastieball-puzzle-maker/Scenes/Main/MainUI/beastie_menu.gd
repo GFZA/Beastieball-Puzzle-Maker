@@ -7,6 +7,9 @@ signal beastie_ball_change_requested(side : Global.MySide, team_pos : TeamContro
 									have_ball : bool, ball_type : BeastieScene.BallType)
 
 const STAMINA_FILL_STYLEBOX := preload("uid://ci28vvsldarw1")
+const MAX_INVESTS_TOTAL : int = 60
+const MAX_INVESTS_PER_STATS : int = 60
+
 
 @export var beastie : Beastie = null :
 	set(value):
@@ -19,6 +22,7 @@ const STAMINA_FILL_STYLEBOX := preload("uid://ci28vvsldarw1")
 		_update_side()
 
 var team_pos : TeamController.TeamPosition = TeamController.TeamPosition.FIELD_1
+var invest_points_pool : int = MAX_INVESTS_TOTAL
 
 @onready var name_label: Label = %NameLabel
 @onready var sprite_texture_rec: TextureRect = %SpriteTextureRec
@@ -34,6 +38,7 @@ var team_pos : TeamController.TeamPosition = TeamController.TeamPosition.FIELD_1
 
 @onready var tab_container: TabContainer = %TabContainer
 
+# On Field Tab
 @onready var on_field_tab: TabBar = %"_On Field_"
 @onready var pos_tab_upper_button_container: HBoxContainer = %UpperButtonContainer
 @onready var pos_tab_upper_back_button: Button = %UpperBackButton
@@ -54,11 +59,22 @@ var team_pos : TeamController.TeamPosition = TeamController.TeamPosition.FIELD_1
 @onready var mdef_boost_number_ui: NumberUI = %MDEFNumberUI
 @onready var clear_boost_button: Button = %ClearBoostButton
 
+# Set Tab
 @onready var sets_tab: TabBar = %_Sets_
 
+# Feelings Tab
 @onready var feelings_tab: TabBar = %_Feelings_
 
+# Invests Tab
 @onready var invests_tab: TabBar = %_Invests_
+@onready var bpow_invests_number_ui: NumberUI = %BPOWInvestsNumberUI
+@onready var bdef_invests_number_ui: NumberUI = %BDEFInvestsNumberUI
+@onready var spow_invests_number_ui: NumberUI = %SPOWInvestsNumberUI
+@onready var sdef_invests_number_ui: NumberUI = %SDEFInvestsNumberUI
+@onready var mpow_invests_number_ui: NumberUI = %MPOWInvestsNumberUI
+@onready var mdef_invests_number_ui: NumberUI = %MDEFInvestsNumberUI
+@onready var invests_points_left_label: Label = %InvestsPointsLeftLabel
+@onready var clear_invests_button: Button = %ClearInvestsButton
 
 
 func _ready() -> void:
@@ -95,6 +111,19 @@ func _ready() -> void:
 
 	clear_boost_button.pressed.connect(_reset_on_field_tab) # Pos button doesn't need resetting so we can just use this
 
+	# Set Tab
+
+	# Feelings Tab
+
+	# Invests Tab
+	bpow_invests_number_ui.value_updated.connect(_on_invests_changed.bind(Beastie.Stats.B_POW))
+	bdef_invests_number_ui.value_updated.connect(_on_invests_changed.bind(Beastie.Stats.B_DEF))
+	spow_invests_number_ui.value_updated.connect(_on_invests_changed.bind(Beastie.Stats.S_POW))
+	sdef_invests_number_ui.value_updated.connect(_on_invests_changed.bind(Beastie.Stats.S_DEF))
+	mpow_invests_number_ui.value_updated.connect(_on_invests_changed.bind(Beastie.Stats.M_POW))
+	mdef_invests_number_ui.value_updated.connect(_on_invests_changed.bind(Beastie.Stats.M_DEF))
+	clear_invests_button.pressed.connect(_reset_invests_tab) # No others thing so just reset everything
+
 
 func _load_from_beastie() -> void:
 	if not is_node_ready():
@@ -109,9 +138,9 @@ func _load_from_beastie() -> void:
 	_on_stamina_slider_value_changed(beastie.health)
 
 	_load_on_field_tab()
-	#_load_sets_tab()
-	#_load_feelings_tab()
-	#_load_invests_tab()
+	_load_sets_tab()
+	_load_feelings_tab()
+	_load_invests_tab()
 
 
 func _load_on_field_tab() -> void:
@@ -123,6 +152,18 @@ func _load_on_field_tab() -> void:
 	mdef_boost_number_ui.num = beastie.get_boosts(Beastie.Stats.M_DEF)
 
 
+func _load_sets_tab() -> void:
+	return
+
+
+func _load_feelings_tab() -> void:
+	return
+
+
+func _load_invests_tab() -> void:
+	return
+
+
 func reset() -> void:
 	scroll_vertical = 0
 	beastie = null
@@ -130,9 +171,9 @@ func reset() -> void:
 	team_pos = TeamController.TeamPosition.FIELD_1
 
 	_reset_on_field_tab()
-	#_reset_sets_tab()
-	#_reset_feelings_tab()
-	#_reset_invests_tab()
+	_reset_sets_tab()
+	_reset_feelings_tab()
+	_reset_invests_tab()
 
 
 func _reset_on_field_tab() -> void:
@@ -142,6 +183,24 @@ func _reset_on_field_tab() -> void:
 	sdef_boost_number_ui.reset()
 	mpow_boost_number_ui.reset()
 	mdef_boost_number_ui.reset()
+
+
+func _reset_sets_tab() -> void:
+	return
+
+
+func _reset_feelings_tab() -> void:
+	return
+
+
+func _reset_invests_tab() -> void:
+	bpow_invests_number_ui.reset()
+	bdef_invests_number_ui.reset()
+	spow_invests_number_ui.reset()
+	sdef_invests_number_ui.reset()
+	mpow_invests_number_ui.reset()
+	mdef_invests_number_ui.reset()
+	invest_points_pool = MAX_INVESTS_TOTAL
 
 
 func _update_beastie() -> void:
@@ -172,8 +231,10 @@ func _update_side() -> void:
 	var new_index : int = 0 if side == Global.MySide.LEFT else 1
 	pos_tab_upper_button_container.move_child(pos_tab_upper_back_button, new_index)
 	pos_tab_lower_button_container.move_child(pos_tab_lower_back_button, new_index)
+	sprite_texture_rec.flip_h = not bool(new_index) # Flip if Left
 
 
+#region Outside Tab Funcs
 func _on_stamina_line_edit_text_summited(new_text : String) -> void:
 	var new_stamina : int = new_text.to_int() if new_text.length() != 0 else 100
 	_update_stamina(new_stamina)
@@ -217,7 +278,7 @@ func _on_custom_number_line_edit_text_changed(new_text : String) -> void:
 	if not beastie:
 		return
 	beastie.sport_number = new_text.to_int()
-
+#endregion
 
 #region On Field Tab Funcs
 func _on_pos_button_pressed(new_pos : Beastie.Position) -> void:
@@ -228,7 +289,6 @@ func _on_ball_button_pressed(have_ball : bool, ball_type : BeastieScene.BallType
 	beastie_ball_change_requested.emit(side, team_pos, have_ball, ball_type)
 
 
-
 func _on_boost_changed(value : int, boost_type : Beastie.Stats) -> void:
 	if not beastie:
 		return
@@ -237,4 +297,22 @@ func _on_boost_changed(value : int, boost_type : Beastie.Stats) -> void:
 	else:
 		beastie.current_boosts[boost_type] = value
 	beastie.current_boosts_updated.emit(beastie.current_boosts) # Need to maunally emit it for some reason
+#endregion
+
+#region Invests Tab Funcs
+func _on_invests_changed(value : int, invests_type : Beastie.Stats) -> void:
+	if not beastie:
+		return
+	beastie.invests[invests_type] = value
+	beastie.invests_updated.emit(beastie.invests) # Need to maunally emit it for some reason
+
+# TODO? : Capping Invests
+#func _can_add_invests(beastie : Beastie, add_value : int, invests_type : Beastie.Stats) -> bool:
+	#var current_invests : int = beastie.get_total_invests_points()
+	#if current_invests + add_value > MAX_INVESTS_TOTAL:
+		#return false
+	#if beastie.invests.get(invests_type) + add_value > MAX_INVESTS_PER_STATS:
+		#return false
+	#return true
+
 #endregion
