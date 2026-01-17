@@ -31,7 +31,7 @@ size_flags_horizontal = 2
 theme = ExtResource("1_mdc6b")
 theme_override_fonts/font = ExtResource("2_uuw86")
 theme_override_font_sizes/font_size = 128
-text = "Beastie"
+text = "Select Beastie"
 
 [node name="SearchBar" type="LineEdit" parent="MainContainer/UpperContainer"]
 unique_name_in_owner = true

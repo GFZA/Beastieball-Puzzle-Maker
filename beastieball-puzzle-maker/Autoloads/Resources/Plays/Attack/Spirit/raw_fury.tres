@@ -6,6 +6,6 @@
 script = ExtResource("1_jit1c")
 name = "Raw Fury"
 base_pow = 65
-descrition = "Ignores target's shields and 1 up arrow boost1 down arrow boostBOOSTS. Always goes where it's targeted."
+descrition = "Ignores target's shields and BOOSTS. Always goes where it's targeted."
 type = 1
 metadata/_custom_type_script = "uid://bc63soeia1eb1"

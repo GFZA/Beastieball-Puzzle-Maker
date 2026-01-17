@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_j5iay")
 name = "Cover"
-descrition = "Only used from net. VOLLEY. ALL_TYPE DEF UP1 to self. SHIFTs self to back row."
+descrition = "Only used from net. ALL_TYPE DEF UP1 to self. SHIFTs self to back row."
 type = 3
 metadata/_custom_type_script = "uid://7mqfhyvrwevt"

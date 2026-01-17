@@ -64,6 +64,11 @@ func _ready() -> void:
 		requester.beastie_select_ui_requested.connect(select_ui.show_beastie_select_ui)
 		select_ui.beastie_selected.connect(requester.on_beastie_selected)
 
+	var plays_requester : Array[Node] = get_tree().get_nodes_in_group("plays_select_ui_requester")
+	for requester in plays_requester:
+		requester.plays_select_ui_requested.connect(select_ui.show_plays_select_ui)
+		#select_ui.beastie_selected.connect(requester.on_beastie_selected)
+
 
 func _on_your_point_changed(new_point : int) -> void:
 	board.board_overlay.on_your_point_changed(new_point)
@@ -83,6 +88,7 @@ func _on_controller_reset_slot_requested(side : Global.MySide, team_pos : TeamCo
 func on_connect_for_new_beastie_menu_requested(beastie_menu : BeastieMenu) -> void:
 	beastie_menu.beastie_position_change_requested.connect(board.board_manager.on_beastie_position_change_requested)
 	beastie_menu.beastie_ball_change_requested.connect(board.board_manager.on_beastie_ball_change_requested)
+	beastie_menu.plays_select_ui_requested.connect(select_ui.show_plays_select_ui)
 
 
 #region Lower buttons signal funcs

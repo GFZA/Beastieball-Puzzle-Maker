@@ -1,0 +1,211 @@
+@tool
+class_name PlaysSelectUI
+extends Control
+
+signal plays_selected(plays : Plays)
+
+const PLAY_BUTTON : PackedScene = preload("uid://dflcrna6d1235")
+
+@export var beastie : Beastie = null :
+	set(value):
+		beastie = value
+		_update_beastie_plays_data()
+		_update_grid()
+
+var all_body_attacks : Array[Plays] = []
+var all_spirit_attacks : Array[Plays] = []
+var all_mind_attacks : Array[Plays] = []
+var all_volley_plays : Array[Plays] = []
+var all_support_plays : Array[Plays] = []
+var all_defense_plays : Array[Plays] = []
+var all_plays : Array[Plays] = []
+
+var beastie_body_attacks : Array[Plays] = []
+var beastie_spirit_attacks : Array[Plays] = []
+var beastie_mind_attacks : Array[Plays] = []
+var beastie_volley_plays : Array[Plays] = []
+var beastie_support_plays : Array[Plays] = []
+var beastie_defense_plays : Array[Plays] = []
+var beastie_plays : Array[Plays] = []
+
+var current_filter : Plays.Type = Plays.Type.NONE :
+	set(value):
+		current_filter = value
+		_update_grid()
+
+var allows_illegal_plays : bool = false :
+	set(value):
+		allows_illegal_plays = value
+		_update_grid()
+
+var current_search_string : String = "" :
+	set(value):
+		current_search_string = value
+		_update_grid()
+
+var slot_index : int = 0
+
+@onready var plays_button_container: GridContainer = %PlaysButtonContainer
+@onready var search_bar: LineEdit = %SearchBar
+@onready var none_plays_filter_button: Button = %NonePlaysFilterButton
+@onready var body_plays_filter_button: Button = %BodyPlaysFilterButton
+@onready var spirit_plays_filter_button: Button = %SpiritPlaysFilterButton
+@onready var mind_plays_filter_button: Button = %MindPlaysFilterButton
+@onready var volley_plays_filter_button: Button = %VolleyPlaysFilterButton
+@onready var support_plays_filter_button: Button = %SupportPlaysFilterButton
+@onready var defense_plays_filter_button: Button = %DefensePlaysFilterButton
+@onready var allow_illegal_plays_check_box: CheckBox = %AllowIllegalPlaysCheckBox
+
+
+func _ready() -> void:
+	search_bar.text_changed.connect(func(new_text : String): current_search_string = new_text)
+	none_plays_filter_button.pressed.connect(func(): current_filter = Plays.Type.NONE)
+	body_plays_filter_button.pressed.connect(func(): current_filter = Plays.Type.ATTACK_BODY)
+	spirit_plays_filter_button.pressed.connect(func(): current_filter = Plays.Type.ATTACK_SPIRIT)
+	mind_plays_filter_button.pressed.connect(func(): current_filter = Plays.Type.ATTACK_MIND)
+	volley_plays_filter_button.pressed.connect(func(): current_filter = Plays.Type.VOLLEY)
+	support_plays_filter_button.pressed.connect(func(): current_filter = Plays.Type.SUPPORT)
+	defense_plays_filter_button.pressed.connect(func(): current_filter = Plays.Type.DEFENSE)
+
+	allow_illegal_plays_check_box.toggled.connect(func(toggled_on : bool): allows_illegal_plays = toggled_on)
+	_assign_all_data_arrays()
+	_update_grid()
+
+
+func _assign_all_data_arrays() -> void:
+	all_body_attacks = Global.all_body_attacks.duplicate()
+	all_spirit_attacks = Global.all_spirit_attacks.duplicate()
+	all_mind_attacks = Global.all_mind_attacks.duplicate()
+	all_volley_plays = Global.all_volley_plays.duplicate()
+	all_support_plays = Global.all_support_plays.duplicate()
+	all_defense_plays = Global.all_defense_plays.duplicate()
+	all_plays = Global.all_plays
+
+
+func _update_beastie_plays_data() -> void:
+	if not beastie:
+		beastie_body_attacks.clear()
+		beastie_spirit_attacks.clear()
+		beastie_mind_attacks.clear()
+		beastie_volley_plays.clear()
+		beastie_support_plays.clear()
+		beastie_defense_plays.clear()
+		beastie_plays.clear()
+		return
+
+	var sort_func : Callable = (func(a : Plays, b : Plays):
+		var a_value : int = int(a.type) if not a == null else 9999
+		var b_value : int = int(b.type) if not b == null else 9999
+		return a_value < b_value
+	)
+	beastie_plays = beastie.possible_plays.duplicate()
+	beastie_plays.sort_custom(sort_func)
+	beastie_body_attacks = beastie_plays.filter(func(plays : Plays):
+		return plays.type == Plays.Type.ATTACK_BODY if plays else false
+	)
+	beastie_body_attacks.sort_custom(sort_func)
+	beastie_spirit_attacks = beastie_plays.filter(func(plays : Plays):
+		return plays.type == Plays.Type.ATTACK_SPIRIT if plays else false
+	)
+	beastie_spirit_attacks.sort_custom(sort_func)
+	beastie_mind_attacks = beastie_plays.filter(func(plays : Plays):
+		return plays.type == Plays.Type.ATTACK_MIND if plays else false
+	)
+	beastie_mind_attacks.sort_custom(sort_func)
+	beastie_volley_plays = beastie_plays.filter(func(plays : Plays):
+		return plays.type == Plays.Type.VOLLEY if plays else false
+	)
+	beastie_volley_plays.sort_custom(sort_func)
+	beastie_support_plays = beastie_plays.filter(func(plays : Plays):
+		return plays.type == Plays.Type.SUPPORT if plays else false
+	)
+	beastie_support_plays.sort_custom(sort_func)
+	beastie_defense_plays = beastie_plays.filter(func(plays : Plays):
+		return plays.type == Plays.Type.DEFENSE if plays else false
+	)
+	beastie_defense_plays.sort_custom(sort_func)
+
+
+func _get_filtered_array() -> Array[Plays]:
+	if not allows_illegal_plays and beastie:
+		match current_filter:
+			Plays.Type.NONE:
+				return beastie_plays
+			Plays.Type.ATTACK_BODY:
+				return beastie_body_attacks
+			Plays.Type.ATTACK_SPIRIT:
+				return beastie_spirit_attacks
+			Plays.Type.ATTACK_MIND:
+				return beastie_mind_attacks
+			Plays.Type.VOLLEY:
+				return beastie_volley_plays
+			Plays.Type.SUPPORT:
+				return beastie_support_plays
+			Plays.Type.DEFENSE:
+				return beastie_defense_plays
+	else:
+		match current_filter:
+			Plays.Type.NONE:
+				return all_plays
+			Plays.Type.ATTACK_BODY:
+				return all_body_attacks
+			Plays.Type.ATTACK_SPIRIT:
+				return all_spirit_attacks
+			Plays.Type.ATTACK_MIND:
+				return all_mind_attacks
+			Plays.Type.VOLLEY:
+				return all_volley_plays
+			Plays.Type.SUPPORT:
+				return all_support_plays
+			Plays.Type.DEFENSE:
+				return all_defense_plays
+	return []
+
+
+func _get_search_filtered_array(search_string : String) -> Array[Plays]:
+	var array_to_filer_again : Array[Plays] = _get_filtered_array()
+	if search_string == "":
+		return array_to_filer_again.duplicate() # TODO not this
+
+	var result : Array[Plays] = []
+	for plays : Plays in array_to_filer_again: # TODO not this
+		if plays and plays.name.to_lower().begins_with(search_string.to_lower()):
+			result.append(plays)
+	return result
+
+
+func _update_grid() -> void:
+	if not is_node_ready():
+		await ready
+
+	for child : PlaysButton in plays_button_container.get_children():
+		child.queue_free()
+
+	var plays_array : Array[Plays] = _get_search_filtered_array(current_search_string)
+
+	for plays : Plays in plays_array:
+		var new_button : PlaysButton = PLAY_BUTTON.instantiate()
+		new_button.plays = plays
+		new_button.plays_selected.connect(_on_plays_button_plays_selected)
+		plays_button_container.add_child(new_button)
+
+
+func _on_plays_button_plays_selected(plays : Plays) -> void:
+	if not beastie:
+		return
+	if not plays:
+		beastie.my_plays[slot_index] = null
+		beastie.my_plays_updated.emit(beastie.my_plays) # Have to manually emitted for some reason)
+		plays_selected.emit(null)
+	else:
+		beastie.my_plays[slot_index] = plays.duplicate(true)
+		beastie.my_plays_updated.emit(beastie.my_plays) # Have to manually emitted for some reason)
+		plays_selected.emit(beastie.my_plays[slot_index])
+
+
+func reset() -> void:
+	beastie = null
+	current_filter = Plays.Type.NONE
+	current_search_string = ""
+	search_bar.text = ""
+	_update_grid()

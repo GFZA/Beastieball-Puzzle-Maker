@@ -7,5 +7,5 @@ script = ExtResource("1_if15y")
 name = "Flight"
 base_pow = 70
 descrition = "Targets straight ahead. TAG OUT with benched ally."
-type = 0
+type = 1
 metadata/_custom_type_script = "uid://bc63soeia1eb1"

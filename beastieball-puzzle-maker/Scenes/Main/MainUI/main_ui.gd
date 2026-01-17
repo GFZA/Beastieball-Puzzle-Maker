@@ -193,7 +193,6 @@ func on_reset_slot_requested(side : Global.MySide, team_pos : TeamController.Tea
 
 func on_beastie_menu_tab_changed(tab_index : int) -> void:
 	current_beastie_menu_tab = tab_index
-	print(current_beastie_menu_tab)
 	for i in 2:
 		var dict : Dictionary[TeamController.TeamPosition, BeastieMenu] = left_beastie_menus \
 															if i == 0 else right_beastie_menus

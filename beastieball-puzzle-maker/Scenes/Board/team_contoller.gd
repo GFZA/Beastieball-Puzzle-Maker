@@ -265,6 +265,7 @@ func _add_new_beastie_scene(beastie : Beastie, new_position : Beastie.Position, 
 	var new_scene : BeastieScene = BEASTIE_SCENE.instantiate()
 	new_scene.beastie = beastie
 	new_scene.my_side = side
+	new_scene.benched = beastie.is_really_at_bench
 	new_scene.beastie_menu_requested.connect(_on_beastie_scene_beastie_menu_requested)
 
 	match new_position:

@@ -7,5 +7,5 @@ script = ExtResource("1_tpgxe")
 name = "Practice Shot"
 base_pow = 40
 descrition = "A MIND ATTACK."
-type = 0
+type = 2
 metadata/_custom_type_script = "uid://bc63soeia1eb1"

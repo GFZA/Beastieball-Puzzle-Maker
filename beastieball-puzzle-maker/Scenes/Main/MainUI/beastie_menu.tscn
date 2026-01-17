@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cm5x35lnaq78y" path="res://Autoloads/Icons/icon_spirit.png" id="6_40myu"]
 [ext_resource type="Texture2D" uid="uid://ym4g7x27mim3" path="res://Autoloads/Icons/icon_down_white.png" id="6_suyyc"]
 [ext_resource type="Texture2D" uid="uid://cy0k4ndbr1eta" path="res://Autoloads/Icons/icon_mind.png" id="7_cwasf"]
-[ext_resource type="Texture2D" uid="uid://dnjn5ky0d157b" path="res://Autoloads/Icons/icon_whistle.png" id="8_rv6kt"]
+[ext_resource type="Texture2D" uid="uid://hqu8087deqdr" path="res://Autoloads/Icons/icon_reset.png" id="12_w8avf"]
 [ext_resource type="Texture2D" uid="uid://dey8bdpdiw1p4" path="res://Autoloads/Icons/icon_wiped.png" id="13_suyyc"]
 [ext_resource type="LabelSettings" uid="uid://cudwbb80jhqnw" path="res://Autoloads/Resources/Others/feelings_tab_label_settings.tres" id="14_0alan"]
 [ext_resource type="Texture2D" uid="uid://dfu7kwrhyuv1l" path="res://Autoloads/Icons/icon_tired.png" id="14_dt5fr"]
@@ -45,7 +45,7 @@ border_width_right = 8
 border_width_bottom = 8
 border_color = Color(0.41568628, 0.5058824, 0.5372549, 1)
 
-[node name="BeastieMenu" type="ScrollContainer"]
+[node name="BeastieMenu" type="ScrollContainer" groups=["plays_select_ui_requester"]]
 custom_minimum_size = Vector2(805, 1494)
 offset_right = 40.0
 offset_bottom = 40.0
@@ -501,13 +501,36 @@ focus_mode = 0
 theme = ExtResource("4_w5fki")
 toggle_mode = true
 text = "Clear Boosts"
-icon = ExtResource("8_rv6kt")
+icon = ExtResource("12_w8avf")
 expand_icon = true
 
 [node name="_Sets_" type="TabBar" parent="MainContainer/TabContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 metadata/_tab_index = 1
+
+[node name="TEMPBUTTON" type="Button" parent="MainContainer/TabContainer/_Sets_"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -36.5
+offset_right = 200.0
+offset_bottom = 36.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme = ExtResource("4_w5fki")
+toggle_mode = true
+text = "ADD PLAY "
+icon = ExtResource("12_w8avf")
+expand_icon = true
 
 [node name="_Feelings_" type="TabBar" parent="MainContainer/TabContainer"]
 unique_name_in_owner = true
@@ -1285,7 +1308,7 @@ focus_mode = 0
 theme = ExtResource("4_w5fki")
 toggle_mode = true
 text = "Clear Feelings"
-icon = ExtResource("8_rv6kt")
+icon = ExtResource("12_w8avf")
 expand_icon = true
 
 [node name="_Invests_" type="TabBar" parent="MainContainer/TabContainer"]
@@ -1449,7 +1472,7 @@ focus_mode = 0
 theme = ExtResource("4_w5fki")
 toggle_mode = true
 text = "Clear Invests"
-icon = ExtResource("8_rv6kt")
+icon = ExtResource("12_w8avf")
 expand_icon = true
 
 [node name="InvestsPointsLeftLabel" type="Label" parent="MainContainer/TabContainer/_Invests_/MainInvestsTabContainer"]

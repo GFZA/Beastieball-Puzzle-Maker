@@ -5,6 +5,7 @@ extends ScrollContainer
 signal beastie_position_change_requested(side : Global.MySide, team_pos : TeamController.TeamPosition, new_pos : Beastie.Position)
 signal beastie_ball_change_requested(side : Global.MySide, team_pos : TeamController.TeamPosition, \
 									have_ball : bool, ball_type : BeastieScene.BallType)
+signal plays_select_ui_requested(beastie : Beastie)
 
 const STAMINA_FILL_STYLEBOX := preload("uid://ci28vvsldarw1")
 const MAX_INVESTS_TOTAL : int = 60
@@ -61,6 +62,7 @@ var invest_points_pool : int = MAX_INVESTS_TOTAL
 
 # Set Tab
 @onready var sets_tab: TabBar = %_Sets_
+@onready var tempbutton: Button = %TEMPBUTTON # TEMP!
 
 # Feelings Tab
 @onready var feelings_tab: TabBar = %_Feelings_
@@ -126,6 +128,7 @@ func _ready() -> void:
 	clear_boost_button.pressed.connect(_reset_on_field_tab) # Pos button doesn't need resetting so we can just use this
 
 	# Set Tab
+	tempbutton.pressed.connect(plays_select_ui_requested.emit.bind(beastie, 0))
 
 	# Feelings Tab
 	wiped_number_ui.value_updated.connect(_on_feelings_changed.bind(Beastie.Feelings.WIPED))

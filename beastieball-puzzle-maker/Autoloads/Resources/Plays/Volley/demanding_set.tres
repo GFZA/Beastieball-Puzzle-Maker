@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_22bng")
 name = "Demanding Set"
-descrition = "VOLLEY. SHIFTs ally to front row. BodySpiritMindPOW1 up arrow boost to ally. Ally feels 1 STRESSED (becomes TIRED)."
+descrition = "SHIFTs ally to front row. ALL_TYPE POW UP1 to ally. Ally feels 1 STRESSED."
 type = 3
 metadata/_custom_type_script = "uid://7mqfhyvrwevt"

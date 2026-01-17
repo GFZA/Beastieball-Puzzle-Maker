@@ -158,10 +158,18 @@ func _add_img_bbcode(icon : Icon) -> String:
 
 
 var all_beasties_data : Array[Beastie] = []
+var all_body_attacks : Array[Plays] = []
+var all_spirit_attacks : Array[Plays] = []
+var all_mind_attacks : Array[Plays] = []
+var all_volley_plays : Array[Plays] = []
+var all_support_plays : Array[Plays] = []
+var all_defense_plays : Array[Plays] = []
+var all_plays : Array[Plays] = []
 
 
 func _ready() -> void:
 	_assign_all_beasties_data()
+	_assign_all_plays_data()
 
 
 func _assign_all_beasties_data() -> void:
@@ -183,3 +191,46 @@ func _assign_all_beasties_data() -> void:
 			file_name = dir.get_next()
 	else:
 		push_error("An error occurred when trying to access the path.")
+
+
+func _assign_all_plays_data() -> void:
+	for i in 6: # 6 loops
+		var path : String = "res://Autoloads/Resources/Plays/"
+		var array_to_add : Array[Plays] = []
+		match i:
+			0:
+				path += "Attack/Body"
+				array_to_add = all_body_attacks
+			1:
+				path += "Attack/Spirit"
+				array_to_add = all_spirit_attacks
+			2:
+				path += "Attack/Mind"
+				array_to_add = all_mind_attacks
+			3:
+				path += "Volley"
+				array_to_add = all_volley_plays
+			4:
+				path += "Support"
+				array_to_add = all_support_plays
+			5:
+				path += "Defense"
+				array_to_add = all_defense_plays
+
+		var dir := DirAccess.open(path)
+		if dir:
+			dir.list_dir_begin()
+			var file_name = dir.get_next()
+			while file_name != "":
+				if file_name.ends_with(".tres"): # Is Beastie Resource
+					array_to_add.append(load(path + "/" + file_name))
+				file_name = dir.get_next()
+		else:
+			push_error("An error occurred when trying to access the path.")
+
+	all_plays.append_array(all_body_attacks)
+	all_plays.append_array(all_spirit_attacks)
+	all_plays.append_array(all_mind_attacks)
+	all_plays.append_array(all_volley_plays)
+	all_plays.append_array(all_support_plays)
+	all_plays.append_array(all_defense_plays)
