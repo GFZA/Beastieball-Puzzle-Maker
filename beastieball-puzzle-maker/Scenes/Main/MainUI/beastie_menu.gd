@@ -64,6 +64,20 @@ var invest_points_pool : int = MAX_INVESTS_TOTAL
 
 # Feelings Tab
 @onready var feelings_tab: TabBar = %_Feelings_
+@onready var wiped_number_ui: NumberUI = %WipedNumberUI
+@onready var tired_number_ui: NumberUI = %TiredNumberUI
+@onready var shook_number_ui: NumberUI = %ShookNumberUI
+@onready var nervous_number_ui: NumberUI = %NervousNumberUI
+@onready var jazzed_number_ui: NumberUI = %JazzedNumberUI
+@onready var weepy_number_ui: NumberUI = %WeepyNumberUI
+@onready var blocked_number_ui: NumberUI = %BlockedNumberUI
+@onready var sweaty_number_ui: NumberUI = %SweatyNumberUI
+@onready var tough_number_ui: NumberUI = %ToughNumberUI
+@onready var tender_number_ui: NumberUI = %TenderNumberUI
+@onready var noisy_number_ui: NumberUI = %NoisyNumberUI
+@onready var angry_number_ui: NumberUI = %AngryNumberUI
+@onready var stressed_number_ui: NumberUI = %StressedNumberUI
+@onready var clear_feelings_button: Button = %ClearFeelingsButton
 
 # Invests Tab
 @onready var invests_tab: TabBar = %_Invests_
@@ -82,7 +96,7 @@ func _ready() -> void:
 	stamina_up_button.pressed.connect(_on_stamina_up_button_pressed)
 	stamina_down_button.pressed.connect(_on_stamina_down_button_pressed)
 
-	visibility_changed.connect(_load_from_beastie)
+	visibility_changed.connect(_load_from_beastie) # Load data when appears
 
 	stamina_slider.value_changed.connect(_on_stamina_slider_value_changed)
 	custom_name_line_edit.text_changed.connect(_on_custom_name_line_edit_text_changed)
@@ -114,6 +128,20 @@ func _ready() -> void:
 	# Set Tab
 
 	# Feelings Tab
+	wiped_number_ui.value_updated.connect(_on_feelings_changed.bind(Beastie.Feelings.WIPED))
+	tired_number_ui.value_updated.connect(_on_feelings_changed.bind(Beastie.Feelings.TRIED))
+	shook_number_ui.value_updated.connect(_on_feelings_changed.bind(Beastie.Feelings.SHOOK))
+	nervous_number_ui.value_updated.connect(_on_feelings_changed.bind(Beastie.Feelings.NERVOUS))
+	jazzed_number_ui.value_updated.connect(_on_feelings_changed.bind(Beastie.Feelings.JAZZED))
+	weepy_number_ui.value_updated.connect(_on_feelings_changed.bind(Beastie.Feelings.WEEPY))
+	blocked_number_ui.value_updated.connect(_on_feelings_changed.bind(Beastie.Feelings.BLOCKED))
+	sweaty_number_ui.value_updated.connect(_on_feelings_changed.bind(Beastie.Feelings.SWEATY))
+	tough_number_ui.value_updated.connect(_on_feelings_changed.bind(Beastie.Feelings.TOUGH))
+	tender_number_ui.value_updated.connect(_on_feelings_changed.bind(Beastie.Feelings.TENDER))
+	noisy_number_ui.value_updated.connect(_on_feelings_changed.bind(Beastie.Feelings.NOISY))
+	angry_number_ui.value_updated.connect(_on_feelings_changed.bind(Beastie.Feelings.ANGRY))
+	stressed_number_ui.value_updated.connect(_on_feelings_changed.bind(Beastie.Feelings.STRESSED))
+	clear_feelings_button.pressed.connect(_reset_feelings_tab) # No others thing so just reset everything
 
 	# Invests Tab
 	bpow_invests_number_ui.value_updated.connect(_on_invests_changed.bind(Beastie.Stats.B_POW))
@@ -124,7 +152,7 @@ func _ready() -> void:
 	mdef_invests_number_ui.value_updated.connect(_on_invests_changed.bind(Beastie.Stats.M_DEF))
 	clear_invests_button.pressed.connect(_reset_invests_tab) # No others thing so just reset everything
 
-
+#region Load Funcs
 func _load_from_beastie() -> void:
 	if not is_node_ready():
 		await ready
@@ -157,13 +185,31 @@ func _load_sets_tab() -> void:
 
 
 func _load_feelings_tab() -> void:
-	return
+	wiped_number_ui.num = beastie.get_feeling_stack(Beastie.Feelings.WIPED)
+	tired_number_ui.num = beastie.get_feeling_stack(Beastie.Feelings.TRIED)
+	shook_number_ui.num = beastie.get_feeling_stack(Beastie.Feelings.SHOOK)
+	nervous_number_ui.num = beastie.get_feeling_stack(Beastie.Feelings.NERVOUS)
+	jazzed_number_ui.num = beastie.get_feeling_stack(Beastie.Feelings.JAZZED)
+	weepy_number_ui.num = beastie.get_feeling_stack(Beastie.Feelings.WEEPY)
+	blocked_number_ui.num = beastie.get_feeling_stack(Beastie.Feelings.BLOCKED)
+	sweaty_number_ui.num = beastie.get_feeling_stack(Beastie.Feelings.SWEATY)
+	tough_number_ui.num = beastie.get_feeling_stack(Beastie.Feelings.TOUGH)
+	tender_number_ui.num = beastie.get_feeling_stack(Beastie.Feelings.TENDER)
+	noisy_number_ui.num = beastie.get_feeling_stack(Beastie.Feelings.NOISY)
+	angry_number_ui.num = beastie.get_feeling_stack(Beastie.Feelings.ANGRY)
+	stressed_number_ui.num = beastie.get_feeling_stack(Beastie.Feelings.STRESSED)
 
 
 func _load_invests_tab() -> void:
-	return
+	bpow_invests_number_ui.num = beastie.invests.get(Beastie.Stats.B_POW)
+	bdef_invests_number_ui.num = beastie.invests.get(Beastie.Stats.B_DEF)
+	spow_invests_number_ui.num = beastie.invests.get(Beastie.Stats.S_POW)
+	sdef_invests_number_ui.num = beastie.invests.get(Beastie.Stats.S_DEF)
+	mpow_invests_number_ui.num = beastie.invests.get(Beastie.Stats.M_POW)
+	mdef_invests_number_ui.num = beastie.invests.get(Beastie.Stats.M_DEF)
+#endregion
 
-
+#region Reset Funcs
 func reset() -> void:
 	scroll_vertical = 0
 	beastie = null
@@ -190,7 +236,19 @@ func _reset_sets_tab() -> void:
 
 
 func _reset_feelings_tab() -> void:
-	return
+	wiped_number_ui.reset()
+	tired_number_ui.reset()
+	shook_number_ui.reset()
+	nervous_number_ui.reset()
+	jazzed_number_ui.reset()
+	weepy_number_ui.reset()
+	blocked_number_ui.reset()
+	sweaty_number_ui.reset()
+	tough_number_ui.reset()
+	tender_number_ui.reset()
+	noisy_number_ui.reset()
+	angry_number_ui.reset()
+	stressed_number_ui.reset()
 
 
 func _reset_invests_tab() -> void:
@@ -201,6 +259,7 @@ func _reset_invests_tab() -> void:
 	mpow_invests_number_ui.reset()
 	mdef_invests_number_ui.reset()
 	invest_points_pool = MAX_INVESTS_TOTAL
+#endregion
 
 
 func _update_beastie() -> void:
@@ -297,6 +356,17 @@ func _on_boost_changed(value : int, boost_type : Beastie.Stats) -> void:
 	else:
 		beastie.current_boosts[boost_type] = value
 	beastie.current_boosts_updated.emit(beastie.current_boosts) # Need to maunally emit it for some reason
+#endregion
+
+#region Feelings Tab Funcs
+func _on_feelings_changed(value : int, feelings : Beastie.Feelings) -> void:
+	if not beastie:
+		return
+	if value == 0:
+		beastie.current_feelings.erase(feelings)
+	else:
+		beastie.current_feelings[feelings] = value
+	beastie.current_feelings_updated.emit(beastie.current_feelings) # Need to maunally emit it for some reason
 #endregion
 
 #region Invests Tab Funcs

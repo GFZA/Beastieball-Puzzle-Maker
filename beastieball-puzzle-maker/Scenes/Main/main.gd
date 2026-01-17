@@ -143,9 +143,9 @@ func _on_load_json_requested() -> void:
 func _on_reset_board_requested() -> void:
 	Global.resetting = true
 
-	saving_rect.mouse_filter = Control.MOUSE_FILTER_STOP
-	saving_label.text = "Resetting..."
-	saving_rect.show()
+	#saving_rect.mouse_filter = Control.MOUSE_FILTER_STOP
+	#saving_label.text = "Resetting..."
+	#saving_rect.show()
 
 	# Cheap ass delay to make it looks good
 	await get_tree().process_frame
@@ -158,9 +158,9 @@ func _on_reset_board_requested() -> void:
 	board.reset()
 	await board.board_manager.board_resetted
 
-	saving_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	saving_label.text = ""
-	saving_rect.hide()
+	#saving_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	#saving_label.text = ""
+	#saving_rect.hide()
 
 	Global.resetting = false
 

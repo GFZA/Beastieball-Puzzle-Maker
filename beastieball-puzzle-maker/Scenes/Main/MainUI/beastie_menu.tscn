@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ck45vbd1ldi5t"]
+[gd_scene load_steps=30 format=3 uid="uid://ck45vbd1ldi5t"]
 
 [ext_resource type="Script" uid="uid://6rv1irob5c57" path="res://Scenes/Main/MainUI/beastie_menu.gd" id="1_4hm00"]
 [ext_resource type="FontFile" uid="uid://ckifc6cea5vs" path="res://Autoloads/Resources/Fonts/SportsJerseyEdited.ttf" id="2_4k1vm"]
@@ -12,6 +12,20 @@
 [ext_resource type="Texture2D" uid="uid://ym4g7x27mim3" path="res://Autoloads/Icons/icon_down_white.png" id="6_suyyc"]
 [ext_resource type="Texture2D" uid="uid://cy0k4ndbr1eta" path="res://Autoloads/Icons/icon_mind.png" id="7_cwasf"]
 [ext_resource type="Texture2D" uid="uid://dnjn5ky0d157b" path="res://Autoloads/Icons/icon_whistle.png" id="8_rv6kt"]
+[ext_resource type="Texture2D" uid="uid://dey8bdpdiw1p4" path="res://Autoloads/Icons/icon_wiped.png" id="13_suyyc"]
+[ext_resource type="LabelSettings" uid="uid://cudwbb80jhqnw" path="res://Autoloads/Resources/Others/feelings_tab_label_settings.tres" id="14_0alan"]
+[ext_resource type="Texture2D" uid="uid://dfu7kwrhyuv1l" path="res://Autoloads/Icons/icon_tired.png" id="14_dt5fr"]
+[ext_resource type="Texture2D" uid="uid://bw2sn543lykfs" path="res://Autoloads/Icons/icon_shook.png" id="15_3hfkd"]
+[ext_resource type="Texture2D" uid="uid://bsgctvsp3mu2l" path="res://Autoloads/Icons/icon_nervous.png" id="16_c2gl5"]
+[ext_resource type="Texture2D" uid="uid://cj40abc1kfr2j" path="res://Autoloads/Icons/icon_jazzed.png" id="17_c2gl5"]
+[ext_resource type="Texture2D" uid="uid://p1ri00fcynjy" path="res://Autoloads/Icons/icon_blocked.png" id="18_bmm4s"]
+[ext_resource type="Texture2D" uid="uid://cepdd0fw2uhhb" path="res://Autoloads/Icons/icon_weepy.png" id="19_80bfb"]
+[ext_resource type="Texture2D" uid="uid://bdpt0dp2stnq8" path="res://Autoloads/Icons/icon_tough.png" id="20_r70qm"]
+[ext_resource type="Texture2D" uid="uid://7pheu4eh1geu" path="res://Autoloads/Icons/icon_tender.png" id="21_pf18p"]
+[ext_resource type="Texture2D" uid="uid://db81natnla2if" path="res://Autoloads/Icons/icon_sweaty.png" id="22_gfyp5"]
+[ext_resource type="Texture2D" uid="uid://deb0yrhccrpv" path="res://Autoloads/Icons/icon_noisy.png" id="23_0alan"]
+[ext_resource type="Texture2D" uid="uid://mpmrieas3u7j" path="res://Autoloads/Icons/icon_angry.png" id="24_w8avf"]
+[ext_resource type="Texture2D" uid="uid://x5t605bb3nn3" path="res://Autoloads/Icons/icon_stressed.png" id="25_ea36h"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xqtvo"]
 font = ExtResource("2_4k1vm")
@@ -189,7 +203,7 @@ size_flags_vertical = 3
 focus_behavior_recursive = 1
 theme = ExtResource("4_w5fki")
 tab_alignment = 1
-current_tab = 3
+current_tab = 2
 
 [node name="_On Field_" type="TabBar" parent="MainContainer/TabContainer"]
 unique_name_in_owner = true
@@ -498,12 +512,785 @@ metadata/_tab_index = 1
 
 [node name="_Feelings_" type="TabBar" parent="MainContainer/TabContainer"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
+[node name="MainInvestsTabContainer" type="VBoxContainer" parent="MainContainer/TabContainer/_Feelings_"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 10
+
+[node name="Spacer" type="Control" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer"]
+layout_mode = 2
+
+[node name="FeelingsLabel" type="Label" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "Feelings"
+label_settings = SubResource("LabelSettings_xqtvo")
+
+[node name="Spacer3" type="Control" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="FeelingsRow" type="HBoxContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer"]
+layout_mode = 2
+
+[node name="WipedContainer" type="HBoxContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="WipedIcon" type="TextureRect" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow/WipedContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("13_suyyc")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow/WipedContainer"]
+layout_mode = 2
+text = "WIPED"
+label_settings = ExtResource("14_0alan")
+
+[node name="WipedNumberUI" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow/WipedContainer" instance=ExtResource("4_xqtvo")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+value_min = 0
+value_max = 8
+
+[node name="ResetButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow/WipedContainer/WipedNumberUI" index="0"]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="NumberLabel" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow/WipedContainer/WipedNumberUI" index="1"]
+custom_minimum_size = Vector2(45, 0)
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="UpDownButtonContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow/WipedContainer/WipedNumberUI" index="2"]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="Spacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow/WipedContainer/WipedNumberUI" index="3"]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="MaxButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow/WipedContainer/WipedNumberUI" index="4"]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="MinButtonSpacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow/WipedContainer/WipedNumberUI" index="5"]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="MinButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow/WipedContainer/WipedNumberUI" index="6"]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="TiredContainer" type="HBoxContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="TiredIcon" type="TextureRect" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow/TiredContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("14_dt5fr")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow/TiredContainer"]
+layout_mode = 2
+text = "TIRED"
+label_settings = ExtResource("14_0alan")
+
+[node name="TiredNumberUI" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow/TiredContainer" instance=ExtResource("4_xqtvo")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+value_min = 0
+value_max = 8
+
+[node name="ResetButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow/TiredContainer/TiredNumberUI" index="0"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="NumberLabel" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow/TiredContainer/TiredNumberUI" index="1"]
+custom_minimum_size = Vector2(45, 0)
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="UpDownButtonContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow/TiredContainer/TiredNumberUI" index="2"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="Spacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow/TiredContainer/TiredNumberUI" index="3"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="MaxButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow/TiredContainer/TiredNumberUI" index="4"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="MinButtonSpacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow/TiredContainer/TiredNumberUI" index="5"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="MinButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow/TiredContainer/TiredNumberUI" index="6"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="FeelingsRow2" type="HBoxContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer"]
+layout_mode = 2
+
+[node name="ShookContainer" type="HBoxContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow2"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="ShookIcon" type="TextureRect" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow2/ShookContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("15_3hfkd")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow2/ShookContainer"]
+layout_mode = 2
+text = "SHOOK"
+label_settings = ExtResource("14_0alan")
+
+[node name="ShookNumberUI" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow2/ShookContainer" instance=ExtResource("4_xqtvo")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+value_min = 0
+value_max = 2
+
+[node name="ResetButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow2/ShookContainer/ShookNumberUI" index="0"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="NumberLabel" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow2/ShookContainer/ShookNumberUI" index="1"]
+custom_minimum_size = Vector2(45, 0)
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="UpDownButtonContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow2/ShookContainer/ShookNumberUI" index="2"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="Spacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow2/ShookContainer/ShookNumberUI" index="3"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="MaxButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow2/ShookContainer/ShookNumberUI" index="4"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="MinButtonSpacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow2/ShookContainer/ShookNumberUI" index="5"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="MinButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow2/ShookContainer/ShookNumberUI" index="6"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="NervousContainer" type="HBoxContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow2"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="NervousIcon" type="TextureRect" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow2/NervousContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("16_c2gl5")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow2/NervousContainer"]
+layout_mode = 2
+text = "NERVOUS"
+label_settings = ExtResource("14_0alan")
+
+[node name="NervousNumberUI" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow2/NervousContainer" instance=ExtResource("4_xqtvo")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+value_min = 0
+value_max = 2
+
+[node name="ResetButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow2/NervousContainer/NervousNumberUI" index="0"]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="NumberLabel" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow2/NervousContainer/NervousNumberUI" index="1"]
+custom_minimum_size = Vector2(45, 0)
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="UpDownButtonContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow2/NervousContainer/NervousNumberUI" index="2"]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="Spacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow2/NervousContainer/NervousNumberUI" index="3"]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="MaxButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow2/NervousContainer/NervousNumberUI" index="4"]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="MinButtonSpacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow2/NervousContainer/NervousNumberUI" index="5"]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="MinButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow2/NervousContainer/NervousNumberUI" index="6"]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="FeelingsRow3" type="HBoxContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer"]
+layout_mode = 2
+
+[node name="JazzedContainer" type="HBoxContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow3"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="JazzedIcon" type="TextureRect" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow3/JazzedContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("17_c2gl5")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow3/JazzedContainer"]
+layout_mode = 2
+text = "JAZZED"
+label_settings = ExtResource("14_0alan")
+
+[node name="JazzedNumberUI" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow3/JazzedContainer" instance=ExtResource("4_xqtvo")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+value_min = 0
+value_max = 2
+
+[node name="ResetButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow3/JazzedContainer/JazzedNumberUI" index="0"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="NumberLabel" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow3/JazzedContainer/JazzedNumberUI" index="1"]
+custom_minimum_size = Vector2(45, 0)
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="UpDownButtonContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow3/JazzedContainer/JazzedNumberUI" index="2"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="Spacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow3/JazzedContainer/JazzedNumberUI" index="3"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="MaxButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow3/JazzedContainer/JazzedNumberUI" index="4"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="MinButtonSpacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow3/JazzedContainer/JazzedNumberUI" index="5"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="MinButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow3/JazzedContainer/JazzedNumberUI" index="6"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="WeepyContainer" type="HBoxContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow3"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="WeepyIcon" type="TextureRect" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow3/WeepyContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("19_80bfb")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow3/WeepyContainer"]
+layout_mode = 2
+text = "WEEPY"
+label_settings = ExtResource("14_0alan")
+
+[node name="WeepyNumberUI" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow3/WeepyContainer" instance=ExtResource("4_xqtvo")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+value_min = 0
+value_max = 4
+
+[node name="ResetButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow3/WeepyContainer/WeepyNumberUI" index="0"]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="NumberLabel" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow3/WeepyContainer/WeepyNumberUI" index="1"]
+custom_minimum_size = Vector2(45, 0)
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="UpDownButtonContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow3/WeepyContainer/WeepyNumberUI" index="2"]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="Spacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow3/WeepyContainer/WeepyNumberUI" index="3"]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="MaxButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow3/WeepyContainer/WeepyNumberUI" index="4"]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="MinButtonSpacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow3/WeepyContainer/WeepyNumberUI" index="5"]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="MinButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow3/WeepyContainer/WeepyNumberUI" index="6"]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="FeelingsRow4" type="HBoxContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer"]
+layout_mode = 2
+
+[node name="BlockedContainer" type="HBoxContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow4"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="BlockedIcon" type="TextureRect" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow4/BlockedContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("18_bmm4s")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow4/BlockedContainer"]
+layout_mode = 2
+text = "BLOCKED"
+label_settings = ExtResource("14_0alan")
+
+[node name="BlockedNumberUI" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow4/BlockedContainer" instance=ExtResource("4_xqtvo")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+value_min = 0
+value_max = 9
+
+[node name="ResetButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow4/BlockedContainer/BlockedNumberUI" index="0"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="NumberLabel" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow4/BlockedContainer/BlockedNumberUI" index="1"]
+custom_minimum_size = Vector2(45, 0)
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="UpDownButtonContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow4/BlockedContainer/BlockedNumberUI" index="2"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="Spacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow4/BlockedContainer/BlockedNumberUI" index="3"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="MaxButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow4/BlockedContainer/BlockedNumberUI" index="4"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="MinButtonSpacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow4/BlockedContainer/BlockedNumberUI" index="5"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="MinButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow4/BlockedContainer/BlockedNumberUI" index="6"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="SweatyContainer" type="HBoxContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow4"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="SweatyIcon" type="TextureRect" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow4/SweatyContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("22_gfyp5")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow4/SweatyContainer"]
+layout_mode = 2
+text = "SWEATY"
+label_settings = ExtResource("14_0alan")
+
+[node name="SweatyNumberUI" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow4/SweatyContainer" instance=ExtResource("4_xqtvo")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+value_min = 0
+value_max = 9
+
+[node name="ResetButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow4/SweatyContainer/SweatyNumberUI" index="0"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="NumberLabel" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow4/SweatyContainer/SweatyNumberUI" index="1"]
+custom_minimum_size = Vector2(45, 0)
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="UpDownButtonContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow4/SweatyContainer/SweatyNumberUI" index="2"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="Spacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow4/SweatyContainer/SweatyNumberUI" index="3"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="MaxButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow4/SweatyContainer/SweatyNumberUI" index="4"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="MinButtonSpacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow4/SweatyContainer/SweatyNumberUI" index="5"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="MinButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow4/SweatyContainer/SweatyNumberUI" index="6"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="FeelingsRow5" type="HBoxContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer"]
+layout_mode = 2
+
+[node name="ToughContainer" type="HBoxContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow5"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="ToughIcon" type="TextureRect" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow5/ToughContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("20_r70qm")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow5/ToughContainer"]
+layout_mode = 2
+text = "TOUGH"
+label_settings = ExtResource("14_0alan")
+
+[node name="ToughNumberUI" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow5/ToughContainer" instance=ExtResource("4_xqtvo")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+value_min = 0
+value_max = 2
+
+[node name="ResetButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow5/ToughContainer/ToughNumberUI" index="0"]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="NumberLabel" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow5/ToughContainer/ToughNumberUI" index="1"]
+custom_minimum_size = Vector2(45, 0)
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="UpDownButtonContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow5/ToughContainer/ToughNumberUI" index="2"]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="Spacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow5/ToughContainer/ToughNumberUI" index="3"]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="MaxButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow5/ToughContainer/ToughNumberUI" index="4"]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="MinButtonSpacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow5/ToughContainer/ToughNumberUI" index="5"]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="MinButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow5/ToughContainer/ToughNumberUI" index="6"]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="TenderContainer" type="HBoxContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow5"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="TenderIcon" type="TextureRect" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow5/TenderContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("21_pf18p")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow5/TenderContainer"]
+layout_mode = 2
+text = "TENDER"
+label_settings = ExtResource("14_0alan")
+
+[node name="TenderNumberUI" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow5/TenderContainer" instance=ExtResource("4_xqtvo")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+value_min = 0
+value_max = 2
+
+[node name="ResetButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow5/TenderContainer/TenderNumberUI" index="0"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="NumberLabel" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow5/TenderContainer/TenderNumberUI" index="1"]
+custom_minimum_size = Vector2(45, 0)
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="UpDownButtonContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow5/TenderContainer/TenderNumberUI" index="2"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="Spacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow5/TenderContainer/TenderNumberUI" index="3"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="MaxButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow5/TenderContainer/TenderNumberUI" index="4"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="MinButtonSpacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow5/TenderContainer/TenderNumberUI" index="5"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="MinButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow5/TenderContainer/TenderNumberUI" index="6"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="FeelingsRow6" type="HBoxContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer"]
+layout_mode = 2
+
+[node name="NoisyContainer" type="HBoxContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow6"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="NoisyIcon" type="TextureRect" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow6/NoisyContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("23_0alan")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow6/NoisyContainer"]
+layout_mode = 2
+text = "NOISY"
+label_settings = ExtResource("14_0alan")
+
+[node name="NoisyNumberUI" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow6/NoisyContainer" instance=ExtResource("4_xqtvo")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+value_min = 0
+value_max = 2
+
+[node name="ResetButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow6/NoisyContainer/NoisyNumberUI" index="0"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="NumberLabel" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow6/NoisyContainer/NoisyNumberUI" index="1"]
+custom_minimum_size = Vector2(45, 0)
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="UpDownButtonContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow6/NoisyContainer/NoisyNumberUI" index="2"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="Spacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow6/NoisyContainer/NoisyNumberUI" index="3"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="MaxButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow6/NoisyContainer/NoisyNumberUI" index="4"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="MinButtonSpacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow6/NoisyContainer/NoisyNumberUI" index="5"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="MinButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow6/NoisyContainer/NoisyNumberUI" index="6"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="AngryContainer" type="HBoxContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow6"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="AngryIcon" type="TextureRect" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow6/AngryContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("24_w8avf")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow6/AngryContainer"]
+layout_mode = 2
+text = "ANGRY"
+label_settings = ExtResource("14_0alan")
+
+[node name="AngryNumberUI" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow6/AngryContainer" instance=ExtResource("4_xqtvo")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+value_min = 0
+value_max = 2
+
+[node name="ResetButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow6/AngryContainer/AngryNumberUI" index="0"]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="NumberLabel" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow6/AngryContainer/AngryNumberUI" index="1"]
+custom_minimum_size = Vector2(45, 0)
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="UpDownButtonContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow6/AngryContainer/AngryNumberUI" index="2"]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="Spacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow6/AngryContainer/AngryNumberUI" index="3"]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="MaxButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow6/AngryContainer/AngryNumberUI" index="4"]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="MinButtonSpacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow6/AngryContainer/AngryNumberUI" index="5"]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="MinButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow6/AngryContainer/AngryNumberUI" index="6"]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="StressedContainer" type="HBoxContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer"]
+custom_minimum_size = Vector2(420, 90)
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_constants/separation = 0
+
+[node name="StressedIcon" type="TextureRect" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/StressedContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("25_ea36h")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/StressedContainer"]
+layout_mode = 2
+text = "STRESSED"
+label_settings = ExtResource("14_0alan")
+
+[node name="StressedNumberUI" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/StressedContainer" instance=ExtResource("4_xqtvo")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+value_min = 0
+value_max = 2
+
+[node name="ResetButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/StressedContainer/StressedNumberUI" index="0"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="NumberLabel" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/StressedContainer/StressedNumberUI" index="1"]
+custom_minimum_size = Vector2(45, 0)
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="UpDownButtonContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/StressedContainer/StressedNumberUI" index="2"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="Spacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/StressedContainer/StressedNumberUI" index="3"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="MaxButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/StressedContainer/StressedNumberUI" index="4"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="MinButtonSpacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/StressedContainer/StressedNumberUI" index="5"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="MinButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/StressedContainer/StressedNumberUI" index="6"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="Spacer2" type="Control" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="ClearFeelingsButton" type="Button" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(430, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme = ExtResource("4_w5fki")
+toggle_mode = true
+text = "Clear Feelings"
+icon = ExtResource("8_rv6kt")
+expand_icon = true
+
 [node name="_Invests_" type="TabBar" parent="MainContainer/TabContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 metadata/_tab_index = 3
 
@@ -676,3 +1463,17 @@ TODO or not TODO
 If i'm not lazy I guess"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[editable path="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow/WipedContainer/WipedNumberUI"]
+[editable path="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow/TiredContainer/TiredNumberUI"]
+[editable path="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow2/ShookContainer/ShookNumberUI"]
+[editable path="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow2/NervousContainer/NervousNumberUI"]
+[editable path="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow3/JazzedContainer/JazzedNumberUI"]
+[editable path="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow3/WeepyContainer/WeepyNumberUI"]
+[editable path="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow4/BlockedContainer/BlockedNumberUI"]
+[editable path="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow4/SweatyContainer/SweatyNumberUI"]
+[editable path="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow5/ToughContainer/ToughNumberUI"]
+[editable path="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow5/TenderContainer/TenderNumberUI"]
+[editable path="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow6/NoisyContainer/NoisyNumberUI"]
+[editable path="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow6/AngryContainer/AngryNumberUI"]
+[editable path="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/StressedContainer/StressedNumberUI"]

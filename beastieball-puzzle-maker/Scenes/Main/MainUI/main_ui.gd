@@ -44,7 +44,7 @@ func _ready() -> void:
 
 
 func _on_back_button_pressed() -> void:
-	if beastie_menu.visible:
+	if not Global.resetting and beastie_menu.visible:
 		match beastie_menu.side:
 			Global.MySide.LEFT:
 				show_your_team_menu()
