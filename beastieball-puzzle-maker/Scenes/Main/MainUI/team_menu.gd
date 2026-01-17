@@ -24,7 +24,6 @@ func _ready() -> void:
 	bench_one_ui.controller_reset_slot_requested.connect(controller_reset_slot_requested.emit)
 	bench_two_ui.controller_reset_slot_requested.connect(controller_reset_slot_requested.emit)
 
-
 	member_one_slot_ui.swap_up_requested.connect(_on_swap_up_requested)
 	member_two_slot_ui.swap_up_requested.connect(_on_swap_up_requested)
 	bench_one_ui.swap_up_requested.connect(_on_swap_up_requested)

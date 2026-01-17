@@ -5,6 +5,25 @@ signal save_image_requested
 signal save_json_requested
 signal load_json_requested
 signal reset_board_requested
+signal connect_for_new_beastie_menu_requested(beastie_menu : BeastieMenu)
+
+const BEASTIE_MENU_SCENE := preload("uid://ck45vbd1ldi5t")
+
+var left_beastie_menus : Dictionary[TeamController.TeamPosition, BeastieMenu] = {
+	TeamController.TeamPosition.FIELD_1 : null,
+	TeamController.TeamPosition.FIELD_2 : null,
+	TeamController.TeamPosition.BENCH_1 : null,
+	TeamController.TeamPosition.BENCH_2 : null,
+}
+
+var right_beastie_menus : Dictionary[TeamController.TeamPosition, BeastieMenu] = {
+	TeamController.TeamPosition.FIELD_1 : null,
+	TeamController.TeamPosition.FIELD_2 : null,
+	TeamController.TeamPosition.BENCH_1 : null,
+	TeamController.TeamPosition.BENCH_2 : null,
+}
+var currently_shown_beastie_menu : BeastieMenu = null
+var current_beastie_menu_tab : int = 0
 
 @onready var back_button_container: MarginContainer = %BackButtonContainer
 @onready var back_button: Button = %BackButton
@@ -13,7 +32,7 @@ signal reset_board_requested
 @onready var default_menu: DefaultMenu = %DefaultMenu
 @onready var your_team_menu: TeamMenu = %YourTeamMenu
 @onready var opponent_team_menu: TeamMenu = %OpponentTeamMenu
-@onready var beastie_menu: BeastieMenu = %BeastieMenu
+#@onready var beastie_menu: BeastieMenu = %BeastieMenu
 @onready var overlay_menu: OverlayMenu = %OverlayMenu
 @onready var field_effects_menu: ScrollContainer = %FieldEffectsMenu
 
@@ -37,20 +56,21 @@ func _ready() -> void:
 	default_menu.overlay_edit_requested.connect(show_overlay_menu)
 	default_menu.field_effect_edit_requested.connect(show_field_effect_menu)
 
-	your_team_menu.beastie_menu_requested.connect(show_beastie_menu)
-	opponent_team_menu.beastie_menu_requested.connect(show_beastie_menu)
+	your_team_menu.beastie_menu_requested.connect(on_beastie_menu_requested)
+	opponent_team_menu.beastie_menu_requested.connect(on_beastie_menu_requested)
+	your_team_menu.controller_reset_slot_requested.connect(on_reset_slot_requested)
+	opponent_team_menu.controller_reset_slot_requested.connect(on_reset_slot_requested)
 
 	_on_back_button_pressed()
 
 
 func _on_back_button_pressed() -> void:
-	if not Global.resetting and beastie_menu.visible:
-		match beastie_menu.side:
+	if not Global.resetting and currently_shown_beastie_menu != null:
+		match currently_shown_beastie_menu.side:
 			Global.MySide.LEFT:
 				show_your_team_menu()
 			Global.MySide.RIGHT:
 				show_opponent_team_menu()
-		beastie_menu.reset()
 	else:
 		back_button_container.hide()
 		show_default_menu()
@@ -80,13 +100,18 @@ func _on_reset_board_pressed() -> void:
 func hide_all_menu() -> void:
 	for menu in menu_container.get_children():
 		menu.hide()
-		if menu is BeastieMenu:
-			menu.beastie = null
+	currently_shown_beastie_menu = null
 
 
 func reset() -> void:
 	for menu in menu_container.get_children():
 		menu.reset() # Not typed safe
+		if menu is BeastieMenu:
+			remove_menu(menu)
+	for key : TeamController.TeamPosition in left_beastie_menus.keys():
+		left_beastie_menus[key] = null
+	for key : TeamController.TeamPosition in right_beastie_menus.keys():
+		right_beastie_menus[key] = null
 	_on_back_button_pressed()
 
 
@@ -110,15 +135,13 @@ func show_opponent_team_menu() -> void:
 	opponent_team_menu.show()
 
 
-func show_beastie_menu(beastie : Beastie, side : Global.MySide, team_pos : TeamController.TeamPosition) -> void:
-	hide_all_menu()
-	var side_text : String = "Your Team" if side == Global.MySide.LEFT else "Opponent Team"
+func show_beastie_menu(beastie_menu : BeastieMenu) -> void:
+	var side_text : String = "Your Team" if beastie_menu.side == Global.MySide.LEFT else "Opponent Team"
 	upper_label.text = "Editing " + side_text
 	back_button_container.show()
-	beastie_menu.team_pos = team_pos # Order matter here because beastie_menu beastie setter use this
-	beastie_menu.side = side
-	beastie_menu.beastie = beastie
+	hide_all_menu()
 	beastie_menu.show()
+	currently_shown_beastie_menu = beastie_menu
 
 
 func show_overlay_menu() -> void:
@@ -133,3 +156,51 @@ func show_field_effect_menu() -> void:
 	upper_label.text = "Editing Field Effects"
 	back_button_container.show()
 	field_effects_menu.show()
+
+
+func on_beastie_menu_requested(requested_beastie : Beastie, side : Global.MySide, team_pos : TeamController.TeamPosition) -> void:
+	var dict_to_check : Dictionary[TeamController.TeamPosition, BeastieMenu] = left_beastie_menus \
+															if side == Global.MySide.LEFT else right_beastie_menus
+	var menu : BeastieMenu = dict_to_check.get(team_pos)
+	if menu:
+		show_beastie_menu(menu)
+	else:
+		var new_menu : BeastieMenu = BEASTIE_MENU_SCENE.instantiate()
+		new_menu.beastie = requested_beastie
+		new_menu.side = side
+		new_menu.team_pos = team_pos
+		menu_container.add_child(new_menu)
+		new_menu.tab_container.tab_changed.connect(on_beastie_menu_tab_changed)
+		connect_for_new_beastie_menu_requested.emit(new_menu)
+		dict_to_check[team_pos] = new_menu
+		show_beastie_menu(new_menu)
+
+
+func remove_menu(menu : BeastieMenu) -> void:
+	var dict_to_check : Dictionary[TeamController.TeamPosition, BeastieMenu] = left_beastie_menus \
+															if menu.side == Global.MySide.LEFT else right_beastie_menus
+	dict_to_check[menu.team_pos] = null
+	menu.queue_free()
+
+
+func on_reset_slot_requested(side : Global.MySide, team_pos : TeamController.TeamPosition) -> void:
+	var dict_to_check : Dictionary[TeamController.TeamPosition, BeastieMenu] = left_beastie_menus \
+															if side == Global.MySide.LEFT else right_beastie_menus
+	var menu : BeastieMenu = dict_to_check.get(team_pos)
+	if menu:
+		remove_menu(menu)
+
+
+func on_beastie_menu_tab_changed(tab_index : int) -> void:
+	current_beastie_menu_tab = tab_index
+	print(current_beastie_menu_tab)
+	for i in 2:
+		var dict : Dictionary[TeamController.TeamPosition, BeastieMenu] = left_beastie_menus \
+															if i == 0 else right_beastie_menus
+		for key : TeamController.TeamPosition in dict.keys():
+			var menu : BeastieMenu = dict.get(key)
+			if menu:
+				if menu.tab_container.is_tab_hidden(current_beastie_menu_tab) and current_beastie_menu_tab == 0:
+					menu.tab_container.current_tab = 1 # Sets Tab
+				else:
+					menu.tab_container.current_tab = current_beastie_menu_tab

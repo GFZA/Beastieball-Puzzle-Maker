@@ -92,11 +92,11 @@ var invest_points_pool : int = MAX_INVESTS_TOTAL
 
 
 func _ready() -> void:
+	_load_from_beastie() # Load before connecting signal
+
 	stamina_line_edit.text_submitted.connect(_on_stamina_line_edit_text_summited)
 	stamina_up_button.pressed.connect(_on_stamina_up_button_pressed)
 	stamina_down_button.pressed.connect(_on_stamina_down_button_pressed)
-
-	visibility_changed.connect(_load_from_beastie) # Load data when appears
 
 	stamina_slider.value_changed.connect(_on_stamina_slider_value_changed)
 	custom_name_line_edit.text_changed.connect(_on_custom_name_line_edit_text_changed)
@@ -152,12 +152,9 @@ func _ready() -> void:
 	mdef_invests_number_ui.value_updated.connect(_on_invests_changed.bind(Beastie.Stats.M_DEF))
 	clear_invests_button.pressed.connect(_reset_invests_tab) # No others thing so just reset everything
 
+
 #region Load Funcs
 func _load_from_beastie() -> void:
-	if not is_node_ready():
-		await ready
-	if not visible:
-		return
 	if not beastie:
 		return
 

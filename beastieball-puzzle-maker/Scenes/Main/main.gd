@@ -48,10 +48,9 @@ func _ready() -> void:
 	main_ui.opponent_team_menu.swap_slot_requested.connect(board.board_manager.on_swap_slot_requested.bind(Global.MySide.RIGHT))
 
 	# Beastie Menu Signals
-	board.board_manager.left_team_controller.beastie_menu_requested.connect(main_ui.show_beastie_menu)
-	board.board_manager.right_team_controller.beastie_menu_requested.connect(main_ui.show_beastie_menu)
-	main_ui.beastie_menu.beastie_position_change_requested.connect(board.board_manager.on_beastie_position_change_requested)
-	main_ui.beastie_menu.beastie_ball_change_requested.connect(board.board_manager.on_beastie_ball_change_requested)
+	board.board_manager.left_team_controller.beastie_menu_requested.connect(main_ui.on_beastie_menu_requested)
+	board.board_manager.right_team_controller.beastie_menu_requested.connect(main_ui.on_beastie_menu_requested)
+	main_ui.connect_for_new_beastie_menu_requested.connect(on_connect_for_new_beastie_menu_requested)
 
 	# Lower buttons Signals
 	main_ui.save_image_requested.connect(_on_save_image_requested)
@@ -79,6 +78,11 @@ func _on_opponent_point_changed(new_point : int) -> void:
 func _on_controller_reset_slot_requested(side : Global.MySide, team_pos : TeamController.TeamPosition) -> void:
 	board.board_manager.add_beastie_to_scene(null, side, team_pos)
 	select_ui.beastie_selected.emit(null, side, team_pos)
+
+
+func on_connect_for_new_beastie_menu_requested(beastie_menu : BeastieMenu) -> void:
+	beastie_menu.beastie_position_change_requested.connect(board.board_manager.on_beastie_position_change_requested)
+	beastie_menu.beastie_ball_change_requested.connect(board.board_manager.on_beastie_ball_change_requested)
 
 
 #region Lower buttons signal funcs

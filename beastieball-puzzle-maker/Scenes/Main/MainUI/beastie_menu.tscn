@@ -203,7 +203,7 @@ size_flags_vertical = 3
 focus_behavior_recursive = 1
 theme = ExtResource("4_w5fki")
 tab_alignment = 1
-current_tab = 2
+current_tab = 1
 
 [node name="_On Field_" type="TabBar" parent="MainContainer/TabContainer"]
 unique_name_in_owner = true
@@ -506,12 +506,12 @@ expand_icon = true
 
 [node name="_Sets_" type="TabBar" parent="MainContainer/TabContainer"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
 [node name="_Feelings_" type="TabBar" parent="MainContainer/TabContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
