@@ -27,11 +27,11 @@ func _on_plays_selected() -> void:
 
 
 func reset_and_hide() -> void:
+	beastie_select_ui.hide()
+	plays_select_ui.hide()
 	beastie_select_ui.reset()
 	plays_select_ui.reset()
 	#trait_select_ui.reset()
-	beastie_select_ui.hide()
-	plays_select_ui.hide()
 	#trait_select_ui.hide()
 	hide()
 
@@ -45,16 +45,15 @@ func hide_all_ui() -> void:
 func show_beastie_select_ui(side : Global.MySide, team_pos : TeamController.TeamPosition) -> void:
 	show()
 	hide_all_ui()
+	beastie_select_ui.show()
 	beastie_select_ui.side = side
 	beastie_select_ui.team_pos = team_pos
-	beastie_select_ui.show()
+	beastie_select_ui.update_grid()
 
 
 func show_plays_select_ui(beastie : Beastie, slot_index : int) -> void:
 	show()
 	hide_all_ui()
+	plays_select_ui.show()
 	plays_select_ui.beastie = beastie
 	plays_select_ui.slot_index = slot_index
-	#plays_select_ui.side = side
-	#plays_select_ui.team_pos = team_pos
-	plays_select_ui.show()

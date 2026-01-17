@@ -9,14 +9,14 @@ const BEASTIE_BUTTON : PackedScene = preload("uid://dpfyarbgjk6l4")
 @export var show_name : bool = true :
 	set(value):
 		show_name = value
-		_update_grid()
+		update_grid()
 
 var all_beasties_data_sorted : Array[Beastie] = []
 
 var current_search_string : String = "" :
 	set(value):
 		current_search_string = value
-		_update_grid()
+		update_grid()
 
 var side : Global.MySide = Global.MySide.LEFT
 var team_pos : TeamController.TeamPosition = TeamController.TeamPosition.FIELD_1
@@ -33,7 +33,7 @@ func _ready() -> void:
 	only_full_morphs_label_check_box.toggled.connect(func(is_toggled : bool): print("Only Full Morphs : %s" % str(is_toggled)))
 
 	_assign_all_data_arrays()
-	_update_grid()
+	update_grid()
 
 
 func _assign_all_data_arrays() -> void:
@@ -56,9 +56,12 @@ func _get_filtered_array(search_string : String) -> Array[Beastie]:
 	return result
 
 
-func _update_grid() -> void:
+func update_grid() -> void:
 	if not is_node_ready():
 		await ready
+
+	if not visible:
+		return
 
 	for child : BeastieButton in beastie_button_container.get_children():
 		if child.beastie_selected.is_connected(self.beastie_selected.emit):
@@ -90,4 +93,4 @@ func reset() -> void:
 	team_pos = TeamController.TeamPosition.FIELD_1
 	current_search_string = ""
 	search_bar.text = ""
-	_update_grid()
+	#_update_grid()

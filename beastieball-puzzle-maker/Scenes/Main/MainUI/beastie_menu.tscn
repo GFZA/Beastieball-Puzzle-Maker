@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://ck45vbd1ldi5t"]
+[gd_scene load_steps=31 format=3 uid="uid://ck45vbd1ldi5t"]
 
 [ext_resource type="Script" uid="uid://6rv1irob5c57" path="res://Scenes/Main/MainUI/beastie_menu.gd" id="1_4hm00"]
 [ext_resource type="FontFile" uid="uid://ckifc6cea5vs" path="res://Autoloads/Resources/Fonts/SportsJerseyEdited.ttf" id="2_4k1vm"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cy0k4ndbr1eta" path="res://Autoloads/Icons/icon_mind.png" id="7_cwasf"]
 [ext_resource type="Texture2D" uid="uid://hqu8087deqdr" path="res://Autoloads/Icons/icon_reset.png" id="12_w8avf"]
 [ext_resource type="Texture2D" uid="uid://dey8bdpdiw1p4" path="res://Autoloads/Icons/icon_wiped.png" id="13_suyyc"]
+[ext_resource type="Texture2D" uid="uid://dnjn5ky0d157b" path="res://Autoloads/Icons/icon_whistle.png" id="13_w8avf"]
 [ext_resource type="LabelSettings" uid="uid://cudwbb80jhqnw" path="res://Autoloads/Resources/Others/feelings_tab_label_settings.tres" id="14_0alan"]
 [ext_resource type="Texture2D" uid="uid://dfu7kwrhyuv1l" path="res://Autoloads/Icons/icon_tired.png" id="14_dt5fr"]
 [ext_resource type="Texture2D" uid="uid://bw2sn543lykfs" path="res://Autoloads/Icons/icon_shook.png" id="15_3hfkd"]
@@ -509,26 +510,120 @@ unique_name_in_owner = true
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="TEMPBUTTON" type="Button" parent="MainContainer/TabContainer/_Sets_"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(400, 0)
+[node name="MainInvestsTabContainer" type="VBoxContainer" parent="MainContainer/TabContainer/_Sets_"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = -36.5
-offset_right = 200.0
-offset_bottom = 36.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 12
+
+[node name="Spacer" type="Control" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer"]
+layout_mode = 2
+
+[node name="PlaysLabel" type="Label" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "Plays"
+label_settings = SubResource("LabelSettings_xqtvo")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 12
+
+[node name="PlaySlot1Button" type="Button" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
 size_flags_horizontal = 4
 focus_mode = 0
 theme = ExtResource("4_w5fki")
 toggle_mode = true
-text = "ADD PLAY "
+text = "Add Play 1"
+icon = ExtResource("13_w8avf")
+expand_icon = true
+
+[node name="Slot1ClearButton" type="Button" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme = ExtResource("4_w5fki")
+toggle_mode = true
+icon = ExtResource("12_w8avf")
+icon_alignment = 1
+expand_icon = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 12
+
+[node name="PlaySlot2Button" type="Button" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme = ExtResource("4_w5fki")
+toggle_mode = true
+text = "Add Play 2"
+icon = ExtResource("13_w8avf")
+expand_icon = true
+
+[node name="Slot2ClearButton" type="Button" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme = ExtResource("4_w5fki")
+toggle_mode = true
+icon = ExtResource("12_w8avf")
+icon_alignment = 1
+expand_icon = true
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 12
+
+[node name="PlaySlot3Button" type="Button" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/HBoxContainer3"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme = ExtResource("4_w5fki")
+toggle_mode = true
+text = "Add Play 3"
+icon = ExtResource("13_w8avf")
+expand_icon = true
+
+[node name="Slot3ClearButton" type="Button" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/HBoxContainer3"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme = ExtResource("4_w5fki")
+toggle_mode = true
+icon = ExtResource("12_w8avf")
+icon_alignment = 1
+expand_icon = true
+
+[node name="ClearPlaysButton" type="Button" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme = ExtResource("4_w5fki")
+toggle_mode = true
+text = "Clear Plays"
 icon = ExtResource("12_w8avf")
 expand_icon = true
 

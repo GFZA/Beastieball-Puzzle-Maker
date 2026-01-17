@@ -5,7 +5,7 @@ extends ScrollContainer
 signal beastie_position_change_requested(side : Global.MySide, team_pos : TeamController.TeamPosition, new_pos : Beastie.Position)
 signal beastie_ball_change_requested(side : Global.MySide, team_pos : TeamController.TeamPosition, \
 									have_ball : bool, ball_type : BeastieScene.BallType)
-signal plays_select_ui_requested(beastie : Beastie)
+signal plays_select_ui_requested(beastie : Beastie, slot_index : int)
 
 const STAMINA_FILL_STYLEBOX := preload("uid://ci28vvsldarw1")
 const MAX_INVESTS_TOTAL : int = 60
@@ -62,7 +62,13 @@ var invest_points_pool : int = MAX_INVESTS_TOTAL
 
 # Set Tab
 @onready var sets_tab: TabBar = %_Sets_
-@onready var tempbutton: Button = %TEMPBUTTON # TEMP!
+@onready var play_slot_1_button: Button = %PlaySlot1Button
+@onready var slot_1_clear_button: Button = %Slot1ClearButton
+@onready var play_slot_2_button: Button = %PlaySlot2Button
+@onready var slot_2_clear_button: Button = %Slot2ClearButton
+@onready var play_slot_3_button: Button = %PlaySlot3Button
+@onready var slot_3_clear_button: Button = %Slot3ClearButton
+@onready var clear_plays_button: Button = %ClearPlaysButton
 
 # Feelings Tab
 @onready var feelings_tab: TabBar = %_Feelings_
@@ -128,7 +134,13 @@ func _ready() -> void:
 	clear_boost_button.pressed.connect(_reset_on_field_tab) # Pos button doesn't need resetting so we can just use this
 
 	# Set Tab
-	tempbutton.pressed.connect(plays_select_ui_requested.emit.bind(beastie, 0))
+	play_slot_1_button.pressed.connect(plays_select_ui_requested.emit.bind(beastie, 0))
+	play_slot_2_button.pressed.connect(plays_select_ui_requested.emit.bind(beastie, 1))
+	play_slot_3_button.pressed.connect(plays_select_ui_requested.emit.bind(beastie, 2))
+	slot_1_clear_button.pressed.connect(_on_slot_clear_pressed.bind(0))
+	slot_2_clear_button.pressed.connect(_on_slot_clear_pressed.bind(1))
+	slot_3_clear_button.pressed.connect(_on_slot_clear_pressed.bind(2))
+	clear_plays_button.pressed.connect(func(): for i in 3: _on_slot_clear_pressed(i))
 
 	# Feelings Tab
 	wiped_number_ui.value_updated.connect(_on_feelings_changed.bind(Beastie.Feelings.WIPED))
@@ -357,6 +369,15 @@ func _on_boost_changed(value : int, boost_type : Beastie.Stats) -> void:
 		beastie.current_boosts[boost_type] = value
 	beastie.current_boosts_updated.emit(beastie.current_boosts) # Need to maunally emit it for some reason
 #endregion
+
+#region Sets Tab
+func _on_slot_clear_pressed(slot_index : int) -> void:
+	if not beastie:
+		return
+	beastie.my_plays[slot_index] = null
+	beastie.my_plays_updated.emit(beastie.my_plays) # Need to manually emit for some reason
+#endregion
+
 
 #region Feelings Tab Funcs
 func _on_feelings_changed(value : int, feelings : Beastie.Feelings) -> void:

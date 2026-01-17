@@ -10,7 +10,7 @@ const PLAY_BUTTON : PackedScene = preload("uid://dflcrna6d1235")
 	set(value):
 		beastie = value
 		_update_beastie_plays_data()
-		_update_grid()
+		update_grid()
 
 var all_body_attacks : Array[Plays] = []
 var all_spirit_attacks : Array[Plays] = []
@@ -31,17 +31,17 @@ var beastie_plays : Array[Plays] = []
 var current_filter : Plays.Type = Plays.Type.NONE :
 	set(value):
 		current_filter = value
-		_update_grid()
+		update_grid()
 
 var allows_illegal_plays : bool = false :
 	set(value):
 		allows_illegal_plays = value
-		_update_grid()
+		update_grid()
 
 var current_search_string : String = "" :
 	set(value):
 		current_search_string = value
-		_update_grid()
+		update_grid()
 
 var slot_index : int = 0
 
@@ -69,7 +69,7 @@ func _ready() -> void:
 
 	allow_illegal_plays_check_box.toggled.connect(func(toggled_on : bool): allows_illegal_plays = toggled_on)
 	_assign_all_data_arrays()
-	_update_grid()
+	update_grid()
 
 
 func _assign_all_data_arrays() -> void:
@@ -83,7 +83,7 @@ func _assign_all_data_arrays() -> void:
 
 
 func _update_beastie_plays_data() -> void:
-	if not beastie:
+	if not beastie or not visible:
 		beastie_body_attacks.clear()
 		beastie_spirit_attacks.clear()
 		beastie_mind_attacks.clear()
@@ -174,9 +174,12 @@ func _get_search_filtered_array(search_string : String) -> Array[Plays]:
 	return result
 
 
-func _update_grid() -> void:
+func update_grid() -> void:
 	if not is_node_ready():
 		await ready
+
+	if not visible:
+		return
 
 	for child : PlaysButton in plays_button_container.get_children():
 		child.queue_free()
@@ -208,4 +211,4 @@ func reset() -> void:
 	current_filter = Plays.Type.NONE
 	current_search_string = ""
 	search_bar.text = ""
-	_update_grid()
+	#_update_grid()

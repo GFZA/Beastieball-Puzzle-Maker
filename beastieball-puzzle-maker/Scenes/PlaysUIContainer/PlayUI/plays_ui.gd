@@ -22,7 +22,7 @@ const DEFAULT_FONT_SIZE : int = 108
 			my_play = value
 			return
 
-		my_play = value.duplicate()
+		my_play = value
 		play_name = my_play.name
 		current_bg = my_play.type
 
