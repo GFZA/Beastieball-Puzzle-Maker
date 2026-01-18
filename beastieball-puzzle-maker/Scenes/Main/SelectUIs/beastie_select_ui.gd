@@ -21,6 +21,8 @@ var current_search_string : String = "" :
 var side : Global.MySide = Global.MySide.LEFT
 var team_pos : TeamController.TeamPosition = TeamController.TeamPosition.FIELD_1
 
+var remove_mode : bool = false
+
 @onready var beastie_button_container: GridContainer = %BeastieButtonContainer
 @onready var search_bar: LineEdit = %SearchBar
 @onready var show_name_check_box: CheckBox = %ShowNameCheckBox
@@ -93,4 +95,3 @@ func reset() -> void:
 	team_pos = TeamController.TeamPosition.FIELD_1
 	current_search_string = ""
 	search_bar.text = ""
-	#_update_grid()

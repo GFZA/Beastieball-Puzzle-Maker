@@ -6,4 +6,5 @@
 script = ExtResource("1_48sro")
 name = "Tractor Beam"
 description = "On turn start, nearest non - WIPED opponent is beamed, preventing use of \"Tag Out\""
+need_to_be_manually_activated = null
 metadata/_custom_type_script = "uid://bslfuaragw1g7"

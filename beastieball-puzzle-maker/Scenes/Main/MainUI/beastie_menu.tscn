@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://ck45vbd1ldi5t"]
+[gd_scene load_steps=32 format=3 uid="uid://ck45vbd1ldi5t"]
 
 [ext_resource type="Script" uid="uid://6rv1irob5c57" path="res://Scenes/Main/MainUI/beastie_menu.gd" id="1_4hm00"]
 [ext_resource type="FontFile" uid="uid://ckifc6cea5vs" path="res://Autoloads/Resources/Fonts/SportsJerseyEdited.ttf" id="2_4k1vm"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://dnjn5ky0d157b" path="res://Autoloads/Icons/icon_whistle.png" id="13_w8avf"]
 [ext_resource type="LabelSettings" uid="uid://cudwbb80jhqnw" path="res://Autoloads/Resources/Others/feelings_tab_label_settings.tres" id="14_0alan"]
 [ext_resource type="Texture2D" uid="uid://dfu7kwrhyuv1l" path="res://Autoloads/Icons/icon_tired.png" id="14_dt5fr"]
+[ext_resource type="PackedScene" uid="uid://b4bws0qofhe6x" path="res://Scenes/PlaysUIContainer/PlayUI/plays_ui.tscn" id="14_ea36h"]
 [ext_resource type="Texture2D" uid="uid://bw2sn543lykfs" path="res://Autoloads/Icons/icon_shook.png" id="15_3hfkd"]
 [ext_resource type="Texture2D" uid="uid://bsgctvsp3mu2l" path="res://Autoloads/Icons/icon_nervous.png" id="16_c2gl5"]
 [ext_resource type="Texture2D" uid="uid://cj40abc1kfr2j" path="res://Autoloads/Icons/icon_jazzed.png" id="17_c2gl5"]
@@ -46,7 +47,7 @@ border_width_right = 8
 border_width_bottom = 8
 border_color = Color(0.41568628, 0.5058824, 0.5372549, 1)
 
-[node name="BeastieMenu" type="ScrollContainer" groups=["plays_select_ui_requester"]]
+[node name="BeastieMenu" type="ScrollContainer" groups=["plays_select_ui_requester", "trait_select_ui_requester"]]
 custom_minimum_size = Vector2(805, 1494)
 offset_right = 40.0
 offset_bottom = 40.0
@@ -528,16 +529,20 @@ size_flags_horizontal = 6
 text = "Plays"
 label_settings = SubResource("LabelSettings_xqtvo")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer"]
+[node name="PlaysEditButtonContainer" type="VBoxContainer" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
 theme_override_constants/separation = 12
 
-[node name="PlaySlot1Button" type="Button" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/HBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(400, 0)
+[node name="PlaySlot1Container" type="HBoxContainer" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/PlaysEditButtonContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_constants/separation = 0
+
+[node name="PlaySlot1Button" type="Button" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/PlaysEditButtonContainer/PlaySlot1Container"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 73)
+layout_mode = 2
+size_flags_horizontal = 6
 focus_mode = 0
 theme = ExtResource("4_w5fki")
 toggle_mode = true
@@ -545,9 +550,40 @@ text = "Add Play 1"
 icon = ExtResource("13_w8avf")
 expand_icon = true
 
-[node name="Slot1ClearButton" type="Button" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/HBoxContainer"]
+[node name="PlaySlot1PlaysUI" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/PlaysEditButtonContainer/PlaySlot1Container/PlaySlot1Button" instance=ExtResource("14_ea36h")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(50, 50)
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -184.0
+offset_top = -36.5
+offset_right = 528.0
+offset_bottom = 105.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.515, 0.515)
+focus_behavior_recursive = 1
+mouse_filter = 2
+
+[node name="PlaysSpacer" type="Control" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/PlaysEditButtonContainer/PlaySlot1Container"]
+custom_minimum_size = Vector2(21, 0)
+layout_mode = 2
+
+[node name="PlaysSpacer2" type="Control" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/PlaysEditButtonContainer/PlaySlot1Container"]
+custom_minimum_size = Vector2(21, 0)
+layout_mode = 2
+
+[node name="SpacerForResetButton" type="Control" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/PlaysEditButtonContainer/PlaySlot1Container"]
+custom_minimum_size = Vector2(21, 0)
+layout_mode = 2
+
+[node name="Slot1ClearButton" type="Button" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/PlaysEditButtonContainer/PlaySlot1Container"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 73)
 layout_mode = 2
 size_flags_horizontal = 4
 focus_mode = 0
@@ -557,14 +593,45 @@ icon = ExtResource("12_w8avf")
 icon_alignment = 1
 expand_icon = true
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer"]
+[node name="PlaySlot1ConditionContainer" type="HBoxContainer" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/PlaysEditButtonContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 4
 theme_override_constants/separation = 12
 
-[node name="PlaySlot2Button" type="Button" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/HBoxContainer2"]
+[node name="Spacer" type="Control" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/PlaysEditButtonContainer/PlaySlot1ConditionContainer"]
+layout_mode = 2
+
+[node name="PlaySlot1ConditionLabel" type="Label" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/PlaysEditButtonContainer/PlaySlot1ConditionContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+text = "Just Tagged In"
+label_settings = SubResource("LabelSettings_40myu")
+
+[node name="PlaySlot1ConditionCheckBox" type="CheckBox" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/PlaysEditButtonContainer/PlaySlot1ConditionContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+focus_behavior_recursive = 1
+theme = ExtResource("4_w5fki")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Spacer2" type="Control" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/PlaysEditButtonContainer/PlaySlot1ConditionContainer"]
+layout_mode = 2
+
+[node name="PlaySlot2Container" type="HBoxContainer" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/PlaysEditButtonContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 0
+
+[node name="PlaysSpacer" type="Control" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/PlaysEditButtonContainer/PlaySlot2Container"]
+custom_minimum_size = Vector2(21, 0)
+layout_mode = 2
+
+[node name="PlaySlot2Button" type="Button" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/PlaysEditButtonContainer/PlaySlot2Container"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 73)
 layout_mode = 2
 size_flags_horizontal = 4
 focus_mode = 0
@@ -574,9 +641,36 @@ text = "Add Play 2"
 icon = ExtResource("13_w8avf")
 expand_icon = true
 
-[node name="Slot2ClearButton" type="Button" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/HBoxContainer2"]
+[node name="PlaySlot2PlaysUI" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/PlaysEditButtonContainer/PlaySlot2Container/PlaySlot2Button" instance=ExtResource("14_ea36h")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(50, 50)
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -184.0
+offset_top = -36.5
+offset_right = 528.0
+offset_bottom = 105.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.515, 0.515)
+focus_behavior_recursive = 1
+mouse_filter = 2
+
+[node name="PlaysSpacer2" type="Control" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/PlaysEditButtonContainer/PlaySlot2Container"]
+custom_minimum_size = Vector2(21, 0)
+layout_mode = 2
+
+[node name="SpacerForResetButton2" type="Control" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/PlaysEditButtonContainer/PlaySlot2Container"]
+custom_minimum_size = Vector2(21, 0)
+layout_mode = 2
+
+[node name="Slot2ClearButton" type="Button" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/PlaysEditButtonContainer/PlaySlot2Container"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 73)
 layout_mode = 2
 size_flags_horizontal = 4
 focus_mode = 0
@@ -586,14 +680,50 @@ icon = ExtResource("12_w8avf")
 icon_alignment = 1
 expand_icon = true
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer"]
+[node name="PlaySlot2ConditionContainer" type="HBoxContainer" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/PlaysEditButtonContainer"]
+unique_name_in_owner = true
+visible = false
 layout_mode = 2
-size_flags_horizontal = 4
 theme_override_constants/separation = 12
 
-[node name="PlaySlot3Button" type="Button" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/HBoxContainer3"]
+[node name="Spacer" type="Control" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/PlaysEditButtonContainer/PlaySlot2ConditionContainer"]
+layout_mode = 2
+
+[node name="PlaySlot2ConditionLabel" type="Label" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/PlaysEditButtonContainer/PlaySlot2ConditionContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+text = "Just Tagged In"
+label_settings = SubResource("LabelSettings_40myu")
+
+[node name="PlaySlot2ConditionCheckBox" type="CheckBox" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/PlaysEditButtonContainer/PlaySlot2ConditionContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+focus_behavior_recursive = 1
+theme = ExtResource("4_w5fki")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Spacer2" type="Control" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/PlaysEditButtonContainer/PlaySlot2ConditionContainer"]
+layout_mode = 2
+
+[node name="PlaySlot3Container" type="HBoxContainer" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/PlaysEditButtonContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 0
+
+[node name="PlaysSpacer" type="Control" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/PlaysEditButtonContainer/PlaySlot3Container"]
+custom_minimum_size = Vector2(21, 0)
+layout_mode = 2
+
+[node name="PlaysSpacer2" type="Control" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/PlaysEditButtonContainer/PlaySlot3Container"]
+custom_minimum_size = Vector2(21, 0)
+layout_mode = 2
+
+[node name="PlaySlot3Button" type="Button" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/PlaysEditButtonContainer/PlaySlot3Container"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 73)
 layout_mode = 2
 size_flags_horizontal = 4
 focus_mode = 0
@@ -603,9 +733,32 @@ text = "Add Play 3"
 icon = ExtResource("13_w8avf")
 expand_icon = true
 
-[node name="Slot3ClearButton" type="Button" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/HBoxContainer3"]
+[node name="PlaySlot3PlaysUI" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/PlaysEditButtonContainer/PlaySlot3Container/PlaySlot3Button" instance=ExtResource("14_ea36h")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(50, 50)
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -184.0
+offset_top = -36.5
+offset_right = 528.0
+offset_bottom = 105.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.515, 0.515)
+focus_behavior_recursive = 1
+mouse_filter = 2
+
+[node name="SpacerForResetButton3" type="Control" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/PlaysEditButtonContainer/PlaySlot3Container"]
+custom_minimum_size = Vector2(21, 0)
+layout_mode = 2
+
+[node name="Slot3ClearButton" type="Button" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/PlaysEditButtonContainer/PlaySlot3Container"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 73)
 layout_mode = 2
 size_flags_horizontal = 4
 focus_mode = 0
@@ -614,6 +767,37 @@ toggle_mode = true
 icon = ExtResource("12_w8avf")
 icon_alignment = 1
 expand_icon = true
+
+[node name="PlaySlot3ConditionContainer" type="HBoxContainer" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/PlaysEditButtonContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Spacer" type="Control" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/PlaysEditButtonContainer/PlaySlot3ConditionContainer"]
+layout_mode = 2
+
+[node name="PlaySlot3ConditionLabel" type="Label" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/PlaysEditButtonContainer/PlaySlot3ConditionContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Just Tagged In"
+label_settings = SubResource("LabelSettings_40myu")
+
+[node name="PlaySlot3ConditionCheckBox" type="CheckBox" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/PlaysEditButtonContainer/PlaySlot3ConditionContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+focus_behavior_recursive = 1
+theme = ExtResource("4_w5fki")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Spacer2" type="Control" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/PlaysEditButtonContainer/PlaySlot3ConditionContainer"]
+layout_mode = 2
+
+[node name="Spacer2" type="Control" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer"]
+layout_mode = 2
 
 [node name="ClearPlaysButton" type="Button" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer"]
 unique_name_in_owner = true
@@ -626,6 +810,81 @@ toggle_mode = true
 text = "Clear Plays"
 icon = ExtResource("12_w8avf")
 expand_icon = true
+
+[node name="TraitLabel" type="Label" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "Traits"
+label_settings = SubResource("LabelSettings_xqtvo")
+
+[node name="TraitButtonContainer" type="HBoxContainer" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_constants/separation = 12
+
+[node name="Trait1Button" type="Button" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/TraitButtonContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(370, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+focus_mode = 0
+theme = ExtResource("4_w5fki")
+toggle_mode = true
+text = "Determination"
+expand_icon = true
+
+[node name="Trait2Button" type="Button" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/TraitButtonContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(370, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+focus_mode = 0
+theme = ExtResource("4_w5fki")
+toggle_mode = true
+text = "Avenger"
+expand_icon = true
+
+[node name="CustomTraitButton" type="Button" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme = ExtResource("4_w5fki")
+toggle_mode = true
+text = "Custom Trait"
+icon = ExtResource("13_w8avf")
+expand_icon = true
+
+[node name="TraitConditionContainer" type="HBoxContainer" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Spacer" type="Control" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/TraitConditionContainer"]
+layout_mode = 2
+
+[node name="TraitConditionLabel" type="Label" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/TraitConditionContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Just Tagged In"
+label_settings = SubResource("LabelSettings_40myu")
+
+[node name="TraitConditionCheckBox" type="CheckBox" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/TraitConditionContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+focus_behavior_recursive = 1
+theme = ExtResource("4_w5fki")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Spacer2" type="Control" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/TraitConditionContainer"]
+layout_mode = 2
 
 [node name="_Feelings_" type="TabBar" parent="MainContainer/TabContainer"]
 unique_name_in_owner = true
@@ -1569,18 +1828,6 @@ toggle_mode = true
 text = "Clear Invests"
 icon = ExtResource("12_w8avf")
 expand_icon = true
-
-[node name="InvestsPointsLeftLabel" type="Label" parent="MainContainer/TabContainer/_Invests_/MainInvestsTabContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 6
-text = "
-Points Left : 60
-
-TODO or not TODO
-If i'm not lazy I guess"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [editable path="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow/WipedContainer/WipedNumberUI"]
 [editable path="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow/TiredContainer/TiredNumberUI"]

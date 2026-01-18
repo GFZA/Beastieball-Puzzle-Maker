@@ -49,7 +49,9 @@ func _ready() -> void:
 
 	# Beastie Menu Signals
 	board.board_manager.left_team_controller.beastie_menu_requested.connect(main_ui.on_beastie_menu_requested)
+	board.board_manager.left_team_controller.beastie_remove_requested.connect(main_ui.on_beastie_remove_requested)
 	board.board_manager.right_team_controller.beastie_menu_requested.connect(main_ui.on_beastie_menu_requested)
+	board.board_manager.right_team_controller.beastie_remove_requested.connect(main_ui.on_beastie_remove_requested)
 	main_ui.connect_for_new_beastie_menu_requested.connect(on_connect_for_new_beastie_menu_requested)
 
 	# Lower buttons Signals
@@ -67,7 +69,12 @@ func _ready() -> void:
 	var plays_requester : Array[Node] = get_tree().get_nodes_in_group("plays_select_ui_requester")
 	for requester in plays_requester:
 		requester.plays_select_ui_requested.connect(select_ui.show_plays_select_ui)
-		#select_ui.beastie_selected.connect(requester.on_beastie_selected)
+		select_ui.plays_selected.connect(requester.on_plays_selected)
+
+	var trait_requester : Array[Node] = get_tree().get_nodes_in_group("trait_select_ui_requester")
+	for requester in trait_requester:
+		requester.trait_select_ui_requested.connect(select_ui.show_trait_select_ui)
+		select_ui.trait_selected.connect(requester.on_trait_selected)
 
 
 func _on_your_point_changed(new_point : int) -> void:
@@ -89,6 +96,9 @@ func on_connect_for_new_beastie_menu_requested(beastie_menu : BeastieMenu) -> vo
 	beastie_menu.beastie_position_change_requested.connect(board.board_manager.on_beastie_position_change_requested)
 	beastie_menu.beastie_ball_change_requested.connect(board.board_manager.on_beastie_ball_change_requested)
 	beastie_menu.plays_select_ui_requested.connect(select_ui.show_plays_select_ui)
+	beastie_menu.trait_select_ui_requested.connect(select_ui.show_trait_select_ui)
+	select_ui.plays_selected.connect(beastie_menu.on_plays_selected)
+	select_ui.trait_selected.connect(beastie_menu.on_trait_selected)
 
 
 #region Lower buttons signal funcs

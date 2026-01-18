@@ -11,6 +11,7 @@ extends Resource
 @export_group("Traits Special")
 @export var is_starter_trait : bool = false
 @export var starter_trait_type : Global.ColorType = Global.ColorType.BODY
+@export var need_to_be_manually_activated : bool = false
 @export var manual_condition_name : String = ""
 
 var manually_activated : bool = false

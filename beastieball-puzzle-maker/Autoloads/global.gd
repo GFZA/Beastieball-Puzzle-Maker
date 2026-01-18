@@ -165,11 +165,13 @@ var all_volley_plays : Array[Plays] = []
 var all_support_plays : Array[Plays] = []
 var all_defense_plays : Array[Plays] = []
 var all_plays : Array[Plays] = []
+var all_trait_data : Array[Trait] = []
 
 
 func _ready() -> void:
 	_assign_all_beasties_data()
 	_assign_all_plays_data()
+	_assign_all_trait_data()
 
 
 func _assign_all_beasties_data() -> void:
@@ -190,7 +192,7 @@ func _assign_all_beasties_data() -> void:
 						inner_file_name = inner_dir.get_next()
 			file_name = dir.get_next()
 	else:
-		push_error("An error occurred when trying to access the path.")
+		push_error("An error occurred when trying to access the path %s." % path)
 
 
 func _assign_all_plays_data() -> void:
@@ -226,7 +228,7 @@ func _assign_all_plays_data() -> void:
 					array_to_add.append(load(path + "/" + file_name))
 				file_name = dir.get_next()
 		else:
-			push_error("An error occurred when trying to access the path.")
+			push_error("An error occurred when trying to access the path %s." % path)
 
 	all_plays.append_array(all_body_attacks)
 	all_plays.append_array(all_spirit_attacks)
@@ -234,3 +236,17 @@ func _assign_all_plays_data() -> void:
 	all_plays.append_array(all_volley_plays)
 	all_plays.append_array(all_support_plays)
 	all_plays.append_array(all_defense_plays)
+
+
+func _assign_all_trait_data() -> void:
+	var path : String = "res://Autoloads/Resources/Trait/"
+	var dir := DirAccess.open(path)
+	if dir:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while file_name != "":
+			if file_name.ends_with(".tres"): # Is Beastie Resource
+				all_trait_data.append(load(path + "/" + file_name))
+			file_name = dir.get_next()
+	else:
+		push_error("An error occurred when trying to access the path %s." % path)

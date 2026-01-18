@@ -176,6 +176,11 @@ func on_beastie_menu_requested(requested_beastie : Beastie, side : Global.MySide
 		show_beastie_menu(new_menu)
 
 
+func on_beastie_remove_requested(_requested_beastie : Beastie, side : Global.MySide, team_pos : TeamController.TeamPosition) -> void:
+	var team_menu : TeamMenu = your_team_menu if side == Global.MySide.LEFT else opponent_team_menu
+	team_menu.controller_reset_slot_requested.emit(side, team_pos)
+
+
 func remove_menu(menu : BeastieMenu) -> void:
 	var dict_to_check : Dictionary[TeamController.TeamPosition, BeastieMenu] = left_beastie_menus \
 															if menu.side == Global.MySide.LEFT else right_beastie_menus
@@ -186,6 +191,8 @@ func remove_menu(menu : BeastieMenu) -> void:
 func on_reset_slot_requested(side : Global.MySide, team_pos : TeamController.TeamPosition) -> void:
 	var dict_to_check : Dictionary[TeamController.TeamPosition, BeastieMenu] = left_beastie_menus \
 															if side == Global.MySide.LEFT else right_beastie_menus
+	if currently_shown_beastie_menu and currently_shown_beastie_menu.side == side:
+		_on_back_button_pressed() # When removing using right-click on BeastieScene
 	var menu : BeastieMenu = dict_to_check.get(team_pos)
 	if menu:
 		remove_menu(menu)

@@ -7,4 +7,5 @@ script = ExtResource("1_q83yv")
 name = "Anticipation"
 description = "DEF x1.5 when the attacker is BLOCKED"
 def_mult = 1.5
+need_to_be_manually_activated = null
 metadata/_custom_type_script = "uid://bslfuaragw1g7"

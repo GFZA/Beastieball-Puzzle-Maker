@@ -2,7 +2,7 @@
 class_name PlaysSelectUI
 extends Control
 
-signal plays_selected(plays : Plays)
+signal plays_selected(plays : Plays, slot_index : int, side : Global.MySide, team_pos : TeamController.TeamPosition)
 
 const PLAY_BUTTON : PackedScene = preload("uid://dflcrna6d1235")
 
@@ -11,6 +11,10 @@ const PLAY_BUTTON : PackedScene = preload("uid://dflcrna6d1235")
 		beastie = value
 		_update_beastie_plays_data()
 		update_grid()
+
+var side : Global.MySide = Global.MySide.LEFT
+var team_pos : TeamController.TeamPosition = TeamController.TeamPosition.FIELD_1
+var slot_index : int = 0
 
 var all_body_attacks : Array[Plays] = []
 var all_spirit_attacks : Array[Plays] = []
@@ -42,8 +46,6 @@ var current_search_string : String = "" :
 	set(value):
 		current_search_string = value
 		update_grid()
-
-var slot_index : int = 0
 
 @onready var plays_button_container: GridContainer = %PlaysButtonContainer
 @onready var search_bar: LineEdit = %SearchBar
@@ -199,16 +201,17 @@ func _on_plays_button_plays_selected(plays : Plays) -> void:
 	if not plays:
 		beastie.my_plays[slot_index] = null
 		beastie.my_plays_updated.emit(beastie.my_plays) # Have to manually emitted for some reason)
-		plays_selected.emit(null)
+		plays_selected.emit(null, slot_index, side, team_pos)
 	else:
 		beastie.my_plays[slot_index] = plays.duplicate(true)
 		beastie.my_plays_updated.emit(beastie.my_plays) # Have to manually emitted for some reason)
-		plays_selected.emit(beastie.my_plays[slot_index])
+		plays_selected.emit(beastie.my_plays[slot_index], slot_index, side, team_pos)
 
 
 func reset() -> void:
 	beastie = null
+	side = Global.MySide.LEFT
+	team_pos = TeamController.TeamPosition.FIELD_1
 	current_filter = Plays.Type.NONE
 	current_search_string = ""
 	search_bar.text = ""
-	#_update_grid()

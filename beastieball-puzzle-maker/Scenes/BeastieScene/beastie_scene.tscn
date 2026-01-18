@@ -56,5 +56,6 @@ grow_horizontal = 2
 grow_vertical = 2
 focus_behavior_recursive = 1
 theme = ExtResource("5_h8epu")
+button_mask = 3
 text = "Edit
 Name"

@@ -5,11 +5,11 @@ extends ScrollContainer
 signal beastie_position_change_requested(side : Global.MySide, team_pos : TeamController.TeamPosition, new_pos : Beastie.Position)
 signal beastie_ball_change_requested(side : Global.MySide, team_pos : TeamController.TeamPosition, \
 									have_ball : bool, ball_type : BeastieScene.BallType)
-signal plays_select_ui_requested(beastie : Beastie, slot_index : int)
+signal plays_select_ui_requested(beastie : Beastie, slot_index : int, side : Global.MySide, team_pos : TeamController.TeamPosition)
+signal trait_select_ui_requested(beastie : Beastie, side : Global.MySide, team_pos : TeamController.TeamPosition)
 
 const STAMINA_FILL_STYLEBOX := preload("uid://ci28vvsldarw1")
-const MAX_INVESTS_TOTAL : int = 60
-const MAX_INVESTS_PER_STATS : int = 60
+const ICON_WHISTLE := preload("uid://dnjn5ky0d157b")
 
 
 @export var beastie : Beastie = null :
@@ -23,7 +23,6 @@ const MAX_INVESTS_PER_STATS : int = 60
 		_update_side()
 
 var team_pos : TeamController.TeamPosition = TeamController.TeamPosition.FIELD_1
-var invest_points_pool : int = MAX_INVESTS_TOTAL
 
 @onready var name_label: Label = %NameLabel
 @onready var sprite_texture_rec: TextureRect = %SpriteTextureRec
@@ -63,12 +62,30 @@ var invest_points_pool : int = MAX_INVESTS_TOTAL
 # Set Tab
 @onready var sets_tab: TabBar = %_Sets_
 @onready var play_slot_1_button: Button = %PlaySlot1Button
-@onready var slot_1_clear_button: Button = %Slot1ClearButton
 @onready var play_slot_2_button: Button = %PlaySlot2Button
-@onready var slot_2_clear_button: Button = %Slot2ClearButton
 @onready var play_slot_3_button: Button = %PlaySlot3Button
+@onready var play_slot_1_plays_ui: PlaysUI = %PlaySlot1PlaysUI
+@onready var play_slot_2_plays_ui: PlaysUI = %PlaySlot2PlaysUI
+@onready var play_slot_3_plays_ui: PlaysUI = %PlaySlot3PlaysUI
+@onready var slot_1_clear_button: Button = %Slot1ClearButton
+@onready var slot_2_clear_button: Button = %Slot2ClearButton
 @onready var slot_3_clear_button: Button = %Slot3ClearButton
 @onready var clear_plays_button: Button = %ClearPlaysButton
+@onready var play_slot_1_condition_container: HBoxContainer = %PlaySlot1ConditionContainer
+@onready var play_slot_2_condition_container: HBoxContainer = %PlaySlot2ConditionContainer # Unused
+@onready var play_slot_3_condition_container: HBoxContainer = %PlaySlot3ConditionContainer  # Unused
+@onready var play_slot_1_condition_label: Label = %PlaySlot1ConditionLabel
+@onready var play_slot_2_condition_label: Label = %PlaySlot2ConditionLabel # Unused
+@onready var play_slot_3_condition_label: Label = %PlaySlot3ConditionLabel # Unused
+@onready var play_slot_1_condition_check_box: CheckBox = %PlaySlot1ConditionCheckBox
+@onready var play_slot_2_condition_check_box: CheckBox = %PlaySlot2ConditionCheckBox # Unused
+@onready var play_slot_3_condition_check_box: CheckBox = %PlaySlot3ConditionCheckBox # Unused
+@onready var trait_1_button: Button = %Trait1Button
+@onready var trait_2_button: Button = %Trait2Button
+@onready var custom_trait_button: Button = %CustomTraitButton
+@onready var trait_condition_container: HBoxContainer = %TraitConditionContainer
+@onready var trait_condition_label: Label = %TraitConditionLabel
+@onready var trait_condition_check_box: CheckBox = %TraitConditionCheckBox
 
 # Feelings Tab
 @onready var feelings_tab: TabBar = %_Feelings_
@@ -95,7 +112,6 @@ var invest_points_pool : int = MAX_INVESTS_TOTAL
 @onready var sdef_invests_number_ui: NumberUI = %SDEFInvestsNumberUI
 @onready var mpow_invests_number_ui: NumberUI = %MPOWInvestsNumberUI
 @onready var mdef_invests_number_ui: NumberUI = %MDEFInvestsNumberUI
-@onready var invests_points_left_label: Label = %InvestsPointsLeftLabel
 @onready var clear_invests_button: Button = %ClearInvestsButton
 
 
@@ -134,13 +150,21 @@ func _ready() -> void:
 	clear_boost_button.pressed.connect(_reset_on_field_tab) # Pos button doesn't need resetting so we can just use this
 
 	# Set Tab
-	play_slot_1_button.pressed.connect(plays_select_ui_requested.emit.bind(beastie, 0))
-	play_slot_2_button.pressed.connect(plays_select_ui_requested.emit.bind(beastie, 1))
-	play_slot_3_button.pressed.connect(plays_select_ui_requested.emit.bind(beastie, 2))
+	play_slot_1_button.pressed.connect(plays_select_ui_requested.emit.bind(beastie, 0, side, team_pos))
+	play_slot_2_button.pressed.connect(plays_select_ui_requested.emit.bind(beastie, 1, side, team_pos))
+	play_slot_3_button.pressed.connect(plays_select_ui_requested.emit.bind(beastie, 2, side, team_pos))
 	slot_1_clear_button.pressed.connect(_on_slot_clear_pressed.bind(0))
 	slot_2_clear_button.pressed.connect(_on_slot_clear_pressed.bind(1))
 	slot_3_clear_button.pressed.connect(_on_slot_clear_pressed.bind(2))
-	clear_plays_button.pressed.connect(func(): for i in 3: _on_slot_clear_pressed(i))
+	clear_plays_button.pressed.connect(_reset_all_plays)
+	play_slot_1_condition_check_box.toggled.connect(_on_play_checkbox_toggled.bind(0))
+	play_slot_2_condition_check_box.toggled.connect(_on_play_checkbox_toggled.bind(1))
+	play_slot_3_condition_check_box.toggled.connect(_on_play_checkbox_toggled.bind(2))
+
+	trait_1_button.pressed.connect(_on_trait_button_pressed.bind(0))
+	trait_2_button.pressed.connect(_on_trait_button_pressed.bind(1))
+	custom_trait_button.pressed.connect(trait_select_ui_requested.emit.bind(beastie, side, team_pos))
+	trait_condition_check_box.toggled.connect(_on_trait_checkbox_toggled)
 
 	# Feelings Tab
 	wiped_number_ui.value_updated.connect(_on_feelings_changed.bind(Beastie.Feelings.WIPED))
@@ -190,10 +214,25 @@ func _load_on_field_tab() -> void:
 	sdef_boost_number_ui.num = beastie.get_boosts(Beastie.Stats.S_DEF)
 	mpow_boost_number_ui.num = beastie.get_boosts(Beastie.Stats.M_POW)
 	mdef_boost_number_ui.num = beastie.get_boosts(Beastie.Stats.M_DEF)
+	play_slot_1_condition_container.hide()
+	play_slot_2_condition_container.hide()
+	play_slot_3_condition_container.hide()
 
 
 func _load_sets_tab() -> void:
-	return
+	for i in 3:
+		if beastie.my_plays[i] != null:
+			on_plays_selected(beastie.my_plays[i], i, side, team_pos) # side and team_pos is kinda cheesing lol
+
+	trait_1_button.text = beastie.possible_traits[0].name
+	if beastie.possible_traits.size() == 1: # Out of index
+		trait_2_button.hide()
+	else:
+		trait_2_button.show()
+		trait_2_button.text = beastie.possible_traits[1].name
+
+	trait_condition_container.visible = beastie.my_trait.need_to_be_manually_activated
+	trait_condition_check_box.button_pressed = beastie.my_trait.manually_activated
 
 
 func _load_feelings_tab() -> void:
@@ -244,7 +283,21 @@ func _reset_on_field_tab() -> void:
 
 
 func _reset_sets_tab() -> void:
-	return
+	_reset_all_plays()
+	_reset_trait()
+
+
+func _reset_all_plays() -> void:
+	for i in 3:
+		_on_slot_clear_pressed(i)
+	play_slot_1_condition_check_box.button_pressed = false
+	play_slot_2_condition_check_box.button_pressed = false
+	play_slot_3_condition_check_box.button_pressed = false
+
+
+func _reset_trait() -> void:
+	trait_condition_container.hide()
+	trait_condition_check_box.button_pressed = false
 
 
 func _reset_feelings_tab() -> void:
@@ -270,7 +323,6 @@ func _reset_invests_tab() -> void:
 	sdef_invests_number_ui.reset()
 	mpow_invests_number_ui.reset()
 	mdef_invests_number_ui.reset()
-	invest_points_pool = MAX_INVESTS_TOTAL
 #endregion
 
 
@@ -376,8 +428,128 @@ func _on_slot_clear_pressed(slot_index : int) -> void:
 		return
 	beastie.my_plays[slot_index] = null
 	beastie.my_plays_updated.emit(beastie.my_plays) # Need to manually emit for some reason
-#endregion
+	var button : Button = _get_button_from_slot_index(slot_index)
+	var plays_ui : PlaysUI = _get_plays_ui_from_slot_index(slot_index)
+	button.text = "Add Play %s" % str(slot_index + 1)
+	button.icon = ICON_WHISTLE
+	button.flat = false
+	var plays : Plays = plays_ui.my_play
+	if plays is Attack and plays.need_to_be_manually_activated and slot_index == 0: # Only for first slot
+		_get_condition_container_from_slot_index(slot_index).hide()
+		_get_condition_label_from_slot_index(slot_index).text = ""
+		_get_condition_checkbox_from_slot_index(slot_index).button_pressed = false
+	plays_ui.my_play = null
+	plays_ui.hide()
 
+
+func on_plays_selected(plays : Plays, slot_index : int, side_that_changed : Global.MySide, team_pos_that_changed : TeamController.TeamPosition) -> void: # Called by SelectUI
+	if not (side_that_changed == side and team_pos_that_changed == team_pos):
+		return
+	var button : Button = _get_button_from_slot_index(slot_index)
+	var plays_ui : PlaysUI = _get_plays_ui_from_slot_index(slot_index)
+	button.text = ""
+	button.icon = null
+	button.flat = true
+	if plays is Attack and plays.need_to_be_manually_activated and slot_index == 0: # Only for first slot
+		_get_condition_container_from_slot_index(slot_index).show()
+		_get_condition_label_from_slot_index(slot_index).text = plays.manual_condition_name
+		_get_condition_checkbox_from_slot_index(slot_index).button_pressed = plays.manually_activated
+	plays_ui.my_play = plays
+	plays_ui.show()
+
+
+func _get_button_from_slot_index(slot_index : int) -> Button:
+	match slot_index:
+		0:
+			return play_slot_1_button
+		1:
+			return play_slot_2_button
+		2:
+			return play_slot_3_button
+	return null
+
+
+func _get_plays_ui_from_slot_index(slot_index : int) -> PlaysUI:
+	match slot_index:
+		0:
+			return play_slot_1_plays_ui
+		1:
+			return play_slot_2_plays_ui
+		2:
+			return play_slot_3_plays_ui
+	return null
+
+
+func _get_condition_container_from_slot_index(slot_index : int) -> HBoxContainer:
+	match slot_index:
+		0:
+			return play_slot_1_condition_container
+		1:
+			return play_slot_2_condition_container # Unused
+		2:
+			return play_slot_3_condition_container # Unused
+	return null
+
+
+func _get_condition_label_from_slot_index(slot_index : int) -> Label:
+	match slot_index:
+		0:
+			return play_slot_1_condition_label
+		1:
+			return play_slot_2_condition_label # Unused
+		2:
+			return play_slot_3_condition_label # Unused
+	return null
+
+
+func _get_condition_checkbox_from_slot_index(slot_index : int) -> CheckBox:
+	match slot_index:
+		0:
+			return play_slot_1_condition_check_box
+		1:
+			return play_slot_2_condition_check_box # Unused
+		2:
+			return play_slot_3_condition_check_box # Unused
+	return null
+
+
+func _on_play_checkbox_toggled(toggled_on : bool, slot_index : int) -> void:
+	if not beastie:
+		return
+	var plays: Plays = _get_plays_ui_from_slot_index(slot_index).my_play
+	assert(plays is Attack, "Non-attack tried to manually activate its non-existing condition!")
+	plays.manually_activated = toggled_on
+	beastie.my_plays_updated.emit(beastie.my_plays) # Manually updated
+
+
+func _on_trait_button_pressed(trait_index : int) -> void:
+	if not beastie:
+		return
+	if beastie.possible_traits.size() == 1 and trait_index == 1: # Out of index
+		return
+	beastie.my_trait = beastie.possible_traits[trait_index]
+	beastie.my_trait_updated.emit(beastie.my_trait)
+	trait_condition_container.visible = beastie.my_trait.need_to_be_manually_activated
+	trait_condition_label.text = beastie.my_trait.manual_condition_name
+	trait_condition_check_box.button_pressed = beastie.my_trait.manually_activated
+
+
+func on_trait_selected(new_trait : Trait, side_that_changed : Global.MySide, team_pos_that_changed : TeamController.TeamPosition) -> void: # Called by SelectUI
+	if not (side_that_changed == side and team_pos_that_changed == team_pos):
+		return
+	if new_trait.need_to_be_manually_activated:
+		trait_condition_container.show()
+		trait_condition_label.text = new_trait.manual_condition_name
+		trait_condition_check_box.button_pressed = new_trait.manually_activated
+
+
+func _on_trait_checkbox_toggled(toggled_on : bool) -> void:
+	if not beastie:
+		return
+	var my_trait : Trait = beastie.my_trait
+	my_trait.manually_activated = toggled_on
+	beastie.my_trait_updated.emit(beastie.my_trait) # Manually updated
+#endregion
 
 #region Feelings Tab Funcs
 func _on_feelings_changed(value : int, feelings : Beastie.Feelings) -> void:
@@ -396,14 +568,4 @@ func _on_invests_changed(value : int, invests_type : Beastie.Stats) -> void:
 		return
 	beastie.invests[invests_type] = value
 	beastie.invests_updated.emit(beastie.invests) # Need to maunally emit it for some reason
-
-# TODO? : Capping Invests
-#func _can_add_invests(beastie : Beastie, add_value : int, invests_type : Beastie.Stats) -> bool:
-	#var current_invests : int = beastie.get_total_invests_points()
-	#if current_invests + add_value > MAX_INVESTS_TOTAL:
-		#return false
-	#if beastie.invests.get(invests_type) + add_value > MAX_INVESTS_PER_STATS:
-		#return false
-	#return true
-
 #endregion

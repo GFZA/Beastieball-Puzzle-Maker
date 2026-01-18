@@ -8,7 +8,9 @@
 [sub_resource type="LabelSettings" id="LabelSettings_4ccyn"]
 font = ExtResource("5_7y7uk")
 font_size = 92
+font_color = Color(0, 0, 0, 1)
 outline_size = 8
+outline_color = Color(0, 0, 0, 1)
 
 [node name="BeastieButton" type="Button"]
 custom_minimum_size = Vector2(651, 248)
@@ -67,7 +69,6 @@ alignment = 1
 
 [node name="NumberContainer" type="HBoxContainer" parent="MainMarginContainer/HBoxContainer/NameInfoContainer"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 
@@ -82,7 +83,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 focus_behavior_recursive = 1
 theme = ExtResource("2_hu215")
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 115
 text = "0"
 
@@ -91,7 +92,7 @@ unique_name_in_owner = true
 layout_mode = 2
 focus_behavior_recursive = 1
 theme = ExtResource("2_hu215")
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 115
 text = "None"
 horizontal_alignment = 1

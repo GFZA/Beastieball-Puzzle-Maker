@@ -5,6 +5,7 @@ extends Node2D
 signal field_updated(pos_dict : Dictionary[Beastie.Position, Beastie])
 signal field_effects_updated(field_dict : Dictionary[FieldEffect.Type, int])
 signal beastie_menu_requested(requested_beastie : Beastie, side : Global.MySide, team_pos : TeamController.TeamPosition)
+signal beastie_remove_requested(requested_beastie : Beastie, side : Global.MySide, team_pos : TeamController.TeamPosition)
 
 enum TeamPosition {FIELD_1, FIELD_2, BENCH_1, BENCH_2}
 
@@ -267,6 +268,7 @@ func _add_new_beastie_scene(beastie : Beastie, new_position : Beastie.Position, 
 	new_scene.my_side = side
 	new_scene.benched = beastie.is_really_at_bench
 	new_scene.beastie_menu_requested.connect(_on_beastie_scene_beastie_menu_requested)
+	new_scene.beastie_remove_requested.connect(_on_beastie_scene_beastie_remove_requested)
 
 	match new_position:
 		Beastie.Position.BENCH_1, Beastie.Position.BENCH_2:
@@ -332,6 +334,19 @@ func _on_beastie_scene_beastie_menu_requested(beastie : Beastie, selected_side :
 	if beastie == bench_beastie_2_beastie:
 		team_pos = TeamPosition.BENCH_2
 	beastie_menu_requested.emit(beastie, selected_side, team_pos)
+
+
+func _on_beastie_scene_beastie_remove_requested(beastie : Beastie, selected_side : Global.MySide) -> void:
+	var team_pos : TeamPosition = TeamPosition.FIELD_1
+	if beastie == beastie_1_beastie:
+		team_pos = TeamPosition.FIELD_1
+	if beastie == beastie_2_beastie:
+		team_pos = TeamPosition.FIELD_2
+	if beastie == bench_beastie_1_beastie:
+		team_pos = TeamPosition.BENCH_1
+	if beastie == bench_beastie_2_beastie:
+		team_pos = TeamPosition.BENCH_2
+	beastie_remove_requested.emit(beastie, selected_side, team_pos)
 
 
 func _update_scene_show_plays(beastie : Beastie, show_plays : bool) -> void:

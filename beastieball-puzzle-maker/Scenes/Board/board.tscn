@@ -397,9 +397,6 @@ offset_right = 2700.0
 offset_bottom = 2025.0
 grow_horizontal = 1
 grow_vertical = 1
-max_score = 2
-left_score = 1
-right_score = 1
 metadata/_edit_lock_ = true
 
 [node name="BoardManager" type="Node2D" parent="SubViewportContainer/SubViewport" node_paths=PackedStringArray("left_team_controller", "right_team_controller") groups=["board_manager"]]

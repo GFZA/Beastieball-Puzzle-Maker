@@ -11,6 +11,7 @@ enum UseCondition {NORMAL, FRONT_ONLY, BACK_ONLY}
 @export_range(0, 300) var base_pow : int = 1
 @export var show_in_indicator : bool = true
 @export_multiline var descrition : String = "Can hit without volleying. Pass to an opponent and skip your turn. Can always be used."
+@export var need_to_be_manually_activated : bool = false
 @export var manual_condition_name : String = ""
 
 var manually_activated : bool = false

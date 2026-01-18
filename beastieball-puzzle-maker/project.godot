@@ -34,6 +34,7 @@ plays_ui_container=""
 beastie_scene=""
 beastie_select_ui_requester=""
 plays_select_ui_requester=""
+trait_select_ui_requester=""
 
 [gui]
 

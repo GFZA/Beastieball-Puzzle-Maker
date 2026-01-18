@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://c0rfhniciamxq"]
+[gd_scene load_steps=6 format=3 uid="uid://c0rfhniciamxq"]
 
 [ext_resource type="Script" uid="uid://kx18iqsqtt7h" path="res://Scenes/Main/SelectUIs/select_uis.gd" id="1_aln1h"]
 [ext_resource type="Texture2D" uid="uid://i036kmeuy3sl" path="res://Scenes/Main/MainUI/main_ui_bg_tile.png" id="1_s6xmw"]
 [ext_resource type="PackedScene" uid="uid://1p0s1gi4loyi" path="res://Scenes/Main/SelectUIs/beastie_select_ui.tscn" id="3_ttyll"]
 [ext_resource type="PackedScene" uid="uid://bw0b44puabbtj" path="res://Scenes/Main/SelectUIs/plays_select_ui.tscn" id="4_s6xmw"]
+[ext_resource type="PackedScene" uid="uid://c6c31v85g17a0" path="res://Scenes/Main/SelectUIs/trait_select_ui.tscn" id="5_aln1h"]
 
 [node name="SelectUIs" type="MarginContainer"]
 anchors_preset = 15
@@ -48,6 +49,11 @@ visible = false
 layout_mode = 2
 
 [node name="PlaysSelectUI" parent="AlmostMainContainer/BG/MarginContainer" instance=ExtResource("4_s6xmw")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="TraitSelectUI" parent="AlmostMainContainer/BG/MarginContainer" instance=ExtResource("5_aln1h")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2

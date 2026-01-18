@@ -6,4 +6,5 @@
 script = ExtResource("1_4l4kf")
 name = "Majesty"
 description = "SPIRIT POW DOWN1 to opponent team when TAGGED IN"
+need_to_be_manually_activated = null
 metadata/_custom_type_script = "uid://bslfuaragw1g7"

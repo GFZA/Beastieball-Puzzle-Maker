@@ -4,6 +4,7 @@ extends Node2D
 
 signal side_updated(my_side : Global.MySide)
 signal beastie_menu_requested(beastie : Beastie, side : Global.MySide)
+signal beastie_remove_requested(beastie : Beastie, side : Global.MySide)
 
 enum BallType {BODY, SPIRIT, MIND, EASY_RECEIVE}
 
@@ -120,11 +121,17 @@ var my_feelings_cloud : FeelingsCloud = null
 
 
 func _ready() -> void:
-	edit_beastie_button.pressed.connect(_on_edit_beastie_button_pressed)
+	edit_beastie_button.gui_input.connect(_on_edit_button_gui_input)
 
 
-func _on_edit_beastie_button_pressed() -> void:
-	beastie_menu_requested.emit(beastie, my_side)
+func _on_edit_button_gui_input(event : InputEvent) -> void:
+	if event is InputEventMouseButton:
+		if event.is_pressed():
+			match event.button_index:
+				MOUSE_BUTTON_LEFT:
+					beastie_menu_requested.emit(beastie, my_side)
+				MOUSE_BUTTON_RIGHT:
+					beastie_remove_requested.emit(beastie, my_side)
 
 
 func _update_sprite_pose() -> void:

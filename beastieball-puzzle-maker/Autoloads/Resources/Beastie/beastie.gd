@@ -30,12 +30,12 @@ signal health_updated(health : int)
 	set(value):
 		if value.size() != 3:
 			value.resize(3) # Just to be safe
-		value.sort_custom(
-			func(a : Plays, b : Plays):
-				var a_value : int = int(a.type) if not a == null else 9999
-				var b_value : int = int(b.type) if not b == null else 9999
-				return a_value < b_value
-		)
+		#value.sort_custom(
+			#func(a : Plays, b : Plays):
+				#var a_value : int = int(a.type) if not a == null else 9999
+				#var b_value : int = int(b.type) if not b == null else 9999
+				#return a_value < b_value
+		#)
 		my_plays = value
 		my_plays_updated.emit(my_plays)
 

@@ -8,5 +8,6 @@ name = "Momentum"
 description = "Does 1.3x damage just after moving or tagging in
 "
 damage_dealt_mult = 1.3
-manually_activated = false
+need_to_be_manually_activated = true
+manual_condition_name = "Just Tagged In"
 metadata/_custom_type_script = "uid://bslfuaragw1g7"
