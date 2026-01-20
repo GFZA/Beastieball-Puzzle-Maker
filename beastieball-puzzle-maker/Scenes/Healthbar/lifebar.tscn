@@ -296,6 +296,8 @@ flip_h = true
 [node name="MarginContainer" type="MarginContainer" parent="."]
 z_index = 1
 layout_mode = 2
+focus_behavior_recursive = 1
+mouse_filter = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 10
