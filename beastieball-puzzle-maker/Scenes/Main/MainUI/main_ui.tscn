@@ -153,6 +153,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 size_flags_horizontal = 6
+focus_behavior_recursive = 1
 theme = ExtResource("5_mbwly")
 theme_override_constants/h_separation = 4
 theme_override_constants/icon_max_width = 85
@@ -167,12 +168,13 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 size_flags_horizontal = 6
+focus_behavior_recursive = 1
 theme = ExtResource("5_mbwly")
 theme_override_constants/h_separation = 4
 theme_override_constants/icon_max_width = 85
 theme_override_constants/line_spacing = -8
 text = "Save
-JSON"
+RES"
 icon = ExtResource("6_gu5vi")
 expand_icon = true
 
@@ -181,12 +183,13 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 size_flags_horizontal = 6
+focus_behavior_recursive = 1
 theme = ExtResource("5_mbwly")
 theme_override_constants/h_separation = 4
 theme_override_constants/icon_max_width = 85
 theme_override_constants/line_spacing = -8
 text = "Load
-JSON"
+RES"
 icon = ExtResource("7_bgm7v")
 expand_icon = true
 
@@ -200,11 +203,12 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(750, 0)
 layout_mode = 2
 size_flags_horizontal = 6
+focus_behavior_recursive = 1
 theme = ExtResource("5_mbwly")
 theme_override_constants/h_separation = 4
 theme_override_constants/icon_max_width = 65
 theme_override_constants/line_spacing = -8
-text = "Reset Everything, NO UNDO!!"
+text = "Reset Everything NO UNDO"
 icon = ExtResource("8_bgm7v")
 expand_icon = true
 
@@ -239,3 +243,41 @@ layout_mode = 2
 texture = ExtResource("4_i4lxe")
 stretch_mode = 1
 metadata/_edit_lock_ = true
+
+[node name="LogoFileDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+oversampling_override = 1.0
+title = "Open a File"
+initial_position = 2
+file_mode = 0
+access = 2
+root_subfolder = "C:\\Users\\MSII\\Desktop\\Guide Materials\\Puzzle Maker"
+filters = PackedStringArray("*.png", "*.jpg", "*.jpeg")
+use_native_dialog = true
+
+[node name="LoadFileDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+oversampling_override = 1.0
+title = "Open a File"
+initial_position = 2
+file_mode = 0
+root_subfolder = "res://Autoloads/Resources/BoardData/"
+filters = PackedStringArray("*.res")
+use_native_dialog = true
+
+[node name="SaveFileDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+oversampling_override = 1.0
+initial_position = 2
+root_subfolder = "res://Autoloads/Resources/BoardData/"
+filters = PackedStringArray("*.res")
+use_native_dialog = true
+
+[node name="SaveImageDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+oversampling_override = 1.0
+initial_position = 2
+access = 2
+root_subfolder = "C:\\Users\\MSII\\Desktop"
+filters = PackedStringArray("*.png")
+use_native_dialog = true

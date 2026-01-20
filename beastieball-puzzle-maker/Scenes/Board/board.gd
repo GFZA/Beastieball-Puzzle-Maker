@@ -258,7 +258,7 @@ func reset() -> void:
 		button.show()
 
 
-func save_image() -> void:
+func save_image(path : String) -> void:
 	var original_size = sub_viewport.size
 
 	sub_viewport_container.stretch = false
@@ -272,7 +272,7 @@ func save_image() -> void:
 	var image: Image = sub_viewport.get_texture().get_image()
 	# Use INTERPOLATE_LANCZOS for best downscaling quality if resizing is needed
 	image.resize(original_size.x, original_size.y, Image.INTERPOLATE_LANCZOS)
-	image.save_png("user:///puzzle_" + str(image_number) + ".png")
+	image.save_png(path)
 
 	sub_viewport.size = original_size
 	sub_viewport_container.stretch = true

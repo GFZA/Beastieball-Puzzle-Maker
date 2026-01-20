@@ -14,7 +14,7 @@ const TURN_BARS : Dictionary[Board.Turn, Texture2D] = {
 const TURN_TEXT : Dictionary[Board.Turn, String] = {
 	Board.Turn.OFFENSE : "Offense",
 	Board.Turn.DEFENSE : "Defense",
-	Board.Turn.CSERVE : "Counter Serve",
+	Board.Turn.CSERVE : "CounterServe",
 	Board.Turn.SERVE : "Serve",
 }
 

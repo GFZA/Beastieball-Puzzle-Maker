@@ -1,11 +1,12 @@
 class_name MainUI
 extends Control
 
-signal save_image_requested
-signal save_json_requested
-signal load_json_requested
+signal save_image_requested(path : String)
+signal save_json_requested(path : String)
 signal reset_board_requested
 signal connect_for_new_beastie_menu_requested(beastie_menu : BeastieMenu)
+signal logo_changed(new_logo : Texture2D)
+signal board_data_file_loaded(data : BoardData)
 
 const BEASTIE_MENU_SCENE := preload("uid://ck45vbd1ldi5t")
 
@@ -38,10 +39,15 @@ var current_beastie_menu_tab : int = 0
 @onready var field_effects_menu: ScrollContainer = %FieldEffectsMenu
 
 @onready var save_image_button: Button = %SaveImageButton
-@onready var save_json_button: Button = %SaveJSONButton
-@onready var load_json_button: Button = %LoadJSONButton
+@onready var save_json_button: Button = %SaveJSONButton # Planned for it to be JSON but got too lazy
+@onready var load_json_button: Button = %LoadJSONButton # Planned for it to be JSON but got too lazy
 @onready var reset_button: Button = %ResetButton
 @onready var upper_label: Label = %UpperLabel
+
+@onready var logo_file_dialog: FileDialog = %LogoFileDialog
+@onready var load_file_dialog: FileDialog = %LoadFileDialog
+@onready var save_file_dialog: FileDialog = %SaveFileDialog
+@onready var save_image_dialog: FileDialog = %SaveImageDialog
 
 
 func _ready() -> void:
@@ -64,6 +70,15 @@ func _ready() -> void:
 	opponent_team_menu.controller_reset_slot_requested.connect(on_reset_slot_requested)
 	#opponent_team_menu.swap_slot_requested.connect(on_swap_slot_requested.bind(Global.MySide.RIGHT))
 
+	overlay_menu.logo_dialogue_requested.connect(logo_file_dialog.popup_centered)
+	logo_file_dialog.file_selected.connect(on_logo_file_selected)
+	logo_changed.connect(overlay_menu.on_logo_changed)
+	overlay_menu.logo_remove_requested.connect(logo_changed.emit.bind(null))
+
+	load_file_dialog.file_selected.connect(_on_load_dialog_file_selected)
+	save_file_dialog.file_selected.connect(_on_save_dialog_file_selected)
+	save_image_dialog.file_selected.connect(_on_save_image_dialog_file_selected)
+
 	_on_back_button_pressed()
 
 
@@ -80,23 +95,26 @@ func _on_back_button_pressed() -> void:
 
 
 func _on_save_image_button_pressed() -> void:
-	save_image_button.release_focus()
-	save_image_requested.emit()
+	save_image_dialog.popup_centered()
+
+
+func _on_save_image_dialog_file_selected(path : String) -> void:
+	save_image_requested.emit(path)
 
 
 func _on_save_json_button_pressed() -> void:
-	save_json_button.release_focus()
-	save_json_requested.emit()
+	save_file_dialog.popup_centered()
+
+
+func _on_save_dialog_file_selected(path : String) -> void:
+	save_json_requested.emit(path)
 
 
 func _on_load_json_button_pressed() -> void:
-	load_json_button.release_focus()
-	load_json_requested.emit()
-	print("open files")
+	load_file_dialog.popup_centered()
 
 
 func _on_reset_board_pressed() -> void:
-	reset_button.release_focus()
 	reset_board_requested.emit()
 
 
@@ -227,3 +245,26 @@ func on_beastie_menu_tab_changed(tab_index : int, current_menu : BeastieMenu) ->
 					menu.tab_container.current_tab = 1 # Sets Tab
 				else:
 					menu.tab_container.current_tab = current_beastie_menu_tab
+
+
+func on_logo_file_selected(path: String) -> void:
+	var image := Image.new()
+	var err := image.load(path)
+
+	if err != OK:
+		push_error("Failed to load image: %s" % path)
+		return
+
+	var texture := ImageTexture.create_from_image(image)
+	logo_changed.emit(texture)
+
+
+func _on_load_dialog_file_selected(path: String) -> void:
+	var data : Resource = ResourceLoader.load(path)
+	if not data:
+		push_error("Failed to load data: %s" % path)
+		return
+	if not data is BoardData:
+		push_error("Loaded data is not BoardData! Path : %s" % path)
+		return
+	board_data_file_loaded.emit(data)

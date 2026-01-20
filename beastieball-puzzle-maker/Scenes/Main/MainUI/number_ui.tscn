@@ -20,6 +20,7 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 2
 size_flags_horizontal = 4
+focus_behavior_recursive = 1
 theme = ExtResource("1_t3gyi")
 theme_override_constants/icon_max_width = 48
 icon = ExtResource("2_jqq0t")

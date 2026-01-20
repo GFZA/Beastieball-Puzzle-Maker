@@ -241,14 +241,13 @@ func on_controller_reset_slot_requested(side : Global.MySide, team_pos : TeamCon
 
 # Behold the worse ssavd/load system ever
 
-func save_board_data() -> void:
+func save_board_data(path : String) -> void:
 	var board_data := BoardData.new()
 	board_data.data = [
 		left_team_controller.get_data_to_save(),
 		right_team_controller.get_data_to_save()
 	]
-	var save_name : String = "board_%s" % (DirAccess.get_files_at("res://Resources/BoardData").size() - 1)
-	ResourceSaver.save(board_data, "res://Resources/BoardData/" + save_name + ".res")
+	ResourceSaver.save(board_data, path)
 	await get_tree().process_frame
 	data_saved.emit()
 

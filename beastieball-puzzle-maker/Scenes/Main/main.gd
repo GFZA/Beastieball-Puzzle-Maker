@@ -1,13 +1,10 @@
 class_name Main
 extends Control
 
-@export var temp_data : BoardData = null
-
 @onready var main_ui: MainUI = %MainUI
 @onready var board: Board = %Board
 @onready var saving_rect: ColorRect = %SavingRect
 @onready var saving_label: Label = %SavingLabel
-
 @onready var select_ui: SelectUIs = %SelectUIs
 
 
@@ -25,7 +22,7 @@ func _ready() -> void:
 	main_ui.overlay_menu.offense_action_changed.connect(board.board_overlay.on_offense_action_changed)
 	main_ui.overlay_menu.title_text_changed.connect(board.board_overlay.on_title_text_changed)
 	main_ui.overlay_menu.right_text_changed.connect(board.board_overlay.on_right_text_changed)
-	main_ui.overlay_menu.logo_changed.connect(board.board_overlay.on_logo_changed)
+	main_ui.logo_changed.connect(board.board_overlay.on_logo_changed)
 
 	# Field Effects Menu Signals
 	board.field_effects_edit_requested.connect(main_ui.show_field_effect_menu)
@@ -58,7 +55,8 @@ func _ready() -> void:
 	# Lower buttons Signals
 	main_ui.save_image_requested.connect(_on_save_image_requested)
 	main_ui.save_json_requested.connect(_on_save_json_requested)
-	main_ui.load_json_requested.connect(_on_load_json_requested)
+	#main_ui.load_json_requested.connect(_on_load_json_requested)
+	main_ui.board_data_file_loaded.connect(_on_board_data_file_loaded)
 	main_ui.reset_board_requested.connect(_on_reset_board_requested)
 
 	# Select Ui Signal
@@ -105,7 +103,7 @@ func on_connect_for_new_beastie_menu_requested(beastie_menu : BeastieMenu) -> vo
 
 #region Lower buttons signal funcs
 
-func _on_save_image_requested() -> void:
+func _on_save_image_requested(path : String) -> void:
 	saving_rect.mouse_filter = Control.MOUSE_FILTER_STOP
 	saving_label.text = "Saving..."
 	saving_rect.show()
@@ -116,7 +114,7 @@ func _on_save_image_requested() -> void:
 	await get_tree().process_frame
 	await get_tree().process_frame
 	await get_tree().process_frame
-	board.save_image()
+	board.save_image(path)
 	await board.image_saved
 
 	saving_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -124,7 +122,7 @@ func _on_save_image_requested() -> void:
 	saving_rect.hide()
 
 
-func _on_save_json_requested() -> void:
+func _on_save_json_requested(path : String) -> void:
 	saving_rect.mouse_filter = Control.MOUSE_FILTER_STOP
 	saving_label.text = "Saving..."
 	saving_rect.show()
@@ -135,7 +133,7 @@ func _on_save_json_requested() -> void:
 	await get_tree().process_frame
 	await get_tree().process_frame
 	await get_tree().process_frame
-	board.board_manager.save_board_data()
+	board.board_manager.save_board_data(path)
 	await board.board_manager.data_saved
 
 	saving_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -143,7 +141,26 @@ func _on_save_json_requested() -> void:
 	saving_rect.hide()
 
 
-func _on_load_json_requested() -> void:
+#func _on_load_json_requested() -> void:
+	#saving_rect.mouse_filter = Control.MOUSE_FILTER_STOP
+	#saving_label.text = "Loading..."
+	#saving_rect.show()
+#
+	## Cheap ass delay to make it looks good
+	#await get_tree().process_frame
+	#await get_tree().process_frame
+	#await get_tree().process_frame
+	#await get_tree().process_frame
+	#await get_tree().process_frame
+	#board.board_manager.load_board_data(temp_data)
+	#await board.board_manager.data_loaded
+#
+	#saving_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	#saving_label.text = ""
+	#saving_rect.hide()
+
+
+func _on_board_data_file_loaded(data : BoardData) -> void:
 	saving_rect.mouse_filter = Control.MOUSE_FILTER_STOP
 	saving_label.text = "Loading..."
 	saving_rect.show()
@@ -154,7 +171,7 @@ func _on_load_json_requested() -> void:
 	await get_tree().process_frame
 	await get_tree().process_frame
 	await get_tree().process_frame
-	board.board_manager.load_board_data(temp_data)
+	board.board_manager.load_board_data(data)
 	await board.board_manager.data_loaded
 
 	saving_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE

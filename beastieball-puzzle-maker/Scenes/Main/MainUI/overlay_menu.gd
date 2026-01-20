@@ -9,7 +9,8 @@ signal turn_changed(turn : Board.Turn)
 signal offense_action_changed(action_lefts : int)
 signal title_text_changed(new_text : String)
 signal right_text_changed(new_text : String)
-signal logo_changed(new_logo : Texture2D)
+signal logo_dialogue_requested
+signal logo_remove_requested
 
 const DEFAULT_TITLE_TEXT := "Find the guaranteed win"
 const DEFAULT_RIGHT_TEXT := ""
@@ -27,6 +28,7 @@ const DEFAULT_RIGHT_TEXT := ""
 
 @onready var title_text_line_edit: LineEdit = %TitleTextLineEdit
 @onready var right_text_line_edit: LineEdit = %RightTextLineEdit
+@onready var logo_remove_button: Button = %LogoRemoveButton
 @onready var load_logo_button: Button = %LoadLogoButton
 
 
@@ -45,6 +47,7 @@ func _ready() -> void:
 	title_text_line_edit.text_submitted.connect(title_text_line_edit.release_focus.unbind(1))
 	right_text_line_edit.text_changed.connect(right_text_changed.emit)
 	right_text_line_edit.text_submitted.connect(right_text_line_edit.release_focus.unbind(1))
+	logo_remove_button.pressed.connect(_on_logo_remove_button_pressed)
 	load_logo_button.pressed.connect(_on_load_logo_button_pressed)
 
 	_press_offense()
@@ -68,7 +71,7 @@ func reset() -> void:
 	title_text_changed.emit(DEFAULT_TITLE_TEXT) # Have to manually emit or some reason...
 	right_text_line_edit.text = DEFAULT_RIGHT_TEXT
 	right_text_changed.emit(DEFAULT_RIGHT_TEXT) # Have to manually emit or some reason...
-	logo_changed.emit(null)  # It's connected to button pressed so we have to manually emit this
+	logo_remove_requested.emit()
 
 	scroll_vertical = 0
 
@@ -80,7 +83,13 @@ func _on_turn_changed(new_turn : Board.Turn) -> void:
 	turn_changed.emit(new_turn)
 
 
+func _on_logo_remove_button_pressed() -> void:
+	logo_remove_requested.emit()
+
+
 func _on_load_logo_button_pressed() -> void:
-	print("open files")
-	logo_changed.emit(null)
-	return
+	logo_dialogue_requested.emit()
+
+
+func on_logo_changed(new_logo : Texture2D) -> void:
+	logo_remove_button.visible = (new_logo != null)
