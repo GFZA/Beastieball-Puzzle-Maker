@@ -411,27 +411,27 @@ func check_if_field_is_full() -> bool:
 	return false
 
 
-func swap_slot(team_pos_1 : TeamPosition, team_pos_2 : TeamPosition) -> void:
-	var slot_1_beastie : Beastie = _get_beastie_from_team_pos(team_pos_1)
-	var slot_2_beastie : Beastie = _get_beastie_from_team_pos(team_pos_2)
-
-	var	count : int = 0
-	for team_pos in [team_pos_1, team_pos_2]:
-		var beastie : Beastie = slot_2_beastie if count == 0 else slot_1_beastie
-		match team_pos:
-			TeamController.TeamPosition.FIELD_1:
-				beastie_1_beastie = beastie
-			TeamController.TeamPosition.FIELD_2:
-				beastie_2_beastie = beastie
-			TeamController.TeamPosition.BENCH_1:
-				if beastie:
-					beastie.current_boosts.clear() # Clear boosts when benched, just like in-game!
-				bench_beastie_1_beastie = beastie
-			TeamController.TeamPosition.BENCH_2:
-				if beastie:
-					beastie.current_boosts.clear() # Clear boosts when benched, just like in-game!
-				bench_beastie_2_beastie = beastie
-		count += 1
+#func swap_slot(team_pos_1 : TeamPosition, team_pos_2 : TeamPosition) -> void:
+	#var slot_1_beastie : Beastie = _get_beastie_from_team_pos(team_pos_1)
+	#var slot_2_beastie : Beastie = _get_beastie_from_team_pos(team_pos_2)
+#
+	#var	count : int = 0
+	#for team_pos in [team_pos_1, team_pos_2]:
+		#var beastie : Beastie = slot_2_beastie if count == 0 else slot_1_beastie
+		#match team_pos:
+			#TeamController.TeamPosition.FIELD_1:
+				#beastie_1_beastie = beastie
+			#TeamController.TeamPosition.FIELD_2:
+				#beastie_2_beastie = beastie
+			#TeamController.TeamPosition.BENCH_1:
+				#if beastie:
+					#beastie.current_boosts.clear() # Clear boosts when benched, just like in-game!
+				#bench_beastie_1_beastie = beastie
+			#TeamController.TeamPosition.BENCH_2:
+				#if beastie:
+					#beastie.current_boosts.clear() # Clear boosts when benched, just like in-game!
+				#bench_beastie_2_beastie = beastie
+		#count += 1
 
 
 func on_beastie_position_change_requested(team_pos : TeamController.TeamPosition, new_pos : Beastie.Position) -> void:
@@ -464,6 +464,16 @@ func on_beastie_ball_change_requested(team_pos : TeamController.TeamPosition, ha
 			beastie_2_ball_type = ball_type
 		TeamController.TeamPosition.BENCH_1, TeamController.TeamPosition.BENCH_2:
 			push_error("Bench Beasties somehow requested to have ball!")
+
+
+func on_beastie_show_bench_damage_requested(team_pos : TeamController.TeamPosition, show_bench_damage : bool) -> void:
+	match team_pos:
+		TeamController.TeamPosition.FIELD_1:
+			beastie_1_show_bench_damage = show_bench_damage
+		TeamController.TeamPosition.FIELD_2:
+			beastie_2_show_bench_damage = show_bench_damage
+		TeamController.TeamPosition.BENCH_1, TeamController.TeamPosition.BENCH_2:
+			push_error("Bench Beasties somehow requested to show bench damage!")
 
 
 func _get_beastie_from_team_pos(team_pos : TeamPosition) -> Beastie:

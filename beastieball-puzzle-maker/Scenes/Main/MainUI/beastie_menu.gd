@@ -5,6 +5,7 @@ extends ScrollContainer
 signal beastie_position_change_requested(side : Global.MySide, team_pos : TeamController.TeamPosition, new_pos : Beastie.Position)
 signal beastie_ball_change_requested(side : Global.MySide, team_pos : TeamController.TeamPosition, \
 									have_ball : bool, ball_type : BeastieScene.BallType)
+signal beastie_show_bench_damage_requested(side : Global.MySide, team_pos : TeamController.TeamPosition, show_bench_damage : bool)
 signal plays_select_ui_requested(beastie : Beastie, slot_index : int, side : Global.MySide, team_pos : TeamController.TeamPosition)
 signal trait_select_ui_requested(beastie : Beastie, side : Global.MySide, team_pos : TeamController.TeamPosition)
 
@@ -23,6 +24,7 @@ const ICON_WHISTLE := preload("uid://dnjn5ky0d157b")
 		_update_side()
 
 var team_pos : TeamController.TeamPosition = TeamController.TeamPosition.FIELD_1
+var board : Board = null # Really bad cheese. Assign by MainUI
 
 @onready var name_label: Label = %NameLabel
 @onready var sprite_texture_rec: TextureRect = %SpriteTextureRec
@@ -80,6 +82,8 @@ var team_pos : TeamController.TeamPosition = TeamController.TeamPosition.FIELD_1
 @onready var play_slot_1_condition_check_box: CheckBox = %PlaySlot1ConditionCheckBox
 @onready var play_slot_2_condition_check_box: CheckBox = %PlaySlot2ConditionCheckBox # Unused
 @onready var play_slot_3_condition_check_box: CheckBox = %PlaySlot3ConditionCheckBox # Unused
+@onready var show_bench_damage_container: HBoxContainer = %ShowBenchDamageContainer
+@onready var show_bench_damage_check_box: CheckBox = %ShowBenchDamageCheckBox
 @onready var trait_1_button: Button = %Trait1Button
 @onready var trait_2_button: Button = %Trait2Button
 @onready var custom_trait_button: Button = %CustomTraitButton
@@ -160,6 +164,7 @@ func _ready() -> void:
 	play_slot_1_condition_check_box.toggled.connect(_on_play_checkbox_toggled.bind(0))
 	play_slot_2_condition_check_box.toggled.connect(_on_play_checkbox_toggled.bind(1))
 	play_slot_3_condition_check_box.toggled.connect(_on_play_checkbox_toggled.bind(2))
+	show_bench_damage_check_box.toggled.connect(_on_show_bench_damage_checkbox_toggled)
 
 	trait_1_button.pressed.connect(_on_trait_button_pressed.bind(0))
 	trait_2_button.pressed.connect(_on_trait_button_pressed.bind(1))
@@ -223,6 +228,13 @@ func _load_sets_tab() -> void:
 	for i in 3:
 		if beastie.my_plays[i] != null:
 			on_plays_selected(beastie.my_plays[i], i, side, team_pos) # side and team_pos is kinda cheesing lol
+
+	show_bench_damage_container.visible = not beastie.is_really_at_bench
+	var team_controller : TeamController = board.board_manager.left_team_controller if side == Global.MySide.LEFT else \
+	 									board.board_manager.right_team_controller
+	var plays_ui_container : PlaysUIContainer = team_controller.plays_ui_container_dict.get(beastie) # Cheesy access this shuld-be-private dict...
+	if plays_ui_container:
+		show_bench_damage_check_box.button_pressed = plays_ui_container.show_bench_damage
 
 	trait_1_button.text = beastie.possible_traits[0].name
 	if beastie.possible_traits.size() == 1: # Out of index
@@ -293,6 +305,7 @@ func _reset_all_plays() -> void:
 	play_slot_1_condition_check_box.button_pressed = false
 	play_slot_2_condition_check_box.button_pressed = false
 	play_slot_3_condition_check_box.button_pressed = false
+	show_bench_damage_check_box.button_pressed = false
 
 
 func _reset_trait() -> void:
@@ -520,6 +533,10 @@ func _on_play_checkbox_toggled(toggled_on : bool, slot_index : int) -> void:
 	assert(plays is Attack, "Non-attack tried to manually activate its non-existing condition!")
 	plays.manually_activated = toggled_on
 	beastie.my_plays_updated.emit(beastie.my_plays) # Manually updated
+
+
+func _on_show_bench_damage_checkbox_toggled(toggled_on : bool) -> void:
+	beastie_show_bench_damage_requested.emit(side, team_pos, toggled_on)
 
 
 func _on_trait_button_pressed(trait_index : int) -> void:

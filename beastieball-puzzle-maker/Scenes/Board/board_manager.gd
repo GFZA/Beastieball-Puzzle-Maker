@@ -62,41 +62,54 @@ func get_damage_dict_array(attacker : Beastie, attack : Attack) -> Array[Diction
 	if not attack.show_in_indicator:
 		return result
 
-	var result_dict : Dictionary[Beastie.Position, int] = empty_dict.duplicate()
 	var attacker_scene : BeastieScene = find_beastie_scene(attacker) # Need to use scene to determine side because of spagetti code :(
 	var attacker_is_left : bool = attacker_scene.my_side == Global.MySide.LEFT
 	var attacker_team_controller : TeamController = left_team_controller if attacker_is_left else right_team_controller
 	var defender_team_controller : TeamController = right_team_controller if attacker_is_left else left_team_controller
 
-	var defense_side : Dictionary[Beastie.Position, Beastie] = TeamController.get_empty_position_dict() # Assign below
-	var unfiltered_pos_dict : Dictionary[Beastie.Position, Beastie] = right_team_position_dict.duplicate() \
+	#var defense_side : Dictionary[Beastie.Position, Beastie] = TeamController.get_empty_position_dict() # Assign below
+	var raw_defense_pos_dict : Dictionary[Beastie.Position, Beastie] = right_team_position_dict.duplicate() \
 													if attacker_is_left else left_team_position_dict.duplicate()
 
-	if unfiltered_pos_dict.is_empty():
+	if raw_defense_pos_dict.is_empty():
 		return result
+
+	# Adjust made-up attacker for cal
+	var attacker_for_cal : Beastie = attacker.duplicate()
+	var original_pos : Beastie.Position = attacker.my_field_position
+	if original_pos in [Beastie.Position.BENCH_1, Beastie.Position.BENCH_2]:
+		original_pos = Beastie.Position.UPPER_BACK # Upper or Lower doesn't matter here
+	attacker_for_cal.my_field_position = original_pos
+
+	match attack.use_condition:
+		Attack.UseCondition.FRONT_ONLY: # If at back, move front for cal
+			attacker_for_cal.my_field_position = Beastie.Position.UPPER_FRONT # Upper or Lower doesn't matter here
+		Attack.UseCondition.BACK_ONLY: # If at front, move back for cal
+			attacker_for_cal.my_field_position = Beastie.Position.UPPER_BACK # Upper or Lower doesn't matter here
 
 	# Update Field Dict then Bench Dict
 	for i in 2:
 		# Assign defense_side (use for cal)
+		var defense_side : Dictionary[Beastie.Position, Beastie] = raw_defense_pos_dict.duplicate()
+		var result_dict : Dictionary[Beastie.Position, int] = empty_dict.duplicate()
 		match i:
 			0: # First Loop, Use Beasties currently on the Field
-				unfiltered_pos_dict.erase(Beastie.Position.BENCH_1)
-				unfiltered_pos_dict.erase(Beastie.Position.BENCH_2)
+				defense_side.erase(Beastie.Position.BENCH_1)
+				defense_side.erase(Beastie.Position.BENCH_2)
 			1: # Second Loop, Use Beasties currently on the Bench and pretend they're on the field
-				var bench_1 : Beastie = unfiltered_pos_dict.get(Beastie.Position.BENCH_1)
-				var bench_2 : Beastie = unfiltered_pos_dict.get(Beastie.Position.BENCH_2)
+				var bench_1 : Beastie = defense_side.get(Beastie.Position.BENCH_1)
+				var bench_2 : Beastie = defense_side.get(Beastie.Position.BENCH_2)
 				if bench_1:
 					bench_1.my_field_position = Beastie.Position.UPPER_BACK
 					bench_1.is_really_at_bench = true
 				if bench_2:
 					bench_2.my_field_position = Beastie.Position.LOWER_BACK
 					bench_2.is_really_at_bench = true
-				unfiltered_pos_dict = TeamController.get_empty_position_dict()
-				unfiltered_pos_dict[Beastie.Position.UPPER_BACK] = bench_1
-				unfiltered_pos_dict[Beastie.Position.LOWER_BACK] = bench_2
-				unfiltered_pos_dict.erase(Beastie.Position.BENCH_1)
-				unfiltered_pos_dict.erase(Beastie.Position.BENCH_2)
-		defense_side = unfiltered_pos_dict
+				defense_side = TeamController.get_empty_position_dict()
+				defense_side[Beastie.Position.UPPER_BACK] = bench_1
+				defense_side[Beastie.Position.LOWER_BACK] = bench_2
+				defense_side.erase(Beastie.Position.BENCH_1)
+				defense_side.erase(Beastie.Position.BENCH_2)
 
 		if defense_side.is_empty():
 			result[i] = result_dict
@@ -112,18 +125,6 @@ func get_damage_dict_array(attacker : Beastie, attack : Attack) -> Array[Diction
 			or (attack.target == Attack.Target.BACK_ONLY and (pos in [Beastie.Position.UPPER_FRONT, Beastie.Position.LOWER_FRONT])):
 				result_dict[pos] = -1
 				continue
-
-			var attacker_for_cal : Beastie = attacker.duplicate()
-			var original_pos : Beastie.Position = attacker.my_field_position
-			if original_pos in [Beastie.Position.BENCH_1, Beastie.Position.BENCH_2]:
-				original_pos = Beastie.Position.UPPER_BACK # Upper or Lower doesn't matter here
-			attacker_for_cal.my_field_position = original_pos
-
-			match attack.use_condition:
-				Attack.UseCondition.FRONT_ONLY: # If at back, move front for cal
-					attacker_for_cal.my_field_position = Beastie.Position.UPPER_FRONT # Upper or Lower doesn't matter here
-				Attack.UseCondition.BACK_ONLY: # If at front, move back for cal
-					attacker_for_cal.my_field_position = Beastie.Position.UPPER_BACK # Upper or Lower doesn't matter here
 
 			if defense_side[pos] != null:
 				result_dict[pos] = DamageCalculator.get_damage(attacker_for_cal, defense_side[pos], attack, attacker_team_controller, defender_team_controller)
@@ -215,6 +216,11 @@ func on_beastie_ball_change_requested(side : Global.MySide, team_pos : TeamContr
 	controller.on_beastie_ball_change_requested(team_pos, have_ball, ball_type)
 
 
+func on_beastie_show_bench_damage_requested(side : Global.MySide, team_pos : TeamController.TeamPosition, show_bench_damage : bool) -> void:
+	var controller : TeamController = left_team_controller if side == Global.MySide.LEFT else right_team_controller
+	controller.on_beastie_show_bench_damage_requested(team_pos, show_bench_damage)
+
+
 func on_controller_reset_slot_requested(side : Global.MySide, team_pos : TeamController.TeamPosition) -> void:
 	var controller : TeamController = left_team_controller if side == Global.MySide.LEFT else right_team_controller
 	match team_pos:
@@ -228,9 +234,9 @@ func on_controller_reset_slot_requested(side : Global.MySide, team_pos : TeamCon
 			controller.reset_bench_beastie_2()
 
 
-func on_swap_slot_requested(team_pos_1 : TeamController.TeamPosition, team_pos_2 : TeamController.TeamPosition, side : Global.MySide) -> void:
-	var controller : TeamController = left_team_controller if side == Global.MySide.LEFT else right_team_controller
-	controller.swap_slot(team_pos_1, team_pos_2)
+#func on_swap_slot_requested(team_pos_1 : TeamController.TeamPosition, team_pos_2 : TeamController.TeamPosition, side : Global.MySide) -> void:
+	#var controller : TeamController = left_team_controller if side == Global.MySide.LEFT else right_team_controller
+	#controller.swap_slot(team_pos_1, team_pos_2)
 
 
 # Behold the worse ssavd/load system ever

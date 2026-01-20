@@ -206,6 +206,7 @@ focus_behavior_recursive = 1
 theme = ExtResource("4_w5fki")
 tab_alignment = 1
 current_tab = 1
+tab_focus_mode = 0
 
 [node name="_On Field_" type="TabBar" parent="MainContainer/TabContainer"]
 unique_name_in_owner = true
@@ -518,7 +519,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 8
 
 [node name="Spacer" type="Control" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer"]
 layout_mode = 2
@@ -796,7 +797,30 @@ expand_icon = true
 [node name="Spacer2" type="Control" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/PlaysEditButtonContainer/PlaySlot3ConditionContainer"]
 layout_mode = 2
 
-[node name="Spacer2" type="Control" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer"]
+[node name="ShowBenchDamageContainer" type="HBoxContainer" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Spacer" type="Control" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/ShowBenchDamageContainer"]
+layout_mode = 2
+
+[node name="ShowBenchDamageLabel" type="Label" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/ShowBenchDamageContainer"]
+layout_mode = 2
+text = "Show Damage To Bench"
+label_settings = SubResource("LabelSettings_40myu")
+
+[node name="ShowBenchDamageCheckBox" type="CheckBox" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/ShowBenchDamageContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+focus_behavior_recursive = 1
+theme = ExtResource("4_w5fki")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Spacer2" type="Control" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer/ShowBenchDamageContainer"]
 layout_mode = 2
 
 [node name="ClearPlaysButton" type="Button" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer"]
@@ -818,7 +842,7 @@ text = "Traits"
 label_settings = SubResource("LabelSettings_xqtvo")
 
 [node name="TraitButtonContainer" type="HBoxContainer" parent="MainContainer/TabContainer/_Sets_/MainInvestsTabContainer"]
-custom_minimum_size = Vector2(0, 90)
+custom_minimum_size = Vector2(0, 73)
 layout_mode = 2
 size_flags_horizontal = 6
 theme_override_constants/separation = 12

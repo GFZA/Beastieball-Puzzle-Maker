@@ -14,6 +14,7 @@ extends Control
 func _ready() -> void:
 	# Some Vars
 	select_ui.board = board
+	main_ui.board = board
 
 	# Overlay Menu Signals
 	board.board_overlay.overlay_edit_requested.connect(main_ui.show_overlay_menu)
@@ -44,8 +45,8 @@ func _ready() -> void:
 	# Team Menu Signals
 	main_ui.your_team_menu.controller_reset_slot_requested.connect(_on_controller_reset_slot_requested)
 	main_ui.opponent_team_menu.controller_reset_slot_requested.connect(_on_controller_reset_slot_requested)
-	main_ui.your_team_menu.swap_slot_requested.connect(board.board_manager.on_swap_slot_requested.bind(Global.MySide.LEFT))
-	main_ui.opponent_team_menu.swap_slot_requested.connect(board.board_manager.on_swap_slot_requested.bind(Global.MySide.RIGHT))
+	#main_ui.your_team_menu.swap_slot_requested.connect(board.board_manager.on_swap_slot_requested.bind(Global.MySide.LEFT))
+	#main_ui.opponent_team_menu.swap_slot_requested.connect(board.board_manager.on_swap_slot_requested.bind(Global.MySide.RIGHT))
 
 	# Beastie Menu Signals
 	board.board_manager.left_team_controller.beastie_menu_requested.connect(main_ui.on_beastie_menu_requested)
@@ -95,6 +96,7 @@ func _on_controller_reset_slot_requested(side : Global.MySide, team_pos : TeamCo
 func on_connect_for_new_beastie_menu_requested(beastie_menu : BeastieMenu) -> void:
 	beastie_menu.beastie_position_change_requested.connect(board.board_manager.on_beastie_position_change_requested)
 	beastie_menu.beastie_ball_change_requested.connect(board.board_manager.on_beastie_ball_change_requested)
+	beastie_menu.beastie_show_bench_damage_requested.connect(board.board_manager.on_beastie_show_bench_damage_requested)
 	beastie_menu.plays_select_ui_requested.connect(select_ui.show_plays_select_ui)
 	beastie_menu.trait_select_ui_requested.connect(select_ui.show_trait_select_ui)
 	select_ui.plays_selected.connect(beastie_menu.on_plays_selected)

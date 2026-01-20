@@ -9,6 +9,8 @@ signal connect_for_new_beastie_menu_requested(beastie_menu : BeastieMenu)
 
 const BEASTIE_MENU_SCENE := preload("uid://ck45vbd1ldi5t")
 
+var board : Board = null
+
 var left_beastie_menus : Dictionary[TeamController.TeamPosition, BeastieMenu] = {
 	TeamController.TeamPosition.FIELD_1 : null,
 	TeamController.TeamPosition.FIELD_2 : null,
@@ -32,7 +34,6 @@ var current_beastie_menu_tab : int = 0
 @onready var default_menu: DefaultMenu = %DefaultMenu
 @onready var your_team_menu: TeamMenu = %YourTeamMenu
 @onready var opponent_team_menu: TeamMenu = %OpponentTeamMenu
-#@onready var beastie_menu: BeastieMenu = %BeastieMenu
 @onready var overlay_menu: OverlayMenu = %OverlayMenu
 @onready var field_effects_menu: ScrollContainer = %FieldEffectsMenu
 
@@ -57,9 +58,11 @@ func _ready() -> void:
 	default_menu.field_effect_edit_requested.connect(show_field_effect_menu)
 
 	your_team_menu.beastie_menu_requested.connect(on_beastie_menu_requested)
-	opponent_team_menu.beastie_menu_requested.connect(on_beastie_menu_requested)
 	your_team_menu.controller_reset_slot_requested.connect(on_reset_slot_requested)
+	#your_team_menu.swap_slot_requested.connect(on_swap_slot_requested.bind(Global.MySide.LEFT))
+	opponent_team_menu.beastie_menu_requested.connect(on_beastie_menu_requested)
 	opponent_team_menu.controller_reset_slot_requested.connect(on_reset_slot_requested)
+	#opponent_team_menu.swap_slot_requested.connect(on_swap_slot_requested.bind(Global.MySide.RIGHT))
 
 	_on_back_button_pressed()
 
@@ -169,8 +172,13 @@ func on_beastie_menu_requested(requested_beastie : Beastie, side : Global.MySide
 		new_menu.beastie = requested_beastie
 		new_menu.side = side
 		new_menu.team_pos = team_pos
+		new_menu.board = board
 		menu_container.add_child(new_menu)
-		new_menu.tab_container.tab_changed.connect(on_beastie_menu_tab_changed)
+		if new_menu.tab_container.is_tab_hidden(current_beastie_menu_tab) and current_beastie_menu_tab == 0:
+			new_menu.tab_container.current_tab = 1 # Sets Tab
+		else:
+			new_menu.tab_container.current_tab = current_beastie_menu_tab
+		new_menu.tab_container.tab_changed.connect(on_beastie_menu_tab_changed.bind(new_menu))
 		connect_for_new_beastie_menu_requested.emit(new_menu)
 		dict_to_check[team_pos] = new_menu
 		show_beastie_menu(new_menu)
@@ -179,6 +187,14 @@ func on_beastie_menu_requested(requested_beastie : Beastie, side : Global.MySide
 func on_beastie_remove_requested(_requested_beastie : Beastie, side : Global.MySide, team_pos : TeamController.TeamPosition) -> void:
 	var team_menu : TeamMenu = your_team_menu if side == Global.MySide.LEFT else opponent_team_menu
 	team_menu.controller_reset_slot_requested.emit(side, team_pos)
+
+
+#func on_swap_slot_requested(team_pos_1 : TeamController.TeamPosition, team_pos_2 : TeamController.TeamPosition, side : Global.MySide) -> void:
+	#var menu_dict : Dictionary[TeamController.TeamPosition, BeastieMenu] = left_beastie_menus if side == Global.MySide.LEFT else right_beastie_menus
+	#var menu_1 : BeastieMenu = menu_dict.get(team_pos_1)
+	#var menu_2 : BeastieMenu = menu_dict.get(team_pos_2)
+	#menu_dict[team_pos_1] = menu_2
+	#menu_dict[team_pos_2] = menu_1
 
 
 func remove_menu(menu : BeastieMenu) -> void:
@@ -198,8 +214,9 @@ func on_reset_slot_requested(side : Global.MySide, team_pos : TeamController.Tea
 		remove_menu(menu)
 
 
-func on_beastie_menu_tab_changed(tab_index : int) -> void:
-	current_beastie_menu_tab = tab_index
+func on_beastie_menu_tab_changed(tab_index : int, current_menu : BeastieMenu) -> void:
+	if current_menu == currently_shown_beastie_menu:
+		current_beastie_menu_tab = tab_index
 	for i in 2:
 		var dict : Dictionary[TeamController.TeamPosition, BeastieMenu] = left_beastie_menus \
 															if i == 0 else right_beastie_menus
