@@ -8,6 +8,7 @@ enum MySide {LEFT, RIGHT}
 enum SortBeastie {NAME, NUMBER}
 
 var resetting : bool = false
+@onready var is_on_web : bool = OS.get_name() == "Web"
 
 #region Main Color Datas
 enum ColorType {BODY, SPIRIT, MIND}
@@ -187,8 +188,9 @@ func _assign_all_beasties_data() -> void:
 					inner_dir.list_dir_begin()
 					var inner_file_name : String = inner_dir.get_next()
 					while inner_file_name != "":
-						if inner_file_name.ends_with(".tres"): # Is Beastie Resource
-							all_beasties_data.append(load(path + file_name + "/" + inner_file_name))
+						if inner_file_name.ends_with(".tres") or inner_file_name.ends_with(".tres.remap"): # Is Beastie Resource
+							var suffix : String = ".tres" if not Global.is_on_web else "" # Not sure why we need this but it works!
+							all_beasties_data.append(load(path + file_name + "/" + inner_file_name.get_basename() + suffix))
 						inner_file_name = inner_dir.get_next()
 			file_name = dir.get_next()
 	else:
@@ -224,8 +226,9 @@ func _assign_all_plays_data() -> void:
 			dir.list_dir_begin()
 			var file_name = dir.get_next()
 			while file_name != "":
-				if file_name.ends_with(".tres"): # Is Beastie Resource
-					array_to_add.append(load(path + "/" + file_name))
+				if file_name.ends_with(".tres") or file_name.ends_with(".tres.remap"): # Is Beastie Resource
+					var suffix : String = ".tres" if not Global.is_on_web else "" # Not sure why we need this but it works!
+					array_to_add.append(load(path + "/" + file_name.get_basename() + suffix))
 				file_name = dir.get_next()
 		else:
 			push_error("An error occurred when trying to access the path %s." % path)
@@ -245,8 +248,9 @@ func _assign_all_trait_data() -> void:
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
 		while file_name != "":
-			if file_name.ends_with(".tres"): # Is Beastie Resource
-				all_trait_data.append(load(path + "/" + file_name))
+			if file_name.ends_with(".tres") or file_name.ends_with(".tres.remap"): # Is Beastie Resource
+				var suffix : String = ".tres" if not Global.is_on_web else "" # Not sure why we need this but it works!
+				all_trait_data.append(load(path + "/" + file_name.get_basename() + suffix))
 			file_name = dir.get_next()
 	else:
 		push_error("An error occurred when trying to access the path %s." % path)

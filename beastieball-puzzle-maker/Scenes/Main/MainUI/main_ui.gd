@@ -28,6 +28,14 @@ var right_beastie_menus : Dictionary[TeamController.TeamPosition, BeastieMenu] =
 var currently_shown_beastie_menu : BeastieMenu = null
 var current_beastie_menu_tab : int = 0
 
+var logo_file_access_web : FileAccessWeb = null
+var load_file_access_web : FileAccessWeb = null
+
+var logo_acceptable_image_type: String = ".jpeg, .jpg, .png"
+
+var temp_pc_img_path : String = "C:/Users/MSII/Desktop"
+var temp_pc_res_path : String = "res://Autoloads/Resources/BoardData/"
+
 @onready var back_button_container: MarginContainer = %BackButtonContainer
 @onready var back_button: Button = %BackButton
 
@@ -44,7 +52,7 @@ var current_beastie_menu_tab : int = 0
 @onready var reset_button: Button = %ResetButton
 @onready var upper_label: Label = %UpperLabel
 
-@onready var logo_file_dialog: FileDialog = %LogoFileDialog
+@onready var logo_select_dialog: FileDialog = %LogoFileDialog
 @onready var load_file_dialog: FileDialog = %LoadFileDialog
 @onready var save_file_dialog: FileDialog = %SaveFileDialog
 @onready var save_image_dialog: FileDialog = %SaveImageDialog
@@ -70,14 +78,26 @@ func _ready() -> void:
 	opponent_team_menu.controller_reset_slot_requested.connect(on_reset_slot_requested)
 	#opponent_team_menu.swap_slot_requested.connect(on_swap_slot_requested.bind(Global.MySide.RIGHT))
 
-	overlay_menu.logo_dialogue_requested.connect(logo_file_dialog.popup_centered)
-	logo_file_dialog.file_selected.connect(on_logo_file_selected)
+	overlay_menu.logo_dialogue_requested.connect(_on_logo_dialog_requested)
+	logo_select_dialog.file_selected.connect(on_logo_file_selected)
 	logo_changed.connect(overlay_menu.on_logo_changed)
 	overlay_menu.logo_remove_requested.connect(logo_changed.emit.bind(null))
 
 	load_file_dialog.file_selected.connect(_on_load_dialog_file_selected)
 	save_file_dialog.file_selected.connect(_on_save_dialog_file_selected)
 	save_image_dialog.file_selected.connect(_on_save_image_dialog_file_selected)
+
+	if Global.is_on_web:
+		logo_file_access_web = FileAccessWeb.new()
+		load_file_access_web = FileAccessWeb.new()
+		logo_file_access_web.loaded.connect(_on_logo_file_access_web_file_loaded)
+		load_file_access_web.loaded.connect(_on_load_file_access_web_file_loaded)
+
+	else:
+		logo_select_dialog.root_subfolder = temp_pc_img_path
+		load_file_dialog.root_subfolder = temp_pc_res_path
+		save_file_dialog.root_subfolder = temp_pc_res_path
+		save_image_dialog.root_subfolder = temp_pc_img_path
 
 	_on_back_button_pressed()
 
@@ -92,30 +112,6 @@ func _on_back_button_pressed() -> void:
 	else:
 		back_button_container.hide()
 		show_default_menu()
-
-
-func _on_save_image_button_pressed() -> void:
-	save_image_dialog.popup_centered()
-
-
-func _on_save_image_dialog_file_selected(path : String) -> void:
-	save_image_requested.emit(path)
-
-
-func _on_save_json_button_pressed() -> void:
-	save_file_dialog.popup_centered()
-
-
-func _on_save_dialog_file_selected(path : String) -> void:
-	save_json_requested.emit(path)
-
-
-func _on_load_json_button_pressed() -> void:
-	load_file_dialog.popup_centered()
-
-
-func _on_reset_board_pressed() -> void:
-	reset_board_requested.emit()
 
 
 func hide_all_menu() -> void:
@@ -247,6 +243,47 @@ func on_beastie_menu_tab_changed(tab_index : int, current_menu : BeastieMenu) ->
 					menu.tab_container.current_tab = current_beastie_menu_tab
 
 
+func _on_reset_board_pressed() -> void:
+	reset_board_requested.emit()
+
+
+#region Logo Dialog Handling
+func _on_logo_dialog_requested() -> void:
+	if Global.is_on_web:
+		logo_file_access_web.open(logo_acceptable_image_type)
+	else:
+		logo_select_dialog.popup_centered()
+
+# ----- Web -----
+func _on_logo_file_access_web_file_loaded(_file_name : String, file_type : String, base64_data : String) -> void:
+	var raw_data: PackedByteArray = Marshalls.base64_to_raw(base64_data)
+	_raw_draw(file_type, raw_data)
+
+
+func _raw_draw(type : String, data : PackedByteArray) -> void:
+	var image := Image.new()
+	var error: int = _load_image(image, type, data)
+
+	if error:
+		push_error("Error %s id" % error)
+		return
+
+	var texture : Texture2D = ImageTexture.create_from_image(image)
+	logo_changed.emit(texture)
+
+
+func _load_image(image: Image, type: String, data: PackedByteArray) -> int:
+	match type:
+		"image/png":
+			return image.load_png_from_buffer(data)
+		"image/jpeg", "image/jpg":
+			return image.load_jpg_from_buffer(data)
+		"image/webp":
+			return image.load_webp_from_buffer(data)
+		_:
+			return Error.FAILED
+
+# ----- PC -----
 func on_logo_file_selected(path: String) -> void:
 	var image := Image.new()
 	var err := image.load(path)
@@ -257,8 +294,48 @@ func on_logo_file_selected(path: String) -> void:
 
 	var texture := ImageTexture.create_from_image(image)
 	logo_changed.emit(texture)
+#endregion
+
+#region Save Image Dialog Handling
+func _on_save_image_button_pressed() -> void:
+	if Global.is_on_web:
+		save_image_requested.emit("") # Will prompt browser to download instead
+	else:
+		save_image_dialog.popup_centered()
 
 
+func _on_save_image_dialog_file_selected(path : String) -> void:
+	save_image_requested.emit(path)
+#endregion
+
+#region Save JSON Dialog Handling
+func _on_save_json_button_pressed() -> void:
+	if Global.is_on_web:
+		save_json_requested.emit("") # Will prompt browser to download instead
+	else:
+		save_file_dialog.popup_centered()
+
+
+func _on_save_dialog_file_selected(path : String) -> void:
+	save_json_requested.emit(path)
+#endregion
+
+#region Load JSON Handling
+func _on_load_json_button_pressed() -> void:
+	if Global.is_on_web:
+		load_file_access_web.open(logo_acceptable_image_type)
+	else:
+		load_file_dialog.popup_centered()
+
+# ----- Web -----
+func _on_load_file_access_web_file_loaded(_file_name : String, _file_type : String, _base64_data : String) -> void:
+	#var raw_data: PackedByteArray = Marshalls.base64_to_raw(base64_data)
+	#_raw_draw(file_type, raw_data)
+	# TODO: convert bytes to JSON
+	return
+
+
+# ----- PC -----
 func _on_load_dialog_file_selected(path: String) -> void:
 	var data : Resource = ResourceLoader.load(path)
 	if not data:
@@ -268,3 +345,4 @@ func _on_load_dialog_file_selected(path: String) -> void:
 		push_error("Loaded data is not BoardData! Path : %s" % path)
 		return
 	board_data_file_loaded.emit(data)
+#endregion

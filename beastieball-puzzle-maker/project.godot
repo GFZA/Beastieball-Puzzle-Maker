@@ -27,6 +27,10 @@ window/size/viewport_height=2025
 window/size/resizable=false
 window/stretch/mode="canvas_items"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/FileAccessWeb/plugin.cfg")
+
 [global_group]
 
 board_manager=""

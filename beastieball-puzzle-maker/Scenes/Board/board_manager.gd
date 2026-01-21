@@ -247,7 +247,9 @@ func save_board_data(path : String) -> void:
 		left_team_controller.get_data_to_save(),
 		right_team_controller.get_data_to_save()
 	]
-	ResourceSaver.save(board_data, path)
+	if path != "":
+		ResourceSaver.save(board_data, path)
+	# TODO make it JSON then handle web download like save png
 	await get_tree().process_frame
 	data_saved.emit()
 

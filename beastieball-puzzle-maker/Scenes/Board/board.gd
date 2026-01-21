@@ -259,23 +259,31 @@ func reset() -> void:
 
 
 func save_image(path : String) -> void:
-	var original_size = sub_viewport.size
+	var image : Image = await capture_image()
+	if Global.is_on_web:
+		var raw : PackedByteArray = image.save_png_to_buffer()
+		JavaScriptBridge.download_buffer(raw, "puzzle.png")
+	else:
+		image.save_png(path) # Path selected from PC FileDialog
 
+	image_saved.emit()
+	print("Image saved!")
+
+
+func capture_image() -> Image:
+	var original_size = sub_viewport.size
 	sub_viewport_container.stretch = false
-	sub_viewport.size = Vector2(2700, 2025)
+	sub_viewport.size = Vector2(2700, 2025) # Change result size here
+								# (Hard-coded a bunch of stuff for this resolution though so please dont...)
 
 	# Delay for rendering
 	await get_tree().process_frame
 	await get_tree().process_frame
 	await get_tree().process_frame
-
 	var image: Image = sub_viewport.get_texture().get_image()
-	# Use INTERPOLATE_LANCZOS for best downscaling quality if resizing is needed
-	image.resize(original_size.x, original_size.y, Image.INTERPOLATE_LANCZOS)
-	image.save_png(path)
 
+	# Resetting subviewport
 	sub_viewport.size = original_size
 	sub_viewport_container.stretch = true
 
-	image_saved.emit()
-	print("Image saved!")
+	return image

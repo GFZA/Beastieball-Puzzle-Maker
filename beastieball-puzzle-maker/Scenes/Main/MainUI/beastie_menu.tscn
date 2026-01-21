@@ -1,9 +1,8 @@
-[gd_scene load_steps=32 format=3 uid="uid://ck45vbd1ldi5t"]
+[gd_scene load_steps=31 format=3 uid="uid://ck45vbd1ldi5t"]
 
 [ext_resource type="Script" uid="uid://6rv1irob5c57" path="res://Scenes/Main/MainUI/beastie_menu.gd" id="1_4hm00"]
 [ext_resource type="FontFile" uid="uid://ckifc6cea5vs" path="res://Autoloads/Resources/Fonts/SportsJerseyEdited.ttf" id="2_4k1vm"]
 [ext_resource type="FontFile" uid="uid://q2kbgu0jja56" path="res://Autoloads/Resources/Fonts/sportsjersey.ttf" id="2_s680g"]
-[ext_resource type="ButtonGroup" uid="uid://br3kusi3thyqq" path="res://Autoloads/Resources/on_field_tab_button_group.tres" id="4_renfa"]
 [ext_resource type="Theme" uid="uid://bkrlwg21fhprn" path="res://Autoloads/Resources/Themes/edit_button.tres" id="4_w5fki"]
 [ext_resource type="PackedScene" uid="uid://d1d26ob86bbom" path="res://Scenes/Main/MainUI/number_ui.tscn" id="4_xqtvo"]
 [ext_resource type="Texture2D" uid="uid://bguiky7x105wd" path="res://Autoloads/Icons/icon_up_white.png" id="5_tf14f"]
@@ -205,11 +204,12 @@ size_flags_vertical = 3
 focus_behavior_recursive = 1
 theme = ExtResource("4_w5fki")
 tab_alignment = 1
-current_tab = 0
+current_tab = 1
 tab_focus_mode = 0
 
 [node name="_On Field_" type="TabBar" parent="MainContainer/TabContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -248,7 +248,6 @@ custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
 theme = ExtResource("4_w5fki")
 toggle_mode = true
-button_group = ExtResource("4_renfa")
 text = "Upper Back"
 
 [node name="UpperFrontButton" type="Button" parent="MainContainer/TabContainer/_On Field_/MainPositionTabContainer/PosButtonContainer/UpperButtonContainer"]
@@ -257,7 +256,6 @@ custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
 theme = ExtResource("4_w5fki")
 toggle_mode = true
-button_group = ExtResource("4_renfa")
 text = "Upper Front"
 
 [node name="LowerButtonContainer" type="HBoxContainer" parent="MainContainer/TabContainer/_On Field_/MainPositionTabContainer/PosButtonContainer"]
@@ -271,7 +269,6 @@ custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
 theme = ExtResource("4_w5fki")
 toggle_mode = true
-button_group = ExtResource("4_renfa")
 text = "Lower Back"
 
 [node name="LowerFrontButton" type="Button" parent="MainContainer/TabContainer/_On Field_/MainPositionTabContainer/PosButtonContainer/LowerButtonContainer"]
@@ -280,7 +277,6 @@ custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
 theme = ExtResource("4_w5fki")
 toggle_mode = true
-button_group = ExtResource("4_renfa")
 text = "Lower Front"
 
 [node name="HoldingBallLabel" type="Label" parent="MainContainer/TabContainer/_On Field_/MainPositionTabContainer"]
@@ -303,7 +299,6 @@ size_flags_horizontal = 3
 focus_behavior_recursive = 1
 theme = ExtResource("4_w5fki")
 toggle_mode = true
-button_group = ExtResource("4_renfa")
 text = " None "
 icon_alignment = 1
 
@@ -314,7 +309,6 @@ size_flags_horizontal = 3
 focus_behavior_recursive = 1
 theme = ExtResource("4_w5fki")
 toggle_mode = true
-button_group = ExtResource("4_renfa")
 icon = ExtResource("5_xqtvo")
 icon_alignment = 1
 
@@ -325,7 +319,6 @@ size_flags_horizontal = 3
 focus_behavior_recursive = 1
 theme = ExtResource("4_w5fki")
 toggle_mode = true
-button_group = ExtResource("4_renfa")
 icon = ExtResource("6_40myu")
 icon_alignment = 1
 
@@ -336,7 +329,6 @@ size_flags_horizontal = 3
 focus_behavior_recursive = 1
 theme = ExtResource("4_w5fki")
 toggle_mode = true
-button_group = ExtResource("4_renfa")
 icon = ExtResource("7_cwasf")
 icon_alignment = 1
 
@@ -348,7 +340,6 @@ size_flags_horizontal = 3
 focus_behavior_recursive = 1
 theme = ExtResource("4_w5fki")
 toggle_mode = true
-button_group = ExtResource("4_renfa")
 text = "Ready"
 icon_alignment = 1
 
@@ -508,7 +499,6 @@ expand_icon = true
 
 [node name="_Sets_" type="TabBar" parent="MainContainer/TabContainer"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
