@@ -167,10 +167,10 @@ func _get_filtered_array() -> Array[Plays]:
 func _get_search_filtered_array(search_string : String) -> Array[Plays]:
 	var array_to_filer_again : Array[Plays] = _get_filtered_array()
 	if search_string == "":
-		return array_to_filer_again.duplicate() # TODO not this
+		return array_to_filer_again.duplicate()
 
 	var result : Array[Plays] = []
-	for plays : Plays in array_to_filer_again: # TODO not this
+	for plays : Plays in array_to_filer_again:
 		if plays and plays.name.to_lower().begins_with(search_string.to_lower()):
 			result.append(plays)
 	return result

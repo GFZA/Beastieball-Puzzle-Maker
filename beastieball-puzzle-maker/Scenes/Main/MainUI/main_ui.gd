@@ -34,7 +34,8 @@ var load_file_access_web : FileAccessWeb = null
 var logo_acceptable_image_type: String = ".jpeg, .jpg, .png"
 
 var temp_pc_img_path : String = "C:/Users/MSII/Desktop"
-var temp_pc_res_path : String = "res://Autoloads/Resources/BoardData/"
+var temp_pc_res_path : String = "user://"
+var temp_byte_storing_path : String = "user://temporary_byte.res"
 
 @onready var back_button_container: MarginContainer = %BackButtonContainer
 @onready var back_button: Button = %BackButton
@@ -92,6 +93,10 @@ func _ready() -> void:
 		load_file_access_web = FileAccessWeb.new()
 		logo_file_access_web.loaded.connect(_on_logo_file_access_web_file_loaded)
 		load_file_access_web.loaded.connect(_on_load_file_access_web_file_loaded)
+		load_file_access_web.progress.connect(func(_a, _b): print("loading"))
+		load_file_access_web.error.connect(func(): print("error!"))
+		load_file_access_web.upload_cancelled.connect(func(): print("upload canceled!"))
+		load_file_access_web.load_started.connect(func(_a): print("load started!"))
 
 	else:
 		logo_select_dialog.root_subfolder = temp_pc_img_path
@@ -125,10 +130,6 @@ func reset() -> void:
 		menu.reset() # Not typed safe
 		if menu is BeastieMenu:
 			remove_menu(menu)
-	for key : TeamController.TeamPosition in left_beastie_menus.keys():
-		left_beastie_menus[key] = null
-	for key : TeamController.TeamPosition in right_beastie_menus.keys():
-		right_beastie_menus[key] = null
 	_on_back_button_pressed()
 
 
@@ -178,24 +179,33 @@ func show_field_effect_menu() -> void:
 func on_beastie_menu_requested(requested_beastie : Beastie, side : Global.MySide, team_pos : TeamController.TeamPosition) -> void:
 	var dict_to_check : Dictionary[TeamController.TeamPosition, BeastieMenu] = left_beastie_menus \
 															if side == Global.MySide.LEFT else right_beastie_menus
-	var menu : BeastieMenu = dict_to_check.get(team_pos)
-	if menu:
-		show_beastie_menu(menu)
-	else:
-		var new_menu : BeastieMenu = BEASTIE_MENU_SCENE.instantiate()
-		new_menu.beastie = requested_beastie
-		new_menu.side = side
-		new_menu.team_pos = team_pos
-		new_menu.board = board
-		menu_container.add_child(new_menu)
-		if new_menu.tab_container.is_tab_hidden(current_beastie_menu_tab) and current_beastie_menu_tab == 0:
-			new_menu.tab_container.current_tab = 1 # Sets Tab
+	if is_instance_valid(dict_to_check.get(team_pos)):
+		var menu : BeastieMenu = dict_to_check.get(team_pos)
+		if menu:
+			show_beastie_menu(menu)
 		else:
-			new_menu.tab_container.current_tab = current_beastie_menu_tab
-		new_menu.tab_container.tab_changed.connect(on_beastie_menu_tab_changed.bind(new_menu))
-		connect_for_new_beastie_menu_requested.emit(new_menu)
-		dict_to_check[team_pos] = new_menu
-		show_beastie_menu(new_menu)
+			make_new_beastie_menu(requested_beastie, side, team_pos)
+	else:
+		make_new_beastie_menu(requested_beastie, side, team_pos)
+
+
+func make_new_beastie_menu(requested_beastie : Beastie, side : Global.MySide, team_pos : TeamController.TeamPosition) -> void:
+	var dict_to_add : Dictionary[TeamController.TeamPosition, BeastieMenu] = left_beastie_menus \
+													if side == Global.MySide.LEFT else right_beastie_menus
+	var new_menu : BeastieMenu = BEASTIE_MENU_SCENE.instantiate()
+	new_menu.beastie = requested_beastie
+	new_menu.side = side
+	new_menu.team_pos = team_pos
+	new_menu.board = board
+	menu_container.add_child(new_menu)
+	if new_menu.tab_container.is_tab_hidden(current_beastie_menu_tab) and current_beastie_menu_tab == 0:
+		new_menu.tab_container.current_tab = 1 # Sets Tab
+	else:
+		new_menu.tab_container.current_tab = current_beastie_menu_tab
+	new_menu.tab_container.tab_changed.connect(on_beastie_menu_tab_changed.bind(new_menu))
+	connect_for_new_beastie_menu_requested.emit(new_menu)
+	dict_to_add[team_pos] = new_menu
+	show_beastie_menu(new_menu)
 
 
 func on_beastie_remove_requested(_requested_beastie : Beastie, side : Global.MySide, team_pos : TeamController.TeamPosition) -> void:
@@ -245,6 +255,18 @@ func on_beastie_menu_tab_changed(tab_index : int, current_menu : BeastieMenu) ->
 
 func _on_reset_board_pressed() -> void:
 	reset_board_requested.emit()
+
+
+func all_menu_load_data(board_data : BoardData) -> void:
+	for menu in menu_container.get_children():
+		if menu is BeastieMenu:
+			remove_menu(menu) # will get made again by TeamMenu when loading
+	overlay_menu.load_from_data(board_data)
+	your_team_menu.load_from_data(board_data)
+	opponent_team_menu.load_from_data(board_data)
+	field_effects_menu.load_from_data(board_data)
+	_on_back_button_pressed()
+	show_default_menu()
 
 
 #region Logo Dialog Handling
@@ -323,21 +345,35 @@ func _on_save_dialog_file_selected(path : String) -> void:
 #region Load JSON Handling
 func _on_load_json_button_pressed() -> void:
 	if Global.is_on_web:
-		load_file_access_web.open(logo_acceptable_image_type)
+		load_file_access_web.open(".res")
 	else:
 		load_file_dialog.popup_centered()
 
 # ----- Web -----
-func _on_load_file_access_web_file_loaded(_file_name : String, _file_type : String, _base64_data : String) -> void:
-	#var raw_data: PackedByteArray = Marshalls.base64_to_raw(base64_data)
-	#_raw_draw(file_type, raw_data)
-	# TODO: convert bytes to JSON
-	return
+func _on_load_file_access_web_file_loaded(_file_name : String, _file_type : String, base64_data : String) -> void:
+	var raw_data: PackedByteArray = Marshalls.base64_to_raw(base64_data)
+	var file := FileAccess.open(temp_byte_storing_path, FileAccess.WRITE)
+	if file and FileAccess.get_open_error() == OK:
+		file.store_buffer(raw_data)
+		file.close()
+
+		var data : BoardData = ResourceLoader.load(temp_byte_storing_path)
+		board_data_file_loaded.emit(data)
+
+		var dir := DirAccess.open("user://")
+		if dir:
+			var error = dir.remove(temp_byte_storing_path)
+			if error == OK:
+				print("Temporary byte file deleted successfully!")
+		else:
+			print("Error opening user directory")
+	else:
+		print("Failed to save temporary file for resource loading.")
 
 
 # ----- PC -----
 func _on_load_dialog_file_selected(path: String) -> void:
-	var data : Resource = ResourceLoader.load(path)
+	var data := ResourceLoader.load(path)
 	if not data:
 		push_error("Failed to load data: %s" % path)
 		return

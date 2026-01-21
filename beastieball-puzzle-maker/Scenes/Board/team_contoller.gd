@@ -3,7 +3,7 @@ class_name TeamController
 extends Node2D
 
 signal field_updated(pos_dict : Dictionary[Beastie.Position, Beastie])
-signal field_effects_updated(field_dict : Dictionary[FieldEffect.Type, int])
+signal field_effects_updated(field_dict : Dictionary)
 signal beastie_menu_requested(requested_beastie : Beastie, side : Global.MySide, team_pos : TeamController.TeamPosition)
 signal beastie_remove_requested(requested_beastie : Beastie, side : Global.MySide, team_pos : TeamController.TeamPosition)
 
@@ -22,7 +22,7 @@ const PLAYS_UI_CONTAINER_SCENE : PackedScene = preload("uid://dksxc3rs20kkc")
 		current_score = value
 		_update_field()
 
-@export var my_field_effects : Dictionary[FieldEffect.Type, int] = {} :
+@export var my_field_effects : Dictionary = {} :
 	set(value):
 		value.sort()
 		my_field_effects = value
@@ -466,6 +466,18 @@ func on_beastie_ball_change_requested(team_pos : TeamController.TeamPosition, ha
 			push_error("Bench Beasties somehow requested to have ball!")
 
 
+func on_beastie_show_play_requested(team_pos : TeamController.TeamPosition, show_play : bool) -> void:
+	match team_pos:
+		TeamController.TeamPosition.FIELD_1:
+			beastie_1_show_play = show_play
+		TeamController.TeamPosition.FIELD_2:
+			beastie_2_show_play = show_play
+		TeamController.TeamPosition.BENCH_1:
+			bench_beastie_1_show_play = show_play
+		TeamController.TeamPosition.BENCH_2:
+			bench_beastie_2_show_play = show_play
+
+
 func on_beastie_show_bench_damage_requested(team_pos : TeamController.TeamPosition, show_bench_damage : bool) -> void:
 	match team_pos:
 		TeamController.TeamPosition.FIELD_1:
@@ -532,7 +544,7 @@ func reset_bench_beastie_2() -> void:
 # Exclusive to Right TeamController
 # Use to copy RALLY and DREAD from right's my_field_effects
 # as these will always be the samw between the two
-func copy_middle_field_effects_from_another_controller(another_team_dict : Dictionary[FieldEffect.Type, int]) -> void:
+func copy_middle_field_effects_from_another_controller(another_team_dict : Dictionary) -> void:
 	if another_team_dict.has(FieldEffect.Type.RALLY):
 		var rally_stack : int = another_team_dict.get(FieldEffect.Type.RALLY)
 		my_field_effects[FieldEffect.Type.RALLY] = rally_stack
@@ -674,57 +686,56 @@ func on_barrier_lower_stacked_changed(new_stack : int) -> void:
 
 #endregion
 
-#region Save System
 
-# Behold the worse ssavd/load system ever
-# TODO make this better. Maybe using JSON?
+func add_data_to_save(board_data : BoardData) -> void:
+	var dict_to_add : Dictionary = board_data.left_team_dict if side == Global.MySide.LEFT else board_data.right_team_dict
+	dict_to_add["field_effects"] = my_field_effects
 
-func get_data_to_save() -> Array:
-	return [
-		beastie_1_beastie,
-		beastie_1_position,
-		beastie_1_show_play,
-		beastie_1_have_ball,
-		beastie_1_ball_type,
-		beastie_1_h_allign,
+	dict_to_add["beastie_1_beastie"] = beastie_1_beastie.duplicate() if beastie_1_beastie else null
+	dict_to_add["beastie_1_position"] = beastie_1_position
+	dict_to_add["beastie_1_show_play"] = beastie_1_show_play
+	dict_to_add["beastie_1_have_ball"] = beastie_1_have_ball
+	dict_to_add["beastie_1_ball_type"] = beastie_1_ball_type
+	dict_to_add["beastie_1_h_allign"] = beastie_1_h_allign
 
-		beastie_2_beastie,
-		beastie_2_position,
-		beastie_2_show_play,
-		beastie_2_have_ball,
-		beastie_2_ball_type,
-		beastie_2_h_allign,
+	dict_to_add["beastie_2_beastie"] = beastie_2_beastie.duplicate() if beastie_2_beastie else null
+	dict_to_add["beastie_2_position"] = beastie_2_position
+	dict_to_add["beastie_2_show_play"] = beastie_2_show_play
+	dict_to_add["beastie_2_have_ball"] = beastie_2_have_ball
+	dict_to_add["beastie_2_ball_type"] = beastie_2_ball_type
+	dict_to_add["beastie_2_h_allign"] = beastie_2_h_allign
 
-		bench_beastie_1_beastie,
-		bench_beastie_1_show_play,
-		bench_beastie_1_h_allign,
+	dict_to_add["bench_beastie_1_beastie"] = bench_beastie_1_beastie.duplicate() if bench_beastie_1_beastie else null
+	dict_to_add["bench_beastie_1_show_play"] = bench_beastie_1_show_play
+	dict_to_add["bench_beastie_1_h_allign"] = bench_beastie_1_h_allign
 
-		bench_beastie_2_beastie,
-		bench_beastie_2_show_play,
-		bench_beastie_2_h_allign,
-	]
+	dict_to_add["bench_beastie_2_beastie"] = bench_beastie_2_beastie.duplicate() if bench_beastie_2_beastie else null
+	dict_to_add["bench_beastie_2_show_play"] = bench_beastie_2_show_play
+	dict_to_add["bench_beastie_2_h_allign"] = bench_beastie_2_h_allign
 
-func load_data_from_save(data_array : Array) -> void:
-	beastie_1_beastie = data_array[0]
-	beastie_1_position = data_array[1]
-	beastie_1_show_play = data_array[2]
-	beastie_1_have_ball = data_array[3]
-	beastie_1_ball_type = data_array[4]
-	beastie_1_h_allign = data_array[5]
 
-	beastie_2_beastie = data_array[6]
-	beastie_2_position = data_array[7]
-	beastie_2_show_play = data_array[8]
-	beastie_2_have_ball = data_array[9]
-	beastie_2_ball_type = data_array[10]
-	beastie_2_h_allign = data_array[11]
+func load_data_from_save(board_data : BoardData) -> void:
+	var dict_to_load : Dictionary = board_data.left_team_dict if side == Global.MySide.LEFT else board_data.right_team_dict
+	my_field_effects = dict_to_load["field_effects"]
 
-	bench_beastie_1_beastie = data_array[12]
-	bench_beastie_1_show_play = data_array[13]
-	bench_beastie_1_h_allign = data_array[14]
+	beastie_1_beastie = dict_to_load["beastie_1_beastie"]
+	beastie_1_position = dict_to_load["beastie_1_position"]
+	beastie_1_show_play = dict_to_load["beastie_1_show_play"]
+	beastie_1_have_ball = dict_to_load["beastie_1_have_ball"]
+	beastie_1_ball_type = dict_to_load["beastie_1_ball_type"]
+	beastie_1_h_allign = dict_to_load["beastie_1_h_allign"]
 
-	bench_beastie_2_beastie = data_array[15]
-	bench_beastie_2_show_play = data_array[16]
-	bench_beastie_2_h_allign = data_array[17]
+	beastie_2_beastie = dict_to_load["beastie_2_beastie"]
+	beastie_2_position = dict_to_load["beastie_2_position"]
+	beastie_2_show_play = dict_to_load["beastie_2_show_play"]
+	beastie_2_have_ball = dict_to_load["beastie_2_have_ball"]
+	beastie_2_ball_type = dict_to_load["beastie_2_ball_type"]
+	beastie_2_h_allign = dict_to_load["beastie_2_h_allign"]
 
-#endregion
+	bench_beastie_1_beastie = dict_to_load["bench_beastie_1_beastie"]
+	bench_beastie_1_show_play = dict_to_load["bench_beastie_1_show_play"]
+	bench_beastie_1_h_allign = dict_to_load["bench_beastie_1_h_allign"]
+
+	bench_beastie_2_beastie = dict_to_load["bench_beastie_2_beastie"]
+	bench_beastie_2_show_play = dict_to_load["bench_beastie_2_show_play"]
+	bench_beastie_2_h_allign = dict_to_load["bench_beastie_2_h_allign"]

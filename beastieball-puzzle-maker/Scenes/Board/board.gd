@@ -23,11 +23,11 @@ const TRAP_VISUALS_DICT : Dictionary[TrapStack, Array] = {
 ## IMPORTANT NOTE
 # RALLY and DREAD visuals will be determinated by left dict only
 # there should be codes to set both dict to have the same value of these anyway
-var left_field_effects_dict : Dictionary[FieldEffect.Type, int] = {} :
+var left_field_effects_dict : Dictionary = {} :
 	set(value):
 		left_field_effects_dict = value
 		_update_field_effect_visuals()
-var right_field_effects_dict : Dictionary[FieldEffect.Type, int] = {} :
+var right_field_effects_dict : Dictionary= {} :
 	set(value):
 		right_field_effects_dict = value
 		_update_field_effect_visuals()
@@ -75,11 +75,13 @@ var right_field_effects_dict : Dictionary[FieldEffect.Type, int] = {} :
 
 
 func _ready() -> void:
-	board_manager.left_team_controller.field_effects_updated.connect(func(field_dict : Dictionary[FieldEffect.Type, int]):
+	board_manager.board_overlay = board_overlay
+
+	board_manager.left_team_controller.field_effects_updated.connect(func(field_dict : Dictionary):
 		left_field_effects_dict = field_dict
 		_update_field_effect_visuals()
 	)
-	board_manager.right_team_controller.field_effects_updated.connect(func(field_dict : Dictionary[FieldEffect.Type, int]):
+	board_manager.right_team_controller.field_effects_updated.connect(func(field_dict : Dictionary):
 		right_field_effects_dict = field_dict
 		_update_field_effect_visuals()
 	)
@@ -95,7 +97,7 @@ func _update_field_effect_visuals() -> void:
 		# First loop -> Left side field effects
 		# Second loop -> Middle field effect USING LEFT DICT!!!
 		# Third loop -> Right side field effects
-		var field_dict : Dictionary[FieldEffect.Type, int] = left_field_effects_dict if i < 2 else right_field_effects_dict
+		var field_dict : Dictionary = left_field_effects_dict if i < 2 else right_field_effects_dict
 		for field_effect : FieldEffect.Type in field_dict:
 			var stack : int = field_dict[field_effect]
 			if stack <= 0:
@@ -137,7 +139,7 @@ func _update_field_effects_labels() -> void:
 		# First loop -> Left side field effects
 		# Second loop -> Middle field effect USING LEFT DICT!!!
 		# Third loop -> Right side field effects
-		var field_dict : Dictionary[FieldEffect.Type, int] = left_field_effects_dict if i < 2 else right_field_effects_dict
+		var field_dict : Dictionary = left_field_effects_dict if i < 2 else right_field_effects_dict
 		for field_effect : FieldEffect.Type in field_dict:
 			var stack : int = field_dict[field_effect]
 			if stack <= 0:
@@ -256,6 +258,19 @@ func on_turn_changed(new_turn : Turn) -> void:
 func reset() -> void:
 	for button in board_add_beastie_button_anchor.get_children():
 		button.show()
+
+
+func update_add_beastie_button() -> void:
+	var left_team : TeamController = board_manager.left_team_controller
+	left_upper_add_beastie_button.visible = (left_team.beastie_1_beastie == null)
+	left_lower_add_beastie_button.visible = (left_team.beastie_2_beastie == null)
+	left_upper_bench_add_beastie_button.visible = (left_team.bench_beastie_1_beastie == null)
+	left_lower_bench_add_beastie_button.visible = (left_team.bench_beastie_2_beastie == null)
+	var right_team : TeamController = board_manager.right_team_controller
+	right_upper_add_beastie_button.visible = (right_team.beastie_1_beastie == null)
+	right_lower_add_beastie_button.visible = (right_team.beastie_2_beastie == null)
+	right_upper_bench_add_beastie_button.visible = (right_team.bench_beastie_1_beastie == null)
+	right_lower_bench_add_beastie_button.visible = (right_team.bench_beastie_2_beastie == null)
 
 
 func save_image(path : String) -> void:

@@ -55,7 +55,6 @@ func _ready() -> void:
 	# Lower buttons Signals
 	main_ui.save_image_requested.connect(_on_save_image_requested)
 	main_ui.save_json_requested.connect(_on_save_json_requested)
-	#main_ui.load_json_requested.connect(_on_load_json_requested)
 	main_ui.board_data_file_loaded.connect(_on_board_data_file_loaded)
 	main_ui.reset_board_requested.connect(_on_reset_board_requested)
 
@@ -94,6 +93,7 @@ func _on_controller_reset_slot_requested(side : Global.MySide, team_pos : TeamCo
 func on_connect_for_new_beastie_menu_requested(beastie_menu : BeastieMenu) -> void:
 	beastie_menu.beastie_position_change_requested.connect(board.board_manager.on_beastie_position_change_requested)
 	beastie_menu.beastie_ball_change_requested.connect(board.board_manager.on_beastie_ball_change_requested)
+	beastie_menu.beastie_show_play_requested.connect(board.board_manager.on_beastie_show_play_requested)
 	beastie_menu.beastie_show_bench_damage_requested.connect(board.board_manager.on_beastie_show_bench_damage_requested)
 	beastie_menu.plays_select_ui_requested.connect(select_ui.show_plays_select_ui)
 	beastie_menu.trait_select_ui_requested.connect(select_ui.show_trait_select_ui)
@@ -141,26 +141,8 @@ func _on_save_json_requested(path : String) -> void:
 	saving_rect.hide()
 
 
-#func _on_load_json_requested() -> void:
-	#saving_rect.mouse_filter = Control.MOUSE_FILTER_STOP
-	#saving_label.text = "Loading..."
-	#saving_rect.show()
-#
-	## Cheap ass delay to make it looks good
-	#await get_tree().process_frame
-	#await get_tree().process_frame
-	#await get_tree().process_frame
-	#await get_tree().process_frame
-	#await get_tree().process_frame
-	#board.board_manager.load_board_data(temp_data)
-	#await board.board_manager.data_loaded
-#
-	#saving_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	#saving_label.text = ""
-	#saving_rect.hide()
-
-
 func _on_board_data_file_loaded(data : BoardData) -> void:
+	Global.resetting = true
 	saving_rect.mouse_filter = Control.MOUSE_FILTER_STOP
 	saving_label.text = "Loading..."
 	saving_rect.show()
@@ -172,11 +154,17 @@ func _on_board_data_file_loaded(data : BoardData) -> void:
 	await get_tree().process_frame
 	await get_tree().process_frame
 	board.board_manager.load_board_data(data)
+	main_ui.all_menu_load_data(data)
 	await board.board_manager.data_loaded
 
+	Global.resetting = false
 	saving_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	saving_label.text = ""
 	saving_rect.hide()
+
+	board.board_manager.left_team_controller._update_field()
+	board.board_manager.right_team_controller._update_field()
+	board.update_add_beastie_button()
 
 
 func _on_reset_board_requested() -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b6dv16yi6788v"]
+[gd_scene load_steps=7 format=3 uid="uid://b6dv16yi6788v"]
 
 [ext_resource type="Script" uid="uid://bihu2c3wmebr7" path="res://Scenes/Main/MainUI/overlay_menu.gd" id="1_bi854"]
 [ext_resource type="PackedScene" uid="uid://d1d26ob86bbom" path="res://Scenes/Main/MainUI/number_ui.tscn" id="2_bi854"]
@@ -10,8 +10,6 @@
 font = ExtResource("2_fybi0")
 font_size = 64
 font_color = Color(0, 0, 0, 1)
-
-[sub_resource type="ButtonGroup" id="ButtonGroup_hpi7e"]
 
 [node name="OverlayMenu" type="ScrollContainer"]
 custom_minimum_size = Vector2(805, 1494)
@@ -95,7 +93,6 @@ custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 theme = ExtResource("3_nobbd")
 toggle_mode = true
-button_group = SubResource("ButtonGroup_hpi7e")
 text = "Offense"
 
 [node name="ServeButton" type="Button" parent="MainContainer/CurrentTurn/CurrentTurnUpper"]
@@ -105,7 +102,6 @@ layout_mode = 2
 size_flags_horizontal = 8
 theme = ExtResource("3_nobbd")
 toggle_mode = true
-button_group = SubResource("ButtonGroup_hpi7e")
 text = "Serve"
 
 [node name="CurrentTurnLower" type="HBoxContainer" parent="MainContainer/CurrentTurn"]
@@ -120,7 +116,6 @@ custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 theme = ExtResource("3_nobbd")
 toggle_mode = true
-button_group = SubResource("ButtonGroup_hpi7e")
 text = "Defense"
 
 [node name="CServeButton" type="Button" parent="MainContainer/CurrentTurn/CurrentTurnLower"]
@@ -129,7 +124,6 @@ custom_minimum_size = Vector2(370, 0)
 layout_mode = 2
 theme = ExtResource("3_nobbd")
 toggle_mode = true
-button_group = SubResource("ButtonGroup_hpi7e")
 text = "CounterServe"
 
 [node name="OffenseActionContainer" type="HBoxContainer" parent="MainContainer"]

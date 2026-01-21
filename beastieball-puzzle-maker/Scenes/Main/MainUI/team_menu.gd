@@ -56,6 +56,27 @@ func reset() -> void:
 	scroll_vertical = 0
 
 
+func load_from_data(board_data : BoardData) -> void:
+	var dict_to_load : Dictionary = board_data.left_team_dict if side == Global.MySide.LEFT else board_data.right_team_dict
+
+	var loaded_beastie_1 : Beastie = dict_to_load.get("beastie_1_beastie")
+	if loaded_beastie_1:
+		member_one_slot_ui.on_beastie_selected(loaded_beastie_1, side, TeamController.TeamPosition.FIELD_1) # Cheessy but work
+
+	var loaded_beastie_2 : Beastie = dict_to_load.get("beastie_2_beastie")
+	if loaded_beastie_2:
+		member_two_slot_ui.on_beastie_selected(loaded_beastie_2, side, TeamController.TeamPosition.FIELD_2) # Cheessy but work
+
+	var loaded_bench_1 : Beastie = dict_to_load.get("bench_beastie_1_beastie")
+	if loaded_bench_1:
+		bench_one_ui.on_beastie_selected(loaded_bench_1, side, TeamController.TeamPosition.BENCH_1) # Cheessy but work
+
+	var loaded_bench_2 : Beastie = dict_to_load.get("bench_beastie_2_beastie")
+	if loaded_bench_2:
+		bench_two_ui.on_beastie_selected(loaded_bench_2, side, TeamController.TeamPosition.BENCH_2) # Cheessy but work
+
+
+#region Scrapped Swap Funcs
 #func _on_swap_up_requested(requester : AddBeastieUI) -> void:
 	#var adjacent_uis : Array[AddBeastieUI] = _get_adjacent_add_beastie_ui(requester)
 	#var upper_ui : AddBeastieUI = adjacent_uis.get(0)
@@ -85,15 +106,16 @@ func reset() -> void:
 		#lower_ui.my_beastie = beastie_1 # Swap
 		#lower_ui.update_visual_when_beastie()
 
-
-func _get_adjacent_add_beastie_ui(add_beastie_ui : AddBeastieUI) -> Array[AddBeastieUI]: # [Upper, Lower]
-	match add_beastie_ui:
-		member_one_slot_ui:
-			return [null, member_two_slot_ui]
-		member_two_slot_ui:
-			return [member_one_slot_ui, bench_one_ui]
-		bench_one_ui:
-			return [member_two_slot_ui, bench_two_ui]
-		bench_two_ui:
-			return [bench_one_ui, null]
-	return [] # Shouldn't happen
+#
+#func _get_adjacent_add_beastie_ui(add_beastie_ui : AddBeastieUI) -> Array[AddBeastieUI]: # [Upper, Lower]
+	#match add_beastie_ui:
+		#member_one_slot_ui:
+			#return [null, member_two_slot_ui]
+		#member_two_slot_ui:
+			#return [member_one_slot_ui, bench_one_ui]
+		#bench_one_ui:
+			#return [member_two_slot_ui, bench_two_ui]
+		#bench_two_ui:
+			#return [bench_one_ui, null]
+	#return [] # Shouldn't happen
+#endregion

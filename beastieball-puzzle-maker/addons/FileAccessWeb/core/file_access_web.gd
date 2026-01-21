@@ -73,57 +73,59 @@ func _on_file_cancelled(args: Array) -> void:
 
 const js_source_code = """
 function godotFileAccessWebStart() {
-	var loadedCallback;
-	var progressCallback;
-	var errorCallback;
-	var loadStartCallback;
-	var cancelledCallback;
+	let loadedCallback, progressCallback, errorCallback, loadStartCallback, cancelledCallback;
 
-	var input = document.createElement("input");
-	input.setAttribute("type", "file");
+	function openFileDialog(accept) {
+		const input = document.createElement("input");
+		input.type = "file";
+		if (accept) input.accept = accept;
 
-	var interface = {
-		setLoadedCallback: (loaded) => loadedCallback = loaded,
-		setProgressCallback: (progress) => progressCallback = progress,
-		setErrorCallback: (error) => errorCallback = error,
-		setLoadStartCallback: (start) => loadStartCallback = start,
-		setCancelledCallback: (cancelled) => cancelledCallback = cancelled,
-
-		setAcceptFiles: (files) => input.setAttribute("accept", files),
-		open: () => input.click()
-	}
-
-	input.onchange = (event) => {
-		var file = event.target.files[0];
-
-		var reader = new FileReader();
-		reader.readAsDataURL(file);
-
-		reader.onloadstart = (loadStartEvent) => {
-			loadStartCallback(file.name);
-		}
-
-		reader.onload = (readerEvent) => {
-			if (readerEvent.target.readyState === FileReader.DONE) {
-				loadedCallback(file.name, readerEvent.target.result);
+		input.onchange = (event) => {
+			if (!event.target.files || event.target.files.length === 0) {
+				cancelledCallback && cancelledCallback();
+				return;
 			}
-		}
 
-		reader.onprogress = (progressEvent) => {
-			if (progressEvent.lengthComputable)
-				progressCallback(progressEvent.loaded, progressEvent.total);
-		}
+			const file = event.target.files[0];
+			const reader = new FileReader();
 
-		reader.onerror = (errorEvent) => {
-			errorCallback();
-		}
+			reader.onloadstart = () => {
+				loadStartCallback && loadStartCallback(file.name);
+			};
+
+			reader.onload = () => {
+				loadedCallback && loadedCallback(file.name, reader.result);
+			};
+
+			reader.onprogress = (e) => {
+				if (e.lengthComputable) {
+					progressCallback && progressCallback(e.loaded, e.total);
+				}
+			};
+
+			reader.onerror = () => {
+				errorCallback && errorCallback();
+			};
+
+			reader.onabort = () => {
+				cancelledCallback && cancelledCallback();
+			};
+
+			reader.readAsDataURL(file); // or readAsArrayBuffer
+		};
+
+		input.click();
 	}
 
-	input.addEventListener('cancel', () => {
-		cancelledCallback();
-	});
-
-	return interface;
+	return {
+		setLoadedCallback: cb => loadedCallback = cb,
+		setProgressCallback: cb => progressCallback = cb,
+		setErrorCallback: cb => errorCallback = cb,
+		setLoadStartCallback: cb => loadStartCallback = cb,
+		setCancelledCallback: cb => cancelledCallback = cb,
+		setAcceptFiles: files => accept = files,
+		open: () => openFileDialog(accept)
+	};
 }
 
 var godotFileAccessWeb = godotFileAccessWebStart();

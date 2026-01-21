@@ -36,6 +36,7 @@ signal board_resetted
 			update_all_damage_indicator()
 		)
 
+var board_overlay : BoardOverlay
 var left_team_position_dict : Dictionary[Beastie.Position, Beastie] = {}
 var right_team_position_dict : Dictionary[Beastie.Position, Beastie] = {}
 
@@ -216,6 +217,11 @@ func on_beastie_ball_change_requested(side : Global.MySide, team_pos : TeamContr
 	controller.on_beastie_ball_change_requested(team_pos, have_ball, ball_type)
 
 
+func on_beastie_show_play_requested(side : Global.MySide, team_pos : TeamController.TeamPosition, show_play : bool) -> void:
+	var controller : TeamController = left_team_controller if side == Global.MySide.LEFT else right_team_controller
+	controller.on_beastie_show_play_requested(team_pos, show_play)
+
+
 func on_beastie_show_bench_damage_requested(side : Global.MySide, team_pos : TeamController.TeamPosition, show_bench_damage : bool) -> void:
 	var controller : TeamController = left_team_controller if side == Global.MySide.LEFT else right_team_controller
 	controller.on_beastie_show_bench_damage_requested(team_pos, show_bench_damage)
@@ -243,15 +249,50 @@ func on_controller_reset_slot_requested(side : Global.MySide, team_pos : TeamCon
 
 func save_board_data(path : String) -> void:
 	var board_data := BoardData.new()
-	board_data.data = [
-		left_team_controller.get_data_to_save(),
-		right_team_controller.get_data_to_save()
-	]
+	board_overlay.add_data_to_save(board_data)
+	left_team_controller.add_data_to_save(board_data)
+	right_team_controller.add_data_to_save(board_data)
+
+	#if Global.is_on_web:
+		#var raw : PackedByteArray = resource_to_bytes(board_data)
+		#JavaScriptBridge.download_buffer(raw, "puzzle.res")
+	#elif path != "":
+		#ResourceSaver.save(board_data, path)
+
 	if path != "":
 		ResourceSaver.save(board_data, path)
-	# TODO make it JSON then handle web download like save png
+
 	await get_tree().process_frame
 	data_saved.emit()
+
+
+#func resource_to_bytes(resource: Resource) -> PackedByteArray:
+	## Temporary save resource > get byte array > delete temporary resource
+	#var temp_path = "user://temp_resource.tres"
+	#var err = ResourceSaver.save(resource, temp_path)
+	#if err != OK:
+		#print("Error saving resource: ", err)
+		#return PackedByteArray()
+#
+	#var file = FileAccess.open(temp_path, FileAccess.READ)
+	#if FileAccess.get_open_error() != OK:
+		#print("Error opening file: ", FileAccess.get_open_error())
+		#return PackedByteArray()
+#
+	#var bytes = file.get_buffer(file.get_length())
+	#file.close()
+#
+	#var dir := DirAccess.open("user://")
+	#if dir:
+		#var error = dir.remove(temp_path)
+		#if error == OK:
+			#print("Temporary byte file deleted successfully!")
+	#else:
+		#print("Error opening user directory")
+#
+	#return bytes
+
+
 
 
 func load_board_data(board_data : BoardData) -> void:
@@ -260,9 +301,9 @@ func load_board_data(board_data : BoardData) -> void:
 		await get_tree().process_frame
 		data_loaded.emit()
 		return
-
-	left_team_controller.load_data_from_save(board_data.data[0])
-	right_team_controller.load_data_from_save(board_data.data[1])
+	board_overlay.load_data_from_save(board_data)
+	left_team_controller.load_data_from_save(board_data)
+	right_team_controller.load_data_from_save(board_data)
 	await get_tree().process_frame
 	data_loaded.emit()
 

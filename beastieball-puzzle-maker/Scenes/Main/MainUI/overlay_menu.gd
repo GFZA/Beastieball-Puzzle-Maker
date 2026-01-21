@@ -58,6 +58,17 @@ func _press_offense() -> void:
 	turn_changed.emit(Board.Turn.OFFENSE)
 
 
+func load_from_data(board_data : BoardData) -> void: # This will send data to update board overlay
+	max_point_number_ui.num = board_data.overlay_dict["max_point"]
+	your_points_number_ui.num = board_data.overlay_dict["your_point"]
+	opponent_points_number_ui.num = board_data.overlay_dict["opponent_point"]
+	_on_turn_changed(board_data.overlay_dict["current_turn"])
+	action_lefts_number_ui.num = board_data.overlay_dict["action_lefts"]
+	title_text_line_edit.text = board_data.overlay_dict["title_text"]
+	right_text_line_edit.text = board_data.overlay_dict["rigth_text"]
+	logo_remove_button.visible = board_data.overlay_dict["logo"] != null
+
+
 func reset() -> void:
 	max_point_number_ui.reset()
 	your_points_number_ui.reset()

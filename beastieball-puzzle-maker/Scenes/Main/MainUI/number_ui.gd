@@ -6,10 +6,8 @@ signal value_updated(value : int)
 
 @export_range(-99, 99) var num : int = 0 :
 	set(value):
-		var old_num : int = num
 		num = clamp(value, value_min, value_max)
-		if num != old_num:
-			_update_ui()
+		_update_ui()
 
 @export_range(-99, 99) var default : int = 0
 @export_range(-99, 99) var value_min : int = -99

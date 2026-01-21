@@ -196,3 +196,28 @@ func on_right_text_changed(new_text : String) -> void:
 
 func on_logo_changed(new_logo : Texture2D) -> void:
 	logo = new_logo
+
+
+func add_data_to_save(board_data : BoardData) -> void:
+	board_data.overlay_dict["max_point"] = max_score
+	board_data.overlay_dict["your_point"] = left_score
+	board_data.overlay_dict["opponent_point"] = right_score
+	board_data.overlay_dict["current_turn"] = turn
+	board_data.overlay_dict["action_lefts"] = offense_action_amount
+	board_data.overlay_dict["title_text"] = title_text
+	board_data.overlay_dict["rigth_text"] = misc_text
+	var img : Image = logo.get_image() if logo else null
+	board_data.overlay_dict["logo"] = img
+
+
+func load_data_from_save(board_data : BoardData) -> void:
+	max_score = board_data.overlay_dict["max_point"]
+	left_score = board_data.overlay_dict["your_point"]
+	right_score = board_data.overlay_dict["opponent_point"]
+	turn = board_data.overlay_dict["current_turn"]
+	offense_action_amount = board_data.overlay_dict["action_lefts"]
+	title_text = board_data.overlay_dict["title_text"]
+	misc_text = board_data.overlay_dict["rigth_text"]
+	var img : Image = board_data.overlay_dict["logo"]
+	var texture : Texture2D = ImageTexture.create_from_image(img) if img else null
+	logo = texture

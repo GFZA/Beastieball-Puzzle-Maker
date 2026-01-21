@@ -34,7 +34,7 @@
 [ext_resource type="FontFile" uid="uid://cvfib27cf5q88" path="res://Autoloads/Resources/Fonts/Go Banana.ttf" id="100_reu04"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_asnme"]
-paragraph_spacing = -8.0
+paragraph_spacing = -16.0
 font = ExtResource("100_reu04")
 font_size = 48
 font_color = Color(0, 0, 0, 1)
@@ -598,7 +598,6 @@ metadata/_edit_lock_ = true
 
 [node name="LeftFieldEffecstLabel" type="Label" parent="SubViewportContainer/SubViewport"]
 unique_name_in_owner = true
-visible = false
 custom_minimum_size = Vector2(250, 0)
 offset_left = 717.0
 offset_top = 1820.0
@@ -618,7 +617,6 @@ polygon = PackedVector2Array(-43, 0, -87, -192, 219, -192, 265, 0)
 
 [node name="MiddleFieldEffecstLabel" type="Label" parent="SubViewportContainer/SubViewport"]
 unique_name_in_owner = true
-visible = false
 custom_minimum_size = Vector2(250, 0)
 offset_left = 1229.0
 offset_top = 1849.0
@@ -638,7 +636,6 @@ polygon = PackedVector2Array(-43, 0, -77, -147, 230, -147, 265, 0)
 
 [node name="RightFieldEffecstLabel" type="Label" parent="SubViewportContainer/SubViewport"]
 unique_name_in_owner = true
-visible = false
 custom_minimum_size = Vector2(250, 0)
 offset_left = 1726.0
 offset_top = 1820.0
@@ -816,8 +813,3 @@ Bench"
 script = ExtResource("32_kxoq5")
 side = 1
 team_pos = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0

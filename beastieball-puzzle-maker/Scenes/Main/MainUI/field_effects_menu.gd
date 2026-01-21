@@ -66,6 +66,30 @@ func reset()	-> void:
 	scroll_vertical = 0
 
 
+func load_from_data(board_data : BoardData) -> void:
+	var left_dict : Dictionary = board_data.left_team_dict["field_effects"]
+	var right_dict : Dictionary = board_data.right_team_dict["field_effects"]
+
+	rally_number_ui.num = left_dict[FieldEffect.Type.RALLY] # Left dict determine both side
+	dread_number_ui.num = left_dict[FieldEffect.Type.DREAD] # Left dict determine both side
+
+	left_rhythm_number_ui.num = left_dict[FieldEffect.Type.RHYTHM]
+	left_trap_number_ui.num = left_dict[FieldEffect.Type.TRAP]
+	left_quake_number_ui.num = left_dict[FieldEffect.Type.QUAKE]
+	left_barrier_upper_number_ui.num = left_dict[FieldEffect.Type.BARRIER_UPPER] # Unused
+	left_barrier_lower_number_ui.num = left_dict[FieldEffect.Type.BARRIER_LOWER] # Unused
+	left_barrier_upper_check_box.button_pressed = left_dict[FieldEffect.Type.BARRIER_UPPER] > 0
+	left_barrier_lower_check_box.button_pressed = left_dict[FieldEffect.Type.BARRIER_LOWER] > 0
+
+	right_rhythm_number_ui.num = right_dict[FieldEffect.Type.RHYTHM]
+	right_trap_number_ui.num = right_dict[FieldEffect.Type.TRAP]
+	right_quake_number_ui.num = right_dict[FieldEffect.Type.QUAKE]
+	right_barrier_upper_number_ui.num = right_dict[FieldEffect.Type.BARRIER_UPPER] # Unused
+	right_barrier_lower_number_ui.num = right_dict[FieldEffect.Type.BARRIER_LOWER] # Unused
+	right_barrier_upper_check_box.button_pressed = right_dict[FieldEffect.Type.BARRIER_UPPER] > 0
+	right_barrier_lower_check_box.button_pressed = right_dict[FieldEffect.Type.BARRIER_LOWER] > 0
+
+
 func clear_both_side() -> void:
 	rally_number_ui.reset()
 	dread_number_ui.reset()
