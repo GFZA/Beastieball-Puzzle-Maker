@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=30 format=3 uid="uid://b4presmunba81"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=31 format=3 uid="uid://b4presmunba81"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_ijef1"]
 [ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Autoloads/Resources/Trait/trait.gd" id="2_hdk44"]
@@ -29,6 +29,7 @@
 [ext_resource type="Resource" uid="uid://du8cw84yk24oa" path="res://Autoloads/Resources/Plays/Support/teleport.tres" id="24_th1m8"]
 [ext_resource type="Resource" uid="uid://d3avpv87snvri" path="res://Autoloads/Resources/Plays/Defense/gloom.tres" id="25_rxmi0"]
 [ext_resource type="Resource" uid="uid://dytuvbvg3oamq" path="res://Autoloads/Resources/Plays/Defense/shield.tres" id="26_lky6w"]
+[ext_resource type="Texture2D" uid="uid://c3coheb4jjuu1" path="res://Autoloads/Resources/Beastie/Orgella/icon_orgella.png" id="30_2bkd2"]
 
 [resource]
 script = ExtResource("3_vq1k4")
@@ -52,7 +53,7 @@ sprites = Dictionary[int, Texture2D]({
 3: ExtResource("4_hdk44"),
 4: ExtResource("4_hdk44"),
 5: ExtResource("4_hdk44"),
-6: ExtResource("4_hdk44")
+6: ExtResource("30_2bkd2")
 })
 y_offset = -125
 ball_anchor_position_receive = Vector2(24, -166)

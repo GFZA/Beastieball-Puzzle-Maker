@@ -1,21 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://dptoj76e40ldo"]
+[gd_scene load_steps=5 format=3 uid="uid://dptoj76e40ldo"]
 
 [ext_resource type="Script" uid="uid://b6gsp5w62y6ff" path="res://Scenes/BeastieScene/beastie_scene.gd" id="1_n0vvo"]
-[ext_resource type="Resource" uid="uid://bp3tuc5b5rbly" path="res://Autoloads/Resources/Beastie/Varkabond/varkabond.tres" id="2_rja2e"]
+[ext_resource type="Texture2D" uid="uid://chctbds4hrdsq" path="res://Scenes/BeastieScene/placeholder_beastie.png" id="2_08dks"]
 [ext_resource type="Texture2D" uid="uid://78plds302l5" path="res://Scenes/BeastieScene/ball_no_effect.png" id="3_08dks"]
-[ext_resource type="Texture2D" uid="uid://bhysi1m2d0jeb" path="res://Autoloads/Resources/Beastie/Varkabond/varkabond_idle.png" id="3_rja2e"]
 [ext_resource type="Theme" uid="uid://v25nab4h4vdp" path="res://Autoloads/Resources/Themes/highlight_overlay.tres" id="5_h8epu"]
 
 [node name="BeastieScene" type="Node2D" groups=["beastie_scene"]]
 scale = Vector2(1.3, 1.3)
 script = ExtResource("1_n0vvo")
-beastie = ExtResource("2_rja2e")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(0, -187)
 scale = Vector2(0.4, 0.4)
-texture = ExtResource("3_rja2e")
+texture = ExtResource("2_08dks")
 flip_h = true
 
 [node name="RightFeelingsAnchor" type="Marker2D" parent="."]
@@ -59,4 +57,4 @@ focus_behavior_recursive = 1
 theme = ExtResource("5_h8epu")
 button_mask = 3
 text = "Edit
-Varkabond"
+Name"
