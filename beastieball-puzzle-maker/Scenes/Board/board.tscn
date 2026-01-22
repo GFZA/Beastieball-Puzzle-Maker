@@ -598,6 +598,7 @@ metadata/_edit_lock_ = true
 
 [node name="LeftFieldEffecstLabel" type="Label" parent="SubViewportContainer/SubViewport"]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(250, 0)
 offset_left = 717.0
 offset_top = 1820.0
@@ -617,6 +618,7 @@ polygon = PackedVector2Array(-43, 0, -87, -192, 219, -192, 265, 0)
 
 [node name="MiddleFieldEffecstLabel" type="Label" parent="SubViewportContainer/SubViewport"]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(250, 0)
 offset_left = 1229.0
 offset_top = 1849.0
@@ -636,6 +638,7 @@ polygon = PackedVector2Array(-43, 0, -77, -147, 230, -147, 265, 0)
 
 [node name="RightFieldEffecstLabel" type="Label" parent="SubViewportContainer/SubViewport"]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(250, 0)
 offset_left = 1726.0
 offset_top = 1820.0

@@ -19,6 +19,8 @@ extends Resource
 	"field_effects" : {},
 
 	"beastie_1_beastie" : null,
+	"beastie_1_first_slot_manually_activated" : false,
+	"beastie_1_trait_manually_activated" : false,
 	"beastie_1_position" : Beastie.Position.NOT_ASSIGNED,
 	"beastie_1_show_play" : false,
 	"beastie_1_have_ball" : false,
@@ -26,6 +28,8 @@ extends Resource
 	"beastie_1_h_allign" : HORIZONTAL_ALIGNMENT_CENTER,
 
 	"beastie_2_beastie" : null,
+	"beastie_2_first_slot_manually_activated" : false,
+	"beastie_2_trait_manually_activated" : false,
 	"beastie_2_position" : Beastie.Position.NOT_ASSIGNED,
 	"beastie_2_show_play" : false,
 	"beastie_2_have_ball" : false,
@@ -33,10 +37,14 @@ extends Resource
 	"beastie_2_h_allign" : HORIZONTAL_ALIGNMENT_CENTER,
 
 	"bench_beastie_1_beastie" : null,
+	"bench_beastie_1_first_slot_manually_activated" : false,
+	"bench_beastie_1_trait_manually_activated" : false,
 	"bench_beastie_1_show_play" : false,
 	"bench_beastie_1_h_allign" : HORIZONTAL_ALIGNMENT_CENTER,
 
 	"bench_beastie_2_beastie" : null,
+	"bench_beastie_2_first_slot_manually_activated" : false,
+	"bench_beastie_2_trait_manually_activated" : false,
 	"bench_beastie_2_show_play" : false,
 	"bench_beastie_2_h_allign" : HORIZONTAL_ALIGNMENT_CENTER,
 }

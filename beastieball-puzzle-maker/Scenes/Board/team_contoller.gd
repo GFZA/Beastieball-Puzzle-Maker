@@ -692,6 +692,11 @@ func add_data_to_save(board_data : BoardData) -> void:
 	dict_to_add["field_effects"] = my_field_effects
 
 	dict_to_add["beastie_1_beastie"] = beastie_1_beastie.duplicate() if beastie_1_beastie else null
+	if beastie_1_beastie:
+		var beastie_1_first_slot : Plays = beastie_1_beastie.my_plays.get(0)
+		if beastie_1_first_slot and beastie_1_first_slot is Attack:
+			dict_to_add["beastie_1_first_slot_manually_activated"] = beastie_1_first_slot.manually_activated
+		dict_to_add["beastie_1_trait_manually_activated"] = beastie_1_beastie.my_trait.manually_activated
 	dict_to_add["beastie_1_position"] = beastie_1_position
 	dict_to_add["beastie_1_show_play"] = beastie_1_show_play
 	dict_to_add["beastie_1_have_ball"] = beastie_1_have_ball
@@ -699,6 +704,11 @@ func add_data_to_save(board_data : BoardData) -> void:
 	dict_to_add["beastie_1_h_allign"] = beastie_1_h_allign
 
 	dict_to_add["beastie_2_beastie"] = beastie_2_beastie.duplicate() if beastie_2_beastie else null
+	if beastie_2_beastie:
+		var beastie_2_first_slot : Plays = beastie_2_beastie.my_plays.get(0)
+		if beastie_2_first_slot and beastie_2_first_slot is Attack:
+			dict_to_add["beastie_2_first_slot_manually_activated"] = beastie_2_first_slot.manually_activated
+		dict_to_add["beastie_2_trait_manually_activated"] = beastie_2_beastie.my_trait.manually_activated
 	dict_to_add["beastie_2_position"] = beastie_2_position
 	dict_to_add["beastie_2_show_play"] = beastie_2_show_play
 	dict_to_add["beastie_2_have_ball"] = beastie_2_have_ball
@@ -706,10 +716,20 @@ func add_data_to_save(board_data : BoardData) -> void:
 	dict_to_add["beastie_2_h_allign"] = beastie_2_h_allign
 
 	dict_to_add["bench_beastie_1_beastie"] = bench_beastie_1_beastie.duplicate() if bench_beastie_1_beastie else null
+	if bench_beastie_1_beastie:
+		var bench_1_first_slot : Plays = bench_beastie_1_beastie.my_plays.get(0)
+		if bench_1_first_slot and bench_1_first_slot is Attack:
+			dict_to_add["bench_beastie_1_first_slot_manually_activated"] = bench_1_first_slot.manually_activated
+		dict_to_add["bench_beastie_1_trait_manually_activated"] =bench_beastie_1_beastie.my_trait.manually_activated
 	dict_to_add["bench_beastie_1_show_play"] = bench_beastie_1_show_play
 	dict_to_add["bench_beastie_1_h_allign"] = bench_beastie_1_h_allign
 
 	dict_to_add["bench_beastie_2_beastie"] = bench_beastie_2_beastie.duplicate() if bench_beastie_2_beastie else null
+	if bench_beastie_2_beastie:
+		var bench_2_first_slot : Plays = bench_beastie_2_beastie.my_plays.get(0)
+		if bench_2_first_slot and bench_2_first_slot is Attack:
+			dict_to_add["bench_beastie_2_first_slot_manually_activated"] = bench_2_first_slot.manually_activated
+		dict_to_add["bench_beastie_2_trait_manually_activated"] = bench_beastie_2_beastie.my_trait.manually_activated
 	dict_to_add["bench_beastie_2_show_play"] = bench_beastie_2_show_play
 	dict_to_add["bench_beastie_2_h_allign"] = bench_beastie_2_h_allign
 
@@ -719,6 +739,11 @@ func load_data_from_save(board_data : BoardData) -> void:
 	my_field_effects = dict_to_load["field_effects"]
 
 	beastie_1_beastie = dict_to_load["beastie_1_beastie"]
+	if beastie_1_beastie:
+		var beastie_1_first_slot : Plays = beastie_1_beastie.my_plays.get(0)
+		if beastie_1_first_slot and beastie_1_first_slot is Attack:
+			beastie_1_first_slot.manually_activated = dict_to_load["beastie_1_first_slot_manually_activated"]
+		beastie_1_beastie.my_trait.manually_activated = dict_to_load["beastie_1_trait_manually_activated"]
 	beastie_1_position = dict_to_load["beastie_1_position"]
 	beastie_1_show_play = dict_to_load["beastie_1_show_play"]
 	beastie_1_have_ball = dict_to_load["beastie_1_have_ball"]
@@ -726,6 +751,11 @@ func load_data_from_save(board_data : BoardData) -> void:
 	beastie_1_h_allign = dict_to_load["beastie_1_h_allign"]
 
 	beastie_2_beastie = dict_to_load["beastie_2_beastie"]
+	if beastie_2_beastie:
+		var beastie_2_first_slot : Plays = beastie_2_beastie.my_plays.get(0)
+		if beastie_2_first_slot and beastie_2_first_slot is Attack:
+			beastie_2_first_slot.manually_activated = dict_to_load["beastie_2_first_slot_manually_activated"]
+		beastie_2_beastie.my_trait.manually_activated = dict_to_load["beastie_2_trait_manually_activated"]
 	beastie_2_position = dict_to_load["beastie_2_position"]
 	beastie_2_show_play = dict_to_load["beastie_2_show_play"]
 	beastie_2_have_ball = dict_to_load["beastie_2_have_ball"]
@@ -733,9 +763,19 @@ func load_data_from_save(board_data : BoardData) -> void:
 	beastie_2_h_allign = dict_to_load["beastie_2_h_allign"]
 
 	bench_beastie_1_beastie = dict_to_load["bench_beastie_1_beastie"]
+	if bench_beastie_1_beastie:
+		var bench_1_first_slot : Plays = bench_beastie_1_beastie.my_plays.get(0)
+		if bench_1_first_slot and bench_1_first_slot is Attack:
+			bench_1_first_slot.manually_activated = dict_to_load["bench_beastie_1_first_slot_manually_activated"]
+		bench_beastie_1_beastie.my_trait.manually_activated = dict_to_load["bench_beastie_1_trait_manually_activated"]
 	bench_beastie_1_show_play = dict_to_load["bench_beastie_1_show_play"]
 	bench_beastie_1_h_allign = dict_to_load["bench_beastie_1_h_allign"]
 
 	bench_beastie_2_beastie = dict_to_load["bench_beastie_2_beastie"]
+	if bench_beastie_2_beastie:
+		var bench_2_first_slot : Plays = bench_beastie_2_beastie.my_plays.get(0)
+		if bench_2_first_slot and bench_2_first_slot is Attack:
+			bench_2_first_slot.manually_activated = dict_to_load["bench_beastie_2_first_slot_manually_activated"]
+		bench_beastie_2_beastie.my_trait.manually_activated = dict_to_load["bench_beastie_2_trait_manually_activated"]
 	bench_beastie_2_show_play = dict_to_load["bench_beastie_2_show_play"]
 	bench_beastie_2_h_allign = dict_to_load["bench_beastie_2_h_allign"]

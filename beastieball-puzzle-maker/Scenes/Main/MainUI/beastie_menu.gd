@@ -235,10 +235,6 @@ func _load_sets_tab() -> void:
 	show_bench_damage_container.visible = not beastie.is_really_at_bench
 	var team_controller : TeamController = board.board_manager.left_team_controller if side == Global.MySide.LEFT else \
 	 									board.board_manager.right_team_controller
-	var plays_ui_container : PlaysUIContainer = team_controller.plays_ui_container_dict.get(beastie) # Cheesy access this shuld-be-private dict...
-	if plays_ui_container:
-		show_play_check_box.button_pressed = plays_ui_container.visible
-		show_bench_damage_check_box.button_pressed = plays_ui_container.show_bench_damage
 
 	trait_1_button.text = beastie.possible_traits[0].name
 	if beastie.possible_traits.size() == 1: # Out of index
@@ -249,6 +245,12 @@ func _load_sets_tab() -> void:
 
 	trait_condition_container.visible = beastie.my_trait.need_to_be_manually_activated
 	trait_condition_check_box.button_pressed = beastie.my_trait.manually_activated
+
+	await get_tree().process_frame # Cheese Delay, wait for play_ui_container to exist
+	var plays_ui_container : PlaysUIContainer = team_controller.plays_ui_container_dict.get(beastie) # Cheesy access this shuld-be-private dict...
+	if plays_ui_container:
+		show_play_check_box.button_pressed = plays_ui_container.visible
+		show_bench_damage_check_box.button_pressed = plays_ui_container.show_bench_damage
 
 
 func _load_feelings_tab() -> void:

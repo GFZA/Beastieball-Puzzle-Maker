@@ -34,7 +34,7 @@ var load_file_access_web : FileAccessWeb = null
 var logo_acceptable_image_type: String = ".jpeg, .jpg, .png"
 
 var temp_pc_img_path : String = "C:/Users/MSII/Desktop"
-var temp_pc_res_path : String = "user://"
+var temp_pc_res_path : String = "res://Autoloads/Resources/BoardData/"
 var temp_byte_storing_path : String = "user://temporary_byte.res"
 
 @onready var back_button_container: MarginContainer = %BackButtonContainer
