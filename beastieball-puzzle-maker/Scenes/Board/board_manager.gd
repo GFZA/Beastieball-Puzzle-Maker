@@ -253,13 +253,20 @@ func save_board_data(path : String) -> void:
 	left_team_controller.add_data_to_save(board_data)
 	right_team_controller.add_data_to_save(board_data)
 
-	#if Global.is_on_web:
-		#var raw : PackedByteArray = resource_to_bytes(board_data)
-		#JavaScriptBridge.download_buffer(raw, "puzzle.res")
-	#elif path != "":
-		#ResourceSaver.save(board_data, path)
-
-	if path != "":
+	if Global.is_on_web:
+		# Temporary save resource, send it as bytes, then remove the temporary file
+		path = "user://temporary_save_byte.res"
+		ResourceSaver.save(board_data, path)
+		JavaScriptBridge.download_buffer(FileAccess.get_file_as_bytes(path), "puzzle.res")
+		# Remove the temporary file
+		var dir := DirAccess.open("user://")
+		if dir:
+			var error = dir.remove(path)
+			if error == OK:
+				print("Temporary byte file deleted successfully!")
+		else:
+			print("Error opening user directory")
+	else:
 		ResourceSaver.save(board_data, path)
 
 	await get_tree().process_frame

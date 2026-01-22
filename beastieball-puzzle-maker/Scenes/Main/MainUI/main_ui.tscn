@@ -174,7 +174,7 @@ theme_override_constants/h_separation = 4
 theme_override_constants/icon_max_width = 85
 theme_override_constants/line_spacing = -8
 text = "Save
-JSON"
+RES"
 icon = ExtResource("6_gu5vi")
 expand_icon = true
 
@@ -189,7 +189,7 @@ theme_override_constants/h_separation = 4
 theme_override_constants/icon_max_width = 85
 theme_override_constants/line_spacing = -8
 text = "Load
-JSON"
+RES"
 icon = ExtResource("7_bgm7v")
 expand_icon = true
 
@@ -260,6 +260,7 @@ oversampling_override = 1.0
 title = "Open a File"
 initial_position = 2
 file_mode = 0
+access = 1
 filters = PackedStringArray("*.res")
 use_native_dialog = true
 
@@ -267,6 +268,7 @@ use_native_dialog = true
 unique_name_in_owner = true
 oversampling_override = 1.0
 initial_position = 2
+access = 1
 filters = PackedStringArray("*.res")
 use_native_dialog = true
 

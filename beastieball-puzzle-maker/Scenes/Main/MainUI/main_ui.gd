@@ -33,8 +33,8 @@ var load_file_access_web : FileAccessWeb = null
 
 var logo_acceptable_image_type: String = ".jpeg, .jpg, .png"
 
-var temp_pc_img_path : String = "C:/Users/MSII/Desktop"
-var temp_pc_res_path : String = "res://Autoloads/Resources/BoardData/"
+var temp_pc_img_path : String = "C:/"
+var temp_pc_res_path : String = "user://"
 var temp_byte_storing_path : String = "user://temporary_byte.res"
 
 @onready var back_button_container: MarginContainer = %BackButtonContainer
@@ -245,6 +245,8 @@ func on_beastie_menu_tab_changed(tab_index : int, current_menu : BeastieMenu) ->
 		var dict : Dictionary[TeamController.TeamPosition, BeastieMenu] = left_beastie_menus \
 															if i == 0 else right_beastie_menus
 		for key : TeamController.TeamPosition in dict.keys():
+			if not is_instance_valid(dict.get(key)):
+				continue
 			var menu : BeastieMenu = dict.get(key)
 			if menu:
 				if menu.tab_container.is_tab_hidden(current_beastie_menu_tab) and current_beastie_menu_tab == 0:
