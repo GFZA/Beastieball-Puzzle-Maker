@@ -60,5 +60,6 @@ sprites = Dictionary[int, Texture2D]({
 5: ExtResource("9_ukcov"),
 6: ExtResource("35_eo6o0")
 })
-ball_anchor_position = Vector2(-58, -145)
+ball_anchor_position_receive = Vector2(-58, -142)
+ball_anchor_position_ready = Vector2(55, -157)
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"

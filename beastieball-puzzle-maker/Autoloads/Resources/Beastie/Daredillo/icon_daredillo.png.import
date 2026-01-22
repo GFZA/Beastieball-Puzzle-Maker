@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rtvfc88bxswd"
-path="res://.godot/imported/platy_good.png-d5e86b35fbdc9e3c0a9caa7a185aa8e9.ctex"
+uid="uid://cyijt1r2k7phs"
+path="res://.godot/imported/icon_daredillo.png-17a49d60a290531f2fe476b7557c3d03.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Autoloads/Resources/Beastie/Platypulse/platy_good.png"
-dest_files=["res://.godot/imported/platy_good.png-d5e86b35fbdc9e3c0a9caa7a185aa8e9.ctex"]
+source_file="res://Autoloads/Resources/Beastie/Daredillo/icon_daredillo.png"
+dest_files=["res://.godot/imported/icon_daredillo.png-17a49d60a290531f2fe476b7557c3d03.ctex"]
 
 [params]
 

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=39 format=3 uid="uid://brqpylw32rqlp"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=40 format=3 uid="uid://brqpylw32rqlp"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_ty0be"]
 [ext_resource type="Resource" uid="uid://b7gdw1agdp5jo" path="res://Autoloads/Resources/Trait/forager.tres" id="2_1rt6r"]
@@ -38,6 +38,7 @@
 [ext_resource type="Resource" uid="uid://b5ox8jsftfp33" path="res://Autoloads/Resources/Plays/Defense/mighty_yell.tres" id="27_ge01k"]
 [ext_resource type="Resource" uid="uid://vrgoi8jwdlq1" path="res://Autoloads/Resources/Plays/Defense/patience.tres" id="28_yuji7"]
 [ext_resource type="Resource" uid="uid://dytuvbvg3oamq" path="res://Autoloads/Resources/Plays/Defense/shield.tres" id="29_1pdu7"]
+[ext_resource type="Texture2D" uid="uid://bop7sqeqcogaa" path="res://Autoloads/Resources/Beastie/Superilo/icon_supilero.png" id="39_06tqj"]
 
 [resource]
 script = ExtResource("3_u4l1h")
@@ -60,6 +61,9 @@ sprites = Dictionary[int, Texture2D]({
 2: ExtResource("6_ke7xh"),
 3: ExtResource("7_chgmy"),
 4: ExtResource("8_228n3"),
-5: ExtResource("9_15kca")
+5: ExtResource("9_15kca"),
+6: ExtResource("39_06tqj")
 })
+ball_anchor_position_receive = Vector2(65, -68)
+ball_anchor_position_ready = Vector2(74, -100)
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"

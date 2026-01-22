@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=39 format=3 uid="uid://bgpl4atiaqssh"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=40 format=3 uid="uid://bgpl4atiaqssh"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_e3v75"]
 [ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Autoloads/Resources/Trait/trait.gd" id="2_ad7c4"]
@@ -38,6 +38,7 @@
 [ext_resource type="Resource" uid="uid://vrgoi8jwdlq1" path="res://Autoloads/Resources/Plays/Defense/patience.tres" id="28_1byay"]
 [ext_resource type="Resource" uid="uid://dytuvbvg3oamq" path="res://Autoloads/Resources/Plays/Defense/shield.tres" id="29_4q5wl"]
 [ext_resource type="Resource" uid="uid://iuquitr1xs5u" path="res://Autoloads/Resources/Plays/Defense/staredown.tres" id="30_emmit"]
+[ext_resource type="Texture2D" uid="uid://c423r10svyi6l" path="res://Autoloads/Resources/Beastie/Mistic/icon_mistic.png" id="39_l2axt"]
 
 [resource]
 script = ExtResource("3_6nk6x")
@@ -60,8 +61,10 @@ sprites = Dictionary[int, Texture2D]({
 2: ExtResource("7_cpswo"),
 3: ExtResource("8_721uo"),
 4: ExtResource("9_ghbc2"),
-5: ExtResource("10_lrqlm")
+5: ExtResource("10_lrqlm"),
+6: ExtResource("39_l2axt")
 })
 y_offset = -50
-ball_anchor_position = Vector2(53, -110)
+ball_anchor_position_receive = Vector2(53, -125)
+ball_anchor_position_ready = Vector2(56, -240)
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"

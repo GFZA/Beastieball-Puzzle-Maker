@@ -102,7 +102,8 @@ signal health_updated(health : int)
 	Sprite.ICON : null,
 }
 @export var y_offset : int = 0
-@export var ball_anchor_position : Vector2 = Vector2.ZERO # When the beastie s facing LEFT
+@export var ball_anchor_position_receive : Vector2 = Vector2.ZERO # When the beastie s facing LEFT
+@export var ball_anchor_position_ready : Vector2 = Vector2.ZERO # When the beastie s facing LEFT
 
 var my_side : Global.MySide = Global.MySide.LEFT
 var my_field_position : Position = Position.NOT_ASSIGNED

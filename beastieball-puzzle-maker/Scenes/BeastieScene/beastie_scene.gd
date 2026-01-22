@@ -49,7 +49,6 @@ const BALL_SPRITE_RIGHT_OFFSET : Vector2 = Vector2(-119.0, -90.0)
 		beastie = value # Not duplicate so it's the same as TeamContoller's one
 		if not beastie.current_feelings_updated.is_connected(_update_sprite_pose):
 			beastie.current_feelings_updated.connect(_update_sprite_pose.unbind(1))
-		_set_ball_anchor_position(beastie.ball_anchor_position)
 
 		if not my_healthbar:
 			var new_healthbar : Healthbar = HEALTHBAR_SCENE.instantiate()
@@ -181,9 +180,7 @@ func _update_side(new_side : Global.MySide) -> void:
 		await ready
 	var is_left : bool = (new_side == Global.MySide.LEFT)
 	sprite_2d.flip_h = is_left
-	ball_sprite.flip_h = is_left
-	_set_ball_anchor_position(beastie.ball_anchor_position)
-	ball_sprite.offset = BALL_SPRITE_LEFT_OFFSET if is_left else BALL_SPRITE_RIGHT_OFFSET
+	_update_ball()
 	if my_feelings_cloud:
 		var new_parent : Marker2D = left_feelings_anchor if is_left else right_feelings_anchor
 		my_feelings_cloud.reparent(new_parent)
@@ -195,16 +192,22 @@ func _update_side(new_side : Global.MySide) -> void:
 func _update_ball() -> void:
 	if not is_node_ready():
 		await ready
+	if not beastie:
+		return
+	ball_anchor.position = Vector2.ZERO
 	ball_sprite.hide()
 
 	if have_ball:
+		var is_left : bool = (my_side == Global.MySide.LEFT)
+		if ball_type == BallType.EASY_RECEIVE:
+			var ready_pos : Vector2 = beastie.ball_anchor_position_ready
+			ball_anchor.position = ready_pos if is_left else ready_pos.reflect(Vector2.UP)
+		else:
+			var receive_pos : Vector2 = beastie.ball_anchor_position_receive
+			ball_anchor.position = receive_pos if is_left else receive_pos.reflect(Vector2.UP)
+		ball_sprite.flip_h = is_left
+		ball_sprite.offset = BALL_SPRITE_LEFT_OFFSET if is_left else BALL_SPRITE_RIGHT_OFFSET
 		ball_sprite.texture = BALL_TEXTURES.get(ball_type)
 		ball_sprite.show()
+
 	_update_sprite_pose()
-
-
-func _set_ball_anchor_position(ball_anchor_position : Vector2) -> void:
-	if my_side == Global.MySide.RIGHT:
-		ball_anchor.position = ball_anchor_position.reflect(Vector2.UP)
-	else:
-		ball_anchor.position = ball_anchor_position

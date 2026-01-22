@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=42 format=3 uid="uid://br8ydf6rjufy5"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=43 format=3 uid="uid://br8ydf6rjufy5"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_ncnhv"]
 [ext_resource type="Resource" uid="uid://dvtuxsee70dv" path="res://Autoloads/Resources/Trait/scary_face.tres" id="2_dv7o2"]
@@ -41,6 +41,7 @@
 [ext_resource type="Resource" uid="uid://dytuvbvg3oamq" path="res://Autoloads/Resources/Plays/Defense/shield.tres" id="31_hkk3c"]
 [ext_resource type="Resource" uid="uid://iuquitr1xs5u" path="res://Autoloads/Resources/Plays/Defense/staredown.tres" id="32_iogsd"]
 [ext_resource type="Resource" uid="uid://bw81mewmnxism" path="res://Autoloads/Resources/Plays/Defense/upsetting_comment.tres" id="33_wr2x7"]
+[ext_resource type="Texture2D" uid="uid://cchcj86ry4ycf" path="res://Autoloads/Resources/Beastie/Grazada/icon_grazada.png" id="42_165s2"]
 
 [resource]
 script = ExtResource("3_yr6yw")
@@ -63,7 +64,9 @@ sprites = Dictionary[int, Texture2D]({
 2: ExtResource("7_dra27"),
 3: ExtResource("8_xylax"),
 4: ExtResource("9_sucfj"),
-5: ExtResource("10_pviop")
+5: ExtResource("10_pviop"),
+6: ExtResource("42_165s2")
 })
-ball_anchor_position = Vector2(46, -30)
+ball_anchor_position_receive = Vector2(51, -32)
+ball_anchor_position_ready = Vector2(46, -108)
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"

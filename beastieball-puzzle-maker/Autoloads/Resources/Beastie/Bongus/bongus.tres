@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=42 format=3 uid="uid://dct3g7r10hqgm"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=43 format=3 uid="uid://dct3g7r10hqgm"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_gb7fw"]
 [ext_resource type="Resource" uid="uid://cfgduxn21ajws" path="res://Autoloads/Resources/Trait/flow.tres" id="2_7aof5"]
@@ -41,6 +41,7 @@
 [ext_resource type="Resource" uid="uid://tc6ag84sawpl" path="res://Autoloads/Resources/Plays/Support/tough_front.tres" id="30_42cxa"]
 [ext_resource type="Resource" uid="uid://l57ggke2vhn0" path="res://Autoloads/Resources/Plays/Defense/heat_up.tres" id="31_bg0lw"]
 [ext_resource type="Resource" uid="uid://dyyf4roekh4n8" path="res://Autoloads/Resources/Plays/Defense/torch_pass.tres" id="32_qftia"]
+[ext_resource type="Texture2D" uid="uid://ccnl0kg2xftdh" path="res://Autoloads/Resources/Beastie/Bongus/icon_bongus.png" id="42_fev4y"]
 
 [resource]
 script = ExtResource("3_r8gm2")
@@ -63,6 +64,9 @@ sprites = Dictionary[int, Texture2D]({
 2: ExtResource("6_7aof5"),
 3: ExtResource("7_0xy4c"),
 4: ExtResource("8_04fdc"),
-5: ExtResource("9_26igx")
+5: ExtResource("9_26igx"),
+6: ExtResource("42_fev4y")
 })
+ball_anchor_position_receive = Vector2(91, -128)
+ball_anchor_position_ready = Vector2(85, -142)
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"

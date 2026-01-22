@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=44 format=3 uid="uid://dr6dti4ow55uy"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=45 format=3 uid="uid://dr6dti4ow55uy"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_mjbct"]
 [ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Autoloads/Resources/Trait/trait.gd" id="2_c0oaa"]
@@ -43,6 +43,7 @@
 [ext_resource type="Resource" uid="uid://dj6kdtlk5w6rq" path="res://Autoloads/Resources/Plays/Defense/high_five.tres" id="33_5cm4a"]
 [ext_resource type="Resource" uid="uid://dytuvbvg3oamq" path="res://Autoloads/Resources/Plays/Defense/shield.tres" id="34_6flip"]
 [ext_resource type="Resource" uid="uid://cqyb3ky1ckijy" path="res://Autoloads/Resources/Trait/captain.tres" id="36_hwn4f"]
+[ext_resource type="Texture2D" uid="uid://cndc5ad53w1r" path="res://Autoloads/Resources/Beastie/Bandicraft/icon_bandicraft.png" id="44_u75hd"]
 
 [resource]
 script = ExtResource("3_xmliq")
@@ -65,7 +66,9 @@ sprites = Dictionary[int, Texture2D]({
 2: ExtResource("6_kkor3"),
 3: ExtResource("7_sjukr"),
 4: ExtResource("8_k08c3"),
-5: ExtResource("9_d2b2s")
+5: ExtResource("9_d2b2s"),
+6: ExtResource("44_u75hd")
 })
-ball_anchor_position = Vector2(91, -142)
+ball_anchor_position_receive = Vector2(46, -113)
+ball_anchor_position_ready = Vector2(82, -148)
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"

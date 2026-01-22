@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4yih02t6rn0m"
-path="res://.godot/imported/platy_ready.png-ce5ab85bafced49a39442f36dd56afe7.ctex"
+uid="uid://cchcj86ry4ycf"
+path="res://.godot/imported/icon_grazada.png-677a18eec29062bbeb2ac30b4617178a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Autoloads/Resources/Beastie/Platypulse/platy_ready.png"
-dest_files=["res://.godot/imported/platy_ready.png-ce5ab85bafced49a39442f36dd56afe7.ctex"]
+source_file="res://Autoloads/Resources/Beastie/Grazada/icon_grazada.png"
+dest_files=["res://.godot/imported/icon_grazada.png-677a18eec29062bbeb2ac30b4617178a.ctex"]
 
 [params]
 

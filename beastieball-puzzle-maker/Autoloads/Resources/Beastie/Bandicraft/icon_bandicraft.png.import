@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1qpjthn4vkw6"
-path="res://.godot/imported/platy_idle.png-f044e0323237a36acdd226d61ded039a.ctex"
+uid="uid://cndc5ad53w1r"
+path="res://.godot/imported/icon_bandicraft.png-75338fe67a66b39fc0da95f3a63477bb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Autoloads/Resources/Beastie/Platypulse/platy_idle.png"
-dest_files=["res://.godot/imported/platy_idle.png-f044e0323237a36acdd226d61ded039a.ctex"]
+source_file="res://Autoloads/Resources/Beastie/Bandicraft/icon_bandicraft.png"
+dest_files=["res://.godot/imported/icon_bandicraft.png-75338fe67a66b39fc0da95f3a63477bb.ctex"]
 
 [params]
 

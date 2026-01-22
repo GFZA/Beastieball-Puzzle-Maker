@@ -321,7 +321,7 @@ theme_override_constants/margin_bottom = 0
 
 [node name="MainContainer" type="VBoxContainer" parent="MarginContainer/ControlsAnchor"]
 layout_mode = 2
-theme_override_constants/separation = -4
+theme_override_constants/separation = -5
 
 [node name="UpperSpacer" type="Control" parent="MarginContainer/ControlsAnchor/MainContainer"]
 unique_name_in_owner = true

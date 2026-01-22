@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=39 format=3 uid="uid://j1047xxunjvs"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=40 format=3 uid="uid://j1047xxunjvs"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_73p0a"]
 [ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Autoloads/Resources/Trait/trait.gd" id="2_7ssa4"]
@@ -38,6 +38,7 @@
 [ext_resource type="Resource" uid="uid://ymdvl6wdoqws" path="res://Autoloads/Resources/Plays/Defense/hawkeye.tres" id="27_5kup2"]
 [ext_resource type="Resource" uid="uid://b5ox8jsftfp33" path="res://Autoloads/Resources/Plays/Defense/mighty_yell.tres" id="28_axeuw"]
 [ext_resource type="Resource" uid="uid://dytuvbvg3oamq" path="res://Autoloads/Resources/Plays/Defense/shield.tres" id="29_2kr42"]
+[ext_resource type="Texture2D" uid="uid://bih1v7srk7dxs" path="res://Autoloads/Resources/Beastie/Noizard/icon_noizard.png" id="39_setp5"]
 
 [resource]
 script = ExtResource("3_5bbos")
@@ -59,6 +60,9 @@ sprites = Dictionary[int, Texture2D]({
 2: ExtResource("7_nsutj"),
 3: ExtResource("8_js21k"),
 4: ExtResource("9_ao2v2"),
-5: ExtResource("10_sitjp")
+5: ExtResource("10_sitjp"),
+6: ExtResource("39_setp5")
 })
+ball_anchor_position_receive = Vector2(67, -134)
+ball_anchor_position_ready = Vector2(69, -101)
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"

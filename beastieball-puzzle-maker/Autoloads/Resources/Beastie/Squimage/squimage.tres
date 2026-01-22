@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=49 format=3 uid="uid://c15y267qqihl4"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=50 format=3 uid="uid://c15y267qqihl4"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_ml67k"]
 [ext_resource type="Resource" uid="uid://cfp4l5l5j0k60" path="res://Autoloads/Resources/Trait/protean.tres" id="2_6kp4b"]
@@ -48,6 +48,7 @@
 [ext_resource type="Resource" uid="uid://ymdvl6wdoqws" path="res://Autoloads/Resources/Plays/Defense/hawkeye.tres" id="37_71u7t"]
 [ext_resource type="Resource" uid="uid://cv6tk1l5vkxo4" path="res://Autoloads/Resources/Plays/Defense/heart_harden.tres" id="38_vkurs"]
 [ext_resource type="Resource" uid="uid://dytuvbvg3oamq" path="res://Autoloads/Resources/Plays/Defense/shield.tres" id="39_v3qhh"]
+[ext_resource type="Texture2D" uid="uid://csld2qq6ur5hu" path="res://Autoloads/Resources/Beastie/Squimage/icon_squimage.png" id="49_pck11"]
 
 [resource]
 script = ExtResource("3_cevkm")
@@ -70,7 +71,9 @@ sprites = Dictionary[int, Texture2D]({
 2: ExtResource("7_48odk"),
 3: ExtResource("8_oovvg"),
 4: ExtResource("9_enfwi"),
-5: ExtResource("10_u3bx7")
+5: ExtResource("10_u3bx7"),
+6: ExtResource("49_pck11")
 })
-ball_anchor_position = Vector2(61, -66)
+ball_anchor_position_receive = Vector2(58, -60)
+ball_anchor_position_ready = Vector2(40, -90)
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"

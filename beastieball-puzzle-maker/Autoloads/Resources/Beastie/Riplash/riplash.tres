@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=35 format=3 uid="uid://bcbimbxa1q008"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=36 format=3 uid="uid://bcbimbxa1q008"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_md10g"]
 [ext_resource type="Resource" uid="uid://b8r5fp676ri1m" path="res://Autoloads/Resources/Plays/Attack/Body/launch.tres" id="2_35pl8"]
@@ -34,6 +34,7 @@
 [ext_resource type="Resource" uid="uid://dthwtmgr6183d" path="res://Autoloads/Resources/Plays/Defense/pump_up.tres" id="23_1md3s"]
 [ext_resource type="Resource" uid="uid://brbj7babpn6xc" path="res://Autoloads/Resources/Plays/Defense/quick_breath.tres" id="24_x685t"]
 [ext_resource type="Resource" uid="uid://dkh0jivrf43jv" path="res://Autoloads/Resources/Plays/Defense/smack.tres" id="25_jhni2"]
+[ext_resource type="Texture2D" uid="uid://bg4eq23ncokn" path="res://Autoloads/Resources/Beastie/Riplash/icon_riplash.png" id="35_akxu5"]
 
 [resource]
 script = ExtResource("3_35pl8")
@@ -56,7 +57,9 @@ sprites = Dictionary[int, Texture2D]({
 2: ExtResource("7_oeqpd"),
 3: ExtResource("8_20yoy"),
 4: ExtResource("9_sjiu7"),
-5: ExtResource("10_rellg")
+5: ExtResource("10_rellg"),
+6: ExtResource("35_akxu5")
 })
-ball_anchor_position = Vector2(56, -85)
+ball_anchor_position_receive = Vector2(61, -80)
+ball_anchor_position_ready = Vector2(70, -84)
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"

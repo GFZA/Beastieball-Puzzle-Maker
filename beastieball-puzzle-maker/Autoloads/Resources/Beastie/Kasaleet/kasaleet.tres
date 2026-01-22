@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=38 format=3 uid="uid://bfo2njmkfi8tr"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=39 format=3 uid="uid://bfo2njmkfi8tr"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_qjkwr"]
 [ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Autoloads/Resources/Trait/trait.gd" id="2_m228b"]
@@ -37,6 +37,7 @@
 [ext_resource type="Resource" uid="uid://bgws5o2nfl262" path="res://Autoloads/Resources/Plays/Support/reposition.tres" id="26_55v3k"]
 [ext_resource type="Resource" uid="uid://dm6eb4ue4fypu" path="res://Autoloads/Resources/Plays/Defense/body_ready.tres" id="27_aiy85"]
 [ext_resource type="Resource" uid="uid://ymdvl6wdoqws" path="res://Autoloads/Resources/Plays/Defense/hawkeye.tres" id="28_f0g5a"]
+[ext_resource type="Texture2D" uid="uid://cxl87fpubpji" path="res://Autoloads/Resources/Beastie/Kasaleet/icon_kasaleet.png" id="38_ojipd"]
 
 [resource]
 script = ExtResource("3_lr7ij")
@@ -59,7 +60,9 @@ sprites = Dictionary[int, Texture2D]({
 2: ExtResource("6_f835q"),
 3: ExtResource("7_n5b6u"),
 4: ExtResource("8_qqdga"),
-5: ExtResource("9_4norj")
+5: ExtResource("9_4norj"),
+6: ExtResource("38_ojipd")
 })
-ball_anchor_position = Vector2(23, -200)
+ball_anchor_position_receive = Vector2(19, -202)
+ball_anchor_position_ready = Vector2(54, -170)
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"

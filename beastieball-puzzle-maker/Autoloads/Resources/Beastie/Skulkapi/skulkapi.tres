@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=39 format=3 uid="uid://cs2unbve1mnk2"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=40 format=3 uid="uid://cs2unbve1mnk2"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_pva2w"]
 [ext_resource type="Resource" uid="uid://ba06fmjpjnl1k" path="res://Autoloads/Resources/Trait/stealthy.tres" id="2_7046n"]
@@ -38,6 +38,7 @@
 [ext_resource type="Resource" uid="uid://b0kuuquuv3nwx" path="res://Autoloads/Resources/Plays/Support/whoosh.tres" id="28_b85e0"]
 [ext_resource type="Resource" uid="uid://bhtfclbbbqqfq" path="res://Autoloads/Resources/Plays/Defense/mind_read.tres" id="29_6w047"]
 [ext_resource type="Resource" uid="uid://dytuvbvg3oamq" path="res://Autoloads/Resources/Plays/Defense/shield.tres" id="30_o2ajv"]
+[ext_resource type="Texture2D" uid="uid://cvg48nb5lv56w" path="res://Autoloads/Resources/Beastie/Skulkapi/icon_skulkapi.png" id="39_wiwft"]
 
 [resource]
 script = ExtResource("3_fjol0")
@@ -59,7 +60,9 @@ sprites = Dictionary[int, Texture2D]({
 2: ExtResource("6_fcdbx"),
 3: ExtResource("7_armbo"),
 4: ExtResource("8_biqwx"),
-5: ExtResource("9_0gg0c")
+5: ExtResource("9_0gg0c"),
+6: ExtResource("39_wiwft")
 })
-ball_anchor_position = Vector2(48, -166)
+ball_anchor_position_receive = Vector2(46, -168)
+ball_anchor_position_ready = Vector2(75, -216)
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"

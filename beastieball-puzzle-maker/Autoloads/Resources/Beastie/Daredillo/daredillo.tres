@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=42 format=3 uid="uid://dlxbw66h5388j"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=43 format=3 uid="uid://dlxbw66h5388j"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_co2qs"]
 [ext_resource type="Resource" uid="uid://cagttvqn25cci" path="res://Autoloads/Resources/Trait/acrobat.tres" id="2_5qjw5"]
@@ -41,6 +41,7 @@
 [ext_resource type="Resource" uid="uid://b0kuuquuv3nwx" path="res://Autoloads/Resources/Plays/Support/whoosh.tres" id="30_3fwyd"]
 [ext_resource type="Resource" uid="uid://cpuds8hsc5dr1" path="res://Autoloads/Resources/Plays/Defense/dramatic_exit.tres" id="31_1mtka"]
 [ext_resource type="Resource" uid="uid://dytuvbvg3oamq" path="res://Autoloads/Resources/Plays/Defense/shield.tres" id="32_uf1qp"]
+[ext_resource type="Texture2D" uid="uid://cyijt1r2k7phs" path="res://Autoloads/Resources/Beastie/Daredillo/icon_daredillo.png" id="42_ql6m5"]
 
 [resource]
 script = ExtResource("3_qw0ss")
@@ -63,7 +64,9 @@ sprites = Dictionary[int, Texture2D]({
 2: ExtResource("6_1ujr4"),
 3: ExtResource("7_t2we2"),
 4: ExtResource("8_ywvum"),
-5: ExtResource("9_u1hfc")
+5: ExtResource("9_u1hfc"),
+6: ExtResource("42_ql6m5")
 })
-ball_anchor_position = Vector2(62, -127)
+ball_anchor_position_receive = Vector2(58, -170)
+ball_anchor_position_ready = Vector2(77, -90)
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"

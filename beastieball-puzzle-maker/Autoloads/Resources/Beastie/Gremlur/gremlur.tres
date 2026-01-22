@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=34 format=3 uid="uid://4gv5yj46548r"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=35 format=3 uid="uid://4gv5yj46548r"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_nrti3"]
 [ext_resource type="Resource" uid="uid://n4w6lchkbmaq" path="res://Autoloads/Resources/Trait/adaptation.tres" id="2_14eik"]
@@ -33,6 +33,7 @@
 [ext_resource type="Resource" uid="uid://6n8gisa23e7k" path="res://Autoloads/Resources/Plays/Support/nettle.tres" id="22_mhrka"]
 [ext_resource type="Resource" uid="uid://6ch2rjd133ye" path="res://Autoloads/Resources/Plays/Defense/fall_back.tres" id="23_52mt7"]
 [ext_resource type="Resource" uid="uid://dytuvbvg3oamq" path="res://Autoloads/Resources/Plays/Defense/shield.tres" id="24_af25k"]
+[ext_resource type="Texture2D" uid="uid://yd8pfn7m6vqo" path="res://Autoloads/Resources/Beastie/Gremlur/icon_gremlur.png" id="34_estcq"]
 
 [resource]
 script = ExtResource("3_fsb33")
@@ -55,8 +56,10 @@ sprites = Dictionary[int, Texture2D]({
 2: ExtResource("7_mogd8"),
 3: ExtResource("8_dfrpb"),
 4: ExtResource("9_flf1v"),
-5: ExtResource("10_redur")
+5: ExtResource("10_redur"),
+6: ExtResource("34_estcq")
 })
 y_offset = -15
-ball_anchor_position = Vector2(20, -70)
+ball_anchor_position_receive = Vector2(16, -68)
+ball_anchor_position_ready = Vector2(40, -106)
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"

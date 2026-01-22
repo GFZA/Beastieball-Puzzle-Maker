@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2c7yf64fy1ud"
-path="res://.godot/imported/platy_bad.png-1d550cb60f552e5173b48b52e6008530.ctex"
+uid="uid://bih1v7srk7dxs"
+path="res://.godot/imported/icon_noizard.png-a7bd279a83866191b185a926fe6e9994.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Autoloads/Resources/Beastie/Platypulse/platy_bad.png"
-dest_files=["res://.godot/imported/platy_bad.png-1d550cb60f552e5173b48b52e6008530.ctex"]
+source_file="res://Autoloads/Resources/Beastie/Noizard/icon_noizard.png"
+dest_files=["res://.godot/imported/icon_noizard.png-a7bd279a83866191b185a926fe6e9994.ctex"]
 
 [params]
 

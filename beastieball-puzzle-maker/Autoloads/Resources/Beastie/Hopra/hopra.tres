@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=37 format=3 uid="uid://c5uuymtswvp65"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=38 format=3 uid="uid://c5uuymtswvp65"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_5u6mg"]
 [ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Autoloads/Resources/Trait/trait.gd" id="2_crcu8"]
@@ -36,6 +36,7 @@
 [ext_resource type="Resource" uid="uid://b5ox8jsftfp33" path="res://Autoloads/Resources/Plays/Defense/mighty_yell.tres" id="25_qndbj"]
 [ext_resource type="Resource" uid="uid://dytuvbvg3oamq" path="res://Autoloads/Resources/Plays/Defense/shield.tres" id="26_tu2x6"]
 [ext_resource type="Resource" uid="uid://du8ix5gwk4act" path="res://Autoloads/Resources/Plays/Defense/soliloquy.tres" id="27_r6hnr"]
+[ext_resource type="Texture2D" uid="uid://dt3sloq2ngs3p" path="res://Autoloads/Resources/Beastie/Hopra/icon_hopra.png" id="37_yppus"]
 
 [resource]
 script = ExtResource("3_i8e3u")
@@ -57,6 +58,9 @@ sprites = Dictionary[int, Texture2D]({
 2: ExtResource("6_o8hj7"),
 3: ExtResource("7_r21o0"),
 4: ExtResource("8_p26u1"),
-5: ExtResource("9_ol1so")
+5: ExtResource("9_ol1so"),
+6: ExtResource("37_yppus")
 })
+ball_anchor_position_receive = Vector2(103, -155)
+ball_anchor_position_ready = Vector2(46, -248)
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qedsc2o55250"
-path="res://.godot/imported/platy_volley.png-49b75ef05074a126f5b5cd08123d8536.ctex"
+uid="uid://dsroscvtv08f"
+path="res://.godot/imported/platypulse_good.png-69fc52cd061b5ffb298665346aed2c3c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Autoloads/Resources/Beastie/Platypulse/platy_volley.png"
-dest_files=["res://.godot/imported/platy_volley.png-49b75ef05074a126f5b5cd08123d8536.ctex"]
+source_file="res://Autoloads/Resources/Beastie/Platypulse/platypulse_good.png"
+dest_files=["res://.godot/imported/platypulse_good.png-69fc52cd061b5ffb298665346aed2c3c.ctex"]
 
 [params]
 
