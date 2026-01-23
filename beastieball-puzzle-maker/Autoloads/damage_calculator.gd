@@ -134,7 +134,8 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack, \
 	var tender_mult : float = 2.0 if tender else 1.0
 
 	var rally_mind_mult : float = 3.0 / 4.0 if stats_type_attack == int(Plays.Type.ATTACK_MIND) and attacker_team_controller and \
-							(attacker_team_controller.get_field_effect_stack(FieldEffect.Type.RALLY) > 0) else 1.0
+							(attacker_team_controller.get_field_effect_stack(FieldEffect.Type.RALLY) > 0) and (attack_name != "ego blast") \
+								 else 1.0
 	var friendship_mult : float = 3.0 / 4.0 if defender_team_controller and \
 							defender_team_controller.check_for_friendship_buff(defender) else 1.0
 
@@ -164,7 +165,7 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack, \
 	if attacker_team_controller:
 		if attacker_team_controller.check_for_cheerleader_buff(attacker):
 			final_damage += 10
-		if stats_type_attack == int(Plays.Type.ATTACK_SPIRIT) and \
+		if (stats_type_attack == int(Plays.Type.ATTACK_SPIRIT) or attack_name == "ego blast") and \
 			(attacker_team_controller.get_field_effect_stack(FieldEffect.Type.RALLY) > 0):
 			final_damage += 15
 

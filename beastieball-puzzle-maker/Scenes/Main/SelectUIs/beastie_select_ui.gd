@@ -11,7 +11,13 @@ const BEASTIE_BUTTON : PackedScene = preload("uid://dpfyarbgjk6l4")
 		show_name = value
 		update_grid()
 
-var all_beasties_data_sorted : Array[Beastie] = []
+@export var show_nfe : bool = false :
+	set(value):
+		show_nfe = value
+		update_grid()
+
+var beasties_only_full: Array[Beastie] = []
+var beasties_only_nfe : Array[Beastie] = []
 
 var current_search_string : String = "" :
 	set(value):
@@ -32,25 +38,36 @@ var remove_mode : bool = false
 func _ready() -> void:
 	search_bar.text_changed.connect(func(new_text : String): current_search_string = new_text)
 	show_name_check_box.toggled.connect(func(is_toggled : bool): show_name = is_toggled)
-	only_full_morphs_label_check_box.toggled.connect(func(is_toggled : bool): print("Only Full Morphs : %s" % str(is_toggled)))
+	only_full_morphs_label_check_box.toggled.connect(func(is_toggled : bool): show_nfe = not is_toggled)
 
 	_assign_all_data_arrays()
 	update_grid()
 
 
 func _assign_all_data_arrays() -> void:
-	all_beasties_data_sorted = Global.all_beasties_data.duplicate()
-	all_beasties_data_sorted.sort_custom(func(b1 : Beastie, b2 : Beastie):
+	var all_data : Array[Beastie] = Global.all_beasties_data.duplicate()
+	all_data.sort_custom(func(b1 : Beastie, b2 : Beastie):
 		return b1.beastiepedia_id < b2.beastiepedia_id
+	)
+
+	beasties_only_full = all_data.duplicate()
+	beasties_only_full = all_data.filter(func(b : Beastie):
+		return b.is_nfe == false
+	)
+
+	beasties_only_nfe = all_data.duplicate()
+	beasties_only_nfe = all_data.filter(func(b : Beastie):
+		return b.is_nfe == true
 	)
 
 
 func _get_filtered_array(search_string : String) -> Array[Beastie]:
+	var base_array : Array[Beastie] = beasties_only_nfe if show_nfe else beasties_only_full
 	if search_string == "":
-		return all_beasties_data_sorted.duplicate()
+		return base_array.duplicate()
 
 	var result : Array[Beastie] = []
-	for beastie : Beastie in all_beasties_data_sorted:
+	for beastie : Beastie in base_array:
 		if beastie and \
 		(beastie.specie_name.to_lower().begins_with(search_string.to_lower()) or \
 		(beastie.beastiepedia_id == search_string.to_int())):

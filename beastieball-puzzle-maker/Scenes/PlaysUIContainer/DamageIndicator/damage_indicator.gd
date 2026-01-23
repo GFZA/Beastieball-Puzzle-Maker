@@ -18,7 +18,7 @@ const EMPTY_DAMAGE_DICT : Dictionary[Beastie.Position, int] = {
 		_update_indicator()
 
 
-@export var attack : Attack = null : # Use this for color lol. The damage is handled via the dict already
+@export var attack : Attack = null :
 	set(value):
 		attack = value
 		_update_indicator()
@@ -191,11 +191,15 @@ func _update_attacker_pos_labels() -> void:
 	attacker_pos_label.hide()
 	if not attack:
 		return
-	if attack.use_condition == Attack.UseCondition.NORMAL:
-		return
 
-	var new_text : String = "WHEN AT NET" if attack.use_condition == Attack.UseCondition.FRONT_ONLY \
-										else "WHEN AT BACK"
+	var new_text : String = ""
+	if attack.use_condition == Attack.UseCondition.FRONT_ONLY:
+		new_text = "WHEN AT NET"
+	if attack.use_condition == Attack.UseCondition.BACK_ONLY:
+		new_text = "WHEN AT BACK"
+	if attack.manually_activated:
+		new_text = attack.manual_condition_name
+
 	attacker_pos_label.text = new_text
 	attacker_pos_label.show()
 
