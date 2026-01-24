@@ -3,7 +3,11 @@
 A web tool for creating images used as Beastieball puzzles, featuring real-time damage previews, saving and loading, and more.
 The resulting image size is 2700 x 2025 px (4:3 ratio).
 
-Link to the web: """soon"""
+[Link to the tool (95 POW).](https://gfza.github.io/Beastieball-Puzzle-Maker-Pages/)
+
+## How to Use
+- __Clicking on either left tabs or on the image to start editing.__ The rest should be pretty straightforward.
+- __Right clicking on beasties in the image will quickly remove them.__ A pretty useful shortcut.
 
 ## Limitations
 - __Only supports 4 team members.__ This is due to the limited space of the resulting image, and having 5 members on each side would add too much information for puzzles.
