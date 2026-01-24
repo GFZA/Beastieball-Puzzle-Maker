@@ -7,5 +7,4 @@ script = ExtResource("1_sam20")
 name = "Absorption"
 description = "Has 1.5x MIND DEF"
 def_mult = 1.5
-need_to_be_manually_activated = null
 metadata/_custom_type_script = "uid://bslfuaragw1g7"
