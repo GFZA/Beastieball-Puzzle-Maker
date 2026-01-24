@@ -21,24 +21,16 @@ signal board_resetted
 		left_team_controller = value
 		if not is_node_ready():
 			await ready
-		left_team_controller.field_updated.connect(func(pos_dict : Dictionary[Beastie.Position, Beastie]):
-			left_team_position_dict = pos_dict
-			update_all_damage_indicator()
-		)
+		left_team_controller.field_updated.connect(update_all_damage_indicator.unbind(1))
 
 @export var right_team_controller : TeamController = null : # Assign permanently in inspector
 	set(value):
 		right_team_controller = value
 		if not is_node_ready():
 			await ready
-		right_team_controller.field_updated.connect(func(pos_dict : Dictionary[Beastie.Position, Beastie]):
-			right_team_position_dict = pos_dict
-			update_all_damage_indicator()
-		)
+		right_team_controller.field_updated.connect(update_all_damage_indicator.unbind(1))
 
 var board_overlay : BoardOverlay
-var left_team_position_dict : Dictionary[Beastie.Position, Beastie] = {}
-var right_team_position_dict : Dictionary[Beastie.Position, Beastie] = {}
 
 
 func _ready() -> void:
@@ -68,9 +60,7 @@ func get_damage_dict_array(attacker : Beastie, attack : Attack) -> Array[Diction
 	var attacker_team_controller : TeamController = left_team_controller if attacker_is_left else right_team_controller
 	var defender_team_controller : TeamController = right_team_controller if attacker_is_left else left_team_controller
 
-	#var defense_side : Dictionary[Beastie.Position, Beastie] = TeamController.get_empty_position_dict() # Assign below
-	var raw_defense_pos_dict : Dictionary[Beastie.Position, Beastie] = right_team_position_dict.duplicate() \
-													if attacker_is_left else left_team_position_dict.duplicate()
+	var raw_defense_pos_dict : Dictionary[Beastie.Position, Beastie] = defender_team_controller.get_position_dict()
 
 	if raw_defense_pos_dict.is_empty():
 		return result
