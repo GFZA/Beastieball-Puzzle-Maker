@@ -7,16 +7,22 @@ signal trait_selected(new_trait : Trait, side : Global.MySide, team_pos : TeamCo
 
 var board : Board = null # Set by Main on ready
 
+@onready var bg_hidden_button: Button = %BGHiddenButton
 @onready var beastie_select_ui: BeastieSelectUI = %BeastieSelectUI
 @onready var plays_select_ui: PlaysSelectUI = %PlaysSelectUI
 @onready var trait_select_ui: TraitSelectUI = %TraitSelectUI
 
 
 func _ready() -> void:
+	bg_hidden_button.pressed.connect(reset_and_hide)
 	beastie_select_ui.beastie_selected.connect(_on_beastie_selected)
 	plays_select_ui.plays_selected.connect(_on_plays_selected)
 	trait_select_ui.trait_selected.connect(_on_trait_selected)
-	reset_and_hide()
+
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):
+		reset_and_hide()
 
 
 func _on_beastie_selected(beastie : Beastie, side : Global.MySide, team_pos : TeamController.TeamPosition) -> void:
@@ -38,10 +44,10 @@ func _on_trait_selected(new_trait : Trait, side : Global.MySide, team_pos : Team
 func reset_and_hide() -> void:
 	beastie_select_ui.hide()
 	plays_select_ui.hide()
+	trait_select_ui.hide()
 	beastie_select_ui.reset()
 	plays_select_ui.reset()
 	trait_select_ui.reset()
-	trait_select_ui.hide()
 	hide()
 
 

@@ -1,10 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://crwqyvvvfl5o7"]
+[gd_scene load_steps=20 format=3 uid="uid://crwqyvvvfl5o7"]
 
 [ext_resource type="Texture2D" uid="uid://i036kmeuy3sl" path="res://Scenes/Main/MainUI/main_ui_bg_tile.png" id="1_25roi"]
 [ext_resource type="Script" uid="uid://deoy300w1khdw" path="res://Scenes/Main/MainUI/main_ui.gd" id="1_hvcgl"]
 [ext_resource type="Texture2D" uid="uid://oqfi3l4hxqan" path="res://Scenes/Main/MainUI/main_ui_bg_tile_2.png" id="1_pbqvl"]
 [ext_resource type="FontFile" uid="uid://ds0qrrbdvqa6n" path="res://Autoloads/Resources/Fonts/SF Sports Night.ttf" id="2_25mr1"]
 [ext_resource type="Texture2D" uid="uid://x245tsph8p3j" path="res://Scenes/Main/MainUI/main_ui_bg_tile_3.png" id="3_25mr1"]
+[ext_resource type="Texture2D" uid="uid://du7drstgtwvao" path="res://Autoloads/Icons/icon_puzzle_maker.png" id="3_365me"]
 [ext_resource type="FontFile" uid="uid://q2kbgu0jja56" path="res://Autoloads/Resources/Fonts/sportsjersey.ttf" id="3_i4lxe"]
 [ext_resource type="Texture2D" uid="uid://d20w5s52s1xu" path="res://Scenes/Main/MainUI/main_ui_bg_tile_4.png" id="4_i4lxe"]
 [ext_resource type="PackedScene" uid="uid://b6dv16yi6788v" path="res://Scenes/Main/MainUI/overlay_menu.tscn" id="5_ajf2v"]
@@ -64,7 +65,20 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
 
-[node name="TitleLabel" type="Label" parent="MainContainer/BG/RealMainContainer"]
+[node name="UppestContainer" type="HBoxContainer" parent="MainContainer/BG/RealMainContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 24
+
+[node name="Iconrec" type="TextureRect" parent="MainContainer/BG/RealMainContainer/UppestContainer"]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("3_365me")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TitleLabel" type="Label" parent="MainContainer/BG/RealMainContainer/UppestContainer"]
 custom_minimum_size = Vector2(0, 175)
 layout_mode = 2
 size_flags_horizontal = 4
