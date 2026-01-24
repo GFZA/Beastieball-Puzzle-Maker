@@ -25,7 +25,7 @@ The resulting image size is 2700 x 2025 px (4:3 ratio).
 - __NFEs are missing.__ They will get added soon. And yes, Sprecko and Turogue are privileged.
 
 ## Credits
-- Wishs Unlimited for creating Beastieball.
+- Wishes Unlimited for creating Beastieball.
 - [beastieball.info](https://beastieball.info/) by jdavis for inspiration, beastie sprites, and some of the icons
 - Turogue Times for inspiration.
 - Made with Godot 4.5. Plugin used: [godot-file-access-web](https://github.com/Scrawach/godot-file-access-web) by Scrawach
