@@ -18,15 +18,15 @@ The resulting image size is 2700 x 2025 px (4:3 ratio).
 
 ## Known Issues
 - __Stacking beasties heavily breaks the UI.__ The tool was not designed with stacking in mind. It’s advised to keep each member in their own lane, or hide one of the beastie's play previews if stacking is needed.
-- __Having more than two boosts type breaks the UI.__ This is intentionally left as is. It’s advised not to have more than two boosts type however.
-- __Having more than two feelings type overshoot the clouds.__ This is intentionally left as is. It’s advised not to have more than three feelings type however.
+- __Having more than two boost types breaks the UI.__ This is intentionally left as is. It’s advised not to have more than two boost types however.
+- __Having more than two feelings overshoots the clouds.__ This is intentionally left as is. It’s advised not to have more than three feelings however.
 - __The program is slow.__ The cause is currently unknown and is under investigation.
 - __Some beasties' poses are unfinished.__ The tool will be updated periodically with each balance patch.
 - __NFEs are missing.__ They will get added soon. And yes, Sprecko and Turogue are privileged.
 
 ## Credits
 - Wishs Unlimited for creating Beastieball.
-- beastieball.info by jdavis for inspiration, beastie sprites, and some of the icons
+- [beastieball.info](https://beastieball.info/) by jdavis for inspiration, beastie sprites, and some of the icons
 - Turogue Times for inspiration.
 - Made with Godot 4.5. Plugin used: [godot-file-access-web](https://github.com/Scrawach/godot-file-access-web) by Scrawach
 
