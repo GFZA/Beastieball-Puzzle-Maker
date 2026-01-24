@@ -8,6 +8,7 @@ Link to the web: """soon"""
 ## Limitations
 - __Only supports 4 team members.__ This is due to the limited space of the resulting image, and having 5 members on each side would add too much information for puzzles.
 - __Benched beasties can’t preview damage to the opposing bench.__ Again, this is due to limited space.
+- __The text are too small.__ The resulting image will have much higher resolution than what's shown in the tool. Sorry for the inconvenience.
 
 ## Known Issues
 - __Stacking beasties heavily breaks the UI.__ The tool was not designed with stacking in mind. It’s advised not to stack beasties and to keep each member in their own lane for now.
