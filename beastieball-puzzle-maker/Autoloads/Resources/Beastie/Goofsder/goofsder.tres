@@ -39,6 +39,7 @@ script = ExtResource("3_4ts6g")
 my_plays = Array[ExtResource("1_2qbuk")]([null, null, null])
 my_trait = ExtResource("2_4ts6g")
 specie_name = "Goofsder"
+beastiepedia_id = 43
 bar_color = Color(1, 0.8666667, 0.011764706, 1)
 body_base_pow = 80
 spirit_base_pow = 30

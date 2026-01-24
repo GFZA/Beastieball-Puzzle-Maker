@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="Beastie" load_steps=13 format=3 uid="uid://du4tvx0867h3s"]
+
+[ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_rsqbk"]
+[ext_resource type="Resource" uid="uid://cmn6g83u8ugot" path="res://Autoloads/Resources/Trait/foggy.tres" id="2_f5tyd"]
+[ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Autoloads/Resources/Trait/trait.gd" id="2_lkm30"]
+[ext_resource type="Script" uid="uid://ehabj4qsgxpl" path="res://Autoloads/Resources/Beastie/beastie.gd" id="3_f5tyd"]
+[ext_resource type="Resource" uid="uid://begyrimwcifje" path="res://Autoloads/Resources/Trait/sauna.tres" id="4_81pjf"]
+[ext_resource type="Texture2D" uid="uid://dss8pgnmr83v7" path="res://Autoloads/Resources/Beastie/Scauldra/scauldra_idle.png" id="6_pjdb0"]
+[ext_resource type="Texture2D" uid="uid://cxdymos6ba325" path="res://Autoloads/Resources/Beastie/Scauldra/scauldra_ready.png" id="7_et5gt"]
+[ext_resource type="Texture2D" uid="uid://rfbqspk3x3d1" path="res://Autoloads/Resources/Beastie/Scauldra/scauldra_spike.png" id="8_nfydf"]
+[ext_resource type="Texture2D" uid="uid://dxlq00e46a7wc" path="res://Autoloads/Resources/Beastie/Scauldra/scauldra_volley.png" id="9_cm47h"]
+[ext_resource type="Texture2D" uid="uid://crflgkk1qgn5u" path="res://Autoloads/Resources/Beastie/Scauldra/scauldra_good.png" id="10_08d0o"]
+[ext_resource type="Texture2D" uid="uid://c5xncy2prjc3v" path="res://Autoloads/Resources/Beastie/Scauldra/scauldra_bad.png" id="11_hnxg8"]
+[ext_resource type="Texture2D" uid="uid://6252y727lkwl" path="res://Autoloads/Resources/Beastie/Scauldra/icon_scauldra.png" id="12_o6hgl"]
+
+[resource]
+script = ExtResource("3_f5tyd")
+my_plays = Array[ExtResource("1_rsqbk")]([null, null, null])
+my_trait = ExtResource("2_f5tyd")
+specie_name = "Scauldra"
+beastiepedia_id = 95
+bar_color = Color(0.85490197, 0.44705883, 0.3019608, 1)
+body_base_pow = 20
+spirit_base_pow = 85
+mind_base_pow = 65
+body_base_def = 95
+spirit_base_def = 120
+mind_base_def = 65
+possible_traits = Array[ExtResource("2_lkm30")]([ExtResource("2_f5tyd"), ExtResource("4_81pjf")])
+sprites = Dictionary[int, Texture2D]({
+0: ExtResource("6_pjdb0"),
+1: ExtResource("7_et5gt"),
+2: ExtResource("8_nfydf"),
+3: ExtResource("9_cm47h"),
+4: ExtResource("10_08d0o"),
+5: ExtResource("11_hnxg8"),
+6: ExtResource("12_o6hgl")
+})
+ball_anchor_position_receive = Vector2(50, -180)
+ball_anchor_position_ready = Vector2(105, -165)
+metadata/_custom_type_script = "uid://ehabj4qsgxpl"

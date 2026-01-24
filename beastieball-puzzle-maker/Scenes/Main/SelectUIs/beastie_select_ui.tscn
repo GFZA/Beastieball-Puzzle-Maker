@@ -49,6 +49,7 @@ custom_minimum_size = Vector2(2800, 1339)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
+horizontal_scroll_mode = 0
 
 [node name="BeastieButtonContainer" type="GridContainer" parent="MainContainer/ScrollContainer"]
 unique_name_in_owner = true
