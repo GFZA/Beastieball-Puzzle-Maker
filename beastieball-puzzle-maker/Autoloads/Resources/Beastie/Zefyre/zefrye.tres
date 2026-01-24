@@ -35,7 +35,7 @@
 
 [resource]
 script = ExtResource("3_comij")
-my_plays = Array[ExtResource("1_xiagb")]([null, null, null])
+my_plays = Array[ExtResource("1_xiagb")]([ExtResource("14_qloqu"), null, null])
 my_trait = ExtResource("2_comij")
 specie_name = "Zefrye"
 beastiepedia_id = 21

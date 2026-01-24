@@ -184,6 +184,7 @@ func update_all_damage_indicator() -> void:
 		var first_slot : Plays = plays_ui.beastie.my_plays[0]
 		if first_slot and first_slot.type in [Plays.Type.ATTACK_BODY, Plays.Type.ATTACK_SPIRIT, Plays.Type.ATTACK_MIND]:
 			plays_ui.damage_indicator.damage_dict_array = get_damage_dict_array(plays_ui.beastie, first_slot)
+			plays_ui.big_damage_indicator.damage_dict_array = get_damage_dict_array(plays_ui.beastie, first_slot)
 
 
 func find_beastie_scene(beastie : Beastie) -> BeastieScene:
@@ -245,8 +246,6 @@ func on_controller_reset_slot_requested(side : Global.MySide, team_pos : TeamCon
 	#controller.swap_slot(team_pos_1, team_pos_2)
 
 
-# Behold the worse ssavd/load system ever
-
 func save_board_data(path : String) -> void:
 	var board_data := BoardData.new()
 	board_overlay.add_data_to_save(board_data)
@@ -271,35 +270,6 @@ func save_board_data(path : String) -> void:
 
 	await get_tree().process_frame
 	data_saved.emit()
-
-
-#func resource_to_bytes(resource: Resource) -> PackedByteArray:
-	## Temporary save resource > get byte array > delete temporary resource
-	#var temp_path = "user://temp_resource.tres"
-	#var err = ResourceSaver.save(resource, temp_path)
-	#if err != OK:
-		#print("Error saving resource: ", err)
-		#return PackedByteArray()
-#
-	#var file = FileAccess.open(temp_path, FileAccess.READ)
-	#if FileAccess.get_open_error() != OK:
-		#print("Error opening file: ", FileAccess.get_open_error())
-		#return PackedByteArray()
-#
-	#var bytes = file.get_buffer(file.get_length())
-	#file.close()
-#
-	#var dir := DirAccess.open("user://")
-	#if dir:
-		#var error = dir.remove(temp_path)
-		#if error == OK:
-			#print("Temporary byte file deleted successfully!")
-	#else:
-		#print("Error opening user directory")
-#
-	#return bytes
-
-
 
 
 func load_board_data(board_data : BoardData) -> void:

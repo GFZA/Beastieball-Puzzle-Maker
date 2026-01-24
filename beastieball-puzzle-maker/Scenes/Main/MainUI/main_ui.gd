@@ -51,6 +51,8 @@ var temp_byte_storing_path : String = "user://temporary_byte.res"
 @onready var save_json_button: Button = %SaveJSONButton # Planned for it to be JSON but got too lazy
 @onready var load_json_button: Button = %LoadJSONButton # Planned for it to be JSON but got too lazy
 @onready var reset_button: Button = %ResetButton
+@onready var github_button: Button = %GithubButton
+
 @onready var upper_label: Label = %UpperLabel
 
 @onready var logo_select_dialog: FileDialog = %LogoFileDialog
@@ -66,6 +68,7 @@ func _ready() -> void:
 	save_json_button.pressed.connect(_on_save_json_button_pressed)
 	load_json_button.pressed.connect(_on_load_json_button_pressed)
 	reset_button.pressed.connect(_on_reset_board_pressed)
+	github_button.pressed.connect(_on_github_button_pressed)
 
 	default_menu.your_team_edit_requested.connect(show_your_team_menu)
 	default_menu.opponent_team_edit_requested.connect(show_opponent_team_menu)
@@ -384,3 +387,7 @@ func _on_load_dialog_file_selected(path: String) -> void:
 		return
 	board_data_file_loaded.emit(data)
 #endregion
+
+
+func _on_github_button_pressed() -> void:
+	OS.shell_open("https://github.com/GFZA/Beastieball-Puzzle-Maker/")

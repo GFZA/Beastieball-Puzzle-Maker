@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://crwqyvvvfl5o7"]
+[gd_scene load_steps=21 format=3 uid="uid://crwqyvvvfl5o7"]
 
 [ext_resource type="Texture2D" uid="uid://i036kmeuy3sl" path="res://Scenes/Main/MainUI/main_ui_bg_tile.png" id="1_25roi"]
 [ext_resource type="Script" uid="uid://deoy300w1khdw" path="res://Scenes/Main/MainUI/main_ui.gd" id="1_hvcgl"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://j77lq1vyxxe5" path="res://Scenes/Main/MainUI/default_menu.tscn" id="8_pxhfb"]
 [ext_resource type="PackedScene" uid="uid://djra87ar5vdie" path="res://Scenes/Main/MainUI/team_menu.tscn" id="9_us2df"]
 [ext_resource type="PackedScene" uid="uid://bywv2d1wh532n" path="res://Scenes/Main/MainUI/field_effects_menu.tscn" id="10_daosl"]
+[ext_resource type="Texture2D" uid="uid://c56bab4mbpfwg" path="res://Autoloads/Icons/icon_github.png" id="15_piel0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_i4lxe"]
 line_spacing = 0.0
@@ -212,11 +213,16 @@ custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 size_flags_vertical = 8
 
-[node name="ResetButton" type="Button" parent="MainContainer/BG/RealMainContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(750, 0)
+[node name="HBoxContainer" type="HBoxContainer" parent="MainContainer/BG/RealMainContainer"]
 layout_mode = 2
-size_flags_horizontal = 6
+size_flags_horizontal = 4
+theme_override_constants/separation = 24
+
+[node name="ResetButton" type="Button" parent="MainContainer/BG/RealMainContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 2
+size_flags_horizontal = 4
 focus_behavior_recursive = 1
 theme = ExtResource("5_mbwly")
 theme_override_constants/h_separation = 4
@@ -224,6 +230,20 @@ theme_override_constants/icon_max_width = 65
 theme_override_constants/line_spacing = -8
 text = "Reset Everything NO UNDO"
 icon = ExtResource("8_bgm7v")
+expand_icon = true
+
+[node name="GithubButton" type="Button" parent="MainContainer/BG/RealMainContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_behavior_recursive = 1
+theme = ExtResource("5_mbwly")
+theme_override_constants/h_separation = 4
+theme_override_constants/icon_max_width = 65
+theme_override_constants/line_spacing = -8
+icon = ExtResource("15_piel0")
+icon_alignment = 1
 expand_icon = true
 
 [node name="Spacer4" type="Control" parent="MainContainer/BG/RealMainContainer"]

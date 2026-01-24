@@ -52,6 +52,7 @@ const TRAIT_BG_EXTENDED : PackedVector2Array = [
 		_update_show_bench_damage()
 
 var team_controller : TeamController = null
+var have_attack : bool = false
 
 @onready var main_container: VBoxContainer = %MainContainer
 @onready var main_upper_container: HBoxContainer = %MainUpperContainer
@@ -68,6 +69,16 @@ var team_controller : TeamController = null
 @onready var damage_indicator: DamageIndicator = %DamageIndicator
 @onready var boost_ui: BoostUI = %BoostUI
 
+@onready var big_damage_indicator_rec: ColorRect = %BigDamageIndicatorRec
+@onready var big_damage_indicator: DamageIndicator = %BigDamageIndicator
+@onready var mouse_detector: Control = %MouseDetector
+
+
+func _ready() -> void:
+	mouse_detector.mouse_entered.connect(_on_mouse_entered)
+	mouse_detector.mouse_exited.connect(_on_mouse_exited)
+	big_damage_indicator_rec.hide()
+
 
 func update_plays_ui(new_list : Array[Plays]) -> void:
 	if not is_node_ready():
@@ -80,32 +91,41 @@ func update_plays_ui(new_list : Array[Plays]) -> void:
 	if new_list[0] and new_list[0].type in [Plays.Type.ATTACK_BODY, Plays.Type.ATTACK_SPIRIT, Plays.Type.ATTACK_MIND]:
 		_show_damage_indicator()
 		damage_indicator.attack = new_list[0]
+		big_damage_indicator.attack = new_list[0]
+		have_attack = true
 
 		if beastie.my_trait.name.to_lower() == "musclebrain": # Make it shows liek body attack
 			var new_attack = new_list[0].duplicate()
 			new_attack.type = Attack.Type.ATTACK_BODY
 			damage_indicator.attack = new_attack
+			big_damage_indicator.attack = new_attack
 
 		# Mimicked attack overwriting
 		if new_list[0].name.to_lower() == "mimic":
 			if not team_controller:
 				damage_indicator.attack = new_list[0]
+				big_damage_indicator.attack = new_list[0]
 			else:
 				var mimicked_attack : Attack = team_controller.get_mimicked_attack_from_ally(beastie)
 				if mimicked_attack:
 					damage_indicator.attack = mimicked_attack
+					big_damage_indicator.attack = mimicked_attack
 
 		# Musclebrain body transfromation overwrite everything
 		if beastie.my_trait.name.to_lower() == "musclebrain": # Make it shows liek body attack
 			var new_attack = new_list[0].duplicate()
 			new_attack.type = Attack.Type.ATTACK_BODY
 			damage_indicator.attack = new_attack
+			big_damage_indicator.attack = new_attack
 
 		# damage_dict will be updated by BoardManager in the Board scene
 	else:
 		_hide_damage_indicator()
 		damage_indicator.attack = null
+		big_damage_indicator.attack = null
 		damage_indicator.damage_dict_array = []
+		big_damage_indicator.damage_dict_array = []
+		have_attack = false
 
 
 func update_trait_label(new_trait : Trait) -> void:
@@ -124,6 +144,7 @@ func _update_side() -> void:
 	main_upper_container.move_child(main_plays_container, new_index)
 
 	damage_indicator.my_side = my_side
+	big_damage_indicator.my_side = my_side
 
 
 func _update_show_bench_damage() -> void:
@@ -131,6 +152,7 @@ func _update_show_bench_damage() -> void:
 		await ready
 
 	damage_indicator.show_bench_damage = show_bench_damage
+	big_damage_indicator.show_bench_damage = show_bench_damage
 	background_para.polygon = TRAIT_BG_EXTENDED if show_bench_damage else TRAIT_BG_NORMAL
 
 	self.custom_minimum_size.x = 1615.0 if show_bench_damage else 1250.0
@@ -148,3 +170,13 @@ func _show_damage_indicator() -> void:
 func _hide_damage_indicator() -> void:
 	damage_side_container.hide()
 	cheese_spacer.hide() # Need this to look good
+
+
+func _on_mouse_entered() -> void:
+	if have_attack:
+		big_damage_indicator_rec.show()
+
+
+func _on_mouse_exited() -> void:
+	if have_attack:
+		big_damage_indicator_rec.hide()
