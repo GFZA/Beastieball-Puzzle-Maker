@@ -699,6 +699,7 @@ func add_data_to_save(board_data : BoardData) -> void:
 		dict_to_add["beastie_1_trait_manually_activated"] = beastie_1_beastie.my_trait.manually_activated
 	dict_to_add["beastie_1_position"] = beastie_1_position
 	dict_to_add["beastie_1_show_play"] = beastie_1_show_play
+	dict_to_add["beastie_1_show_bench_damage"] = beastie_1_show_bench_damage
 	dict_to_add["beastie_1_have_ball"] = beastie_1_have_ball
 	dict_to_add["beastie_1_ball_type"] = beastie_1_ball_type
 	dict_to_add["beastie_1_h_allign"] = beastie_1_h_allign
@@ -711,6 +712,7 @@ func add_data_to_save(board_data : BoardData) -> void:
 		dict_to_add["beastie_2_trait_manually_activated"] = beastie_2_beastie.my_trait.manually_activated
 	dict_to_add["beastie_2_position"] = beastie_2_position
 	dict_to_add["beastie_2_show_play"] = beastie_2_show_play
+	dict_to_add["beastie_2_show_bench_damage"] = beastie_2_show_bench_damage
 	dict_to_add["beastie_2_have_ball"] = beastie_2_have_ball
 	dict_to_add["beastie_2_ball_type"] = beastie_2_ball_type
 	dict_to_add["beastie_2_h_allign"] = beastie_2_h_allign
@@ -746,6 +748,7 @@ func load_data_from_save(board_data : BoardData) -> void:
 		beastie_1_beastie.my_trait.manually_activated = dict_to_load["beastie_1_trait_manually_activated"]
 	beastie_1_position = dict_to_load["beastie_1_position"]
 	beastie_1_show_play = dict_to_load["beastie_1_show_play"]
+	beastie_1_show_bench_damage = dict_to_load["beastie_1_show_bench_damage"]
 	beastie_1_have_ball = dict_to_load["beastie_1_have_ball"]
 	beastie_1_ball_type = dict_to_load["beastie_1_ball_type"]
 	beastie_1_h_allign = dict_to_load["beastie_1_h_allign"]
@@ -758,6 +761,7 @@ func load_data_from_save(board_data : BoardData) -> void:
 		beastie_2_beastie.my_trait.manually_activated = dict_to_load["beastie_2_trait_manually_activated"]
 	beastie_2_position = dict_to_load["beastie_2_position"]
 	beastie_2_show_play = dict_to_load["beastie_2_show_play"]
+	beastie_2_show_bench_damage = dict_to_load["beastie_2_show_bench_damage"]
 	beastie_2_have_ball = dict_to_load["beastie_2_have_ball"]
 	beastie_2_ball_type = dict_to_load["beastie_2_ball_type"]
 	beastie_2_h_allign = dict_to_load["beastie_2_h_allign"]
