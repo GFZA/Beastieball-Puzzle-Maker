@@ -27,7 +27,7 @@ const BALL_SPRITE_RIGHT_OFFSET : Vector2 = Vector2(-119.0, -90.0)
 		if not is_node_ready():
 			await ready
 
-		sprite_2d.offset.y = 0.0
+		sprite_2d.offset = Vector2.ZERO
 		ball_sprite.hide()
 
 		if my_healthbar:
@@ -70,6 +70,7 @@ const BALL_SPRITE_RIGHT_OFFSET : Vector2 = Vector2(-119.0, -90.0)
 
 		_update_ball()
 		_update_sprite_pose()
+		sprite_2d.offset.x = beastie.x_offset if my_side == Global.MySide.LEFT else -beastie.x_offset
 		sprite_2d.offset.y = beastie.y_offset
 		edit_beastie_button.text = "Edit\n%s" % beastie.specie_name
 

@@ -96,6 +96,8 @@ func update_plays_ui(new_list : Array[Plays]) -> void:
 	plays_ui_one.my_play = new_list[0]
 	plays_ui_two.my_play = new_list[1]
 	plays_ui_three.my_play = new_list[2]
+	damage_indicator.custom_text = ""
+	big_damage_indicator.custom_text = ""
 
 	if new_list[0] and new_list[0].type in [Plays.Type.ATTACK_BODY, Plays.Type.ATTACK_SPIRIT, Plays.Type.ATTACK_MIND]:
 		_show_damage_indicator()
@@ -115,10 +117,13 @@ func update_plays_ui(new_list : Array[Plays]) -> void:
 				damage_indicator.attack = new_list[0]
 				big_damage_indicator.attack = new_list[0]
 			else:
+				await get_tree().process_frame # Wait for all the calc to be done then visuals later. Dirty ass fix btw
 				var mimicked_attack : Attack = team_controller.get_mimicked_attack_from_ally(beastie)
 				if mimicked_attack:
 					damage_indicator.attack = mimicked_attack
+					damage_indicator.custom_text = "Mimicked %s" % mimicked_attack.name
 					big_damage_indicator.attack = mimicked_attack
+					big_damage_indicator.custom_text = "Mimicked %s" % mimicked_attack.name
 
 		# Musclebrain body transfromation overwrite everything
 		if beastie.my_trait.name.to_lower() == "musclebrain": # Make it shows liek body attack

@@ -639,6 +639,7 @@ func check_for_friendship_buff(beastie_to_check : Beastie) -> bool:
 
 
 func get_fielded_ally(beastie_to_check : Beastie) -> Beastie:
+	print(beastie_scene_dict.keys())
 	for beastie : Beastie in beastie_scene_dict.keys():
 		if beastie.is_really_at_bench or beastie == beastie_to_check:
 			continue

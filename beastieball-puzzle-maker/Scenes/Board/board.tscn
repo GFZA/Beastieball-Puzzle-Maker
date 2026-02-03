@@ -110,8 +110,9 @@ position = Vector2(855.38464, 150.76926)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("6_qm24d")
 
-[node name="Sprite2D5" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/RalllyVisuals"]
-position = Vector2(968.46155, 919.2308)
+[node name="LabelCherrily" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/RalllyVisuals"]
+z_index = 1
+position = Vector2(973.8462, 926.92316)
 scale = Vector2(0.40000004, 0.40000004)
 texture = ExtResource("3_reu04")
 
@@ -624,6 +625,7 @@ polygon = PackedVector2Array(-43, 0, -87, -192, 219, -192, 265, 0)
 [node name="MiddleFieldEffecstLabel" type="Label" parent="SubViewportContainer/SubViewport"]
 unique_name_in_owner = true
 visible = false
+z_index = 2
 custom_minimum_size = Vector2(250, 0)
 offset_left = 1229.0
 offset_top = 1849.0
@@ -665,6 +667,7 @@ polygon = PackedVector2Array(-43, 0, -87, -192, 219, -192, 265, 0)
 
 [node name="EditFieldEffectsButton" type="Button" parent="SubViewportContainer/SubViewport"]
 unique_name_in_owner = true
+z_index = 5
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -742,13 +745,14 @@ team_pos = 1
 unique_name_in_owner = true
 custom_minimum_size = Vector2(611, 234)
 layout_mode = 0
-offset_left = -1088.0
+offset_left = -988.0
 offset_top = -1158.0
 offset_right = -377.0
 offset_bottom = -885.0
 size_flags_horizontal = 8
 focus_mode = 0
 theme = ExtResource("100_mhwkv")
+theme_override_colors/font_color = Color(1, 1, 1, 0)
 theme_override_font_sizes/font_size = 96
 text = "Add Beastie"
 script = ExtResource("32_kxoq5")
@@ -776,7 +780,7 @@ custom_minimum_size = Vector2(611, 234)
 layout_mode = 0
 offset_left = -377.0
 offset_top = -1157.0
-offset_right = 334.0
+offset_right = 234.0
 offset_bottom = -884.0
 size_flags_horizontal = 0
 focus_mode = 0

@@ -95,12 +95,6 @@ func _ready() -> void:
 		logo_file_access_web = FileAccessWeb.new()
 		load_file_access_web = FileAccessWeb.new()
 		logo_file_access_web.loaded.connect(_on_logo_file_access_web_file_loaded)
-		load_file_access_web.loaded.connect(_on_load_file_access_web_file_loaded)
-		load_file_access_web.progress.connect(func(_a, _b): print("loading"))
-		load_file_access_web.error.connect(func(): print("error!"))
-		load_file_access_web.upload_cancelled.connect(func(): print("upload canceled!"))
-		load_file_access_web.load_started.connect(func(_a): print("load started!"))
-
 	else:
 		logo_select_dialog.root_subfolder = temp_pc_img_path
 		load_file_dialog.root_subfolder = temp_pc_res_path
@@ -138,7 +132,7 @@ func reset() -> void:
 
 func show_default_menu() -> void:
 	hide_all_menu()
-	upper_label.text = "Click below or on the picture"
+	upper_label.text = "Try hovering on the picture"
 	default_menu.show()
 
 

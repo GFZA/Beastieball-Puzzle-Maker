@@ -33,6 +33,11 @@ const EMPTY_DAMAGE_DICT : Dictionary[Beastie.Position, int] = {
 		show_bench_damage = value
 		_update_show_bench_damage()
 
+@export var custom_text : String = "" :
+	set(value):
+		custom_text = value
+		_update_attacker_pos_labels()
+
 @onready var main_container: HBoxContainer = %MainContainer
 @onready var board_side_main_node: Control = %BoardSideMainNode
 @onready var bench_side_main_node: Control = %BenchSideMainNode
@@ -190,6 +195,11 @@ func _update_attacker_pos_labels() -> void:
 
 	attacker_pos_label.hide()
 	if not attack:
+		return
+
+	if custom_text.length() != 0:
+		attacker_pos_label.text = custom_text
+		attacker_pos_label.show()
 		return
 
 	var new_text : String = ""
