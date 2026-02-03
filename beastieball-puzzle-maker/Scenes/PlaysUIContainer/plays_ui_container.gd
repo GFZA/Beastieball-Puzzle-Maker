@@ -2,6 +2,8 @@
 class_name PlaysUIContainer
 extends Control
 
+enum ContainerPosition {UPPER, LOWER}
+
 const TRAIT_PLACEHOLDER_DESC := "Trait : Likes to ball"
 const TRAIT_BG_NORMAL : PackedVector2Array = [
 	Vector2(-59.0, 250.0),
@@ -39,6 +41,7 @@ const TRAIT_BG_EXTENDED : PackedVector2Array = [
 		beastie.my_trait_updated.connect(update_trait_label)
 		update_plays_ui(beastie.my_plays)
 		update_trait_label(beastie.my_trait)
+		update_tail()
 		boost_ui.beastie = beastie
 
 @export var my_side : Global.MySide = Global.MySide.LEFT :
@@ -50,9 +53,15 @@ const TRAIT_BG_EXTENDED : PackedVector2Array = [
 	set(value):
 		show_bench_damage = value
 		_update_show_bench_damage()
+		update_tail()
 
 var team_controller : TeamController = null
 var have_attack : bool = false
+var container_position : ContainerPosition = ContainerPosition.UPPER
+
+@onready var tails_anchor: Node2D = %TailsAnchor
+@onready var tail_upper: Polygon2D = %TailUpper
+@onready var tail_lower: Polygon2D = %TailLower
 
 @onready var main_container: VBoxContainer = %MainContainer
 @onready var main_upper_container: HBoxContainer = %MainUpperContainer
@@ -160,6 +169,96 @@ func _update_show_bench_damage() -> void:
 
 	main_container.custom_minimum_size.x = 1615.0 if show_bench_damage else 1250.0
 	main_container.size = main_container.custom_minimum_size
+
+	tails_anchor.position.x = 200.0 if show_bench_damage else 0.0
+
+
+func update_tail() -> void:
+	_change_tail_pos(tail_upper)
+	_change_tail_pos(tail_lower)
+
+	if not beastie:
+		return
+
+	# Magic number warning! This surely won't bite me in the near future!
+	var tail : Polygon2D
+	var new_pos : Vector2
+	match my_side:
+		Global.MySide.LEFT:
+			if container_position == ContainerPosition.UPPER: # Edit lower tail
+				tail = tail_lower
+				match beastie.my_field_position:
+					Beastie.Position.UPPER_BACK:
+						new_pos = Vector2(665.0, 825.0) if not show_bench_damage else Vector2(615.0, 825.0)
+					Beastie.Position.UPPER_FRONT:
+						new_pos = Vector2(765.0, 825.0) if not show_bench_damage else Vector2(800.0, 825.0)
+					Beastie.Position.LOWER_BACK:
+						new_pos = Vector2(615.0, 1325.0) if not show_bench_damage else Vector2(465.0, 1325.0)
+					Beastie.Position.LOWER_FRONT:
+						new_pos = Vector2(765.0, 1325.0) if not show_bench_damage else Vector2(865.0, 1325.0)
+					Beastie.Position.BENCH_1:
+						new_pos = Vector2(765.0, 825.0)
+			elif container_position == ContainerPosition.LOWER: # Edit upper tail
+				tail = tail_upper
+				match beastie.my_field_position:
+					Beastie.Position.UPPER_BACK:
+						new_pos = Vector2(625.0, 100.0) if not show_bench_damage else Vector2(450.0, 100.0)
+					Beastie.Position.UPPER_FRONT:
+						new_pos = Vector2(825.0, 100.0) if not show_bench_damage else Vector2(975.0, 100.0)
+					Beastie.Position.LOWER_BACK:
+						new_pos = Vector2(600.0, 620.0) if not show_bench_damage else Vector2(550.0, 620.0)
+					Beastie.Position.LOWER_FRONT:
+						new_pos = Vector2(800.0, 620.0) if not show_bench_damage else Vector2(880.0, 620.0)
+					Beastie.Position.BENCH_2:
+						new_pos = Vector2(825.0, 550.0)
+
+
+		Global.MySide.RIGHT:
+			if container_position == ContainerPosition.UPPER: # Edit lower tail
+				tail = tail_lower
+				match beastie.my_field_position:
+					Beastie.Position.UPPER_BACK:
+						new_pos = Vector2(665.0, 825.0) if not show_bench_damage else Vector2(735.0, 825.0)
+					Beastie.Position.UPPER_FRONT:
+						new_pos = Vector2(580.0, 825.0) if not show_bench_damage else Vector2(550.0, 825.0)
+					Beastie.Position.LOWER_BACK:
+						new_pos = Vector2(700.0, 1325.0) if not show_bench_damage else Vector2(800.0, 1325.0)
+					Beastie.Position.LOWER_FRONT:
+						new_pos = Vector2(550.0, 1325.0) if not show_bench_damage else Vector2(450.0, 1325.0)
+					Beastie.Position.BENCH_1:
+						new_pos = Vector2(580.0, 825.0)
+			elif container_position == ContainerPosition.LOWER: # Edit upper tail
+				tail = tail_upper
+				match beastie.my_field_position:
+					Beastie.Position.UPPER_BACK:
+						new_pos = Vector2(725.0, 100.0) if not show_bench_damage else Vector2(875.0, 100.0)
+					Beastie.Position.UPPER_FRONT:
+						new_pos = Vector2(550.0, 100.0) if not show_bench_damage else Vector2(350.0, 100.0)
+					Beastie.Position.LOWER_BACK:
+						new_pos = Vector2(800.0, 620.0) if not show_bench_damage else Vector2(850.0, 620.0)
+					Beastie.Position.LOWER_FRONT:
+						new_pos = Vector2(600.0, 620.0) if not show_bench_damage else Vector2(550.0, 620.0)
+					Beastie.Position.BENCH_2:
+						new_pos = Vector2(575.0, 550.0)
+
+	_change_tail_pos(tail, new_pos)
+
+
+func _change_tail_pos(tail : Polygon2D, new_pos : Vector2 = Vector2.ZERO) -> void:
+	if not tail:
+		return
+
+	var polygon : PackedVector2Array = tail.polygon
+	var reset : bool = new_pos == Vector2.ZERO
+
+	var newer_pos : Vector2
+	if reset:
+		newer_pos = polygon[0] # Reset
+	else:
+		newer_pos = new_pos
+
+	polygon[2] = newer_pos
+	tail.polygon = polygon
 
 
 func _show_damage_indicator() -> void:

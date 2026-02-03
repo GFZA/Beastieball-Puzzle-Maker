@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://ck45vbd1ldi5t"]
+[gd_scene load_steps=32 format=3 uid="uid://ck45vbd1ldi5t"]
 
 [ext_resource type="Script" uid="uid://6rv1irob5c57" path="res://Scenes/Main/MainUI/beastie_menu.gd" id="1_4hm00"]
 [ext_resource type="FontFile" uid="uid://ckifc6cea5vs" path="res://Autoloads/Resources/Fonts/SportsJerseyEdited.ttf" id="2_4k1vm"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://dey8bdpdiw1p4" path="res://Autoloads/Icons/icon_wiped.png" id="13_suyyc"]
 [ext_resource type="Texture2D" uid="uid://dnjn5ky0d157b" path="res://Autoloads/Icons/icon_whistle.png" id="13_w8avf"]
 [ext_resource type="LabelSettings" uid="uid://cudwbb80jhqnw" path="res://Autoloads/Resources/Others/feelings_tab_label_settings.tres" id="14_0alan"]
+[ext_resource type="Texture2D" uid="uid://b3o8u30a4deyr" path="res://Autoloads/Icons/icon_trash.png" id="14_53flp"]
 [ext_resource type="Texture2D" uid="uid://dfu7kwrhyuv1l" path="res://Autoloads/Icons/icon_tired.png" id="14_dt5fr"]
 [ext_resource type="PackedScene" uid="uid://b4bws0qofhe6x" path="res://Scenes/PlaysUIContainer/PlayUI/plays_ui.tscn" id="14_ea36h"]
 [ext_resource type="Texture2D" uid="uid://bw2sn543lykfs" path="res://Autoloads/Icons/icon_shook.png" id="15_3hfkd"]
@@ -627,7 +628,7 @@ size_flags_horizontal = 4
 focus_mode = 0
 theme = ExtResource("4_w5fki")
 toggle_mode = true
-icon = ExtResource("12_w8avf")
+icon = ExtResource("14_53flp")
 icon_alignment = 1
 expand_icon = true
 
@@ -714,7 +715,7 @@ size_flags_horizontal = 4
 focus_mode = 0
 theme = ExtResource("4_w5fki")
 toggle_mode = true
-icon = ExtResource("12_w8avf")
+icon = ExtResource("14_53flp")
 icon_alignment = 1
 expand_icon = true
 
@@ -802,7 +803,7 @@ size_flags_horizontal = 4
 focus_mode = 0
 theme = ExtResource("4_w5fki")
 toggle_mode = true
-icon = ExtResource("12_w8avf")
+icon = ExtResource("14_53flp")
 icon_alignment = 1
 expand_icon = true
 

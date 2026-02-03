@@ -130,17 +130,17 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack, \
 	if not attack_name == "roll shot":
 		blocked_stack = attacker.get_feeling_stack(Beastie.Feelings.BLOCKED)
 	var blocked_mult : float = 2.0 / (2.0 + blocked_stack)
-	var tough_mult : float = 1.0 / 4.0 if tough and (not attack_name == "raw fury") else 1.0
 	var tender_mult : float = 2.0 if tender else 1.0
 
 	var rally_mind_mult : float = 3.0 / 4.0 if stats_type_attack == int(Plays.Type.ATTACK_MIND) and attacker_team_controller and \
 							(attacker_team_controller.get_field_effect_stack(FieldEffect.Type.RALLY) > 0) and (attack_name != "ego blast") \
 								 else 1.0
+
 	var friendship_mult : float = 3.0 / 4.0 if defender_team_controller and \
 							defender_team_controller.check_for_friendship_buff(defender) else 1.0
 
 	var all_damage_mults : float = (attacker_trait_mult / defender_trait_mult) * blocked_mult \
-									* tough_mult * tender_mult * rally_mind_mult * friendship_mult
+									* tender_mult * rally_mind_mult * friendship_mult
 	#endregion
 
 	#region Get final stats for calculation
@@ -173,6 +173,10 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack, \
 
 	if not attack_name == "true strike":
 		final_damage = defender.my_trait.special_cal_formula(final_damage, attacker, defender, attack, attacker_team_controller, defender_team_controller)
+
+	# Apply Tough mult after everything
+	var tough_mult : float = 1.0 / 4.0 if tough and (not attack_name == "raw fury") else 1.0
+	final_damage = max(1, ceili(float(final_damage) * tough_mult))
 
 	#endregion
 

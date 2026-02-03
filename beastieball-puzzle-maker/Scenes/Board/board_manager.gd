@@ -175,6 +175,7 @@ func update_all_damage_indicator() -> void:
 		if first_slot and first_slot.type in [Plays.Type.ATTACK_BODY, Plays.Type.ATTACK_SPIRIT, Plays.Type.ATTACK_MIND]:
 			plays_ui.damage_indicator.damage_dict_array = get_damage_dict_array(plays_ui.beastie, first_slot)
 			plays_ui.big_damage_indicator.damage_dict_array = get_damage_dict_array(plays_ui.beastie, first_slot)
+		plays_ui.update_tail()
 
 
 func find_beastie_scene(beastie : Beastie) -> BeastieScene:

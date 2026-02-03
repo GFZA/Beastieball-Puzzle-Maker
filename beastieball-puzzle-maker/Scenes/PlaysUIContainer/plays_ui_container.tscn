@@ -1,10 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dksxc3rs20kkc"]
+[gd_scene load_steps=7 format=3 uid="uid://dksxc3rs20kkc"]
 
 [ext_resource type="Script" uid="uid://cq4wjdh73nd7s" path="res://Scenes/PlaysUIContainer/plays_ui_container.gd" id="1_58jbj"]
 [ext_resource type="PackedScene" uid="uid://b4bws0qofhe6x" path="res://Scenes/PlaysUIContainer/PlayUI/plays_ui.tscn" id="1_lkkpg"]
-[ext_resource type="Resource" uid="uid://c14hsxhqolrin" path="res://Autoloads/Resources/Beastie/Zefyre/zefrye.tres" id="2_7ghu8"]
 [ext_resource type="PackedScene" uid="uid://d3d6ph6ugh14g" path="res://Scenes/PlaysUIContainer/DamageIndicator/damage_indicator.tscn" id="3_yny4v"]
-[ext_resource type="Resource" uid="uid://qn2srsf766xj" path="res://Autoloads/Resources/Plays/Attack/Spirit/burnout.tres" id="4_iek05"]
 [ext_resource type="FontFile" uid="uid://cvfib27cf5q88" path="res://Autoloads/Resources/Fonts/Go Banana.ttf" id="4_pxnfs"]
 [ext_resource type="Script" uid="uid://bca8urfgsjynv" path="res://Scenes/Healthbar/parallelogram.gd" id="4_tepdj"]
 [ext_resource type="PackedScene" uid="uid://brba6p5e5xokk" path="res://Scenes/PlaysUIContainer/BoostUI/boost_ui.tscn" id="4_yny4v"]
@@ -19,14 +17,27 @@ scale = Vector2(0.45, 0.45)
 size_flags_horizontal = 0
 size_flags_vertical = 0
 script = ExtResource("1_58jbj")
-beastie = ExtResource("2_7ghu8")
+
+[node name="TailsAnchor" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="TailUpper" type="Polygon2D" parent="TailsAnchor"]
+unique_name_in_owner = true
+position = Vector2(-106.66667, -700)
+color = Color(0.8352941, 0.87058824, 0.85882354, 1)
+polygon = PackedVector2Array(660, 700, 760, 700, 700, 600)
+
+[node name="TailLower" type="Polygon2D" parent="TailsAnchor"]
+unique_name_in_owner = true
+color = Color(0.8352941, 0.87058824, 0.85882354, 1)
+polygon = PackedVector2Array(660, 700, 760, 700, 560, 825)
 
 [node name="MainContainer" type="VBoxContainer" parent="."]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(1250, 700)
 layout_mode = 0
 offset_right = 1250.0
-offset_bottom = 704.0
+offset_bottom = 702.0
 theme_override_constants/separation = 8
 
 [node name="MainUpperContainerContainer" type="HBoxContainer" parent="MainContainer"]
@@ -54,7 +65,6 @@ theme_override_constants/separation = 0
 [node name="PlaysUIOne" parent="MainContainer/MainUpperContainerContainer/MainUpperContainer/MainPlaysContainer/PlayOneContainer" instance=ExtResource("1_lkkpg")]
 unique_name_in_owner = true
 layout_mode = 2
-my_play = ExtResource("4_iek05")
 
 [node name="Spacer" type="Control" parent="MainContainer/MainUpperContainerContainer/MainUpperContainer/MainPlaysContainer/PlayOneContainer"]
 custom_minimum_size = Vector2(35, 0)
@@ -98,6 +108,7 @@ layout_mode = 2
 
 [node name="DamageSideContainer" type="VBoxContainer" parent="MainContainer/MainUpperContainerContainer/MainUpperContainer"]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(510, 446)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -114,7 +125,6 @@ theme_override_constants/separation = 0
 unique_name_in_owner = true
 layout_mode = 2
 damage_dict_array = Array[Dictionary]([])
-attack = ExtResource("4_iek05")
 
 [node name="Spacer" type="Control" parent="MainContainer/MainUpperContainerContainer/MainUpperContainer/DamageSideContainer/DamagePreviewContainer"]
 custom_minimum_size = Vector2(40, 0)
@@ -134,10 +144,10 @@ layout_mode = 2
 [node name="BoostUI" parent="MainContainer/MainUpperContainerContainer/MainUpperContainer/DamageSideContainer/BoostIndicatorContainer" instance=ExtResource("4_yny4v")]
 unique_name_in_owner = true
 layout_mode = 2
-beastie = ExtResource("2_7ghu8")
 
 [node name="CheeseSpacer" type="Control" parent="MainContainer/MainUpperContainerContainer"]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(56, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -189,7 +199,7 @@ theme_override_constants/underline_alpha = 255
 theme_override_fonts/normal_font = ExtResource("4_pxnfs")
 theme_override_font_sizes/normal_font_size = 78
 bbcode_enabled = true
-text = "Maverick : Ball attacks ignore traits"
+text = "Trait : Likes to ball"
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1
@@ -202,6 +212,7 @@ size_flags_horizontal = 0
 
 [node name="BigDamageIndicatorRec" type="ColorRect" parent="."]
 unique_name_in_owner = true
+visible = false
 z_index = 5
 layout_mode = 1
 anchors_preset = 15
@@ -222,7 +233,7 @@ offset_right = 832.0
 offset_bottom = 6.666687
 grow_vertical = 2
 scale = Vector2(2, 2)
-attack = ExtResource("4_iek05")
+damage_dict_array = Array[Dictionary]([])
 
 [node name="MouseDetector" type="Control" parent="."]
 unique_name_in_owner = true
