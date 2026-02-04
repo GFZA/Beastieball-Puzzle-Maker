@@ -292,12 +292,15 @@ func reset() -> void:
 
 
 func _reset_on_field_tab() -> void:
+	Global.pause_updating_field = true
 	bpow_boost_number_ui.reset()
 	bdef_boost_number_ui.reset()
 	spow_boost_number_ui.reset()
 	sdef_boost_number_ui.reset()
 	mpow_boost_number_ui.reset()
-	mdef_boost_number_ui.reset()
+	if not Global.resetting:
+		Global.pause_updating_field = false
+	mdef_boost_number_ui.reset() # Make it update at last reset
 
 
 func _reset_sets_tab() -> void:
@@ -308,7 +311,10 @@ func _reset_sets_tab() -> void:
 
 
 func _reset_all_plays() -> void:
+	Global.pause_updating_field = true
 	for i in 3:
+		if i == 2 and not Global.resetting:
+			Global.pause_updating_field = false # Make it update at last reset
 		_on_slot_clear_pressed(i)
 	play_slot_1_condition_check_box.button_pressed = false
 	play_slot_2_condition_check_box.button_pressed = false
@@ -321,6 +327,7 @@ func _reset_trait() -> void:
 
 
 func _reset_feelings_tab() -> void:
+	Global.pause_updating_field = true
 	wiped_number_ui.reset()
 	tired_number_ui.reset()
 	shook_number_ui.reset()
@@ -333,16 +340,21 @@ func _reset_feelings_tab() -> void:
 	tender_number_ui.reset()
 	noisy_number_ui.reset()
 	angry_number_ui.reset()
-	stressed_number_ui.reset()
+	if not Global.resetting:
+		Global.pause_updating_field = false
+	stressed_number_ui.reset() # Make it update at last reset
 
 
 func _reset_invests_tab() -> void:
+	Global.pause_updating_field = true
 	bpow_invests_number_ui.reset()
 	bdef_invests_number_ui.reset()
 	spow_invests_number_ui.reset()
 	sdef_invests_number_ui.reset()
 	mpow_invests_number_ui.reset()
-	mdef_invests_number_ui.reset()
+	if not Global.resetting:
+		Global.pause_updating_field = false
+	mdef_invests_number_ui.reset() # Make it update at last reset
 #endregion
 
 

@@ -205,7 +205,7 @@ func _update_field() -> void:
 	beastie_scene_dict.clear()
 	plays_ui_container_dict.clear()
 
-	if Global.resetting: # this simple line greatly decrease reset speed! wow!
+	if Global.pause_updating_field: # this simple line greatly decrease reset speed! wow!
 		return
 
 	if beastie_1_beastie:

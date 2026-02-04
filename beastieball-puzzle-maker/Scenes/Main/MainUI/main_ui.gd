@@ -107,7 +107,7 @@ func _ready() -> void:
 
 
 func _on_back_button_pressed() -> void:
-	if not Global.resetting and currently_shown_beastie_menu != null:
+	if not Global.pause_updating_field and currently_shown_beastie_menu != null:
 		match currently_shown_beastie_menu.side:
 			Global.MySide.LEFT:
 				show_your_team_menu()

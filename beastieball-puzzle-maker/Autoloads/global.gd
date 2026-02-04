@@ -7,6 +7,7 @@ const BREAK_TEXT_DAMAGE := -99999
 enum MySide {LEFT, RIGHT}
 enum SortBeastie {NAME, NUMBER}
 
+var pause_updating_field : bool = false
 var resetting : bool = false
 @onready var is_on_web : bool = OS.get_name() == "Web"
 

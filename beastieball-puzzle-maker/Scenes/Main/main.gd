@@ -143,6 +143,7 @@ func _on_save_json_requested(path : String) -> void:
 
 func _on_board_data_file_loaded(data : BoardData) -> void:
 	Global.resetting = true
+	Global.pause_updating_field = true
 	saving_rect.mouse_filter = Control.MOUSE_FILTER_STOP
 	saving_label.text = "Loading..."
 	saving_rect.show()
@@ -158,6 +159,7 @@ func _on_board_data_file_loaded(data : BoardData) -> void:
 	await board.board_manager.data_loaded
 
 	Global.resetting = false
+	Global.pause_updating_field = false
 	saving_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	saving_label.text = ""
 	saving_rect.hide()
@@ -169,6 +171,7 @@ func _on_board_data_file_loaded(data : BoardData) -> void:
 
 func _on_reset_board_requested() -> void:
 	Global.resetting = true
+	Global.pause_updating_field = true
 
 	#saving_rect.mouse_filter = Control.MOUSE_FILTER_STOP
 	#saving_label.text = "Resetting..."
@@ -190,5 +193,6 @@ func _on_reset_board_requested() -> void:
 	#saving_rect.hide()
 
 	Global.resetting = false
+	Global.pause_updating_field = false
 
 #endregion

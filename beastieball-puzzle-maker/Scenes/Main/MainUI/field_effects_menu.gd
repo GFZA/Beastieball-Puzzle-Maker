@@ -45,21 +45,21 @@ func _ready() -> void:
 	left_rhythm_number_ui.value_updated.connect(left_rhythm_stack_changed.emit)
 	left_trap_number_ui.value_updated.connect(left_trap_stack_changed.emit)
 	left_quake_number_ui.value_updated.connect(left_quake_stack_changed.emit)
-	left_barrier_upper_number_ui.value_updated.connect(left_barrier_upper_stack_changed.emit) # Unused
-	left_barrier_lower_number_ui.value_updated.connect(left_barrier_lower_stack_changed.emit) # Unused
+	#left_barrier_upper_number_ui.value_updated.connect(left_barrier_upper_stack_changed.emit) # Unused but still in scene
+	#left_barrier_lower_number_ui.value_updated.connect(left_barrier_lower_stack_changed.emit) # Unused but still in scene
 	left_barrier_upper_check_box.toggled.connect(_on_barrier_upper_check_box_toggled.bind(Global.MySide.LEFT))
 	left_barrier_lower_check_box.toggled.connect(_on_barrier_lower_check_box_toggled.bind(Global.MySide.LEFT))
 
 	right_rhythm_number_ui.value_updated.connect(right_rhythm_stack_changed.emit)
 	right_trap_number_ui.value_updated.connect(right_trap_stack_changed.emit)
 	right_quake_number_ui.value_updated.connect(right_quake_stack_changed.emit)
-	right_barrier_upper_number_ui.value_updated.connect(right_barrier_upper_stack_changed.emit) # Unused
-	right_barrier_lower_number_ui.value_updated.connect(right_barrier_lower_stack_changed.emit) # Unused
+	#right_barrier_upper_number_ui.value_updated.connect(right_barrier_upper_stack_changed.emit) # Unused but still in scene
+	#right_barrier_lower_number_ui.value_updated.connect(right_barrier_lower_stack_changed.emit) # Unused but still in scene
 	right_barrier_upper_check_box.toggled.connect(_on_barrier_upper_check_box_toggled.bind(Global.MySide.RIGHT))
 	right_barrier_lower_check_box.toggled.connect(_on_barrier_lower_check_box_toggled.bind(Global.MySide.RIGHT))
 
 
-func reset()	-> void:
+func reset() -> void:
 	clear_both_side()
 	clear_left_side()
 	clear_right_side()
@@ -76,16 +76,16 @@ func load_from_data(board_data : BoardData) -> void:
 	left_rhythm_number_ui.num = _get_stack(left_dict, FieldEffect.Type.RHYTHM)
 	left_trap_number_ui.num = _get_stack(left_dict, FieldEffect.Type.TRAP)
 	left_quake_number_ui.num = _get_stack(left_dict, FieldEffect.Type.QUAKE)
-	left_barrier_upper_number_ui.num = _get_stack(left_dict, FieldEffect.Type.BARRIER_UPPER) # Unused
-	left_barrier_lower_number_ui.num = _get_stack(left_dict, FieldEffect.Type.BARRIER_LOWER) # Unused
+	#left_barrier_upper_number_ui.num = _get_stack(left_dict, FieldEffect.Type.BARRIER_UPPER) # Unused but still in scene
+	#left_barrier_lower_number_ui.num = _get_stack(left_dict, FieldEffect.Type.BARRIER_LOWER) # Unused but still in scene
 	left_barrier_upper_check_box.button_pressed = _get_stack(left_dict, FieldEffect.Type.BARRIER_UPPER) > 0
 	left_barrier_lower_check_box.button_pressed = _get_stack(left_dict, FieldEffect.Type.BARRIER_LOWER) > 0
 
 	right_rhythm_number_ui.num = _get_stack(right_dict, FieldEffect.Type.RHYTHM)
 	right_trap_number_ui.num = _get_stack(right_dict, FieldEffect.Type.TRAP)
 	right_quake_number_ui.num = _get_stack(right_dict, FieldEffect.Type.QUAKE)
-	right_barrier_upper_number_ui.num = _get_stack(right_dict, FieldEffect.Type.BARRIER_UPPER) # Unused
-	right_barrier_lower_number_ui.num = _get_stack(right_dict, FieldEffect.Type.BARRIER_LOWER) # Unused
+	#right_barrier_upper_number_ui.num = _get_stack(right_dict, FieldEffect.Type.BARRIER_UPPER) # Unused but still in scene
+	#right_barrier_lower_number_ui.num = _get_stack(right_dict, FieldEffect.Type.BARRIER_LOWER) # Unused but still in scene
 	right_barrier_upper_check_box.button_pressed = _get_stack(right_dict, FieldEffect.Type.BARRIER_UPPER) > 0
 	right_barrier_lower_check_box.button_pressed = _get_stack(right_dict, FieldEffect.Type.BARRIER_LOWER) > 0
 
@@ -97,18 +97,23 @@ func _get_stack(dict : Dictionary, type : FieldEffect.Type) -> int:
 
 
 func clear_both_side() -> void:
-	rally_number_ui.reset()
-	dread_number_ui.reset()
+	Global.pause_updating_field = true
 	clear_left_side()
 	clear_right_side()
+	rally_number_ui.reset()
+	dread_number_ui.reset()
+	if not Global.resetting:
+		Global.pause_updating_field = false
+	left_rhythm_number_ui.reset() # Need to force update on each side again for some reason
+	right_rhythm_number_ui.reset() # or else the team will just become invisible
 
 
 func clear_left_side() -> void:
 	left_rhythm_number_ui.reset()
 	left_trap_number_ui.reset()
 	left_quake_number_ui.reset()
-	left_barrier_upper_number_ui.reset() # Unused
-	left_barrier_lower_number_ui.reset() # Unused
+	#left_barrier_upper_number_ui.reset() # Unused but still in scene
+	#left_barrier_lower_number_ui.reset() # Unused but still in scene
 	left_barrier_upper_check_box.button_pressed = false
 	left_barrier_lower_check_box.button_pressed = false
 
@@ -117,8 +122,8 @@ func clear_right_side() -> void:
 	right_rhythm_number_ui.reset()
 	right_trap_number_ui.reset()
 	right_quake_number_ui.reset()
-	right_barrier_upper_number_ui.reset() # Unused
-	right_barrier_lower_number_ui.reset() # Unused
+	#right_barrier_upper_number_ui.reset() # Unused but still in scene
+	#right_barrier_lower_number_ui.reset() # Unused but still in scene
 	right_barrier_upper_check_box.button_pressed = false
 	right_barrier_lower_check_box.button_pressed = false
 
