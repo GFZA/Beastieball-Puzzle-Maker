@@ -14,13 +14,12 @@ The resulting image size is 2700 x 2025 px (4:3 ratio).
 - __Only supports 4 team members.__ This is due to the limited space of the resulting image, and having 5 members on each side would add too much information for puzzles.
 - __Only the first play slot, if it's an attack, shows its damage.__ Again, this is due to limited space, and having multiple attacks might be too much information for puzzles.
 - __Benched beasties can’t preview damage to the opposing bench.__ Limited space, you know the drill.
-- __Albrax's Tractor Beam, Zigzag's volley amount, and Hyperspike charging meter are not supported.__
+- __Hyperspike charging meter are not supported.__
 
 ## Known Issues
-- __Stacking beasties heavily breaks the UI.__ The tool was not designed with stacking in mind. It’s advised to keep each member in their own lane, or hide one of the beastie's play previews if stacking is needed.
 - __Having more than two boost types breaks the UI.__ This is intentionally left as is. It’s advised not to have more than two boost types however.
 - __Having more than two feelings overshoots the clouds.__ This is intentionally left as is. It’s advised not to have more than three feelings however.
-- __The program is quite slow.__ The cause is currently unknown and is under investigation.
+- __The program is quite slow.__ Unfortunately, the more beasties are on the board, the slower the tool becomes.
 - __Some beasties' poses are unfinished.__ The tool will be updated periodically with each balance patch.
 - __Some NFEs are missing.__ They will get added later. And yes, Sprecko and Turogue are privileged.
 
