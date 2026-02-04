@@ -225,8 +225,8 @@ func _update_field() -> void:
 		_update_scene_h_align(beastie_2_beastie, beastie_2_h_allign)
 
 	if beastie_1_beastie and beastie_2_beastie: # Weird place to assign these?
-		beastie_1_beastie.ally_field_position = beastie_2_position
-		beastie_2_beastie.ally_field_position = beastie_1_position
+		beastie_1_beastie.ally_field_position = beastie_2_beastie.my_field_position
+		beastie_2_beastie.ally_field_position = beastie_1_beastie.my_field_position
 
 	if bench_beastie_1_beastie:
 		_add_new_beastie_scene(bench_beastie_1_beastie, Beastie.Position.BENCH_1, bench_beastie_1_show_play, false, TeamPosition.BENCH_1)
@@ -241,12 +241,24 @@ func _update_field() -> void:
 	field_updated.emit(get_position_dict())
 
 
-func get_position_dict(dupe : bool = true) -> Dictionary[Beastie.Position, Beastie]:
+func get_position_dict() -> Dictionary[Beastie.Position, Beastie]:
 	var result : Dictionary[Beastie.Position, Beastie] = get_empty_position_dict()
-	result[beastie_1_position] = beastie_1_beastie.duplicate(dupe) if beastie_1_beastie else null
-	result[beastie_2_position] = beastie_2_beastie.duplicate(dupe) if beastie_2_beastie else null
-	result[Beastie.Position.BENCH_1] = bench_beastie_1_beastie.duplicate(dupe) if bench_beastie_1_beastie else null
-	result[Beastie.Position.BENCH_2] = bench_beastie_2_beastie.duplicate(dupe) if bench_beastie_2_beastie else null
+	result[beastie_1_position] = beastie_1_beastie.duplicate(true) if beastie_1_beastie else null
+	if beastie_1_beastie:
+		result[beastie_1_position].my_field_position = beastie_1_beastie.my_field_position # .duplicate doesn't work on this correctly
+		if beastie_2_beastie:
+			result[beastie_1_position].ally_field_position = beastie_2_beastie.my_field_position
+	result[beastie_2_position] = beastie_2_beastie.duplicate(true) if beastie_2_beastie else null
+	if beastie_2_beastie:
+		result[beastie_2_position].my_field_position = beastie_2_beastie.my_field_position
+		if beastie_1_beastie:
+			result[beastie_2_position].ally_field_position = beastie_1_beastie.my_field_position
+	result[Beastie.Position.BENCH_1] = bench_beastie_1_beastie.duplicate(true) if bench_beastie_1_beastie else null
+	if bench_beastie_1_beastie:
+		result[Beastie.Position.BENCH_1].my_field_position = bench_beastie_1_beastie.my_field_position
+	result[Beastie.Position.BENCH_2] = bench_beastie_2_beastie.duplicate(true) if bench_beastie_2_beastie else null
+	if bench_beastie_2_beastie:
+		result[Beastie.Position.BENCH_2].my_field_position = bench_beastie_2_beastie.my_field_position
 	return result
 
 
@@ -659,7 +671,7 @@ func get_beasties_with_tractor_beam() -> Array[Beastie]:
 
 
 func get_nearest_position_for_opponent(opponent_is_upper : bool) -> Beastie.Position:
-	var pos_dict : Dictionary[Beastie.Position, Beastie] = get_position_dict(false)
+	var pos_dict : Dictionary[Beastie.Position, Beastie] = get_position_dict()
 	var order : Array[Beastie.Position]
 	if opponent_is_upper:
 		order = [
