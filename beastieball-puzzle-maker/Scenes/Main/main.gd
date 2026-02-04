@@ -154,6 +154,10 @@ func _on_board_data_file_loaded(data : BoardData) -> void:
 	await get_tree().process_frame
 	await get_tree().process_frame
 	await get_tree().process_frame
+	main_ui.reset()
+	board.board_manager.reset_board()
+	board.reset()
+	await board.board_manager.board_resetted
 	board.board_manager.load_board_data(data)
 	main_ui.all_menu_load_data(data)
 	await board.board_manager.data_loaded
