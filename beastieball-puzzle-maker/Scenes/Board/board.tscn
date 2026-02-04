@@ -413,6 +413,9 @@ left_team_controller = NodePath("../LeftTeamController")
 right_team_controller = NodePath("../RightTeamController")
 metadata/_edit_lock_ = true
 
+[node name="TractorBeamAnchor" type="Node2D" parent="SubViewportContainer/SubViewport"]
+unique_name_in_owner = true
+
 [node name="LeftTeamController" type="Node2D" parent="SubViewportContainer/SubViewport"]
 unique_name_in_owner = true
 position = Vector2(101, 483)

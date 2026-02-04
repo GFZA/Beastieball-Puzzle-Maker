@@ -18,6 +18,7 @@ const BALL_TEXTURES : Dictionary[BallType, Texture2D] = {
 
 const HEALTHBAR_SCENE : PackedScene = preload("uid://bvd7pbsfc56o0")
 const FEELINGS_CLOUD_SCENE = preload("uid://bx6reuiultnkv")
+const TRACTOR_BEAM_SCENE = preload("uid://b7h8giwrml7ja")
 
 const BALL_SPRITE_LEFT_OFFSET : Vector2 = Vector2(-10.0, -90.0)
 const BALL_SPRITE_RIGHT_OFFSET : Vector2 = Vector2(-119.0, -90.0)

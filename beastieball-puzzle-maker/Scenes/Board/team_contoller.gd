@@ -241,12 +241,12 @@ func _update_field() -> void:
 	field_updated.emit(get_position_dict())
 
 
-func get_position_dict() -> Dictionary[Beastie.Position, Beastie]:
+func get_position_dict(dupe : bool = true) -> Dictionary[Beastie.Position, Beastie]:
 	var result : Dictionary[Beastie.Position, Beastie] = get_empty_position_dict()
-	result[beastie_1_position] = beastie_1_beastie.duplicate(true) if beastie_1_beastie else null
-	result[beastie_2_position] = beastie_2_beastie.duplicate(true) if beastie_2_beastie else null
-	result[Beastie.Position.BENCH_1] = bench_beastie_1_beastie.duplicate(true) if bench_beastie_1_beastie else null
-	result[Beastie.Position.BENCH_2] = bench_beastie_2_beastie.duplicate(true) if bench_beastie_2_beastie else null
+	result[beastie_1_position] = beastie_1_beastie.duplicate(dupe) if beastie_1_beastie else null
+	result[beastie_2_position] = beastie_2_beastie.duplicate(dupe) if beastie_2_beastie else null
+	result[Beastie.Position.BENCH_1] = bench_beastie_1_beastie.duplicate(dupe) if bench_beastie_1_beastie else null
+	result[Beastie.Position.BENCH_2] = bench_beastie_2_beastie.duplicate(dupe) if bench_beastie_2_beastie else null
 	return result
 
 
@@ -598,6 +598,10 @@ func check_if_have_wiped() -> bool:
 	return false
 
 
+func check_if_field_is_empty() -> bool:
+	return beastie_1_beastie == null and beastie_2_beastie == null
+
+
 func check_for_cheerleader_buff(beastie_to_check : Beastie) -> bool:
 	var cheerleader_count : int = 0
 	for beastie : Beastie in beastie_scene_dict.keys():
@@ -639,12 +643,45 @@ func check_for_friendship_buff(beastie_to_check : Beastie) -> bool:
 
 
 func get_fielded_ally(beastie_to_check : Beastie) -> Beastie:
-	print(beastie_scene_dict.keys())
 	for beastie : Beastie in beastie_scene_dict.keys():
 		if beastie.is_really_at_bench or beastie == beastie_to_check:
 			continue
 		return beastie
 	return null
+
+
+func get_beasties_with_tractor_beam() -> Array[Beastie]:
+	var result : Array[Beastie] = []
+	for beastie : Beastie in beastie_scene_dict.keys():
+		if beastie.my_trait.name.to_lower() == "tractor beam":
+			result.append(beastie)
+	return result
+
+
+func get_nearest_position_for_opponent(opponent_is_upper : bool) -> Beastie.Position:
+	var pos_dict : Dictionary[Beastie.Position, Beastie] = get_position_dict(false)
+	var order : Array[Beastie.Position]
+	if opponent_is_upper:
+		order = [
+			Beastie.Position.UPPER_FRONT,
+			Beastie.Position.LOWER_FRONT,
+			Beastie.Position.UPPER_BACK,
+			Beastie.Position.LOWER_BACK,
+		]
+	else:
+		order = [
+			Beastie.Position.LOWER_FRONT,
+			Beastie.Position.UPPER_FRONT,
+			Beastie.Position.LOWER_BACK,
+			Beastie.Position.UPPER_BACK,
+		]
+
+	for pos : Beastie.Position in order:
+		var beastie : Beastie = pos_dict.get(pos)
+		if not beastie:
+			continue
+		return pos
+	return Beastie.Position.UPPER_BACK # Shouldn't happen
 
 
 func get_mimicked_attack_from_ally(mimic_user : Beastie) -> Attack:

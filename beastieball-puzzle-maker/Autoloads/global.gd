@@ -76,7 +76,7 @@ const ICON_KEYWORDS : Dictionary[String, Icon] = {
 	"DOWN2" : Icon.DOWN_2,
 	"DOWN3" : Icon.DOWN_3,
 	"WIPED" : Icon.WIPED,
-	"TRIED" : Icon.TRIED,
+	"TIRED" : Icon.TRIED, # typo, i know...
 	"SHOOK" : Icon.SHOOK,
 	"JAZZED" : Icon.JAZZED,
 	"BLOCKED" : Icon.BLOCKED,

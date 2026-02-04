@@ -15,6 +15,7 @@ const TRAP_VISUALS_DICT : Dictionary[TrapStack, Array] = {
 	TrapStack.THREE : [preload("uid://dch8q1l4yem4q"), preload("uid://jw5124rypo20")],
 	TrapStack.FOUR : [preload("uid://b12tfn7n1l8qs"), preload("uid://sxxdcxrcur20")],
 }
+const TRACTOR_BEAM = preload("uid://b7h8giwrml7ja")
 
 @export_tool_button("Get Image!") var tool_button_var : Callable = save_image
 
@@ -27,6 +28,7 @@ var left_field_effects_dict : Dictionary = {} :
 	set(value):
 		left_field_effects_dict = value
 		_update_field_effect_visuals()
+
 var right_field_effects_dict : Dictionary= {} :
 	set(value):
 		right_field_effects_dict = value
@@ -57,6 +59,8 @@ var right_field_effects_dict : Dictionary= {} :
 @onready var board_overlay: BoardOverlay = %BoardOverlay
 @onready var board_manager: BoardManager = %BoardManager
 
+@onready var tractor_beam_anchor: Node2D = %TractorBeamAnchor
+
 @onready var left_field_effecst_label: Label = %LeftFieldEffecstLabel
 @onready var middle_field_effecst_label: Label = %MiddleFieldEffecstLabel
 @onready var right_field_effecst_label: Label = %RightFieldEffecstLabel
@@ -81,15 +85,17 @@ func _ready() -> void:
 		left_field_effects_dict = field_dict
 		_update_field_effect_visuals()
 	)
+	board_manager.left_team_controller.field_updated.connect(_update_beam.unbind(1))
 	board_manager.right_team_controller.field_effects_updated.connect(func(field_dict : Dictionary):
 		right_field_effects_dict = field_dict
 		_update_field_effect_visuals()
 	)
+	board_manager.right_team_controller.field_updated.connect(_update_beam.unbind(1))
 	edit_field_effects_button.pressed.connect(field_effects_edit_requested.emit)
 
 	_update_field_effect_visuals()
 
-
+#region Field Effects
 func _update_field_effect_visuals() -> void:
 	hide_all_field_effects()
 
@@ -248,6 +254,39 @@ func show_rhythm(side : Global.MySide) -> void:
 			left_rhythm_visuals.show()
 		Global.MySide.RIGHT:
 			right_rhythm_visuals.show()
+#endregion
+
+
+#region Tractor Beam
+func _update_beam() -> void:
+	for beam in tractor_beam_anchor.get_children():
+		beam.queue_free()
+
+	var left_beam_beasties : Array[Beastie] = board_manager.left_team_controller.get_beasties_with_tractor_beam()
+	if not left_beam_beasties.is_empty() and not board_manager.right_team_controller.check_if_field_is_empty():
+		for beam_beastie : Beastie in left_beam_beasties:
+			_create_tractor_beam(beam_beastie, true)
+
+	var right_beam_beasties : Array[Beastie] = board_manager.right_team_controller.get_beasties_with_tractor_beam()
+	if not right_beam_beasties.is_empty() and not board_manager.left_team_controller.check_if_field_is_empty():
+		for beam_beastie : Beastie in right_beam_beasties:
+			_create_tractor_beam(beam_beastie, false)
+
+
+func _create_tractor_beam(beam_beastie : Beastie, is_left : bool) -> void:
+	var my_controller : TeamController = board_manager.left_team_controller if is_left else board_manager.right_team_controller
+	var opponent_controller : TeamController = board_manager.left_team_controller if not is_left else board_manager.right_team_controller
+	var is_upper : bool = beam_beastie.my_field_position in [Beastie.Position.UPPER_BACK, Beastie.Position.UPPER_FRONT]
+	var nearest_beastie_pos : Beastie.Position = opponent_controller.get_nearest_position_for_opponent(is_upper)
+
+	var start : Vector2 = my_controller.position_anchors[beam_beastie.my_field_position].global_position
+	var end : Vector2 = opponent_controller.position_anchors[nearest_beastie_pos].global_position
+
+	var beam : TractorBeam = TRACTOR_BEAM.instantiate()
+	beam.start = start + Vector2(0.0, -20.0) # offset
+	beam.end = end + Vector2(0.0, -20.0) # offset
+	tractor_beam_anchor.add_child(beam)
+#endregion
 
 
 func on_turn_changed(new_turn : Turn) -> void:
@@ -258,6 +297,8 @@ func on_turn_changed(new_turn : Turn) -> void:
 func reset() -> void:
 	for button in board_add_beastie_button_anchor.get_children():
 		button.show()
+	for beam in tractor_beam_anchor.get_children():
+		beam.queue_free()
 
 
 func update_add_beastie_button() -> void:

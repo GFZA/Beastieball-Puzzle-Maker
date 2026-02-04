@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7h8giwrml7ja"]
+
+[ext_resource type="Texture2D" uid="uid://dolk1yjvoqvsx" path="res://FieldVisuals/tractor_beam.png" id="1_0xge1"]
+[ext_resource type="Script" uid="uid://bjn3ph0fkn3wd" path="res://Scenes/Board/tractor_beam.gd" id="1_hu8np"]
+
+[node name="TractorBeamMainNode" type="Node2D"]
+script = ExtResource("1_hu8np")
+
+[node name="TractorBeam" type="Line2D" parent="."]
+unique_name_in_owner = true
+points = PackedVector2Array(0, 0, 0, 0)
+width = 40.0
+default_color = Color(0.99607843, 0.9882353, 0.39607844, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="TractorBeamInner" type="Line2D" parent="TractorBeam"]
+unique_name_in_owner = true
+points = PackedVector2Array(0, 0, 0, 0)
+width = 15.0
+default_color = Color(0.99607843, 0.9882353, 0.94509804, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="TractorBeamHeadLeft" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("1_0xge1")
+
+[node name="TractorBeamHeadRight" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("1_0xge1")
