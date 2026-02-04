@@ -95,6 +95,8 @@ func _ready() -> void:
 		logo_file_access_web = FileAccessWeb.new()
 		load_file_access_web = FileAccessWeb.new()
 		logo_file_access_web.loaded.connect(_on_logo_file_access_web_file_loaded)
+		load_file_access_web.loaded.connect(_on_load_file_access_web_file_loaded) # THIS IS DIFFERENT THING!
+		# Accidentially delete this thinking it was duplicated. COnsequence of naming it too similar bruh
 	else:
 		logo_select_dialog.root_subfolder = temp_pc_img_path
 		load_file_dialog.root_subfolder = temp_pc_res_path

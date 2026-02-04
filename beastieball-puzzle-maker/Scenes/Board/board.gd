@@ -95,6 +95,7 @@ func _ready() -> void:
 
 	_update_field_effect_visuals()
 
+
 #region Field Effects
 func _update_field_effect_visuals() -> void:
 	hide_all_field_effects()
