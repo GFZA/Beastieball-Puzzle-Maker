@@ -25,20 +25,40 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack, \
 
 	# Dealing with Barrier
 	if defender_team_controller and not defender.is_really_at_bench:
-		if (defender_team_controller.get_field_effect_stack(FieldEffect.Type.BARRIER_UPPER) > 0):
-			if defender.my_field_position == Beastie.Position.UPPER_BACK and attack.target == Attack.Target.STRAIGHT:
-				return 0
-			if defender.my_field_position == Beastie.Position.LOWER_FRONT and attack.target in [Attack.Target.SIDEWAYS, Attack.Target.FRONT_ONLY]:
-				return 0
-			if defender.my_field_position == Beastie.Position.UPPER_FRONT:
-				return Global.BREAK_TEXT_DAMAGE # BREAK
-		if (defender_team_controller.get_field_effect_stack(FieldEffect.Type.BARRIER_LOWER) > 0):
-			if defender.my_field_position == Beastie.Position.LOWER_BACK and attack.target == Attack.Target.STRAIGHT:
-				return 0
-			if defender.my_field_position == Beastie.Position.UPPER_FRONT and attack.target in [Attack.Target.SIDEWAYS, Attack.Target.FRONT_ONLY]:
-				return 0
-			if defender.my_field_position == Beastie.Position.LOWER_FRONT:
-				return Global.BREAK_TEXT_DAMAGE # BREAK
+		var barrier_upper : bool = (defender_team_controller.get_field_effect_stack(FieldEffect.Type.BARRIER_UPPER) > 0)
+		var barrier_lower : bool = (defender_team_controller.get_field_effect_stack(FieldEffect.Type.BARRIER_LOWER) > 0)
+
+		if attacker.specie_name.to_lower() == "platypulse":
+			print("parrt")
+
+		match [barrier_upper, barrier_lower]:
+			[true, true]: # Both lanes
+				if defender.my_field_position in [Beastie.Position.UPPER_FRONT, Beastie.Position.LOWER_FRONT]:
+					return Global.BREAK_TEXT_DAMAGE # BREAK
+				if attack.target == Attack.Target.STRAIGHT:
+					if defender.my_field_position in [Beastie.Position.UPPER_BACK, Beastie.Position.LOWER_BACK]:
+						return 0
+				# (No need for special condition of sideway at net)
+			[true, false]: # Upper only
+				if defender.my_field_position == Beastie.Position.UPPER_FRONT:
+					return Global.BREAK_TEXT_DAMAGE # BREAK
+				if attack.target == Attack.Target.STRAIGHT:
+					if defender.my_field_position == Beastie.Position.UPPER_BACK:
+						return 0
+				else:
+					if defender.my_field_position == Beastie.Position.LOWER_FRONT:
+						if attacker.my_field_position in [Beastie.Position.UPPER_FRONT, Beastie.Position.UPPER_BACK]:
+							return 0
+			[false, true]: # Lower only
+				if defender.my_field_position == Beastie.Position.LOWER_FRONT:
+					return Global.BREAK_TEXT_DAMAGE # BREAK
+				if attack.target == Attack.Target.STRAIGHT:
+					if defender.my_field_position == Beastie.Position.LOWER_BACK:
+						return 0
+				else:
+					if defender.my_field_position == Beastie.Position.UPPER_FRONT:
+						if attacker.my_field_position in [Beastie.Position.LOWER_FRONT, Beastie.Position.LOWER_BACK]:
+							return 0
 	#endregion
 
 	#region Set up vars for calculation

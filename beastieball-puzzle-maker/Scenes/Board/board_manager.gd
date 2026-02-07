@@ -74,9 +74,15 @@ func get_damage_dict_array(attacker : Beastie, attack : Attack) -> Array[Diction
 
 	match attack.use_condition:
 		Attack.UseCondition.FRONT_ONLY: # If at back, move front for cal
-			attacker_for_cal.my_field_position = Beastie.Position.UPPER_FRONT # Upper or Lower doesn't matter here
+			if attacker_for_cal.my_field_position ==Beastie.Position.UPPER_BACK:
+				attacker_for_cal.my_field_position = Beastie.Position.UPPER_FRONT
+			if attacker_for_cal.my_field_position ==Beastie.Position.LOWER_BACK:
+				attacker_for_cal.my_field_position = Beastie.Position.LOWER_FRONT
 		Attack.UseCondition.BACK_ONLY: # If at front, move back for cal
-			attacker_for_cal.my_field_position = Beastie.Position.UPPER_BACK # Upper or Lower doesn't matter here
+			if attacker_for_cal.my_field_position ==Beastie.Position.UPPER_FRONT:
+				attacker_for_cal.my_field_position = Beastie.Position.UPPER_BACK
+			if attacker_for_cal.my_field_position ==Beastie.Position.LOWER_FRONT:
+				attacker_for_cal.my_field_position = Beastie.Position.LOWER_BACK
 
 	# Update Field Dict then Bench Dict
 	for i in 2:
