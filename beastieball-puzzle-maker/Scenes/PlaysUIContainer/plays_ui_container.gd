@@ -105,11 +105,12 @@ func update_plays_ui(new_list : Array[Plays]) -> void:
 		big_damage_indicator.attack = new_list[0]
 		have_attack = true
 
-		if beastie.my_trait.name.to_lower() == "musclebrain": # Make it shows liek body attack
-			var new_attack = new_list[0].duplicate()
-			new_attack.type = Attack.Type.ATTACK_BODY
-			damage_indicator.attack = new_attack
-			big_damage_indicator.attack = new_attack
+		#if beastie.my_trait.name.to_lower() == "musclebrain": # Make it shows liek body attack
+			#var new_attack = new_list[0].duplicate()
+			#new_attack.type = Attack.Type.ATTACK_BODY
+			#new_attack.target = new_list[0].target
+			#damage_indicator.attack = new_attack
+			#big_damage_indicator.attack = new_attack
 
 		# Mimicked attack overwriting
 		if new_list[0].name.to_lower() == "mimic":
@@ -120,17 +121,20 @@ func update_plays_ui(new_list : Array[Plays]) -> void:
 				await get_tree().process_frame # Wait for all the calc to be done then visuals later. Dirty ass fix btw
 				var mimicked_attack : Attack = team_controller.get_mimicked_attack_from_ally(beastie)
 				if mimicked_attack:
+					if beastie.my_trait.name.to_lower() == "musclebrain":
+						mimicked_attack.type = Attack.Type.ATTACK_BODY # check and change it here so it display lanes properly
 					damage_indicator.attack = mimicked_attack
 					damage_indicator.custom_text = "Mimicked %s" % mimicked_attack.name
 					big_damage_indicator.attack = mimicked_attack
 					big_damage_indicator.custom_text = "Mimicked %s" % mimicked_attack.name
 
 		# Musclebrain body transfromation overwrite everything
-		if beastie.my_trait.name.to_lower() == "musclebrain": # Make it shows liek body attack
-			var new_attack = new_list[0].duplicate()
-			new_attack.type = Attack.Type.ATTACK_BODY
-			damage_indicator.attack = new_attack
-			big_damage_indicator.attack = new_attack
+		if beastie.my_trait.name.to_lower() == "musclebrain": # Make it shows like body attack
+			if new_list[0].name.to_lower() != "mimic": # Mimic section already handle this
+				var new_attack = new_list[0].duplicate()
+				new_attack.type = Attack.Type.ATTACK_BODY
+				damage_indicator.attack = new_attack
+				big_damage_indicator.attack = new_attack
 
 		# damage_dict will be updated by BoardManager in the Board scene
 	else:

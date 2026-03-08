@@ -15,6 +15,7 @@ enum UseCondition {NORMAL, FRONT_ONLY, BACK_ONLY}
 @export var manual_condition_name : String = ""
 
 var manually_activated : bool = false
+var is_mimicked : bool = false
 
 
 func _init() -> void:

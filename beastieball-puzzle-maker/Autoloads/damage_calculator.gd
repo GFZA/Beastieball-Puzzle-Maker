@@ -7,29 +7,32 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack, \
 				defender_team_controller : TeamController = null) -> int:
 
 	#region Set up things to cal
+	var final_damage : int = 0
 	var attack_name : String = attack.name.to_lower()
 
-	if attacker.my_trait.name.to_lower() == "musclebrain":
-		var new_attack : Attack = attack.duplicate()
-		new_attack.type = Plays.Type.ATTACK_BODY
-		new_attack.base_pow = ceili(attack.base_pow * 1.2)
-		attack = new_attack
+	var get_musclebrained : bool = false
+	if (attacker.my_trait.name.to_lower() == "musclebrain") and (attack.type != Plays.Type.ATTACK_BODY):
+		attack.type = Plays.Type.ATTACK_BODY
+		get_musclebrained = true
 	#endregion
 
-	#region Special attacks (early returns)
+	#region Special attacks (skip to Blocked part)
 	if attack_name == "grinder":
-		return max(1, ceili(float(defender.health) / 2.0))
+		final_damage = max(1, ceili(float(defender.health) / 2.0))
+		if attack.is_mimicked:
+			final_damage = ceili(final_damage * 1.2) # do it here as it skip the part where do this normally
 
 	if attack_name == "precision strike":
-		return 30
+		final_damage = 30 # It's now affected by Blocked
+		if attacker.my_trait.name.to_lower() == "musclebrain":
+			final_damage = ceili(final_damage * 1.2) # since it overwrite the musclebrain check above, just check again here
+		if attack.is_mimicked:
+			final_damage = ceili(final_damage * 1.2) # do it here as it skip the part where do this normally
 
 	# Dealing with Barrier
 	if defender_team_controller and not defender.is_really_at_bench:
 		var barrier_upper : bool = (defender_team_controller.get_field_effect_stack(FieldEffect.Type.BARRIER_UPPER) > 0)
 		var barrier_lower : bool = (defender_team_controller.get_field_effect_stack(FieldEffect.Type.BARRIER_LOWER) > 0)
-
-		if attacker.specie_name.to_lower() == "platypulse":
-			print("parrt")
 
 		match [barrier_upper, barrier_lower]:
 			[true, true]: # Both lanes
@@ -146,20 +149,20 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack, \
 	if not attack_name == "true strike":
 		defender_trait_mult = defender.my_trait.get_defense_mult(attacker, defender, attack, attacker_team_controller, defender_team_controller)
 
-	var blocked_stack : float = 0.0
-	if not attack_name == "roll shot":
-		blocked_stack = attacker.get_feeling_stack(Beastie.Feelings.BLOCKED)
-	var blocked_mult : float = 2.0 / (2.0 + blocked_stack)
+	var mimic_mult : float = 1.2 if attack.is_mimicked else 1.0
+
+	var musclebrain_mult : float = 1.2 if get_musclebrained else 1.0
+
 	var tender_mult : float = 2.0 if tender else 1.0
 
 	var rally_mind_mult : float = 3.0 / 4.0 if stats_type_attack == int(Plays.Type.ATTACK_MIND) and attacker_team_controller and \
 							(attacker_team_controller.get_field_effect_stack(FieldEffect.Type.RALLY) > 0) and (attack_name != "ego blast") \
-								 else 1.0
+							and (attacker.my_trait.name.to_lower() != "extrovert") else 1.0
 
 	var friendship_mult : float = 3.0 / 4.0 if defender_team_controller and \
 							defender_team_controller.check_for_friendship_buff(defender) else 1.0
 
-	var all_damage_mults : float = (attacker_trait_mult / defender_trait_mult) * blocked_mult \
+	var all_damage_mults : float = (attacker_trait_mult / defender_trait_mult) * mimic_mult * musclebrain_mult \
 									* tender_mult * rally_mind_mult * friendship_mult
 	#endregion
 
@@ -180,14 +183,22 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack, \
 	#endregion
 
 	#region Calculate the damage + board states
-	var final_damage : int = max(1, ceili(((floori(final_atk) * base_pow / final_def) * 0.4) * all_damage_mults))
+	if not attack_name in ["grinder", "precision strike"]:
+		final_damage = max(1, ceili(((floori(final_atk) * base_pow / final_def) * 0.4) * all_damage_mults))
 
 	if attacker_team_controller:
 		if attacker_team_controller.check_for_cheerleader_buff(attacker):
 			final_damage += 10
-		if (stats_type_attack == int(Plays.Type.ATTACK_SPIRIT) or attack_name == "ego blast") and \
+		if ((stats_type_attack == int(Plays.Type.ATTACK_SPIRIT)) or (attack_name == "ego blast") or (attacker.my_trait.name.to_lower() == "extrovert")) and \
 			(attacker_team_controller.get_field_effect_stack(FieldEffect.Type.RALLY) > 0):
 			final_damage += 15
+
+	# Apply Blocked after adding flat damage now (New in Milestone 4)
+	var blocked_stack : float = 0.0
+	if not attack_name == "roll shot":
+		blocked_stack = attacker.get_feeling_stack(Beastie.Feelings.BLOCKED)
+	var blocked_mult : float = 2.0 / (2.0 + blocked_stack)
+	final_damage = max(1, ceili(final_damage * blocked_mult))
 
 	final_damage = attacker.my_trait.special_cal_formula(final_damage, attacker, defender, attack, attacker_team_controller, defender_team_controller)
 

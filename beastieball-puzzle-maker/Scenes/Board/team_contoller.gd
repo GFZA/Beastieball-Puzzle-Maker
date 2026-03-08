@@ -703,10 +703,11 @@ func get_mimicked_attack_from_ally(mimic_user : Beastie) -> Attack:
 	var ally_first_slot : Plays = ally.my_plays[0]
 	if ally_first_slot and ally_first_slot.type in [Plays.Type.ATTACK_BODY, Plays.Type.ATTACK_SPIRIT, Plays.Type.ATTACK_MIND]:
 		var new_attack : Attack = ally_first_slot.duplicate(true)
-		new_attack.base_pow = ceili(ally_first_slot.base_pow * 1.2)
+		new_attack.base_pow = ally_first_slot.base_pow
 		new_attack.type = ally_first_slot.type
 		new_attack.use_condition = ally_first_slot.use_condition
 		new_attack.target = ally_first_slot.target
+		new_attack.is_mimicked = true
 		return new_attack
 	return null
 
