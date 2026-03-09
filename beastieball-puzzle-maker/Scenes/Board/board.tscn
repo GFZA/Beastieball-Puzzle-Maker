@@ -259,6 +259,11 @@ texture = ExtResource("13_v248q")
 position = Vector2(1490, 480.76932)
 texture = ExtResource("11_a1ark")
 
+[node name="TractorBeamAnchor" type="Node2D" parent="SubViewportContainer/SubViewport/BoardBG"]
+unique_name_in_owner = true
+position = Vector2(-77.69232, -371.53848)
+scale = Vector2(0.76923084, 0.76923084)
+
 [node name="BarrierVisuals" type="Node2D" parent="SubViewportContainer/SubViewport/BoardBG"]
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
@@ -412,9 +417,6 @@ script = ExtResource("3_oh3sv")
 left_team_controller = NodePath("../LeftTeamController")
 right_team_controller = NodePath("../RightTeamController")
 metadata/_edit_lock_ = true
-
-[node name="TractorBeamAnchor" type="Node2D" parent="SubViewportContainer/SubViewport"]
-unique_name_in_owner = true
 
 [node name="LeftTeamController" type="Node2D" parent="SubViewportContainer/SubViewport"]
 unique_name_in_owner = true

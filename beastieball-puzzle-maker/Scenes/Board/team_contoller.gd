@@ -688,12 +688,21 @@ func get_nearest_position_for_opponent(opponent_is_upper : bool) -> Beastie.Posi
 			Beastie.Position.UPPER_BACK,
 		]
 
+	var i : int = 0
 	for pos : Beastie.Position in order:
 		var beastie : Beastie = pos_dict.get(pos)
-		if not beastie:
-			continue
-		return pos
-	return Beastie.Position.UPPER_BACK # Shouldn't happen
+		if beastie:
+			if not beastie.my_trait.name.to_lower() == "haunted":
+				return pos
+			else:
+				if i == order.size() - 1:
+					return Beastie.Position.NOT_ASSIGNED
+				else:
+					i += 1
+					continue
+		i += 1
+
+	return Beastie.Position.NOT_ASSIGNED # Shouldn't happen
 
 
 func get_mimicked_attack_from_ally(mimic_user : Beastie) -> Attack:

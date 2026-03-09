@@ -280,6 +280,9 @@ func _create_tractor_beam(beam_beastie : Beastie, is_left : bool) -> void:
 	var is_upper : bool = beam_beastie.my_field_position in [Beastie.Position.UPPER_BACK, Beastie.Position.UPPER_FRONT]
 	var nearest_beastie_pos : Beastie.Position = opponent_controller.get_nearest_position_for_opponent(is_upper)
 
+	if nearest_beastie_pos == Beastie.Position.NOT_ASSIGNED:
+		return
+
 	var start : Vector2 = my_controller.position_anchors[beam_beastie.my_field_position].global_position
 	var end : Vector2 = opponent_controller.position_anchors[nearest_beastie_pos].global_position
 

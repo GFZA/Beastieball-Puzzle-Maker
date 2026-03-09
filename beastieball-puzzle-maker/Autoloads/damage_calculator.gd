@@ -6,6 +6,13 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack, \
 				attacker_team_controller : TeamController = null, \
 				defender_team_controller : TeamController = null) -> int:
 
+	if not attacker.my_trait:
+		push_error("Attacker %s doesn't have trait assigned!" % attacker.specie_name)
+		return 0
+	if not defender.my_trait:
+		push_error("Defender %s doesn't have trait assigned!" % defender.specie_name)
+		return 0
+
 	#region Set up things to cal
 	var final_damage : int = 0
 	var attack_name : String = attack.name.to_lower()
@@ -130,19 +137,27 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack, \
 	if jazzed:
 		total_defense_boost = mini(0, total_defense_boost)
 
-	var defender_is_shy : bool = (defender.my_trait.name.to_lower() == "shy") and (not attack_name == "true strike")
+	var swap_row_bonus : bool = false
+	var defender_is_shy : bool = defender.my_trait.name.to_lower() == "shy"
+	var is_maverick : bool = attacker.my_trait.name.to_lower() == "maverick"
 	var is_rocket : bool = attack_name == "rocket"
-	if defender_is_shy != is_rocket: # Only swap row bonus when both are true or both are false (XOR condition)
+	var is_true_strike : bool = attack_name == "true strike"
+
+	if not defender_is_shy:
+		if is_rocket:
+			swap_row_bonus = true
+		else:
+			swap_row_bonus = false
+	else:
+		if is_rocket != (is_maverick != is_true_strike): # make it double ignore if both
+			swap_row_bonus = false
+		else:
+			swap_row_bonus = true
+
+	if swap_row_bonus:
 		total_defense_boost += int(defender_at_net)
 	else:
 		total_defense_boost += int(not defender_at_net) + int(defender_is_stacked)
-
-	if not attacker.my_trait:
-		push_error("Attacker %s doesn't have trait assigned!" % attacker.specie_name)
-		return 0
-	if not defender.my_trait:
-		push_error("Defender %s doesn't have trait assigned!" % defender.specie_name)
-		return 0
 
 	var attacker_trait_mult : float = attacker.my_trait.get_attack_mult(attacker, defender, attack, attacker_team_controller, defender_team_controller)
 	var defender_trait_mult : float = 1.0

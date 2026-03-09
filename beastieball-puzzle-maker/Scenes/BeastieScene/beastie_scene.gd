@@ -28,7 +28,11 @@ const BALL_SPRITE_RIGHT_OFFSET : Vector2 = Vector2(-119.0, -90.0)
 		if not is_node_ready():
 			await ready
 
+		sprite_2d_haunted_backdrop.offset = Vector2.ZERO
 		sprite_2d.offset = Vector2.ZERO
+		sprite_2d_haunted_filter.offset = Vector2.ZERO
+		sprite_2d_haunted_backdrop.hide()
+		sprite_2d_haunted_filter.hide()
 		ball_sprite.hide()
 
 		if my_healthbar:
@@ -71,8 +75,12 @@ const BALL_SPRITE_RIGHT_OFFSET : Vector2 = Vector2(-119.0, -90.0)
 
 		_update_ball()
 		_update_sprite_pose()
+		sprite_2d_haunted_backdrop.offset.x = beastie.x_offset if my_side == Global.MySide.LEFT else -beastie.x_offset
+		sprite_2d_haunted_backdrop.offset.y = beastie.y_offset
 		sprite_2d.offset.x = beastie.x_offset if my_side == Global.MySide.LEFT else -beastie.x_offset
 		sprite_2d.offset.y = beastie.y_offset
+		sprite_2d_haunted_filter.offset.x = beastie.x_offset if my_side == Global.MySide.LEFT else -beastie.x_offset
+		sprite_2d_haunted_filter.offset.y = beastie.y_offset
 		edit_beastie_button.text = "Edit\n%s" % beastie.specie_name
 
 @export var h_allign : HorizontalAlignment = HORIZONTAL_ALIGNMENT_CENTER :
@@ -106,14 +114,18 @@ const BALL_SPRITE_RIGHT_OFFSET : Vector2 = Vector2(-119.0, -90.0)
 var current_sprite : Texture2D = null :
 	set(value):
 		current_sprite = value
+		sprite_2d_haunted_backdrop.texture = current_sprite
 		sprite_2d.texture = current_sprite
+		sprite_2d_haunted_filter.texture = current_sprite
 
 var benched : bool = false # Not use setter because only set it once and after having healthbar
 
 var my_healthbar : Healthbar = null
 var my_feelings_cloud : FeelingsCloud = null
 
+@onready var sprite_2d_haunted_backdrop: Sprite2D = %Sprite2DHauntedBackdrop
 @onready var sprite_2d: Sprite2D = %Sprite2D
+@onready var sprite_2d_haunted_filter: Sprite2D = %Sprite2DHauntedFilter
 @onready var left_feelings_anchor: Marker2D = %LeftFeelingsAnchor
 @onready var right_feelings_anchor: Marker2D = %RightFeelingsAnchor
 @onready var ball_anchor: Marker2D = %BallAnchor
@@ -153,6 +165,11 @@ func _update_sprite_pose() -> void:
 				current_sprite = beastie.get_sprite(Beastie.Sprite.VOLLEY)
 				return
 
+	# Haunted visuals
+	var is_haunted : bool = beastie.my_trait.name.to_lower() == "haunted"
+	sprite_2d_haunted_backdrop.visible = is_haunted
+	sprite_2d_haunted_filter.visible = is_haunted
+
 	# Critical bad feelings take priority over good feelings
 	var current_feelings : Dictionary[Beastie.Feelings, int] = beastie.current_feelings
 	for feelings in current_feelings.keys():
@@ -167,7 +184,7 @@ func _update_sprite_pose() -> void:
 			return
 
 	# Not fitting any condition, idle
-	current_sprite = beastie.get_sprite(Beastie.Sprite.IDLE)
+	current_sprite = beastie.get_sprite(Beastie.Sprite.IDLE) if not is_haunted else beastie.get_sprite(Beastie.Sprite.BAD)
 
 
 func _overwrite_sprite_pose(new_sprite : Beastie.Sprite) -> void:
@@ -181,7 +198,9 @@ func _update_side(new_side : Global.MySide) -> void:
 	if not is_node_ready():
 		await ready
 	var is_left : bool = (new_side == Global.MySide.LEFT)
+	sprite_2d_haunted_backdrop.flip_h = is_left
 	sprite_2d.flip_h = is_left
+	sprite_2d_haunted_filter.flip_h = is_left
 	_update_ball()
 	if my_feelings_cloud:
 		var new_parent : Marker2D = left_feelings_anchor if is_left else right_feelings_anchor

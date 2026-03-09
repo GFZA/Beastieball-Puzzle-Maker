@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_n8gi1")
 name = "Haunted"
-description = "Always feels 4 TIRED"
+description = "Always feels 4 TIRED and can't be targeted"
 metadata/_custom_type_script = "uid://bslfuaragw1g7"
