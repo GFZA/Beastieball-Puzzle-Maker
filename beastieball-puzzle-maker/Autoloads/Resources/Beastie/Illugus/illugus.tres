@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=45 format=3 uid="uid://bjthxewupgu3b"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=46 format=3 uid="uid://bjthxewupgu3b"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_1qr5m"]
 [ext_resource type="Resource" uid="uid://dsnexptlnp1n7" path="res://Autoloads/Resources/Trait/trapper.tres" id="2_1wfet"]
@@ -44,6 +44,7 @@
 [ext_resource type="Resource" uid="uid://tc6ag84sawpl" path="res://Autoloads/Resources/Plays/Support/tough_front.tres" id="32_8oats"]
 [ext_resource type="Resource" uid="uid://l57ggke2vhn0" path="res://Autoloads/Resources/Plays/Defense/heat_up.tres" id="33_wonxh"]
 [ext_resource type="Resource" uid="uid://dyyf4roekh4n8" path="res://Autoloads/Resources/Plays/Defense/torch_pass.tres" id="34_2hqir"]
+[ext_resource type="Resource" uid="uid://bcpacxusyskuo" path="res://Autoloads/Resources/Plays/Attack/Mind/sweep.tres" id="35_jvpfn"]
 
 [resource]
 script = ExtResource("3_ifijr")
@@ -53,12 +54,12 @@ specie_name = "Illugus"
 beastiepedia_id = 4
 bar_color = Color(0.49803922, 0.42352942, 0.84705883, 1)
 body_base_pow = 65
-spirit_base_pow = 40
+spirit_base_pow = 45
 mind_base_pow = 90
 body_base_def = 75
 spirit_base_def = 60
 mind_base_def = 110
-possible_plays = Array[ExtResource("1_1qr5m")]([null, ExtResource("3_fjles"), ExtResource("4_jvpfn"), ExtResource("5_0s7ns"), ExtResource("6_igijl"), ExtResource("7_y3ogs"), ExtResource("8_gik77"), ExtResource("9_01vh7"), ExtResource("10_fnj7k"), ExtResource("11_hxoih"), ExtResource("12_ikkbn"), ExtResource("13_3oo7i"), ExtResource("14_vfkwf"), ExtResource("15_d6v1u"), ExtResource("16_3vket"), ExtResource("17_6uboq"), ExtResource("18_ckkhk"), ExtResource("19_7oiwg"), ExtResource("20_i637x"), ExtResource("21_v6ke7"), ExtResource("22_s6vr6"), ExtResource("23_6ispl"), ExtResource("24_k8sqa"), ExtResource("25_viyub"), ExtResource("26_76qjx"), ExtResource("27_xo6gv"), ExtResource("28_bo688"), ExtResource("29_xq1yy"), ExtResource("30_jwrem"), ExtResource("31_wp2kd"), ExtResource("32_8oats"), ExtResource("33_wonxh"), ExtResource("34_2hqir")])
+possible_plays = Array[ExtResource("1_1qr5m")]([null, ExtResource("3_fjles"), ExtResource("4_jvpfn"), ExtResource("5_0s7ns"), ExtResource("6_igijl"), ExtResource("7_y3ogs"), ExtResource("8_gik77"), ExtResource("9_01vh7"), ExtResource("10_fnj7k"), ExtResource("11_hxoih"), ExtResource("12_ikkbn"), ExtResource("13_3oo7i"), ExtResource("14_vfkwf"), ExtResource("15_d6v1u"), ExtResource("16_3vket"), ExtResource("17_6uboq"), ExtResource("18_ckkhk"), ExtResource("19_7oiwg"), ExtResource("20_i637x"), ExtResource("21_v6ke7"), ExtResource("22_s6vr6"), ExtResource("23_6ispl"), ExtResource("24_k8sqa"), ExtResource("25_viyub"), ExtResource("26_76qjx"), ExtResource("27_xo6gv"), ExtResource("28_bo688"), ExtResource("29_xq1yy"), ExtResource("30_jwrem"), ExtResource("31_wp2kd"), ExtResource("32_8oats"), ExtResource("33_wonxh"), ExtResource("34_2hqir"), ExtResource("35_jvpfn")])
 possible_traits = Array[ExtResource("2_n1j3f")]([ExtResource("2_1wfet"), ExtResource("4_53vyc")])
 sprites = Dictionary[int, Texture2D]({
 0: ExtResource("6_a88fr"),

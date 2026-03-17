@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_f4yvt")
 name = "Jeer"
-descrition = "BODY MIND POW DOWN1 to target."
+descrition = "ALL_TYPE POW DOWN1 to target."
 metadata/_custom_type_script = "uid://ckljlmv7ycuxl"

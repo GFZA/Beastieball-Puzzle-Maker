@@ -19,7 +19,6 @@
 [ext_resource type="Resource" uid="uid://c8icw3pvu0swl" path="res://Autoloads/Resources/Plays/Attack/Body/dive.tres" id="9_30kej"]
 [ext_resource type="Texture2D" uid="uid://uncugno5eq63" path="res://Autoloads/Resources/Beastie/Daredillo/daredillo_bad.png" id="9_u1hfc"]
 [ext_resource type="Resource" uid="uid://c6eqm7qkng1lr" path="res://Autoloads/Resources/Plays/Attack/Body/spike.tres" id="10_dnvk1"]
-[ext_resource type="Resource" uid="uid://d0oln32r14dhl" path="res://Autoloads/Resources/Plays/Attack/Spirit/exert.tres" id="11_d1swb"]
 [ext_resource type="Resource" uid="uid://dfrswto2e3nco" path="res://Autoloads/Resources/Plays/Defense/role_reverse.tres" id="12_7ggtb"]
 [ext_resource type="Resource" uid="uid://dcn80u35wkpjp" path="res://Autoloads/Resources/Plays/Volley/net_rush.tres" id="13_rkejm"]
 [ext_resource type="Resource" uid="uid://qn2srsf766xj" path="res://Autoloads/Resources/Plays/Attack/Spirit/burnout.tres" id="14_14vcc"]
@@ -40,6 +39,7 @@
 [ext_resource type="Resource" uid="uid://c33nk1bps8v2q" path="res://Autoloads/Resources/Plays/Support/quick_tag.tres" id="29_kun3f"]
 [ext_resource type="Resource" uid="uid://b0kuuquuv3nwx" path="res://Autoloads/Resources/Plays/Support/whoosh.tres" id="30_3fwyd"]
 [ext_resource type="Resource" uid="uid://cpuds8hsc5dr1" path="res://Autoloads/Resources/Plays/Defense/dramatic_exit.tres" id="31_1mtka"]
+[ext_resource type="Resource" uid="uid://dtp7xhemyx02l" path="res://Autoloads/Resources/Plays/Attack/Spirit/swarm.tres" id="32_ql6m5"]
 [ext_resource type="Resource" uid="uid://dytuvbvg3oamq" path="res://Autoloads/Resources/Plays/Defense/shield.tres" id="32_uf1qp"]
 [ext_resource type="Texture2D" uid="uid://cyijt1r2k7phs" path="res://Autoloads/Resources/Beastie/Daredillo/icon_daredillo.png" id="42_ql6m5"]
 
@@ -53,10 +53,10 @@ bar_color = Color(0.99215686, 0, 0, 1)
 body_base_pow = 95
 spirit_base_pow = 105
 mind_base_pow = 25
-body_base_def = 95
+body_base_def = 101
 spirit_base_def = 30
 mind_base_def = 65
-possible_plays = Array[ExtResource("1_co2qs")]([ExtResource("3_w0671"), ExtResource("4_51lq1"), ExtResource("5_2jgtp"), ExtResource("6_21j1e"), ExtResource("7_khfe2"), ExtResource("8_ol6oq"), ExtResource("9_30kej"), ExtResource("10_dnvk1"), ExtResource("11_d1swb"), ExtResource("12_7ggtb"), ExtResource("13_rkejm"), ExtResource("14_14vcc"), ExtResource("15_oms5a"), ExtResource("16_vedeh"), ExtResource("17_ekply"), ExtResource("18_0d6af"), ExtResource("19_da3wi"), ExtResource("20_71sl6"), ExtResource("21_7vbi7"), ExtResource("22_5kccc"), ExtResource("23_v2tpi"), ExtResource("24_f0clj"), ExtResource("25_uos7i"), ExtResource("26_qp8k7"), ExtResource("27_4q64c"), ExtResource("28_gwpb7"), ExtResource("29_kun3f"), ExtResource("30_3fwyd"), ExtResource("31_1mtka"), ExtResource("32_uf1qp")])
+possible_plays = Array[ExtResource("1_co2qs")]([ExtResource("3_w0671"), ExtResource("4_51lq1"), ExtResource("5_2jgtp"), ExtResource("6_21j1e"), ExtResource("7_khfe2"), ExtResource("8_ol6oq"), ExtResource("9_30kej"), ExtResource("10_dnvk1"), ExtResource("12_7ggtb"), ExtResource("13_rkejm"), ExtResource("14_14vcc"), ExtResource("15_oms5a"), ExtResource("16_vedeh"), ExtResource("17_ekply"), ExtResource("18_0d6af"), ExtResource("19_da3wi"), ExtResource("20_71sl6"), ExtResource("21_7vbi7"), ExtResource("22_5kccc"), ExtResource("23_v2tpi"), ExtResource("24_f0clj"), ExtResource("25_uos7i"), ExtResource("26_qp8k7"), ExtResource("27_4q64c"), ExtResource("28_gwpb7"), ExtResource("29_kun3f"), ExtResource("30_3fwyd"), ExtResource("31_1mtka"), ExtResource("32_uf1qp"), ExtResource("32_ql6m5")])
 possible_traits = Array[ExtResource("2_pdjv8")]([ExtResource("2_5qjw5"), ExtResource("4_1ujr4")])
 sprites = Dictionary[int, Texture2D]({
 0: ExtResource("4_3uupq"),

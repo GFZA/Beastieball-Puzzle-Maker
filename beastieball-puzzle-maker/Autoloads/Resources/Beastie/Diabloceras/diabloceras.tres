@@ -24,7 +24,6 @@
 [ext_resource type="Resource" uid="uid://dx40fortxl3pq" path="res://Autoloads/Resources/Plays/Attack/Spirit/challenge.tres" id="18_p1frc"]
 [ext_resource type="Resource" uid="uid://blbmt8c6ixadi" path="res://Autoloads/Resources/Plays/Attack/Spirit/counter.tres" id="19_dfl7h"]
 [ext_resource type="Resource" uid="uid://bjh3q3eclur2i" path="res://Autoloads/Resources/Plays/Attack/Spirit/thriller.tres" id="20_q4ok7"]
-[ext_resource type="Resource" uid="uid://d0oln32r14dhl" path="res://Autoloads/Resources/Plays/Attack/Spirit/exert.tres" id="21_ff62j"]
 [ext_resource type="Resource" uid="uid://bv35xn3xk317w" path="res://Autoloads/Resources/Plays/Attack/Spirit/cook.tres" id="22_ake0p"]
 [ext_resource type="Resource" uid="uid://d0quf2d6sukkq" path="res://Autoloads/Resources/Plays/Attack/Spirit/steamer.tres" id="23_lpgmg"]
 [ext_resource type="Resource" uid="uid://c43v5gcf3gyur" path="res://Autoloads/Resources/Plays/Attack/Mind/perfect_shot.tres" id="24_phuei"]
@@ -43,6 +42,7 @@
 [ext_resource type="Resource" uid="uid://ymdvl6wdoqws" path="res://Autoloads/Resources/Plays/Defense/hawkeye.tres" id="37_3tt4r"]
 [ext_resource type="Resource" uid="uid://cv6tk1l5vkxo4" path="res://Autoloads/Resources/Plays/Defense/heart_harden.tres" id="38_nhmgb"]
 [ext_resource type="Resource" uid="uid://dytuvbvg3oamq" path="res://Autoloads/Resources/Plays/Defense/shield.tres" id="39_26jsl"]
+[ext_resource type="Resource" uid="uid://c6otckj1e4rrf" path="res://Autoloads/Resources/Plays/Support/reign.tres" id="39_aogw2"]
 
 [resource]
 script = ExtResource("3_8rjds")
@@ -57,7 +57,7 @@ mind_base_pow = 66
 body_base_def = 108
 spirit_base_def = 83
 mind_base_def = 68
-possible_plays = Array[ExtResource("1_7vuc1")]([ExtResource("3_aogw2"), ExtResource("4_yle7y"), ExtResource("5_g1aol"), ExtResource("6_idgjv"), ExtResource("7_qk0wt"), ExtResource("8_wa38k"), ExtResource("9_k5wqc"), ExtResource("10_8567r"), ExtResource("11_iyrtc"), ExtResource("12_d3ypv"), ExtResource("13_sru5a"), ExtResource("14_as84x"), ExtResource("15_ctvac"), ExtResource("16_a4e10"), ExtResource("17_rl300"), ExtResource("18_p1frc"), ExtResource("19_dfl7h"), ExtResource("20_q4ok7"), ExtResource("21_ff62j"), ExtResource("22_ake0p"), ExtResource("23_lpgmg"), ExtResource("24_phuei"), ExtResource("25_ejsrm"), ExtResource("26_0y0wo"), ExtResource("27_ycmoq"), ExtResource("28_thxga"), ExtResource("29_w5i02"), ExtResource("30_0vmt2"), ExtResource("31_ubrbl"), ExtResource("32_5bfby"), ExtResource("33_ql36v"), ExtResource("34_btjuo"), ExtResource("35_tm4i4"), ExtResource("36_nvyj1"), ExtResource("37_3tt4r"), ExtResource("38_nhmgb"), ExtResource("39_26jsl")])
+possible_plays = Array[ExtResource("1_7vuc1")]([ExtResource("3_aogw2"), ExtResource("4_yle7y"), ExtResource("5_g1aol"), ExtResource("6_idgjv"), ExtResource("7_qk0wt"), ExtResource("8_wa38k"), ExtResource("9_k5wqc"), ExtResource("10_8567r"), ExtResource("11_iyrtc"), ExtResource("12_d3ypv"), ExtResource("13_sru5a"), ExtResource("14_as84x"), ExtResource("15_ctvac"), ExtResource("16_a4e10"), ExtResource("17_rl300"), ExtResource("18_p1frc"), ExtResource("19_dfl7h"), ExtResource("20_q4ok7"), ExtResource("22_ake0p"), ExtResource("23_lpgmg"), ExtResource("24_phuei"), ExtResource("25_ejsrm"), ExtResource("26_0y0wo"), ExtResource("27_ycmoq"), ExtResource("28_thxga"), ExtResource("29_w5i02"), ExtResource("30_0vmt2"), ExtResource("31_ubrbl"), ExtResource("32_5bfby"), ExtResource("33_ql36v"), ExtResource("34_btjuo"), ExtResource("35_tm4i4"), ExtResource("36_nvyj1"), ExtResource("37_3tt4r"), ExtResource("38_nhmgb"), ExtResource("39_26jsl"), ExtResource("39_aogw2")])
 possible_traits = Array[ExtResource("2_gt5ta")]([ExtResource("2_7fdah")])
 sprites = Dictionary[int, Texture2D]({
 0: ExtResource("5_vbuyd"),

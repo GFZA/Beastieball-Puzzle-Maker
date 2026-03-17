@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_px4t1")
 name = "Vampire"
-description = "Restores STAMINA equal to 1/3 of damage dealt"
+description = "Restores STAMINA equal to 1/4 of damage dealt"
 metadata/_custom_type_script = "uid://bslfuaragw1g7"

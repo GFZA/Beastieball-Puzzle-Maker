@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_btpis")
 name = "Sauna"
-description = "Other SWEATY Beasties lose +10 STAMINA"
+description = "SWEATY opponents lose +10 STAMINA"
 metadata/_custom_type_script = "uid://bslfuaragw1g7"

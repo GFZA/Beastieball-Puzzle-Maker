@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_1unkw")
 name = "True Strike"
-base_pow = 85
+base_pow = 80
 descrition = "ATTACK. Ignores Traits."
 type = 0
 metadata/_custom_type_script = "uid://bc63soeia1eb1"

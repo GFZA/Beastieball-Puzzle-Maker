@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_3vq3n")
 name = "Chill Out"
-descrition = "SPIRIT POW DOWN2 to target."
+descrition = "Clears UP1 DOWN1 BOOSTs from target. SPIRIT POW DOWN2 to target."
 metadata/_custom_type_script = "uid://ckljlmv7ycuxl"

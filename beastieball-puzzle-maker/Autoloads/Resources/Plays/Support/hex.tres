@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_cdhbm")
 name = "Hex"
-descrition = "Target and self trait changes to Haunted (Always feels 4 TIRED)."
+descrition = "Target and self trait changes to Haunted."
 metadata/_custom_type_script = "uid://ckljlmv7ycuxl"

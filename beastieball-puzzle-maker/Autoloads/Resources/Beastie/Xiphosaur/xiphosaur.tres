@@ -25,13 +25,13 @@
 [ext_resource type="Resource" uid="uid://dyyf4roekh4n8" path="res://Autoloads/Resources/Plays/Defense/torch_pass.tres" id="14_mjp41"]
 [ext_resource type="Resource" uid="uid://cbqqeeugk7xo0" path="res://Autoloads/Resources/Plays/Attack/Spirit/desperate_force.tres" id="15_6reqb"]
 [ext_resource type="Resource" uid="uid://bd6b2mst43mrw" path="res://Autoloads/Resources/Plays/Attack/Spirit/comeback.tres" id="16_mthth"]
-[ext_resource type="Resource" uid="uid://d0oln32r14dhl" path="res://Autoloads/Resources/Plays/Attack/Spirit/exert.tres" id="17_vlpwe"]
 [ext_resource type="Resource" uid="uid://fysaq1o88o1v" path="res://Autoloads/Resources/Plays/Attack/Spirit/grit.tres" id="18_ibs3k"]
 [ext_resource type="Resource" uid="uid://d0quf2d6sukkq" path="res://Autoloads/Resources/Plays/Attack/Spirit/steamer.tres" id="19_2cnqu"]
 [ext_resource type="Resource" uid="uid://debwcca8lqqb2" path="res://Autoloads/Resources/Plays/Volley/pipe.tres" id="20_hi1ls"]
 [ext_resource type="Resource" uid="uid://ck2v1w5w6an2w" path="res://Autoloads/Resources/Plays/Support/drum.tres" id="21_wd8we"]
 [ext_resource type="Resource" uid="uid://6n8gisa23e7k" path="res://Autoloads/Resources/Plays/Support/nettle.tres" id="22_5opgn"]
 [ext_resource type="Resource" uid="uid://tc6ag84sawpl" path="res://Autoloads/Resources/Plays/Support/tough_front.tres" id="23_8qodr"]
+[ext_resource type="Resource" uid="uid://c5oyp7e74r3pd" path="res://Autoloads/Resources/Plays/Support/shake_off.tres" id="24_5sg5e"]
 [ext_resource type="Resource" uid="uid://dm6eb4ue4fypu" path="res://Autoloads/Resources/Plays/Defense/body_ready.tres" id="24_p6opk"]
 
 [resource]
@@ -47,7 +47,7 @@ mind_base_pow = 29
 body_base_def = 123
 spirit_base_def = 85
 mind_base_def = 107
-possible_plays = Array[ExtResource("1_aavhy")]([ExtResource("3_5sg5e"), ExtResource("4_qcdbm"), ExtResource("5_sf1s4"), ExtResource("6_oy6fx"), ExtResource("7_5u06q"), ExtResource("8_w60fm"), ExtResource("9_x7rrh"), ExtResource("10_p2ph1"), ExtResource("11_cpmtj"), ExtResource("12_aubav"), ExtResource("13_ngefs"), ExtResource("14_mjp41"), ExtResource("15_6reqb"), ExtResource("16_mthth"), ExtResource("17_vlpwe"), ExtResource("18_ibs3k"), ExtResource("19_2cnqu"), ExtResource("20_hi1ls"), ExtResource("21_wd8we"), ExtResource("22_5opgn"), ExtResource("23_8qodr"), ExtResource("24_p6opk")])
+possible_plays = Array[ExtResource("1_aavhy")]([ExtResource("3_5sg5e"), ExtResource("4_qcdbm"), ExtResource("5_sf1s4"), ExtResource("6_oy6fx"), ExtResource("7_5u06q"), ExtResource("8_w60fm"), ExtResource("9_x7rrh"), ExtResource("10_p2ph1"), ExtResource("11_cpmtj"), ExtResource("12_aubav"), ExtResource("13_ngefs"), ExtResource("14_mjp41"), ExtResource("15_6reqb"), ExtResource("16_mthth"), ExtResource("18_ibs3k"), ExtResource("19_2cnqu"), ExtResource("20_hi1ls"), ExtResource("21_wd8we"), ExtResource("22_5opgn"), ExtResource("23_8qodr"), ExtResource("24_p6opk"), ExtResource("24_5sg5e")])
 possible_traits = Array[ExtResource("2_5x0qa")]([ExtResource("2_pm4g0")])
 sprites = Dictionary[int, Texture2D]({
 0: ExtResource("5_rn1r6"),

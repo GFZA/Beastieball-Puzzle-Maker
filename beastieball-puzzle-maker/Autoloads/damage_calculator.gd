@@ -125,7 +125,6 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack, \
 		total_attack_boost += int(not attacker_at_net)
 	else:
 		total_attack_boost += int(attacker_at_net)
-	total_attack_boost += attacker.my_trait.get_starter_trait_boost_stack(attacker, stats_type_attack)
 
 	# --- DEF boosts ---
 	var total_defense_boost : int = 0
@@ -207,6 +206,10 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack, \
 		if ((stats_type_attack == int(Plays.Type.ATTACK_SPIRIT)) or (attack_name == "ego blast") or (attacker.my_trait.name.to_lower() == "extrovert")) and \
 			(attacker_team_controller.get_field_effect_stack(FieldEffect.Type.RALLY) > 0):
 			final_damage += 15
+
+	var starter_trait_proc : bool = bool(attacker.my_trait.get_starter_trait_boost_stack(attacker, stats_type_attack))
+	if starter_trait_proc:
+		final_damage += 15
 
 	# Apply Blocked after adding flat damage now (New in Milestone 4)
 	var blocked_stack : float = 0.0

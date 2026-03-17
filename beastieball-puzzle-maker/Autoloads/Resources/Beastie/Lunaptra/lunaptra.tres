@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=37 format=3 uid="uid://crlsqrlt1v3qd"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=38 format=3 uid="uid://crlsqrlt1v3qd"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_dvkgs"]
 [ext_resource type="Resource" uid="uid://cev858wjqvyjd" path="res://Autoloads/Resources/Trait/vampire.tres" id="2_wdimx"]
@@ -36,6 +36,7 @@
 [ext_resource type="Resource" uid="uid://cv6tk1l5vkxo4" path="res://Autoloads/Resources/Plays/Defense/heart_harden.tres" id="24_s2mf3"]
 [ext_resource type="Resource" uid="uid://l57ggke2vhn0" path="res://Autoloads/Resources/Plays/Defense/heat_up.tres" id="25_2k6nk"]
 [ext_resource type="Resource" uid="uid://dytuvbvg3oamq" path="res://Autoloads/Resources/Plays/Defense/shield.tres" id="26_omfe7"]
+[ext_resource type="Resource" uid="uid://dtp7xhemyx02l" path="res://Autoloads/Resources/Plays/Attack/Spirit/swarm.tres" id="27_hi5vl"]
 
 [resource]
 script = ExtResource("5_jxnvn")
@@ -49,7 +50,7 @@ spirit_base_pow = 45
 mind_base_pow = 45
 body_base_def = 110
 spirit_base_def = 75
-possible_plays = Array[ExtResource("1_dvkgs")]([ExtResource("3_pgeef"), ExtResource("4_hi5vl"), ExtResource("5_qhykr"), ExtResource("6_1slg6"), ExtResource("7_s0bpy"), ExtResource("8_msjal"), ExtResource("9_g8ov7"), ExtResource("10_anrlt"), ExtResource("11_dnonr"), ExtResource("12_tkc77"), ExtResource("13_3bi6c"), ExtResource("14_t16pf"), ExtResource("15_w01dk"), ExtResource("16_aqoe7"), ExtResource("17_ri8im"), ExtResource("18_6qd03"), ExtResource("19_v78i7"), ExtResource("20_t80g3"), ExtResource("21_pe2a8"), ExtResource("22_6gjv4"), ExtResource("23_6sjiq"), ExtResource("24_s2mf3"), ExtResource("25_2k6nk"), ExtResource("26_omfe7")])
+possible_plays = Array[ExtResource("1_dvkgs")]([ExtResource("3_pgeef"), ExtResource("4_hi5vl"), ExtResource("5_qhykr"), ExtResource("6_1slg6"), ExtResource("7_s0bpy"), ExtResource("8_msjal"), ExtResource("9_g8ov7"), ExtResource("10_anrlt"), ExtResource("11_dnonr"), ExtResource("12_tkc77"), ExtResource("13_3bi6c"), ExtResource("14_t16pf"), ExtResource("15_w01dk"), ExtResource("16_aqoe7"), ExtResource("17_ri8im"), ExtResource("18_6qd03"), ExtResource("19_v78i7"), ExtResource("20_t80g3"), ExtResource("21_pe2a8"), ExtResource("22_6gjv4"), ExtResource("23_6sjiq"), ExtResource("24_s2mf3"), ExtResource("25_2k6nk"), ExtResource("26_omfe7"), ExtResource("27_hi5vl")])
 possible_traits = Array[ExtResource("3_y7hd3")]([ExtResource("2_wdimx"), ExtResource("4_0fq8w")])
 sprites = Dictionary[int, Texture2D]({
 0: ExtResource("6_d6fb7"),

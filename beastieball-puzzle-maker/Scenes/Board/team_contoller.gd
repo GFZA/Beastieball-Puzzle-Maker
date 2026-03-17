@@ -26,6 +26,9 @@ const PLAYS_UI_CONTAINER_SCENE : PackedScene = preload("uid://dksxc3rs20kkc")
 	set(value):
 		value.sort()
 		my_field_effects = value
+		for field : FieldEffect in my_field_effects.keys():
+			if my_field_effects.get(field) == 0:
+				my_field_effects.erase(field)
 		field_effects_updated.emit(my_field_effects)
 		_update_field()
 
@@ -732,42 +735,56 @@ func get_field_effect_stack(field_effect : FieldEffect.Type) -> int:
 
 func on_rally_stacked_changed(new_stack : int) -> void:
 	my_field_effects[FieldEffect.Type.RALLY] = new_stack
+	if new_stack == 0:
+		my_field_effects.erase(FieldEffect.Type.RALLY)
 	field_effects_updated.emit(my_field_effects)
 	_update_field()
 
 
 func on_dread_stacked_changed(new_stack : int) -> void:
 	my_field_effects[FieldEffect.Type.DREAD] = new_stack
+	if new_stack == 0:
+		my_field_effects.erase(FieldEffect.Type.DREAD)
 	field_effects_updated.emit(my_field_effects)
 	_update_field()
 
 
 func on_rhythm_stacked_changed(new_stack : int) -> void:
 	my_field_effects[FieldEffect.Type.RHYTHM] = new_stack
+	if new_stack == 0:
+		my_field_effects.erase(FieldEffect.Type.RHYTHM)
 	field_effects_updated.emit(my_field_effects)
 	_update_field()
 
 
 func on_trap_stacked_changed(new_stack : int) -> void:
 	my_field_effects[FieldEffect.Type.TRAP] = new_stack
+	if new_stack == 0:
+		my_field_effects.erase(FieldEffect.Type.TRAP)
 	field_effects_updated.emit(my_field_effects)
 	_update_field()
 
 
 func on_quake_stacked_changed(new_stack : int) -> void:
 	my_field_effects[FieldEffect.Type.QUAKE] = new_stack
+	if new_stack == 0:
+		my_field_effects.erase(FieldEffect.Type.QUAKE)
 	field_effects_updated.emit(my_field_effects)
 	_update_field()
 
 
 func on_barrier_upper_stacked_changed(new_stack : int) -> void:
 	my_field_effects[FieldEffect.Type.BARRIER_UPPER] = new_stack
+	if new_stack == 0:
+		my_field_effects.erase(FieldEffect.Type.BARRIER_UPPER)
 	field_effects_updated.emit(my_field_effects)
 	_update_field()
 
 
 func on_barrier_lower_stacked_changed(new_stack : int) -> void:
 	my_field_effects[FieldEffect.Type.BARRIER_LOWER] = new_stack
+	if new_stack == 0:
+		my_field_effects.erase(FieldEffect.Type.BARRIER_LOWER)
 	field_effects_updated.emit(my_field_effects)
 	_update_field()
 

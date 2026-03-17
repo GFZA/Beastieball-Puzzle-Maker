@@ -28,9 +28,20 @@ func _ready() -> void:
 
 func _assign_all_data_arrays() -> void:
 	all_trait_data_sorted = Global.all_trait_data.duplicate()
+	var primitive : Trait = null
+	var haunted : Trait = null
+	for the_trait : Trait in all_trait_data_sorted:
+		if the_trait.name.to_lower() == "primitive":
+			primitive = the_trait
+			all_trait_data_sorted.erase(the_trait)
+		elif the_trait.name.to_lower() == "haunted":
+			haunted = the_trait
+			all_trait_data_sorted.erase(the_trait)
 	all_trait_data_sorted.sort_custom(func(t1 : Trait, t2 : Trait):
 		return t1.name < t2.name
 	)
+	all_trait_data_sorted.push_front(haunted)
+	all_trait_data_sorted.push_front(primitive)
 
 
 func _get_filtered_array(search_string : String) -> Array[Trait]:

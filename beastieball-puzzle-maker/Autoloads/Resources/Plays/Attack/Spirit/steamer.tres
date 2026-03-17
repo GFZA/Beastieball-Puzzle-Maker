@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_fychc")
 name = "Steamer"
-descrition = "Targets straight ahead. Target feels +2 SWEATY (losing stamina)."
+base_pow = 10
+descrition = "ATTACK. Target feels +2 SWEATY (losing stamina)."
 type = 1
 metadata/_custom_type_script = "uid://bc63soeia1eb1"

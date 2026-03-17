@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_it6bl")
 name = "Echo Strike"
-base_pow = 70
+base_pow = 80
 descrition = "ATTACK. Changes target trait to user's trait."
 type = 2
 metadata/_custom_type_script = "uid://bc63soeia1eb1"
