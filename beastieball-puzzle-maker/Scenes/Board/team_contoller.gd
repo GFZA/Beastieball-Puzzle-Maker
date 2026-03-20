@@ -668,7 +668,7 @@ func get_fielded_ally(beastie_to_check : Beastie) -> Beastie:
 func get_beasties_with_tractor_beam() -> Array[Beastie]:
 	var result : Array[Beastie] = []
 	for beastie : Beastie in beastie_scene_dict.keys():
-		if beastie.my_trait.name.to_lower() == "tractor beam":
+		if beastie.my_trait.name.to_lower() == "tractor beam" and not beastie.is_really_at_bench:
 			result.append(beastie)
 	return result
 

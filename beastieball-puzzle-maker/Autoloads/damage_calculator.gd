@@ -205,7 +205,7 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack, \
 			final_damage += 10
 		if ((stats_type_attack == int(Plays.Type.ATTACK_SPIRIT)) or (attack_name == "ego blast") or (attacker.my_trait.name.to_lower() == "extrovert")) and \
 			(attacker_team_controller.get_field_effect_stack(FieldEffect.Type.RALLY) > 0):
-			final_damage += 15
+			final_damage += 20
 
 	var starter_trait_proc : bool = bool(attacker.my_trait.get_starter_trait_boost_stack(attacker, stats_type_attack))
 	if starter_trait_proc:

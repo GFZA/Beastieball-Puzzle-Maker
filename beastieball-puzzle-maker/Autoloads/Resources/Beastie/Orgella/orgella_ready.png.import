@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxmdbr5oennm0"
-path="res://.godot/imported/xiphosaur_idle.png-a79e2e144f1269309531187618287884.ctex"
+uid="uid://divjk52naeqb6"
+path="res://.godot/imported/orgella_ready.png-39834bfbed56c5fe977cb2d5a6370719.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Autoloads/Resources/Beastie/Xiphosaur/xiphosaur_idle.png"
-dest_files=["res://.godot/imported/xiphosaur_idle.png-a79e2e144f1269309531187618287884.ctex"]
+source_file="res://Autoloads/Resources/Beastie/Orgella/orgella_ready.png"
+dest_files=["res://.godot/imported/orgella_ready.png-39834bfbed56c5fe977cb2d5a6370719.ctex"]
 
 [params]
 

@@ -26,7 +26,6 @@ anchors_preset = 0
 offset_right = 64.0
 offset_bottom = 64.0
 script = ExtResource("1_ac1gr")
-stack = 8
 
 [node name="TextureRect" type="TextureRect" parent="."]
 unique_name_in_owner = true
@@ -37,9 +36,9 @@ texture = ExtResource("1_hg08h")
 
 [node name="Circle" type="TextureRect" parent="TextureRect"]
 layout_mode = 0
-offset_left = 35.0
+offset_left = 29.0
 offset_top = 31.0
-offset_right = 83.0
+offset_right = 89.0
 offset_bottom = 79.0
 texture = SubResource("GradientTexture2D_w1og6")
 
@@ -51,7 +50,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "8"
+text = "1"
 label_settings = SubResource("LabelSettings_ac1gr")
 horizontal_alignment = 1
 vertical_alignment = 1

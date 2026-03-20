@@ -205,7 +205,7 @@ size_flags_vertical = 3
 focus_behavior_recursive = 1
 theme = ExtResource("4_w5fki")
 tab_alignment = 1
-current_tab = 3
+current_tab = 2
 tab_focus_mode = 0
 
 [node name="_On Field_" type="TabBar" parent="MainContainer/TabContainer"]
@@ -925,7 +925,6 @@ layout_mode = 2
 
 [node name="_Feelings_" type="TabBar" parent="MainContainer/TabContainer"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
@@ -1206,7 +1205,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
 value_min = 0
-value_max = 2
+value_max = 3
 
 [node name="ResetButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow3/JazzedContainer/JazzedNumberUI" index="0"]
 metadata/_edit_lock_ = true
@@ -1600,7 +1599,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
 value_min = 0
-value_max = 2
+value_max = 3
 
 [node name="ResetButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow6/AngryContainer/AngryNumberUI" index="0"]
 metadata/_edit_group_ = true
@@ -1704,6 +1703,7 @@ expand_icon = true
 
 [node name="_Invests_" type="TabBar" parent="MainContainer/TabContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 metadata/_tab_index = 3
 
