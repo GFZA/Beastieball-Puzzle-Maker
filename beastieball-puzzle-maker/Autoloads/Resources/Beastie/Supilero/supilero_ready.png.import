@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://deakjcwqo2slq"
-path="res://.godot/imported/superilo_idle.png-31389430408a3249d035109820062d83.ctex"
+uid="uid://dsr6viwnm1uqq"
+path="res://.godot/imported/supilero_ready.png-9383106c98a80e9064014ac89eafe483.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Autoloads/Resources/Beastie/Superilo/superilo_idle.png"
-dest_files=["res://.godot/imported/superilo_idle.png-31389430408a3249d035109820062d83.ctex"]
+source_file="res://Autoloads/Resources/Beastie/Supilero/supilero_ready.png"
+dest_files=["res://.godot/imported/supilero_ready.png-9383106c98a80e9064014ac89eafe483.ctex"]
 
 [params]
 

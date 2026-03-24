@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://wh47cnb2oh87"
-path="res://.godot/imported/superilo_good.png-9eac93aa0b2555fcb6953f689fa461d5.ctex"
+path="res://.godot/imported/supilero_good.png-7642c4add5d8ab005ea02ae8f0a38b5d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Autoloads/Resources/Beastie/Superilo/superilo_good.png"
-dest_files=["res://.godot/imported/superilo_good.png-9eac93aa0b2555fcb6953f689fa461d5.ctex"]
+source_file="res://Autoloads/Resources/Beastie/Supilero/supilero_good.png"
+dest_files=["res://.godot/imported/supilero_good.png-7642c4add5d8ab005ea02ae8f0a38b5d.ctex"]
 
 [params]
 

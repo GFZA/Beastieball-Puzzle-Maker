@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cqb755w6pwcf4"
-path="res://.godot/imported/superilo_spike.png-8b1024f56536aa0ab1053f52772a63a7.ctex"
+path="res://.godot/imported/supilero_spike.png-2abc95e02bac629a4f62debd970100bb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Autoloads/Resources/Beastie/Superilo/superilo_spike.png"
-dest_files=["res://.godot/imported/superilo_spike.png-8b1024f56536aa0ab1053f52772a63a7.ctex"]
+source_file="res://Autoloads/Resources/Beastie/Supilero/supilero_spike.png"
+dest_files=["res://.godot/imported/supilero_spike.png-2abc95e02bac629a4f62debd970100bb.ctex"]
 
 [params]
 

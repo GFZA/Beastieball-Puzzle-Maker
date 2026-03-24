@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsr6viwnm1uqq"
-path="res://.godot/imported/superilo_ready.png-81025d87aa864074e2a944b6ad2e15ab.ctex"
+uid="uid://q7u2qqnpq7ug"
+path="res://.godot/imported/supilero_volley.png-6b6d637a513bfc2e1a9fe64fb9a76933.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Autoloads/Resources/Beastie/Superilo/superilo_ready.png"
-dest_files=["res://.godot/imported/superilo_ready.png-81025d87aa864074e2a944b6ad2e15ab.ctex"]
+source_file="res://Autoloads/Resources/Beastie/Supilero/supilero_volley.png"
+dest_files=["res://.godot/imported/supilero_volley.png-6b6d637a513bfc2e1a9fe64fb9a76933.ctex"]
 
 [params]
 

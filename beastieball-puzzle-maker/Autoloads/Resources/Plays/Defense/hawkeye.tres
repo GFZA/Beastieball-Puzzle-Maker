@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_dkmdv")
-name = "Hawkere"
+name = "Hawkeye"
 descrition = "Target feels +1 BLOCKED (POW x2/3). -10 STAMINA."
 type = 5
 metadata/_custom_type_script = "uid://oq75vqpgnqa3"
