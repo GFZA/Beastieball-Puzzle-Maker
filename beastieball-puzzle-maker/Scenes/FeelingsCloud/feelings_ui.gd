@@ -14,9 +14,9 @@ extends Control
 		stack = value
 		_update_number_label()
 
-
 @onready var texture_rect: TextureRect = %TextureRect
 @onready var label: Label = %Label
+@onready var inf_label: Label = %InfLabel
 
 
 func _update_feelings_texture() -> void:
@@ -30,6 +30,11 @@ func _update_feelings_texture() -> void:
 func _update_number_label() -> void:
 	if not is_node_ready():
 		await ready
+
+	var is_infinite : bool = (stack == 99)
+	label.visible = not is_infinite
+	inf_label.visible = is_infinite
+
 	var stack_text : String = ""
 	stack_text += str(stack)
 	if feelings == Beastie.Feelings.WEEPY:

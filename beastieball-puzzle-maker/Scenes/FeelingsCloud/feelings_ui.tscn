@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://csnhyno0i0fh5"]
+[gd_scene load_steps=8 format=3 uid="uid://csnhyno0i0fh5"]
 
 [ext_resource type="Script" uid="uid://c62qmfx5hovbk" path="res://Scenes/FeelingsCloud/feelings_ui.gd" id="1_ac1gr"]
 [ext_resource type="Texture2D" uid="uid://dey8bdpdiw1p4" path="res://Autoloads/Icons/icon_wiped.png" id="1_hg08h"]
@@ -18,6 +18,9 @@ fill_from = Vector2(0.5, 0.5)
 [sub_resource type="LabelSettings" id="LabelSettings_ac1gr"]
 font = ExtResource("3_ac1gr")
 font_size = 36
+
+[sub_resource type="LabelSettings" id="LabelSettings_l0ygr"]
+font_size = 48
 
 [node name="FeelingsUi" type="Control"]
 custom_minimum_size = Vector2(80, 76)
@@ -52,5 +55,21 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "1"
 label_settings = SubResource("LabelSettings_ac1gr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InfLabel" type="Label" parent="TextureRect/Circle"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -11.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "∞"
+label_settings = SubResource("LabelSettings_l0ygr")
 horizontal_alignment = 1
 vertical_alignment = 1

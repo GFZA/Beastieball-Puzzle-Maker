@@ -6,12 +6,14 @@ signal value_updated(value : int)
 
 @export_range(-99, 99) var num : int = 0 :
 	set(value):
-		num = clamp(value, value_min, value_max)
+		num = clamp(value, value_min, 99)
 		_update_ui()
 
 @export_range(-99, 99) var default : int = 0
 @export_range(-99, 99) var value_min : int = -99
 @export_range(-99, 99) var value_max : int = 99
+
+@export var allow_double_click_max : bool = false
 
 @export var side : Global.MySide = Global.MySide.RIGHT:
 	set(value):
@@ -41,7 +43,7 @@ func _ready() -> void:
 	reset_button.pressed.connect(func(): num = default)
 	up_button.pressed.connect(func(): num += 1)
 	down_button.pressed.connect(func(): num -= 1)
-	max_button.pressed.connect(func(): num = value_max)
+	max_button.pressed.connect(_on_max_button_pressed)
 	min_button.pressed.connect(func(): num = value_min)
 
 	reset()
@@ -82,3 +84,10 @@ func _update_side() -> void:
 			move_child(max_button, 4)
 			move_child(min_button_spacer, 5)
 			move_child(min_button, 6)
+
+
+func _on_max_button_pressed() -> void:
+	if allow_double_click_max and num < 99 and num == value_max:
+		num = 99
+	else:
+		num = value_max

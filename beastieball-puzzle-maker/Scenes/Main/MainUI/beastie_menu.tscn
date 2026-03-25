@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://ck45vbd1ldi5t"]
+[gd_scene load_steps=33 format=3 uid="uid://ck45vbd1ldi5t"]
 
 [ext_resource type="Script" uid="uid://6rv1irob5c57" path="res://Scenes/Main/MainUI/beastie_menu.gd" id="1_4hm00"]
 [ext_resource type="FontFile" uid="uid://ckifc6cea5vs" path="res://Autoloads/Resources/Fonts/SportsJerseyEdited.ttf" id="2_4k1vm"]
@@ -46,6 +46,11 @@ border_width_top = 8
 border_width_right = 8
 border_width_bottom = 8
 border_color = Color(0.41568628, 0.5058824, 0.5372549, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ea36h"]
+font = ExtResource("2_4k1vm")
+font_size = 48
+font_color = Color(0, 0, 0, 1)
 
 [node name="BeastieMenu" type="ScrollContainer" groups=["plays_select_ui_requester", "trait_select_ui_requester"]]
 custom_minimum_size = Vector2(805, 1494)
@@ -366,6 +371,7 @@ layout_mode = 2
 size_flags_horizontal = 2
 value_min = -8
 value_max = 8
+allow_double_click_max = false
 side = 0
 show_min_button = true
 
@@ -393,6 +399,7 @@ layout_mode = 2
 size_flags_horizontal = 10
 value_min = -8
 value_max = 8
+allow_double_click_max = false
 show_min_button = true
 
 [node name="Spacer2" type="Control" parent="MainContainer/TabContainer/_On Field_/MainPositionTabContainer/BoostsUIContainer/BodyContainer"]
@@ -410,6 +417,7 @@ layout_mode = 2
 size_flags_horizontal = 2
 value_min = -8
 value_max = 8
+allow_double_click_max = false
 side = 0
 show_min_button = true
 
@@ -437,6 +445,7 @@ layout_mode = 2
 size_flags_horizontal = 10
 value_min = -8
 value_max = 8
+allow_double_click_max = false
 show_min_button = true
 
 [node name="Spacer2" type="Control" parent="MainContainer/TabContainer/_On Field_/MainPositionTabContainer/BoostsUIContainer/SpiritContainer"]
@@ -454,6 +463,7 @@ layout_mode = 2
 size_flags_horizontal = 2
 value_min = -8
 value_max = 8
+allow_double_click_max = false
 side = 0
 show_min_button = true
 
@@ -481,6 +491,7 @@ layout_mode = 2
 size_flags_horizontal = 10
 value_min = -8
 value_max = 8
+allow_double_click_max = false
 show_min_button = true
 
 [node name="Spacer2" type="Control" parent="MainContainer/TabContainer/_On Field_/MainPositionTabContainer/BoostsUIContainer/MindContainer"]
@@ -979,6 +990,7 @@ layout_mode = 2
 size_flags_horizontal = 10
 value_min = 0
 value_max = 8
+allow_double_click_max = true
 
 [node name="ResetButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow/WipedContainer/WipedNumberUI" index="0"]
 metadata/_edit_group_ = true
@@ -1034,6 +1046,7 @@ layout_mode = 2
 size_flags_horizontal = 10
 value_min = 0
 value_max = 8
+allow_double_click_max = true
 
 [node name="ResetButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow/TiredContainer/TiredNumberUI" index="0"]
 metadata/_edit_lock_ = true
@@ -1093,6 +1106,7 @@ layout_mode = 2
 size_flags_horizontal = 10
 value_min = 0
 value_max = 2
+allow_double_click_max = true
 
 [node name="ResetButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow2/ShookContainer/ShookNumberUI" index="0"]
 metadata/_edit_lock_ = true
@@ -1148,6 +1162,7 @@ layout_mode = 2
 size_flags_horizontal = 10
 value_min = 0
 value_max = 2
+allow_double_click_max = true
 
 [node name="ResetButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow2/NervousContainer/NervousNumberUI" index="0"]
 metadata/_edit_group_ = true
@@ -1206,6 +1221,7 @@ layout_mode = 2
 size_flags_horizontal = 10
 value_min = 0
 value_max = 3
+allow_double_click_max = true
 
 [node name="ResetButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow3/JazzedContainer/JazzedNumberUI" index="0"]
 metadata/_edit_lock_ = true
@@ -1261,6 +1277,7 @@ layout_mode = 2
 size_flags_horizontal = 10
 value_min = 0
 value_max = 4
+allow_double_click_max = true
 
 [node name="ResetButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow3/WeepyContainer/WeepyNumberUI" index="0"]
 metadata/_edit_group_ = true
@@ -1319,6 +1336,7 @@ layout_mode = 2
 size_flags_horizontal = 10
 value_min = 0
 value_max = 9
+allow_double_click_max = true
 
 [node name="ResetButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow4/BlockedContainer/BlockedNumberUI" index="0"]
 metadata/_edit_lock_ = true
@@ -1374,6 +1392,7 @@ layout_mode = 2
 size_flags_horizontal = 10
 value_min = 0
 value_max = 9
+allow_double_click_max = true
 
 [node name="ResetButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow4/SweatyContainer/SweatyNumberUI" index="0"]
 metadata/_edit_lock_ = true
@@ -1432,6 +1451,7 @@ layout_mode = 2
 size_flags_horizontal = 10
 value_min = 0
 value_max = 2
+allow_double_click_max = true
 
 [node name="ResetButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow5/ToughContainer/ToughNumberUI" index="0"]
 metadata/_edit_group_ = true
@@ -1487,6 +1507,7 @@ layout_mode = 2
 size_flags_horizontal = 10
 value_min = 0
 value_max = 2
+allow_double_click_max = true
 
 [node name="ResetButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow5/TenderContainer/TenderNumberUI" index="0"]
 metadata/_edit_lock_ = true
@@ -1545,6 +1566,7 @@ layout_mode = 2
 size_flags_horizontal = 10
 value_min = 0
 value_max = 2
+allow_double_click_max = true
 
 [node name="ResetButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow6/NoisyContainer/NoisyNumberUI" index="0"]
 metadata/_edit_lock_ = true
@@ -1600,6 +1622,7 @@ layout_mode = 2
 size_flags_horizontal = 10
 value_min = 0
 value_max = 3
+allow_double_click_max = true
 
 [node name="ResetButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow6/AngryContainer/AngryNumberUI" index="0"]
 metadata/_edit_group_ = true
@@ -1655,6 +1678,7 @@ layout_mode = 2
 size_flags_horizontal = 10
 value_min = 0
 value_max = 2
+allow_double_click_max = true
 
 [node name="ResetButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/StressedContainer/StressedNumberUI" index="0"]
 metadata/_edit_lock_ = true
@@ -1701,6 +1725,12 @@ text = "Clear Feelings"
 icon = ExtResource("12_w8avf")
 expand_icon = true
 
+[node name="DoubleClickLabel" type="Label" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "Double Click Max Button to set Infinite"
+label_settings = SubResource("LabelSettings_ea36h")
+
 [node name="_Invests_" type="TabBar" parent="MainContainer/TabContainer"]
 unique_name_in_owner = true
 visible = false
@@ -1740,6 +1770,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 2
 value_max = 30
+allow_double_click_max = false
 side = 0
 
 [node name="BPowLabel" type="Label" parent="MainContainer/TabContainer/_Invests_/MainInvestsTabContainer/InvestsUIContainer/BodyContainer"]
@@ -1765,6 +1796,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
 value_max = 30
+allow_double_click_max = false
 
 [node name="Spacer2" type="Control" parent="MainContainer/TabContainer/_Invests_/MainInvestsTabContainer/InvestsUIContainer/BodyContainer"]
 layout_mode = 2
@@ -1780,6 +1812,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 2
 value_max = 30
+allow_double_click_max = false
 side = 0
 
 [node name="SPowLabel" type="Label" parent="MainContainer/TabContainer/_Invests_/MainInvestsTabContainer/InvestsUIContainer/SpiritContainer"]
@@ -1805,6 +1838,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
 value_max = 30
+allow_double_click_max = false
 
 [node name="Spacer2" type="Control" parent="MainContainer/TabContainer/_Invests_/MainInvestsTabContainer/InvestsUIContainer/SpiritContainer"]
 layout_mode = 2
@@ -1820,6 +1854,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 2
 value_max = 30
+allow_double_click_max = false
 side = 0
 
 [node name="MPowLabel" type="Label" parent="MainContainer/TabContainer/_Invests_/MainInvestsTabContainer/InvestsUIContainer/MindContainer"]
@@ -1845,6 +1880,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
 value_max = 30
+allow_double_click_max = false
 
 [node name="Spacer2" type="Control" parent="MainContainer/TabContainer/_Invests_/MainInvestsTabContainer/InvestsUIContainer/MindContainer"]
 layout_mode = 2
