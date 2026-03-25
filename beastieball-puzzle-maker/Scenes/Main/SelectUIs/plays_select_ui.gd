@@ -95,37 +95,57 @@ func _update_beastie_plays_data() -> void:
 		beastie_plays.clear()
 		return
 
-	var sort_func : Callable = (func(a : Plays, b : Plays):
-		var a_value : int = int(a.type) if not a == null else 9999
-		var b_value : int = int(b.type) if not b == null else 9999
-		return a_value < b_value
+	var sort_by_name : Callable = (func(a : Plays, b : Plays):
+		var a_name : String = a.name
+		var b_name : String = b.name
+		return a_name < b_name
 	)
-	beastie_plays = beastie.possible_plays.duplicate()
-	beastie_plays.sort_custom(sort_func)
-	beastie_body_attacks = beastie_plays.filter(func(plays : Plays):
+
+	var pre_sort_beastie_plays = beastie.possible_plays.duplicate()
+
+	# Body Attacks
+	beastie_body_attacks = pre_sort_beastie_plays.filter(func(plays : Plays):
 		return plays.type == Plays.Type.ATTACK_BODY if plays else false
 	)
-	beastie_body_attacks.sort_custom(sort_func)
-	beastie_spirit_attacks = beastie_plays.filter(func(plays : Plays):
+	beastie_body_attacks.sort_custom(sort_by_name)
+
+	# Spirit Attacks
+	beastie_spirit_attacks = pre_sort_beastie_plays.filter(func(plays : Plays):
 		return plays.type == Plays.Type.ATTACK_SPIRIT if plays else false
 	)
-	beastie_spirit_attacks.sort_custom(sort_func)
-	beastie_mind_attacks = beastie_plays.filter(func(plays : Plays):
+	beastie_spirit_attacks.sort_custom(sort_by_name)
+
+	# Mind Attacks
+	beastie_mind_attacks = pre_sort_beastie_plays.filter(func(plays : Plays):
 		return plays.type == Plays.Type.ATTACK_MIND if plays else false
 	)
-	beastie_mind_attacks.sort_custom(sort_func)
-	beastie_volley_plays = beastie_plays.filter(func(plays : Plays):
+	beastie_mind_attacks.sort_custom(sort_by_name)
+
+	# Volley
+	beastie_volley_plays = pre_sort_beastie_plays.filter(func(plays : Plays):
 		return plays.type == Plays.Type.VOLLEY if plays else false
 	)
-	beastie_volley_plays.sort_custom(sort_func)
-	beastie_support_plays = beastie_plays.filter(func(plays : Plays):
+	beastie_volley_plays.sort_custom(sort_by_name)
+
+	# Support
+	beastie_support_plays = pre_sort_beastie_plays.filter(func(plays : Plays):
 		return plays.type == Plays.Type.SUPPORT if plays else false
 	)
-	beastie_support_plays.sort_custom(sort_func)
-	beastie_defense_plays = beastie_plays.filter(func(plays : Plays):
+	beastie_support_plays.sort_custom(sort_by_name)
+
+	# Defense
+	beastie_defense_plays = pre_sort_beastie_plays.filter(func(plays : Plays):
 		return plays.type == Plays.Type.DEFENSE if plays else false
 	)
-	beastie_defense_plays.sort_custom(sort_func)
+	beastie_defense_plays.sort_custom(sort_by_name)
+
+	# All Plays
+	beastie_plays.append_array(beastie_body_attacks)
+	beastie_plays.append_array(beastie_spirit_attacks)
+	beastie_plays.append_array(beastie_mind_attacks)
+	beastie_plays.append_array(beastie_volley_plays)
+	beastie_plays.append_array(beastie_support_plays)
+	beastie_plays.append_array(beastie_defense_plays)
 
 
 func _get_filtered_array() -> Array[Plays]:

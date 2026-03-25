@@ -190,6 +190,13 @@ func _ready() -> void:
 	stressed_number_ui.value_updated.connect(_on_feelings_changed.bind(Beastie.Feelings.STRESSED))
 	clear_feelings_button.pressed.connect(_reset_feelings_tab) # No others thing so just reset everything
 
+	beastie.my_trait_updated.connect(func(new_trait : Trait):
+		if new_trait.name.to_lower() == "haunted":
+			Global.pause_updating_field = true
+			_load_feelings_tab(true) # Haunted feeling reset.
+									# Global.pause_updating_field get set to false in this line (very bad pratice...)
+	)
+
 	# Invests Tab
 	bpow_invests_number_ui.value_updated.connect(_on_invests_changed.bind(Beastie.Stats.B_POW))
 	bdef_invests_number_ui.value_updated.connect(_on_invests_changed.bind(Beastie.Stats.B_DEF))
@@ -253,7 +260,7 @@ func _load_sets_tab() -> void:
 		show_bench_damage_check_box.button_pressed = plays_ui_container.show_bench_damage
 
 
-func _load_feelings_tab() -> void:
+func _load_feelings_tab(cheese : bool = false) -> void:
 	wiped_number_ui.num = beastie.get_feeling_stack(Beastie.Feelings.WIPED)
 	tired_number_ui.num = beastie.get_feeling_stack(Beastie.Feelings.TRIED)
 	shook_number_ui.num = beastie.get_feeling_stack(Beastie.Feelings.SHOOK)
@@ -266,6 +273,8 @@ func _load_feelings_tab() -> void:
 	tender_number_ui.num = beastie.get_feeling_stack(Beastie.Feelings.TENDER)
 	noisy_number_ui.num = beastie.get_feeling_stack(Beastie.Feelings.NOISY)
 	angry_number_ui.num = beastie.get_feeling_stack(Beastie.Feelings.ANGRY)
+	if cheese:
+		Global.pause_updating_field = false # Horrible cheese. Please ignore
 	stressed_number_ui.num = beastie.get_feeling_stack(Beastie.Feelings.STRESSED)
 
 

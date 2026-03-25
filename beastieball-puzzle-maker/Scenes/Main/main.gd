@@ -7,11 +7,15 @@ extends Control
 @onready var saving_label: Label = %SavingLabel
 @onready var select_ui: SelectUIs = %SelectUIs
 
+@onready var warning_rec: WarningRec = %WarningRec
+
 
 func _ready() -> void:
 	# Some Vars
 	select_ui.board = board
 	main_ui.board = board
+	warning_rec.board = board
+	warning_rec.main_ui = main_ui
 
 	# Overlay Menu Signals
 	board.board_overlay.overlay_edit_requested.connect(main_ui.show_overlay_menu)

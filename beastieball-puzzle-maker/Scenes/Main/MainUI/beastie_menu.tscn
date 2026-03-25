@@ -1709,10 +1709,6 @@ metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="Spacer2" type="Control" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer"]
-custom_minimum_size = Vector2(0, 8)
-layout_mode = 2
-
 [node name="ClearFeelingsButton" type="Button" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(430, 0)
@@ -1725,10 +1721,14 @@ text = "Clear Feelings"
 icon = ExtResource("12_w8avf")
 expand_icon = true
 
+[node name="Spacer2" type="Control" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
 [node name="DoubleClickLabel" type="Label" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
-text = "Double Click Max Button to set Infinite"
+text = "Double Click Max Button to set to Infinity"
 label_settings = SubResource("LabelSettings_ea36h")
 
 [node name="_Invests_" type="TabBar" parent="MainContainer/TabContainer"]

@@ -1,0 +1,79 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5h4swcxl1phd"]
+
+[ext_resource type="Script" uid="uid://coq0uh6dakqh4" path="res://Scenes/Main/warning_rec.gd" id="1_8jv4e"]
+[ext_resource type="FontFile" uid="uid://cvfib27cf5q88" path="res://Autoloads/Resources/Fonts/Go Banana.ttf" id="1_hsvr7"]
+[ext_resource type="Theme" uid="uid://bkrlwg21fhprn" path="res://Autoloads/Resources/Themes/edit_button.tres" id="2_8jv4e"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xlvfx"]
+font = ExtResource("1_hsvr7")
+font_size = 192
+
+[node name="WarningRec" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.78431374)
+script = ExtResource("1_8jv4e")
+
+[node name="WarningContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -900.0
+offset_top = -500.5
+offset_right = 1800.0
+offset_bottom = 615.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 64
+
+[node name="WarningNameLable" type="Label" parent="WarningContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "No Ball On Field!"
+label_settings = SubResource("LabelSettings_xlvfx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WarningDescLabel" type="RichTextLabel" parent="WarningContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(2700, 550)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("1_hsvr7")
+theme_override_font_sizes/normal_font_size = 128
+text = "None of the fielded beasties have the ball.
+How would they play like this?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WarningButtonContainer" type="HBoxContainer" parent="WarningContainer"]
+layout_mode = 2
+
+[node name="SaveAnywayButton" type="Button" parent="WarningContainer/WarningButtonContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(800, 175)
+layout_mode = 2
+size_flags_horizontal = 6
+focus_mode = 0
+theme = ExtResource("2_8jv4e")
+theme_override_fonts/font = ExtResource("1_hsvr7")
+theme_override_font_sizes/font_size = 128
+text = "Save Anyway"
+
+[node name="GoBackButton" type="Button" parent="WarningContainer/WarningButtonContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(800, 175)
+layout_mode = 2
+size_flags_horizontal = 6
+theme = ExtResource("2_8jv4e")
+theme_override_fonts/font = ExtResource("1_hsvr7")
+theme_override_font_sizes/font_size = 128
+text = "Oops, Go Back!"

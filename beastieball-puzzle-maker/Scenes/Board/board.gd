@@ -33,6 +33,7 @@ var right_field_effects_dict : Dictionary= {} :
 	set(value):
 		right_field_effects_dict = value
 		_update_field_effect_visuals()
+var turn : Turn = Turn.OFFENSE
 
 
 @onready var sub_viewport_container: SubViewportContainer = %SubViewportContainer
@@ -294,6 +295,7 @@ func _create_tractor_beam(beam_beastie : Beastie, is_left : bool) -> void:
 
 
 func on_turn_changed(new_turn : Turn) -> void:
+	turn = new_turn
 	board_overlay.on_turn_changed(new_turn)
 	board_manager.on_turn_changed(new_turn)
 

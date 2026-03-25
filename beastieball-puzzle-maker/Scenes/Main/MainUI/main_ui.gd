@@ -1,6 +1,7 @@
 class_name MainUI
 extends Control
 
+signal save_image_button_pressed
 signal save_image_requested(path : String)
 signal save_json_requested(path : String)
 signal reset_board_requested
@@ -321,6 +322,10 @@ func on_logo_file_selected(path: String) -> void:
 
 #region Save Image Dialog Handling
 func _on_save_image_button_pressed() -> void:
+	save_image_button_pressed.emit()
+
+
+func start_saving_image() -> void: # Call after checking for warning and there's none (or it get ignored)
 	if Global.is_on_web:
 		save_image_requested.emit("") # Will prompt browser to download instead
 	else:
