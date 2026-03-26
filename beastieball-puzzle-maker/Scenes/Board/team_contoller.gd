@@ -26,7 +26,7 @@ const PLAYS_UI_CONTAINER_SCENE : PackedScene = preload("uid://dksxc3rs20kkc")
 	set(value):
 		value.sort()
 		my_field_effects = value
-		for field : FieldEffect in my_field_effects.keys():
+		for field in my_field_effects.keys():
 			if my_field_effects.get(field) == 0:
 				my_field_effects.erase(field)
 		field_effects_updated.emit(my_field_effects)

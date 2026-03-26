@@ -234,6 +234,13 @@ func _assign_all_plays_data() -> void:
 		else:
 			push_error("An error occurred when trying to access the path %s." % path)
 
+	var free_ball : Plays = null
+	for play : Plays in all_body_attacks:
+		if play.name.to_lower() == "free ball":
+			free_ball = play
+			all_body_attacks.erase(play)
+	all_body_attacks.push_front(free_ball) # Make Free Ball always the first option
+
 	all_plays.append_array(all_body_attacks)
 	all_plays.append_array(all_spirit_attacks)
 	all_plays.append_array(all_mind_attacks)

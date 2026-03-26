@@ -5,6 +5,7 @@ extends Control
 signal plays_selected(plays : Plays, slot_index : int, side : Global.MySide, team_pos : TeamController.TeamPosition)
 
 const PLAY_BUTTON : PackedScene = preload("uid://dflcrna6d1235")
+const FREE_BALL : Plays = preload("uid://1gwxenj63w75")
 
 @export var beastie : Beastie = null :
 	set(value):
@@ -108,6 +109,7 @@ func _update_beastie_plays_data() -> void:
 		return plays.type == Plays.Type.ATTACK_BODY if plays else false
 	)
 	beastie_body_attacks.sort_custom(sort_by_name)
+	beastie_body_attacks.push_front(FREE_BALL) # Make Free Ball always the first option
 
 	# Spirit Attacks
 	beastie_spirit_attacks = pre_sort_beastie_plays.filter(func(plays : Plays):

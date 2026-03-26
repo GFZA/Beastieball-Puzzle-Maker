@@ -23,7 +23,7 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack, \
 		get_musclebrained = true
 	#endregion
 
-	#region Special attacks (skip to Blocked part)
+	#region Special attacks
 	if attack_name == "grinder":
 		final_damage = max(1, ceili(float(defender.health) / 2.0))
 		if attack.is_mimicked:
@@ -35,6 +35,11 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack, \
 			final_damage = ceili(final_damage * 1.2) # since it overwrite the musclebrain check above, just check again here
 		if attack.is_mimicked:
 			final_damage = ceili(final_damage * 1.2) # do it here as it skip the part where do this normally
+
+	if attack_name == "free ball":
+		if attacker.my_trait.name.to_lower() == "miracle play":
+			attack = attack.duplicate(true)
+			attack.base_pow = 75
 
 	# Dealing with Barrier
 	if defender_team_controller and not defender.is_really_at_bench:
@@ -167,6 +172,8 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack, \
 
 	var musclebrain_mult : float = 1.2 if get_musclebrained else 1.0
 
+	var slippery_mult : float = 3.0 / 4.0 if attacker.my_trait.name.to_lower() == "slippery" else 1.0
+
 	var tender_mult : float = 2.0 if tender else 1.0
 
 	var rally_mind_mult : float = 3.0 / 4.0 if stats_type_attack == int(Plays.Type.ATTACK_MIND) and attacker_team_controller and \
@@ -174,9 +181,11 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack, \
 							and (attacker.my_trait.name.to_lower() != "extrovert") else 1.0
 
 	var friendship_mult : float = 3.0 / 4.0 if defender_team_controller and \
-							defender_team_controller.check_for_friendship_buff(defender) else 1.0
+							defender_team_controller.check_for_friendship_buff(defender) and \
+							not attack_name == "true strike" and not attacker.my_trait.name.to_lower() == "maverick" \
+							else 1.0
 
-	var all_damage_mults : float = (attacker_trait_mult / defender_trait_mult) * mimic_mult * musclebrain_mult \
+	var all_damage_mults : float = (attacker_trait_mult / defender_trait_mult) * mimic_mult * musclebrain_mult * slippery_mult \
 									* tender_mult * rally_mind_mult * friendship_mult
 	#endregion
 
@@ -220,7 +229,7 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack, \
 
 	final_damage = attacker.my_trait.special_cal_formula(final_damage, attacker, defender, attack, attacker_team_controller, defender_team_controller)
 
-	if not attack_name == "true strike":
+	if not attack_name == "true strike" and not attacker.my_trait.name.to_lower() == "maverick":
 		final_damage = defender.my_trait.special_cal_formula(final_damage, attacker, defender, attack, attacker_team_controller, defender_team_controller)
 
 	# Apply Tough mult after everything
