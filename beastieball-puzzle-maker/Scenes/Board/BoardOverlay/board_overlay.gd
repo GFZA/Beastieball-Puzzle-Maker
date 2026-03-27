@@ -19,7 +19,7 @@ const TURN_TEXT : Dictionary[Board.Turn, String] = {
 }
 
 const OFFENSE_ACTION_TEXTURES : Dictionary[int, Texture2D] = {
-	4 : preload("uid://dd07iat8y5gpe"),
+	4 : preload("uid://bdnkwxnnhevll"),
 	3 : preload("uid://dd07iat8y5gpe"),
 	2 : preload("uid://disbdk34lqf5m"),
 	1 : preload("uid://cylrwlyp3hghp"),

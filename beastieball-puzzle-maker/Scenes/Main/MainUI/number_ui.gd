@@ -30,6 +30,7 @@ signal value_updated(value : int)
 
 @onready var reset_button: Button = %ResetButton
 @onready var number_label: Label = %NumberLabel
+@onready var infinity_number_label: Label = %InfinityNumberLabel
 @onready var up_down_button_container: VBoxContainer = %UpDownButtonContainer
 @onready var up_button: Button = %UpButton
 @onready var down_button: Button = %DownButton
@@ -41,8 +42,8 @@ signal value_updated(value : int)
 
 func _ready() -> void:
 	reset_button.pressed.connect(func(): num = default)
-	up_button.pressed.connect(func(): num += 1)
-	down_button.pressed.connect(func(): num -= 1)
+	up_button.pressed.connect(func(): num = clamp(num + 1, value_min, value_max))
+	down_button.pressed.connect(func(): num = clamp(num - 1, value_min, value_max))
 	max_button.pressed.connect(_on_max_button_pressed)
 	min_button.pressed.connect(func(): num = value_min)
 
@@ -57,7 +58,9 @@ func reset() -> void:
 func _update_ui() -> void:
 	if not is_node_ready():
 		await ready
+	number_label.visible = (num != 99)
 	number_label.text = str(num)
+	infinity_number_label.visible = (num == 99)
 	reset_button.visible = not (num == default)
 	value_updated.emit(num)
 
