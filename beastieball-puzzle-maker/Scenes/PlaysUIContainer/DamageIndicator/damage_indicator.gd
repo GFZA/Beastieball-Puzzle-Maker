@@ -208,7 +208,7 @@ func _update_attacker_pos_labels() -> void:
 	if attack.use_condition == Attack.UseCondition.BACK_ONLY:
 		new_text = "WHEN AT BACK"
 	if attack.manually_activated:
-		new_text = attack.manual_condition_name
+		new_text = attack.condition_name
 
 	attacker_pos_label.text = new_text
 	attacker_pos_label.show()

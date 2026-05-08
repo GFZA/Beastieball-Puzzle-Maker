@@ -210,7 +210,7 @@ size_flags_vertical = 3
 focus_behavior_recursive = 1
 theme = ExtResource("4_w5fki")
 tab_alignment = 1
-current_tab = 2
+current_tab = 1
 tab_focus_mode = 0
 
 [node name="_On Field_" type="TabBar" parent="MainContainer/TabContainer"]
@@ -371,7 +371,6 @@ layout_mode = 2
 size_flags_horizontal = 2
 value_min = -8
 value_max = 8
-allow_double_click_max = false
 side = 0
 show_min_button = true
 
@@ -399,7 +398,6 @@ layout_mode = 2
 size_flags_horizontal = 10
 value_min = -8
 value_max = 8
-allow_double_click_max = false
 show_min_button = true
 
 [node name="Spacer2" type="Control" parent="MainContainer/TabContainer/_On Field_/MainPositionTabContainer/BoostsUIContainer/BodyContainer"]
@@ -417,7 +415,6 @@ layout_mode = 2
 size_flags_horizontal = 2
 value_min = -8
 value_max = 8
-allow_double_click_max = false
 side = 0
 show_min_button = true
 
@@ -445,7 +442,6 @@ layout_mode = 2
 size_flags_horizontal = 10
 value_min = -8
 value_max = 8
-allow_double_click_max = false
 show_min_button = true
 
 [node name="Spacer2" type="Control" parent="MainContainer/TabContainer/_On Field_/MainPositionTabContainer/BoostsUIContainer/SpiritContainer"]
@@ -463,7 +459,6 @@ layout_mode = 2
 size_flags_horizontal = 2
 value_min = -8
 value_max = 8
-allow_double_click_max = false
 side = 0
 show_min_button = true
 
@@ -491,7 +486,6 @@ layout_mode = 2
 size_flags_horizontal = 10
 value_min = -8
 value_max = 8
-allow_double_click_max = false
 show_min_button = true
 
 [node name="Spacer2" type="Control" parent="MainContainer/TabContainer/_On Field_/MainPositionTabContainer/BoostsUIContainer/MindContainer"]
@@ -511,7 +505,6 @@ expand_icon = true
 
 [node name="_Sets_" type="TabBar" parent="MainContainer/TabContainer"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
@@ -936,6 +929,7 @@ layout_mode = 2
 
 [node name="_Feelings_" type="TabBar" parent="MainContainer/TabContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
@@ -1001,23 +995,23 @@ custom_minimum_size = Vector2(45, 0)
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
-[node name="UpDownButtonContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow/WipedContainer/WipedNumberUI" index="2"]
+[node name="UpDownButtonContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow/WipedContainer/WipedNumberUI" index="3"]
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
-[node name="Spacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow/WipedContainer/WipedNumberUI" index="3"]
+[node name="Spacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow/WipedContainer/WipedNumberUI" index="4"]
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
-[node name="MaxButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow/WipedContainer/WipedNumberUI" index="4"]
+[node name="MaxButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow/WipedContainer/WipedNumberUI" index="5"]
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
-[node name="MinButtonSpacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow/WipedContainer/WipedNumberUI" index="5"]
+[node name="MinButtonSpacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow/WipedContainer/WipedNumberUI" index="6"]
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
-[node name="MinButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow/WipedContainer/WipedNumberUI" index="6"]
+[node name="MinButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow/WipedContainer/WipedNumberUI" index="7"]
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
@@ -1057,23 +1051,23 @@ custom_minimum_size = Vector2(45, 0)
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="UpDownButtonContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow/TiredContainer/TiredNumberUI" index="2"]
+[node name="UpDownButtonContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow/TiredContainer/TiredNumberUI" index="3"]
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="Spacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow/TiredContainer/TiredNumberUI" index="3"]
+[node name="Spacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow/TiredContainer/TiredNumberUI" index="4"]
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="MaxButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow/TiredContainer/TiredNumberUI" index="4"]
+[node name="MaxButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow/TiredContainer/TiredNumberUI" index="5"]
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="MinButtonSpacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow/TiredContainer/TiredNumberUI" index="5"]
+[node name="MinButtonSpacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow/TiredContainer/TiredNumberUI" index="6"]
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="MinButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow/TiredContainer/TiredNumberUI" index="6"]
+[node name="MinButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow/TiredContainer/TiredNumberUI" index="7"]
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
@@ -1117,23 +1111,23 @@ custom_minimum_size = Vector2(45, 0)
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="UpDownButtonContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow2/ShookContainer/ShookNumberUI" index="2"]
+[node name="UpDownButtonContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow2/ShookContainer/ShookNumberUI" index="3"]
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="Spacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow2/ShookContainer/ShookNumberUI" index="3"]
+[node name="Spacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow2/ShookContainer/ShookNumberUI" index="4"]
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="MaxButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow2/ShookContainer/ShookNumberUI" index="4"]
+[node name="MaxButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow2/ShookContainer/ShookNumberUI" index="5"]
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="MinButtonSpacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow2/ShookContainer/ShookNumberUI" index="5"]
+[node name="MinButtonSpacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow2/ShookContainer/ShookNumberUI" index="6"]
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="MinButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow2/ShookContainer/ShookNumberUI" index="6"]
+[node name="MinButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow2/ShookContainer/ShookNumberUI" index="7"]
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
@@ -1173,23 +1167,23 @@ custom_minimum_size = Vector2(45, 0)
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
-[node name="UpDownButtonContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow2/NervousContainer/NervousNumberUI" index="2"]
+[node name="UpDownButtonContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow2/NervousContainer/NervousNumberUI" index="3"]
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
-[node name="Spacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow2/NervousContainer/NervousNumberUI" index="3"]
+[node name="Spacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow2/NervousContainer/NervousNumberUI" index="4"]
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
-[node name="MaxButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow2/NervousContainer/NervousNumberUI" index="4"]
+[node name="MaxButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow2/NervousContainer/NervousNumberUI" index="5"]
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
-[node name="MinButtonSpacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow2/NervousContainer/NervousNumberUI" index="5"]
+[node name="MinButtonSpacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow2/NervousContainer/NervousNumberUI" index="6"]
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
-[node name="MinButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow2/NervousContainer/NervousNumberUI" index="6"]
+[node name="MinButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow2/NervousContainer/NervousNumberUI" index="7"]
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
@@ -1232,23 +1226,23 @@ custom_minimum_size = Vector2(45, 0)
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="UpDownButtonContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow3/JazzedContainer/JazzedNumberUI" index="2"]
+[node name="UpDownButtonContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow3/JazzedContainer/JazzedNumberUI" index="3"]
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="Spacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow3/JazzedContainer/JazzedNumberUI" index="3"]
+[node name="Spacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow3/JazzedContainer/JazzedNumberUI" index="4"]
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="MaxButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow3/JazzedContainer/JazzedNumberUI" index="4"]
+[node name="MaxButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow3/JazzedContainer/JazzedNumberUI" index="5"]
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="MinButtonSpacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow3/JazzedContainer/JazzedNumberUI" index="5"]
+[node name="MinButtonSpacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow3/JazzedContainer/JazzedNumberUI" index="6"]
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="MinButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow3/JazzedContainer/JazzedNumberUI" index="6"]
+[node name="MinButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow3/JazzedContainer/JazzedNumberUI" index="7"]
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
@@ -1288,23 +1282,23 @@ custom_minimum_size = Vector2(45, 0)
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
-[node name="UpDownButtonContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow3/WeepyContainer/WeepyNumberUI" index="2"]
+[node name="UpDownButtonContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow3/WeepyContainer/WeepyNumberUI" index="3"]
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
-[node name="Spacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow3/WeepyContainer/WeepyNumberUI" index="3"]
+[node name="Spacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow3/WeepyContainer/WeepyNumberUI" index="4"]
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
-[node name="MaxButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow3/WeepyContainer/WeepyNumberUI" index="4"]
+[node name="MaxButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow3/WeepyContainer/WeepyNumberUI" index="5"]
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
-[node name="MinButtonSpacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow3/WeepyContainer/WeepyNumberUI" index="5"]
+[node name="MinButtonSpacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow3/WeepyContainer/WeepyNumberUI" index="6"]
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
-[node name="MinButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow3/WeepyContainer/WeepyNumberUI" index="6"]
+[node name="MinButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow3/WeepyContainer/WeepyNumberUI" index="7"]
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
@@ -1347,23 +1341,23 @@ custom_minimum_size = Vector2(45, 0)
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="UpDownButtonContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow4/BlockedContainer/BlockedNumberUI" index="2"]
+[node name="UpDownButtonContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow4/BlockedContainer/BlockedNumberUI" index="3"]
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="Spacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow4/BlockedContainer/BlockedNumberUI" index="3"]
+[node name="Spacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow4/BlockedContainer/BlockedNumberUI" index="4"]
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="MaxButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow4/BlockedContainer/BlockedNumberUI" index="4"]
+[node name="MaxButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow4/BlockedContainer/BlockedNumberUI" index="5"]
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="MinButtonSpacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow4/BlockedContainer/BlockedNumberUI" index="5"]
+[node name="MinButtonSpacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow4/BlockedContainer/BlockedNumberUI" index="6"]
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="MinButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow4/BlockedContainer/BlockedNumberUI" index="6"]
+[node name="MinButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow4/BlockedContainer/BlockedNumberUI" index="7"]
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
@@ -1403,23 +1397,23 @@ custom_minimum_size = Vector2(45, 0)
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="UpDownButtonContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow4/SweatyContainer/SweatyNumberUI" index="2"]
+[node name="UpDownButtonContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow4/SweatyContainer/SweatyNumberUI" index="3"]
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="Spacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow4/SweatyContainer/SweatyNumberUI" index="3"]
+[node name="Spacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow4/SweatyContainer/SweatyNumberUI" index="4"]
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="MaxButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow4/SweatyContainer/SweatyNumberUI" index="4"]
+[node name="MaxButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow4/SweatyContainer/SweatyNumberUI" index="5"]
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="MinButtonSpacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow4/SweatyContainer/SweatyNumberUI" index="5"]
+[node name="MinButtonSpacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow4/SweatyContainer/SweatyNumberUI" index="6"]
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="MinButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow4/SweatyContainer/SweatyNumberUI" index="6"]
+[node name="MinButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow4/SweatyContainer/SweatyNumberUI" index="7"]
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
@@ -1462,23 +1456,23 @@ custom_minimum_size = Vector2(45, 0)
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
-[node name="UpDownButtonContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow5/ToughContainer/ToughNumberUI" index="2"]
+[node name="UpDownButtonContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow5/ToughContainer/ToughNumberUI" index="3"]
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
-[node name="Spacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow5/ToughContainer/ToughNumberUI" index="3"]
+[node name="Spacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow5/ToughContainer/ToughNumberUI" index="4"]
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
-[node name="MaxButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow5/ToughContainer/ToughNumberUI" index="4"]
+[node name="MaxButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow5/ToughContainer/ToughNumberUI" index="5"]
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
-[node name="MinButtonSpacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow5/ToughContainer/ToughNumberUI" index="5"]
+[node name="MinButtonSpacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow5/ToughContainer/ToughNumberUI" index="6"]
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
-[node name="MinButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow5/ToughContainer/ToughNumberUI" index="6"]
+[node name="MinButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow5/ToughContainer/ToughNumberUI" index="7"]
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
@@ -1518,23 +1512,23 @@ custom_minimum_size = Vector2(45, 0)
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="UpDownButtonContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow5/TenderContainer/TenderNumberUI" index="2"]
+[node name="UpDownButtonContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow5/TenderContainer/TenderNumberUI" index="3"]
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="Spacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow5/TenderContainer/TenderNumberUI" index="3"]
+[node name="Spacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow5/TenderContainer/TenderNumberUI" index="4"]
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="MaxButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow5/TenderContainer/TenderNumberUI" index="4"]
+[node name="MaxButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow5/TenderContainer/TenderNumberUI" index="5"]
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="MinButtonSpacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow5/TenderContainer/TenderNumberUI" index="5"]
+[node name="MinButtonSpacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow5/TenderContainer/TenderNumberUI" index="6"]
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="MinButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow5/TenderContainer/TenderNumberUI" index="6"]
+[node name="MinButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow5/TenderContainer/TenderNumberUI" index="7"]
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
@@ -1577,23 +1571,23 @@ custom_minimum_size = Vector2(45, 0)
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="UpDownButtonContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow6/NoisyContainer/NoisyNumberUI" index="2"]
+[node name="UpDownButtonContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow6/NoisyContainer/NoisyNumberUI" index="3"]
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="Spacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow6/NoisyContainer/NoisyNumberUI" index="3"]
+[node name="Spacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow6/NoisyContainer/NoisyNumberUI" index="4"]
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="MaxButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow6/NoisyContainer/NoisyNumberUI" index="4"]
+[node name="MaxButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow6/NoisyContainer/NoisyNumberUI" index="5"]
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="MinButtonSpacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow6/NoisyContainer/NoisyNumberUI" index="5"]
+[node name="MinButtonSpacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow6/NoisyContainer/NoisyNumberUI" index="6"]
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="MinButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow6/NoisyContainer/NoisyNumberUI" index="6"]
+[node name="MinButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow6/NoisyContainer/NoisyNumberUI" index="7"]
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
@@ -1633,23 +1627,23 @@ custom_minimum_size = Vector2(45, 0)
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
-[node name="UpDownButtonContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow6/AngryContainer/AngryNumberUI" index="2"]
+[node name="UpDownButtonContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow6/AngryContainer/AngryNumberUI" index="3"]
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
-[node name="Spacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow6/AngryContainer/AngryNumberUI" index="3"]
+[node name="Spacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow6/AngryContainer/AngryNumberUI" index="4"]
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
-[node name="MaxButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow6/AngryContainer/AngryNumberUI" index="4"]
+[node name="MaxButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow6/AngryContainer/AngryNumberUI" index="5"]
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
-[node name="MinButtonSpacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow6/AngryContainer/AngryNumberUI" index="5"]
+[node name="MinButtonSpacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow6/AngryContainer/AngryNumberUI" index="6"]
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
-[node name="MinButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow6/AngryContainer/AngryNumberUI" index="6"]
+[node name="MinButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/FeelingsRow6/AngryContainer/AngryNumberUI" index="7"]
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
@@ -1689,23 +1683,23 @@ custom_minimum_size = Vector2(45, 0)
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="UpDownButtonContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/StressedContainer/StressedNumberUI" index="2"]
+[node name="UpDownButtonContainer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/StressedContainer/StressedNumberUI" index="3"]
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="Spacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/StressedContainer/StressedNumberUI" index="3"]
+[node name="Spacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/StressedContainer/StressedNumberUI" index="4"]
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="MaxButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/StressedContainer/StressedNumberUI" index="4"]
+[node name="MaxButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/StressedContainer/StressedNumberUI" index="5"]
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="MinButtonSpacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/StressedContainer/StressedNumberUI" index="5"]
+[node name="MinButtonSpacer" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/StressedContainer/StressedNumberUI" index="6"]
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="MinButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/StressedContainer/StressedNumberUI" index="6"]
+[node name="MinButton" parent="MainContainer/TabContainer/_Feelings_/MainInvestsTabContainer/StressedContainer/StressedNumberUI" index="7"]
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
@@ -1770,7 +1764,6 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 2
 value_max = 30
-allow_double_click_max = false
 side = 0
 
 [node name="BPowLabel" type="Label" parent="MainContainer/TabContainer/_Invests_/MainInvestsTabContainer/InvestsUIContainer/BodyContainer"]
@@ -1796,7 +1789,6 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
 value_max = 30
-allow_double_click_max = false
 
 [node name="Spacer2" type="Control" parent="MainContainer/TabContainer/_Invests_/MainInvestsTabContainer/InvestsUIContainer/BodyContainer"]
 layout_mode = 2
@@ -1812,7 +1804,6 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 2
 value_max = 30
-allow_double_click_max = false
 side = 0
 
 [node name="SPowLabel" type="Label" parent="MainContainer/TabContainer/_Invests_/MainInvestsTabContainer/InvestsUIContainer/SpiritContainer"]
@@ -1838,7 +1829,6 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
 value_max = 30
-allow_double_click_max = false
 
 [node name="Spacer2" type="Control" parent="MainContainer/TabContainer/_Invests_/MainInvestsTabContainer/InvestsUIContainer/SpiritContainer"]
 layout_mode = 2
@@ -1854,7 +1844,6 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 2
 value_max = 30
-allow_double_click_max = false
 side = 0
 
 [node name="MPowLabel" type="Label" parent="MainContainer/TabContainer/_Invests_/MainInvestsTabContainer/InvestsUIContainer/MindContainer"]
@@ -1880,7 +1869,6 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
 value_max = 30
-allow_double_click_max = false
 
 [node name="Spacer2" type="Control" parent="MainContainer/TabContainer/_Invests_/MainInvestsTabContainer/InvestsUIContainer/MindContainer"]
 layout_mode = 2

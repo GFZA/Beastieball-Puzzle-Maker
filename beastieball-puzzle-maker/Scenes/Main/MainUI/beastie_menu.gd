@@ -493,7 +493,7 @@ func on_plays_selected(plays : Plays, slot_index : int, side_that_changed : Glob
 	button.flat = true
 	if plays is Attack and plays.need_to_be_manually_activated and slot_index == 0: # Only for first slot
 		_get_condition_container_from_slot_index(slot_index).show()
-		_get_condition_label_from_slot_index(slot_index).text = plays.manual_condition_name
+		_get_condition_label_from_slot_index(slot_index).text = plays.condition_name
 		_get_condition_checkbox_from_slot_index(slot_index).button_pressed = plays.manually_activated
 	plays_ui.my_play = plays
 	plays_ui.show()
@@ -579,7 +579,7 @@ func _on_trait_button_pressed(trait_index : int) -> void:
 	beastie.my_trait = beastie.possible_traits[trait_index]
 	beastie.my_trait_updated.emit(beastie.my_trait)
 	trait_condition_container.visible = beastie.my_trait.need_to_be_manually_activated
-	trait_condition_label.text = beastie.my_trait.manual_condition_name
+	trait_condition_label.text = beastie.my_trait.condition_name
 	trait_condition_check_box.button_pressed = beastie.my_trait.manually_activated
 
 
@@ -588,7 +588,7 @@ func on_trait_selected(new_trait : Trait, side_that_changed : Global.MySide, tea
 		return
 	if new_trait.need_to_be_manually_activated:
 		trait_condition_container.show()
-		trait_condition_label.text = new_trait.manual_condition_name
+		trait_condition_label.text = new_trait.condition_name
 		trait_condition_check_box.button_pressed = new_trait.manually_activated
 
 

@@ -13,15 +13,9 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack, \
 		push_error("Defender %s doesn't have trait assigned!" % defender.specie_name)
 		return 0
 
-	#region Set up things to cal
 	var final_damage : int = 0
 	var attack_name : String = attack.name.to_lower()
-
-	var get_musclebrained : bool = false
-	if (attacker.my_trait.name.to_lower() == "musclebrain") and (attack.type != Plays.Type.ATTACK_BODY):
-		attack.type = Plays.Type.ATTACK_BODY
-		get_musclebrained = true
-	#endregion
+	var get_musclebrained : bool = (attacker.my_trait.name.to_lower() == "musclebrain") and (attack.type != Plays.Type.ATTACK_BODY)
 
 	#region Special attacks
 	if attack_name == "grinder":
@@ -78,7 +72,12 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack, \
 
 	#region Set up vars for calculation
 	var base_pow : int = attack.get_attack_pow(attacker, defender, attacker_team_controller, defender_team_controller)
-	var type : Plays.Type = attack.type
+	if get_musclebrained:
+		base_pow = ceili(float(base_pow) * 1.2)
+
+	print(base_pow)
+
+	var type : Plays.Type = attack.type if not get_musclebrained else Plays.Type.ATTACK_BODY
 	assert(type == Plays.Type.ATTACK_BODY or type == Plays.Type.ATTACK_SPIRIT or type == Plays.Type.ATTACK_MIND,
 			"Attack's type not found! Check if the attack is assigned its type correctly!")
 
@@ -99,10 +98,13 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack, \
 	var total_attack_stat : int = attacker.get_total_stats_value(stats_type_attack) # Will get +5 from being lv.50 in calculation
 	var total_defense_stat : int = defender.get_total_stats_value(stats_type_defense)
 
-	var attacker_at_net : bool = attacker.check_if_net()
+	var attacker_at_net : bool = attacker.check_if_net() or (attack_name == "swarm")
+	if attack_name == "flight":
+		attacker_at_net = false
 	var attack_boosts : int = attacker.get_boosts(stats_type_attack)
-	var jazzed : bool = (attacker.get_feeling_stack(Beastie.Feelings.JAZZED) > 0) or \
-				((attack_name == "thriller") and not (attacker_team_controller.get_field_effect_stack(FieldEffect.Type.DREAD) > 0))
+	var jazzed : bool = ((attacker.get_feeling_stack(Beastie.Feelings.JAZZED) > 0) or \
+				((attack_name == "thriller") and not (attacker_team_controller.get_field_effect_stack(FieldEffect.Type.DREAD) > 0)) \
+				and not attacker.get_feeling_stack(Beastie.Feelings.WEEPY) > 0)
 	var attacker_weepy : bool = (attacker.get_feeling_stack(Beastie.Feelings.WEEPY) > 0)
 
 	var defender_at_net : bool = defender.check_if_net()
@@ -117,8 +119,12 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack, \
 	# --- POW boosts ---
 	var total_attack_boost : int = 0
 	var attack_boosts_to_add : int = attack_boosts
-	if attacker_weepy or defender.my_trait.name.to_lower() == "foggy":
+	var foggy_ignore : bool = defender.my_trait.name.to_lower() == "foggy" and \
+							not (attack_name == "true strike" or attacker.my_trait.name.to_lower() == "maverick")
+	if attacker_weepy or foggy_ignore:
 		attack_boosts_to_add = min(0, attack_boosts) # so it counts deboosts
+	elif attack_name == "flight":
+		attack_boosts_to_add = 0  # clear all boosts
 	total_attack_boost += attack_boosts_to_add
 
 	if jazzed:
@@ -126,7 +132,7 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack, \
 			total_attack_boost = 0
 		total_attack_boost += 1
 
-	if attacker.my_trait.name.to_lower() == "shy":
+	if attacker.my_trait.name.to_lower() == "shy" and not attack_name == "flight":
 		total_attack_boost += int(not attacker_at_net)
 	else:
 		total_attack_boost += int(attacker_at_net)
@@ -165,12 +171,12 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack, \
 
 	var attacker_trait_mult : float = attacker.my_trait.get_attack_mult(attacker, defender, attack, attacker_team_controller, defender_team_controller)
 	var defender_trait_mult : float = 1.0
-	if not attack_name == "true strike":
+	if not (attack_name == "true strike" or attacker.my_trait.name.to_lower() == "maverick"):
 		defender_trait_mult = defender.my_trait.get_defense_mult(attacker, defender, attack, attacker_team_controller, defender_team_controller)
 
 	var mimic_mult : float = 1.2 if attack.is_mimicked else 1.0
 
-	var musclebrain_mult : float = 1.2 if get_musclebrained else 1.0
+	var musclebrain_mult : float = 1.0 #1.2 if get_musclebrained else 1.0
 
 	var slippery_mult : float = 3.0 / 4.0 if attacker.my_trait.name.to_lower() == "slippery" else 1.0
 
@@ -229,7 +235,7 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack, \
 
 	final_damage = attacker.my_trait.special_cal_formula(final_damage, attacker, defender, attack, attacker_team_controller, defender_team_controller)
 
-	if not attack_name == "true strike" and not attacker.my_trait.name.to_lower() == "maverick":
+	if not (attack_name == "true strike" or attacker.my_trait.name.to_lower() == "maverick"):
 		final_damage = defender.my_trait.special_cal_formula(final_damage, attacker, defender, attack, attacker_team_controller, defender_team_controller)
 
 	# Apply Tough mult after everything

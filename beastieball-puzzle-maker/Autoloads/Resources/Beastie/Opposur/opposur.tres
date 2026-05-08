@@ -41,7 +41,7 @@
 [ext_resource type="Resource" uid="uid://dytuvbvg3oamq" path="res://Autoloads/Resources/Plays/Defense/shield.tres" id="31_3xa6y"]
 [ext_resource type="Resource" uid="uid://iuquitr1xs5u" path="res://Autoloads/Resources/Plays/Defense/staredown.tres" id="32_vbemv"]
 [ext_resource type="Resource" uid="uid://bgre5116472ag" path="res://Autoloads/Resources/Plays/Defense/wall.tres" id="33_5jn1x"]
-[ext_resource type="Texture2D" uid="uid://cd80i0iemak15" path="res://Autoloads/Resources/Beastie/Opposur/opposor_idle.png" id="37_ttahv"]
+[ext_resource type="Texture2D" uid="uid://cd80i0iemak15" path="res://Autoloads/Resources/Beastie/Opposur/opposur_idle.png" id="36_585oe"]
 
 [resource]
 script = ExtResource("5_yq7pv")
@@ -59,7 +59,7 @@ mind_base_def = 60
 possible_plays = Array[ExtResource("1_gkqgm")]([ExtResource("3_ttahv"), ExtResource("4_1jn2b"), ExtResource("5_ci1fx"), ExtResource("6_17r8v"), ExtResource("7_bmy1o"), ExtResource("8_66qor"), ExtResource("10_o8iij"), ExtResource("11_4rl4u"), ExtResource("12_k62tl"), ExtResource("13_bn2y3"), ExtResource("14_4cvwu"), ExtResource("15_w8k8g"), ExtResource("16_4ns6b"), ExtResource("17_f32yc"), ExtResource("18_co4ob"), ExtResource("19_vsriy"), ExtResource("20_ibxcy"), ExtResource("21_7rsla"), ExtResource("22_du75b"), ExtResource("23_b56uh"), ExtResource("24_1jtjd"), ExtResource("25_o37je"), ExtResource("26_2iw46"), ExtResource("27_mr5a5"), ExtResource("28_ahsnt"), ExtResource("29_o6syx"), ExtResource("30_xjyul"), ExtResource("31_3xa6y"), ExtResource("32_vbemv"), ExtResource("33_5jn1x")])
 possible_traits = Array[ExtResource("3_22yyu")]([ExtResource("2_5vbmt"), ExtResource("4_jhvid")])
 sprites = Dictionary[int, Texture2D]({
-0: ExtResource("37_ttahv"),
+0: ExtResource("36_585oe"),
 1: ExtResource("7_rqca6"),
 2: ExtResource("8_mx2ir"),
 3: ExtResource("9_6adcs"),
