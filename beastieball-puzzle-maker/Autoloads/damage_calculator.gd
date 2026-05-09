@@ -71,11 +71,24 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack, \
 	#endregion
 
 	#region Set up vars for calculation
+
+	var attacker_at_net : bool = attacker.check_if_net() or (attack_name == "swarm")
+	if attack_name == "flight":
+		attacker_at_net = false
+	var jazzed : bool = ((attacker.get_feeling_stack(Beastie.Feelings.JAZZED) > 0) or \
+				((attack_name == "thriller") and not (attacker_team_controller.get_field_effect_stack(FieldEffect.Type.DREAD) > 0)) \
+				and not attacker.get_feeling_stack(Beastie.Feelings.WEEPY) > 0)
+	var attacker_weepy : bool = (attacker.get_feeling_stack(Beastie.Feelings.WEEPY) > 0)
+
+	var defender_at_net : bool = defender.check_if_net()
+	var defender_is_stacked : bool = defender.check_if_stack()
+	var tough : bool = (defender.get_feeling_stack(Beastie.Feelings.TOUGH) > 0)
+	var tender : bool = (defender.get_feeling_stack(Beastie.Feelings.TENDER) > 0)
+	var defender_weepy : bool = (defender.get_feeling_stack(Beastie.Feelings.WEEPY) > 0)
+
 	var base_pow : int = attack.get_attack_pow(attacker, defender, attacker_team_controller, defender_team_controller)
 	if get_musclebrained:
 		base_pow = ceili(float(base_pow) * 1.2)
-
-	print(base_pow)
 
 	var type : Plays.Type = attack.type if not get_musclebrained else Plays.Type.ATTACK_BODY
 	assert(type == Plays.Type.ATTACK_BODY or type == Plays.Type.ATTACK_SPIRIT or type == Plays.Type.ATTACK_MIND,
@@ -91,28 +104,14 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack, \
 	# 4 == Beastie.Stats.S_DEF
 	# 5 == Beastie.Stats.M_DEF
 	if attack_name == "contest":
-		stats_type_defense = defender.get_highest_def_type()
+		stats_type_defense = _get_highest_or_lowest_def_stat(true, attacker, defender, attack, jazzed, defender_weepy)
 	if attack_name == "snipe":
-		stats_type_defense = defender.get_lowest_def_type()
+		stats_type_defense = _get_highest_or_lowest_def_stat(false, attacker, defender, attack, jazzed, defender_weepy)
 
 	var total_attack_stat : int = attacker.get_total_stats_value(stats_type_attack) # Will get +5 from being lv.50 in calculation
 	var total_defense_stat : int = defender.get_total_stats_value(stats_type_defense)
-
-	var attacker_at_net : bool = attacker.check_if_net() or (attack_name == "swarm")
-	if attack_name == "flight":
-		attacker_at_net = false
 	var attack_boosts : int = attacker.get_boosts(stats_type_attack)
-	var jazzed : bool = ((attacker.get_feeling_stack(Beastie.Feelings.JAZZED) > 0) or \
-				((attack_name == "thriller") and not (attacker_team_controller.get_field_effect_stack(FieldEffect.Type.DREAD) > 0)) \
-				and not attacker.get_feeling_stack(Beastie.Feelings.WEEPY) > 0)
-	var attacker_weepy : bool = (attacker.get_feeling_stack(Beastie.Feelings.WEEPY) > 0)
-
-	var defender_at_net : bool = defender.check_if_net()
-	var defender_is_stacked : bool = defender.check_if_stack()
 	var defense_boosts : int = defender.get_boosts(stats_type_defense)
-	var tough : bool = (defender.get_feeling_stack(Beastie.Feelings.TOUGH) > 0)
-	var tender : bool = (defender.get_feeling_stack(Beastie.Feelings.TENDER) > 0)
-	var defender_weepy : bool = (defender.get_feeling_stack(Beastie.Feelings.WEEPY) > 0)
 	#endregion
 
 	#region Get boost counts and damage mults
@@ -245,3 +244,42 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack, \
 	#endregion
 
 	return final_damage
+
+
+# Early calculating def stat just to pick stats for Contest or Snipe to calc actual damage again later
+func _get_highest_or_lowest_def_stat(get_highest : bool, attacker : Beastie, defender : Beastie, attack : Attack, jazzed : bool, defender_weepy : bool) -> Beastie.Stats:
+	var def_dict : Dictionary[Beastie.Stats, int] = {}
+
+	var attack_name : String = attack.name.to_lower()
+	for stat : Beastie.Stats in [Beastie.Stats.B_DEF, Beastie.Stats.S_DEF, Beastie.Stats.M_DEF]:
+		var result : int = _pre_calc_def_stat(stat, attacker, defender, attack_name, jazzed, defender_weepy)
+		def_dict.get_or_add(stat, result)
+
+	var values_array : Array[int] = def_dict.values()
+	values_array.sort()
+	var highest_or_lowest_def : int = values_array.back() if get_highest else values_array.front()
+	return def_dict.find_key(highest_or_lowest_def)
+
+
+func _pre_calc_def_stat(stat : Beastie.Stats, attacker : Beastie, defender : Beastie, attack_name : String, jazzed : bool, defender_weepy : bool) -> int:
+	var def_stat : int = defender.get_total_stats_value(stat)
+	var total_defense_boost : int = 0
+	var def_boosts_to_add : int = defender.get_boosts(stat)
+	if defender_weepy or attacker.my_trait.name.to_lower() == "foggy" or attack_name == "raw fury":
+		def_boosts_to_add = min(0, defender.get_boosts(stat)) # so it counts deboosts
+	total_defense_boost += def_boosts_to_add
+
+	if jazzed:
+		total_defense_boost = mini(0, total_defense_boost)
+
+	# didn't account for back row bonus cuz we just need to see what's highest
+	# then calc the acutal stat later
+
+	var final_def : float = float(def_stat) + 5.0
+	match signi(total_defense_boost):
+		1:
+			final_def += floori(final_def * float(total_defense_boost) / 2.0)
+		-1:
+			final_def = floori(final_def * 2.0 / (absf(float(total_defense_boost)) + 2.0))
+
+	return floori(final_def)

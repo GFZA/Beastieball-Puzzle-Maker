@@ -190,12 +190,13 @@ func _ready() -> void:
 	stressed_number_ui.value_updated.connect(_on_feelings_changed.bind(Beastie.Feelings.STRESSED))
 	clear_feelings_button.pressed.connect(_reset_feelings_tab) # No others thing so just reset everything
 
-	beastie.my_trait_updated.connect(func(new_trait : Trait):
-		if new_trait.name.to_lower() == "haunted":
-			Global.pause_updating_field = true
-			_load_feelings_tab(true) # Haunted feeling reset.
-									# Global.pause_updating_field get set to false in this line (very bad pratice...)
-	)
+	if beastie:
+		beastie.my_trait_updated.connect(func(new_trait : Trait):
+			if new_trait.name.to_lower() == "haunted":
+				Global.pause_updating_field = true
+				_load_feelings_tab(true) # Haunted feeling reset.
+										# Global.pause_updating_field get set to false in this line (very bad pratice...)
+		)
 
 	# Invests Tab
 	bpow_invests_number_ui.value_updated.connect(_on_invests_changed.bind(Beastie.Stats.B_POW))
