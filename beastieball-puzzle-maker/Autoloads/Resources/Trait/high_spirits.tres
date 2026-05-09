@@ -6,6 +6,7 @@
 script = ExtResource("1_lkq27")
 name = "High Spirits"
 description = "SPIRIT Attacks do +15 damage when STAMINA is below 34"
+condition_name = "User STAMINA is below 34"
 is_starter_trait = true
 starter_trait_type = 1
 metadata/_custom_type_script = "uid://bslfuaragw1g7"
