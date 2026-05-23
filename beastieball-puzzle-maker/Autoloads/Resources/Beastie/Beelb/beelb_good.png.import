@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://kifg3xg5k3qk"
-path="res://.godot/imported/bleeb_volley.png-63bdbd67ef5aa706cafd200d14f5db68.ctex"
+uid="uid://bp73gdb6j806b"
+path="res://.godot/imported/beelb_good.png-ccbcc3d98e5c77fa16a691a313870431.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Autoloads/Resources/Beastie/Bleeb/bleeb_volley.png"
-dest_files=["res://.godot/imported/bleeb_volley.png-63bdbd67ef5aa706cafd200d14f5db68.ctex"]
+source_file="res://Autoloads/Resources/Beastie/Beelb/beelb_good.png"
+dest_files=["res://.godot/imported/beelb_good.png-ccbcc3d98e5c77fa16a691a313870431.ctex"]
 
 [params]
 

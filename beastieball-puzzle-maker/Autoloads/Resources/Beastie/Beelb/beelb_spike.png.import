@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bi34gm7gr7i83"
-path="res://.godot/imported/bleeb_idle.png-50097acb16a2ecc7dbff2348c0da635c.ctex"
+uid="uid://cyvjr3ru0cv4x"
+path="res://.godot/imported/beelb_spike.png-f40b0c54e67f5d3b06a47e4a4c4dd6cb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Autoloads/Resources/Beastie/Bleeb/bleeb_idle.png"
-dest_files=["res://.godot/imported/bleeb_idle.png-50097acb16a2ecc7dbff2348c0da635c.ctex"]
+source_file="res://Autoloads/Resources/Beastie/Beelb/beelb_spike.png"
+dest_files=["res://.godot/imported/beelb_spike.png-f40b0c54e67f5d3b06a47e4a4c4dd6cb.ctex"]
 
 [params]
 
