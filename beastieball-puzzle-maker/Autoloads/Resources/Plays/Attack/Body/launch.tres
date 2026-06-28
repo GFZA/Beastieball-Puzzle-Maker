@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Attack" load_steps=2 format=3 uid="uid://b8r5fp676ri1m"]
+[gd_resource type="Resource" script_class="Attack" load_steps=2 format=3 uid="uid://cav38enl453wt"]
 
 [ext_resource type="Script" uid="uid://bc63soeia1eb1" path="res://Autoloads/Resources/Plays/Attack/attack.gd" id="1_ou6fu"]
 
@@ -6,7 +6,7 @@
 script = ExtResource("1_ou6fu")
 name = "Launch"
 use_condition = 2
-base_pow = 100
-descrition = "Only used from back row. SHIFTs self to front row."
+base_pow = 65
+descrition = "Only used from back row. Before hit, SHIFTs self forward."
 type = 0
 metadata/_custom_type_script = "uid://bc63soeia1eb1"

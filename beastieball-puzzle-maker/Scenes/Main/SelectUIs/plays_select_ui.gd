@@ -5,7 +5,7 @@ extends Control
 signal plays_selected(plays : Plays, slot_index : int, side : Global.MySide, team_pos : TeamController.TeamPosition)
 
 const PLAY_BUTTON : PackedScene = preload("uid://dflcrna6d1235")
-const FREE_BALL : Plays = preload("uid://1gwxenj63w75")
+const FREE_BALL : Plays = preload("uid://vgjeoby0udu0")
 
 @export var beastie : Beastie = null :
 	set(value):

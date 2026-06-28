@@ -150,6 +150,8 @@ var bench_plays_ui_container_anchors : Array[Node] = []
 var beastie_scene_dict : Dictionary[Beastie, BeastieScene] = {}
 var plays_ui_container_dict : Dictionary[Beastie, PlaysUIContainer] = {}
 
+var weariness : int = 0 # Unused in the puzzle maker, Used in SickoCalc
+
 
 func _ready() -> void:
 	var all_children : Array[Node] = get_children()

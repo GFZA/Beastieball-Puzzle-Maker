@@ -191,11 +191,87 @@ func _assign_all_beasties_data() -> void:
 					while inner_file_name != "":
 						if inner_file_name.ends_with(".tres") or inner_file_name.ends_with(".tres.remap"): # Is Beastie Resource
 							var suffix : String = ".tres" if not Global.is_on_web else "" # Not sure why we need this but it works!
-							all_beasties_data.append(load(path + file_name + "/" + inner_file_name.get_basename() + suffix))
+							var final_path : String = path + file_name + "/" + inner_file_name.get_basename() + suffix
+							var beastie : Beastie = load(final_path)
+							#var path_to_folder : String = path + beastie.specie_name.capitalize() + "/"
+							#_assign_beastie_their_sprite(beastie, path_to_folder, final_path)
+							all_beasties_data.append(beastie)
 						inner_file_name = inner_dir.get_next()
 			file_name = dir.get_next()
 	else:
 		push_error("An error occurred when trying to access the path %s." % path)
+
+
+#region Dev tool functions (uncomment codes above then run the game)
+
+func _assign_beastie_their_sprite(beastie : Beastie, path_to_folder : String, path_to_beastie : String) -> void:
+	beastie.sprites.clear()
+	var s_idle : Texture2D = null
+	var s_ready : Texture2D = null
+	var s_spike : Texture2D = null
+	var s_volley : Texture2D = null
+	var s_good : Texture2D = null
+	var s_bad : Texture2D = null
+	var s_icon : Texture2D = null
+
+	var dir := DirAccess.open(path_to_folder)
+	if dir:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while file_name != "":
+			if file_name.ends_with(".png"):
+				var new_sprite : Texture2D = load(path_to_folder + file_name)
+				if new_sprite:
+					file_name = file_name.trim_suffix(".png")
+					if file_name.begins_with("icon"):
+						s_icon = new_sprite
+					if file_name.ends_with("_idle"):
+						s_idle = new_sprite
+					if file_name.ends_with("_ready"):
+						s_ready = new_sprite
+					if file_name.ends_with("_spike"):
+						s_spike = new_sprite
+					if file_name.ends_with("_volley"):
+						s_volley = new_sprite
+					if file_name.ends_with("_good"):
+						s_good = new_sprite
+					if file_name.ends_with("_bad"):
+						s_bad = new_sprite
+			file_name = dir.get_next()
+
+		if s_icon == null:
+			push_error("%s have no icon spirte!" % beastie.specie_name)
+		if s_idle == null:
+			push_error("%s have no idle spirte!" % beastie.specie_name)
+		if s_ready == null:
+			s_ready = s_idle
+		if s_spike == null:
+			s_spike = s_idle
+		if s_volley == null:
+			s_volley = s_idle
+		if s_good == null:
+			s_good = s_idle
+		if s_bad == null:
+			s_bad = s_idle
+
+		beastie.sprites = {
+			Beastie.Sprite.IDLE : s_idle,
+			Beastie.Sprite.READY : s_ready,
+			Beastie.Sprite.SPIKE : s_spike,
+			Beastie.Sprite.VOLLEY : s_volley,
+			Beastie.Sprite.GOOD : s_good,
+			Beastie.Sprite.BAD : s_bad,
+			Beastie.Sprite.ICON : s_icon,
+		}
+
+	ResourceSaver.save(beastie, path_to_beastie)
+
+
+#func _assign_beastie_their_poosible_plays(beastie : Beastie) -> void:
+	#return
+
+
+#endregion
 
 
 func _assign_all_plays_data() -> void:
