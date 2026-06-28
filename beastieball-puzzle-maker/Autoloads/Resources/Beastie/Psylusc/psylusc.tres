@@ -1,28 +1,43 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=24 format=3 uid="uid://bjv6rml133tdp"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=39 format=3 uid="uid://db17bibf200mw"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_tpug0"]
 [ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Autoloads/Resources/Trait/trait.gd" id="2_3kmtp"]
 [ext_resource type="Resource" uid="uid://biw7bc65rd17i" path="res://Autoloads/Resources/Trait/galaxy_brain.tres" id="2_6nyyb"]
 [ext_resource type="Script" uid="uid://ehabj4qsgxpl" path="res://Autoloads/Resources/Beastie/beastie.gd" id="3_5b38b"]
-[ext_resource type="Resource" uid="uid://cnrdrpp1ytwvq" path="res://Autoloads/Resources/Plays/Attack/Mind/practice_shot.tres" id="3_aolll"]
+[ext_resource type="Resource" uid="uid://cnrdrpp1ytwvq" path="res://Autoloads/Resources/Plays/Attack/Mind/practice_shot.tres" id="3_e5vnc"]
+[ext_resource type="Resource" uid="uid://bhtfclbbbqqfq" path="res://Autoloads/Resources/Plays/Defense/mind_read.tres" id="4_bkcgd"]
 [ext_resource type="Resource" uid="uid://b1p53xhl07na3" path="res://Autoloads/Resources/Trait/anticipation.tres" id="4_phe5q"]
-[ext_resource type="Resource" uid="uid://bh4ukdiqnmxsh" path="res://Autoloads/Resources/Plays/Attack/Mind/cold_calculation.tres" id="6_b6t2n"]
-[ext_resource type="Resource" uid="uid://c8f8a3vv12co1" path="res://Autoloads/Resources/Plays/Attack/Mind/heartbreaker.tres" id="9_bsgnp"]
-[ext_resource type="Resource" uid="uid://bojb10i043gnl" path="res://Autoloads/Resources/Plays/Attack/Mind/rainbow.tres" id="12_xfmwn"]
-[ext_resource type="Resource" uid="uid://bbtfkfi4i2py6" path="res://Autoloads/Resources/Plays/Attack/Mind/perfect_shot.tres" id="14_sfnbd"]
-[ext_resource type="Resource" uid="uid://xuq2krgioyg5" path="res://Autoloads/Resources/Plays/Attack/Spirit/jammer.tres" id="15_1t4a0"]
-[ext_resource type="Resource" uid="uid://kjfbpg4iax4n" path="res://Autoloads/Resources/Plays/Attack/Mind/freezeray.tres" id="16_eguc8"]
+[ext_resource type="Resource" uid="uid://dqokwb2l6gnsr" path="res://Autoloads/Resources/Plays/Support/telekinesis.tres" id="5_xhoys"]
+[ext_resource type="Resource" uid="uid://bh4ukdiqnmxsh" path="res://Autoloads/Resources/Plays/Attack/Mind/cold_calculation.tres" id="6_3bi4f"]
+[ext_resource type="Resource" uid="uid://du8cw84yk24oa" path="res://Autoloads/Resources/Plays/Support/teleport.tres" id="8_li3h3"]
+[ext_resource type="Resource" uid="uid://dytuvbvg3oamq" path="res://Autoloads/Resources/Plays/Defense/shield.tres" id="8_xhoys"]
+[ext_resource type="Resource" uid="uid://c8f8a3vv12co1" path="res://Autoloads/Resources/Plays/Attack/Mind/heartbreaker.tres" id="9_q3f31"]
+[ext_resource type="Resource" uid="uid://b1kd6deumgyu0" path="res://Autoloads/Resources/Plays/Support/meditate.tres" id="11_4dwr7"]
+[ext_resource type="Resource" uid="uid://bojb10i043gnl" path="res://Autoloads/Resources/Plays/Attack/Mind/rainbow.tres" id="12_to2cs"]
+[ext_resource type="Resource" uid="uid://c6qin68p3shhq" path="res://Autoloads/Resources/Plays/Volley/tactical_pass.tres" id="13_5a7u2"]
+[ext_resource type="Resource" uid="uid://bbtfkfi4i2py6" path="res://Autoloads/Resources/Plays/Attack/Mind/perfect_shot.tres" id="14_5pshs"]
+[ext_resource type="Resource" uid="uid://xuq2krgioyg5" path="res://Autoloads/Resources/Plays/Attack/Spirit/jammer.tres" id="15_8xxcp"]
+[ext_resource type="Resource" uid="uid://kjfbpg4iax4n" path="res://Autoloads/Resources/Plays/Attack/Mind/freezeray.tres" id="16_aysfr"]
 [ext_resource type="Texture2D" uid="uid://cfgd2ixo2lter" path="res://Autoloads/Resources/Beastie/Psylusc/icon_psylusc.png" id="17_beyh1"]
-[ext_resource type="Resource" uid="uid://dxpdlo5hbqo7w" path="res://Autoloads/Resources/Plays/Attack/Mind/prepared_attack.tres" id="17_bf1g0"]
 [ext_resource type="Texture2D" uid="uid://docxq2fsrfror" path="res://Autoloads/Resources/Beastie/Psylusc/psylusc_idle.png" id="17_jsb5b"]
+[ext_resource type="Resource" uid="uid://dxpdlo5hbqo7w" path="res://Autoloads/Resources/Plays/Attack/Mind/prepared_attack.tres" id="17_wlul7"]
+[ext_resource type="Resource" uid="uid://b3ie8s030fuig" path="res://Autoloads/Resources/Plays/Attack/Mind/nerve_strike.tres" id="18_sqdg0"]
 [ext_resource type="Texture2D" uid="uid://cj0pkqf8hhvi8" path="res://Autoloads/Resources/Beastie/Psylusc/psylusc_ready.png" id="18_wkgwj"]
-[ext_resource type="Resource" uid="uid://b3ie8s030fuig" path="res://Autoloads/Resources/Plays/Attack/Mind/nerve_strike.tres" id="18_wu4sv"]
-[ext_resource type="Resource" uid="uid://cod7yqucaq628" path="res://Autoloads/Resources/Plays/Attack/Mind/tracker.tres" id="19_griok"]
+[ext_resource type="Resource" uid="uid://cod7yqucaq628" path="res://Autoloads/Resources/Plays/Attack/Mind/tracker.tres" id="19_8x1b7"]
 [ext_resource type="Texture2D" uid="uid://bfec2v5lsnepy" path="res://Autoloads/Resources/Beastie/Psylusc/psylusc_spike.png" id="19_wqus6"]
-[ext_resource type="Resource" uid="uid://cwwdwghrp4cco" path="res://Autoloads/Resources/Plays/Attack/Mind/precision_strike.tres" id="20_sqmv0"]
+[ext_resource type="Resource" uid="uid://b670mi6ha0r4h" path="res://Autoloads/Resources/Plays/Support/chill_out.tres" id="20_8x1b7"]
+[ext_resource type="Resource" uid="uid://cwwdwghrp4cco" path="res://Autoloads/Resources/Plays/Attack/Mind/precision_strike.tres" id="20_gyft6"]
 [ext_resource type="Texture2D" uid="uid://djqkphafy18sj" path="res://Autoloads/Resources/Beastie/Psylusc/psylusc_volley.png" id="20_wilsm"]
 [ext_resource type="Texture2D" uid="uid://c1fc13ailf7pt" path="res://Autoloads/Resources/Beastie/Psylusc/psylusc_good.png" id="21_7wa8b"]
+[ext_resource type="Resource" uid="uid://brf1cqjq1gnxc" path="res://Autoloads/Resources/Plays/Volley/cover.tres" id="21_b2ph8"]
+[ext_resource type="Resource" uid="uid://7nsxd3vbne52" path="res://Autoloads/Resources/Plays/Support/exhaust.tres" id="21_gyft6"]
 [ext_resource type="Texture2D" uid="uid://cjxp81nts1eyx" path="res://Autoloads/Resources/Beastie/Psylusc/psylusc_bad.png" id="22_edw6q"]
+[ext_resource type="Resource" uid="uid://tc6ag84sawpl" path="res://Autoloads/Resources/Plays/Support/tough_front.tres" id="23_6x3m8"]
+[ext_resource type="Resource" uid="uid://cd40pldvtmjj4" path="res://Autoloads/Resources/Plays/Support/lock_target.tres" id="23_nmxjn"]
+[ext_resource type="Resource" uid="uid://ckfu6pta3o1u2" path="res://Autoloads/Resources/Plays/Support/provoke.tres" id="24_3hlk5"]
+[ext_resource type="Resource" uid="uid://l57ggke2vhn0" path="res://Autoloads/Resources/Plays/Defense/heat_up.tres" id="24_nmxjn"]
+[ext_resource type="Resource" uid="uid://c6otckj1e4rrf" path="res://Autoloads/Resources/Plays/Support/reign.tres" id="25_cu5wy"]
+[ext_resource type="Resource" uid="uid://6ch2rjd133ye" path="res://Autoloads/Resources/Plays/Defense/fall_back.tres" id="27_n47l5"]
 
 [resource]
 script = ExtResource("3_5b38b")
@@ -37,7 +52,9 @@ mind_base_pow = 120
 body_base_def = 30
 spirit_base_def = 70
 mind_base_def = 100
-possible_plays = Array[ExtResource("1_tpug0")]([ExtResource("3_aolll"), ExtResource("6_b6t2n"), ExtResource("9_bsgnp"), ExtResource("12_xfmwn"), ExtResource("14_sfnbd"), ExtResource("15_1t4a0"), ExtResource("16_eguc8"), ExtResource("17_bf1g0"), ExtResource("18_wu4sv"), ExtResource("19_griok"), ExtResource("20_sqmv0")])
+plays_level = "0,Practice Shot,5,Mind Read,12,Telekinesis,14,Cold Calculation,19,Chill Out,22,Teleport,26,Heartbreaker,31,Shield,35,Meditate,39,Rainbow,43,Tactical Pass,48,Perfect Shot"
+plays_extra = "Jammer,Freezeray,Prepared Attack,Nerve Strike,Tracker,Precision Strike,Cover,Exhaust,Lock Target,Provoke,Reign,Tough Front,Fall Back,Heat Up"
+possible_plays = Array[ExtResource("1_tpug0")]([ExtResource("3_e5vnc"), ExtResource("4_bkcgd"), ExtResource("5_xhoys"), ExtResource("6_3bi4f"), ExtResource("20_8x1b7"), ExtResource("8_li3h3"), ExtResource("9_q3f31"), ExtResource("8_xhoys"), ExtResource("11_4dwr7"), ExtResource("12_to2cs"), ExtResource("13_5a7u2"), ExtResource("14_5pshs"), ExtResource("15_8xxcp"), ExtResource("16_aysfr"), ExtResource("17_wlul7"), ExtResource("18_sqdg0"), ExtResource("19_8x1b7"), ExtResource("20_gyft6"), ExtResource("21_b2ph8"), ExtResource("21_gyft6"), ExtResource("23_nmxjn"), ExtResource("24_3hlk5"), ExtResource("25_cu5wy"), ExtResource("23_6x3m8"), ExtResource("27_n47l5"), ExtResource("24_nmxjn")])
 possible_traits = Array[ExtResource("2_3kmtp")]([ExtResource("2_6nyyb"), ExtResource("4_phe5q")])
 sprites = Dictionary[int, Texture2D]({
 0: ExtResource("17_jsb5b"),

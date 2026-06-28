@@ -171,9 +171,76 @@ var all_trait_data : Array[Trait] = []
 
 
 func _ready() -> void:
-	_assign_all_beasties_data()
 	_assign_all_plays_data()
 	_assign_all_trait_data()
+	_assign_all_beasties_data()
+
+
+func _assign_all_plays_data() -> void:
+	for i in 6: # 6 loops
+		var path : String = "res://Autoloads/Resources/Plays/"
+		var array_to_add : Array[Plays] = []
+		match i:
+			0:
+				path += "Attack/Body"
+				array_to_add = all_body_attacks
+			1:
+				path += "Attack/Spirit"
+				array_to_add = all_spirit_attacks
+			2:
+				path += "Attack/Mind"
+				array_to_add = all_mind_attacks
+			3:
+				path += "Volley"
+				array_to_add = all_volley_plays
+			4:
+				path += "Support"
+				array_to_add = all_support_plays
+			5:
+				path += "Defense"
+				array_to_add = all_defense_plays
+
+		var dir := DirAccess.open(path)
+		if dir:
+			dir.list_dir_begin()
+			var file_name = dir.get_next()
+			while file_name != "":
+				if file_name.ends_with(".tres") or file_name.ends_with(".tres.remap"): # Is Beastie Resource
+					var suffix : String = ".tres" if not Global.is_on_web else "" # Not sure why we need this but it works!
+					array_to_add.append(load(path + "/" + file_name.get_basename() + suffix))
+				file_name = dir.get_next()
+		else:
+			push_error("An error occurred when trying to access the path %s." % path)
+
+	var free_ball : Plays = null
+	for play : Plays in all_body_attacks:
+		if play.name.to_lower() == "free ball":
+			free_ball = play
+			all_body_attacks.erase(play)
+	all_body_attacks.push_front(free_ball) # Make Free Ball always the first option
+
+	all_plays.append_array(all_body_attacks)
+	all_plays.append_array(all_spirit_attacks)
+	all_plays.append_array(all_mind_attacks)
+	all_plays.append_array(all_volley_plays)
+	all_plays.append_array(all_support_plays)
+	all_plays.append_array(all_defense_plays)
+
+
+func _assign_all_trait_data() -> void:
+	var path : String = "res://Autoloads/Resources/Trait/"
+	var dir := DirAccess.open(path)
+	if dir:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while file_name != "":
+			if file_name.ends_with(".tres") or file_name.ends_with(".tres.remap"): # Is Beastie Resource
+				var suffix : String = ".tres" if not Global.is_on_web else "" # Not sure why we need this but it works!
+				all_trait_data.append(load(path + "/" + file_name.get_basename() + suffix))
+			file_name = dir.get_next()
+	else:
+		push_error("An error occurred when trying to access the path %s." % path)
+
 
 
 func _assign_all_beasties_data() -> void:
@@ -195,6 +262,7 @@ func _assign_all_beasties_data() -> void:
 							var beastie : Beastie = load(final_path)
 							#var path_to_folder : String = path + beastie.specie_name.capitalize() + "/"
 							#_assign_beastie_their_sprite(beastie, path_to_folder, final_path)
+							#_assign_beastie_their_playdex(beastie, final_path)
 							all_beasties_data.append(beastie)
 						inner_file_name = inner_dir.get_next()
 			file_name = dir.get_next()
@@ -267,74 +335,30 @@ func _assign_beastie_their_sprite(beastie : Beastie, path_to_folder : String, pa
 	ResourceSaver.save(beastie, path_to_beastie)
 
 
-#func _assign_beastie_their_poosible_plays(beastie : Beastie) -> void:
-	#return
+func _assign_beastie_their_playdex(beastie : Beastie, path_to_beastie : String) -> void:
+	beastie.possible_plays.clear()
+	var all_play_names : Array[String] = []
 
+	var level : PackedStringArray = beastie.plays_level.split(",")
+	for play_name : String in level:
+		if play_name.to_int() != 0 or play_name == "0":
+			level.erase(play_name)
+	all_play_names.append_array(level)
+
+	var extra : PackedStringArray = beastie.plays_extra.split(",")
+	all_play_names.append_array(extra)
+
+	for play_name : String in all_play_names:
+		play_name = play_name.to_lower()
+		var i : int = 0
+		for play : Plays in all_plays:
+			if play.name.to_lower() == play_name:
+				beastie.possible_plays.append(play)
+				break
+			i += 1
+			if i == all_plays.size():
+				push_error("Can't find '%s' from %s in global all_plays data!" % [play_name, beastie.specie_name])
+
+	ResourceSaver.save(beastie, path_to_beastie)
 
 #endregion
-
-
-func _assign_all_plays_data() -> void:
-	for i in 6: # 6 loops
-		var path : String = "res://Autoloads/Resources/Plays/"
-		var array_to_add : Array[Plays] = []
-		match i:
-			0:
-				path += "Attack/Body"
-				array_to_add = all_body_attacks
-			1:
-				path += "Attack/Spirit"
-				array_to_add = all_spirit_attacks
-			2:
-				path += "Attack/Mind"
-				array_to_add = all_mind_attacks
-			3:
-				path += "Volley"
-				array_to_add = all_volley_plays
-			4:
-				path += "Support"
-				array_to_add = all_support_plays
-			5:
-				path += "Defense"
-				array_to_add = all_defense_plays
-
-		var dir := DirAccess.open(path)
-		if dir:
-			dir.list_dir_begin()
-			var file_name = dir.get_next()
-			while file_name != "":
-				if file_name.ends_with(".tres") or file_name.ends_with(".tres.remap"): # Is Beastie Resource
-					var suffix : String = ".tres" if not Global.is_on_web else "" # Not sure why we need this but it works!
-					array_to_add.append(load(path + "/" + file_name.get_basename() + suffix))
-				file_name = dir.get_next()
-		else:
-			push_error("An error occurred when trying to access the path %s." % path)
-
-	var free_ball : Plays = null
-	for play : Plays in all_body_attacks:
-		if play.name.to_lower() == "free ball":
-			free_ball = play
-			all_body_attacks.erase(play)
-	all_body_attacks.push_front(free_ball) # Make Free Ball always the first option
-
-	all_plays.append_array(all_body_attacks)
-	all_plays.append_array(all_spirit_attacks)
-	all_plays.append_array(all_mind_attacks)
-	all_plays.append_array(all_volley_plays)
-	all_plays.append_array(all_support_plays)
-	all_plays.append_array(all_defense_plays)
-
-
-func _assign_all_trait_data() -> void:
-	var path : String = "res://Autoloads/Resources/Trait/"
-	var dir := DirAccess.open(path)
-	if dir:
-		dir.list_dir_begin()
-		var file_name = dir.get_next()
-		while file_name != "":
-			if file_name.ends_with(".tres") or file_name.ends_with(".tres.remap"): # Is Beastie Resource
-				var suffix : String = ".tres" if not Global.is_on_web else "" # Not sure why we need this but it works!
-				all_trait_data.append(load(path + "/" + file_name.get_basename() + suffix))
-			file_name = dir.get_next()
-	else:
-		push_error("An error occurred when trying to access the path %s." % path)
