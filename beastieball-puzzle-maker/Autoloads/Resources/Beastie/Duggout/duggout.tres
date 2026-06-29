@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=37 format=3 uid="uid://cprccvhuo2dg"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=37 format=3 uid="uid://c2kotqp8pqq0a"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_hpxhf"]
 [ext_resource type="Resource" uid="uid://bcwvsxh0ndp5n" path="res://Autoloads/Resources/Trait/unflappable.tres" id="2_h3r0u"]
