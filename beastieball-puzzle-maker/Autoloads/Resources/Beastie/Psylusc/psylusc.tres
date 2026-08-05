@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=39 format=3 uid="uid://ccj0wt0080nrq"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=39 format=3 uid="uid://buhogwr2i38hf"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_tpug0"]
 [ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Autoloads/Resources/Trait/trait.gd" id="2_3kmtp"]
@@ -52,8 +52,46 @@ mind_base_pow = 120
 body_base_def = 30
 spirit_base_def = 70
 mind_base_def = 100
-plays_level = "0,Practice Shot,5,Mind Read,12,Telekinesis,14,Cold Calculation,19,Chill Out,22,Teleport,26,Heartbreaker,31,Shield,35,Meditate,39,Rainbow,43,Tactical Pass,48,Perfect Shot"
-plays_extra = "Jammer,Freezeray,Prepared Attack,Nerve Strike,Tracker,Precision Strike,Cover,Exhaust,Lock Target,Provoke,Reign,Tough Front,Fall Back,Heat Up"
+plays_string = "From Levels:
+1
+Practice Shot
+5
+Mind Read
+12
+Telekinesis
+14
+Cold Calculation
+19
+Chill Out
+22
+Teleport
+26
+Heartbreaker
+31
+Shield
+35
+Meditate
+39
+Rainbow
+43
+Tactical Pass
+48
+Perfect Shot
+From Friends:
+Jammer
+Freezeray
+Prepared Attack
+Nerve Strike
+Tracker
+Precision Strike
+Cover
+Exhaust
+Lock Target
+Provoke
+Reign
+Tough Front
+Fall Back
+Heat Up"
 possible_plays = Array[ExtResource("1_tpug0")]([ExtResource("3_e5vnc"), ExtResource("4_bkcgd"), ExtResource("5_xhoys"), ExtResource("6_3bi4f"), ExtResource("20_8x1b7"), ExtResource("8_li3h3"), ExtResource("9_q3f31"), ExtResource("8_xhoys"), ExtResource("11_4dwr7"), ExtResource("12_to2cs"), ExtResource("13_5a7u2"), ExtResource("14_5pshs"), ExtResource("15_8xxcp"), ExtResource("16_aysfr"), ExtResource("17_wlul7"), ExtResource("18_sqdg0"), ExtResource("19_8x1b7"), ExtResource("20_gyft6"), ExtResource("21_b2ph8"), ExtResource("21_gyft6"), ExtResource("23_nmxjn"), ExtResource("24_3hlk5"), ExtResource("25_cu5wy"), ExtResource("23_6x3m8"), ExtResource("27_n47l5"), ExtResource("24_nmxjn")])
 possible_traits = Array[ExtResource("2_3kmtp")]([ExtResource("2_6nyyb"), ExtResource("4_phe5q")])
 sprites = Dictionary[int, Texture2D]({

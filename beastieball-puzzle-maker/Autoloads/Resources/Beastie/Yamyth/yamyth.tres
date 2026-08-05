@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=39 format=3 uid="uid://ctqikgo46vaho"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=39 format=3 uid="uid://mkwg7ets3n3q"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_m3n25"]
 [ext_resource type="Resource" uid="uid://ckuv7fcd5f7n" path="res://Autoloads/Resources/Trait/majesty.tres" id="2_bb6h4"]
@@ -52,8 +52,46 @@ mind_base_pow = 20
 body_base_def = 85
 spirit_base_def = 100
 mind_base_def = 64
-plays_level = "0,Breaker,0,Body Ready,11,Boom,17,Flex,23,Shield,27,Thump,33,Exhaust,37,Overpower,43,Burnout,46,Blaze,50,Ultimate Attack"
-plays_extra = "Hyperspike,Demolish,Supercommit,Thrash,Grit,Turnabout,Cover,Pipe,Call Out,Mark,Reign,Rumble,Menace,Patience,Stinky,Wall"
+plays_string = "From Levels:
+1
+Breaker
+1
+Body Ready
+11
+Boom
+17
+Flex
+23
+Shield
+27
+Thump
+33
+Exhaust
+37
+Overpower
+43
+Burnout
+46
+Blaze
+50
+Ultimate Attack
+From Friends:
+Hyperspike
+Demolish
+Supercommit
+Thrash
+Grit
+Turnabout
+Cover
+Pipe
+Call Out
+Mark
+Reign
+Rumble
+Menace
+Patience
+Stinky
+Wall"
 possible_plays = Array[ExtResource("1_m3n25")]([ExtResource("3_f1kon"), ExtResource("4_f1kon"), ExtResource("5_g1btp"), ExtResource("6_wiv5i"), ExtResource("7_n371g"), ExtResource("8_g1btp"), ExtResource("9_j3dc8"), ExtResource("10_xvobr"), ExtResource("11_n371g"), ExtResource("12_5h3y2"), ExtResource("13_j3dc8"), ExtResource("14_4cvnv"), ExtResource("15_kfu2m"), ExtResource("16_6arso"), ExtResource("17_k5no6"), ExtResource("18_3p1u6"), ExtResource("19_ax1c7"), ExtResource("20_kfu2m"), ExtResource("22_8m058"), ExtResource("23_rkhhp"), ExtResource("24_cyep6"), ExtResource("24_i2jkm"), ExtResource("25_s4gcr"), ExtResource("26_dtaac"), ExtResource("27_drrni"), ExtResource("28_eln0u"), ExtResource("29_b4ofv")])
 possible_traits = Array[ExtResource("2_nn5kn")]([ExtResource("2_bb6h4")])
 sprites = Dictionary[int, Texture2D]({

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=35 format=3 uid="uid://o01eof0hbvm8"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=35 format=3 uid="uid://c4jmxxjaitxyt"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_eeoda"]
 [ext_resource type="Resource" uid="uid://bjdlgptor1xj" path="res://Autoloads/Resources/Trait/musclebrain.tres" id="2_4s8pt"]
@@ -48,8 +48,42 @@ mind_base_pow = 36
 body_base_def = 120
 spirit_base_def = 68
 mind_base_def = 38
-plays_level = "0,Bump,0,Dig,4,Flex,13,Zigzag,17,Hunker,22,Muscle Memory,28,Tough Front,33,Thump,37,Roll Shot,42,Smack,50,Overpower"
-plays_extra = "Dive,Relentless,Grit,Sneak Attack,Spitball,Confident Pass,Juggle,Net Rush,Exhaust,Body Ready,Patience,Shield"
+plays_string = "From Levels:
+1
+Bump
+1
+Dig
+4
+Flex
+13
+Zigzag
+17
+Hunker
+22
+Muscle Memory
+28
+Tough Front
+33
+Thump
+37
+Roll Shot
+42
+Smack
+50
+Overpower
+From Friends:
+Dive
+Relentless
+Grit
+Sneak Attack
+Spitball
+Confident Pass
+Juggle
+Net Rush
+Exhaust
+Body Ready
+Patience
+Shield"
 possible_plays = Array[ExtResource("1_eeoda")]([ExtResource("3_ffki4"), ExtResource("4_8yab7"), ExtResource("5_8yab7"), ExtResource("6_lh252"), ExtResource("7_l5jyv"), ExtResource("8_pg5xa"), ExtResource("9_tc1kg"), ExtResource("10_l5jyv"), ExtResource("11_txfmq"), ExtResource("12_tc1kg"), ExtResource("13_nu8ks"), ExtResource("14_caays"), ExtResource("15_va51i"), ExtResource("16_phy40"), ExtResource("17_uc22x"), ExtResource("18_hheoh"), ExtResource("19_r1bcm"), ExtResource("20_b1gf2"), ExtResource("21_f6ywi"), ExtResource("22_te2lf"), ExtResource("23_cpvv1"), ExtResource("24_cjhvo"), ExtResource("25_eupem")])
 possible_traits = Array[ExtResource("2_oo7lv")]([ExtResource("2_4s8pt")])
 sprites = Dictionary[int, Texture2D]({

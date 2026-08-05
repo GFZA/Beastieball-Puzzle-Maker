@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=37 format=3 uid="uid://cgvbms0dj22tc"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=37 format=3 uid="uid://bqwwabxcpmp7k"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_5u6mg"]
 [ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Autoloads/Resources/Trait/trait.gd" id="2_crcu8"]
@@ -49,8 +49,43 @@ spirit_base_pow = 100
 mind_base_pow = 26
 body_base_def = 85
 spirit_base_def = 110
-plays_level = "0,Hum,0,Pepshot,15,Cheer,19,Rousing Strike,23,Drum,27,Dramatic Exit,31,Bring The Heat,36,Battle Cry,40,Introduce,44,Supercommit,49,Chant"
-plays_extra = "Stomp,Relaxed Hit,Energized,Jammer,Thriller,Cover,Forward Pass,Net Rush,Trait Dance,Whistle,Mighty Yell,Shield,Soliloquy"
+plays_string = "From Levels:
+1
+Hum
+1
+Pepshot
+15
+Cheer
+19
+Rousing Strike
+23
+Drum
+27
+Dramatic Exit
+31
+Bring the Heat
+36
+Battle Cry
+40
+Introduce
+44
+Supercommit
+49
+Chant
+From Friends:
+Stomp
+Relaxed Hit
+Energized
+Jammer
+Thriller
+Cover
+Forward Pass
+Net Rush
+Trait Dance
+Whistle
+Mighty Yell
+Shield
+Soliloquy"
 possible_plays = Array[ExtResource("1_5u6mg")]([ExtResource("3_6y1uc"), ExtResource("4_yppus"), ExtResource("5_f2hg7"), ExtResource("6_a23g4"), ExtResource("7_16j7t"), ExtResource("8_7v683"), ExtResource("9_2jdr0"), ExtResource("10_0roah"), ExtResource("11_3asdp"), ExtResource("12_jbtiv"), ExtResource("13_fut2k"), ExtResource("14_qlrgf"), ExtResource("15_rdxag"), ExtResource("16_7sirp"), ExtResource("17_32iwy"), ExtResource("18_3qr0c"), ExtResource("19_orxb8"), ExtResource("13_jbtiv"), ExtResource("21_blq6r"), ExtResource("22_ip0cs"), ExtResource("23_lr314"), ExtResource("24_jswyg"), ExtResource("8_16j7t"), ExtResource("26_urxnr")])
 possible_traits = Array[ExtResource("2_crcu8")]([ExtResource("2_pkep1"), ExtResource("4_o8hj7")])
 sprites = Dictionary[int, Texture2D]({

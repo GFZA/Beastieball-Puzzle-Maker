@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=34 format=3 uid="uid://dq51mfofrhb71"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=34 format=3 uid="uid://db3144l8owvcc"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_ioeqj"]
 [ext_resource type="Resource" uid="uid://bjnb2rjiaq72" path="res://Autoloads/Resources/Trait/charge.tres" id="2_8ney0"]
@@ -47,8 +47,43 @@ mind_base_pow = 33
 body_base_def = 80
 spirit_base_def = 104
 mind_base_def = 92
-plays_level = "0,Basic Hit,0,Exhaust,6,Energized,10,Refresh,14,Zinger,18,Quick Breath,23,Hunker,26,Power Sap,30,Deep Breath,34,Thunder,39,High Five,43,Tough Front,48,Vigor Beam"
-plays_extra = "Overpower,Relaxed Hit,Net Rush,Goo-Goo Eyes,Shake Off,Body Ready,Fall Back,Frazzle,Shield"
+plays_string = "From Levels:
+1
+Basic Hit
+1
+Exhaust
+6
+Energized
+10
+Refresh
+14
+Zinger
+18
+Quick Breath
+23
+Hunker
+26
+Power Sap
+30
+Deep Breath
+34
+Thunder
+39
+High Five
+43
+Tough Front
+48
+Vigor Beam
+From Friends:
+Overpower
+Relaxed Hit
+Net Rush
+Goo-Goo Eyes
+Shake Off
+Body Ready
+Fall Back
+Frazzle
+Shield"
 possible_plays = Array[ExtResource("1_ioeqj")]([ExtResource("3_ioeqj"), ExtResource("4_3kfxm"), ExtResource("5_8ney0"), ExtResource("6_ca443"), ExtResource("7_xgnbv"), ExtResource("8_3kfxm"), ExtResource("9_5ca8l"), ExtResource("10_gg4kb"), ExtResource("11_ffvtv"), ExtResource("12_ca443"), ExtResource("13_bbni0"), ExtResource("14_v0cbl"), ExtResource("15_52jv7"), ExtResource("16_5ca8l"), ExtResource("17_n6brn"), ExtResource("18_gg4kb"), ExtResource("19_jbbgc"), ExtResource("20_1xwr4"), ExtResource("21_7ceew"), ExtResource("22_v0cbl"), ExtResource("23_lepqo"), ExtResource("24_hnkpv")])
 possible_traits = Array[ExtResource("25_hyuuq")]([ExtResource("2_8ney0")])
 sprites = Dictionary[int, Texture2D]({

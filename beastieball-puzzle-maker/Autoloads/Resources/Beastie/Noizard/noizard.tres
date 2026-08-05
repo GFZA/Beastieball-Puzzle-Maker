@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=40 format=3 uid="uid://b81fjfmdrxh0o"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=40 format=3 uid="uid://dxtirnoksvlwr"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_73p0a"]
 [ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Autoloads/Resources/Trait/trait.gd" id="2_7ssa4"]
@@ -52,8 +52,46 @@ spirit_base_pow = 63
 mind_base_pow = 73
 spirit_base_def = 100
 mind_base_def = 80
-plays_level = "0,Rattle,0,Distraction,9,Stinky,16,Raw Fury,19,Drum,23,Net Rush,27,Slice,31,Staredown,35,Scream,40,Frazzle,47,Dump"
-plays_extra = "Desperate Force,Toppler,Floater,Stinger,Pierce,Cornershot,Precision Strike,Jeer,Lock Target,Mark,Provoke,Rally,Whistle,Hawkeye,Mighty Yell,Shield"
+plays_string = "From Levels:
+1
+Rattle
+1
+Distraction
+9
+Stinky
+16
+Raw Fury
+19
+Drum
+23
+Net Rush
+27
+Slice
+31
+Staredown
+35
+Scream
+40
+Frazzle
+47
+Dump
+From Friends:
+Desperate Force
+Toppler
+Floater
+Stinger
+Pierce
+Cornershot
+Precision Strike
+Jeer
+Lock Target
+Mark
+Provoke
+Rally
+Whistle
+Hawkeye
+Mighty Yell
+Shield"
 possible_plays = Array[ExtResource("1_73p0a")]([ExtResource("3_setp5"), ExtResource("4_qbcws"), ExtResource("5_3x5ds"), ExtResource("6_q5oll"), ExtResource("7_o7p4y"), ExtResource("8_svk8n"), ExtResource("9_qnhsq"), ExtResource("10_fbtka"), ExtResource("11_s2ee5"), ExtResource("12_7irkt"), ExtResource("13_vorrr"), ExtResource("14_shtgt"), ExtResource("15_l61lq"), ExtResource("16_c2af6"), ExtResource("17_j0i7x"), ExtResource("18_t2k3e"), ExtResource("19_h31uk"), ExtResource("20_44gkt"), ExtResource("21_cnncj"), ExtResource("22_d3op7"), ExtResource("11_q5oll"), ExtResource("24_320je"), ExtResource("25_cxht6"), ExtResource("26_5uds7"), ExtResource("27_a02me"), ExtResource("28_xkbn2"), ExtResource("8_qbcws")])
 possible_traits = Array[ExtResource("2_7ssa4")]([ExtResource("2_x54fp"), ExtResource("4_3jda1")])
 sprites = Dictionary[int, Texture2D]({

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=47 format=3 uid="uid://c3btfjaq0q3si"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=47 format=3 uid="uid://yci21ll1hp4t"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_cj2tx"]
 [ext_resource type="Resource" uid="uid://d2npthnq1b582" path="res://Autoloads/Resources/Trait/cryptic.tres" id="2_2dtr3"]
@@ -60,8 +60,54 @@ mind_base_pow = 36
 body_base_def = 110
 spirit_base_def = 85
 mind_base_def = 63
-plays_level = "0,Beginner Effort,0,Feint,6,Net Rush,10,Toppler,15,Dispel,22,Mark,26,Eruption,31,Staredown,36,Chant,41,Cut Shot,45,Dreadful Mist,49,Soliloquy"
-plays_extra = "High Slam,True Strike,Kneebender,Flight,Jammer,Cook,Tornadoball,Confident Pass,Set,Clear Field,Hum,Jeer,Provoke,Trait Dance,Distraction,Frazzle,Intimidate,Mighty Yell,Mind Read,Shield,Stinky,Upsetting Comment"
+plays_string = "From Levels:
+1
+Beginner Effort
+1
+Feint
+6
+Net Rush
+10
+Toppler
+15
+Dispel
+22
+Mark
+26
+Eruption
+31
+Staredown
+36
+Chant
+41
+Cut Shot
+45
+Dreadful Mist
+49
+Soliloquy
+From Friends:
+High Slam
+True Strike
+Kneebender
+Flight
+Jammer
+Cook
+Tornadoball
+Confident Pass
+Set
+Clear Field
+Hum
+Jeer
+Provoke
+Trait Dance
+Distraction
+Frazzle
+Intimidate
+Mighty Yell
+Mind Read
+Shield
+Stinky
+Upsetting Comment"
 possible_plays = Array[ExtResource("1_cj2tx")]([ExtResource("3_p783k"), ExtResource("4_11t61"), ExtResource("5_22qx8"), ExtResource("6_dga2y"), ExtResource("7_l4dep"), ExtResource("11_ds085"), ExtResource("9_63nne"), ExtResource("10_rxi7h"), ExtResource("11_pjmn2"), ExtResource("12_34ktt"), ExtResource("13_tb5qp"), ExtResource("14_spmad"), ExtResource("15_d3c3l"), ExtResource("16_yq65s"), ExtResource("17_2tcrp"), ExtResource("18_4c1f3"), ExtResource("19_4kcpr"), ExtResource("20_a3hku"), ExtResource("21_l067y"), ExtResource("22_go61l"), ExtResource("23_v1n0p"), ExtResource("9_b5ei6"), ExtResource("25_jy71f"), ExtResource("26_y2es5"), ExtResource("27_gghuv"), ExtResource("28_7bqt0"), ExtResource("29_qb04o"), ExtResource("30_s8j7s"), ExtResource("31_np0q4"), ExtResource("32_at1b4"), ExtResource("33_3p18a"), ExtResource("8_37ctn"), ExtResource("35_jrdur"), ExtResource("36_fao0l")])
 possible_traits = Array[ExtResource("2_a2f2f")]([ExtResource("2_2dtr3"), ExtResource("4_2uqym")])
 sprites = Dictionary[int, Texture2D]({

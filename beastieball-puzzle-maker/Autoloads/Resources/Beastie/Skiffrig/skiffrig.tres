@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=40 format=3 uid="uid://lgxpmsb5kj3p"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=40 format=3 uid="uid://dmwb08x30n4nm"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_bsbdp"]
 [ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Autoloads/Resources/Trait/trait.gd" id="2_5pnl3"]
@@ -53,8 +53,47 @@ mind_base_pow = 85
 body_base_def = 98
 spirit_base_def = 88
 mind_base_def = 69
-plays_level = "0,Practice Shot,0,Call Out,9,Quick breath,12,tracker,16,Whistle,21,Counter,26,Floater,30,Exhaust,34,Grit,38,Cyclone,42,Tough Front,47,Roll Shot"
-plays_extra = "Bump,Scream,Bring the Heat,Flight,Tornadoball,Dump,Zigzag,Precision Strike,Cover,Net Rush,Chant,Jeer,Mark,Provoke,Shield"
+plays_string = "From Levels:
+1
+Practice Shot
+1
+Call Out
+9
+Quick Breath
+12
+Tracker
+16
+Whistle
+21
+Counter
+26
+Floater
+30
+Exhaust
+34
+Grit
+38
+Cyclone
+42
+Tough Front
+47
+Roll Shot
+From Friends:
+Bump
+Scream
+Bring the Heat
+Flight
+Tornadoball
+Dump
+Zigzag
+Precision Strike
+Cover
+Net Rush
+Chant
+Jeer
+Mark
+Provoke
+Shield"
 possible_plays = Array[ExtResource("1_bsbdp")]([ExtResource("3_hf4bs"), ExtResource("4_g4tiw"), ExtResource("5_j3r6d"), ExtResource("6_i1jyw"), ExtResource("7_5lnq5"), ExtResource("8_s51ax"), ExtResource("9_vn1yd"), ExtResource("21_0lxpp"), ExtResource("11_6hvko"), ExtResource("12_qigow"), ExtResource("23_4ivx5"), ExtResource("14_5c150"), ExtResource("15_xv4mb"), ExtResource("16_6nf80"), ExtResource("17_f6ngr"), ExtResource("18_vsqr4"), ExtResource("19_7ityv"), ExtResource("20_0lxpp"), ExtResource("21_4fyx6"), ExtResource("22_4ivx5"), ExtResource("23_eo0i6"), ExtResource("24_ve2ym"), ExtResource("25_sahtl"), ExtResource("26_dnqu6"), ExtResource("11_s51ax"), ExtResource("28_ot2sd"), ExtResource("8_j3r6d")])
 possible_traits = Array[ExtResource("2_5pnl3")]([ExtResource("2_dhg3t"), ExtResource("4_t3vy7")])
 sprites = Dictionary[int, Texture2D]({

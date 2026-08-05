@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=40 format=3 uid="uid://cfp78e4j6nkwe"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=40 format=3 uid="uid://cx6ldi73qvvwx"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_rsqbk"]
 [ext_resource type="Resource" uid="uid://cmn6g83u8ugot" path="res://Autoloads/Resources/Trait/foggy.tres" id="2_f5tyd"]
@@ -53,8 +53,47 @@ mind_base_pow = 65
 body_base_def = 99
 spirit_base_def = 120
 mind_base_def = 65
-plays_level = "0,Steamer,0,Exhaust,10,Cook,17,Heat Up,22,Shield,27,Eruption,32,Pipe,37,Reign,41,Heat Wave,45,Whistle,48,Clear Field,53,Burnout"
-plays_extra = "Challenge,Bring the Heat,Relentless,Spitball,Floater,Pressure,Excited Pass,Updraft,Blaze,Dreadful Mist,Hum,Hunker,Tough Front,Intimidate,Patience"
+plays_string = "From Levels:
+1
+Steamer
+1
+Exhaust
+10
+Cook
+17
+Heat Up
+22
+Shield
+27
+Eruption
+32
+Pipe
+37
+Reign
+41
+Heat Wave
+45
+Whistle
+48
+Clear Field
+53
+Burnout
+From Friends:
+Challenge
+Bring the Heat
+Relentless
+Spitball
+Floater
+Pressure
+Excited Pass
+Updraft
+Blaze
+Dreadful Mist
+Hum
+Hunker
+Tough Front
+Intimidate
+Patience"
 possible_plays = Array[ExtResource("1_rsqbk")]([ExtResource("3_ln4c0"), ExtResource("4_ln4c0"), ExtResource("5_1k7fw"), ExtResource("6_ct1qq"), ExtResource("7_2ma44"), ExtResource("8_ct1qq"), ExtResource("9_sm3w5"), ExtResource("10_2ma44"), ExtResource("11_i48vh"), ExtResource("12_sm3w5"), ExtResource("12_ucf2d"), ExtResource("14_pe5f5"), ExtResource("15_i4jp4"), ExtResource("16_ucf2d"), ExtResource("17_57eok"), ExtResource("18_ga7u1"), ExtResource("19_wdl5p"), ExtResource("20_1ukgy"), ExtResource("21_qs4m8"), ExtResource("22_ysl6f"), ExtResource("23_jb6kt"), ExtResource("24_ftvmx"), ExtResource("25_gpfvk"), ExtResource("25_0rasu"), ExtResource("26_lsr5j"), ExtResource("28_4o8xy"), ExtResource("29_dt18u")])
 possible_traits = Array[ExtResource("2_lkm30")]([ExtResource("2_f5tyd"), ExtResource("4_81pjf")])
 sprites = Dictionary[int, Texture2D]({

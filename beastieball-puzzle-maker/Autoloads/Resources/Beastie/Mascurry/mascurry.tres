@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=31 format=3 uid="uid://boi8q23pouui3"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=31 format=3 uid="uid://brh0sj5kn0nkg"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_e3agr"]
 [ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Autoloads/Resources/Trait/trait.gd" id="2_l1gr1"]
@@ -44,8 +44,41 @@ mind_base_pow = 30
 body_base_def = 97
 spirit_base_def = 88
 mind_base_def = 54
-plays_level = "0,Cheer,0,Basic Hit,7,Drum,13,Set,19,Kneebender,24,Chant,29,Stomp,34,High Five,41,Pump Up,48,Vigor Beam"
-plays_extra = "Thunder,Relaxed Hit,Reach Shot,Swarm,Excited Pass,Juggle,Updraft,Dispel,Introduce,Rally,Whistle,Whoosh,Shield"
+plays_string = "From Levels:
+1
+Cheer
+1
+Basic Hit
+7
+Drum
+13
+Set
+19
+Kneebender
+24
+Chant
+29
+Stomp
+34
+High Five
+41
+Pump Up
+48
+Vigor Beam
+From Friends:
+Thunder
+Relaxed Hit
+Reach Shot
+Swarm
+Excited Pass
+Juggle
+Updraft
+Dispel
+Introduce
+Rally
+Whistle
+Whoosh
+Shield"
 possible_plays = Array[ExtResource("1_e3agr")]([ExtResource("3_fl0kv"), ExtResource("4_7qmdc"), ExtResource("5_ffuyq"), ExtResource("6_id4s5"), ExtResource("7_y4uib"), ExtResource("8_lx4nq"), ExtResource("9_qx1tt"), ExtResource("10_uc0d6"), ExtResource("11_yw14n"), ExtResource("12_ggi0x"), ExtResource("13_f235u"), ExtResource("14_6a1ew"), ExtResource("15_6a1ew"), ExtResource("16_grahw"), ExtResource("17_ojgvc"), ExtResource("18_8mdkh"), ExtResource("19_b1ja6"), ExtResource("20_sttvg"), ExtResource("21_dk2me"), ExtResource("22_y1j6q"), ExtResource("23_aoamf"), ExtResource("24_3e5sr"), ExtResource("8_6nbad")])
 possible_traits = Array[ExtResource("2_l1gr1")]([ExtResource("2_uk7iy"), ExtResource("4_rsmqe")])
 sprites = Dictionary[int, Texture2D]({

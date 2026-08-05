@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=44 format=3 uid="uid://bmydi87g56wyu"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=44 format=3 uid="uid://cm0w2demb55aa"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_tyxuk"]
 [ext_resource type="Resource" uid="uid://buxodlww8kx5u" path="res://Autoloads/Resources/Trait/monster_block.tres" id="2_30qc7"]
@@ -57,8 +57,51 @@ mind_base_pow = 80
 body_base_def = 80
 spirit_base_def = 70
 mind_base_def = 105
-plays_level = "0,Mark,0,Pierce,5,Kneebender,8,High Slam,11,Net Rush,17,Distraction,23,Sneak Attack,30,Staredown,34,Thunder,38,Wall,42,Splinter,46,Ricochet"
-plays_extra = "Spike,Stomp,True Strike,Power Sap,Perfect Shot,Heartbreaker,Floater,Sweep,Cornershot,Set,Deep Breath,Jeer,Provoke,Reposition,Steal,Fortify,Hawkeye,Mind Read,Shield"
+plays_string = "From Levels:
+1
+Mark
+1
+Pierce
+5
+Kneebender
+8
+High Slam
+11
+Net Rush
+17
+Distraction
+23
+Sneak Attack
+30
+Staredown
+34
+Thunder
+38
+Wall
+42
+Splinter
+46
+Ricochet
+From Friends:
+Spike
+Stomp
+True Strike
+Power Sap
+Perfect Shot
+Heartbreaker
+Floater
+Sweep
+Cornershot
+Set
+Deep Breath
+Jeer
+Provoke
+Reposition
+Steal
+Fortify
+Hawkeye
+Mind Read
+Shield"
 possible_plays = Array[ExtResource("1_tyxuk")]([ExtResource("11_yvh3b"), ExtResource("4_yvh3b"), ExtResource("5_2p20i"), ExtResource("6_iapun"), ExtResource("7_1s2nu"), ExtResource("8_xvh0x"), ExtResource("9_783dg"), ExtResource("10_i61xb"), ExtResource("11_4u5vv"), ExtResource("12_7ikn2"), ExtResource("13_tnlro"), ExtResource("14_1t22x"), ExtResource("15_0h5l5"), ExtResource("16_oeqm4"), ExtResource("17_tjmeh"), ExtResource("18_oeqm4"), ExtResource("19_w2dvw"), ExtResource("20_4figh"), ExtResource("21_e4nda"), ExtResource("22_4htf3"), ExtResource("23_hcsdh"), ExtResource("24_ny681"), ExtResource("25_0q20g"), ExtResource("26_kh4sp"), ExtResource("27_o0xwv"), ExtResource("28_pb50g"), ExtResource("29_k0ouv"), ExtResource("30_oeqn3"), ExtResource("31_bv7ns"), ExtResource("32_nqd8o"), ExtResource("8_sm6i6")])
 possible_traits = Array[ExtResource("2_xka47")]([ExtResource("2_30qc7"), ExtResource("19_ethns")])
 sprites = Dictionary[int, Texture2D]({

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=41 format=3 uid="uid://dvi1qhjlgst7h"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=41 format=3 uid="uid://c50txnbv5a64d"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_ed32k"]
 [ext_resource type="Resource" uid="uid://bqbvustojijve" path="res://Autoloads/Resources/Trait/shanty.tres" id="2_gttjx"]
@@ -53,8 +53,48 @@ spirit_base_pow = 30
 mind_base_pow = 80
 body_base_def = 95
 spirit_base_def = 115
-plays_level = "0,Hunker,0,Relaxed Hit,9,Quick Breath,13,Drum,16,Heartbreaker,23,Shield,28,Boom,34,Mighty Yell,37,Dump,42,Refresh,45,Patience,51,Stomp"
-plays_extra = "Nice Shot,Vigor Beam,Rainbow,Prepared Attack,Cornershot,Precision Strike,Cover,Set,Call Out,Chant,Deep Breath,Introduce,Provoke,Steal,Trait Dance,Menace"
+plays_string = "From Levels:
+1
+Hunker
+1
+Relaxed Hit
+9
+Quick Breath
+13
+Drum
+16
+Heartbreaker
+23
+Shield
+28
+Boom
+34
+Mighty Yell
+37
+Dump
+42
+Refresh
+45
+Patience
+51
+Stomp
+From Friends:
+Nice Shot
+Vigor Beam
+Rainbow
+Prepared Attack
+Cornershot
+Precision Strike
+Cover
+Set
+Call Out
+Chant
+Deep Breath
+Introduce
+Provoke
+Steal
+Trait Dance
+Menace"
 possible_plays = Array[ExtResource("1_ed32k")]([ExtResource("22_2u1b5"), ExtResource("4_h3huj"), ExtResource("5_v72gw"), ExtResource("6_0uxpd"), ExtResource("7_77kbs"), ExtResource("8_v72gw"), ExtResource("9_7f484"), ExtResource("10_dll4c"), ExtResource("11_eyfvs"), ExtResource("5_7kskk"), ExtResource("13_b2l04"), ExtResource("14_cnt5y"), ExtResource("15_av7ye"), ExtResource("16_q8f1g"), ExtResource("17_8xlag"), ExtResource("18_a8tyf"), ExtResource("19_b2w8q"), ExtResource("20_2u1b5"), ExtResource("21_tkw4j"), ExtResource("22_oyqw0"), ExtResource("4_fb2la"), ExtResource("24_xqoy3"), ExtResource("25_bhl32"), ExtResource("26_v7iae"), ExtResource("27_iay1d"), ExtResource("28_q4vnn"), ExtResource("29_ax5r3"), ExtResource("30_q136m")])
 possible_traits = Array[ExtResource("2_r4xao")]([ExtResource("2_gttjx"), ExtResource("4_jd71u")])
 sprites = Dictionary[int, Texture2D]({

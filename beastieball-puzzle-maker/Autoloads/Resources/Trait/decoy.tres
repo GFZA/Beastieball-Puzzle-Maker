@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_ov0pa")
 name = "Decoy"
-description = "Always the nearest to opponents. Becomes the target of opponent Support and Defense plays"
+description = "Nearest to opponents. Becomes the target of opponent Support and Defense plays"
 metadata/_custom_type_script = "uid://bslfuaragw1g7"

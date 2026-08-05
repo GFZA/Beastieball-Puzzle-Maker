@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=39 format=3 uid="uid://c0rcyavp5c5un"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=39 format=3 uid="uid://542wx5x4rmpo"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_1w5of"]
 [ext_resource type="Resource" uid="uid://dwcnfgmunhjqn" path="res://Autoloads/Resources/Trait/friendship.tres" id="2_6pvvg"]
@@ -52,8 +52,47 @@ mind_base_pow = 50
 body_base_def = 90
 spirit_base_def = 100
 mind_base_def = 75
-plays_level = "0,Dig,0,Pepshot,5,Forward Pass,10,Chill Out,13,Floater,17,Calming Aura,23,Build,27,Bring The Heat,32,Fortify,36,Share Snack,40,Supercommit,46,Torch Pass"
-plays_extra = "Desperate Force,Grit,Cook,Lure Shot,Precision Strike,Quick Set,Refresh,Set,Call Out,Chant,Goo-Goo Eyes,Whistle,Hawkeye,Quick Breath,Shield"
+plays_string = "From Levels:
+1
+Dig
+1
+Pepshot
+5
+Forward Pass
+10
+Chill Out
+13
+Floater
+17
+Calming Aura
+23
+Build
+27
+Bring the Heat
+32
+Fortify
+36
+Share Snack
+40
+Supercommit
+46
+Torch Pass
+From Friends:
+Desperate Force
+Grit
+Cook
+Lure Shot
+Precision Strike
+Quick Set
+Refresh
+Set
+Call Out
+Chant
+Goo-Goo Eyes
+Whistle
+Hawkeye
+Quick Breath
+Shield"
 possible_plays = Array[ExtResource("1_1w5of")]([ExtResource("18_j1rhk"), ExtResource("4_53d5o"), ExtResource("13_rw4pg"), ExtResource("20_ve17v"), ExtResource("7_27dvx"), ExtResource("8_jdit4"), ExtResource("9_2lu54"), ExtResource("10_qn003"), ExtResource("11_rw4pg"), ExtResource("12_iwg3v"), ExtResource("13_w020y"), ExtResource("25_fuvas"), ExtResource("15_v2jny"), ExtResource("16_pbaeg"), ExtResource("17_j1rhk"), ExtResource("11_4mwo1"), ExtResource("19_h4cm0"), ExtResource("20_kg647"), ExtResource("5_6rd87"), ExtResource("22_pmhoi"), ExtResource("4_4kxm8"), ExtResource("24_xp2ni"), ExtResource("25_ef7em"), ExtResource("26_fuvas"), ExtResource("27_3m6y4"), ExtResource("28_2wm7u"), ExtResource("8_53d5o")])
 possible_traits = Array[ExtResource("2_agr50")]([ExtResource("2_6pvvg")])
 sprites = Dictionary[int, Texture2D]({

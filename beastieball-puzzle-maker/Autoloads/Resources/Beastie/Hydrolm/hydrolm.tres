@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=41 format=3 uid="uid://bcadjlktsbl45"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=41 format=3 uid="uid://613wswwv4inr"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_sp66t"]
 [ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Autoloads/Resources/Trait/trait.gd" id="2_86y82"]
@@ -54,8 +54,49 @@ mind_base_pow = 95
 body_base_def = 60
 spirit_base_def = 80
 mind_base_def = 100
-plays_level = "0,Practice Shot,0,Exhaust,8,Chill Out,12,Relaxed Hit,15,Precision Strike,19,Deep Breath,24,Stinger,29,Patience,35,Power Sap,39,Menace,44,Rainbow,49,Meditate,54,Vigor Beam"
-plays_extra = "Spike,High Slam,True Strike,Rocket,Ego Blast,Prepared Attack,Mindfield,Cover,Tactical Pass,Flex,Telekinesis,Assess,Cyclone,Fall Back,Shield"
+plays_string = "From Levels:
+1
+Practice Shot
+1
+Exhaust
+8
+Chill Out
+12
+Relaxed Hit
+15
+Precision Strike
+19
+Deep Breath
+24
+Stinger
+29
+Patience
+35
+Power Sap
+39
+Menace
+44
+Rainbow
+49
+Meditate
+54
+Vigor Beam
+From Friends:
+Spike
+High Slam
+True Strike
+Rocket
+Ego Blast
+Prepared Attack
+Mindfield
+Cover
+Tactical Pass
+Flex
+Telekinesis
+Assess
+Cyclone
+Fall Back
+Shield"
 possible_plays = Array[ExtResource("1_sp66t")]([ExtResource("3_msy52"), ExtResource("4_opri8"), ExtResource("5_asptf"), ExtResource("6_mr5xt"), ExtResource("7_opri8"), ExtResource("8_asptf"), ExtResource("9_mr5xt"), ExtResource("10_satp3"), ExtResource("11_afi2k"), ExtResource("12_438w8"), ExtResource("13_ycgvb"), ExtResource("14_8jni3"), ExtResource("15_afi2k"), ExtResource("16_7ws76"), ExtResource("17_8u33q"), ExtResource("18_hlkmd"), ExtResource("19_6mk5k"), ExtResource("20_s2dva"), ExtResource("21_kdmtq"), ExtResource("22_gqs81"), ExtResource("23_htftj"), ExtResource("24_wtaqn"), ExtResource("25_jhn74"), ExtResource("26_ix0oj"), ExtResource("27_7kxpu"), ExtResource("28_62sue"), ExtResource("29_2gb1h"), ExtResource("30_7st1a")])
 possible_traits = Array[ExtResource("2_86y82")]([ExtResource("2_ri7ad"), ExtResource("4_cd6fs")])
 sprites = Dictionary[int, Texture2D]({
