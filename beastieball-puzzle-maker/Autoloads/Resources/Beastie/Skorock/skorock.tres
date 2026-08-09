@@ -1,0 +1,76 @@
+[gd_resource type="Resource" script_class="Beastie" load_steps=42 format=3 uid="uid://cn5be6qyarr8l"]
+
+[ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_cm0ii"]
+[ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Autoloads/Resources/Trait/trait.gd" id="2_082da"]
+[ext_resource type="Resource" uid="uid://bs1d8u1ccfakh" path="res://Autoloads/Resources/Trait/steadfast.tres" id="2_u86yl"]
+[ext_resource type="Resource" uid="uid://bi278ctjoqvrt" path="res://Autoloads/Resources/Plays/Attack/Body/bump.tres" id="3_ktbeu"]
+[ext_resource type="Script" uid="uid://ehabj4qsgxpl" path="res://Autoloads/Resources/Beastie/beastie.gd" id="3_u86yl"]
+[ext_resource type="Resource" uid="uid://51titaex4o3e" path="res://Autoloads/Resources/Plays/Attack/Body/breaker.tres" id="4_1xsxg"]
+[ext_resource type="Resource" uid="uid://sap57n0xh527" path="res://Autoloads/Resources/Plays/Attack/Body/shove.tres" id="5_2c76o"]
+[ext_resource type="Texture2D" uid="uid://bm37fuvt5qttv" path="res://Autoloads/Resources/Beastie/Skorock/skorock_idle.png" id="5_da287"]
+[ext_resource type="Texture2D" uid="uid://dxr4brfn8p5rt" path="res://Autoloads/Resources/Beastie/Skorock/skorock_ready.png" id="6_bebc5"]
+[ext_resource type="Resource" uid="uid://6lu5dwdsnlss" path="res://Autoloads/Resources/Plays/Attack/Body/rocket.tres" id="6_vpomd"]
+[ext_resource type="Texture2D" uid="uid://f6ow4r330iqb" path="res://Autoloads/Resources/Beastie/Skorock/skorock_spike.png" id="7_kehc2"]
+[ext_resource type="Resource" uid="uid://32wc5cr5dtuo" path="res://Autoloads/Resources/Plays/Attack/Body/high_slam.tres" id="7_rt2w0"]
+[ext_resource type="Texture2D" uid="uid://dmcw617yodd1" path="res://Autoloads/Resources/Beastie/Skorock/skorock_volley.png" id="8_o6vld"]
+[ext_resource type="Resource" uid="uid://bko08dievjnfg" path="res://Autoloads/Resources/Plays/Attack/Body/stomp.tres" id="8_y53wb"]
+[ext_resource type="Resource" uid="uid://b3bvfpjwplhwn" path="res://Autoloads/Resources/Plays/Attack/Body/thump.tres" id="9_16pbr"]
+[ext_resource type="Texture2D" uid="uid://cpnpttty1a285" path="res://Autoloads/Resources/Beastie/Skorock/skorock_good.png" id="9_epo6s"]
+[ext_resource type="Resource" uid="uid://cod7yqucaq628" path="res://Autoloads/Resources/Plays/Attack/Mind/tracker.tres" id="10_elvvc"]
+[ext_resource type="Texture2D" uid="uid://b86ejtq3p846v" path="res://Autoloads/Resources/Beastie/Skorock/skorock_bad.png" id="10_rc3ru"]
+[ext_resource type="Resource" uid="uid://c6joa81j7k6sd" path="res://Autoloads/Resources/Plays/Attack/Mind/lure_shot.tres" id="11_bvg08"]
+[ext_resource type="Texture2D" uid="uid://cbf4a5417c53t" path="res://Autoloads/Resources/Beastie/Skorock/icon_skorock.png" id="11_cifds"]
+[ext_resource type="Resource" uid="uid://debgas20rcwyv" path="res://Autoloads/Resources/Plays/Attack/Mind/ricochet.tres" id="12_hxis0"]
+[ext_resource type="Resource" uid="uid://bh4ukdiqnmxsh" path="res://Autoloads/Resources/Plays/Attack/Mind/cold_calculation.tres" id="13_m5yjf"]
+[ext_resource type="Resource" uid="uid://dxpdlo5hbqo7w" path="res://Autoloads/Resources/Plays/Attack/Mind/prepared_attack.tres" id="14_ulrgr"]
+[ext_resource type="Resource" uid="uid://dgsnxhjtejofp" path="res://Autoloads/Resources/Plays/Volley/dig.tres" id="15_hyng0"]
+[ext_resource type="Resource" uid="uid://y3o0tssi0oeu" path="res://Autoloads/Resources/Plays/Volley/forward_pass.tres" id="16_3oqyn"]
+[ext_resource type="Resource" uid="uid://dnfjfsf2a2vs5" path="res://Autoloads/Resources/Plays/Support/deep_breath.tres" id="17_1tbrd"]
+[ext_resource type="Resource" uid="uid://xpx483vp77ry" path="res://Autoloads/Resources/Plays/Support/feint.tres" id="18_ed1pb"]
+[ext_resource type="Resource" uid="uid://ckfu6pta3o1u2" path="res://Autoloads/Resources/Plays/Support/provoke.tres" id="19_i1gkv"]
+[ext_resource type="Resource" uid="uid://cqf3rk1ccvj3u" path="res://Autoloads/Resources/Plays/Support/flex.tres" id="20_r2lkh"]
+[ext_resource type="Resource" uid="uid://tc6ag84sawpl" path="res://Autoloads/Resources/Plays/Support/tough_front.tres" id="21_jnumg"]
+[ext_resource type="Resource" uid="uid://bgwy15q42o6k7" path="res://Autoloads/Resources/Plays/Support/hunker.tres" id="22_45sx2"]
+[ext_resource type="Resource" uid="uid://dm6eb4ue4fypu" path="res://Autoloads/Resources/Plays/Defense/body_ready.tres" id="23_tvjwx"]
+[ext_resource type="Resource" uid="uid://dqgatu0qsofqj" path="res://Autoloads/Resources/Plays/Defense/distraction.tres" id="24_0ccx7"]
+[ext_resource type="Resource" uid="uid://brbj7babpn6xc" path="res://Autoloads/Resources/Plays/Defense/quick_breath.tres" id="25_hxg44"]
+[ext_resource type="Resource" uid="uid://7nsxd3vbne52" path="res://Autoloads/Resources/Plays/Support/exhaust.tres" id="26_jk5bl"]
+[ext_resource type="Resource" uid="uid://dytuvbvg3oamq" path="res://Autoloads/Resources/Plays/Defense/shield.tres" id="27_tbe5b"]
+[ext_resource type="Resource" uid="uid://dthwtmgr6183d" path="res://Autoloads/Resources/Plays/Defense/pump_up.tres" id="28_1ifw3"]
+[ext_resource type="Resource" uid="uid://by0ross5cpbjo" path="res://Autoloads/Resources/Plays/Defense/menace.tres" id="29_08ef3"]
+[ext_resource type="Resource" uid="uid://c5oyp7e74r3pd" path="res://Autoloads/Resources/Plays/Support/shake_off.tres" id="30_syocr"]
+[ext_resource type="Resource" uid="uid://dc0b8j0fujpbd" path="res://Autoloads/Resources/Plays/Attack/Body/basic_hit.tres" id="31_qf5sg"]
+[ext_resource type="Resource" uid="uid://nxdyq36jyolv" path="res://Autoloads/Resources/Trait/armored.tres" id="33_np4cx"]
+
+[resource]
+script = ExtResource("3_u86yl")
+my_plays = Array[ExtResource("1_cm0ii")]([null, null, null])
+my_trait = ExtResource("2_u86yl")
+specie_name = "Skorock"
+internal_name = "rocklizard2"
+beastiepedia_id = 76
+is_nfe = true
+bar_color = Color(0.39607844, 0.49803922, 0.59607846, 1)
+body_base_pow = 78
+spirit_base_pow = 20
+mind_base_pow = 57
+body_base_def = 95
+spirit_base_def = 66
+mind_base_def = 35
+plays_string_array = Array[String](["bump", "breaker", "shove", "rocket", "high slam", "stomp", "thump", "tracker", "lure shot", "ricochet", "cold calculation", "prepared attack", "dig", "forward pass", "deep breath", "feint", "provoke", "flex", "tough front", "hunker", "body ready", "distraction", "quick breath", "exhaust", "shield", "pump up", "menace", "shake off", "basic hit"])
+traits_string_array = Array[String](["steadfast", "armored"])
+possible_plays = Array[ExtResource("1_cm0ii")]([ExtResource("3_ktbeu"), ExtResource("4_1xsxg"), ExtResource("5_2c76o"), ExtResource("6_vpomd"), ExtResource("7_rt2w0"), ExtResource("8_y53wb"), ExtResource("9_16pbr"), ExtResource("10_elvvc"), ExtResource("11_bvg08"), ExtResource("12_hxis0"), ExtResource("13_m5yjf"), ExtResource("14_ulrgr"), ExtResource("15_hyng0"), ExtResource("16_3oqyn"), ExtResource("17_1tbrd"), ExtResource("18_ed1pb"), ExtResource("19_i1gkv"), ExtResource("20_r2lkh"), ExtResource("21_jnumg"), ExtResource("22_45sx2"), ExtResource("23_tvjwx"), ExtResource("24_0ccx7"), ExtResource("25_hxg44"), ExtResource("26_jk5bl"), ExtResource("27_tbe5b"), ExtResource("28_1ifw3"), ExtResource("29_08ef3"), ExtResource("30_syocr"), ExtResource("31_qf5sg")])
+possible_traits = Array[ExtResource("2_082da")]([ExtResource("2_u86yl"), ExtResource("33_np4cx")])
+sprites = Dictionary[int, Texture2D]({
+0: ExtResource("5_da287"),
+1: ExtResource("6_bebc5"),
+2: ExtResource("7_kehc2"),
+3: ExtResource("8_o6vld"),
+4: ExtResource("9_epo6s"),
+5: ExtResource("10_rc3ru"),
+6: ExtResource("11_cifds")
+})
+y_offset = -20
+ball_anchor_position_receive = Vector2(85, -115)
+ball_anchor_position_ready = Vector2(60, -50)
+metadata/_custom_type_script = "uid://ehabj4qsgxpl"

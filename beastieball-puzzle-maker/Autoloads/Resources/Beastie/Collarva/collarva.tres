@@ -1,0 +1,76 @@
+[gd_resource type="Resource" script_class="Beastie" load_steps=42 format=3 uid="uid://c1npead8gqsrc"]
+
+[ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_mxtcd"]
+[ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Autoloads/Resources/Trait/trait.gd" id="2_2p0cj"]
+[ext_resource type="Resource" uid="uid://truccwma1xyo" path="res://Autoloads/Resources/Trait/stirring.tres" id="2_r5nr7"]
+[ext_resource type="Resource" uid="uid://c0hsvmpto8e3s" path="res://Autoloads/Resources/Plays/Attack/Spirit/grit.tres" id="3_6gjxb"]
+[ext_resource type="Script" uid="uid://ehabj4qsgxpl" path="res://Autoloads/Resources/Beastie/beastie.gd" id="3_r5nr7"]
+[ext_resource type="Resource" uid="uid://bt6kmjvu2p44g" path="res://Autoloads/Resources/Plays/Attack/Spirit/comeback.tres" id="4_swa1p"]
+[ext_resource type="Resource" uid="uid://tc6ag84sawpl" path="res://Autoloads/Resources/Plays/Support/tough_front.tres" id="5_ihu3v"]
+[ext_resource type="Texture2D" uid="uid://bw387g13vrcih" path="res://Autoloads/Resources/Beastie/Collarva/collarva_idle.png" id="5_yfd1h"]
+[ext_resource type="Resource" uid="uid://bbtfkfi4i2py6" path="res://Autoloads/Resources/Plays/Attack/Mind/perfect_shot.tres" id="6_ei5b1"]
+[ext_resource type="Texture2D" uid="uid://cryxo5i33n5ad" path="res://Autoloads/Resources/Beastie/Collarva/collarva_ready.png" id="6_vx62q"]
+[ext_resource type="Texture2D" uid="uid://d74kipw4jike" path="res://Autoloads/Resources/Beastie/Collarva/collarva_spike.png" id="7_3bvd8"]
+[ext_resource type="Resource" uid="uid://cnliahyhutvwb" path="res://Autoloads/Resources/Plays/Attack/Spirit/burnout.tres" id="7_31bat"]
+[ext_resource type="Texture2D" uid="uid://b3uc86fveks8o" path="res://Autoloads/Resources/Beastie/Collarva/collarva_volley.png" id="8_dhge0"]
+[ext_resource type="Resource" uid="uid://dlhm03et5x05t" path="res://Autoloads/Resources/Plays/Support/overthink.tres" id="8_x3h6b"]
+[ext_resource type="Texture2D" uid="uid://dhytuodoedi5m" path="res://Autoloads/Resources/Beastie/Collarva/collarva_good.png" id="9_86qn5"]
+[ext_resource type="Resource" uid="uid://bgwy15q42o6k7" path="res://Autoloads/Resources/Plays/Support/hunker.tres" id="9_uv8kc"]
+[ext_resource type="Texture2D" uid="uid://cduip58yod5k6" path="res://Autoloads/Resources/Beastie/Collarva/collarva_bad.png" id="10_jhj1y"]
+[ext_resource type="Resource" uid="uid://c4u3rhcdxfjxf" path="res://Autoloads/Resources/Plays/Volley/daring_pass.tres" id="10_lvc5x"]
+[ext_resource type="Resource" uid="uid://dkf6vgofkev6m" path="res://Autoloads/Resources/Plays/Support/blaze.tres" id="11_ooorc"]
+[ext_resource type="Texture2D" uid="uid://qhdjbt4pgxoe" path="res://Autoloads/Resources/Beastie/Collarva/icon_collarva.png" id="11_yrn7b"]
+[ext_resource type="Resource" uid="uid://dytuvbvg3oamq" path="res://Autoloads/Resources/Plays/Defense/shield.tres" id="12_v3pkn"]
+[ext_resource type="Resource" uid="uid://cv6tk1l5vkxo4" path="res://Autoloads/Resources/Plays/Defense/heart_harden.tres" id="13_ht0fk"]
+[ext_resource type="Resource" uid="uid://bosg46t132k5k" path="res://Autoloads/Resources/Plays/Attack/Spirit/raw_fury.tres" id="14_kgm8n"]
+[ext_resource type="Resource" uid="uid://cpuds8hsc5dr1" path="res://Autoloads/Resources/Plays/Defense/dramatic_exit.tres" id="15_piacv"]
+[ext_resource type="Resource" uid="uid://ckdulp53r6xbu" path="res://Autoloads/Resources/Plays/Defense/frazzle.tres" id="16_fpu3a"]
+[ext_resource type="Resource" uid="uid://ckfu6pta3o1u2" path="res://Autoloads/Resources/Plays/Support/provoke.tres" id="17_x21yn"]
+[ext_resource type="Resource" uid="uid://b670mi6ha0r4h" path="res://Autoloads/Resources/Plays/Support/chill_out.tres" id="18_geaoo"]
+[ext_resource type="Resource" uid="uid://b3ie8s030fuig" path="res://Autoloads/Resources/Plays/Attack/Mind/nerve_strike.tres" id="19_scqip"]
+[ext_resource type="Resource" uid="uid://l57ggke2vhn0" path="res://Autoloads/Resources/Plays/Defense/heat_up.tres" id="20_ab6kl"]
+[ext_resource type="Resource" uid="uid://pwfmxe4epkih" path="res://Autoloads/Resources/Plays/Support/dreadful_mist.tres" id="21_qrlqc"]
+[ext_resource type="Resource" uid="uid://cdvmyw82xfyc5" path="res://Autoloads/Resources/Plays/Attack/Mind/ego_blast.tres" id="22_o2owc"]
+[ext_resource type="Resource" uid="uid://cx5i0qenub7xe" path="res://Autoloads/Resources/Plays/Attack/Mind/splinter.tres" id="23_hrsao"]
+[ext_resource type="Resource" uid="uid://fbkol2rhhchv" path="res://Autoloads/Resources/Plays/Attack/Mind/rattle.tres" id="24_yj6r6"]
+[ext_resource type="Resource" uid="uid://bh4ukdiqnmxsh" path="res://Autoloads/Resources/Plays/Attack/Mind/cold_calculation.tres" id="25_dvxx7"]
+[ext_resource type="Resource" uid="uid://d3avpv87snvri" path="res://Autoloads/Resources/Plays/Defense/gloom.tres" id="26_mfl1l"]
+[ext_resource type="Resource" uid="uid://du8ix5gwk4act" path="res://Autoloads/Resources/Plays/Defense/soliloquy.tres" id="27_drt4y"]
+[ext_resource type="Resource" uid="uid://cm6axu5oniegv" path="res://Autoloads/Resources/Plays/Attack/Mind/echo_strike.tres" id="28_qr4qe"]
+[ext_resource type="Resource" uid="uid://7nsxd3vbne52" path="res://Autoloads/Resources/Plays/Support/exhaust.tres" id="29_ke1e7"]
+[ext_resource type="Resource" uid="uid://i1od0b45fl8n" path="res://Autoloads/Resources/Plays/Support/chant.tres" id="30_pqbl6"]
+[ext_resource type="Resource" uid="uid://cnrdrpp1ytwvq" path="res://Autoloads/Resources/Plays/Attack/Mind/practice_shot.tres" id="31_jk2vc"]
+[ext_resource type="Resource" uid="uid://djoh3bqqfyh20" path="res://Autoloads/Resources/Trait/defiant.tres" id="33_k1enj"]
+
+[resource]
+script = ExtResource("3_r5nr7")
+my_plays = Array[ExtResource("1_mxtcd")]([null, null, null])
+my_trait = ExtResource("2_r5nr7")
+specie_name = "Collarva"
+internal_name = "moth1"
+beastiepedia_id = 14
+is_nfe = true
+bar_color = Color(0.12156863, 0.6862745, 1, 1)
+body_base_pow = 10
+spirit_base_pow = 45
+mind_base_pow = 65
+body_base_def = 20
+spirit_base_def = 40
+mind_base_def = 50
+plays_string_array = Array[String](["grit", "comeback", "tough front", "perfect shot", "burnout", "overthink", "hunker", "daring pass", "blaze", "shield", "heart harden", "raw fury", "dramatic exit", "frazzle", "provoke", "chill out", "nerve strike", "heat up", "dreadful mist", "ego blast", "splinter", "rattle", "cold calculation", "gloom", "soliloquy", "echo strike", "exhaust", "chant", "practice shot"])
+traits_string_array = Array[String](["stirring", "defiant"])
+possible_plays = Array[ExtResource("1_mxtcd")]([ExtResource("3_6gjxb"), ExtResource("4_swa1p"), ExtResource("5_ihu3v"), ExtResource("6_ei5b1"), ExtResource("7_31bat"), ExtResource("8_x3h6b"), ExtResource("9_uv8kc"), ExtResource("10_lvc5x"), ExtResource("11_ooorc"), ExtResource("12_v3pkn"), ExtResource("13_ht0fk"), ExtResource("14_kgm8n"), ExtResource("15_piacv"), ExtResource("16_fpu3a"), ExtResource("17_x21yn"), ExtResource("18_geaoo"), ExtResource("19_scqip"), ExtResource("20_ab6kl"), ExtResource("21_qrlqc"), ExtResource("22_o2owc"), ExtResource("23_hrsao"), ExtResource("24_yj6r6"), ExtResource("25_dvxx7"), ExtResource("26_mfl1l"), ExtResource("27_drt4y"), ExtResource("28_qr4qe"), ExtResource("29_ke1e7"), ExtResource("30_pqbl6"), ExtResource("31_jk2vc")])
+possible_traits = Array[ExtResource("2_2p0cj")]([ExtResource("2_r5nr7"), ExtResource("33_k1enj")])
+sprites = Dictionary[int, Texture2D]({
+0: ExtResource("5_yfd1h"),
+1: ExtResource("6_vx62q"),
+2: ExtResource("7_3bvd8"),
+3: ExtResource("8_dhge0"),
+4: ExtResource("9_86qn5"),
+5: ExtResource("10_jhj1y"),
+6: ExtResource("11_yrn7b")
+})
+y_offset = -10
+ball_anchor_position_receive = Vector2(30, -66)
+ball_anchor_position_ready = Vector2(50, -70)
+metadata/_custom_type_script = "uid://ehabj4qsgxpl"

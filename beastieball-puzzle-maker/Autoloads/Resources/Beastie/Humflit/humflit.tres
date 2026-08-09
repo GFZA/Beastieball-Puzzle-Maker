@@ -1,0 +1,64 @@
+[gd_resource type="Resource" script_class="Beastie" load_steps=32 format=3 uid="uid://bdwgtovbfx1tq"]
+
+[ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_kqjhv"]
+[ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Autoloads/Resources/Trait/trait.gd" id="2_2jets"]
+[ext_resource type="Resource" uid="uid://di2g5vvqsnbgi" path="res://Autoloads/Resources/Trait/avenger.tres" id="2_4c6gv"]
+[ext_resource type="Script" uid="uid://ehabj4qsgxpl" path="res://Autoloads/Resources/Beastie/beastie.gd" id="3_4c6gv"]
+[ext_resource type="Resource" uid="uid://b4745hu4puleb" path="res://Autoloads/Resources/Plays/Attack/Spirit/beginner_effort.tres" id="3_eif3p"]
+[ext_resource type="Resource" uid="uid://de4i64x6vnp7m" path="res://Autoloads/Resources/Plays/Attack/Body/relaxed_hit.tres" id="4_we2tt"]
+[ext_resource type="Resource" uid="uid://b1hvdsyb5bx4b" path="res://Autoloads/Resources/Plays/Attack/Body/muscle_memory.tres" id="5_b5rf0"]
+[ext_resource type="Texture2D" uid="uid://ccpcjwuywepov" path="res://Autoloads/Resources/Beastie/Humflit/humflit_idle.png" id="5_spwxo"]
+[ext_resource type="Resource" uid="uid://c4u3rhcdxfjxf" path="res://Autoloads/Resources/Plays/Volley/daring_pass.tres" id="6_k4rmt"]
+[ext_resource type="Texture2D" uid="uid://ctbifvleukmou" path="res://Autoloads/Resources/Beastie/Humflit/humflit_ready.png" id="6_seog2"]
+[ext_resource type="Texture2D" uid="uid://bkaggnnwvo1l0" path="res://Autoloads/Resources/Beastie/Humflit/humflit_spike.png" id="7_qt8w2"]
+[ext_resource type="Resource" uid="uid://dcn80u35wkpjp" path="res://Autoloads/Resources/Plays/Volley/net_rush.tres" id="7_srvw6"]
+[ext_resource type="Texture2D" uid="uid://b1ntnkqpcr7mr" path="res://Autoloads/Resources/Beastie/Humflit/humflit_volley.png" id="8_od3oc"]
+[ext_resource type="Resource" uid="uid://y3o0tssi0oeu" path="res://Autoloads/Resources/Plays/Volley/forward_pass.tres" id="8_ui7yu"]
+[ext_resource type="Texture2D" uid="uid://dcxtshy5mduhe" path="res://Autoloads/Resources/Beastie/Humflit/humflit_good.png" id="9_6w5re"]
+[ext_resource type="Resource" uid="uid://ct6ym4n4aja00" path="res://Autoloads/Resources/Plays/Support/cheer.tres" id="9_ibbyd"]
+[ext_resource type="Texture2D" uid="uid://0f631n4wqlx4" path="res://Autoloads/Resources/Beastie/Humflit/humflit_bad.png" id="10_5pek0"]
+[ext_resource type="Resource" uid="uid://cv6tk1l5vkxo4" path="res://Autoloads/Resources/Plays/Defense/heart_harden.tres" id="10_g0iso"]
+[ext_resource type="Resource" uid="uid://du31ndfut0hoa" path="res://Autoloads/Resources/Plays/Attack/Body/energized.tres" id="11_834ll"]
+[ext_resource type="Texture2D" uid="uid://23tuxgs33bto" path="res://Autoloads/Resources/Beastie/Humflit/icon_humflit.png" id="11_xg7l2"]
+[ext_resource type="Resource" uid="uid://bpdws38adgj1d" path="res://Autoloads/Resources/Plays/Attack/Body/boom.tres" id="12_w1rhe"]
+[ext_resource type="Resource" uid="uid://tc6ag84sawpl" path="res://Autoloads/Resources/Plays/Support/tough_front.tres" id="13_455tn"]
+[ext_resource type="Resource" uid="uid://bosg46t132k5k" path="res://Autoloads/Resources/Plays/Attack/Spirit/raw_fury.tres" id="14_y8imt"]
+[ext_resource type="Resource" uid="uid://bt6kmjvu2p44g" path="res://Autoloads/Resources/Plays/Attack/Spirit/comeback.tres" id="15_fmqng"]
+[ext_resource type="Resource" uid="uid://dytuvbvg3oamq" path="res://Autoloads/Resources/Plays/Defense/shield.tres" id="16_ev6kd"]
+[ext_resource type="Resource" uid="uid://cpuds8hsc5dr1" path="res://Autoloads/Resources/Plays/Defense/dramatic_exit.tres" id="17_t7x3s"]
+[ext_resource type="Resource" uid="uid://7nsxd3vbne52" path="res://Autoloads/Resources/Plays/Support/exhaust.tres" id="18_uc2cc"]
+[ext_resource type="Resource" uid="uid://l57ggke2vhn0" path="res://Autoloads/Resources/Plays/Defense/heat_up.tres" id="19_7m8ok"]
+[ext_resource type="Resource" uid="uid://coljoc6wslna8" path="res://Autoloads/Resources/Plays/Support/hum.tres" id="20_2x6k1"]
+[ext_resource type="Resource" uid="uid://ld2lhvgalfff" path="res://Autoloads/Resources/Plays/Attack/Spirit/swarm.tres" id="21_ljnvk"]
+[ext_resource type="Resource" uid="uid://bkfdw34ktudbx" path="res://Autoloads/Resources/Trait/survivor.tres" id="23_0bxo2"]
+
+[resource]
+script = ExtResource("3_4c6gv")
+my_plays = Array[ExtResource("1_kqjhv")]([null, null, null])
+my_trait = ExtResource("2_4c6gv")
+specie_name = "Humflit"
+internal_name = "spirit1"
+beastiepedia_id = 96
+is_nfe = true
+bar_color = Color(0.22745098, 0.4627451, 0.8980392, 1)
+body_base_pow = 65
+spirit_base_pow = 75
+mind_base_pow = 15
+body_base_def = 40
+spirit_base_def = 75
+plays_string_array = Array[String](["beginner effort", "relaxed hit", "muscle memory", "daring pass", "net rush", "forward pass", "cheer", "heart harden", "energized", "boom", "tough front", "raw fury", "comeback", "shield", "dramatic exit", "exhaust", "heat up", "hum", "swarm"])
+traits_string_array = Array[String](["avenger", "survivor"])
+possible_plays = Array[ExtResource("1_kqjhv")]([ExtResource("3_eif3p"), ExtResource("4_we2tt"), ExtResource("5_b5rf0"), ExtResource("6_k4rmt"), ExtResource("7_srvw6"), ExtResource("8_ui7yu"), ExtResource("9_ibbyd"), ExtResource("10_g0iso"), ExtResource("11_834ll"), ExtResource("12_w1rhe"), ExtResource("13_455tn"), ExtResource("14_y8imt"), ExtResource("15_fmqng"), ExtResource("16_ev6kd"), ExtResource("17_t7x3s"), ExtResource("18_uc2cc"), ExtResource("19_7m8ok"), ExtResource("20_2x6k1"), ExtResource("21_ljnvk")])
+possible_traits = Array[ExtResource("2_2jets")]([ExtResource("2_4c6gv"), ExtResource("23_0bxo2")])
+sprites = Dictionary[int, Texture2D]({
+0: ExtResource("5_spwxo"),
+1: ExtResource("6_seog2"),
+2: ExtResource("7_qt8w2"),
+3: ExtResource("8_od3oc"),
+4: ExtResource("9_6w5re"),
+5: ExtResource("10_5pek0"),
+6: ExtResource("11_xg7l2")
+})
+ball_anchor_position_receive = Vector2(44, -100)
+ball_anchor_position_ready = Vector2(55, -100)
+metadata/_custom_type_script = "uid://ehabj4qsgxpl"

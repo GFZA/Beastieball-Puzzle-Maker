@@ -1,0 +1,68 @@
+[gd_resource type="Resource" script_class="Beastie" load_steps=34 format=3 uid="uid://pruo5ho4xplf"]
+
+[ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_0cadv"]
+[ext_resource type="Resource" uid="uid://dssnvskme6jw6" path="res://Autoloads/Resources/Trait/cheerleader.tres" id="2_df2ef"]
+[ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Autoloads/Resources/Trait/trait.gd" id="2_kphom"]
+[ext_resource type="Resource" uid="uid://chnjmscu87ehu" path="res://Autoloads/Resources/Plays/Support/introduce.tres" id="3_2164t"]
+[ext_resource type="Script" uid="uid://ehabj4qsgxpl" path="res://Autoloads/Resources/Beastie/beastie.gd" id="3_df2ef"]
+[ext_resource type="Resource" uid="uid://lklea5saxtts" path="res://Autoloads/Resources/Plays/Volley/updraft.tres" id="4_fpfih"]
+[ext_resource type="Texture2D" uid="uid://dvg2pspea6shr" path="res://Autoloads/Resources/Beastie/Merrifly/merrifly_idle.png" id="5_ox0n0"]
+[ext_resource type="Resource" uid="uid://ct6ym4n4aja00" path="res://Autoloads/Resources/Plays/Support/cheer.tres" id="5_x2tom"]
+[ext_resource type="Texture2D" uid="uid://beyvgd0x1af4d" path="res://Autoloads/Resources/Beastie/Merrifly/merrifly_ready.png" id="6_nnrjw"]
+[ext_resource type="Resource" uid="uid://qi0fklguwm3c" path="res://Autoloads/Resources/Plays/Attack/Body/reach_shot.tres" id="6_xnmvx"]
+[ext_resource type="Texture2D" uid="uid://c00k2ylm3tson" path="res://Autoloads/Resources/Beastie/Merrifly/merrifly_spike.png" id="7_qubnn"]
+[ext_resource type="Resource" uid="uid://khv754wvrclb" path="res://Autoloads/Resources/Plays/Attack/Body/thunder.tres" id="7_s8kdl"]
+[ext_resource type="Texture2D" uid="uid://bgxuhr2lrtxee" path="res://Autoloads/Resources/Beastie/Merrifly/merrifly_volley.png" id="8_2lhpc"]
+[ext_resource type="Resource" uid="uid://de4i64x6vnp7m" path="res://Autoloads/Resources/Plays/Attack/Body/relaxed_hit.tres" id="8_hoe07"]
+[ext_resource type="Resource" uid="uid://br2xlvc1ky06q" path="res://Autoloads/Resources/Plays/Attack/Body/kneebender.tres" id="9_g6c3h"]
+[ext_resource type="Texture2D" uid="uid://dt5gxsejh21kf" path="res://Autoloads/Resources/Beastie/Merrifly/merrifly_good.png" id="9_kv6et"]
+[ext_resource type="Resource" uid="uid://0qwdo32fcu5e" path="res://Autoloads/Resources/Plays/Volley/set.tres" id="10_6tqvq"]
+[ext_resource type="Texture2D" uid="uid://dcdtto77jjta" path="res://Autoloads/Resources/Beastie/Merrifly/merrifly_bad.png" id="10_ua442"]
+[ext_resource type="Texture2D" uid="uid://dtxqm7djux31y" path="res://Autoloads/Resources/Beastie/Merrifly/icon_merrifly.png" id="11_cb7g5"]
+[ext_resource type="Resource" uid="uid://c06r6f0oeahst" path="res://Autoloads/Resources/Plays/Support/whistle.tres" id="11_crnbn"]
+[ext_resource type="Resource" uid="uid://b0kuuquuv3nwx" path="res://Autoloads/Resources/Plays/Support/whoosh.tres" id="12_0ignm"]
+[ext_resource type="Resource" uid="uid://dthwtmgr6183d" path="res://Autoloads/Resources/Plays/Defense/pump_up.tres" id="13_mtdav"]
+[ext_resource type="Resource" uid="uid://i1od0b45fl8n" path="res://Autoloads/Resources/Plays/Support/chant.tres" id="14_w5ow6"]
+[ext_resource type="Resource" uid="uid://dj6kdtlk5w6rq" path="res://Autoloads/Resources/Plays/Defense/high_five.tres" id="15_nt5ox"]
+[ext_resource type="Resource" uid="uid://b6c5yrxonrq5h" path="res://Autoloads/Resources/Plays/Volley/juggle.tres" id="16_mh8rt"]
+[ext_resource type="Resource" uid="uid://hiuivj04u8ir" path="res://Autoloads/Resources/Plays/Attack/Body/vigor_beam.tres" id="17_pgcis"]
+[ext_resource type="Resource" uid="uid://b0ri66efuwqq" path="res://Autoloads/Resources/Plays/Support/rally.tres" id="18_6rwhk"]
+[ext_resource type="Resource" uid="uid://ck2v1w5w6an2w" path="res://Autoloads/Resources/Plays/Support/drum.tres" id="19_tqba1"]
+[ext_resource type="Resource" uid="uid://dytuvbvg3oamq" path="res://Autoloads/Resources/Plays/Defense/shield.tres" id="20_xs06v"]
+[ext_resource type="Resource" uid="uid://cs7p2ql8pbv87" path="res://Autoloads/Resources/Plays/Support/dispel.tres" id="21_kfv4e"]
+[ext_resource type="Resource" uid="uid://doi4ldly85wo3" path="res://Autoloads/Resources/Plays/Volley/excited_pass.tres" id="22_yyder"]
+[ext_resource type="Resource" uid="uid://ld2lhvgalfff" path="res://Autoloads/Resources/Plays/Attack/Spirit/swarm.tres" id="23_nd5pl"]
+[ext_resource type="Resource" uid="uid://dc0b8j0fujpbd" path="res://Autoloads/Resources/Plays/Attack/Body/basic_hit.tres" id="24_21id5"]
+
+[resource]
+script = ExtResource("3_df2ef")
+my_plays = Array[ExtResource("1_0cadv")]([null, null, null])
+my_trait = ExtResource("2_df2ef")
+specie_name = "Merrifly"
+internal_name = "cheerleader1"
+beastiepedia_id = 35
+is_nfe = true
+bar_color = Color(1, 0.42352942, 0.52156866, 1)
+body_base_pow = 55
+spirit_base_pow = 45
+mind_base_pow = 30
+body_base_def = 58
+spirit_base_def = 85
+mind_base_def = 40
+plays_string_array = Array[String](["introduce", "updraft", "cheer", "reach shot", "thunder", "relaxed hit", "kneebender", "set", "whistle", "whoosh", "pump up", "chant", "high five", "juggle", "vigor beam", "rally", "drum", "shield", "dispel", "excited pass", "swarm", "basic hit"])
+traits_string_array = Array[String](["cheerleader"])
+possible_plays = Array[ExtResource("1_0cadv")]([ExtResource("3_2164t"), ExtResource("4_fpfih"), ExtResource("5_x2tom"), ExtResource("6_xnmvx"), ExtResource("7_s8kdl"), ExtResource("8_hoe07"), ExtResource("9_g6c3h"), ExtResource("10_6tqvq"), ExtResource("11_crnbn"), ExtResource("12_0ignm"), ExtResource("13_mtdav"), ExtResource("14_w5ow6"), ExtResource("15_nt5ox"), ExtResource("16_mh8rt"), ExtResource("17_pgcis"), ExtResource("18_6rwhk"), ExtResource("19_tqba1"), ExtResource("20_xs06v"), ExtResource("21_kfv4e"), ExtResource("22_yyder"), ExtResource("23_nd5pl"), ExtResource("24_21id5")])
+possible_traits = Array[ExtResource("2_kphom")]([ExtResource("2_df2ef")])
+sprites = Dictionary[int, Texture2D]({
+0: ExtResource("5_ox0n0"),
+1: ExtResource("6_nnrjw"),
+2: ExtResource("7_qubnn"),
+3: ExtResource("8_2lhpc"),
+4: ExtResource("9_kv6et"),
+5: ExtResource("10_ua442"),
+6: ExtResource("11_cb7g5")
+})
+y_offset = -30
+ball_anchor_position_receive = Vector2(-2, -80)
+ball_anchor_position_ready = Vector2(46, -120)
+metadata/_custom_type_script = "uid://ehabj4qsgxpl"

@@ -1,0 +1,70 @@
+[gd_resource type="Resource" script_class="Beastie" load_steps=37 format=3 uid="uid://cvpwvw40j2vgj"]
+
+[ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_ddyjl"]
+[ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Autoloads/Resources/Trait/trait.gd" id="2_5tewo"]
+[ext_resource type="Resource" uid="uid://bmt343nrue458" path="res://Autoloads/Resources/Trait/high_spirits.tres" id="2_xqn4w"]
+[ext_resource type="Resource" uid="uid://cq8dhafy2aqe5" path="res://Autoloads/Resources/Plays/Attack/Spirit/pepshot.tres" id="3_tfw6w"]
+[ext_resource type="Script" uid="uid://ehabj4qsgxpl" path="res://Autoloads/Resources/Beastie/beastie.gd" id="3_xqn4w"]
+[ext_resource type="Resource" uid="uid://b2pc2vt2pjw6t" path="res://Autoloads/Resources/Plays/Attack/Spirit/bring_the_heat.tres" id="4_xpdio"]
+[ext_resource type="Texture2D" uid="uid://c4i47to2d13dk" path="res://Autoloads/Resources/Beastie/Hopsong/hopsong_idle.png" id="5_3y1si"]
+[ext_resource type="Resource" uid="uid://cmcpx7nmshnvs" path="res://Autoloads/Resources/Plays/Attack/Spirit/supercommit.tres" id="5_dfp5a"]
+[ext_resource type="Resource" uid="uid://xuq2krgioyg5" path="res://Autoloads/Resources/Plays/Attack/Spirit/jammer.tres" id="6_4xcp8"]
+[ext_resource type="Texture2D" uid="uid://cpjjtasebs5pi" path="res://Autoloads/Resources/Beastie/Hopsong/hopsong_ready.png" id="6_6k04h"]
+[ext_resource type="Texture2D" uid="uid://wfo5atngrrc5" path="res://Autoloads/Resources/Beastie/Hopsong/hopsong_spike.png" id="7_ad1ed"]
+[ext_resource type="Resource" uid="uid://b5ox8jsftfp33" path="res://Autoloads/Resources/Plays/Defense/mighty_yell.tres" id="7_fgylj"]
+[ext_resource type="Resource" uid="uid://dcn80u35wkpjp" path="res://Autoloads/Resources/Plays/Volley/net_rush.tres" id="8_4xngb"]
+[ext_resource type="Texture2D" uid="uid://bkacu7tfpby7p" path="res://Autoloads/Resources/Beastie/Hopsong/hopsong_volley.png" id="8_lpxwb"]
+[ext_resource type="Resource" uid="uid://brf1cqjq1gnxc" path="res://Autoloads/Resources/Plays/Volley/cover.tres" id="9_eedik"]
+[ext_resource type="Texture2D" uid="uid://hv4sgxgfeidg" path="res://Autoloads/Resources/Beastie/Hopsong/hopsong_good.png" id="9_qlv3w"]
+[ext_resource type="Resource" uid="uid://y3o0tssi0oeu" path="res://Autoloads/Resources/Plays/Volley/forward_pass.tres" id="10_bprl0"]
+[ext_resource type="Texture2D" uid="uid://cc2nhoi1jgfm4" path="res://Autoloads/Resources/Beastie/Hopsong/hopsong_bad.png" id="10_d1l08"]
+[ext_resource type="Resource" uid="uid://dpjt7qoiit6f0" path="res://Autoloads/Resources/Plays/Defense/battle_cry.tres" id="11_tt40u"]
+[ext_resource type="Texture2D" uid="uid://bdnmey0ja8xs8" path="res://Autoloads/Resources/Beastie/Hopsong/icon_hopsong.png" id="11_yho7e"]
+[ext_resource type="Resource" uid="uid://c06r6f0oeahst" path="res://Autoloads/Resources/Plays/Support/whistle.tres" id="12_rxdkq"]
+[ext_resource type="Resource" uid="uid://i1od0b45fl8n" path="res://Autoloads/Resources/Plays/Support/chant.tres" id="13_0xh3h"]
+[ext_resource type="Resource" uid="uid://ct6ym4n4aja00" path="res://Autoloads/Resources/Plays/Support/cheer.tres" id="14_fhpb0"]
+[ext_resource type="Resource" uid="uid://ck2v1w5w6an2w" path="res://Autoloads/Resources/Plays/Support/drum.tres" id="15_u7kwk"]
+[ext_resource type="Resource" uid="uid://dytuvbvg3oamq" path="res://Autoloads/Resources/Plays/Defense/shield.tres" id="16_2yemn"]
+[ext_resource type="Resource" uid="uid://cpuds8hsc5dr1" path="res://Autoloads/Resources/Plays/Defense/dramatic_exit.tres" id="17_26ksr"]
+[ext_resource type="Resource" uid="uid://chnjmscu87ehu" path="res://Autoloads/Resources/Plays/Support/introduce.tres" id="18_62b2j"]
+[ext_resource type="Resource" uid="uid://b3u7ewdra230k" path="res://Autoloads/Resources/Plays/Support/trait_dance.tres" id="19_sk3r4"]
+[ext_resource type="Resource" uid="uid://du8ix5gwk4act" path="res://Autoloads/Resources/Plays/Defense/soliloquy.tres" id="20_l0pde"]
+[ext_resource type="Resource" uid="uid://du31ndfut0hoa" path="res://Autoloads/Resources/Plays/Attack/Body/energized.tres" id="21_ajna3"]
+[ext_resource type="Resource" uid="uid://bko08dievjnfg" path="res://Autoloads/Resources/Plays/Attack/Body/stomp.tres" id="22_825xf"]
+[ext_resource type="Resource" uid="uid://de4i64x6vnp7m" path="res://Autoloads/Resources/Plays/Attack/Body/relaxed_hit.tres" id="23_14ud5"]
+[ext_resource type="Resource" uid="uid://4bo2qruocep5" path="res://Autoloads/Resources/Plays/Attack/Spirit/thriller.tres" id="24_s0s1o"]
+[ext_resource type="Resource" uid="uid://5ul0rbnt3ci1" path="res://Autoloads/Resources/Plays/Attack/Spirit/rousing_strike.tres" id="25_e1gtu"]
+[ext_resource type="Resource" uid="uid://coljoc6wslna8" path="res://Autoloads/Resources/Plays/Support/hum.tres" id="26_nqv47"]
+[ext_resource type="Resource" uid="uid://bk0m5f3kuweyx" path="res://Autoloads/Resources/Trait/rumpus.tres" id="28_vqcw2"]
+
+[resource]
+script = ExtResource("3_xqn4w")
+my_plays = Array[ExtResource("1_ddyjl")]([null, null, null])
+my_trait = ExtResource("2_xqn4w")
+specie_name = "Hopsong"
+internal_name = "frog2"
+beastiepedia_id = 9
+is_nfe = true
+bar_color = Color(0.9098039, 0.28235295, 0.28235295, 1)
+body_base_pow = 48
+spirit_base_pow = 85
+mind_base_pow = 27
+body_base_def = 68
+spirit_base_def = 72
+mind_base_def = 50
+plays_string_array = Array[String](["pepshot", "bring the heat", "supercommit", "jammer", "mighty yell", "net rush", "cover", "forward pass", "battle cry", "whistle", "chant", "cheer", "drum", "shield", "dramatic exit", "introduce", "trait dance", "soliloquy", "energized", "stomp", "relaxed hit", "thriller", "rousing strike", "hum"])
+traits_string_array = Array[String](["high spirits", "rumpus"])
+possible_plays = Array[ExtResource("1_ddyjl")]([ExtResource("3_tfw6w"), ExtResource("4_xpdio"), ExtResource("5_dfp5a"), ExtResource("6_4xcp8"), ExtResource("7_fgylj"), ExtResource("8_4xngb"), ExtResource("9_eedik"), ExtResource("10_bprl0"), ExtResource("11_tt40u"), ExtResource("12_rxdkq"), ExtResource("13_0xh3h"), ExtResource("14_fhpb0"), ExtResource("15_u7kwk"), ExtResource("16_2yemn"), ExtResource("17_26ksr"), ExtResource("18_62b2j"), ExtResource("19_sk3r4"), ExtResource("20_l0pde"), ExtResource("21_ajna3"), ExtResource("22_825xf"), ExtResource("23_14ud5"), ExtResource("24_s0s1o"), ExtResource("25_e1gtu"), ExtResource("26_nqv47")])
+possible_traits = Array[ExtResource("2_5tewo")]([ExtResource("2_xqn4w"), ExtResource("28_vqcw2")])
+sprites = Dictionary[int, Texture2D]({
+0: ExtResource("5_3y1si"),
+1: ExtResource("6_6k04h"),
+2: ExtResource("7_ad1ed"),
+3: ExtResource("8_lpxwb"),
+4: ExtResource("9_qlv3w"),
+5: ExtResource("10_d1l08"),
+6: ExtResource("11_yho7e")
+})
+ball_anchor_position_receive = Vector2(70, -127)
+ball_anchor_position_ready = Vector2(70, -145)
+metadata/_custom_type_script = "uid://ehabj4qsgxpl"

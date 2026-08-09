@@ -1,0 +1,79 @@
+[gd_resource type="Resource" script_class="Beastie" load_steps=45 format=3 uid="uid://dplj618734ymj"]
+
+[ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_dlrtg"]
+[ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Autoloads/Resources/Trait/trait.gd" id="2_ft3xs"]
+[ext_resource type="Resource" uid="uid://cagttvqn25cci" path="res://Autoloads/Resources/Trait/acrobat.tres" id="2_xuaqp"]
+[ext_resource type="Resource" uid="uid://bcvrnhx6jhwoj" path="res://Autoloads/Resources/Plays/Attack/Spirit/challenge.tres" id="3_3y0u4"]
+[ext_resource type="Script" uid="uid://ehabj4qsgxpl" path="res://Autoloads/Resources/Beastie/beastie.gd" id="3_xuaqp"]
+[ext_resource type="Resource" uid="uid://tmx3od063v8l" path="res://Autoloads/Resources/Plays/Attack/Spirit/contest.tres" id="4_omxnm"]
+[ext_resource type="Texture2D" uid="uid://ctspp02d7ul4i" path="res://Autoloads/Resources/Beastie/Radillo/radillo_idle.png" id="5_et6e8"]
+[ext_resource type="Resource" uid="uid://yedb04mc431m" path="res://Autoloads/Resources/Plays/Attack/Spirit/counter.tres" id="5_qg74u"]
+[ext_resource type="Texture2D" uid="uid://bjo6uqy43d08f" path="res://Autoloads/Resources/Beastie/Radillo/radillo_ready.png" id="6_8xd6d"]
+[ext_resource type="Resource" uid="uid://ct7v52g87i87i" path="res://Autoloads/Resources/Plays/Volley/confident_pass.tres" id="6_mx3os"]
+[ext_resource type="Resource" uid="uid://bl8mticlpepw8" path="res://Autoloads/Resources/Plays/Attack/Body/spike.tres" id="7_35f78"]
+[ext_resource type="Texture2D" uid="uid://p3udjtpp1req" path="res://Autoloads/Resources/Beastie/Radillo/radillo_spike.png" id="7_resno"]
+[ext_resource type="Texture2D" uid="uid://i3noxqb6kcgn" path="res://Autoloads/Resources/Beastie/Radillo/radillo_volley.png" id="8_2hu03"]
+[ext_resource type="Resource" uid="uid://ddqiybh2xkn7p" path="res://Autoloads/Resources/Plays/Attack/Body/slide.tres" id="8_pdfyo"]
+[ext_resource type="Resource" uid="uid://ddnch0ufpde3l" path="res://Autoloads/Resources/Plays/Attack/Body/dive.tres" id="9_8wrst"]
+[ext_resource type="Texture2D" uid="uid://dkl0uh6scoqn3" path="res://Autoloads/Resources/Beastie/Radillo/radillo_good.png" id="9_orslw"]
+[ext_resource type="Resource" uid="uid://deeuy477kp33d" path="res://Autoloads/Resources/Plays/Attack/Body/hyperspike.tres" id="10_h5dx8"]
+[ext_resource type="Texture2D" uid="uid://yiogjbq6yjw6" path="res://Autoloads/Resources/Beastie/Radillo/radillo_bad.png" id="10_u18nf"]
+[ext_resource type="Texture2D" uid="uid://p7t2vinlxsex" path="res://Autoloads/Resources/Beastie/Radillo/icon_radillo.png" id="11_561fl"]
+[ext_resource type="Resource" uid="uid://dumv8ybmwmdqs" path="res://Autoloads/Resources/Plays/Attack/Spirit/relentless.tres" id="11_bs23h"]
+[ext_resource type="Resource" uid="uid://c18abdsio1qy3" path="res://Autoloads/Resources/Plays/Attack/Spirit/desperate_force.tres" id="12_1sdl0"]
+[ext_resource type="Resource" uid="uid://cnliahyhutvwb" path="res://Autoloads/Resources/Plays/Attack/Spirit/burnout.tres" id="13_vqgn0"]
+[ext_resource type="Resource" uid="uid://cya1yqpm1hk8m" path="res://Autoloads/Resources/Plays/Attack/Spirit/toppler.tres" id="14_20gyr"]
+[ext_resource type="Resource" uid="uid://dcn80u35wkpjp" path="res://Autoloads/Resources/Plays/Volley/net_rush.tres" id="15_08l50"]
+[ext_resource type="Resource" uid="uid://debwcca8lqqb2" path="res://Autoloads/Resources/Plays/Volley/pipe.tres" id="16_amaoj"]
+[ext_resource type="Resource" uid="uid://dgsnxhjtejofp" path="res://Autoloads/Resources/Plays/Volley/dig.tres" id="17_v6ohp"]
+[ext_resource type="Resource" uid="uid://tc6ag84sawpl" path="res://Autoloads/Resources/Plays/Support/tough_front.tres" id="18_5u1ij"]
+[ext_resource type="Resource" uid="uid://c33nk1bps8v2q" path="res://Autoloads/Resources/Plays/Support/quick_tag.tres" id="19_cd5lu"]
+[ext_resource type="Resource" uid="uid://dytuvbvg3oamq" path="res://Autoloads/Resources/Plays/Defense/shield.tres" id="20_1djw0"]
+[ext_resource type="Resource" uid="uid://6lu5dwdsnlss" path="res://Autoloads/Resources/Plays/Attack/Body/rocket.tres" id="21_qybn6"]
+[ext_resource type="Resource" uid="uid://c0hsvmpto8e3s" path="res://Autoloads/Resources/Plays/Attack/Spirit/grit.tres" id="22_nwfgd"]
+[ext_resource type="Resource" uid="uid://cav38enl453wt" path="res://Autoloads/Resources/Plays/Attack/Body/launch.tres" id="23_a4gtw"]
+[ext_resource type="Resource" uid="uid://cl3u33ko6jycn" path="res://Autoloads/Resources/Plays/Attack/Spirit/turnabout.tres" id="24_rfwn7"]
+[ext_resource type="Resource" uid="uid://cpuds8hsc5dr1" path="res://Autoloads/Resources/Plays/Defense/dramatic_exit.tres" id="25_wt2i0"]
+[ext_resource type="Resource" uid="uid://dqbap051upqpl" path="res://Autoloads/Resources/Plays/Attack/Body/overpower.tres" id="26_dva76"]
+[ext_resource type="Resource" uid="uid://b0kuuquuv3nwx" path="res://Autoloads/Resources/Plays/Support/whoosh.tres" id="27_4bkwj"]
+[ext_resource type="Resource" uid="uid://7nsxd3vbne52" path="res://Autoloads/Resources/Plays/Support/exhaust.tres" id="28_14nrn"]
+[ext_resource type="Resource" uid="uid://ld2lhvgalfff" path="res://Autoloads/Resources/Plays/Attack/Spirit/swarm.tres" id="29_8wr1c"]
+[ext_resource type="Resource" uid="uid://c4u3rhcdxfjxf" path="res://Autoloads/Resources/Plays/Volley/daring_pass.tres" id="30_dqrmc"]
+[ext_resource type="Resource" uid="uid://bnp4j742y5gua" path="res://Autoloads/Resources/Plays/Defense/dodge_roll.tres" id="31_xp6w5"]
+[ext_resource type="Resource" uid="uid://dfrswto2e3nco" path="res://Autoloads/Resources/Plays/Defense/role_reverse.tres" id="32_25m0t"]
+[ext_resource type="Resource" uid="uid://ckfu6pta3o1u2" path="res://Autoloads/Resources/Plays/Support/provoke.tres" id="33_suoph"]
+[ext_resource type="Resource" uid="uid://b4745hu4puleb" path="res://Autoloads/Resources/Plays/Attack/Spirit/beginner_effort.tres" id="34_f6ubb"]
+[ext_resource type="Resource" uid="uid://csjy2arcu0s1x" path="res://Autoloads/Resources/Trait/self_assured.tres" id="36_hfln0"]
+
+[resource]
+script = ExtResource("3_xuaqp")
+my_plays = Array[ExtResource("1_dlrtg")]([null, null, null])
+my_trait = ExtResource("2_xuaqp")
+specie_name = "Radillo"
+internal_name = "daredevil1"
+beastiepedia_id = 31
+is_nfe = true
+bar_color = Color(0.92156863, 0.19215687, 0.17254902, 1)
+body_base_pow = 68
+spirit_base_pow = 75
+mind_base_pow = 21
+body_base_def = 71
+spirit_base_def = 25
+mind_base_def = 38
+plays_string_array = Array[String](["challenge", "contest", "counter", "confident pass", "spike", "slide", "dive", "hyperspike", "relentless", "desperate force", "burnout", "toppler", "net rush", "pipe", "dig", "tough front", "quick tag", "shield", "rocket", "grit", "launch", "turnabout", "dramatic exit", "overpower", "whoosh", "exhaust", "swarm", "daring pass", "dodge roll", "role reverse", "provoke", "beginner effort"])
+traits_string_array = Array[String](["acrobat", "self-assured"])
+possible_plays = Array[ExtResource("1_dlrtg")]([ExtResource("3_3y0u4"), ExtResource("4_omxnm"), ExtResource("5_qg74u"), ExtResource("6_mx3os"), ExtResource("7_35f78"), ExtResource("8_pdfyo"), ExtResource("9_8wrst"), ExtResource("10_h5dx8"), ExtResource("11_bs23h"), ExtResource("12_1sdl0"), ExtResource("13_vqgn0"), ExtResource("14_20gyr"), ExtResource("15_08l50"), ExtResource("16_amaoj"), ExtResource("17_v6ohp"), ExtResource("18_5u1ij"), ExtResource("19_cd5lu"), ExtResource("20_1djw0"), ExtResource("21_qybn6"), ExtResource("22_nwfgd"), ExtResource("23_a4gtw"), ExtResource("24_rfwn7"), ExtResource("25_wt2i0"), ExtResource("26_dva76"), ExtResource("27_4bkwj"), ExtResource("28_14nrn"), ExtResource("29_8wr1c"), ExtResource("30_dqrmc"), ExtResource("31_xp6w5"), ExtResource("32_25m0t"), ExtResource("33_suoph"), ExtResource("34_f6ubb")])
+possible_traits = Array[ExtResource("2_ft3xs")]([ExtResource("2_xuaqp"), ExtResource("36_hfln0")])
+sprites = Dictionary[int, Texture2D]({
+0: ExtResource("5_et6e8"),
+1: ExtResource("6_8xd6d"),
+2: ExtResource("7_resno"),
+3: ExtResource("8_2hu03"),
+4: ExtResource("9_orslw"),
+5: ExtResource("10_u18nf"),
+6: ExtResource("11_561fl")
+})
+y_offset = -15
+ball_anchor_position_receive = Vector2(50, -58)
+ball_anchor_position_ready = Vector2(80, -80)
+metadata/_custom_type_script = "uid://ehabj4qsgxpl"

@@ -1,0 +1,71 @@
+[gd_resource type="Resource" script_class="Beastie" load_steps=39 format=3 uid="uid://nk7jwqcst4m8"]
+
+[ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_ewvld"]
+[ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Autoloads/Resources/Trait/trait.gd" id="2_g6xiv"]
+[ext_resource type="Resource" uid="uid://q5fhwy5qny81" path="res://Autoloads/Resources/Trait/intangible.tres" id="2_ynupn"]
+[ext_resource type="Resource" uid="uid://cddwygqioba8b" path="res://Autoloads/Resources/Plays/Support/hex.tres" id="3_t1054"]
+[ext_resource type="Script" uid="uid://ehabj4qsgxpl" path="res://Autoloads/Resources/Beastie/beastie.gd" id="3_ynupn"]
+[ext_resource type="Resource" uid="uid://17upagq6d0q6" path="res://Autoloads/Resources/Plays/Attack/Mind/mindfield.tres" id="4_i5747"]
+[ext_resource type="Resource" uid="uid://cpue5n2qo6k4j" path="res://Autoloads/Resources/Plays/Attack/Mind/slice.tres" id="5_pks42"]
+[ext_resource type="Texture2D" uid="uid://djaqnm8yvxp72" path="res://Autoloads/Resources/Beastie/Wisper/wisper_idle.png" id="5_q683b"]
+[ext_resource type="Resource" uid="uid://b6xyao2ghmtij" path="res://Autoloads/Resources/Plays/Attack/Mind/cornershot.tres" id="6_unvwv"]
+[ext_resource type="Texture2D" uid="uid://bgoh0752p564c" path="res://Autoloads/Resources/Beastie/Wisper/wisper_ready.png" id="6_wu7pu"]
+[ext_resource type="Resource" uid="uid://brf1cqjq1gnxc" path="res://Autoloads/Resources/Plays/Volley/cover.tres" id="7_qf7gh"]
+[ext_resource type="Texture2D" uid="uid://xds0oh1ofy8d" path="res://Autoloads/Resources/Beastie/Wisper/wisper_volley.png" id="7_y361d"]
+[ext_resource type="Resource" uid="uid://c624jkvl1417h" path="res://Autoloads/Resources/Plays/Volley/refresh.tres" id="8_vbv3u"]
+[ext_resource type="Texture2D" uid="uid://c1j7vdgwjp5jc" path="res://Autoloads/Resources/Beastie/Wisper/wisper_good.png" id="8_vnb4b"]
+[ext_resource type="Texture2D" uid="uid://chg1wcckofhhs" path="res://Autoloads/Resources/Beastie/Wisper/wisper_bad.png" id="9_es48v"]
+[ext_resource type="Resource" uid="uid://du8cw84yk24oa" path="res://Autoloads/Resources/Plays/Support/teleport.tres" id="9_mp6fd"]
+[ext_resource type="Texture2D" uid="uid://d4mtk78wxqdm4" path="res://Autoloads/Resources/Beastie/Wisper/icon_wisper.png" id="10_bx4vc"]
+[ext_resource type="Resource" uid="uid://xpx483vp77ry" path="res://Autoloads/Resources/Plays/Support/feint.tres" id="10_g2nvo"]
+[ext_resource type="Resource" uid="uid://b1kd6deumgyu0" path="res://Autoloads/Resources/Plays/Support/meditate.tres" id="11_x3fkg"]
+[ext_resource type="Resource" uid="uid://iuquitr1xs5u" path="res://Autoloads/Resources/Plays/Defense/staredown.tres" id="12_xd7by"]
+[ext_resource type="Resource" uid="uid://ccjlfthgm3ed2" path="res://Autoloads/Resources/Plays/Support/jeer.tres" id="13_xxr2n"]
+[ext_resource type="Resource" uid="uid://71t7u1j5yqvb" path="res://Autoloads/Resources/Plays/Support/mark.tres" id="14_rykvk"]
+[ext_resource type="Resource" uid="uid://ymdvl6wdoqws" path="res://Autoloads/Resources/Plays/Defense/hawkeye.tres" id="15_jidgu"]
+[ext_resource type="Resource" uid="uid://vrgoi8jwdlq1" path="res://Autoloads/Resources/Plays/Defense/patience.tres" id="16_gf6gh"]
+[ext_resource type="Resource" uid="uid://b3ie8s030fuig" path="res://Autoloads/Resources/Plays/Attack/Mind/nerve_strike.tres" id="17_pskot"]
+[ext_resource type="Resource" uid="uid://dytuvbvg3oamq" path="res://Autoloads/Resources/Plays/Defense/shield.tres" id="18_jx5r0"]
+[ext_resource type="Resource" uid="uid://cs7p2ql8pbv87" path="res://Autoloads/Resources/Plays/Support/dispel.tres" id="19_vtkv6"]
+[ext_resource type="Resource" uid="uid://l57ggke2vhn0" path="res://Autoloads/Resources/Plays/Defense/heat_up.tres" id="20_ct41s"]
+[ext_resource type="Resource" uid="uid://pwfmxe4epkih" path="res://Autoloads/Resources/Plays/Support/dreadful_mist.tres" id="21_vq7t7"]
+[ext_resource type="Resource" uid="uid://fbkol2rhhchv" path="res://Autoloads/Resources/Plays/Attack/Mind/rattle.tres" id="22_n0cut"]
+[ext_resource type="Resource" uid="uid://d3avpv87snvri" path="res://Autoloads/Resources/Plays/Defense/gloom.tres" id="23_dq0xe"]
+[ext_resource type="Resource" uid="uid://cm6axu5oniegv" path="res://Autoloads/Resources/Plays/Attack/Mind/echo_strike.tres" id="24_k43ns"]
+[ext_resource type="Resource" uid="uid://by0ross5cpbjo" path="res://Autoloads/Resources/Plays/Defense/menace.tres" id="25_kk750"]
+[ext_resource type="Resource" uid="uid://7nsxd3vbne52" path="res://Autoloads/Resources/Plays/Support/exhaust.tres" id="26_benpx"]
+[ext_resource type="Resource" uid="uid://k5re1ttrcy1f" path="res://Autoloads/Resources/Plays/Support/wink.tres" id="27_2btqq"]
+[ext_resource type="Resource" uid="uid://dlf2eqay3itwo" path="res://Autoloads/Resources/Plays/Attack/Mind/soulcursher.tres" id="28_s032h"]
+[ext_resource type="Resource" uid="uid://kjfbpg4iax4n" path="res://Autoloads/Resources/Plays/Attack/Mind/freezeray.tres" id="29_7ppna"]
+[ext_resource type="Resource" uid="uid://bpp1fdkheyfi" path="res://Autoloads/Resources/Plays/Defense/stinky.tres" id="30_sud2w"]
+
+[resource]
+script = ExtResource("3_ynupn")
+my_plays = Array[ExtResource("1_ewvld")]([null, null, null])
+my_trait = ExtResource("2_ynupn")
+specie_name = "Wisper"
+internal_name = "ghost2"
+beastiepedia_id = 45
+is_nfe = true
+bar_color = Color(0.6156863, 0.3882353, 0.7647059, 1)
+body_base_pow = 10
+spirit_base_pow = 50
+mind_base_pow = 70
+body_base_def = 90
+spirit_base_def = 30
+plays_string_array = Array[String](["hex", "mindfield", "slice", "cornershot", "cover", "refresh", "teleport", "feint", "meditate", "staredown", "jeer", "mark", "hawkeye", "patience", "nerve strike", "shield", "dispel", "heat up", "dreadful mist", "rattle", "gloom", "echo strike", "menace", "exhaust", "wink", "soulcrusher", "freezeray", "stinky"])
+traits_string_array = Array[String](["intangible"])
+possible_plays = Array[ExtResource("1_ewvld")]([ExtResource("3_t1054"), ExtResource("4_i5747"), ExtResource("5_pks42"), ExtResource("6_unvwv"), ExtResource("7_qf7gh"), ExtResource("8_vbv3u"), ExtResource("9_mp6fd"), ExtResource("10_g2nvo"), ExtResource("11_x3fkg"), ExtResource("12_xd7by"), ExtResource("13_xxr2n"), ExtResource("14_rykvk"), ExtResource("15_jidgu"), ExtResource("16_gf6gh"), ExtResource("17_pskot"), ExtResource("18_jx5r0"), ExtResource("19_vtkv6"), ExtResource("20_ct41s"), ExtResource("21_vq7t7"), ExtResource("22_n0cut"), ExtResource("23_dq0xe"), ExtResource("24_k43ns"), ExtResource("25_kk750"), ExtResource("26_benpx"), ExtResource("27_2btqq"), ExtResource("28_s032h"), ExtResource("29_7ppna"), ExtResource("30_sud2w")])
+possible_traits = Array[ExtResource("2_g6xiv")]([ExtResource("2_ynupn")])
+sprites = Dictionary[int, Texture2D]({
+0: ExtResource("5_q683b"),
+1: ExtResource("6_wu7pu"),
+2: ExtResource("5_q683b"),
+3: ExtResource("7_y361d"),
+4: ExtResource("8_vnb4b"),
+5: ExtResource("9_es48v"),
+6: ExtResource("10_bx4vc")
+})
+ball_anchor_position_receive = Vector2(22, -130)
+ball_anchor_position_ready = Vector2(35, -135)
+metadata/_custom_type_script = "uid://ehabj4qsgxpl"

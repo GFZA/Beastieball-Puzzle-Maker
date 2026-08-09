@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="Beastie" load_steps=35 format=3 uid="uid://b4qms5g14evt4"]
+
+[ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_qfmtq"]
+[ext_resource type="Resource" uid="uid://bcut3fcha873b" path="res://Autoloads/Resources/Trait/launcher.tres" id="2_78gsq"]
+[ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Autoloads/Resources/Trait/trait.gd" id="2_snm28"]
+[ext_resource type="Script" uid="uid://ehabj4qsgxpl" path="res://Autoloads/Resources/Beastie/beastie.gd" id="3_78gsq"]
+[ext_resource type="Resource" uid="uid://b3bvfpjwplhwn" path="res://Autoloads/Resources/Plays/Attack/Body/thump.tres" id="3_kx75n"]
+[ext_resource type="Resource" uid="uid://51titaex4o3e" path="res://Autoloads/Resources/Plays/Attack/Body/breaker.tres" id="4_4njm1"]
+[ext_resource type="Texture2D" uid="uid://bu604o0xikngi" path="res://Autoloads/Resources/Beastie/Waglash/waglash_idle.png" id="5_wtsqm"]
+[ext_resource type="Resource" uid="uid://6lu5dwdsnlss" path="res://Autoloads/Resources/Plays/Attack/Body/rocket.tres" id="5_xo4u2"]
+[ext_resource type="Texture2D" uid="uid://llhl25al1geq" path="res://Autoloads/Resources/Beastie/Waglash/waglash_ready.png" id="6_o634e"]
+[ext_resource type="Resource" uid="uid://deeuy477kp33d" path="res://Autoloads/Resources/Plays/Attack/Body/hyperspike.tres" id="6_y165n"]
+[ext_resource type="Resource" uid="uid://cav38enl453wt" path="res://Autoloads/Resources/Plays/Attack/Body/launch.tres" id="7_o8cqp"]
+[ext_resource type="Texture2D" uid="uid://dlm57qddyyfa4" path="res://Autoloads/Resources/Beastie/Waglash/waglash_spike.png" id="7_qbd0h"]
+[ext_resource type="Texture2D" uid="uid://dmg08m10ngrvr" path="res://Autoloads/Resources/Beastie/Waglash/waglash_volley.png" id="8_gdumr"]
+[ext_resource type="Resource" uid="uid://b1hvdsyb5bx4b" path="res://Autoloads/Resources/Plays/Attack/Body/muscle_memory.tres" id="8_mwysh"]
+[ext_resource type="Texture2D" uid="uid://coc7eoevx0m3i" path="res://Autoloads/Resources/Beastie/Waglash/waglash_good.png" id="9_krgg3"]
+[ext_resource type="Resource" uid="uid://sap57n0xh527" path="res://Autoloads/Resources/Plays/Attack/Body/shove.tres" id="9_ug26c"]
+[ext_resource type="Resource" uid="uid://7nsxd3vbne52" path="res://Autoloads/Resources/Plays/Support/exhaust.tres" id="10_8urhj"]
+[ext_resource type="Texture2D" uid="uid://btwqit1kc25rx" path="res://Autoloads/Resources/Beastie/Waglash/waglash_bad.png" id="10_j32hd"]
+[ext_resource type="Texture2D" uid="uid://uixnevnwaua1" path="res://Autoloads/Resources/Beastie/Waglash/icon_waglash.png" id="11_kkcul"]
+[ext_resource type="Resource" uid="uid://b3u7ewdra230k" path="res://Autoloads/Resources/Plays/Support/trait_dance.tres" id="11_o7nba"]
+[ext_resource type="Resource" uid="uid://cqf3rk1ccvj3u" path="res://Autoloads/Resources/Plays/Support/flex.tres" id="12_h4s8t"]
+[ext_resource type="Resource" uid="uid://brbj7babpn6xc" path="res://Autoloads/Resources/Plays/Defense/quick_breath.tres" id="13_howlw"]
+[ext_resource type="Resource" uid="uid://bgwy15q42o6k7" path="res://Autoloads/Resources/Plays/Support/hunker.tres" id="14_tcp35"]
+[ext_resource type="Resource" uid="uid://dm6eb4ue4fypu" path="res://Autoloads/Resources/Plays/Defense/body_ready.tres" id="15_8om8n"]
+[ext_resource type="Resource" uid="uid://dytuvbvg3oamq" path="res://Autoloads/Resources/Plays/Defense/shield.tres" id="16_glyrt"]
+[ext_resource type="Resource" uid="uid://dgsnxhjtejofp" path="res://Autoloads/Resources/Plays/Volley/dig.tres" id="17_lnfa3"]
+[ext_resource type="Resource" uid="uid://dthwtmgr6183d" path="res://Autoloads/Resources/Plays/Defense/pump_up.tres" id="18_sq4u0"]
+[ext_resource type="Resource" uid="uid://b06shfhjo6umu" path="res://Autoloads/Resources/Plays/Defense/cyclone.tres" id="19_kdjwy"]
+[ext_resource type="Resource" uid="uid://dj6kdtlk5w6rq" path="res://Autoloads/Resources/Plays/Defense/high_five.tres" id="20_cjqv3"]
+[ext_resource type="Resource" uid="uid://dkh0jivrf43jv" path="res://Autoloads/Resources/Plays/Defense/smack.tres" id="21_7kat0"]
+[ext_resource type="Resource" uid="uid://ccjlfthgm3ed2" path="res://Autoloads/Resources/Plays/Support/jeer.tres" id="22_2ccx8"]
+[ext_resource type="Resource" uid="uid://c5oyp7e74r3pd" path="res://Autoloads/Resources/Plays/Support/shake_off.tres" id="23_kowil"]
+[ext_resource type="Resource" uid="uid://dc0b8j0fujpbd" path="res://Autoloads/Resources/Plays/Attack/Body/basic_hit.tres" id="24_abj3l"]
+[ext_resource type="Resource" uid="uid://bs1d8u1ccfakh" path="res://Autoloads/Resources/Trait/steadfast.tres" id="26_sd7k6"]
+
+[resource]
+script = ExtResource("3_78gsq")
+my_plays = Array[ExtResource("1_qfmtq")]([null, null, null])
+my_trait = ExtResource("2_78gsq")
+specie_name = "Waglash"
+internal_name = "shark1"
+beastiepedia_id = 58
+is_nfe = true
+bar_color = Color(1, 0.2627451, 0.12156863, 1)
+body_base_pow = 70
+spirit_base_pow = 25
+mind_base_pow = 35
+body_base_def = 40
+spirit_base_def = 65
+mind_base_def = 75
+plays_string_array = Array[String](["thump", "breaker", "rocket", "hyperspike", "launch", "muscle memory", "shove", "exhaust", "trait dance", "flex", "quick breath", "hunker", "body ready", "shield", "dig", "pump up", "cyclone", "high five", "smack", "jeer", "shake off", "basic hit"])
+traits_string_array = Array[String](["launcher", "steadfast"])
+possible_plays = Array[ExtResource("1_qfmtq")]([ExtResource("3_kx75n"), ExtResource("4_4njm1"), ExtResource("5_xo4u2"), ExtResource("6_y165n"), ExtResource("7_o8cqp"), ExtResource("8_mwysh"), ExtResource("9_ug26c"), ExtResource("10_8urhj"), ExtResource("11_o7nba"), ExtResource("12_h4s8t"), ExtResource("13_howlw"), ExtResource("14_tcp35"), ExtResource("15_8om8n"), ExtResource("16_glyrt"), ExtResource("17_lnfa3"), ExtResource("18_sq4u0"), ExtResource("19_kdjwy"), ExtResource("20_cjqv3"), ExtResource("21_7kat0"), ExtResource("22_2ccx8"), ExtResource("23_kowil"), ExtResource("24_abj3l")])
+possible_traits = Array[ExtResource("2_snm28")]([ExtResource("2_78gsq"), ExtResource("26_sd7k6")])
+sprites = Dictionary[int, Texture2D]({
+0: ExtResource("5_wtsqm"),
+1: ExtResource("6_o634e"),
+2: ExtResource("7_qbd0h"),
+3: ExtResource("8_gdumr"),
+4: ExtResource("9_krgg3"),
+5: ExtResource("10_j32hd"),
+6: ExtResource("11_kkcul")
+})
+y_offset = -10
+ball_anchor_position_receive = Vector2(30, -70)
+ball_anchor_position_ready = Vector2(60, -65)
+metadata/_custom_type_script = "uid://ehabj4qsgxpl"

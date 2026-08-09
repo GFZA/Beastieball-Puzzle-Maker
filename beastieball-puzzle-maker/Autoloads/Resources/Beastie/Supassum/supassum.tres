@@ -1,0 +1,68 @@
+[gd_resource type="Resource" script_class="Beastie" load_steps=35 format=3 uid="uid://d31ridff0f8su"]
+
+[ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_0ibxb"]
+[ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Autoloads/Resources/Trait/trait.gd" id="2_0cluf"]
+[ext_resource type="Resource" uid="uid://bnjg3ngge7554" path="res://Autoloads/Resources/Trait/scavenger.tres" id="2_qcklx"]
+[ext_resource type="Resource" uid="uid://bi278ctjoqvrt" path="res://Autoloads/Resources/Plays/Attack/Body/bump.tres" id="3_abisf"]
+[ext_resource type="Script" uid="uid://ehabj4qsgxpl" path="res://Autoloads/Resources/Beastie/beastie.gd" id="3_qcklx"]
+[ext_resource type="Resource" uid="uid://51titaex4o3e" path="res://Autoloads/Resources/Plays/Attack/Body/breaker.tres" id="4_ifxo8"]
+[ext_resource type="Texture2D" uid="uid://siii61q8ai2a" path="res://Autoloads/Resources/Beastie/Supassum/supassum_idle.png" id="5_dygxm"]
+[ext_resource type="Resource" uid="uid://ooe1a5sxb6wn" path="res://Autoloads/Resources/Plays/Attack/Body/demolish.tres" id="5_gkwr2"]
+[ext_resource type="Resource" uid="uid://dgsnxhjtejofp" path="res://Autoloads/Resources/Plays/Volley/dig.tres" id="6_64x5x"]
+[ext_resource type="Texture2D" uid="uid://mu54vima83j3" path="res://Autoloads/Resources/Beastie/Supassum/supassum_ready.png" id="6_aa6om"]
+[ext_resource type="Resource" uid="uid://hiuivj04u8ir" path="res://Autoloads/Resources/Plays/Attack/Body/vigor_beam.tres" id="7_5r41r"]
+[ext_resource type="Texture2D" uid="uid://dyvthpkcrahrf" path="res://Autoloads/Resources/Beastie/Supassum/supassum_spike.png" id="7_6n1hl"]
+[ext_resource type="Texture2D" uid="uid://bt4g108ynvc5m" path="res://Autoloads/Resources/Beastie/Supassum/supassum_volley.png" id="8_lfh04"]
+[ext_resource type="Resource" uid="uid://b6c5yrxonrq5h" path="res://Autoloads/Resources/Plays/Volley/juggle.tres" id="8_w5de7"]
+[ext_resource type="Texture2D" uid="uid://i7y3ejychqem" path="res://Autoloads/Resources/Beastie/Supassum/supassum_good.png" id="9_1tkr3"]
+[ext_resource type="Resource" uid="uid://cqf3rk1ccvj3u" path="res://Autoloads/Resources/Plays/Support/flex.tres" id="9_xq41d"]
+[ext_resource type="Resource" uid="uid://dnfjfsf2a2vs5" path="res://Autoloads/Resources/Plays/Support/deep_breath.tres" id="10_d0dnb"]
+[ext_resource type="Texture2D" uid="uid://csmy2qi17cx3g" path="res://Autoloads/Resources/Beastie/Supassum/supassum_bad.png" id="10_e1pkx"]
+[ext_resource type="Resource" uid="uid://ymdvl6wdoqws" path="res://Autoloads/Resources/Plays/Defense/hawkeye.tres" id="11_ty8vb"]
+[ext_resource type="Texture2D" uid="uid://c0fsof47aluqq" path="res://Autoloads/Resources/Beastie/Supassum/icon_supassum.png" id="11_wn71v"]
+[ext_resource type="Resource" uid="uid://y3o0tssi0oeu" path="res://Autoloads/Resources/Plays/Volley/forward_pass.tres" id="12_4h0u5"]
+[ext_resource type="Resource" uid="uid://brf1cqjq1gnxc" path="res://Autoloads/Resources/Plays/Volley/cover.tres" id="13_kmw4g"]
+[ext_resource type="Resource" uid="uid://cd40pldvtmjj4" path="res://Autoloads/Resources/Plays/Support/lock_target.tres" id="14_e043f"]
+[ext_resource type="Resource" uid="uid://71t7u1j5yqvb" path="res://Autoloads/Resources/Plays/Support/mark.tres" id="15_pps6h"]
+[ext_resource type="Resource" uid="uid://dytuvbvg3oamq" path="res://Autoloads/Resources/Plays/Defense/shield.tres" id="16_ca3qm"]
+[ext_resource type="Resource" uid="uid://c33nk1bps8v2q" path="res://Autoloads/Resources/Plays/Support/quick_tag.tres" id="17_75ox7"]
+[ext_resource type="Resource" uid="uid://dj6kdtlk5w6rq" path="res://Autoloads/Resources/Plays/Defense/high_five.tres" id="18_yfpwo"]
+[ext_resource type="Resource" uid="uid://vrgoi8jwdlq1" path="res://Autoloads/Resources/Plays/Defense/patience.tres" id="19_r62im"]
+[ext_resource type="Resource" uid="uid://khv754wvrclb" path="res://Autoloads/Resources/Plays/Attack/Body/thunder.tres" id="20_tnk2x"]
+[ext_resource type="Resource" uid="uid://rou4ol1fdo40" path="res://Autoloads/Resources/Plays/Attack/Body/true_strike.tres" id="21_jjil0"]
+[ext_resource type="Resource" uid="uid://b3bvfpjwplhwn" path="res://Autoloads/Resources/Plays/Attack/Body/thump.tres" id="22_84e6j"]
+[ext_resource type="Resource" uid="uid://d2lsfpa4l3jmk" path="res://Autoloads/Resources/Plays/Support/build.tres" id="23_63ua8"]
+[ext_resource type="Resource" uid="uid://ddnch0ufpde3l" path="res://Autoloads/Resources/Plays/Attack/Body/dive.tres" id="24_bti1g"]
+[ext_resource type="Resource" uid="uid://divacd53n4a3d" path="res://Autoloads/Resources/Trait/flee.tres" id="27_q4lpy"]
+
+[resource]
+script = ExtResource("3_qcklx")
+my_plays = Array[ExtResource("1_0ibxb")]([null, null, null])
+my_trait = ExtResource("2_qcklx")
+specie_name = "Supassum"
+internal_name = "possum1"
+beastiepedia_id = 18
+is_nfe = true
+bar_color = Color(0.65882355, 0.48235294, 0.39215687, 1)
+spirit_base_pow = 18
+mind_base_pow = 22
+body_base_def = 65
+spirit_base_def = 25
+mind_base_def = 57
+plays_string_array = Array[String](["bump", "breaker", "demolish", "dig", "vigor beam", "juggle", "flex", "deep breath", "hawkeye", "forward pass", "cover", "lock target", "mark", "shield", "quick tag", "high five", "patience", "thunder", "true strike", "thump", "build", "dive"])
+traits_string_array = Array[String](["scavenger", "flee"])
+possible_plays = Array[ExtResource("1_0ibxb")]([ExtResource("3_abisf"), ExtResource("4_ifxo8"), ExtResource("5_gkwr2"), ExtResource("6_64x5x"), ExtResource("7_5r41r"), ExtResource("8_w5de7"), ExtResource("9_xq41d"), ExtResource("10_d0dnb"), ExtResource("11_ty8vb"), ExtResource("12_4h0u5"), ExtResource("13_kmw4g"), ExtResource("14_e043f"), ExtResource("15_pps6h"), ExtResource("16_ca3qm"), ExtResource("17_75ox7"), ExtResource("18_yfpwo"), ExtResource("19_r62im"), ExtResource("20_tnk2x"), ExtResource("21_jjil0"), ExtResource("22_84e6j"), ExtResource("23_63ua8"), ExtResource("24_bti1g")])
+possible_traits = Array[ExtResource("2_0cluf")]([ExtResource("2_qcklx"), ExtResource("27_q4lpy")])
+sprites = Dictionary[int, Texture2D]({
+0: ExtResource("5_dygxm"),
+1: ExtResource("6_aa6om"),
+2: ExtResource("7_6n1hl"),
+3: ExtResource("8_lfh04"),
+4: ExtResource("9_1tkr3"),
+5: ExtResource("10_e1pkx"),
+6: ExtResource("11_wn71v")
+})
+y_offset = -10
+ball_anchor_position_receive = Vector2(33, -85)
+ball_anchor_position_ready = Vector2(56, -77)
+metadata/_custom_type_script = "uid://ehabj4qsgxpl"

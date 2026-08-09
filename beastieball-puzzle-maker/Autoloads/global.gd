@@ -48,7 +48,6 @@ const ICON_PATHS : Dictionary[Icon, String] = {
 	Icon.BODY : "res://Autoloads/Icons/icon_body.png",
 	Icon.SPIRIT : "res://Autoloads/Icons/icon_spirit.png",
 	Icon.MIND : "res://Autoloads/Icons/icon_mind.png",
-	#Icon.ALL_TYPE : Will manually add all three icons later
 	Icon.VOLLEY : "res://Autoloads/Icons/icon_volley.png",
 	Icon.SUPPORT : "res://Autoloads/Icons/icon_support.png",
 	Icon.DEFENSE : "res://Autoloads/Icons/icon_defense.png",
@@ -182,11 +181,12 @@ var all_trait_data : Array[Trait] = []
 
 
 func _init() -> void:
-	if not is_on_web:
-		beastie_data_json = JSON.parse_string(FileAccess.get_file_as_string(BEASTIE_DATA_JSON_PATH))
-		trait_data_json = JSON.parse_string(FileAccess.get_file_as_string(TRAIT_DATA_JSON_PATH))
-		move_data_json = JSON.parse_string(FileAccess.get_file_as_string(MOVE_DATA_JSON_PATH))
-		all_text_json = JSON.parse_string(FileAccess.get_file_as_string(ALL_TEXT_JSON_PATH))
+	if is_on_web:
+		return
+	beastie_data_json = JSON.parse_string(FileAccess.get_file_as_string(BEASTIE_DATA_JSON_PATH))
+	trait_data_json = JSON.parse_string(FileAccess.get_file_as_string(TRAIT_DATA_JSON_PATH))
+	move_data_json = JSON.parse_string(FileAccess.get_file_as_string(MOVE_DATA_JSON_PATH))
+	all_text_json = JSON.parse_string(FileAccess.get_file_as_string(ALL_TEXT_JSON_PATH))
 
 
 func _ready() -> void:
