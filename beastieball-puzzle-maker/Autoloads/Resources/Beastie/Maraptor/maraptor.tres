@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=42 format=3 uid="uid://lukdf73ry3v8"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=43 format=3 uid="uid://dscydyal5ckeg"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_q33om"]
 [ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Autoloads/Resources/Trait/trait.gd" id="2_0u8y0"]
@@ -37,6 +37,7 @@
 [ext_resource type="Resource" uid="uid://b0ri66efuwqq" path="res://Autoloads/Resources/Plays/Support/rally.tres" id="31_muxk4"]
 [ext_resource type="Resource" uid="uid://cd40pldvtmjj4" path="res://Autoloads/Resources/Plays/Support/lock_target.tres" id="32_fbkdk"]
 [ext_resource type="Resource" uid="uid://cnrdrpp1ytwvq" path="res://Autoloads/Resources/Plays/Attack/Mind/practice_shot.tres" id="33_m426m"]
+[ext_resource type="Resource" uid="uid://0sq8xboac1gg" path="res://Autoloads/Resources/Plays/Attack/Body/kick.tres" id="33_v8gxa"]
 [ext_resource type="Resource" uid="uid://bko08dievjnfg" path="res://Autoloads/Resources/Plays/Attack/Body/stomp.tres" id="34_u8d8u"]
 [ext_resource type="Resource" uid="uid://dthwtmgr6183d" path="res://Autoloads/Resources/Plays/Defense/pump_up.tres" id="35_wur1m"]
 [ext_resource type="Resource" uid="uid://b4hy4c6g3y6kt" path="res://Autoloads/Resources/Plays/Attack/Mind/tool.tres" id="36_u6uo5"]
@@ -56,9 +57,9 @@ mind_base_pow = 87
 body_base_def = 91
 spirit_base_def = 58
 mind_base_def = 86
-plays_string_array = Array[String](["call out", "high five", "relaxed hit", "power sap", "cold calculation", "breaker", "spike", "heartbreaker", "tactical pass", "assess", "deep breath", "tough front", "quick breath", "pierce", "pressure", "shield", "lay trap", "trait dance", "steal", "net rush", "snipe", "echo strike", "chant", "tracker", "true strike", "sweep", "daring pass", "pipe", "rally", "lock target", "practice shot", "stomp", "pump up", "tool"])
+plays_string_array = Array[String](["call out", "high five", "relaxed hit", "power sap", "cold calculation", "breaker", "spike", "heartbreaker", "tactical pass", "assess", "deep breath", "tough front", "quick breath", "pierce", "pressure", "shield", "lay trap", "trait dance", "steal", "net rush", "snipe", "echo strike", "chant", "tracker", "true strike", "sweep", "daring pass", "pipe", "rally", "lock target", "kick", "practice shot", "stomp", "pump up", "tool"])
 traits_string_array = Array[String](["thrasher", "rogue"])
-possible_plays = Array[ExtResource("1_q33om")]([ExtResource("4_wxmr0"), ExtResource("4_6cfis"), ExtResource("5_v8gxa"), ExtResource("15_cunlk"), ExtResource("7_v8gxa"), ExtResource("18_ft882"), ExtResource("9_lq40q"), ExtResource("10_vkq25"), ExtResource("11_0t3wx"), ExtResource("12_iolf5"), ExtResource("13_kiaci"), ExtResource("23_iolf5"), ExtResource("15_gfby4"), ExtResource("16_1a7nl"), ExtResource("17_220iq"), ExtResource("8_uyjmw"), ExtResource("19_dnwba"), ExtResource("20_cunlk"), ExtResource("21_phapo"), ExtResource("22_026b0"), ExtResource("20_3iesq"), ExtResource("24_ft882"), ExtResource("25_2n4go"), ExtResource("26_3iesq"), ExtResource("27_5kb81"), ExtResource("28_fxhlw"), ExtResource("29_ya2ms"), ExtResource("19_v8gxa"), ExtResource("31_muxk4"), ExtResource("32_fbkdk"), ExtResource("33_m426m"), ExtResource("34_u8d8u"), ExtResource("35_wur1m"), ExtResource("36_u6uo5")])
+possible_plays = Array[ExtResource("1_q33om")]([ExtResource("4_wxmr0"), ExtResource("4_6cfis"), ExtResource("5_v8gxa"), ExtResource("15_cunlk"), ExtResource("7_v8gxa"), ExtResource("18_ft882"), ExtResource("9_lq40q"), ExtResource("10_vkq25"), ExtResource("11_0t3wx"), ExtResource("12_iolf5"), ExtResource("13_kiaci"), ExtResource("23_iolf5"), ExtResource("15_gfby4"), ExtResource("16_1a7nl"), ExtResource("17_220iq"), ExtResource("8_uyjmw"), ExtResource("19_dnwba"), ExtResource("20_cunlk"), ExtResource("21_phapo"), ExtResource("22_026b0"), ExtResource("20_3iesq"), ExtResource("24_ft882"), ExtResource("25_2n4go"), ExtResource("26_3iesq"), ExtResource("27_5kb81"), ExtResource("28_fxhlw"), ExtResource("29_ya2ms"), ExtResource("19_v8gxa"), ExtResource("31_muxk4"), ExtResource("32_fbkdk"), ExtResource("33_v8gxa"), ExtResource("33_m426m"), ExtResource("34_u8d8u"), ExtResource("35_wur1m"), ExtResource("36_u6uo5")])
 possible_traits = Array[ExtResource("2_0u8y0")]([ExtResource("2_eeusj"), ExtResource("38_mh1tm")])
 sprites = Dictionary[int, Texture2D]({
 0: ExtResource("22_k5ke7"),

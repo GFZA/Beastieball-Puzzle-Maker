@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=45 format=3 uid="uid://bgemfgfskbt3f"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=45 format=3 uid="uid://d1dieakplxsan"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_co2qs"]
 [ext_resource type="Resource" uid="uid://cagttvqn25cci" path="res://Autoloads/Resources/Trait/acrobat.tres" id="2_5qjw5"]
@@ -15,7 +15,7 @@
 [ext_resource type="Resource" uid="uid://deeuy477kp33d" path="res://Autoloads/Resources/Plays/Attack/Body/hyperspike.tres" id="10_yv5sr"]
 [ext_resource type="Resource" uid="uid://dumv8ybmwmdqs" path="res://Autoloads/Resources/Plays/Attack/Spirit/relentless.tres" id="11_qoxdf"]
 [ext_resource type="Resource" uid="uid://c18abdsio1qy3" path="res://Autoloads/Resources/Plays/Attack/Spirit/desperate_force.tres" id="12_881g6"]
-[ext_resource type="Resource" uid="uid://cnliahyhutvwb" path="res://Autoloads/Resources/Plays/Attack/Spirit/explosive_spirit.tres" id="13_goydq"]
+[ext_resource type="Resource" uid="uid://hj1hq6pbb4rp" path="res://Autoloads/Resources/Plays/Attack/Spirit/burnout.tres" id="13_pn4u5"]
 [ext_resource type="Resource" uid="uid://dcn80u35wkpjp" path="res://Autoloads/Resources/Plays/Volley/net_rush.tres" id="15_1scan"]
 [ext_resource type="Resource" uid="uid://dgsnxhjtejofp" path="res://Autoloads/Resources/Plays/Volley/dig.tres" id="18_xv2sd"]
 [ext_resource type="Resource" uid="uid://c33nk1bps8v2q" path="res://Autoloads/Resources/Plays/Support/quick_tag.tres" id="19_22ual"]
@@ -43,7 +43,7 @@
 [ext_resource type="Resource" uid="uid://dfrswto2e3nco" path="res://Autoloads/Resources/Plays/Defense/role_reverse.tres" id="32_p241p"]
 [ext_resource type="Resource" uid="uid://ckfu6pta3o1u2" path="res://Autoloads/Resources/Plays/Support/provoke.tres" id="33_ug44q"]
 [ext_resource type="Resource" uid="uid://b4745hu4puleb" path="res://Autoloads/Resources/Plays/Attack/Spirit/beginner_effort.tres" id="34_7sbn0"]
-[ext_resource type="Resource" uid="uid://csjy2arcu0s1x" path="res://Autoloads/Resources/Trait/self_assured.tres" id="36_mchwt"]
+[ext_resource type="Resource" uid="uid://oe8atse81u6r" path="res://Autoloads/Resources/Trait/fearless.tres" id="36_nd00a"]
 
 [resource]
 script = ExtResource("3_qw0ss")
@@ -60,9 +60,9 @@ body_base_def = 101
 spirit_base_def = 30
 mind_base_def = 65
 plays_string_array = Array[String](["challenge", "contest", "counter", "confident pass", "spike", "slide", "dive", "hyperspike", "relentless", "desperate force", "burnout", "toppler", "net rush", "pipe", "dig", "tough front", "quick tag", "shield", "rocket", "grit", "launch", "turnabout", "dramatic exit", "overpower", "whoosh", "exhaust", "swarm", "daring pass", "dodge roll", "role reverse", "provoke", "beginner effort"])
-traits_string_array = Array[String](["acrobat", "self-assured"])
-possible_plays = Array[ExtResource("1_co2qs")]([ExtResource("3_pn4u5"), ExtResource("4_nd00a"), ExtResource("5_g47jv"), ExtResource("6_w621i"), ExtResource("7_p311s"), ExtResource("8_xv2sd"), ExtResource("9_rowdf"), ExtResource("10_yv5sr"), ExtResource("11_qoxdf"), ExtResource("12_881g6"), ExtResource("13_goydq"), ExtResource("25_uos7i"), ExtResource("15_1scan"), ExtResource("19_rowdf"), ExtResource("18_xv2sd"), ExtResource("23_goydq"), ExtResource("19_22ual"), ExtResource("8_drlt6"), ExtResource("21_3x1je"), ExtResource("22_euud6"), ExtResource("23_e4pxc"), ExtResource("24_4q2lu"), ExtResource("25_657p4"), ExtResource("26_urayu"), ExtResource("27_meipd"), ExtResource("21_qoxdf"), ExtResource("29_sk7nr"), ExtResource("30_e64sh"), ExtResource("31_bjtdq"), ExtResource("32_p241p"), ExtResource("33_ug44q"), ExtResource("34_7sbn0")])
-possible_traits = Array[ExtResource("2_pdjv8")]([ExtResource("2_5qjw5"), ExtResource("36_mchwt")])
+traits_string_array = Array[String](["acrobat", "fearless"])
+possible_plays = Array[ExtResource("1_co2qs")]([ExtResource("3_pn4u5"), ExtResource("4_nd00a"), ExtResource("5_g47jv"), ExtResource("6_w621i"), ExtResource("7_p311s"), ExtResource("8_xv2sd"), ExtResource("9_rowdf"), ExtResource("10_yv5sr"), ExtResource("11_qoxdf"), ExtResource("12_881g6"), ExtResource("13_pn4u5"), ExtResource("25_uos7i"), ExtResource("15_1scan"), ExtResource("19_rowdf"), ExtResource("18_xv2sd"), ExtResource("23_goydq"), ExtResource("19_22ual"), ExtResource("8_drlt6"), ExtResource("21_3x1je"), ExtResource("22_euud6"), ExtResource("23_e4pxc"), ExtResource("24_4q2lu"), ExtResource("25_657p4"), ExtResource("26_urayu"), ExtResource("27_meipd"), ExtResource("21_qoxdf"), ExtResource("29_sk7nr"), ExtResource("30_e64sh"), ExtResource("31_bjtdq"), ExtResource("32_p241p"), ExtResource("33_ug44q"), ExtResource("34_7sbn0")])
+possible_traits = Array[ExtResource("2_pdjv8")]([ExtResource("2_5qjw5"), ExtResource("36_nd00a")])
 sprites = Dictionary[int, Texture2D]({
 0: ExtResource("24_rmkkx"),
 1: ExtResource("25_dq7g1"),

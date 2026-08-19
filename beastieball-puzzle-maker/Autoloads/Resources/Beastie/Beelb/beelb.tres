@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=34 format=3 uid="uid://cdvy4fkinxd1b"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=34 format=3 uid="uid://06jlv1mcx6eg"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_ioeqj"]
 [ext_resource type="Resource" uid="uid://bjnb2rjiaq72" path="res://Autoloads/Resources/Trait/charge.tres" id="2_8ney0"]
@@ -61,6 +61,6 @@ sprites = Dictionary[int, Texture2D]({
 5: ExtResource("32_ca443"),
 6: ExtResource("27_jtty3")
 })
-ball_anchor_position_receive = Vector2(20, -111)
-ball_anchor_position_ready = Vector2(-8, -120)
+ball_anchor_position_receive = Vector2(-10, -125)
+ball_anchor_position_ready = Vector2(10, -120)
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"

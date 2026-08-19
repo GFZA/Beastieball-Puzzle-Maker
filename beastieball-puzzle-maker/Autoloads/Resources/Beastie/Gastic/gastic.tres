@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=40 format=3 uid="uid://bmkl8iamlqp4w"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=41 format=3 uid="uid://dyc5gbngybut3"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_2t786"]
 [ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Autoloads/Resources/Trait/trait.gd" id="2_ccr71"]
@@ -37,6 +37,7 @@
 [ext_resource type="Resource" uid="uid://7nsxd3vbne52" path="res://Autoloads/Resources/Plays/Support/exhaust.tres" id="26_hu1n3"]
 [ext_resource type="Resource" uid="uid://k5re1ttrcy1f" path="res://Autoloads/Resources/Plays/Support/wink.tres" id="27_fykpb"]
 [ext_resource type="Resource" uid="uid://dlf2eqay3itwo" path="res://Autoloads/Resources/Plays/Attack/Mind/soulcursher.tres" id="28_j8aky"]
+[ext_resource type="Resource" uid="uid://dil8thy3v6p6d" path="res://Autoloads/Resources/Plays/Support/squeeze.tres" id="28_vty2r"]
 [ext_resource type="Resource" uid="uid://kjfbpg4iax4n" path="res://Autoloads/Resources/Plays/Attack/Mind/freezeray.tres" id="29_yxpdl"]
 [ext_resource type="Resource" uid="uid://bpp1fdkheyfi" path="res://Autoloads/Resources/Plays/Defense/stinky.tres" id="30_o52md"]
 
@@ -55,9 +56,9 @@ mind_base_pow = 54
 body_base_def = 77
 spirit_base_def = 18
 mind_base_def = 49
-plays_string_array = Array[String](["hex", "mindfield", "slice", "cornershot", "cover", "refresh", "teleport", "feint", "meditate", "staredown", "jeer", "mark", "hawkeye", "patience", "nerve strike", "shield", "dispel", "heat up", "dreadful mist", "rattle", "gloom", "echo strike", "menace", "exhaust", "wink", "soulcrusher", "freezeray", "stinky"])
+plays_string_array = Array[String](["hex", "mindfield", "slice", "cornershot", "cover", "refresh", "teleport", "feint", "meditate", "staredown", "jeer", "mark", "hawkeye", "patience", "nerve strike", "shield", "dispel", "heat up", "dreadful mist", "rattle", "gloom", "echo strike", "menace", "exhaust", "wink", "squeeze", "soulcrusher", "freezeray", "stinky"])
 traits_string_array = Array[String](["intangible"])
-possible_plays = Array[ExtResource("1_2t786")]([ExtResource("3_pj4bd"), ExtResource("4_vty2r"), ExtResource("5_xwpu0"), ExtResource("6_ewdeu"), ExtResource("7_2bvad"), ExtResource("8_waurn"), ExtResource("9_doqda"), ExtResource("10_0nvdu"), ExtResource("11_fhgxi"), ExtResource("12_h3rst"), ExtResource("13_nit23"), ExtResource("14_ygnce"), ExtResource("15_2eqo1"), ExtResource("16_j01k8"), ExtResource("17_ohnkf"), ExtResource("18_28tmi"), ExtResource("19_p6n1d"), ExtResource("20_3k7jy"), ExtResource("21_py0i4"), ExtResource("22_0oi40"), ExtResource("23_nxf8b"), ExtResource("24_r87ru"), ExtResource("25_syehe"), ExtResource("26_hu1n3"), ExtResource("27_fykpb"), ExtResource("28_j8aky"), ExtResource("29_yxpdl"), ExtResource("30_o52md")])
+possible_plays = Array[ExtResource("1_2t786")]([ExtResource("3_pj4bd"), ExtResource("4_vty2r"), ExtResource("5_xwpu0"), ExtResource("6_ewdeu"), ExtResource("7_2bvad"), ExtResource("8_waurn"), ExtResource("9_doqda"), ExtResource("10_0nvdu"), ExtResource("11_fhgxi"), ExtResource("12_h3rst"), ExtResource("13_nit23"), ExtResource("14_ygnce"), ExtResource("15_2eqo1"), ExtResource("16_j01k8"), ExtResource("17_ohnkf"), ExtResource("18_28tmi"), ExtResource("19_p6n1d"), ExtResource("20_3k7jy"), ExtResource("21_py0i4"), ExtResource("22_0oi40"), ExtResource("23_nxf8b"), ExtResource("24_r87ru"), ExtResource("25_syehe"), ExtResource("26_hu1n3"), ExtResource("27_fykpb"), ExtResource("28_vty2r"), ExtResource("28_j8aky"), ExtResource("29_yxpdl"), ExtResource("30_o52md")])
 possible_traits = Array[ExtResource("2_ccr71")]([ExtResource("2_fuqqy")])
 sprites = Dictionary[int, Texture2D]({
 0: ExtResource("5_e81qr"),

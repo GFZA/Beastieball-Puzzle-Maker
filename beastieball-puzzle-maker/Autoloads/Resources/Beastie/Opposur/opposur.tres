@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=44 format=3 uid="uid://b84siq1aguln4"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=45 format=3 uid="uid://ut8nk5xaqgw1"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_gkqgm"]
 [ext_resource type="Resource" uid="uid://bvgjvdprgnnln" path="res://Autoloads/Resources/Trait/hardy.tres" id="2_5vbmt"]
@@ -42,6 +42,7 @@
 [ext_resource type="Resource" uid="uid://bosg46t132k5k" path="res://Autoloads/Resources/Plays/Attack/Spirit/raw_fury.tres" id="31_mr5a5"]
 [ext_resource type="Resource" uid="uid://bgre5116472ag" path="res://Autoloads/Resources/Plays/Defense/wall.tres" id="32_ahsnt"]
 [ext_resource type="Resource" uid="uid://c4u3rhcdxfjxf" path="res://Autoloads/Resources/Plays/Volley/daring_pass.tres" id="33_o6syx"]
+[ext_resource type="Resource" uid="uid://0sq8xboac1gg" path="res://Autoloads/Resources/Plays/Attack/Body/kick.tres" id="34_1jn2b"]
 [ext_resource type="Resource" uid="uid://c4xoy408yls7v" path="res://Autoloads/Resources/Trait/competitive.tres" id="35_xjyul"]
 
 [resource]
@@ -58,9 +59,9 @@ mind_base_pow = 25
 body_base_def = 90
 spirit_base_def = 75
 mind_base_def = 60
-plays_string_array = Array[String](["basic hit", "zinger", "finisher", "muscle memory", "thump", "relentless", "comeback", "grit", "challenge", "counter", "contest", "net rush", "dig", "tough front", "jeer", "provoke", "steal", "stinky", "intimidate", "staredown", "mighty yell", "shield", "exhaust", "flex", "toppler", "pump up", "shake off", "vigor beam", "raw fury", "wall", "daring pass"])
+plays_string_array = Array[String](["basic hit", "zinger", "finisher", "muscle memory", "thump", "relentless", "comeback", "grit", "challenge", "counter", "contest", "net rush", "dig", "tough front", "jeer", "provoke", "steal", "stinky", "intimidate", "staredown", "mighty yell", "shield", "exhaust", "flex", "toppler", "pump up", "shake off", "vigor beam", "raw fury", "wall", "daring pass", "kick"])
 traits_string_array = Array[String](["hardy", "competitive"])
-possible_plays = Array[ExtResource("1_gkqgm")]([ExtResource("3_ttahv"), ExtResource("4_1jn2b"), ExtResource("5_17r8v"), ExtResource("6_bmy1o"), ExtResource("7_66qor"), ExtResource("8_0i4r6"), ExtResource("9_o8iij"), ExtResource("10_4rl4u"), ExtResource("11_k62tl"), ExtResource("12_bn2y3"), ExtResource("13_4cvwu"), ExtResource("14_w8k8g"), ExtResource("18_0i4r6"), ExtResource("23_4cvwu"), ExtResource("17_4ns6b"), ExtResource("18_f32yc"), ExtResource("19_co4ob"), ExtResource("20_vsriy"), ExtResource("21_ibxcy"), ExtResource("22_7rsla"), ExtResource("23_du75b"), ExtResource("8_asemp"), ExtResource("21_k62tl"), ExtResource("26_b56uh"), ExtResource("5_ci1fx"), ExtResource("28_1jtjd"), ExtResource("29_o37je"), ExtResource("30_2iw46"), ExtResource("31_mr5a5"), ExtResource("32_ahsnt"), ExtResource("33_o6syx")])
+possible_plays = Array[ExtResource("1_gkqgm")]([ExtResource("3_ttahv"), ExtResource("4_1jn2b"), ExtResource("5_17r8v"), ExtResource("6_bmy1o"), ExtResource("7_66qor"), ExtResource("8_0i4r6"), ExtResource("9_o8iij"), ExtResource("10_4rl4u"), ExtResource("11_k62tl"), ExtResource("12_bn2y3"), ExtResource("13_4cvwu"), ExtResource("14_w8k8g"), ExtResource("18_0i4r6"), ExtResource("23_4cvwu"), ExtResource("17_4ns6b"), ExtResource("18_f32yc"), ExtResource("19_co4ob"), ExtResource("20_vsriy"), ExtResource("21_ibxcy"), ExtResource("22_7rsla"), ExtResource("23_du75b"), ExtResource("8_asemp"), ExtResource("21_k62tl"), ExtResource("26_b56uh"), ExtResource("5_ci1fx"), ExtResource("28_1jtjd"), ExtResource("29_o37je"), ExtResource("30_2iw46"), ExtResource("31_mr5a5"), ExtResource("32_ahsnt"), ExtResource("33_o6syx"), ExtResource("34_1jn2b")])
 possible_traits = Array[ExtResource("3_22yyu")]([ExtResource("2_5vbmt"), ExtResource("35_xjyul")])
 sprites = Dictionary[int, Texture2D]({
 0: ExtResource("20_eqji7"),
@@ -71,7 +72,6 @@ sprites = Dictionary[int, Texture2D]({
 5: ExtResource("25_vaj53"),
 6: ExtResource("20_6adcs")
 })
-x_offset = 120
-ball_anchor_position_receive = Vector2(68, -103)
-ball_anchor_position_ready = Vector2(95, -150)
+ball_anchor_position_receive = Vector2(60, -105)
+ball_anchor_position_ready = Vector2(105, -120)
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=35 format=3 uid="uid://d07by7srpvdge"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=36 format=3 uid="uid://c7iarbo2op6od"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_jq3qg"]
 [ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Autoloads/Resources/Trait/trait.gd" id="2_lpd62"]
@@ -31,6 +31,7 @@
 [ext_resource type="Resource" uid="uid://c5oyp7e74r3pd" path="res://Autoloads/Resources/Plays/Support/shake_off.tres" id="20_o0mbk"]
 [ext_resource type="Resource" uid="uid://debgas20rcwyv" path="res://Autoloads/Resources/Plays/Attack/Mind/ricochet.tres" id="21_1ow4q"]
 [ext_resource type="Resource" uid="uid://bppf7bt0r5lgi" path="res://Autoloads/Resources/Plays/Attack/Mind/twist.tres" id="22_wln1y"]
+[ext_resource type="Resource" uid="uid://0sq8xboac1gg" path="res://Autoloads/Resources/Plays/Attack/Body/kick.tres" id="23_5adj6"]
 [ext_resource type="Resource" uid="uid://c06r6f0oeahst" path="res://Autoloads/Resources/Plays/Support/whistle.tres" id="23_6thit"]
 [ext_resource type="Resource" uid="uid://yfcjvgfsjpop" path="res://Autoloads/Resources/Plays/Attack/Mind/trickspin.tres" id="24_g7y0d"]
 [ext_resource type="Resource" uid="uid://cgwm83dhfv78y" path="res://Autoloads/Resources/Trait/plucky.tres" id="26_e2hia"]
@@ -49,9 +50,9 @@ spirit_base_pow = 20
 mind_base_pow = 70
 body_base_def = 30
 spirit_base_def = 70
-plays_string_array = Array[String](["bounce", "rainbow", "juggle", "reach shot", "relaxed hit", "sidewinder", "slice", "cornershot", "zigzag", "confident pass", "set", "cheer", "exhaust", "stinky", "muscle memory", "shield", "trait dance", "shake off", "ricochet", "twist", "whistle", "trickspin"])
+plays_string_array = Array[String](["bounce", "rainbow", "juggle", "reach shot", "relaxed hit", "sidewinder", "slice", "cornershot", "zigzag", "confident pass", "set", "cheer", "exhaust", "stinky", "muscle memory", "shield", "trait dance", "shake off", "ricochet", "twist", "kick", "whistle", "trickspin"])
 traits_string_array = Array[String](["goofy", "plucky"])
-possible_plays = Array[ExtResource("1_jq3qg")]([ExtResource("3_kjjgw"), ExtResource("4_5adj6"), ExtResource("5_sm6ff"), ExtResource("6_ex5tn"), ExtResource("7_2s036"), ExtResource("8_dukfm"), ExtResource("9_6ch3f"), ExtResource("10_16tnw"), ExtResource("11_s34wk"), ExtResource("12_qybnf"), ExtResource("13_plmtn"), ExtResource("14_gbtr7"), ExtResource("15_8yb1j"), ExtResource("16_vva2r"), ExtResource("17_maxgy"), ExtResource("18_cf6ec"), ExtResource("19_voq75"), ExtResource("20_o0mbk"), ExtResource("21_1ow4q"), ExtResource("22_wln1y"), ExtResource("23_6thit"), ExtResource("24_g7y0d")])
+possible_plays = Array[ExtResource("1_jq3qg")]([ExtResource("3_kjjgw"), ExtResource("4_5adj6"), ExtResource("5_sm6ff"), ExtResource("6_ex5tn"), ExtResource("7_2s036"), ExtResource("8_dukfm"), ExtResource("9_6ch3f"), ExtResource("10_16tnw"), ExtResource("11_s34wk"), ExtResource("12_qybnf"), ExtResource("13_plmtn"), ExtResource("14_gbtr7"), ExtResource("15_8yb1j"), ExtResource("16_vva2r"), ExtResource("17_maxgy"), ExtResource("18_cf6ec"), ExtResource("19_voq75"), ExtResource("20_o0mbk"), ExtResource("21_1ow4q"), ExtResource("22_wln1y"), ExtResource("23_5adj6"), ExtResource("23_6thit"), ExtResource("24_g7y0d")])
 possible_traits = Array[ExtResource("2_lpd62")]([ExtResource("2_oarkc"), ExtResource("26_e2hia")])
 sprites = Dictionary[int, Texture2D]({
 0: ExtResource("5_o334c"),

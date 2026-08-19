@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=37 format=3 uid="uid://dfikvsqxfdqa8"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=39 format=3 uid="uid://cphd42w46kqgb"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_nrti3"]
 [ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Autoloads/Resources/Trait/trait.gd" id="2_on4qm"]
@@ -27,14 +27,16 @@
 [ext_resource type="Resource" uid="uid://ccjlfthgm3ed2" path="res://Autoloads/Resources/Plays/Support/jeer.tres" id="17_r0qwe"]
 [ext_resource type="Texture2D" uid="uid://c2a7ag6awowom" path="res://Autoloads/Resources/Beastie/Gremlur/gremlur_bad.png" id="18_cmokg"]
 [ext_resource type="Resource" uid="uid://ymdvl6wdoqws" path="res://Autoloads/Resources/Plays/Defense/hawkeye.tres" id="18_wivmx"]
-[ext_resource type="Resource" uid="uid://6n8gisa23e7k" path="res://Autoloads/Resources/Plays/Support/nettle.tres" id="19_ixqbr"]
 [ext_resource type="Resource" uid="uid://cj4h5a26hgmdy" path="res://Autoloads/Resources/Plays/Support/lay_trap.tres" id="20_2kets"]
 [ext_resource type="Resource" uid="uid://ckdulp53r6xbu" path="res://Autoloads/Resources/Plays/Defense/frazzle.tres" id="21_sfvxi"]
 [ext_resource type="Resource" uid="uid://dwttgu43t4rc1" path="res://Autoloads/Resources/Plays/Support/steal.tres" id="22_eqdme"]
 [ext_resource type="Resource" uid="uid://pwfmxe4epkih" path="res://Autoloads/Resources/Plays/Support/dreadful_mist.tres" id="23_5apta"]
 [ext_resource type="Resource" uid="uid://6ch2rjd133ye" path="res://Autoloads/Resources/Plays/Defense/fall_back.tres" id="24_lmphp"]
+[ext_resource type="Resource" uid="uid://6r67rgid0m3e" path="res://Autoloads/Resources/Plays/Support/catwalk.tres" id="25_00qpm"]
 [ext_resource type="Resource" uid="uid://bycxj0vtn5bss" path="res://Autoloads/Resources/Plays/Attack/Mind/stinger.tres" id="25_1gibo"]
+[ext_resource type="Resource" uid="uid://c6otckj1e4rrf" path="res://Autoloads/Resources/Plays/Support/reign.tres" id="26_7dxlp"]
 [ext_resource type="Resource" uid="uid://b0tl6818qr6w5" path="res://Autoloads/Resources/Plays/Support/copycat.tres" id="26_pfqam"]
+[ext_resource type="Resource" uid="uid://c2f1ss5xarihg" path="res://Autoloads/Resources/Plays/Support/goo_goo_eyes.tres" id="27_unnxu"]
 [ext_resource type="Resource" uid="uid://n4w6lchkbmaq" path="res://Autoloads/Resources/Trait/adaptation.tres" id="28_5hrqn"]
 
 [resource]
@@ -47,13 +49,13 @@ beastiepedia_id = 89
 bar_color = Color(0.64705884, 0.44313726, 1, 1)
 body_base_pow = 55
 spirit_base_pow = 50
-mind_base_pow = 90
-body_base_def = 70
-spirit_base_def = 80
-mind_base_def = 45
-plays_string_array = Array[String](["mindfield", "shield", "cover", "tool", "rainbow", "floater", "heartbreaker", "trickspin", "slice", "forward pass", "call out", "deep breath", "provoke", "lock target", "jeer", "hawkeye", "nettle", "lay trap", "frazzle", "steal", "dreadful mist", "fall back", "stinger", "copycat"])
+mind_base_pow = 81
+body_base_def = 45
+spirit_base_def = 70
+mind_base_def = 89
+plays_string_array = Array[String](["mindfield", "shield", "cover", "tool", "rainbow", "floater", "heartbreaker", "trickspin", "slice", "forward pass", "call out", "deep breath", "provoke", "lock target", "jeer", "hawkeye", "lay trap", "frazzle", "steal", "dreadful mist", "fall back", "stinger", "catwalk", "reign", "goo-goo eyes", "copycat"])
 traits_string_array = Array[String](["slippery", "adaptation"])
-possible_plays = Array[ExtResource("1_nrti3")]([ExtResource("3_eiyrt"), ExtResource("8_unnxu"), ExtResource("5_4r40b"), ExtResource("6_00qpm"), ExtResource("7_7dxlp"), ExtResource("8_gc0nd"), ExtResource("9_k3ujp"), ExtResource("10_8y7wa"), ExtResource("11_tawor"), ExtResource("13_f0o7d"), ExtResource("4_eiyrt"), ExtResource("14_f0o7d"), ExtResource("15_675wl"), ExtResource("16_h8kx6"), ExtResource("17_r0qwe"), ExtResource("18_wivmx"), ExtResource("19_ixqbr"), ExtResource("20_2kets"), ExtResource("21_sfvxi"), ExtResource("22_eqdme"), ExtResource("23_5apta"), ExtResource("24_lmphp"), ExtResource("25_1gibo"), ExtResource("26_pfqam")])
+possible_plays = Array[ExtResource("1_nrti3")]([ExtResource("3_eiyrt"), ExtResource("8_unnxu"), ExtResource("5_4r40b"), ExtResource("6_00qpm"), ExtResource("7_7dxlp"), ExtResource("8_gc0nd"), ExtResource("9_k3ujp"), ExtResource("10_8y7wa"), ExtResource("11_tawor"), ExtResource("13_f0o7d"), ExtResource("4_eiyrt"), ExtResource("14_f0o7d"), ExtResource("15_675wl"), ExtResource("16_h8kx6"), ExtResource("17_r0qwe"), ExtResource("18_wivmx"), ExtResource("20_2kets"), ExtResource("21_sfvxi"), ExtResource("22_eqdme"), ExtResource("23_5apta"), ExtResource("24_lmphp"), ExtResource("25_1gibo"), ExtResource("25_00qpm"), ExtResource("26_7dxlp"), ExtResource("27_unnxu"), ExtResource("26_pfqam")])
 possible_traits = Array[ExtResource("2_on4qm")]([ExtResource("2_xd0ft"), ExtResource("28_5hrqn")])
 sprites = Dictionary[int, Texture2D]({
 0: ExtResource("13_pgm4p"),
@@ -65,6 +67,6 @@ sprites = Dictionary[int, Texture2D]({
 6: ExtResource("13_5dj70")
 })
 y_offset = -15
-ball_anchor_position_receive = Vector2(16, -68)
-ball_anchor_position_ready = Vector2(40, -106)
+ball_anchor_position_receive = Vector2(70, -70)
+ball_anchor_position_ready = Vector2(15, -85)
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=45 format=3 uid="uid://de6mici03qr3g"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=45 format=3 uid="uid://bkyiikcfh468w"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_fo56u"]
 [ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Autoloads/Resources/Trait/trait.gd" id="2_73rju"]
@@ -59,7 +59,7 @@ mind_base_pow = 95
 body_base_def = 30
 spirit_base_def = 90
 mind_base_def = 75
-plays_string_array = Array[String](["grit", "comeback", "tough front", "perfect shot", "burnout", "overthink", "hunker", "daring pass", "blaze", "shield", "heart harden", "raw fury", "dramatic exit", "frazzle", "provoke", "chill out", "nerve strike", "heat up", "dreadful mist", "ego blast", "splinter", "rattle", "cold calculation", "gloom", "soliloquy", "echo strike", "exhaust", "chant", "practice shot", "rally", "scream", "passion strike"])
+plays_string_array = Array[String](["grit", "comeback", "tough front", "perfect shot", "explosive spirit", "overthink", "hunker", "daring pass", "blaze", "shield", "heart harden", "raw fury", "dramatic exit", "frazzle", "provoke", "chill out", "nerve strike", "heat up", "dreadful mist", "ego blast", "splinter", "rattle", "cold calculation", "gloom", "soliloquy", "echo strike", "exhaust", "chant", "practice shot", "rally", "scream", "passion strike"])
 traits_string_array = Array[String](["stirring", "stagecraft"])
 possible_plays = Array[ExtResource("1_fo56u")]([ExtResource("3_yxwjv"), ExtResource("4_k3j4q"), ExtResource("23_i8ei2"), ExtResource("6_qg7y4"), ExtResource("7_11e1k"), ExtResource("8_wkrlq"), ExtResource("22_dilmh"), ExtResource("10_n56t8"), ExtResource("11_i821j"), ExtResource("8_g8y6k"), ExtResource("13_3l67b"), ExtResource("14_cfmue"), ExtResource("15_e07d2"), ExtResource("16_dilmh"), ExtResource("17_i8ei2"), ExtResource("20_cfmue"), ExtResource("19_b1j58"), ExtResource("24_b1j58"), ExtResource("21_uua5i"), ExtResource("22_u23ft"), ExtResource("23_ubsek"), ExtResource("24_m1fba"), ExtResource("25_ivrcr"), ExtResource("26_5ey2a"), ExtResource("27_5bpb2"), ExtResource("28_0uxma"), ExtResource("21_e07d2"), ExtResource("30_h72x1"), ExtResource("31_r8pis"), ExtResource("32_o7168"), ExtResource("33_6w4m5"), ExtResource("34_gp3hb")])
 possible_traits = Array[ExtResource("2_73rju")]([ExtResource("2_437uw"), ExtResource("36_whtbu")])

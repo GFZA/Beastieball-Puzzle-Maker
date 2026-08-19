@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=34 format=3 uid="uid://d11wyenscpok6"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=34 format=3 uid="uid://cge58vtaxluc1"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_1qsh0"]
 [ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Autoloads/Resources/Trait/trait.gd" id="2_qk1ho"]
@@ -49,7 +49,7 @@ mind_base_pow = 30
 body_base_def = 20
 spirit_base_def = 72
 mind_base_def = 35
-plays_string_array = Array[String](["flight", "airblast", "whoosh", "bring the heat", "desperate force", "burnout", "net rush", "daring pass", "reposition", "quick tag", "clear field", "blaze", "shield", "cyclone", "cover", "fall back", "role reverse", "tornadoball", "dramatic exit", "swarm", "beginner effort"])
+plays_string_array = Array[String](["flight", "airblast", "whoosh", "bring the heat", "desperate force", "explosive spirit", "net rush", "daring pass", "reposition", "quick tag", "clear field", "blaze", "shield", "cyclone", "cover", "fall back", "role reverse", "tornadoball", "dramatic exit", "swarm", "beginner effort"])
 traits_string_array = Array[String](["maverick", "flitting"])
 possible_plays = Array[ExtResource("1_1qsh0")]([ExtResource("3_fh0gm"), ExtResource("4_lomau"), ExtResource("5_kitnw"), ExtResource("6_mtehs"), ExtResource("7_2300c"), ExtResource("8_dqmrc"), ExtResource("9_y3lti"), ExtResource("10_48hh8"), ExtResource("11_x22hb"), ExtResource("12_4d6y0"), ExtResource("13_3s4o0"), ExtResource("14_ror2n"), ExtResource("15_1v5b8"), ExtResource("16_h2m65"), ExtResource("17_uw6bh"), ExtResource("18_7hr0i"), ExtResource("19_6pxv2"), ExtResource("20_8n1wg"), ExtResource("21_07gcm"), ExtResource("22_c8v3a"), ExtResource("23_an5d4")])
 possible_traits = Array[ExtResource("2_qk1ho")]([ExtResource("2_spm7b"), ExtResource("25_4osws")])

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=40 format=3 uid="uid://b7idjwx4cjads"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=41 format=3 uid="uid://1mrs4ln4lkd4"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_rsqbk"]
 [ext_resource type="Resource" uid="uid://cmn6g83u8ugot" path="res://Autoloads/Resources/Trait/foggy.tres" id="2_f5tyd"]
@@ -30,6 +30,7 @@
 [ext_resource type="Resource" uid="uid://tc6ag84sawpl" path="res://Autoloads/Resources/Plays/Support/tough_front.tres" id="26_lsr5j"]
 [ext_resource type="Resource" uid="uid://pq5ehf531if5" path="res://Autoloads/Resources/Plays/Attack/Spirit/cook.tres" id="27_4o8xy"]
 [ext_resource type="Resource" uid="uid://coljoc6wslna8" path="res://Autoloads/Resources/Plays/Support/hum.tres" id="28_dt18u"]
+[ext_resource type="Resource" uid="uid://hj1hq6pbb4rp" path="res://Autoloads/Resources/Plays/Attack/Spirit/burnout.tres" id="29_1k7fw"]
 [ext_resource type="Resource" uid="uid://c6otckj1e4rrf" path="res://Autoloads/Resources/Plays/Support/reign.tres" id="29_yms3n"]
 [ext_resource type="Resource" uid="uid://begyrimwcifje" path="res://Autoloads/Resources/Trait/sauna.tres" id="31_0rasu"]
 [ext_resource type="Texture2D" uid="uid://6252y727lkwl" path="res://Autoloads/Resources/Beastie/Scauldra/icon_scauldra.png" id="33_fiyek"]
@@ -54,9 +55,9 @@ mind_base_pow = 65
 body_base_def = 99
 spirit_base_def = 120
 mind_base_def = 65
-plays_string_array = Array[String](["heat up", "steamer", "relentless", "bring the heat", "eruption", "burnout", "challenge", "floater", "pressure", "excited pass", "pipe", "updraft", "blaze", "whistle", "hunker", "tough front", "exhaust", "patience", "intimidate", "shield", "clear field", "spitball", "dreadful mist", "heat wave", "cook", "hum", "reign"])
+plays_string_array = Array[String](["heat up", "steamer", "relentless", "bring the heat", "eruption", "explosive spirit", "challenge", "floater", "pressure", "excited pass", "pipe", "updraft", "blaze", "whistle", "hunker", "tough front", "exhaust", "patience", "intimidate", "shield", "clear field", "spitball", "dreadful mist", "heat wave", "cook", "hum", "burnout", "reign"])
 traits_string_array = Array[String](["foggy", "sauna"])
-possible_plays = Array[ExtResource("1_rsqbk")]([ExtResource("6_ct1qq"), ExtResource("4_1k7fw"), ExtResource("5_ct1qq"), ExtResource("6_2ma44"), ExtResource("7_i48vh"), ExtResource("8_sm3w5"), ExtResource("9_pe5f5"), ExtResource("10_i4jp4"), ExtResource("11_ucf2d"), ExtResource("12_57eok"), ExtResource("9_sm3w5"), ExtResource("14_ga7u1"), ExtResource("15_wdl5p"), ExtResource("16_1ukgy"), ExtResource("25_0rasu"), ExtResource("26_lsr5j"), ExtResource("4_ln4c0"), ExtResource("20_qs4m8"), ExtResource("21_ysl6f"), ExtResource("7_2ma44"), ExtResource("12_ucf2d"), ExtResource("24_jb6kt"), ExtResource("25_ftvmx"), ExtResource("26_gpfvk"), ExtResource("27_4o8xy"), ExtResource("28_dt18u"), ExtResource("29_yms3n")])
+possible_plays = Array[ExtResource("1_rsqbk")]([ExtResource("6_ct1qq"), ExtResource("4_1k7fw"), ExtResource("5_ct1qq"), ExtResource("6_2ma44"), ExtResource("7_i48vh"), ExtResource("8_sm3w5"), ExtResource("9_pe5f5"), ExtResource("10_i4jp4"), ExtResource("11_ucf2d"), ExtResource("12_57eok"), ExtResource("9_sm3w5"), ExtResource("14_ga7u1"), ExtResource("15_wdl5p"), ExtResource("16_1ukgy"), ExtResource("25_0rasu"), ExtResource("26_lsr5j"), ExtResource("4_ln4c0"), ExtResource("20_qs4m8"), ExtResource("21_ysl6f"), ExtResource("7_2ma44"), ExtResource("12_ucf2d"), ExtResource("24_jb6kt"), ExtResource("25_ftvmx"), ExtResource("26_gpfvk"), ExtResource("27_4o8xy"), ExtResource("28_dt18u"), ExtResource("29_1k7fw"), ExtResource("29_yms3n")])
 possible_traits = Array[ExtResource("2_lkm30")]([ExtResource("2_f5tyd"), ExtResource("31_0rasu")])
 sprites = Dictionary[int, Texture2D]({
 0: ExtResource("33_ln4c0"),

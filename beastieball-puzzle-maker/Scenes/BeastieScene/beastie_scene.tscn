@@ -55,7 +55,8 @@ unique_name_in_owner = true
 visible = false
 texture = ExtResource("3_08dks")
 centered = false
-offset = Vector2(-119, -90)
+offset = Vector2(-10, -90)
+flip_h = true
 
 [node name="EditBeastieButton" type="Button" parent="."]
 unique_name_in_owner = true

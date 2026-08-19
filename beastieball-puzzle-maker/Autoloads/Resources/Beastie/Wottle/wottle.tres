@@ -1,12 +1,10 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=38 format=3 uid="uid://bikoxkv8tkxgl"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=39 format=3 uid="uid://dtriofnklfr6w"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_d144n"]
 [ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Autoloads/Resources/Trait/trait.gd" id="2_30rnj"]
 [ext_resource type="Resource" uid="uid://crw7mdnqf8a36" path="res://Autoloads/Resources/Trait/shy.tres" id="2_ukmd4"]
 [ext_resource type="Script" uid="uid://ehabj4qsgxpl" path="res://Autoloads/Resources/Beastie/beastie.gd" id="3_pwot0"]
-[ext_resource type="Resource" uid="uid://b4745hu4puleb" path="res://Autoloads/Resources/Plays/Attack/Spirit/beginner_effort.tres" id="3_slrp4"]
 [ext_resource type="Resource" uid="uid://d1lmi0j5jfehr" path="res://Autoloads/Resources/Plays/Attack/Spirit/tornadoball.tres" id="4_0rubi"]
-[ext_resource type="Resource" uid="uid://bosg46t132k5k" path="res://Autoloads/Resources/Plays/Attack/Spirit/raw_fury.tres" id="5_weijm"]
 [ext_resource type="Resource" uid="uid://bwntvaq8we2ee" path="res://Autoloads/Resources/Plays/Attack/Spirit/careful_shot.tres" id="6_0rubi"]
 [ext_resource type="Resource" uid="uid://b2pc2vt2pjw6t" path="res://Autoloads/Resources/Plays/Attack/Spirit/bring_the_heat.tres" id="6_u5ltw"]
 [ext_resource type="Resource" uid="uid://dytuvbvg3oamq" path="res://Autoloads/Resources/Plays/Defense/shield.tres" id="8_0rubi"]
@@ -32,9 +30,12 @@
 [ext_resource type="Resource" uid="uid://d3avpv87snvri" path="res://Autoloads/Resources/Plays/Defense/gloom.tres" id="23_k43qa"]
 [ext_resource type="Resource" uid="uid://tc6ag84sawpl" path="res://Autoloads/Resources/Plays/Support/tough_front.tres" id="23_wdkwy"]
 [ext_resource type="Resource" uid="uid://dc18vrinfolv4" path="res://Autoloads/Resources/Plays/Defense/fortify.tres" id="24_pa32x"]
+[ext_resource type="Resource" uid="uid://dcn80u35wkpjp" path="res://Autoloads/Resources/Plays/Volley/net_rush.tres" id="25_0rubi"]
 [ext_resource type="Resource" uid="uid://0qwdo32fcu5e" path="res://Autoloads/Resources/Plays/Volley/set.tres" id="25_etjal"]
 [ext_resource type="Resource" uid="uid://dyyf4roekh4n8" path="res://Autoloads/Resources/Plays/Defense/torch_pass.tres" id="25_ui08v"]
 [ext_resource type="Resource" uid="uid://brf1cqjq1gnxc" path="res://Autoloads/Resources/Plays/Volley/cover.tres" id="26_ltv8y"]
+[ext_resource type="Resource" uid="uid://coljoc6wslna8" path="res://Autoloads/Resources/Plays/Support/hum.tres" id="26_weijm"]
+[ext_resource type="Resource" uid="uid://6ch2rjd133ye" path="res://Autoloads/Resources/Plays/Defense/fall_back.tres" id="27_u5ltw"]
 [ext_resource type="Resource" uid="uid://d21rgslrfpvct" path="res://Autoloads/Resources/Plays/Attack/Spirit/flight.tres" id="27_ujnum"]
 [ext_resource type="Resource" uid="uid://bnp4j742y5gua" path="res://Autoloads/Resources/Plays/Defense/dodge_roll.tres" id="28_3r80k"]
 
@@ -52,9 +53,9 @@ mind_base_pow = 60
 body_base_def = 55
 spirit_base_def = 90
 mind_base_def = 112
-plays_string_array = Array[String](["beginner effort", "tornadoball", "raw fury", "bring the heat", "careful shot", "toppler", "patience", "hawkeye", "hunker", "pipe", "forward pass", "tough front", "exhaust", "goo-goo eyes", "mark", "quick tag", "deep breath", "torch pass", "clear field", "shield", "gloom", "fortify", "set", "cover", "flight", "dodge roll"])
+plays_string_array = Array[String](["tornadoball", "bring the heat", "careful shot", "toppler", "patience", "hawkeye", "pipe", "forward pass", "tough front", "exhaust", "goo-goo eyes", "mark", "quick tag", "deep breath", "torch pass", "clear field", "shield", "gloom", "fortify", "set", "cover", "flight", "net rush", "hum", "fall back", "hunker", "dodge roll"])
 traits_string_array = Array[String](["shy"])
-possible_plays = Array[ExtResource("1_d144n")]([ExtResource("3_slrp4"), ExtResource("4_0rubi"), ExtResource("5_weijm"), ExtResource("6_u5ltw"), ExtResource("6_0rubi"), ExtResource("15_pa32x"), ExtResource("9_83ea1"), ExtResource("10_xfrrh"), ExtResource("22_3r80k"), ExtResource("19_etjal"), ExtResource("13_xfrrh"), ExtResource("23_wdkwy"), ExtResource("21_ujnum"), ExtResource("16_6b5cq"), ExtResource("11_u5ltw"), ExtResource("18_5vun3"), ExtResource("19_h04sp"), ExtResource("25_ui08v"), ExtResource("9_weijm"), ExtResource("8_0rubi"), ExtResource("23_k43qa"), ExtResource("24_pa32x"), ExtResource("25_etjal"), ExtResource("26_ltv8y"), ExtResource("27_ujnum"), ExtResource("28_3r80k")])
+possible_plays = Array[ExtResource("1_d144n")]([ExtResource("4_0rubi"), ExtResource("6_u5ltw"), ExtResource("6_0rubi"), ExtResource("15_pa32x"), ExtResource("9_83ea1"), ExtResource("10_xfrrh"), ExtResource("19_etjal"), ExtResource("13_xfrrh"), ExtResource("23_wdkwy"), ExtResource("21_ujnum"), ExtResource("16_6b5cq"), ExtResource("11_u5ltw"), ExtResource("18_5vun3"), ExtResource("19_h04sp"), ExtResource("25_ui08v"), ExtResource("9_weijm"), ExtResource("8_0rubi"), ExtResource("23_k43qa"), ExtResource("24_pa32x"), ExtResource("25_etjal"), ExtResource("26_ltv8y"), ExtResource("27_ujnum"), ExtResource("25_0rubi"), ExtResource("26_weijm"), ExtResource("27_u5ltw"), ExtResource("22_3r80k"), ExtResource("28_3r80k")])
 possible_traits = Array[ExtResource("2_30rnj")]([ExtResource("2_ukmd4")])
 sprites = Dictionary[int, Texture2D]({
 0: ExtResource("12_62ocn"),

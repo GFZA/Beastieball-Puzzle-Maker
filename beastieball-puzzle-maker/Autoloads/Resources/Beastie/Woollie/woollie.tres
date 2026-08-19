@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=43 format=3 uid="uid://cd0jw0c8k1gxs"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=43 format=3 uid="uid://bh0auohpsoebr"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_h8tfn"]
 [ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Autoloads/Resources/Trait/trait.gd" id="2_dchmj"]
@@ -58,7 +58,7 @@ mind_base_pow = 21
 body_base_def = 68
 spirit_base_def = 75
 mind_base_def = 42
-plays_string_array = Array[String](["bump", "hawkeye", "dig", "relentless", "desperate force", "counter", "launch", "pepshot", "net rush", "cover", "juggle", "mark", "shield", "quick tag", "energized", "vigor beam", "goo-goo eyes", "whistle", "burnout", "role reverse", "thriller", "dive", "spitball", "steal", "shake off", "thrash", "excited pass", "forward pass", "true strike", "comeback"])
+plays_string_array = Array[String](["bump", "hawkeye", "dig", "relentless", "desperate force", "counter", "launch", "pepshot", "net rush", "cover", "juggle", "mark", "shield", "quick tag", "energized", "vigor beam", "goo-goo eyes", "whistle", "explosive spirit", "role reverse", "thriller", "dive", "spitball", "steal", "shake off", "thrash", "excited pass", "forward pass", "true strike", "comeback"])
 traits_string_array = Array[String](["fetch", "watchtower"])
 possible_plays = Array[ExtResource("1_h8tfn")]([ExtResource("3_8gvyy"), ExtResource("4_3th2m"), ExtResource("5_0dm3m"), ExtResource("6_ybg3m"), ExtResource("7_acwd5"), ExtResource("8_rbb4o"), ExtResource("9_rxjq8"), ExtResource("10_tq7xy"), ExtResource("11_qpom1"), ExtResource("12_3nqdj"), ExtResource("13_0nnvt"), ExtResource("14_qxg75"), ExtResource("15_4y0uw"), ExtResource("16_dyb37"), ExtResource("17_cxs6n"), ExtResource("18_584es"), ExtResource("19_67pjr"), ExtResource("20_v6tva"), ExtResource("21_xfl7n"), ExtResource("22_4o324"), ExtResource("23_0kbiu"), ExtResource("24_3m8lx"), ExtResource("25_hqaiu"), ExtResource("26_bwyw4"), ExtResource("27_k8mnb"), ExtResource("28_1kxpq"), ExtResource("29_3t5mv"), ExtResource("30_a71op"), ExtResource("31_bfxgd"), ExtResource("32_85ll5")])
 possible_traits = Array[ExtResource("2_dchmj")]([ExtResource("2_dyvpn"), ExtResource("34_2e8o2")])

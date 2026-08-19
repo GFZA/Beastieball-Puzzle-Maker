@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=47 format=3 uid="uid://c257xy8sa0l1"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=48 format=3 uid="uid://d1nnf3mbjuqlm"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_h4dkf"]
 [ext_resource type="Resource" uid="uid://dbu2peue0jfdg" path="res://Autoloads/Resources/Trait/jet.tres" id="2_6b3hr"]
@@ -39,6 +39,7 @@
 [ext_resource type="Resource" uid="uid://dytuvbvg3oamq" path="res://Autoloads/Resources/Plays/Defense/shield.tres" id="35_exumv"]
 [ext_resource type="Resource" uid="uid://d21rgslrfpvct" path="res://Autoloads/Resources/Plays/Attack/Spirit/flight.tres" id="36_622wp"]
 [ext_resource type="Resource" uid="uid://ld2lhvgalfff" path="res://Autoloads/Resources/Plays/Attack/Spirit/swarm.tres" id="37_5mbgy"]
+[ext_resource type="Resource" uid="uid://c3kirypamwatq" path="res://Autoloads/Resources/Trait/momentum.tres" id="39_rgle1"]
 [ext_resource type="Texture2D" uid="uid://i73kgxwvwuvo" path="res://Autoloads/Resources/Beastie/Blitzwift/icon_blitzwift.png" id="40_ih1la"]
 [ext_resource type="Texture2D" uid="uid://da6a7q2lqimtm" path="res://Autoloads/Resources/Beastie/Blitzwift/blitzwift_idle.png" id="40_rq3bi"]
 [ext_resource type="Texture2D" uid="uid://bij6xxvp1s2nx" path="res://Autoloads/Resources/Beastie/Blitzwift/blitzwift_ready.png" id="41_rgle1"]
@@ -62,9 +63,9 @@ body_base_def = 62
 spirit_base_def = 82
 mind_base_def = 47
 plays_string_array = Array[String](["basic hit", "energized", "bump", "finisher", "rocket", "dive", "high slam", "spike", "launch", "jammer", "counter", "thriller", "net rush", "cover", "refresh", "updraft", "confident pass", "feint", "pump up", "whistle", "whoosh", "mark", "teleport", "reposition", "hawkeye", "role reverse", "high five", "distraction", "shield", "quick set", "quick tag", "fall back", "slide", "flight", "swarm"])
-traits_string_array = Array[String](["jet"])
+traits_string_array = Array[String](["jet", "momentum"])
 possible_plays = Array[ExtResource("1_h4dkf")]([ExtResource("3_rgle1"), ExtResource("4_apcjy"), ExtResource("5_pdpxs"), ExtResource("6_elm6r"), ExtResource("7_5fuao"), ExtResource("8_rrcee"), ExtResource("9_eb133"), ExtResource("10_jd4o5"), ExtResource("11_nyg76"), ExtResource("12_c6ij8"), ExtResource("13_ncw4h"), ExtResource("14_774fn"), ExtResource("15_teb4m"), ExtResource("16_2ha6p"), ExtResource("27_xnwab"), ExtResource("18_bo2xo"), ExtResource("19_1kw8b"), ExtResource("20_44m85"), ExtResource("21_pq3d6"), ExtResource("22_kgav2"), ExtResource("23_63a3r"), ExtResource("29_nhxcv"), ExtResource("25_i3yux"), ExtResource("26_xnwab"), ExtResource("27_b6e2q"), ExtResource("28_nhxcv"), ExtResource("29_yrybf"), ExtResource("30_qa660"), ExtResource("35_exumv"), ExtResource("32_1fix8"), ExtResource("33_l0apw"), ExtResource("34_jy220"), ExtResource("35_4xfbw"), ExtResource("36_622wp"), ExtResource("37_5mbgy")])
-possible_traits = Array[ExtResource("2_as5ux")]([ExtResource("2_6b3hr")])
+possible_traits = Array[ExtResource("2_as5ux")]([ExtResource("2_6b3hr"), ExtResource("39_rgle1")])
 sprites = Dictionary[int, Texture2D]({
 0: ExtResource("40_rq3bi"),
 1: ExtResource("41_rgle1"),

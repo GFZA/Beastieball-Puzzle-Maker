@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=41 format=3 uid="uid://cgcarjuriroty"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=43 format=3 uid="uid://dh0ky06j0ts2j"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_nkjwc"]
 [ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Autoloads/Resources/Trait/trait.gd" id="2_lqjov"]
@@ -39,7 +39,9 @@
 [ext_resource type="Resource" uid="uid://6ch2rjd133ye" path="res://Autoloads/Resources/Plays/Defense/fall_back.tres" id="28_3qivl"]
 [ext_resource type="Resource" uid="uid://bgre5116472ag" path="res://Autoloads/Resources/Plays/Defense/wall.tres" id="29_7rjqr"]
 [ext_resource type="Resource" uid="uid://b16cm60af08dh" path="res://Autoloads/Resources/Plays/Defense/inspiring_defense.tres" id="30_8ce3e"]
+[ext_resource type="Resource" uid="uid://bnpdn0rdkbf2d" path="res://Autoloads/Resources/Plays/Support/stretch.tres" id="30_76oim"]
 [ext_resource type="Resource" uid="uid://sap57n0xh527" path="res://Autoloads/Resources/Plays/Attack/Body/shove.tres" id="31_v6br6"]
+[ext_resource type="Resource" uid="uid://6r67rgid0m3e" path="res://Autoloads/Resources/Plays/Support/catwalk.tres" id="31_w6aoh"]
 
 [resource]
 script = ExtResource("3_vafjq")
@@ -56,9 +58,9 @@ mind_base_pow = 29
 body_base_def = 38
 spirit_base_def = 60
 mind_base_def = 21
-plays_string_array = Array[String](["bump", "spike", "net rush", "feint", "hyperspike", "dive", "cut shot", "pepshot", "desperate force", "counter", "cover", "reposition", "distraction", "mark", "role reverse", "high five", "tough front", "blaze", "energized", "launch", "turnabout", "shield", "dramatic exit", "vigor beam", "contest", "fall back", "wall", "inspiring defense", "shove"])
+plays_string_array = Array[String](["bump", "spike", "net rush", "feint", "hyperspike", "dive", "cut shot", "pepshot", "desperate force", "counter", "cover", "reposition", "distraction", "mark", "role reverse", "high five", "tough front", "blaze", "energized", "launch", "turnabout", "shield", "dramatic exit", "vigor beam", "contest", "fall back", "wall", "stretch", "catwalk", "inspiring defense", "shove"])
 traits_string_array = Array[String](["spiker"])
-possible_plays = Array[ExtResource("1_nkjwc")]([ExtResource("3_k48a0"), ExtResource("4_3h5do"), ExtResource("5_76oim"), ExtResource("6_w6aoh"), ExtResource("7_2p2gc"), ExtResource("8_ih8l2"), ExtResource("9_fj5vu"), ExtResource("10_piwaj"), ExtResource("11_2oucf"), ExtResource("12_eou3h"), ExtResource("13_vbqsm"), ExtResource("14_5cs1o"), ExtResource("15_31wa2"), ExtResource("16_3vh6i"), ExtResource("17_nt46r"), ExtResource("18_b080c"), ExtResource("19_ckntv"), ExtResource("20_lqoka"), ExtResource("21_ga0gq"), ExtResource("22_4ok1r"), ExtResource("23_w7rvw"), ExtResource("24_ihvjb"), ExtResource("25_wptqt"), ExtResource("26_17lrd"), ExtResource("27_xv57o"), ExtResource("28_3qivl"), ExtResource("29_7rjqr"), ExtResource("30_8ce3e"), ExtResource("31_v6br6")])
+possible_plays = Array[ExtResource("1_nkjwc")]([ExtResource("3_k48a0"), ExtResource("4_3h5do"), ExtResource("5_76oim"), ExtResource("6_w6aoh"), ExtResource("7_2p2gc"), ExtResource("8_ih8l2"), ExtResource("9_fj5vu"), ExtResource("10_piwaj"), ExtResource("11_2oucf"), ExtResource("12_eou3h"), ExtResource("13_vbqsm"), ExtResource("14_5cs1o"), ExtResource("15_31wa2"), ExtResource("16_3vh6i"), ExtResource("17_nt46r"), ExtResource("18_b080c"), ExtResource("19_ckntv"), ExtResource("20_lqoka"), ExtResource("21_ga0gq"), ExtResource("22_4ok1r"), ExtResource("23_w7rvw"), ExtResource("24_ihvjb"), ExtResource("25_wptqt"), ExtResource("26_17lrd"), ExtResource("27_xv57o"), ExtResource("28_3qivl"), ExtResource("29_7rjqr"), ExtResource("30_76oim"), ExtResource("31_w6aoh"), ExtResource("30_8ce3e"), ExtResource("31_v6br6")])
 possible_traits = Array[ExtResource("2_lqjov")]([ExtResource("2_vafjq")])
 sprites = Dictionary[int, Texture2D]({
 0: ExtResource("5_vv4ks"),

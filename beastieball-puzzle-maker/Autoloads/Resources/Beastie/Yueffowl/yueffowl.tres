@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=34 format=3 uid="uid://b7v27gk4kwlax"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=34 format=3 uid="uid://4jx55ucwm3g0"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_p0sbs"]
 [ext_resource type="Resource" uid="uid://c0st4ysih76wf" path="res://Autoloads/Resources/Trait/tractor_beam.tres" id="2_84kce"]

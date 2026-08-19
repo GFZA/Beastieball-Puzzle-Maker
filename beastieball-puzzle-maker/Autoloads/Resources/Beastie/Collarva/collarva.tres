@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=42 format=3 uid="uid://c1npead8gqsrc"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=42 format=3 uid="uid://dgvy5b6xq7dsq"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_mxtcd"]
 [ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Autoloads/Resources/Trait/trait.gd" id="2_2p0cj"]
@@ -57,7 +57,7 @@ mind_base_pow = 65
 body_base_def = 20
 spirit_base_def = 40
 mind_base_def = 50
-plays_string_array = Array[String](["grit", "comeback", "tough front", "perfect shot", "burnout", "overthink", "hunker", "daring pass", "blaze", "shield", "heart harden", "raw fury", "dramatic exit", "frazzle", "provoke", "chill out", "nerve strike", "heat up", "dreadful mist", "ego blast", "splinter", "rattle", "cold calculation", "gloom", "soliloquy", "echo strike", "exhaust", "chant", "practice shot"])
+plays_string_array = Array[String](["grit", "comeback", "tough front", "perfect shot", "explosive spirit", "overthink", "hunker", "daring pass", "blaze", "shield", "heart harden", "raw fury", "dramatic exit", "frazzle", "provoke", "chill out", "nerve strike", "heat up", "dreadful mist", "ego blast", "splinter", "rattle", "cold calculation", "gloom", "soliloquy", "echo strike", "exhaust", "chant", "practice shot"])
 traits_string_array = Array[String](["stirring", "defiant"])
 possible_plays = Array[ExtResource("1_mxtcd")]([ExtResource("3_6gjxb"), ExtResource("4_swa1p"), ExtResource("5_ihu3v"), ExtResource("6_ei5b1"), ExtResource("7_31bat"), ExtResource("8_x3h6b"), ExtResource("9_uv8kc"), ExtResource("10_lvc5x"), ExtResource("11_ooorc"), ExtResource("12_v3pkn"), ExtResource("13_ht0fk"), ExtResource("14_kgm8n"), ExtResource("15_piacv"), ExtResource("16_fpu3a"), ExtResource("17_x21yn"), ExtResource("18_geaoo"), ExtResource("19_scqip"), ExtResource("20_ab6kl"), ExtResource("21_qrlqc"), ExtResource("22_o2owc"), ExtResource("23_hrsao"), ExtResource("24_yj6r6"), ExtResource("25_dvxx7"), ExtResource("26_mfl1l"), ExtResource("27_drt4y"), ExtResource("28_qr4qe"), ExtResource("29_ke1e7"), ExtResource("30_pqbl6"), ExtResource("31_jk2vc")])
 possible_traits = Array[ExtResource("2_2p0cj")]([ExtResource("2_r5nr7"), ExtResource("33_k1enj")])

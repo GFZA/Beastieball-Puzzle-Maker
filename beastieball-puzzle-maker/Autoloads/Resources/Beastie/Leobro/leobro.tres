@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=40 format=3 uid="uid://c8i55qtptccr6"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=41 format=3 uid="uid://dlxppu3s3se5o"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_sebdf"]
 [ext_resource type="Resource" uid="uid://bdmb5c5v8kcxf" path="res://Autoloads/Resources/Trait/tangled.tres" id="2_4uk8r"]
@@ -38,6 +38,7 @@
 [ext_resource type="Resource" uid="uid://ddqiybh2xkn7p" path="res://Autoloads/Resources/Plays/Attack/Body/slide.tres" id="27_asjai"]
 [ext_resource type="Resource" uid="uid://bgre5116472ag" path="res://Autoloads/Resources/Plays/Defense/wall.tres" id="28_k6x71"]
 [ext_resource type="Resource" uid="uid://dc0b8j0fujpbd" path="res://Autoloads/Resources/Plays/Attack/Body/basic_hit.tres" id="29_irknx"]
+[ext_resource type="Resource" uid="uid://bnpdn0rdkbf2d" path="res://Autoloads/Resources/Plays/Support/stretch.tres" id="29_w0l1q"]
 [ext_resource type="Resource" uid="uid://crahkxm7p7pe7" path="res://Autoloads/Resources/Trait/miracle_play.tres" id="31_qpagp"]
 
 [resource]
@@ -55,9 +56,9 @@ mind_base_pow = 49
 body_base_def = 78
 spirit_base_def = 49
 mind_base_def = 68
-plays_string_array = Array[String](["bump", "relaxed hit", "muscle memory", "dump", "forward pass", "high five", "overpower", "hyperspike", "set", "dig", "quick set", "confident pass", "deep breath", "hawkeye", "body ready", "call out", "meditate", "flex", "tough front", "pump up", "shield", "spitball", "nice shot", "trait dance", "slide", "wall", "basic hit"])
+plays_string_array = Array[String](["bump", "relaxed hit", "muscle memory", "dump", "forward pass", "high five", "overpower", "hyperspike", "set", "dig", "quick set", "confident pass", "deep breath", "hawkeye", "body ready", "call out", "meditate", "flex", "tough front", "pump up", "shield", "spitball", "nice shot", "trait dance", "slide", "wall", "stretch", "basic hit"])
 traits_string_array = Array[String](["tangled", "miracle play"])
-possible_plays = Array[ExtResource("1_sebdf")]([ExtResource("3_fuftm"), ExtResource("4_w0l1q"), ExtResource("5_n2jvw"), ExtResource("6_lox7t"), ExtResource("7_qoar6"), ExtResource("8_hakq1"), ExtResource("9_bpxfo"), ExtResource("10_pqq7h"), ExtResource("11_q5u6f"), ExtResource("12_1jmuu"), ExtResource("13_d8nh6"), ExtResource("14_2n5aj"), ExtResource("15_ic2cu"), ExtResource("16_3irlo"), ExtResource("17_8mqhp"), ExtResource("18_ely5y"), ExtResource("19_24g2j"), ExtResource("20_w751v"), ExtResource("21_384gu"), ExtResource("22_vwpro"), ExtResource("23_x6mvt"), ExtResource("24_kkos3"), ExtResource("25_i5kti"), ExtResource("26_12cl6"), ExtResource("27_asjai"), ExtResource("28_k6x71"), ExtResource("29_irknx")])
+possible_plays = Array[ExtResource("1_sebdf")]([ExtResource("3_fuftm"), ExtResource("4_w0l1q"), ExtResource("5_n2jvw"), ExtResource("6_lox7t"), ExtResource("7_qoar6"), ExtResource("8_hakq1"), ExtResource("9_bpxfo"), ExtResource("10_pqq7h"), ExtResource("11_q5u6f"), ExtResource("12_1jmuu"), ExtResource("13_d8nh6"), ExtResource("14_2n5aj"), ExtResource("15_ic2cu"), ExtResource("16_3irlo"), ExtResource("17_8mqhp"), ExtResource("18_ely5y"), ExtResource("19_24g2j"), ExtResource("20_w751v"), ExtResource("21_384gu"), ExtResource("22_vwpro"), ExtResource("23_x6mvt"), ExtResource("24_kkos3"), ExtResource("25_i5kti"), ExtResource("26_12cl6"), ExtResource("27_asjai"), ExtResource("28_k6x71"), ExtResource("29_w0l1q"), ExtResource("29_irknx")])
 possible_traits = Array[ExtResource("2_d2ug7")]([ExtResource("2_4uk8r"), ExtResource("31_qpagp")])
 sprites = Dictionary[int, Texture2D]({
 0: ExtResource("5_shamw"),

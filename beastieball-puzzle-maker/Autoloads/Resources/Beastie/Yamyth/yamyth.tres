@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=39 format=3 uid="uid://dpemq21cyho75"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=39 format=3 uid="uid://bb2kb7i0hlq08"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_m3n25"]
 [ext_resource type="Resource" uid="uid://ckuv7fcd5f7n" path="res://Autoloads/Resources/Trait/majesty.tres" id="2_bb6h4"]
@@ -53,7 +53,7 @@ mind_base_pow = 20
 body_base_def = 85
 spirit_base_def = 100
 mind_base_def = 64
-plays_string_array = Array[String](["pipe", "flex", "hyperspike", "ultimate attack", "overpower", "breaker", "thump", "boom", "turnabout", "burnout", "supercommit", "exhaust", "stinky", "blaze", "call out", "shield", "body ready", "patience", "grit", "cover", "mark", "rumble", "demolish", "thrash", "wall", "menace", "reign"])
+plays_string_array = Array[String](["pipe", "flex", "hyperspike", "ultimate attack", "overpower", "breaker", "thump", "boom", "turnabout", "explosive spirit", "supercommit", "exhaust", "stinky", "blaze", "call out", "shield", "body ready", "patience", "grit", "cover", "mark", "rumble", "demolish", "thrash", "wall", "menace", "reign"])
 traits_string_array = Array[String](["majesty"])
 possible_plays = Array[ExtResource("1_m3n25")]([ExtResource("22_8m058"), ExtResource("4_f1kon"), ExtResource("5_wiv5i"), ExtResource("6_g1btp"), ExtResource("7_xvobr"), ExtResource("3_f1kon"), ExtResource("9_n371g"), ExtResource("5_g1btp"), ExtResource("11_5h3y2"), ExtResource("12_j3dc8"), ExtResource("13_4cvnv"), ExtResource("9_j3dc8"), ExtResource("15_6arso"), ExtResource("16_k5no6"), ExtResource("23_rkhhp"), ExtResource("7_n371g"), ExtResource("19_3p1u6"), ExtResource("20_ax1c7"), ExtResource("21_kfu2m"), ExtResource("22_i2jkm"), ExtResource("24_cyep6"), ExtResource("24_s4gcr"), ExtResource("15_kfu2m"), ExtResource("26_dtaac"), ExtResource("27_drrni"), ExtResource("28_eln0u"), ExtResource("29_b4ofv")])
 possible_traits = Array[ExtResource("2_nn5kn")]([ExtResource("2_bb6h4")])

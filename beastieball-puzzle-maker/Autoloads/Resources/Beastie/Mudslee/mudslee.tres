@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=38 format=3 uid="uid://ld3jtgaequhy"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=39 format=3 uid="uid://cn357pvs3wigx"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_glg3w"]
 [ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Autoloads/Resources/Trait/trait.gd" id="2_i5pwg"]
@@ -29,6 +29,7 @@
 [ext_resource type="Resource" uid="uid://c5oyp7e74r3pd" path="res://Autoloads/Resources/Plays/Support/shake_off.tres" id="25_i22c7"]
 [ext_resource type="Resource" uid="uid://dytuvbvg3oamq" path="res://Autoloads/Resources/Plays/Defense/shield.tres" id="26_brmg1"]
 [ext_resource type="Resource" uid="uid://k5re1ttrcy1f" path="res://Autoloads/Resources/Plays/Support/wink.tres" id="26_fjpp3"]
+[ext_resource type="Resource" uid="uid://dil8thy3v6p6d" path="res://Autoloads/Resources/Plays/Support/squeeze.tres" id="27_8mcj0"]
 [ext_resource type="Resource" uid="uid://b6dg1opnqbahv" path="res://Autoloads/Resources/Trait/moist.tres" id="29_q75ro"]
 [ext_resource type="Texture2D" uid="uid://dw6cdotfo8884" path="res://Autoloads/Resources/Beastie/Mudslee/icon_mudslee.png" id="31_3c5a4"]
 [ext_resource type="Texture2D" uid="uid://dumc4rkcb32gw" path="res://Autoloads/Resources/Beastie/Mudslee/mudslee_idle.png" id="31_sr2yt"]
@@ -52,9 +53,9 @@ mind_base_pow = 73
 body_base_def = 80
 spirit_base_def = 108
 mind_base_def = 62
-plays_string_array = Array[String](["cornershot", "freezeray", "pressure", "nerve strike", "floater", "refresh", "dig", "forward pass", "pipe", "clear field", "hunker", "patience", "build", "calming aura", "deep breath", "meditate", "exhaust", "shield", "smack", "mighty yell", "spitball", "heat wave", "shake off", "wink", "chill out"])
+plays_string_array = Array[String](["cornershot", "freezeray", "pressure", "nerve strike", "floater", "refresh", "dig", "forward pass", "pipe", "clear field", "hunker", "patience", "build", "calming aura", "deep breath", "meditate", "exhaust", "shield", "smack", "mighty yell", "spitball", "heat wave", "shake off", "wink", "squeeze", "chill out"])
 traits_string_array = Array[String](["chill", "moist"])
-possible_plays = Array[ExtResource("1_glg3w")]([ExtResource("3_8mcj0"), ExtResource("4_cy0it"), ExtResource("5_ivy58"), ExtResource("6_txlgq"), ExtResource("7_aylaf"), ExtResource("5_cy0it"), ExtResource("6_ivy58"), ExtResource("16_8wigi"), ExtResource("17_67td3"), ExtResource("13_eoh30"), ExtResource("11_hdx8m"), ExtResource("14_4i14a"), ExtResource("15_5v7xv"), ExtResource("16_hdx8m"), ExtResource("17_2ad1d"), ExtResource("18_eoh30"), ExtResource("19_fjpp3"), ExtResource("26_brmg1"), ExtResource("21_8mwl0"), ExtResource("22_yxd2x"), ExtResource("23_8wigi"), ExtResource("24_67td3"), ExtResource("25_i22c7"), ExtResource("26_fjpp3"), ExtResource("3_sr2yt")])
+possible_plays = Array[ExtResource("1_glg3w")]([ExtResource("3_8mcj0"), ExtResource("4_cy0it"), ExtResource("5_ivy58"), ExtResource("6_txlgq"), ExtResource("7_aylaf"), ExtResource("5_cy0it"), ExtResource("6_ivy58"), ExtResource("16_8wigi"), ExtResource("17_67td3"), ExtResource("13_eoh30"), ExtResource("11_hdx8m"), ExtResource("14_4i14a"), ExtResource("15_5v7xv"), ExtResource("16_hdx8m"), ExtResource("17_2ad1d"), ExtResource("18_eoh30"), ExtResource("19_fjpp3"), ExtResource("26_brmg1"), ExtResource("21_8mwl0"), ExtResource("22_yxd2x"), ExtResource("23_8wigi"), ExtResource("24_67td3"), ExtResource("25_i22c7"), ExtResource("26_fjpp3"), ExtResource("27_8mcj0"), ExtResource("3_sr2yt")])
 possible_traits = Array[ExtResource("2_i5pwg")]([ExtResource("2_l0vcl"), ExtResource("29_q75ro")])
 sprites = Dictionary[int, Texture2D]({
 0: ExtResource("31_sr2yt"),

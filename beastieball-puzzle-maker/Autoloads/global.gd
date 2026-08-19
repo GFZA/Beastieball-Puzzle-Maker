@@ -7,7 +7,6 @@ const MOVE_DATA_JSON_PATH := "res://Autoloads/Resources/JSONs/move_dic.json"
 const ALL_TEXT_JSON_PATH := "res://Autoloads/Resources/JSONs/game.json"
 
 var beastie_data_json : Dictionary = {}
-var beastie_name_json : Dictionary = {}
 var all_text_json : Dictionary = {}
 var trait_data_json : Dictionary = {}
 var move_data_json : Dictionary = {}
