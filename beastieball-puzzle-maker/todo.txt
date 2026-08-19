@@ -1,0 +1,7 @@
+
+TODO for milestone 6
+- Flying Kick special damage indicator stuff
+- Rally rework
+-
+- JSON
+- NEW SPRITES!!!!!

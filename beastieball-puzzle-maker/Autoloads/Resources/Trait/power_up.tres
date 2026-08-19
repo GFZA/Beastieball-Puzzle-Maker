@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_g30c7")
 name = "Power Up"
-description = "BODY Attacks do +15 damage when STAMINA is below 34"
+description = "BODY Attacks do +50% damage when STAMINA is below 34"
 condition_name = "User STAMINA is below 34"
 is_starter_trait = true
 metadata/_custom_type_script = "uid://bslfuaragw1g7"

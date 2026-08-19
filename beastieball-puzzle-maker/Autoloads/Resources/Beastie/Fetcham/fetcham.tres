@@ -24,7 +24,7 @@
 [ext_resource type="Resource" uid="uid://c2f1ss5xarihg" path="res://Autoloads/Resources/Plays/Support/goo_goo_eyes.tres" id="19_cyyv6"]
 [ext_resource type="Resource" uid="uid://c06r6f0oeahst" path="res://Autoloads/Resources/Plays/Support/whistle.tres" id="20_i330t"]
 [ext_resource type="Texture2D" uid="uid://d1b741dmjtf35" path="res://Autoloads/Resources/Beastie/Fetcham/fetcham_idle.png" id="21_kq3ak"]
-[ext_resource type="Resource" uid="uid://cnliahyhutvwb" path="res://Autoloads/Resources/Plays/Attack/Spirit/burnout.tres" id="21_v73xm"]
+[ext_resource type="Resource" uid="uid://cnliahyhutvwb" path="res://Autoloads/Resources/Plays/Attack/Spirit/explosive_spirit.tres" id="21_v73xm"]
 [ext_resource type="Texture2D" uid="uid://dx6pnpeskrn42" path="res://Autoloads/Resources/Beastie/Fetcham/icon_fetcham.png" id="21_vsocr"]
 [ext_resource type="Resource" uid="uid://dfrswto2e3nco" path="res://Autoloads/Resources/Plays/Defense/role_reverse.tres" id="22_0ih0t"]
 [ext_resource type="Texture2D" uid="uid://ck34rrbpv7bih" path="res://Autoloads/Resources/Beastie/Fetcham/fetcham_ready.png" id="22_h6g1b"]

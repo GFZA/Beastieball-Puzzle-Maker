@@ -12,7 +12,7 @@
 [ext_resource type="Resource" uid="uid://b2pc2vt2pjw6t" path="res://Autoloads/Resources/Plays/Attack/Spirit/bring_the_heat.tres" id="6_mtehs"]
 [ext_resource type="Texture2D" uid="uid://oykydteojtnh" path="res://Autoloads/Resources/Beastie/Sefren/sefren_spike.png" id="7_6rml3"]
 [ext_resource type="Resource" uid="uid://c18abdsio1qy3" path="res://Autoloads/Resources/Plays/Attack/Spirit/desperate_force.tres" id="7_2300c"]
-[ext_resource type="Resource" uid="uid://cnliahyhutvwb" path="res://Autoloads/Resources/Plays/Attack/Spirit/burnout.tres" id="8_dqmrc"]
+[ext_resource type="Resource" uid="uid://cnliahyhutvwb" path="res://Autoloads/Resources/Plays/Attack/Spirit/explosive_spirit.tres" id="8_dqmrc"]
 [ext_resource type="Texture2D" uid="uid://csspeahghg4un" path="res://Autoloads/Resources/Beastie/Sefren/sefren_volley.png" id="8_smj17"]
 [ext_resource type="Texture2D" uid="uid://bcym5l3poy5q8" path="res://Autoloads/Resources/Beastie/Sefren/sefren_good.png" id="9_6e5nr"]
 [ext_resource type="Resource" uid="uid://dcn80u35wkpjp" path="res://Autoloads/Resources/Plays/Volley/net_rush.tres" id="9_y3lti"]

@@ -11,7 +11,7 @@
 [ext_resource type="Resource" uid="uid://bbtfkfi4i2py6" path="res://Autoloads/Resources/Plays/Attack/Mind/perfect_shot.tres" id="6_5hff1"]
 [ext_resource type="Texture2D" uid="uid://bm6rh5hgmpxnf" path="res://Autoloads/Resources/Beastie/Wormask/wormask_ready.png" id="6_hiod8"]
 [ext_resource type="Texture2D" uid="uid://feqaitpy5ags" path="res://Autoloads/Resources/Beastie/Wormask/wormask_spike.png" id="7_3xjg7"]
-[ext_resource type="Resource" uid="uid://cnliahyhutvwb" path="res://Autoloads/Resources/Plays/Attack/Spirit/burnout.tres" id="7_870cn"]
+[ext_resource type="Resource" uid="uid://cnliahyhutvwb" path="res://Autoloads/Resources/Plays/Attack/Spirit/explosive_spirit.tres" id="7_870cn"]
 [ext_resource type="Texture2D" uid="uid://cuo8xe7y8nfh4" path="res://Autoloads/Resources/Beastie/Wormask/wormask_volley.png" id="8_0yd13"]
 [ext_resource type="Resource" uid="uid://dlhm03et5x05t" path="res://Autoloads/Resources/Plays/Support/overthink.tres" id="8_r70r5"]
 [ext_resource type="Texture2D" uid="uid://spx5wh3esx78" path="res://Autoloads/Resources/Beastie/Wormask/wormask_good.png" id="9_0jotu"]

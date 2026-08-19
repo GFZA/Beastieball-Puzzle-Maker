@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_q6r88")
 name = "Confident"
-description = "BODY POW UP1 and BODY DEF UP1 when TAGGED IN"
+description = "BODY POW UP1 and ALL_TYPE DEF UP1 when TAGGED IN"
 metadata/_custom_type_script = "uid://bslfuaragw1g7"

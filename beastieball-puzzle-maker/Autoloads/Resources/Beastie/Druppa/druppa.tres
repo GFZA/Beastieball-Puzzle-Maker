@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://das21o41yu46e" path="res://Autoloads/Resources/Beastie/Druppa/druppa_spike.png" id="7_7bs82"]
 [ext_resource type="Resource" uid="uid://chytrknikw18t" path="res://Autoloads/Resources/Plays/Attack/Spirit/eruption.tres" id="7_o2bkh"]
 [ext_resource type="Texture2D" uid="uid://1flrcgop8eed" path="res://Autoloads/Resources/Beastie/Druppa/druppa_volley.png" id="8_5t5ac"]
-[ext_resource type="Resource" uid="uid://cnliahyhutvwb" path="res://Autoloads/Resources/Plays/Attack/Spirit/burnout.tres" id="8_a4rx5"]
+[ext_resource type="Resource" uid="uid://cnliahyhutvwb" path="res://Autoloads/Resources/Plays/Attack/Spirit/explosive_spirit.tres" id="8_a4rx5"]
 [ext_resource type="Resource" uid="uid://bcvrnhx6jhwoj" path="res://Autoloads/Resources/Plays/Attack/Spirit/challenge.tres" id="9_7vf3s"]
 [ext_resource type="Texture2D" uid="uid://bwk17ixr30qf6" path="res://Autoloads/Resources/Beastie/Druppa/druppa_good.png" id="9_pisum"]
 [ext_resource type="Resource" uid="uid://dfr4rlcnefv8y" path="res://Autoloads/Resources/Plays/Attack/Mind/floater.tres" id="10_cuiji"]

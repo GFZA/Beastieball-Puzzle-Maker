@@ -11,7 +11,7 @@
 [ext_resource type="Resource" uid="uid://bbtfkfi4i2py6" path="res://Autoloads/Resources/Plays/Attack/Mind/perfect_shot.tres" id="6_ei5b1"]
 [ext_resource type="Texture2D" uid="uid://cryxo5i33n5ad" path="res://Autoloads/Resources/Beastie/Collarva/collarva_ready.png" id="6_vx62q"]
 [ext_resource type="Texture2D" uid="uid://d74kipw4jike" path="res://Autoloads/Resources/Beastie/Collarva/collarva_spike.png" id="7_3bvd8"]
-[ext_resource type="Resource" uid="uid://cnliahyhutvwb" path="res://Autoloads/Resources/Plays/Attack/Spirit/burnout.tres" id="7_31bat"]
+[ext_resource type="Resource" uid="uid://cnliahyhutvwb" path="res://Autoloads/Resources/Plays/Attack/Spirit/explosive_spirit.tres" id="7_31bat"]
 [ext_resource type="Texture2D" uid="uid://b3uc86fveks8o" path="res://Autoloads/Resources/Beastie/Collarva/collarva_volley.png" id="8_dhge0"]
 [ext_resource type="Resource" uid="uid://dlhm03et5x05t" path="res://Autoloads/Resources/Plays/Support/overthink.tres" id="8_x3h6b"]
 [ext_resource type="Texture2D" uid="uid://dhytuodoedi5m" path="res://Autoloads/Resources/Beastie/Collarva/collarva_good.png" id="9_86qn5"]
