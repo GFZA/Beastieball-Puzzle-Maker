@@ -3,7 +3,7 @@ extends Trait
 
 
 func get_defense_mult(_attacker : Beastie, defender : Beastie, _attack : Attack, \
-					 _attacker_team_controller : TeamController = null,\
+					 attacker_team_controller : TeamController = null,\
 					 defender_team_controller : TeamController = null) -> float: # Overwrite
 	if need_to_be_manually_activated:
 		if manually_activated:
@@ -18,7 +18,9 @@ func get_defense_mult(_attacker : Beastie, defender : Beastie, _attack : Attack,
 	if not defender_team_controller:
 		return 1.0
 
-	if defender_team_controller.get_field_effect_stack(FieldEffect.Type.RALLY) > 0:
+	var have_rally : bool = (attacker_team_controller.get_field_effect_stack(FieldEffect.Type.RALLY) > 0) or \
+						(defender_team_controller.get_field_effect_stack(FieldEffect.Type.RALLY) > 0)
+	if have_rally:
 		return def_mult
 
 	return 1.0

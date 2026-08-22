@@ -33,9 +33,9 @@ signal board_resetted
 var board_overlay : BoardOverlay
 
 
-func _ready() -> void:
-	left_team_controller.field_effects_updated.connect(right_team_controller.copy_middle_field_effects_from_another_controller)
-	right_team_controller.field_effects_updated.connect(left_team_controller.copy_middle_field_effects_from_another_controller)
+#func _ready() -> void:
+	#left_team_controller.field_effects_updated.connect(right_team_controller.copy_middle_field_effects_from_another_controller)
+	#right_team_controller.field_effects_updated.connect(left_team_controller.copy_middle_field_effects_from_another_controller)
 
 
 func on_turn_changed(new_turn : Board.Turn) -> void:
@@ -68,6 +68,10 @@ func get_damage_dict_array(attacker : Beastie, attack : Attack) -> Array[Diction
 	# Adjust made-up attacker for cal
 	var attacker_for_cal : Beastie = attacker.duplicate()
 	var original_pos : Beastie.Position = attacker.my_field_position
+	if attack.name.to_lower() == "flying kick":
+		var ally : Beastie = attacker_team_controller.get_fielded_ally(attacker)
+		if ally:
+			original_pos = ally.my_field_position
 	if original_pos in [Beastie.Position.BENCH_1, Beastie.Position.BENCH_2]:
 		original_pos = Beastie.Position.UPPER_BACK # Upper or Lower doesn't matter here
 	attacker_for_cal.my_field_position = original_pos
@@ -236,11 +240,6 @@ func on_controller_reset_slot_requested(side : Global.MySide, team_pos : TeamCon
 			controller.reset_bench_beastie_1()
 		TeamController.TeamPosition.BENCH_2:
 			controller.reset_bench_beastie_2()
-
-
-#func on_swap_slot_requested(team_pos_1 : TeamController.TeamPosition, team_pos_2 : TeamController.TeamPosition, side : Global.MySide) -> void:
-	#var controller : TeamController = left_team_controller if side == Global.MySide.LEFT else right_team_controller
-	#controller.swap_slot(team_pos_1, team_pos_2)
 
 
 func save_board_data(path : String) -> void:

@@ -30,13 +30,16 @@ func _ready() -> void:
 
 	# Field Effects Menu Signals
 	board.field_effects_edit_requested.connect(main_ui.show_field_effect_menu)
-	main_ui.field_effects_menu.rally_stack_changed.connect(board.board_manager.left_team_controller.on_rally_stacked_changed)
-	main_ui.field_effects_menu.dread_stack_changed.connect(board.board_manager.left_team_controller.on_dread_stacked_changed)
+	main_ui.field_effects_menu.left_rally_stack_changed.connect(board.board_manager.left_team_controller.on_rally_stacked_changed)
+	main_ui.field_effects_menu.left_dread_stack_changed.connect(board.board_manager.left_team_controller.on_dread_stacked_changed)
 	main_ui.field_effects_menu.left_rhythm_stack_changed.connect(board.board_manager.left_team_controller.on_rhythm_stacked_changed)
 	main_ui.field_effects_menu.left_trap_stack_changed.connect(board.board_manager.left_team_controller.on_trap_stacked_changed)
 	main_ui.field_effects_menu.left_quake_stack_changed.connect(board.board_manager.left_team_controller.on_quake_stacked_changed)
 	main_ui.field_effects_menu.left_barrier_upper_stack_changed.connect(board.board_manager.left_team_controller.on_barrier_upper_stacked_changed)
 	main_ui.field_effects_menu.left_barrier_lower_stack_changed.connect(board.board_manager.left_team_controller.on_barrier_lower_stacked_changed)
+
+	main_ui.field_effects_menu.right_rally_stack_changed.connect(board.board_manager.right_team_controller.on_rally_stacked_changed)
+	main_ui.field_effects_menu.right_dread_stack_changed.connect(board.board_manager.right_team_controller.on_dread_stacked_changed)
 	main_ui.field_effects_menu.right_rhythm_stack_changed.connect(board.board_manager.right_team_controller.on_rhythm_stacked_changed)
 	main_ui.field_effects_menu.right_trap_stack_changed.connect(board.board_manager.right_team_controller.on_trap_stacked_changed)
 	main_ui.field_effects_menu.right_quake_stack_changed.connect(board.board_manager.right_team_controller.on_quake_stacked_changed)
@@ -46,8 +49,6 @@ func _ready() -> void:
 	# Team Menu Signals
 	main_ui.your_team_menu.controller_reset_slot_requested.connect(_on_controller_reset_slot_requested)
 	main_ui.opponent_team_menu.controller_reset_slot_requested.connect(_on_controller_reset_slot_requested)
-	#main_ui.your_team_menu.swap_slot_requested.connect(board.board_manager.on_swap_slot_requested.bind(Global.MySide.LEFT))
-	#main_ui.opponent_team_menu.swap_slot_requested.connect(board.board_manager.on_swap_slot_requested.bind(Global.MySide.RIGHT))
 
 	# Beastie Menu Signals
 	board.board_manager.left_team_controller.beastie_menu_requested.connect(main_ui.on_beastie_menu_requested)
@@ -181,10 +182,6 @@ func _on_reset_board_requested() -> void:
 	Global.resetting = true
 	Global.pause_updating_field = true
 
-	#saving_rect.mouse_filter = Control.MOUSE_FILTER_STOP
-	#saving_label.text = "Resetting..."
-	#saving_rect.show()
-
 	# Cheap ass delay to make it looks good
 	await get_tree().process_frame
 	await get_tree().process_frame
@@ -195,10 +192,6 @@ func _on_reset_board_requested() -> void:
 	board.board_manager.reset_board()
 	board.reset()
 	await board.board_manager.board_resetted
-
-	#saving_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	#saving_label.text = ""
-	#saving_rect.hide()
 
 	Global.resetting = false
 	Global.pause_updating_field = false

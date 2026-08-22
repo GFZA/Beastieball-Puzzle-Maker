@@ -84,37 +84,37 @@ centered = false
 metadata/_edit_lock_ = true
 
 [node name="RalllyVisuals" type="Node2D" parent="SubViewportContainer/SubViewport/BoardBG"]
-unique_name_in_owner = true
-visible = false
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/RalllyVisuals"]
-position = Vector2(1078.4614, 103.07693)
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("3_reu04")
+[node name="LeftRallyVisuals" type="Node2D" parent="SubViewportContainer/SubViewport/BoardBG/RalllyVisuals"]
+unique_name_in_owner = true
+visible = false
 
-[node name="Sprite2D2" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/RalllyVisuals"]
-position = Vector2(659.2308, 118.46154)
-scale = Vector2(0.4, 0.4)
+[node name="Sprite2D2" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/RalllyVisuals/LeftRallyVisuals"]
+position = Vector2(659.2309, 118.46161)
+scale = Vector2(0.40000007, 0.40000007)
 texture = ExtResource("4_mhwkv")
 flip_h = true
 
-[node name="Sprite2D3" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/RalllyVisuals"]
-position = Vector2(1216.9231, 132.30771)
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("5_reu04")
-
-[node name="Sprite2D4" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/RalllyVisuals"]
-position = Vector2(855.38464, 150.76926)
-scale = Vector2(0.4, 0.4)
+[node name="Sprite2D4" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/RalllyVisuals/LeftRallyVisuals"]
+position = Vector2(855.38477, 150.76926)
+scale = Vector2(0.40000007, 0.40000007)
 texture = ExtResource("6_qm24d")
 
-[node name="LabelCherrily" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/RalllyVisuals"]
-z_index = 1
-position = Vector2(973.8462, 926.92316)
-scale = Vector2(0.40000004, 0.40000004)
+[node name="RightRallyVisuals" type="Node2D" parent="SubViewportContainer/SubViewport/BoardBG/RalllyVisuals"]
+unique_name_in_owner = true
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/RalllyVisuals/RightRallyVisuals"]
+position = Vector2(1078.4618, 103.076935)
+scale = Vector2(0.40000007, 0.40000007)
 texture = ExtResource("3_reu04")
+
+[node name="Sprite2D3" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/RalllyVisuals/RightRallyVisuals"]
+position = Vector2(1216.9232, 132.30771)
+scale = Vector2(0.40000004, 0.40000004)
+texture = ExtResource("5_reu04")
 
 [node name="QuakeVisuals" type="Node2D" parent="SubViewportContainer/SubViewport/BoardBG"]
 scale = Vector2(0.76923084, 0.76923084)
@@ -185,78 +185,84 @@ scale = Vector2(1.4, 1.4)
 texture = ExtResource("11_63xfs")
 
 [node name="DreadVisuals" type="Node2D" parent="SubViewportContainer/SubViewport/BoardBG"]
-unique_name_in_owner = true
-visible = false
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/DreadVisuals"]
-position = Vector2(695.38464, 602.3077)
-scale = Vector2(1.2, 1.2)
+[node name="LeftDreadVisuals" type="Node2D" parent="SubViewportContainer/SubViewport/BoardBG/DreadVisuals"]
+unique_name_in_owner = true
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/DreadVisuals/LeftDreadVisuals"]
+position = Vector2(695.3847, 602.30774)
+scale = Vector2(1.2000002, 1.2000002)
 texture = ExtResource("10_63xfs")
 
-[node name="Sprite2D2" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/DreadVisuals"]
-position = Vector2(1375.3848, 367.69226)
-scale = Vector2(1.2, 1.2)
-texture = ExtResource("10_63xfs")
-
-[node name="Sprite2D3" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/DreadVisuals"]
-position = Vector2(1078.4615, 669.23083)
-scale = Vector2(1.2, 1.2)
+[node name="Sprite2D4" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/DreadVisuals/LeftDreadVisuals"]
+position = Vector2(874.61536, 430.00003)
+scale = Vector2(1.2000002, 1.2000002)
 texture = ExtResource("11_a1ark")
 
-[node name="Sprite2D4" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/DreadVisuals"]
-position = Vector2(874.61536, 430.00006)
-scale = Vector2(1.2, 1.2)
-texture = ExtResource("11_a1ark")
-
-[node name="Sprite2D5" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/DreadVisuals"]
-position = Vector2(1375.3846, 586.9231)
-scale = Vector2(1.2, 1.2)
-texture = ExtResource("12_rt3kt")
-
-[node name="Sprite2D6" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/DreadVisuals"]
+[node name="Sprite2D6" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/DreadVisuals/LeftDreadVisuals"]
 position = Vector2(587.6922, 430.00003)
-scale = Vector2(1.2, 1.2)
+scale = Vector2(1.2000002, 1.2000002)
 texture = ExtResource("12_rt3kt")
 
-[node name="Sprite2D7" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/DreadVisuals"]
-position = Vector2(1193.8462, 504.61542)
-scale = Vector2(1.2, 1.2)
+[node name="Sprite2D9" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/DreadVisuals/LeftDreadVisuals"]
+position = Vector2(848.4616, 683.8463)
+scale = Vector2(1.2000002, 1.2000002)
 texture = ExtResource("13_v248q")
 
-[node name="Sprite2D8" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/DreadVisuals"]
-position = Vector2(1085.3846, 405.38464)
-scale = Vector2(1.2, 1.2)
-texture = ExtResource("13_v248q")
-
-[node name="Sprite2D9" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/DreadVisuals"]
-position = Vector2(848.46155, 683.84625)
-scale = Vector2(1.2, 1.2)
-texture = ExtResource("13_v248q")
-
-[node name="Sprite2D10" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/DreadVisuals"]
-position = Vector2(1329.9999, 720)
-scale = Vector2(1.2, 1.2)
+[node name="Sprite2D11" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/DreadVisuals/LeftDreadVisuals"]
+position = Vector2(749.23096, 333.84616)
+scale = Vector2(1.2000002, 1.2000002)
 texture = ExtResource("14_xlcy2")
 
-[node name="Sprite2D11" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/DreadVisuals"]
-position = Vector2(749.2309, 333.84613)
-scale = Vector2(1.2, 1.2)
-texture = ExtResource("14_xlcy2")
-
-[node name="Sprite2D12" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/DreadVisuals"]
-position = Vector2(461.53848, 725.3847)
-scale = Vector2(1.2, 1.2)
+[node name="Sprite2D12" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/DreadVisuals/LeftDreadVisuals"]
+position = Vector2(461.5385, 725.38477)
+scale = Vector2(1.2000002, 1.2000002)
 texture = ExtResource("12_rt3kt")
 
-[node name="Sprite2D13" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/DreadVisuals"]
-position = Vector2(447.6923, 557.6924)
-scale = Vector2(1.2, 1.2)
+[node name="Sprite2D13" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/DreadVisuals/LeftDreadVisuals"]
+position = Vector2(447.69232, 557.6924)
+scale = Vector2(1.2000002, 1.2000002)
 texture = ExtResource("13_v248q")
 
-[node name="Sprite2D14" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/DreadVisuals"]
-position = Vector2(1490, 480.76932)
+[node name="RightDreadVisuals" type="Node2D" parent="SubViewportContainer/SubViewport/BoardBG/DreadVisuals"]
+unique_name_in_owner = true
+visible = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/DreadVisuals/RightDreadVisuals"]
+position = Vector2(1375.3849, 367.6923)
+scale = Vector2(1.2000002, 1.2000002)
+texture = ExtResource("10_63xfs")
+
+[node name="Sprite2D3" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/DreadVisuals/RightDreadVisuals"]
+position = Vector2(1078.4617, 669.23083)
+scale = Vector2(1.2000002, 1.2000002)
+texture = ExtResource("11_a1ark")
+
+[node name="Sprite2D5" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/DreadVisuals/RightDreadVisuals"]
+position = Vector2(1375.3848, 586.9231)
+scale = Vector2(1.2000002, 1.2000002)
+texture = ExtResource("12_rt3kt")
+
+[node name="Sprite2D7" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/DreadVisuals/RightDreadVisuals"]
+position = Vector2(1193.8463, 504.61545)
+scale = Vector2(1.2000002, 1.2000002)
+texture = ExtResource("13_v248q")
+
+[node name="Sprite2D8" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/DreadVisuals/RightDreadVisuals"]
+position = Vector2(1085.3848, 405.38467)
+scale = Vector2(1.2000002, 1.2000002)
+texture = ExtResource("13_v248q")
+
+[node name="Sprite2D10" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/DreadVisuals/RightDreadVisuals"]
+position = Vector2(1330, 720.0001)
+scale = Vector2(1.2000002, 1.2000002)
+texture = ExtResource("14_xlcy2")
+
+[node name="Sprite2D14" type="Sprite2D" parent="SubViewportContainer/SubViewport/BoardBG/DreadVisuals/RightDreadVisuals"]
+position = Vector2(1490.0001, 480.76932)
 texture = ExtResource("11_a1ark")
 
 [node name="TractorBeamAnchor" type="Node2D" parent="SubViewportContainer/SubViewport/BoardBG"]
@@ -609,13 +615,14 @@ metadata/_edit_lock_ = true
 
 [node name="LeftFieldEffecstLabel" type="Label" parent="SubViewportContainer/SubViewport"]
 unique_name_in_owner = true
-visible = false
 custom_minimum_size = Vector2(250, 0)
-offset_left = 717.0
+offset_left = 748.0
 offset_top = 1820.0
-offset_right = 967.0
+offset_right = 998.0
 offset_bottom = 2002.0
-text = "4/4 TRAP"
+text = "1 RHYTHM
+1/4 TRAP
+1 QUAKE"
 label_settings = SubResource("LabelSettings_asnme")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -627,21 +634,42 @@ scale = Vector2(0.9, 0.9)
 color = Color(0.8352941, 0.87058824, 0.85882354, 1)
 polygon = PackedVector2Array(-43, 0, -87, -192, 219, -192, 265, 0)
 
-[node name="MiddleFieldEffecstLabel" type="Label" parent="SubViewportContainer/SubViewport"]
+[node name="LeftMiddleFieldEffecstLabel" type="Label" parent="SubViewportContainer/SubViewport"]
 unique_name_in_owner = true
-visible = false
 z_index = 2
 custom_minimum_size = Vector2(250, 0)
-offset_left = 1229.0
+offset_left = 989.0
 offset_top = 1849.0
-offset_right = 1479.0
+offset_right = 1239.0
 offset_bottom = 1972.0
-text = "1 DREAD"
+text = "1 RALLY
+1 DREAD"
 label_settings = SubResource("LabelSettings_asnme")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Polygon2D2" type="Polygon2D" parent="SubViewportContainer/SubViewport/MiddleFieldEffecstLabel"]
+[node name="Polygon2D2" type="Polygon2D" parent="SubViewportContainer/SubViewport/LeftMiddleFieldEffecstLabel"]
+show_behind_parent = true
+position = Vector2(41, 128)
+scale = Vector2(0.9, 0.9)
+color = Color(0.8352941, 0.87058824, 0.85882354, 1)
+polygon = PackedVector2Array(-43, 0, -77, -147, 230, -147, 265, 0)
+
+[node name="RightMiddleFieldEffecstLabel" type="Label" parent="SubViewportContainer/SubViewport"]
+unique_name_in_owner = true
+z_index = 2
+custom_minimum_size = Vector2(250, 0)
+offset_left = 1492.0
+offset_top = 1849.0
+offset_right = 1742.0
+offset_bottom = 1972.0
+text = "1 RALLY
+1 DREAD"
+label_settings = SubResource("LabelSettings_asnme")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Polygon2D2" type="Polygon2D" parent="SubViewportContainer/SubViewport/RightMiddleFieldEffecstLabel"]
 show_behind_parent = true
 position = Vector2(41, 128)
 scale = Vector2(0.9, 0.9)
@@ -650,7 +678,6 @@ polygon = PackedVector2Array(-43, 0, -77, -147, 230, -147, 265, 0)
 
 [node name="RightFieldEffecstLabel" type="Label" parent="SubViewportContainer/SubViewport"]
 unique_name_in_owner = true
-visible = false
 custom_minimum_size = Vector2(250, 0)
 offset_left = 1726.0
 offset_top = 1820.0

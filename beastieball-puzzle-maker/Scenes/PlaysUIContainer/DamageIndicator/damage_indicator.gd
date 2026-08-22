@@ -209,6 +209,8 @@ func _update_attacker_pos_labels() -> void:
 		new_text = "WHEN AT BACK"
 	if attack.manually_activated:
 		new_text = attack.condition_name
+	if attack.name.to_lower() == "flying kick":
+		new_text = "AT ALLY ROW"
 
 	attacker_pos_label.text = new_text
 	attacker_pos_label.show()

@@ -78,10 +78,8 @@ func _ready() -> void:
 
 	your_team_menu.beastie_menu_requested.connect(on_beastie_menu_requested)
 	your_team_menu.controller_reset_slot_requested.connect(on_reset_slot_requested)
-	#your_team_menu.swap_slot_requested.connect(on_swap_slot_requested.bind(Global.MySide.LEFT))
 	opponent_team_menu.beastie_menu_requested.connect(on_beastie_menu_requested)
 	opponent_team_menu.controller_reset_slot_requested.connect(on_reset_slot_requested)
-	#opponent_team_menu.swap_slot_requested.connect(on_swap_slot_requested.bind(Global.MySide.RIGHT))
 
 	overlay_menu.logo_dialogue_requested.connect(_on_logo_dialog_requested)
 	logo_select_dialog.file_selected.connect(on_logo_file_selected)
@@ -211,14 +209,6 @@ func make_new_beastie_menu(requested_beastie : Beastie, side : Global.MySide, te
 func on_beastie_remove_requested(_requested_beastie : Beastie, side : Global.MySide, team_pos : TeamController.TeamPosition) -> void:
 	var team_menu : TeamMenu = your_team_menu if side == Global.MySide.LEFT else opponent_team_menu
 	team_menu.controller_reset_slot_requested.emit(side, team_pos)
-
-
-#func on_swap_slot_requested(team_pos_1 : TeamController.TeamPosition, team_pos_2 : TeamController.TeamPosition, side : Global.MySide) -> void:
-	#var menu_dict : Dictionary[TeamController.TeamPosition, BeastieMenu] = left_beastie_menus if side == Global.MySide.LEFT else right_beastie_menus
-	#var menu_1 : BeastieMenu = menu_dict.get(team_pos_1)
-	#var menu_2 : BeastieMenu = menu_dict.get(team_pos_2)
-	#menu_dict[team_pos_1] = menu_2
-	#menu_dict[team_pos_2] = menu_1
 
 
 func remove_menu(menu : BeastieMenu) -> void:

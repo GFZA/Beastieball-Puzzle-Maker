@@ -25,49 +25,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 12
 
-[node name="BothSideLabel" type="Label" parent="MainContainer"]
-layout_mode = 2
-text = "Both Side"
-label_settings = SubResource("LabelSettings_oaix8")
-horizontal_alignment = 1
-
-[node name="RallyLabel" type="HBoxContainer" parent="MainContainer"]
-custom_minimum_size = Vector2(0, 90)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MainContainer/RallyLabel"]
-layout_mode = 2
-text = "RALLY"
-label_settings = SubResource("LabelSettings_oaix8")
-
-[node name="RallyNumberUI" parent="MainContainer/RallyLabel" instance=ExtResource("2_8j6ah")]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 10
-value_min = 0
-value_max = 6
-
-[node name="DreadLabel" type="HBoxContainer" parent="MainContainer"]
-custom_minimum_size = Vector2(0, 90)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MainContainer/DreadLabel"]
-layout_mode = 2
-text = "DREAD"
-label_settings = SubResource("LabelSettings_oaix8")
-
-[node name="DreadNumberUI" parent="MainContainer/DreadLabel" instance=ExtResource("2_8j6ah")]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 10
-value_min = 0
-value_max = 6
-
-[node name="HSeparator" type="HSeparator" parent="MainContainer"]
-custom_minimum_size = Vector2(0, 8)
-layout_mode = 2
-theme = ExtResource("3_tw2ux")
-
 [node name="TeamLabel" type="HBoxContainer" parent="MainContainer"]
 custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
@@ -85,6 +42,52 @@ size_flags_horizontal = 10
 text = "Opponent"
 label_settings = SubResource("LabelSettings_oaix8")
 horizontal_alignment = 1
+
+[node name="RallyLabel" type="HBoxContainer" parent="MainContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+
+[node name="LeftRallyNumberUI" parent="MainContainer/RallyLabel" instance=ExtResource("2_8j6ah")]
+unique_name_in_owner = true
+layout_mode = 2
+value_min = 0
+value_max = 6
+side = 0
+
+[node name="Label" type="Label" parent="MainContainer/RallyLabel"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "RALLY"
+label_settings = SubResource("LabelSettings_oaix8")
+
+[node name="RightRallyNumberUI" parent="MainContainer/RallyLabel" instance=ExtResource("2_8j6ah")]
+unique_name_in_owner = true
+layout_mode = 2
+value_min = 0
+value_max = 6
+
+[node name="DreadLabel" type="HBoxContainer" parent="MainContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+
+[node name="LeftDreadNumberUI" parent="MainContainer/DreadLabel" instance=ExtResource("2_8j6ah")]
+unique_name_in_owner = true
+layout_mode = 2
+value_min = 0
+value_max = 6
+side = 0
+
+[node name="Label" type="Label" parent="MainContainer/DreadLabel"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "DREAD"
+label_settings = SubResource("LabelSettings_oaix8")
+
+[node name="RightDreadNumberUI" parent="MainContainer/DreadLabel" instance=ExtResource("2_8j6ah")]
+unique_name_in_owner = true
+layout_mode = 2
+value_min = 0
+value_max = 6
 
 [node name="RhythmLabel" type="HBoxContainer" parent="MainContainer"]
 custom_minimum_size = Vector2(0, 90)

@@ -455,29 +455,6 @@ func check_if_field_is_full() -> bool:
 	return false
 
 
-#func swap_slot(team_pos_1 : TeamPosition, team_pos_2 : TeamPosition) -> void:
-	#var slot_1_beastie : Beastie = _get_beastie_from_team_pos(team_pos_1)
-	#var slot_2_beastie : Beastie = _get_beastie_from_team_pos(team_pos_2)
-#
-	#var	count : int = 0
-	#for team_pos in [team_pos_1, team_pos_2]:
-		#var beastie : Beastie = slot_2_beastie if count == 0 else slot_1_beastie
-		#match team_pos:
-			#TeamController.TeamPosition.FIELD_1:
-				#beastie_1_beastie = beastie
-			#TeamController.TeamPosition.FIELD_2:
-				#beastie_2_beastie = beastie
-			#TeamController.TeamPosition.BENCH_1:
-				#if beastie:
-					#beastie.current_boosts.clear() # Clear boosts when benched, just like in-game!
-				#bench_beastie_1_beastie = beastie
-			#TeamController.TeamPosition.BENCH_2:
-				#if beastie:
-					#beastie.current_boosts.clear() # Clear boosts when benched, just like in-game!
-				#bench_beastie_2_beastie = beastie
-		#count += 1
-
-
 func on_beastie_position_change_requested(team_pos : TeamController.TeamPosition, new_pos : Beastie.Position) -> void:
 	if new_pos == Beastie.Position.UPPER_FRONT and get_field_effect_stack(FieldEffect.Type.BARRIER_UPPER) > 0:
 		return
@@ -585,21 +562,21 @@ func reset_bench_beastie_2() -> void:
 
 
 
-# Exclusive to Right TeamController
-# Use to copy RALLY and DREAD from right's my_field_effects
-# as these will always be the samw between the two
-func copy_middle_field_effects_from_another_controller(another_team_dict : Dictionary) -> void:
-	if another_team_dict.has(FieldEffect.Type.RALLY):
-		var rally_stack : int = another_team_dict.get(FieldEffect.Type.RALLY)
-		my_field_effects[FieldEffect.Type.RALLY] = rally_stack
-	elif my_field_effects.has(FieldEffect.Type.RALLY):
-		my_field_effects.erase(FieldEffect.Type.RALLY)
-
-	if another_team_dict.has(FieldEffect.Type.DREAD):
-		var dread_stack : int = another_team_dict.get(FieldEffect.Type.DREAD)
-		my_field_effects[FieldEffect.Type.DREAD] = dread_stack
-	elif my_field_effects.has(FieldEffect.Type.DREAD):
-		my_field_effects.erase(FieldEffect.Type.DREAD)
+## Exclusive to Right TeamController
+## Use to copy RALLY and DREAD from right's my_field_effects
+## as these will always be the samw between the two
+#func copy_middle_field_effects_from_another_controller(another_team_dict : Dictionary) -> void:
+	#if another_team_dict.has(FieldEffect.Type.RALLY):
+		#var rally_stack : int = another_team_dict.get(FieldEffect.Type.RALLY)
+		#my_field_effects[FieldEffect.Type.RALLY] = rally_stack
+	#elif my_field_effects.has(FieldEffect.Type.RALLY):
+		#my_field_effects.erase(FieldEffect.Type.RALLY)
+#
+	#if another_team_dict.has(FieldEffect.Type.DREAD):
+		#var dread_stack : int = another_team_dict.get(FieldEffect.Type.DREAD)
+		#my_field_effects[FieldEffect.Type.DREAD] = dread_stack
+	#elif my_field_effects.has(FieldEffect.Type.DREAD):
+		#my_field_effects.erase(FieldEffect.Type.DREAD)
 
 
 #region Fuctions for Condition Checking
@@ -693,21 +670,24 @@ func get_nearest_position_for_opponent(opponent_is_upper : bool) -> Beastie.Posi
 			Beastie.Position.UPPER_BACK,
 		]
 
-	var i : int = 0
+	var all_beastie : Array[Beastie] = []
+	var decoy_beastie : Array[Beastie] = []
 	for pos : Beastie.Position in order:
 		var beastie : Beastie = pos_dict.get(pos)
 		if beastie:
-			if not beastie.my_trait.name.to_lower() == "haunted":
-				return pos
-			else:
-				if i == order.size() - 1:
-					return Beastie.Position.NOT_ASSIGNED
-				else:
-					i += 1
-					continue
-		i += 1
+			all_beastie.append(beastie)
+			if beastie.my_trait.name.to_lower() == "decoy":
+				decoy_beastie.append(beastie)
+			if beastie.my_trait.name.to_lower() == "haunted":
+				continue # Ignore them
 
-	return Beastie.Position.NOT_ASSIGNED # Shouldn't happen
+	if all_beastie.is_empty():
+		return Beastie.Position.NOT_ASSIGNED # Shouldn't happen
+
+	if not decoy_beastie.is_empty():
+		return decoy_beastie.front().my_field_position
+	else:
+		return all_beastie.front().my_field_position
 
 
 func get_mimicked_attack_from_ally(mimic_user : Beastie) -> Attack:

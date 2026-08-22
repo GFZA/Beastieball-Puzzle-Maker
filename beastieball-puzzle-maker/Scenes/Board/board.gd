@@ -39,12 +39,14 @@ var turn : Turn = Turn.OFFENSE
 @onready var sub_viewport_container: SubViewportContainer = %SubViewportContainer
 @onready var sub_viewport: SubViewport = %SubViewport
 
-@onready var rallly_visuals: Node2D = %RalllyVisuals
+@onready var left_rally_visuals: Node2D = %LeftRallyVisuals
+@onready var right_rally_visuals: Node2D = %RightRallyVisuals
 
 @onready var left_quake_visuals: Node2D = %LeftQuakeVisuals
 @onready var right_quake_visuals: Node2D = %RightQuakeVisuals
 
-@onready var dread_visuals: Node2D = %DreadVisuals
+@onready var left_dread_visuals: Node2D = %LeftDreadVisuals
+@onready var right_dread_visuals: Node2D = %RightDreadVisuals
 
 @onready var left_barrier_upper: Sprite2D = %LeftBarrierUpper
 @onready var right_barrier_upper: Sprite2D = %RightBarrierUpper
@@ -63,7 +65,8 @@ var turn : Turn = Turn.OFFENSE
 @onready var tractor_beam_anchor: Node2D = %TractorBeamAnchor
 
 @onready var left_field_effecst_label: Label = %LeftFieldEffecstLabel
-@onready var middle_field_effecst_label: Label = %MiddleFieldEffecstLabel
+@onready var left_middle_field_effecst_label: Label = %LeftMiddleFieldEffecstLabel
+@onready var right_middle_field_effecst_label: Label = %RightMiddleFieldEffecstLabel
 @onready var right_field_effecst_label: Label = %RightFieldEffecstLabel
 
 @onready var edit_field_effects_button: Button = %EditFieldEffectsButton
@@ -101,59 +104,59 @@ func _ready() -> void:
 func _update_field_effect_visuals() -> void:
 	hide_all_field_effects()
 
-	for i in 3:
+	for i in 2:
 		# First loop -> Left side field effects
-		# Second loop -> Middle field effect USING LEFT DICT!!!
-		# Third loop -> Right side field effects
-		var field_dict : Dictionary = left_field_effects_dict if i < 2 else right_field_effects_dict
+		# Second loop -> Right side field effects
+		var field_dict : Dictionary = left_field_effects_dict if i == 0 else right_field_effects_dict
 		for field_effect : FieldEffect.Type in field_dict:
 			var stack : int = field_dict[field_effect]
 			if stack <= 0:
 				continue
-			if i == 1: # Middle Loop
-				match field_effect:
-					FieldEffect.Type.RALLY:
-						show_rally()
-					FieldEffect.Type.DREAD:
-						show_dread()
-			else:
-				var side : Global.MySide = Global.MySide.LEFT if i == 0 else Global.MySide.RIGHT # when i == 2
-				match field_effect:
-					FieldEffect.Type.QUAKE:
-						show_quake(side)
-					FieldEffect.Type.BARRIER_UPPER:
-						show_barrier(side, Beastie.Position.UPPER_FRONT)
-					FieldEffect.Type.BARRIER_LOWER:
-						show_barrier(side, Beastie.Position.LOWER_FRONT)
-					FieldEffect.Type.TRAP:
-						show_trap(side, stack)
-					FieldEffect.Type.RHYTHM:
-						show_rhythm(side)
+
+			var side : Global.MySide = Global.MySide.LEFT if i == 0 else Global.MySide.RIGHT
+			match field_effect:
+				FieldEffect.Type.RALLY:
+					show_rally(side)
+				FieldEffect.Type.QUAKE:
+					show_quake(side)
+				FieldEffect.Type.DREAD:
+					show_dread(side)
+				FieldEffect.Type.BARRIER_UPPER:
+					show_barrier(side, Beastie.Position.UPPER_FRONT)
+				FieldEffect.Type.BARRIER_LOWER:
+					show_barrier(side, Beastie.Position.LOWER_FRONT)
+				FieldEffect.Type.TRAP:
+					show_trap(side, stack)
+				FieldEffect.Type.RHYTHM:
+					show_rhythm(side)
 
 	_update_field_effects_labels()
 
 
 func _update_field_effects_labels() -> void:
 	var left_text : String = ""
-	var middle_text : String = ""
+	var left_middle_text : String = ""
+	var right_middle_text : String = ""
 	var right_text : String = ""
 
 	left_field_effecst_label.hide()
-	middle_field_effecst_label.hide()
+	left_middle_field_effecst_label.hide()
+	right_middle_field_effecst_label.hide()
 	right_field_effecst_label.hide()
 	# YES it's a typo. No I'm not fixing it...
 
-	for i in 3:
-		# First loop -> Left side field effects
-		# Second loop -> Middle field effect USING LEFT DICT!!!
-		# Third loop -> Right side field effects
+	for i in 4:
+		# First loop -> Left side field effects, Column 1
+		# Second loop -> Left side field effects, Column 2
+		# Third loop -> Right side field effects, Column 2
+		# Fourth loop -> Right side field effects, Column 1
 		var field_dict : Dictionary = left_field_effects_dict if i < 2 else right_field_effects_dict
 		for field_effect : FieldEffect.Type in field_dict:
 			var stack : int = field_dict[field_effect]
 			if stack <= 0:
 				continue
 			match i:
-				0: # Left side
+				0: # Left side, Column 1
 					match field_effect:
 						FieldEffect.Type.QUAKE:
 							left_text += "%s QUAKE" % str(stack) + "\n"
@@ -161,15 +164,19 @@ func _update_field_effects_labels() -> void:
 							left_text += "%s/4 TRAP" % str(stack) + "\n"
 						FieldEffect.Type.RHYTHM:
 							left_text += "%s RHYTHM" % str(stack) + "\n"
-						#FieldEffect.Type.BARRIER_UPPER, FieldEffect.Type.BARRIER_LOWER:
-							# No text
-				1: # Middle
+				1: # Left side, Column 2
 					match field_effect:
 						FieldEffect.Type.RALLY:
-							middle_text += "%s/6 RALLY" % str(stack) + "\n"
+							left_middle_text += "%s/6 RALLY" % str(stack) + "\n"
 						FieldEffect.Type.DREAD:
-							middle_text += "%s DREAD" % str(stack) + "\n"
-				2: # Right side
+							left_middle_text += "%s DREAD" % str(stack) + "\n"
+				2: # Right side, Column 2
+					match field_effect:
+						FieldEffect.Type.RALLY:
+							right_middle_text += "%s/6 RALLY" % str(stack) + "\n"
+						FieldEffect.Type.DREAD:
+							right_middle_text += "%s DREAD" % str(stack) + "\n"
+				3: # Right side, Column 1
 					match field_effect:
 						FieldEffect.Type.QUAKE:
 							right_text += "%s QUAKE" % str(stack) + "\n"
@@ -177,41 +184,44 @@ func _update_field_effects_labels() -> void:
 							right_text += "%s/4 TRAP" % str(stack) + "\n"
 						FieldEffect.Type.RHYTHM:
 							right_text += "%s RHYTHM" % str(stack) + "\n"
-						#FieldEffect.Type.BARRIER_UPPER, FieldEffect.Type.BARRIER_LOWER:
-							# No text
 
 	if not left_text == "":
 		left_field_effecst_label.text = left_text.strip_edges()
 		left_field_effecst_label.show()
-	if not middle_text == "":
-		middle_field_effecst_label.text = middle_text.strip_edges()
-		middle_field_effecst_label.show()
+	if not left_middle_text == "":
+		left_middle_field_effecst_label.text = left_middle_text.strip_edges()
+		left_middle_field_effecst_label.show()
+	if not right_middle_text == "":
+		right_middle_field_effecst_label.text = right_middle_text.strip_edges()
+		right_middle_field_effecst_label.show()
 	if not right_text == "":
 		right_field_effecst_label.text = right_text.strip_edges()
 		right_field_effecst_label.show()
 
 
 func hide_all_field_effects() -> void:
-	rallly_visuals.hide()
-	dread_visuals.hide()
+	left_rally_visuals.hide()
 	left_quake_visuals.hide()
+	left_dread_visuals.hide()
 	left_barrier_upper.hide()
 	left_barrier_lower.hide()
 	left_trap_visuals.hide()
 	left_rhythm_visuals.hide()
+	right_rally_visuals.hide()
 	right_quake_visuals.hide()
+	right_dread_visuals.hide()
 	right_barrier_upper.hide()
 	right_barrier_lower.hide()
 	right_trap_visuals.hide()
 	right_rhythm_visuals.hide()
 
 
-func show_rally() -> void:
-	rallly_visuals.show()
-
-
-func show_dread() -> void:
-	dread_visuals.show()
+func show_rally(side : Global.MySide) -> void:
+	match side:
+		Global.MySide.LEFT:
+			left_rally_visuals.show()
+		Global.MySide.RIGHT:
+			right_rally_visuals.show()
 
 
 func show_quake(side : Global.MySide) -> void:
@@ -220,6 +230,14 @@ func show_quake(side : Global.MySide) -> void:
 			left_quake_visuals.show()
 		Global.MySide.RIGHT:
 			right_quake_visuals.show()
+
+
+func show_dread(side : Global.MySide) -> void:
+	match side:
+		Global.MySide.LEFT:
+			left_dread_visuals.show()
+		Global.MySide.RIGHT:
+			right_dread_visuals.show()
 
 
 func show_barrier(side : Global.MySide, pos : Beastie.Position) -> void:
