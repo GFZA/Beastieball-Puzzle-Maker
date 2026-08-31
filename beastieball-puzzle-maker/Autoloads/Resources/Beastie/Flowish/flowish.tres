@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=38 format=3 uid="uid://cudsjb18ufd5w"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=38 format=3 uid="uid://cufsdfx33tbyf"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_g0hwl"]
 [ext_resource type="Resource" uid="uid://del20bsclfn47" path="res://Autoloads/Resources/Trait/superorganism.tres" id="2_76vob"]

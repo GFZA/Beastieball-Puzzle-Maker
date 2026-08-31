@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=41 format=3 uid="uid://cs850j6igjg85"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=41 format=3 uid="uid://cag7txp4tijnq"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_q2b64"]
 [ext_resource type="Resource" uid="uid://bkvjnb4ut5rjo" path="res://Autoloads/Resources/Trait/neural_net.tres" id="2_f806a"]

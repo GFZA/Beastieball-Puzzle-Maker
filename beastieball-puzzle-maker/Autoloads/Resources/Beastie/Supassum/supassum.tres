@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=35 format=3 uid="uid://dim2cck7fcat4"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=36 format=3 uid="uid://bbv3q586jhv68"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_0ibxb"]
 [ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Autoloads/Resources/Trait/trait.gd" id="2_0cluf"]
@@ -33,6 +33,7 @@
 [ext_resource type="Resource" uid="uid://brbj7babpn6xc" path="res://Autoloads/Resources/Plays/Defense/quick_breath.tres" id="22_abisf"]
 [ext_resource type="Resource" uid="uid://d2lsfpa4l3jmk" path="res://Autoloads/Resources/Plays/Support/build.tres" id="23_63ua8"]
 [ext_resource type="Resource" uid="uid://ddnch0ufpde3l" path="res://Autoloads/Resources/Plays/Attack/Body/dive.tres" id="24_bti1g"]
+[ext_resource type="Resource" uid="uid://0qwdo32fcu5e" path="res://Autoloads/Resources/Plays/Volley/set.tres" id="25_abisf"]
 [ext_resource type="Resource" uid="uid://divacd53n4a3d" path="res://Autoloads/Resources/Trait/flee.tres" id="27_q4lpy"]
 
 [resource]
@@ -40,18 +41,19 @@ script = ExtResource("3_qcklx")
 my_plays = Array[ExtResource("1_0ibxb")]([null, null, null])
 my_trait = ExtResource("2_qcklx")
 specie_name = "Supassum"
-internal_name = "possum1"
+internal_name = "possum2"
 beastiepedia_id = 18
 is_nfe = true
 bar_color = Color(0.65882355, 0.48235294, 0.39215687, 1)
-spirit_base_pow = 18
-mind_base_pow = 22
-body_base_def = 65
-spirit_base_def = 25
-mind_base_def = 57
-plays_string_array = Array[String](["bump", "breaker", "demolish", "dig", "vigor beam", "juggle", "flex", "shake off", "hawkeye", "forward pass", "cover", "lock target", "mark", "shield", "quick tag", "patience", "thunder", "true strike", "thump", "quick breath", "build", "dive"])
+body_base_pow = 55
+spirit_base_pow = 25
+mind_base_pow = 32
+body_base_def = 85
+spirit_base_def = 40
+mind_base_def = 75
+plays_string_array = Array[String](["bump", "breaker", "demolish", "dig", "vigor beam", "juggle", "flex", "shake off", "hawkeye", "forward pass", "cover", "lock target", "mark", "shield", "quick tag", "patience", "thunder", "true strike", "thump", "quick breath", "build", "dive", "set"])
 traits_string_array = Array[String](["scavenger", "flee"])
-possible_plays = Array[ExtResource("1_0ibxb")]([ExtResource("3_abisf"), ExtResource("4_ifxo8"), ExtResource("5_gkwr2"), ExtResource("6_64x5x"), ExtResource("7_5r41r"), ExtResource("8_w5de7"), ExtResource("9_xq41d"), ExtResource("10_j6d80"), ExtResource("11_ty8vb"), ExtResource("12_4h0u5"), ExtResource("13_kmw4g"), ExtResource("14_e043f"), ExtResource("15_pps6h"), ExtResource("16_ca3qm"), ExtResource("17_75ox7"), ExtResource("19_r62im"), ExtResource("20_tnk2x"), ExtResource("21_jjil0"), ExtResource("22_84e6j"), ExtResource("22_abisf"), ExtResource("23_63ua8"), ExtResource("24_bti1g")])
+possible_plays = Array[ExtResource("1_0ibxb")]([ExtResource("3_abisf"), ExtResource("4_ifxo8"), ExtResource("5_gkwr2"), ExtResource("6_64x5x"), ExtResource("7_5r41r"), ExtResource("8_w5de7"), ExtResource("9_xq41d"), ExtResource("10_j6d80"), ExtResource("11_ty8vb"), ExtResource("12_4h0u5"), ExtResource("13_kmw4g"), ExtResource("14_e043f"), ExtResource("15_pps6h"), ExtResource("16_ca3qm"), ExtResource("17_75ox7"), ExtResource("19_r62im"), ExtResource("20_tnk2x"), ExtResource("21_jjil0"), ExtResource("22_84e6j"), ExtResource("22_abisf"), ExtResource("23_63ua8"), ExtResource("24_bti1g"), ExtResource("25_abisf")])
 possible_traits = Array[ExtResource("2_0cluf")]([ExtResource("2_qcklx"), ExtResource("27_q4lpy")])
 sprites = Dictionary[int, Texture2D]({
 0: ExtResource("5_dygxm"),

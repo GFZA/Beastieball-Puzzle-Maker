@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=41 format=3 uid="uid://bfbo3gscgvr0m"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=41 format=3 uid="uid://dlxppu3s3se5o"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_sebdf"]
 [ext_resource type="Resource" uid="uid://bdmb5c5v8kcxf" path="res://Autoloads/Resources/Trait/tangled.tres" id="2_4uk8r"]
