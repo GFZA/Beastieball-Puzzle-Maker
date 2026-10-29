@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=45 format=3 uid="uid://d1dieakplxsan"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=45 format=3 uid="uid://db4njj3vpu6ic"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_co2qs"]
 [ext_resource type="Resource" uid="uid://cagttvqn25cci" path="res://Autoloads/Resources/Trait/acrobat.tres" id="2_5qjw5"]
@@ -53,8 +53,8 @@ specie_name = "Daredillo"
 internal_name = "daredevil"
 beastiepedia_id = 32
 bar_color = Color(0.99215686, 0, 0, 1)
-body_base_pow = 95
-spirit_base_pow = 105
+body_base_pow = 94
+spirit_base_pow = 98
 mind_base_pow = 25
 body_base_def = 101
 spirit_base_def = 30

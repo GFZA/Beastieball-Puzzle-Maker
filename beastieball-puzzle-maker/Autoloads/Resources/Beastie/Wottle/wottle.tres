@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=39 format=3 uid="uid://dtriofnklfr6w"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=43 format=3 uid="uid://d3it0rgguy0d"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_d144n"]
 [ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Autoloads/Resources/Trait/trait.gd" id="2_30rnj"]
@@ -7,7 +7,10 @@
 [ext_resource type="Resource" uid="uid://d1lmi0j5jfehr" path="res://Autoloads/Resources/Plays/Attack/Spirit/tornadoball.tres" id="4_0rubi"]
 [ext_resource type="Resource" uid="uid://bwntvaq8we2ee" path="res://Autoloads/Resources/Plays/Attack/Spirit/careful_shot.tres" id="6_0rubi"]
 [ext_resource type="Resource" uid="uid://b2pc2vt2pjw6t" path="res://Autoloads/Resources/Plays/Attack/Spirit/bring_the_heat.tres" id="6_u5ltw"]
+[ext_resource type="Resource" uid="uid://bojb10i043gnl" path="res://Autoloads/Resources/Plays/Attack/Mind/rainbow.tres" id="7_xfrrh"]
 [ext_resource type="Resource" uid="uid://dytuvbvg3oamq" path="res://Autoloads/Resources/Plays/Defense/shield.tres" id="8_0rubi"]
+[ext_resource type="Resource" uid="uid://dmv2tjd66i2td" path="res://Autoloads/Resources/Plays/Attack/Mind/roll_shot.tres" id="8_6b5cq"]
+[ext_resource type="Resource" uid="uid://c8f8a3vv12co1" path="res://Autoloads/Resources/Plays/Attack/Mind/heartbreaker.tres" id="9_5vun3"]
 [ext_resource type="Resource" uid="uid://vrgoi8jwdlq1" path="res://Autoloads/Resources/Plays/Defense/patience.tres" id="9_83ea1"]
 [ext_resource type="Resource" uid="uid://bcuhkrf7hdroh" path="res://Autoloads/Resources/Plays/Support/clear_field.tres" id="9_weijm"]
 [ext_resource type="Resource" uid="uid://ymdvl6wdoqws" path="res://Autoloads/Resources/Plays/Defense/hawkeye.tres" id="10_xfrrh"]
@@ -38,6 +41,7 @@
 [ext_resource type="Resource" uid="uid://6ch2rjd133ye" path="res://Autoloads/Resources/Plays/Defense/fall_back.tres" id="27_u5ltw"]
 [ext_resource type="Resource" uid="uid://d21rgslrfpvct" path="res://Autoloads/Resources/Plays/Attack/Spirit/flight.tres" id="27_ujnum"]
 [ext_resource type="Resource" uid="uid://bnp4j742y5gua" path="res://Autoloads/Resources/Plays/Defense/dodge_roll.tres" id="28_3r80k"]
+[ext_resource type="Resource" uid="uid://dc5fuxjba5vkb" path="res://Autoloads/Resources/Plays/Attack/Mind/sneak_attack.tres" id="31_h04sp"]
 
 [resource]
 script = ExtResource("3_pwot0")
@@ -49,13 +53,13 @@ beastiepedia_id = 47
 bar_color = Color(0.2784314, 0.87058824, 0.54901963, 1)
 body_base_pow = 30
 spirit_base_pow = 75
-mind_base_pow = 60
+mind_base_pow = 70
 body_base_def = 55
 spirit_base_def = 90
 mind_base_def = 112
-plays_string_array = Array[String](["tornadoball", "bring the heat", "careful shot", "toppler", "patience", "hawkeye", "pipe", "forward pass", "tough front", "exhaust", "goo-goo eyes", "mark", "quick tag", "deep breath", "torch pass", "clear field", "shield", "gloom", "fortify", "set", "cover", "flight", "net rush", "hum", "fall back", "hunker", "dodge roll"])
+plays_string_array = Array[String](["tornadoball", "bring the heat", "careful shot", "toppler", "rainbow", "roll shot", "heartbreaker", "patience", "hawkeye", "pipe", "forward pass", "tough front", "exhaust", "goo-goo eyes", "mark", "quick tag", "deep breath", "torch pass", "clear field", "shield", "gloom", "fortify", "set", "cover", "flight", "net rush", "hum", "fall back", "sneak attack", "hunker", "dodge roll"])
 traits_string_array = Array[String](["shy"])
-possible_plays = Array[ExtResource("1_d144n")]([ExtResource("4_0rubi"), ExtResource("6_u5ltw"), ExtResource("6_0rubi"), ExtResource("15_pa32x"), ExtResource("9_83ea1"), ExtResource("10_xfrrh"), ExtResource("19_etjal"), ExtResource("13_xfrrh"), ExtResource("23_wdkwy"), ExtResource("21_ujnum"), ExtResource("16_6b5cq"), ExtResource("11_u5ltw"), ExtResource("18_5vun3"), ExtResource("19_h04sp"), ExtResource("25_ui08v"), ExtResource("9_weijm"), ExtResource("8_0rubi"), ExtResource("23_k43qa"), ExtResource("24_pa32x"), ExtResource("25_etjal"), ExtResource("26_ltv8y"), ExtResource("27_ujnum"), ExtResource("25_0rubi"), ExtResource("26_weijm"), ExtResource("27_u5ltw"), ExtResource("22_3r80k"), ExtResource("28_3r80k")])
+possible_plays = Array[ExtResource("1_d144n")]([ExtResource("4_0rubi"), ExtResource("6_u5ltw"), ExtResource("6_0rubi"), ExtResource("15_pa32x"), ExtResource("7_xfrrh"), ExtResource("8_6b5cq"), ExtResource("9_5vun3"), ExtResource("9_83ea1"), ExtResource("10_xfrrh"), ExtResource("19_etjal"), ExtResource("13_xfrrh"), ExtResource("23_wdkwy"), ExtResource("21_ujnum"), ExtResource("16_6b5cq"), ExtResource("11_u5ltw"), ExtResource("18_5vun3"), ExtResource("19_h04sp"), ExtResource("25_ui08v"), ExtResource("9_weijm"), ExtResource("8_0rubi"), ExtResource("23_k43qa"), ExtResource("24_pa32x"), ExtResource("25_etjal"), ExtResource("26_ltv8y"), ExtResource("27_ujnum"), ExtResource("25_0rubi"), ExtResource("26_weijm"), ExtResource("27_u5ltw"), ExtResource("31_h04sp"), ExtResource("22_3r80k"), ExtResource("28_3r80k")])
 possible_traits = Array[ExtResource("2_30rnj")]([ExtResource("2_ukmd4")])
 sprites = Dictionary[int, Texture2D]({
 0: ExtResource("12_62ocn"),

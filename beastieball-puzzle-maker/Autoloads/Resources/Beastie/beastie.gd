@@ -38,7 +38,7 @@ signal health_updated(health : int)
 		my_trait = value
 		if my_trait and my_trait.name.to_lower() == "haunted":
 			current_feelings.clear()
-			current_feelings.get_or_add(Feelings.TRIED, 4)
+			current_feelings.get_or_add(Feelings.TRIED, 3)
 		my_trait_updated.emit(my_trait)
 
 @export var current_boosts : Dictionary[Stats, int] = {} :

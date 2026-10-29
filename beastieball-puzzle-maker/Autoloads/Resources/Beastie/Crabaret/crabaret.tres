@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Beastie" load_steps=38 format=3 uid="uid://r0ifofaeu8v0"]
+[gd_resource type="Resource" script_class="Beastie" load_steps=43 format=3 uid="uid://bexeytt6v48aa"]
 
 [ext_resource type="Script" uid="uid://07ew5v3khpsn" path="res://Autoloads/Resources/Plays/plays.gd" id="1_bdkx8"]
 [ext_resource type="Script" uid="uid://bslfuaragw1g7" path="res://Autoloads/Resources/Trait/trait.gd" id="2_81byg"]
@@ -37,6 +37,11 @@
 [ext_resource type="Resource" uid="uid://c346ver25emiu" path="res://Autoloads/Resources/Plays/Attack/Spirit/passion_strike.tres" id="31_bxfm8"]
 [ext_resource type="Resource" uid="uid://c4u3rhcdxfjxf" path="res://Autoloads/Resources/Plays/Volley/daring_pass.tres" id="32_dqahr"]
 [ext_resource type="Resource" uid="uid://4ayx65g43lde" path="res://Autoloads/Resources/Trait/synchronize.tres" id="34_nu8so"]
+[ext_resource type="Texture2D" uid="uid://b5fesnrx26owj" path="res://Autoloads/Resources/Beastie/Crabaret/crabaret_ready.png" id="37_i0fg3"]
+[ext_resource type="Texture2D" uid="uid://dld0qyhh81g16" path="res://Autoloads/Resources/Beastie/Crabaret/crabaret_spike.png" id="38_2trai"]
+[ext_resource type="Texture2D" uid="uid://54p24i7p4g6g" path="res://Autoloads/Resources/Beastie/Crabaret/crabaret_volley.png" id="39_6gxru"]
+[ext_resource type="Texture2D" uid="uid://b6uw75rgjknim" path="res://Autoloads/Resources/Beastie/Crabaret/crabaret_good.png" id="40_w8epe"]
+[ext_resource type="Texture2D" uid="uid://bys8w7rnwc6bp" path="res://Autoloads/Resources/Beastie/Crabaret/crabaret_bad.png" id="41_gv0bi"]
 
 [resource]
 script = ExtResource("3_6y1ef")
@@ -58,13 +63,13 @@ possible_plays = Array[ExtResource("1_bdkx8")]([ExtResource("3_is2km"), ExtResou
 possible_traits = Array[ExtResource("2_81byg")]([ExtResource("4_y1bsu"), ExtResource("34_nu8so")])
 sprites = Dictionary[int, Texture2D]({
 0: ExtResource("18_440re"),
-1: ExtResource("18_440re"),
-2: ExtResource("18_440re"),
-3: ExtResource("18_440re"),
-4: ExtResource("18_440re"),
-5: ExtResource("18_440re"),
+1: ExtResource("37_i0fg3"),
+2: ExtResource("38_2trai"),
+3: ExtResource("39_6gxru"),
+4: ExtResource("40_w8epe"),
+5: ExtResource("41_gv0bi"),
 6: ExtResource("18_s0fqc")
 })
-ball_anchor_position_receive = Vector2(0, -165)
-ball_anchor_position_ready = Vector2(55, -146)
+ball_anchor_position_receive = Vector2(128, -125)
+ball_anchor_position_ready = Vector2(50, -150)
 metadata/_custom_type_script = "uid://ehabj4qsgxpl"

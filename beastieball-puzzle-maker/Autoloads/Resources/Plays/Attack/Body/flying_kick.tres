@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_gmpdl")
 name = "Flying Kick"
-base_pow = 95
+base_pow = 90
 descrition = "Used when ally has ball. Before hit, SHIFTs self to ally row."
 type = 0
 metadata/_custom_type_script = "uid://bc63soeia1eb1"

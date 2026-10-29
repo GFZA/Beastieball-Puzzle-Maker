@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_ya4oy")
 name = "Slippery"
-description = "Makes adjacent allies receive attacks in their place"
+description = "Makes adjacent allies receive attacks with base POW 70 or more"
 metadata/_custom_type_script = "uid://bslfuaragw1g7"
