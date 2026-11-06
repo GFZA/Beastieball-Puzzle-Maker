@@ -32,6 +32,9 @@ var board : Board = null # Really bad cheese. Assign by MainUI
 
 @onready var custom_name_line_edit: LineEdit = %CustomNameLineEdit
 @onready var custom_number_line_edit: LineEdit = %CustomNumberLineEdit
+@onready var level_line_edit: LineEdit = %LevelLineEdit
+@onready var level_up_button: Button = %LevelUpButton
+@onready var level_down_button: Button = %LevelDownButton
 
 @onready var stamina_line_edit: LineEdit = %StaminaLineEdit
 @onready var stamina_up_button: Button = %StaminaUpButton
@@ -124,15 +127,19 @@ var board : Board = null # Really bad cheese. Assign by MainUI
 func _ready() -> void:
 	_load_from_beastie() # Load before connecting signal
 
+	custom_name_line_edit.text_changed.connect(_on_custom_name_line_edit_text_changed)
+	custom_name_line_edit.text_submitted.connect(custom_name_line_edit.release_focus.unbind(1))
+	custom_number_line_edit.text_submitted.connect(_on_custom_number_line_edit_text_submitted)
+	custom_number_line_edit.text_submitted.connect(custom_number_line_edit.release_focus.unbind(1))
+	level_line_edit.text_submitted.connect(_on_level_line_edit_text_summitted)
+	level_line_edit.text_submitted.connect(level_line_edit.release_focus.unbind(1))
+	level_up_button.pressed.connect(_on_level_up_button_pressed)
+	level_down_button.pressed.connect(_on_level_down_button_pressed)
+
 	stamina_line_edit.text_submitted.connect(_on_stamina_line_edit_text_summited)
 	stamina_up_button.pressed.connect(_on_stamina_up_button_pressed)
 	stamina_down_button.pressed.connect(_on_stamina_down_button_pressed)
-
 	stamina_slider.value_changed.connect(_on_stamina_slider_value_changed)
-	custom_name_line_edit.text_changed.connect(_on_custom_name_line_edit_text_changed)
-	custom_name_line_edit.text_submitted.connect(custom_name_line_edit.release_focus.unbind(1))
-	custom_number_line_edit.text_submitted.connect(_on_custom_number_line_edit_text_changed)
-	custom_number_line_edit.text_submitted.connect(custom_number_line_edit.release_focus.unbind(1))
 
 	# On Field Tab
 	pos_tab_upper_back_button.pressed.connect(_on_pos_button_pressed.bind(Beastie.Position.UPPER_BACK))
@@ -215,6 +222,7 @@ func _load_from_beastie() -> void:
 
 	custom_name_line_edit.text = beastie.my_name
 	custom_number_line_edit.text = str(beastie.sport_number) if beastie.sport_number != 0 else ""
+	level_line_edit.text = str(beastie.level)
 	_on_stamina_slider_value_changed(beastie.health)
 
 	_load_on_field_tab()
@@ -400,8 +408,50 @@ func _update_side() -> void:
 
 
 #region Outside Tab Funcs
+func _on_custom_name_line_edit_text_changed(new_text : String) -> void:
+	if not beastie:
+		return
+	beastie.my_name = new_text
+
+
+func _on_custom_number_line_edit_text_submitted(new_text : String) -> void:
+	if not beastie:
+		return
+	if new_text.length() == 0:
+		beastie.sport_number = beastie.beastiepedia_id
+		custom_number_line_edit.text = ""
+		custom_number_line_edit.placeholder_text = str(beastie.beastiepedia_id)
+		return
+	var new_num : int = clampi(new_text.to_int(), 0, 999)
+	beastie.sport_number = new_num
+	custom_number_line_edit.text = str(new_num)
+
+
+func _on_level_line_edit_text_summitted(new_text : String) -> void:
+	var new_level : int = new_text.to_int() if new_text.length() != 0 else 50
+	new_level = clampi(new_level, 1, 100)
+	_update_level(new_level)
+	level_line_edit.release_focus()
+
+
+func _on_level_up_button_pressed() -> void:
+	var new_level : int = min(100, beastie.level + 1)
+	_update_level(new_level)
+
+
+func _on_level_down_button_pressed() -> void:
+	var new_level : int = max(0, beastie.level - 1)
+	_update_level(new_level)
+
+
+func _update_level(new_level : int) -> void:
+	level_line_edit.text = str(new_level)
+	beastie.level = new_level
+
+
 func _on_stamina_line_edit_text_summited(new_text : String) -> void:
 	var new_stamina : int = new_text.to_int() if new_text.length() != 0 else 100
+	new_stamina = clampi(new_stamina, 0, 100)
 	_update_stamina(new_stamina)
 	stamina_line_edit.release_focus()
 
@@ -431,18 +481,6 @@ func _update_stamina_progress_bar_stylebox() -> void:
 	var new_color : Color = Color.GREEN if not beastie else beastie.bar_color
 	new_stylebox.bg_color = new_color
 	stamina_progress_bar.add_theme_stylebox_override("fill", new_stylebox)
-
-
-func _on_custom_name_line_edit_text_changed(new_text : String) -> void:
-	if not beastie:
-		return
-	beastie.my_name = new_text
-
-
-func _on_custom_number_line_edit_text_changed(new_text : String) -> void:
-	if not beastie:
-		return
-	beastie.sport_number = new_text.to_int()
 #endregion
 
 #region On Field Tab Funcs

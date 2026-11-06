@@ -65,18 +65,21 @@ size_flags_vertical = 3
 focus_behavior_recursive = 1
 theme_override_constants/separation = 12
 
-[node name="NameLabel" type="Label" parent="MainContainer"]
+[node name="BeastiePicContainer" type="HBoxContainer" parent="MainContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="InnerLeftBeastiePicContainer" type="VBoxContainer" parent="MainContainer/BeastiePicContainer"]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="MainContainer/BeastiePicContainer/InnerLeftBeastiePicContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 6
 text = "UNKNOWN"
 label_settings = SubResource("LabelSettings_xqtvo")
 
-[node name="BeastiePicContainer" type="HBoxContainer" parent="MainContainer"]
-layout_mode = 2
-theme_override_constants/separation = 16
-
-[node name="SpriteTextureRec" type="TextureRect" parent="MainContainer/BeastiePicContainer"]
+[node name="SpriteTextureRec" type="TextureRect" parent="MainContainer/BeastiePicContainer/InnerLeftBeastiePicContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(400, 300)
 layout_mode = 2
@@ -85,18 +88,19 @@ expand_mode = 1
 stretch_mode = 5
 flip_h = true
 
-[node name="NameNumContainer" type="VBoxContainer" parent="MainContainer/BeastiePicContainer"]
+[node name="InnerRightBeastiePicContainer" type="VBoxContainer" parent="MainContainer/BeastiePicContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/separation = 10
 alignment = 1
 
-[node name="CustomNameLabel" type="Label" parent="MainContainer/BeastiePicContainer/NameNumContainer"]
+[node name="CustomNameLabel" type="Label" parent="MainContainer/BeastiePicContainer/InnerRightBeastiePicContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 text = "Custom Name"
 label_settings = SubResource("LabelSettings_xqtvo")
 
-[node name="CustomNameLineEdit" type="LineEdit" parent="MainContainer/BeastiePicContainer/NameNumContainer"]
+[node name="CustomNameLineEdit" type="LineEdit" parent="MainContainer/BeastiePicContainer/InnerRightBeastiePicContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 focus_behavior_recursive = 2
@@ -105,22 +109,74 @@ placeholder_text = "Name"
 alignment = 1
 max_length = 12
 
-[node name="CustomNumberLabel" type="Label" parent="MainContainer/BeastiePicContainer/NameNumContainer"]
+[node name="CustomNumberContainer" type="HBoxContainer" parent="MainContainer/BeastiePicContainer/InnerRightBeastiePicContainer"]
 layout_mode = 2
-size_flags_horizontal = 6
-text = "Custom Number"
+
+[node name="CustomNumberLabel" type="Label" parent="MainContainer/BeastiePicContainer/InnerRightBeastiePicContainer/CustomNumberContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Custom No."
 label_settings = SubResource("LabelSettings_xqtvo")
 
-[node name="CustomNumberLineEdit" type="LineEdit" parent="MainContainer/BeastiePicContainer/NameNumContainer"]
+[node name="CustomNumberLineEdit" type="LineEdit" parent="MainContainer/BeastiePicContainer/InnerRightBeastiePicContainer/CustomNumberContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 10
 focus_behavior_recursive = 2
 theme = ExtResource("4_w5fki")
 placeholder_text = "999"
 alignment = 1
 max_length = 3
 virtual_keyboard_type = 2
+
+[node name="LevelContainer" type="HBoxContainer" parent="MainContainer/BeastiePicContainer/InnerRightBeastiePicContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="LevelLabel" type="Label" parent="MainContainer/BeastiePicContainer/InnerRightBeastiePicContainer/LevelContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Level"
+label_settings = SubResource("LabelSettings_40myu")
+
+[node name="Spacer" type="Control" parent="MainContainer/BeastiePicContainer/InnerRightBeastiePicContainer/LevelContainer"]
+visible = false
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="LevelLineEdit" type="LineEdit" parent="MainContainer/BeastiePicContainer/InnerRightBeastiePicContainer/LevelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_behavior_recursive = 2
+theme = ExtResource("4_w5fki")
+text = "50"
+placeholder_text = "50"
+alignment = 1
+max_length = 3
+virtual_keyboard_type = 2
+
+[node name="LevelUpDownButtonContainer" type="VBoxContainer" parent="MainContainer/BeastiePicContainer/InnerRightBeastiePicContainer/LevelContainer"]
+layout_mode = 2
+theme_override_constants/separation = -8
+
+[node name="LevelUpButton" type="Button" parent="MainContainer/BeastiePicContainer/InnerRightBeastiePicContainer/LevelContainer/LevelUpDownButtonContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("4_w5fki")
+theme_override_constants/icon_max_width = 36
+icon = ExtResource("5_tf14f")
+vertical_icon_alignment = 0
+
+[node name="LevelDownButton" type="Button" parent="MainContainer/BeastiePicContainer/InnerRightBeastiePicContainer/LevelContainer/LevelUpDownButtonContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("4_w5fki")
+theme_override_constants/icon_max_width = 36
+icon = ExtResource("6_suyyc")
+vertical_icon_alignment = 2
 
 [node name="StaminaContainer" type="HBoxContainer" parent="MainContainer"]
 custom_minimum_size = Vector2(0, 90)
@@ -210,12 +266,11 @@ size_flags_vertical = 3
 focus_behavior_recursive = 1
 theme = ExtResource("4_w5fki")
 tab_alignment = 1
-current_tab = 1
+current_tab = 0
 tab_focus_mode = 0
 
 [node name="_On Field_" type="TabBar" parent="MainContainer/TabContainer"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -505,6 +560,7 @@ expand_icon = true
 
 [node name="_Sets_" type="TabBar" parent="MainContainer/TabContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 

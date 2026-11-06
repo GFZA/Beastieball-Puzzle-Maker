@@ -1,18 +1,18 @@
 [gd_scene load_steps=15 format=4 uid="uid://bvd7pbsfc56o0"]
 
-[ext_resource type="Script" uid="uid://bxkg5ri8uqj7n" path="res://Scenes/Healthbar/healthbar.gd" id="1_vjpxm"]
-[ext_resource type="Script" uid="uid://bca8urfgsjynv" path="res://Scenes/Healthbar/parallelogram.gd" id="3_pgdjv"]
-[ext_resource type="FontFile" uid="uid://cvfib27cf5q88" path="res://Autoloads/Resources/Fonts/Go Banana.ttf" id="3_xibvh"]
-[ext_resource type="FontFile" uid="uid://3m3y4biedw3n" path="res://Autoloads/Resources/Fonts/Hauser.otf" id="4_1i8kh"]
-[ext_resource type="PackedScene" uid="uid://bfxq6perx4tge" path="res://Scenes/Healthbar/lifebar.tscn" id="4_bu8sd"]
+[ext_resource type="Script" uid="uid://bxkg5ri8uqj7n" path="res://Scenes/Healthbar/healthbar.gd" id="1_kg7k8"]
+[ext_resource type="Script" uid="uid://bca8urfgsjynv" path="res://Scenes/Healthbar/parallelogram.gd" id="2_g3opr"]
+[ext_resource type="FontFile" uid="uid://cvfib27cf5q88" path="res://Autoloads/Resources/Fonts/Go Banana.ttf" id="3_hn4lf"]
+[ext_resource type="FontFile" uid="uid://3m3y4biedw3n" path="res://Autoloads/Resources/Fonts/Hauser.otf" id="4_6hudb"]
+[ext_resource type="PackedScene" uid="uid://bfxq6perx4tge" path="res://Scenes/Healthbar/lifebar.tscn" id="5_sf8yt"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_bu8sd"]
-font = ExtResource("3_xibvh")
+[sub_resource type="LabelSettings" id="LabelSettings_quro0"]
+font = ExtResource("3_hn4lf")
 font_size = 48
 font_color = Color(0.19215687, 0.22745098, 0.38431373, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_1i8kh"]
-font = ExtResource("4_1i8kh")
+font = ExtResource("4_6hudb")
 font_size = 24
 font_color = Color(0.41568628, 0.5058824, 0.5372549, 1)
 outline_color = Color(0.41568628, 0.5058824, 0.5372549, 1)
@@ -266,7 +266,7 @@ cache/0/50/0/glyphs/69/size = Vector2(22, 36)
 cache/0/50/0/glyphs/69/uv_rect = Rect2(65, 1, 22, 36)
 cache/0/50/0/glyphs/69/texture_idx = 0
 
-[sub_resource type="LabelSettings" id="LabelSettings_pgdjv"]
+[sub_resource type="LabelSettings" id="LabelSettings_t7x3h"]
 font = SubResource("FontFile_88q38")
 font_size = 24
 font_color = Color(0, 1, 0, 1)
@@ -286,7 +286,7 @@ offset_bottom = 74.0
 grow_horizontal = 2
 focus_behavior_recursive = 1
 mouse_filter = 2
-script = ExtResource("1_vjpxm")
+script = ExtResource("1_kg7k8")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(255, 80)
@@ -307,7 +307,7 @@ grow_vertical = 2
 unique_name_in_owner = true
 position = Vector2(117, 0)
 polygon = PackedVector2Array(-117, 80, -97, 0, 138, 0, 118, 80)
-script = ExtResource("3_pgdjv")
+script = ExtResource("2_g3opr")
 
 [node name="ControlsAnchor" type="MarginContainer" parent="MarginContainer"]
 custom_minimum_size = Vector2(255, 80)
@@ -346,7 +346,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.5
 text = "Sprecko"
-label_settings = SubResource("LabelSettings_bu8sd")
+label_settings = SubResource("LabelSettings_quro0")
 horizontal_alignment = 2
 vertical_alignment = 2
 
@@ -371,7 +371,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(15, 0)
 layout_mode = 2
 
-[node name="Lifebar" parent="MarginContainer/ControlsAnchor/MainContainer/LowerContaiener" instance=ExtResource("4_bu8sd")]
+[node name="Lifebar" parent="MarginContainer/ControlsAnchor/MainContainer/LowerContaiener" instance=ExtResource("5_sf8yt")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 6
@@ -386,4 +386,4 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 2
 text = "Lv50"
-label_settings = SubResource("LabelSettings_pgdjv")
+label_settings = SubResource("LabelSettings_t7x3h")

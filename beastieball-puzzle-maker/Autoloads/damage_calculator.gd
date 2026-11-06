@@ -179,12 +179,13 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack, \
 	elif attack_name in ALWAYS_CALC_FROM_BENCH_ATTACKS:
 		attack_boosts_to_add = 0  # clear all boosts
 	total_attack_boost += attack_boosts_to_add
-	total_attack_boost += int(attacker.my_trait.get_starter_trait_boost_stack(attacker, stats_type_attack))
 
 	if jazzed:
 		if signi(total_attack_boost) == -1:
 			total_attack_boost = 0
 		total_attack_boost += 1
+
+	total_attack_boost += int(attacker.my_trait.get_starter_trait_boost_stack(attacker, stats_type_attack))
 
 	if not attack_name in ALWAYS_CALC_FROM_BENCH_ATTACKS: # Flight remove all row bonus for some reason
 		if attacker_trait in SWAP_ROW_BONUS_TRAITS:
@@ -246,14 +247,14 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack, \
 	#endregion
 
 	#region Get final stats for calculation
-	var final_atk : float = float(total_attack_stat) + 5.0
+	var final_atk : float = float(total_attack_stat)
 	match signi(total_attack_boost):
 		1:
 			final_atk += floori(final_atk * float(total_attack_boost) / 2.0)
 		-1:
 			final_atk = floori(final_atk * 2.0 / (absf(float(total_attack_boost)) + 2.0))
 
-	var final_def : float = float(total_defense_stat) + 5.0
+	var final_def : float = float(total_defense_stat)
 	match signi(total_defense_boost):
 		1:
 			final_def += floori(final_def * float(total_defense_boost) / 2.0)
@@ -263,7 +264,8 @@ func get_damage(attacker : Beastie, defender : Beastie, attack : Attack, \
 
 	#region Calculate the damage + board states
 	if not attack_name in NORMAL_CALC_BYPASSING_ATTACKS:
-		final_damage = max(1, ceili(((floori(final_atk) * base_pow / final_def) * 0.4) * all_damage_mults))
+		var def_factor : float = 1.0 / (lerpf(0.66, 2.5, min(1.0, float(defender.level) / 50.0)))
+		final_damage = max(1, ceili(((floori(final_atk) * base_pow / final_def) * def_factor) * all_damage_mults))
 
 	if attacker_team_controller:
 		if attacker_team_controller.check_for_cheerleader_buff(attacker):
@@ -330,7 +332,7 @@ func _pre_calc_def_stat(stat : Beastie.Stats, attacker : Beastie, defender : Bea
 	# didn't account for back row bonus cuz we just need to see what's highest
 	# then calc the acutal stat later
 
-	var final_def : float = float(def_stat) + 5.0
+	var final_def : float = float(def_stat)
 	match signi(total_defense_boost):
 		1:
 			final_def += floori(final_def * float(total_defense_boost) / 2.0)

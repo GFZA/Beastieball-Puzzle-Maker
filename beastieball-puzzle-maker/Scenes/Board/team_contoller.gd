@@ -173,6 +173,8 @@ func _process_beastie_value(value : Beastie, benched : bool = false) -> Beastie:
 	processed_value.my_side = side
 	if not processed_value.health_updated.is_connected(_update_field):
 		processed_value.health_updated.connect(_update_field.unbind(1))
+	if not processed_value.level_updated.is_connected(_update_field):
+		processed_value.level_updated.connect(_update_field.unbind(1))
 	if not processed_value.invests_updated.is_connected(_update_field):
 		processed_value.invests_updated.connect(_update_field.unbind(1))
 	if not processed_value.my_plays_updated.is_connected(_update_field):

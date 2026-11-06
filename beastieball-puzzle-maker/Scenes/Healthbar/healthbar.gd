@@ -15,26 +15,34 @@ const DEFAULT_FONT_SIZE : int = 48
 			beastie_name = "Sprecko"
 			sport_number = 123
 			color = Color.GREEN
-			update_lifebar(100)
+			_update_lifebar(100)
+			_update_level_label(50)
 
 			if beastie:
-				if beastie.my_name_updated.is_connected(update_name_label):
-					beastie.my_name_updated.disconnect(update_name_label)
-				if beastie.sport_number_updated.is_connected(update_number_label):
-					beastie.sport_number_updated.disconnect(update_number_label)
-				if beastie.health_updated.is_connected(update_lifebar):
-					beastie.health_updated.disconnect(update_lifebar)
+				if beastie.my_name_updated.is_connected(_update_name_label):
+					beastie.my_name_updated.disconnect(_update_name_label)
+				if beastie.sport_number_updated.is_connected(_update_number_label):
+					beastie.sport_number_updated.disconnect(_update_number_label)
+				if beastie.health_updated.is_connected(_update_lifebar):
+					beastie.health_updated.disconnect(_update_lifebar)
+				if beastie.level_updated.is_connected(_update_level_label):
+					beastie.level_updated.disconnect(_update_level_label)
 
 			beastie = value
 			return
 
 		beastie = value # Must not duplicate so it's the same one from BeastieScene!
-		beastie.my_name_updated.connect(update_name_label)
-		beastie.sport_number_updated.connect(update_number_label)
-		beastie.health_updated.connect(update_lifebar)
-		update_lifebar(beastie.health)
+		beastie.my_name_updated.connect(_update_name_label)
+		beastie.sport_number_updated.connect(_update_number_label)
+		beastie.health_updated.connect(_update_lifebar)
+		beastie.level_updated.connect(_update_level_label)
+		if beastie.sport_number == null:
+			_update_number_label(beastie.beastiepedia_id)
+		else:
+			_update_number_label(beastie.sport_number)
+		_update_lifebar(beastie.health)
+		_update_level_label(beastie.level)
 		beastie_name = beastie.my_name
-		sport_number = beastie.sport_number
 		color = beastie.bar_color
 
 @export var benched : bool = false :
@@ -58,18 +66,24 @@ var beastie_name : String = "Sprecko" :
 	set(value):
 		value = value.substr(0, 12)
 		beastie_name = value
-		update_name_label(beastie_name)
+		_update_name_label(beastie_name)
 
 var sport_number : int = 123 :
 	set(value):
 		clamp(value, 0, 999)
 		sport_number = value
-		update_number_label(sport_number)
+		_update_number_label(sport_number)
+
+var level : int = 50 :
+	set(value):
+		clamp(value, 1, 100)
+		level = value
+		_update_level_label(level)
 
 var color : Color = Color.GREEN :
 	set(value):
 		color = value
-		update_color(color)
+		_update_color(color)
 
 var my_name_setting : LabelSettings = null
 var my_level_setting : LabelSettings = null
@@ -105,7 +119,7 @@ func _ready() -> void:
 	level_label.label_settings = my_level_setting
 
 
-func update_name_label(assigned_name : String) -> void:
+func _update_name_label(assigned_name : String) -> void:
 	if not is_node_ready():
 		await ready
 
@@ -133,26 +147,36 @@ func update_name_label(assigned_name : String) -> void:
 		my_name_setting.font_size = DEFAULT_FONT_SIZE
 
 
-func update_number_label(new_number: int) -> void:
+func _update_number_label(new_number: int) -> void:
 	if not is_node_ready():
 		await ready
 
-	if new_number == 0:
+	if new_number == null:
 		new_number = beastie.beastiepedia_id
-	number_label.text = "#%s" % str(new_number)
+
+	if new_number < 100:
+		number_label.text = "#%02d" % new_number
+	else:
+		number_label.text = "#%03d" % new_number
 
 
-func update_lifebar(new_stamina: int) -> void:
+func _update_lifebar(new_stamina: int) -> void:
 	if not is_node_ready():
 		await ready
 	lifebar.hp = new_stamina
 
 
-func update_color(new_color : Color) -> void:
+func _update_color(new_color : Color) -> void:
 	if not is_node_ready():
 		await ready
 	lifebar.color = new_color
 	my_level_setting.font_color = new_color
+
+
+func _update_level_label(new_level : int) -> void:
+	if not is_node_ready():
+		await ready
+	level_label.text = "Lv%s" % str(new_level)
 
 
 func update_side(new_side : Global.MySide) -> void:
