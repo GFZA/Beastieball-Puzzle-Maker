@@ -221,7 +221,7 @@ func _load_from_beastie() -> void:
 		return
 
 	custom_name_line_edit.text = beastie.my_name
-	custom_number_line_edit.text = str(beastie.sport_number) if beastie.sport_number != 0 else ""
+	custom_number_line_edit.text = str(beastie.sport_number) if beastie.sport_number != -1 else ""
 	level_line_edit.text = str(beastie.level)
 	_on_stamina_slider_value_changed(beastie.health)
 
