@@ -66,9 +66,9 @@ signal level_updated(level : int)
 		value = value.substr(0, MAX_NAME_LENGTH)
 		my_name = value
 		my_name_updated.emit(my_name)
-@export_range(0, 999) var sport_number : int = 0:
+@export_range(-1, 999) var sport_number : int = -1:
 	set(value):
-		clamp(value, 0, 999)
+		clamp(value, -1, 999)
 		sport_number = value
 		sport_number_updated.emit(sport_number)
 @export var invests : Dictionary[Stats, int] = {

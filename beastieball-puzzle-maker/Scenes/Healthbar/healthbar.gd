@@ -36,7 +36,7 @@ const DEFAULT_FONT_SIZE : int = 48
 		beastie.sport_number_updated.connect(_update_number_label)
 		beastie.health_updated.connect(_update_lifebar)
 		beastie.level_updated.connect(_update_level_label)
-		if beastie.sport_number == null:
+		if beastie.sport_number == -1:
 			_update_number_label(beastie.beastiepedia_id)
 		else:
 			_update_number_label(beastie.sport_number)
@@ -151,7 +151,7 @@ func _update_number_label(new_number: int) -> void:
 	if not is_node_ready():
 		await ready
 
-	if new_number == null:
+	if new_number == -1 or null:
 		new_number = beastie.beastiepedia_id
 
 	if new_number < 100:
